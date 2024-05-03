@@ -25,3 +25,17 @@ rule liftover_chm13_to_grch37_vcf:
             REJECT={output.unlifted} \
             R={params.genome}
         """
+
+
+rule normalize_expression_data:
+    input:
+        expand("results/star/{{sample}}/{{sample}}_ReadsPerGene.out.tab")
+    output:
+        "results/normalized_expression/{{sample}}_expression_normalized.tab"
+    params:
+        r_script="path/to/modified/add_expression_data_VST.R",
+        counts_dir="results/star/{sample}/"
+    shell:
+        """
+        Rscript {params.r_script} --counts_dir {params.counts_dir} --output {output}
+        """
