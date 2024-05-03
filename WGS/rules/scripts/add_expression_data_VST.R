@@ -1,23 +1,29 @@
+###!/usr/bin/env Rscript
 ### reattemt to normalize log2fc values
 
-# BiocManager::install("DESeq2")
+#BiocManager::install("DESeq2")
 ## get log2-fold expression values of T-ALL samples
 library(DESeq2)
 
-countsdir <- snakemake@input[["counts_dir"]]
-sampleFiles <- list.files(path = countsdir, pattern = "ReadsPerGene.out.tab", recursive = TRUE)
-sampleName <- snakemake@wildcards[["sample"]]
-sampleTable <- data.frame(sampleName = sampleName,
-                          fileName = sampleFiles,
-                          condition = "T-ALL")
+#countsdir <- snakemake@input[["counts_dir"]]
+#sampleFiles <- list.files(path = countsdir, pattern = "ReadsPerGene.out.tab", recursive = TRUE)
+#sampleName <- snakemake@wildcards[["sample"]]
+#sampleTable <- data.frame(sampleName = sampleName,
+#                          fileName = sampleFiles,
+#                          condition = "T-ALL")
+
+
+#setwd(countsdir)
+
+countsdir <- "/staging/leuven/stg_00096/home/rdewin/RNA/results/star"
 
 setwd(countsdir)
 
-#countsdir <- "/camp/project/proj-vanloo/analyses/jdemeul/projects/2021_OConnor_refractory_T-ALL/data/RNA-Seq/"
-# setwd(countsdir)
+sampleFiles
+sampleName
 
 sampleFiles <- list.files(path = countsdir, pattern = "ReadsPerGene.out.tab", recursive = T)
-sampleName <- sapply(X = strsplit(x = sampleFiles, split = "/", fixed = T), FUN = "[", 2)
+sampleName <- sapply(X = strsplit(x = sampleFiles, split = "/", fixed = T), FUN = "[", 1)
 sampleTable <- data.frame(sampleName = sampleName,
                           fileName = sampleFiles,
                           condition = "T-ALL")
@@ -46,7 +52,8 @@ resdf <- as.data.frame(counts(dds, normalized=TRUE))
 
 l2fcdf <- as.data.frame(vst_fc)
 
-gene_ids_names <- read.delim(file = "/camp/lab/vanloop/working/camp_pipeline_files/human/references/STAR-Fusion/GRCh38_gencode_v37_CTAT_lib_Mar012021/ref_annot.gtf.gene_spans", as.is = T, header = F)
+#gene_ids_names <- read.delim(file = "/camp/lab/vanloop/working/camp_pipeline_files/human/references/STAR-Fusion/GRCh38_gencode_v37_CTAT_lib_Mar012021/ref_annot.gtf.gene_spans", as.is = T, header = F)
+gene_ids_names <- read.delim(file = "/staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir/ref_annot.gtf.gene_spans", as.is = T, header = F)
 rownames(gene_ids_names) <- gene_ids_names$V1
 
 
@@ -55,9 +62,9 @@ l2fcdf$mean_expression <- 2^rowMeans(x = log2(resdf+1))
 
 resdf$gene_name <- gene_ids_names[rownames(resdf), "V6"]
 
-write.table(x = l2fcdf, file = "/camp/project/proj-vanloo/analyses/jdemeul/projects/2021_OConnor_refractory_T-ALL/results/20220320_RNAlog2fc_vst.txt", quote = F, sep = "\t", row.names = T, col.names = T)
-write.table(x = as.data.frame(assay(dds_vst)), file = "/camp/project/proj-vanloo/analyses/jdemeul/projects/2021_OConnor_refractory_T-ALL/results/20220320_RNAcounts_vst.txt", quote = F, sep = "\t", row.names = T, col.names = T)
-write.table(x = resdf, file = "/camp/project/proj-vanloo/analyses/jdemeul/projects/2021_OConnor_refractory_T-ALL/results/20220320_RNAcounts_normalised_T-ALL.txt", quote = F, sep = "\t", row.names = T, col.names = T)
+write.table(x = l2fcdf, file = "/staging/leuven/stg_00096/home/rdewin/RNA/results/ASE/RNAlog2fc_vst.txt", quote = F, sep = "\t", row.names = T, col.names = T)
+write.table(x = as.data.frame(assay(dds_vst)), file = "/staging/leuven/stg_00096/home/rdewin/RNA/results/ASE/RNAcounts_vst.txt", quote = F, sep = "\t", row.names = T, col.names = T)
+write.table(x = resdf, file = "//staging/leuven/stg_00096/home/rdewin/RNA/results/ASE/RNAcounts_normalised_T-ALL.txt", quote = F, sep = "\t", row.names = T, col.names = T)
 
 
 
@@ -122,7 +129,7 @@ plot_imbalance_expression <- function(imbalancedf) {
 ### end functions
 
 # generate library of all Hs exons (should be the covered regions).
-gtffile <- "/camp/lab/vanloop/working/camp_pipeline_files/human/references/STAR-Fusion/GRCh38_gencode_v37_CTAT_lib_Mar012021/ref_annot.gtf"
+gtffile <- "/staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir/ref_annot.gtf"
 hstxdb <- makeTxDbFromGFF(file = gtffile, organism = "Homo sapiens")
 # seqlevels(hstxdb) <- sub(pattern = "chr", replacement = "", x = seqlevels(seqinfo(hstxdb)))
 hsexondb <- exons(x = hstxdb, columns = c("gene_id"))
@@ -132,7 +139,7 @@ sampledf <- read.delim(file = "/camp/lab/vanloop/working/demeulj/projects/2021_O
 sampledf <- sampledf[sampledf$R_Pres_FASTQ != "", ]
 
 # add in the log2-fold change data and actual gene names
-l2fcfile <- "/camp/project/proj-vanloo/analyses/jdemeul/projects/2021_OConnor_refractory_T-ALL/results/20220320_RNAlog2fc_vst.txt"
+l2fcfile <- "/staging/leuven/stg_00096/home/rdewin/RNA/results/ASE/RNAlog2fc_vst.txt"
 l2fcdf <-  read.delim(file = l2fcfile, as.is = T)
 
 for (i in 1:nrow(sampledf)) {
@@ -144,7 +151,7 @@ for (i in 1:nrow(sampledf)) {
   #   ase_resultsfile <- paste0("/srv/shared/vanloo/home/jdemeul/projects/2016_mansour_ASE_T-ALL/results/cell_lines/", SAMPLEID, "/", SAMPLEID, "_ase_out.txt")
   # } else {
     WGSID <- sampledf[i, "WGS_Pres_FASTQ"]
-    ase_resultsfile <- paste0("/camp/project/proj-vanloo/analyses/jdemeul/projects/2021_OConnor_refractory_T-ALL/results/ASE/", WGSID, "/", WGSID, "_ase_out.txt")
+    ase_resultsfile <- paste0("/staging/leuven/stg_00096/home/rdewin/RNA/results/ASE/", WGSID, "/", WGSID, "_ase_out.txt")
   # }
   ase_results <- read.delim(file = ase_resultsfile, as.is = T)
   
@@ -172,7 +179,7 @@ for (i in 1:nrow(sampledf)) {
   # if (sampledf[i, "cell_line"]) {
   #   outfile <- paste0("/srv/shared/vanloo/home/jdemeul/projects/2016_mansour_ASE_T-ALL/results/cell_lines/", SAMPLEID, "/", SAMPLEID, "_imbalance_expression_vst.txt")
   # } else {
-    outfile <- paste0("/camp/project/proj-vanloo/analyses/jdemeul/projects/2021_OConnor_refractory_T-ALL/results/ASE/", WGSID, "/", WGSID, "_imbalance_expression_vst.txt")
+    outfile <- paste0("/staging/leuven/stg_00096/home/rdewin/RNA/results/ASE/", WGSID, "/", WGSID, "_imbalance_expression_vst.txt")
   # }
   write.table(x = outdf, file = outfile, quote = F, sep = "\t", row.names = F, col.names = T)
   
@@ -182,7 +189,7 @@ for (i in 1:nrow(sampledf)) {
   # if (sampledf[i, "cell_line"]) {
   #   plotfile <- paste0("/srv/shared/vanloo/home/jdemeul/projects/2016_mansour_ASE_T-ALL/results/cell_lines/", SAMPLEID, "/", SAMPLEID, "_imbalance_expression_vst.png")
   # } else {
-    plotfile <- paste0("/camp/project/proj-vanloo/analyses/jdemeul/projects/2021_OConnor_refractory_T-ALL/results/ASE/", WGSID, "/", WGSID, "_imbalance_expression_vst.png")
+    plotfile <- paste0("/staging/leuven/stg_00096/home/rdewin/RNA/results/ASE/", WGSID, "/", WGSID, "_imbalance_expression_vst.png")
   # }
   ggsave(filename = plotfile, plot = p1, dpi = 300, width = 15, height = 6)
 }
