@@ -1,0 +1,14 @@
+Warning: Duplicate sample names: P020
+Warning: Changing sample name to P020_0
+[2024-Apr-06 16:56:38] delly call -x resources/T2T.excluderanges.bed -g resources/genome.fa -o results/delly/call/P020.bcf results/recal/P020/P020_dna_tumor_recal.bam results/recal/P020/P020_dna_normal_recal.bam 
+[2024-Apr-06 16:56:45] Paired-end and split-read scanning
+[2024-Apr-06 17:25:46] Split-read clustering
+[2024-Apr-06 17:25:48] Paired-end clustering
+[2024-Apr-06 17:25:49] Split-read assembly
+[2024-Apr-06 17:57:13] Generate REF and ALT probes
+[2024-Apr-06 17:57:38] SV annotation
+[2024-Apr-06 18:57:29] Genotyping
+[2024-Apr-06 18:57:30] Sample statistics
+Sample:P020,ReadSize=150,Median=328,MAD=40,UniqueDiscordantPairs=651380
+Sample:P020_0,ReadSize=150,Median=327,MAD=43,UniqueDiscordantPairs=1485923
+[2024-Apr-06 18:57:30] Done.

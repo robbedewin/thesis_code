@@ -1,0 +1,1099 @@
+INFO:    fuse: warning: library too old, some operations may not work
+-ctat genome lib [/staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir] validates.
+CMD: mkdir -p /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/_starF_checkpoints
+CMD: mkdir -p /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/star-fusion.preliminary
+* Running CMD: /usr/local/bin/STAR --genomeDir /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir/ref_genome.fa.star.idx  --outReadsUnmapped None  --chimSegmentMin 12  --chimJunctionOverhangMin 8  --chimOutJunctionFormat 1  --alignSJDBoverhangMin 10  --alignMatesGapMax 100000  --alignIntronMax 100000  --alignSJstitchMismatchNmax 5 -1 5 5  --runThreadN 14 --outSAMstrandField intronMotif  --outSAMunmapped Within  --alignInsertionFlush Right  --alignSplicedMateMapLminOverLmate 0  --alignSplicedMateMapLmin 30  --outSAMtype BAM Unsorted  --readFilesIn /staging/leuven/stg_00096/home/rdewin/RNA/results/fastp/P028/P028_rna_R1.trimmed.fq /staging/leuven/stg_00096/home/rdewin/RNA/results/fastp/P028/P028_rna_R2.trimmed.fq  --outSAMattrRGline ID:GRPundef  --chimMultimapScoreRange 3  --chimScoreJunctionNonGTAG -4  --chimMultimapNmax 20  --chimNonchimScoreDropMin 10  --peOverlapNbasesMin 12 --peOverlapMMp 0.1  --genomeLoad NoSharedMemory  --twopassMode None  --quantMode GeneCounts
+Apr 09 13:04:27 ..... started STAR run
+Apr 09 13:04:27 ..... loading genome
+Apr 09 13:05:35 ..... started mapping
+Apr 09 13:39:08 ..... finished mapping
+Apr 09 13:39:08 ..... finished successfully
+-sample contains 76668309 rnaseq fragments
+* Running CMD: /usr/local/src/STAR-Fusion/util/STAR-Fusion.map_chimeric_reads_to_genes  --genome_lib_dir /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir  -J Chimeric.out.junction  -O /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/star-fusion.preliminary/star-fusion.junction_breakpts_to_genes.txt --CPU 14 
+-parsing fusion evidence: Chimeric.out.junction
+-building interval tree based on /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir/ref_annot.gtf.mini.sortu
+-done building interval tree (0.17 min).
+-mapping reads to genes
+[10000], rate=50000.00/min [20000], rate=54545.45/min [30000], rate=56250.00/min [40000], rate=57142.86/min [50000], rate=57692.31/min [60000], rate=58064.52/min [70000], rate=57534.25/min [80000], rate=56470.59/min [90000], rate=56250.00/min [100000], rate=55555.56/min [110000], rate=55462.18/min [120000], rate=54135.34/min [130000], rate=52000.00/min [140000], rate=50909.09/min -building interval tree based on /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir/ref_annot.gtf.mini.sortu
+-done building interval tree (0.17 min).
+-mapping reads to genes
+[10000], rate=54545.45/min [20000], rate=54545.45/min [30000], rate=56250.00/min [40000], rate=57142.86/min [50000], rate=57692.31/min [60000], rate=57142.86/min [70000], rate=56756.76/min [80000], rate=55813.95/min [90000], rate=55102.04/min [100000], rate=54545.45/min [110000], rate=54098.36/min [120000], rate=53333.33/min [130000], rate=52000.00/min [140000], rate=50602.41/min -building interval tree based on /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir/ref_annot.gtf.mini.sortu
+-done building interval tree (0.17 min).
+-mapping reads to genes
+[10000], rate=66666.67/min [20000], rate=63157.89/min [30000], rate=62068.97/min [40000], rate=63157.89/min [50000], rate=63829.79/min [60000], rate=63157.89/min [70000], rate=57534.25/min [80000], rate=55172.41/min [90000], rate=55102.04/min [100000], rate=54545.45/min [110000], rate=54098.36/min [120000], rate=52941.18/min [130000], rate=51655.63/min [140000], rate=50602.41/min -building interval tree based on /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir/ref_annot.gtf.mini.sortu
+-done building interval tree (0.18 min).
+-mapping reads to genes
+[10000], rate=54545.45/min [20000], rate=54545.45/min [30000], rate=56250.00/min [40000], rate=57142.86/min [50000], rate=57692.31/min [60000], rate=58064.52/min [70000], rate=57534.25/min [80000], rate=56470.59/min [90000], rate=55670.10/min [100000], rate=55555.56/min [110000], rate=55462.18/min [120000], rate=54545.45/min [130000], rate=51315.79/min [140000], rate=50299.40/min -building interval tree based on /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir/ref_annot.gtf.mini.sortu
+-done building interval tree (0.17 min).
+-mapping reads to genes
+[10000], rate=60000.00/min [20000], rate=57142.86/min [30000], rate=58064.52/min [40000], rate=58536.59/min [50000], rate=57692.31/min [60000], rate=58064.52/min [70000], rate=57534.25/min [80000], rate=56470.59/min [90000], rate=55670.10/min [100000], rate=55555.56/min [110000], rate=55000.00/min [120000], rate=54135.34/min [130000], rate=51655.63/min [140000], rate=50299.40/min -building interval tree based on /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir/ref_annot.gtf.mini.sortu
+-done building interval tree (0.18 min).
+-mapping reads to genes
+[10000], rate=54545.45/min [20000], rate=54545.45/min [30000], rate=51428.57/min [40000], rate=52173.91/min [50000], rate=53571.43/min [60000], rate=53731.34/min [70000], rate=53846.15/min [80000], rate=53333.33/min [90000], rate=53465.35/min [100000], rate=53097.35/min [110000], rate=52800.00/min [120000], rate=51428.57/min [130000], rate=50322.58/min [140000], rate=49704.14/min -building interval tree based on /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir/ref_annot.gtf.mini.sortu
+-done building interval tree (0.17 min).
+-mapping reads to genes
+[10000], rate=54545.45/min [20000], rate=57142.86/min [30000], rate=52941.18/min [40000], rate=52173.91/min [50000], rate=52631.58/min [60000], rate=53731.34/min [70000], rate=53164.56/min [80000], rate=52747.25/min [90000], rate=52941.18/min [100000], rate=52631.58/min [110000], rate=52800.00/min [120000], rate=51428.57/min [130000], rate=50000.00/min [140000], rate=49704.14/min -building interval tree based on /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir/ref_annot.gtf.mini.sortu
+-done building interval tree (0.17 min).
+-mapping reads to genes
+[10000], rate=60000.00/min [20000], rate=60000.00/min [30000], rate=60000.00/min [40000], rate=61538.46/min [50000], rate=61224.49/min [60000], rate=60000.00/min [70000], rate=54545.45/min [80000], rate=53333.33/min [90000], rate=52941.18/min [100000], rate=52631.58/min [110000], rate=52380.95/min [120000], rate=51428.57/min [130000], rate=50322.58/min [140000], rate=49411.76/min -building interval tree based on /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir/ref_annot.gtf.mini.sortu
+-done building interval tree (0.17 min).
+-mapping reads to genes
+[10000], rate=60000.00/min [20000], rate=60000.00/min [30000], rate=60000.00/min [40000], rate=61538.46/min [50000], rate=61224.49/min [60000], rate=62068.97/min [70000], rate=56756.76/min [80000], rate=55172.41/min [90000], rate=54545.45/min [100000], rate=54054.05/min [110000], rate=54098.36/min [120000], rate=52173.91/min [130000], rate=50649.35/min [140000], rate=49704.14/min -building interval tree based on /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir/ref_annot.gtf.mini.sortu
+-done building interval tree (0.17 min).
+-mapping reads to genes
+[10000], rate=54545.45/min [20000], rate=54545.45/min [30000], rate=54545.45/min [40000], rate=55813.95/min [50000], rate=56603.77/min [60000], rate=56250.00/min [70000], rate=56000.00/min [80000], rate=55172.41/min [90000], rate=54545.45/min [100000], rate=54545.45/min [110000], rate=54098.36/min [120000], rate=52941.18/min [130000], rate=50322.58/min [140000], rate=49704.14/min -building interval tree based on /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir/ref_annot.gtf.mini.sortu
+-done building interval tree (0.17 min).
+-mapping reads to genes
+[10000], rate=60000.00/min [20000], rate=63157.89/min [30000], rate=62068.97/min [40000], rate=63157.89/min [50000], rate=62500.00/min [60000], rate=61016.95/min [70000], rate=56000.00/min [80000], rate=53932.58/min [90000], rate=54000.00/min [100000], rate=53571.43/min [110000], rate=53225.81/min [120000], rate=51428.57/min [130000], rate=49367.09/min [140000], rate=49122.81/min -building interval tree based on /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir/ref_annot.gtf.mini.sortu
+-done building interval tree (0.18 min).
+-mapping reads to genes
+[10000], rate=54545.45/min [20000], rate=50000.00/min [30000], rate=51428.57/min [40000], rate=53333.33/min [50000], rate=53571.43/min [60000], rate=54545.45/min [70000], rate=53846.15/min [80000], rate=53333.33/min [90000], rate=52941.18/min [100000], rate=52631.58/min [110000], rate=52380.95/min [120000], rate=50704.23/min [130000], rate=49056.60/min [140000], rate=48837.21/min -building interval tree based on /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir/ref_annot.gtf.mini.sortu
+-done building interval tree (0.17 min).
+-mapping reads to genes
+[10000], rate=60000.00/min [20000], rate=60000.00/min [30000], rate=60000.00/min [40000], rate=60000.00/min [50000], rate=60000.00/min [60000], rate=59016.39/min [70000], rate=54545.45/min [80000], rate=53333.33/min [90000], rate=52941.18/min [100000], rate=52631.58/min [110000], rate=52380.95/min [120000], rate=50704.23/min [130000], rate=49056.60/min [140000], rate=48554.91/min -building interval tree based on /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir/ref_annot.gtf.mini.sortu
+-done building interval tree (0.17 min).
+-mapping reads to genes
+[10000], rate=54545.45/min [20000], rate=50000.00/min [30000], rate=52941.18/min [40000], rate=54545.45/min [50000], rate=55555.56/min [60000], rate=57142.86/min [70000], rate=56000.00/min [80000], rate=53333.33/min [90000], rate=52427.18/min [100000], rate=52631.58/min [110000], rate=52380.95/min [120000], rate=50704.23/min [130000], rate=49056.60/min [140000], rate=48275.86/min * Running CMD: /usr/local/src/STAR-Fusion/util/STAR-Fusion.handle_multimapping_reads  -J /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/star-fusion.preliminary/star-fusion.junction_breakpts_to_genes.txt  --genome_lib_dir /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir  --filt_file /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/star-fusion.preliminary/star-fusion.junction_breakpts_to_genes.txt.fail  -M 50  > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/star-fusion.preliminary/star-fusion.junction_breakpts_to_genes.txt.pass 
+-parsing /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/star-fusion.preliminary/star-fusion.junction_breakpts_to_genes.txt, organizing read mapping info.
+ 133333.33 reads per min processed...   150000.00 reads per min processed...   163636.36 reads per min processed...   175182.48 reads per min processed...   184049.08 reads per min processed...   192513.37 reads per min processed...   201923.08 reads per min processed...  
+done.
+
+* Running CMD: /usr/local/src/STAR-Fusion/util/STAR-Fusion.predict  -J /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/star-fusion.preliminary/star-fusion.junction_breakpts_to_genes.txt.pass  -O /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/star-fusion.preliminary/star-fusion 
+-parsing fusion evidence: /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/star-fusion.preliminary/star-fusion.junction_breakpts_to_genes.txt.pass
+-outputting fusion candidates to file: /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/star-fusion.preliminary/star-fusion.fusion_candidates.preliminary
+* Running CMD: /usr/local/src/STAR-Fusion/util/STAR-Fusion.filter  --fusion_preds /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/star-fusion.preliminary/star-fusion.fusion_candidates.preliminary  -J Chimeric.out.junction  --tmpdir /tmp  --min_junction_reads 1  --min_sum_frags 2  --require_LDAS 1  --max_promiscuity 10  --min_pct_dom_promiscuity 20  --min_novel_junction_support 3  --min_alt_pct_junction 10  --aggregate_novel_junction_dist 5  --min_spanning_frags_only 5  --genome_lib_dir /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir  --out_prefix /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/star-fusion.preliminary/star-fusion
+CMD: mkdir -p /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/star-fusion.preliminary/star-fusion.filter.intermediates_dir
+EM: Starting log likelihood: -5609.456803
+EM: Round [1] log likelihood: -5598.513075
+EM: Round [2] log likelihood: -5593.565602
+EM: Round [3] log likelihood: -5591.084628
+EM: Round [4] log likelihood: -5589.722481
+EM: Round [5] log likelihood: -5588.899146
+EM: Round [6] log likelihood: -5588.356386
+EM: Round [7] log likelihood: -5587.973642
+EM: Round [8] log likelihood: -5587.690325
+EM: Round [9] log likelihood: -5587.473166
+EM: Round [10] log likelihood: -5587.302313
+EM: Round [11] log likelihood: -5587.165096
+EM: Round [12] log likelihood: -5587.053017
+EM: Round [13] log likelihood: -5586.960153
+EM: Round [14] log likelihood: -5586.882258
+EM: Round [15] log likelihood: -5586.816208
+EM: Round [16] log likelihood: -5586.759661
+EM: Round [17] log likelihood: -5586.710826
+EM: Round [18] log likelihood: -5586.668317
+EM: Round [19] log likelihood: -5586.631042
+EM: Round [20] log likelihood: -5586.598130
+EM: Round [21] log likelihood: -5586.568884
+EM: Round [22] log likelihood: -5586.542736
+EM: Round [23] log likelihood: -5586.519222
+EM: Round [24] log likelihood: -5586.497959
+EM: Round [25] log likelihood: -5586.478631
+EM: Round [26] log likelihood: -5586.460973
+EM: Round [27] log likelihood: -5586.444763
+EM: Round [28] log likelihood: -5586.429815
+EM: Round [29] log likelihood: -5586.415971
+EM: Round [30] log likelihood: -5586.403097
+EM: Round [31] log likelihood: -5586.391079
+EM: Round [32] log likelihood: -5586.379819
+EM: Round [33] log likelihood: -5586.369234
+EM: Round [34] log likelihood: -5586.359252
+EM: Round [35] log likelihood: -5586.349809
+EM: Round [36] log likelihood: -5586.340853
+EM: Round [37] log likelihood: -5586.332337
+EM: Round [38] log likelihood: -5586.324218
+EM: Round [39] log likelihood: -5586.316462
+EM: Round [40] log likelihood: -5586.309038
+EM: Round [41] log likelihood: -5586.301917
+EM: Round [42] log likelihood: -5586.295074
+EM: Round [43] log likelihood: -5586.288490
+EM: Round [44] log likelihood: -5586.282144
+EM: Round [45] log likelihood: -5586.276019
+EM: Round [46] log likelihood: -5586.270099
+EM: Round [47] log likelihood: -5586.264373
+EM: Round [48] log likelihood: -5586.258826
+EM: Round [49] log likelihood: -5586.253448
+EM: Round [50] log likelihood: -5586.248229
+EM: Round [51] log likelihood: -5586.243160
+EM: Round [52] log likelihood: -5586.238233
+EM: Round [53] log likelihood: -5586.233440
+EM: Round [54] log likelihood: -5586.228774
+EM: Round [55] log likelihood: -5586.224229
+EM: Round [56] log likelihood: -5586.219800
+EM: Round [57] log likelihood: -5586.215481
+EM: Round [58] log likelihood: -5586.211267
+EM: Round [59] log likelihood: -5586.207154
+EM: Round [60] log likelihood: -5586.203137
+EM: Round [61] log likelihood: -5586.199213
+EM: Round [62] log likelihood: -5586.195378
+EM: Round [63] log likelihood: -5586.191630
+EM: Round [64] log likelihood: -5586.187963
+EM: Round [65] log likelihood: -5586.184377
+EM: Round [66] log likelihood: -5586.180867
+EM: Round [67] log likelihood: -5586.177432
+EM: Round [68] log likelihood: -5586.174069
+EM: Round [69] log likelihood: -5586.170775
+EM: Round [70] log likelihood: -5586.167549
+EM: Round [71] log likelihood: -5586.164389
+EM: Round [72] log likelihood: -5586.161292
+EM: Round [73] log likelihood: -5586.158256
+EM: Round [74] log likelihood: -5586.155281
+EM: Round [75] log likelihood: -5586.152364
+EM: Round [76] log likelihood: -5586.149504
+EM: Round [77] log likelihood: -5586.146699
+EM: Round [78] log likelihood: -5586.143947
+EM: Round [79] log likelihood: -5586.141248
+EM: Round [80] log likelihood: -5586.138600
+EM: Round [81] log likelihood: -5586.136002
+EM: Round [82] log likelihood: -5586.133452
+EM: Round [83] log likelihood: -5586.130950
+EM: Round [84] log likelihood: -5586.128494
+EM: Round [85] log likelihood: -5586.126083
+EM: Round [86] log likelihood: -5586.123717
+EM: Round [87] log likelihood: -5586.121393
+EM: Round [88] log likelihood: -5586.119112
+EM: Round [89] log likelihood: -5586.116872
+EM: Round [90] log likelihood: -5586.114672
+EM: Round [91] log likelihood: -5586.112511
+EM: Round [92] log likelihood: -5586.110390
+EM: Round [93] log likelihood: -5586.108305
+EM: Round [94] log likelihood: -5586.106258
+EM: Round [95] log likelihood: -5586.104247
+EM: Round [96] log likelihood: -5586.102272
+EM: Round [97] log likelihood: -5586.100331
+EM: Round [98] log likelihood: -5586.098424
+EM: Round [99] log likelihood: -5586.096550
+EM: Round [100] log likelihood: -5586.094710
+EM: Round [101] log likelihood: -5586.092901
+EM: Round [102] log likelihood: -5586.091123
+EM: Round [103] log likelihood: -5586.089376
+EM: Round [104] log likelihood: -5586.087659
+EM: Round [105] log likelihood: -5586.085972
+EM: Round [106] log likelihood: -5586.084314
+EM: Round [107] log likelihood: -5586.082684
+EM: Round [108] log likelihood: -5586.081081
+EM: Round [109] log likelihood: -5586.079507
+EM: Round [110] log likelihood: -5586.077959
+EM: Round [111] log likelihood: -5586.076437
+EM: Round [112] log likelihood: -5586.074941
+EM: Round [113] log likelihood: -5586.073470
+EM: Round [114] log likelihood: -5586.072025
+EM: Round [115] log likelihood: -5586.070603
+EM: Round [116] log likelihood: -5586.069206
+EM: Round [117] log likelihood: -5586.067832
+EM: Round [118] log likelihood: -5586.066481
+EM: Round [119] log likelihood: -5586.065152
+EM: Round [120] log likelihood: -5586.063846
+EM: Round [121] log likelihood: -5586.062562
+EM: Round [122] log likelihood: -5586.061299
+EM: Round [123] log likelihood: -5586.060057
+EM: Round [124] log likelihood: -5586.058836
+EM: Round [125] log likelihood: -5586.057635
+EM: Round [126] log likelihood: -5586.056454
+EM: Round [127] log likelihood: -5586.055293
+EM: Round [128] log likelihood: -5586.054151
+EM: Round [129] log likelihood: -5586.053027
+EM: Round [130] log likelihood: -5586.051922
+EM: Round [131] log likelihood: -5586.050836
+EM: Round [132] log likelihood: -5586.049767
+EM: Round [133] log likelihood: -5586.048716
+EM: Round [134] log likelihood: -5586.047682
+EM: Round [135] log likelihood: -5586.046665
+EM: Round [136] log likelihood: -5586.045665
+EM: Round [137] log likelihood: -5586.044681
+EM: Round [138] log likelihood: -5586.043713
+EM: Round [139] log likelihood: -5586.042761
+EM: Round [140] log likelihood: -5586.041825
+EM: Round [141] log likelihood: -5586.040904
+EM: Round [142] log likelihood: -5586.039997
+EM: Round [143] log likelihood: -5586.039106
+EM: Round [144] log likelihood: -5586.038229
+EM: Round [145] log likelihood: -5586.037366
+EM: Round [146] log likelihood: -5586.036518
+EM: Round [147] log likelihood: -5586.035683
+EM: Round [148] log likelihood: -5586.034862
+EM: Round [149] log likelihood: -5586.034053
+EM: Round [150] log likelihood: -5586.033258
+EM: Round [151] log likelihood: -5586.032476
+EM: Round [152] log likelihood: -5586.031707
+EM: Round [153] log likelihood: -5586.030950
+EM: Round [154] log likelihood: -5586.030205
+EM: Round [155] log likelihood: -5586.029472
+EM: Round [156] log likelihood: -5586.028751
+EM: Round [157] log likelihood: -5586.028041
+EM: Round [158] log likelihood: -5586.027343
+EM: Round [159] log likelihood: -5586.026656
+EM: Round [160] log likelihood: -5586.025981
+EM: Round [161] log likelihood: -5586.025316
+EM: Round [162] log likelihood: -5586.024661
+EM: Round [163] log likelihood: -5586.024018
+EM: Round [164] log likelihood: -5586.023384
+EM: Round [165] log likelihood: -5586.022761
+EM: Round [166] log likelihood: -5586.022147
+EM: Round [167] log likelihood: -5586.021544
+EM: Round [168] log likelihood: -5586.020950
+EM: Round [169] log likelihood: -5586.020365
+EM: Round [170] log likelihood: -5586.019790
+EM: Round [171] log likelihood: -5586.019224
+EM: Round [172] log likelihood: -5586.018667
+EM: Round [173] log likelihood: -5586.018119
+EM: Round [174] log likelihood: -5586.017580
+EM: Round [175] log likelihood: -5586.017049
+EM: Round [176] log likelihood: -5586.016526
+EM: Round [177] log likelihood: -5586.016012
+EM: Round [178] log likelihood: -5586.015507
+EM: Round [179] log likelihood: -5586.015009
+EM: Round [180] log likelihood: -5586.014519
+EM: Round [181] log likelihood: -5586.014037
+EM: Round [182] log likelihood: -5586.013562
+EM: Round [183] log likelihood: -5586.013095
+EM: Round [184] log likelihood: -5586.012635
+EM: Round [185] log likelihood: -5586.012183
+EM: Round [186] log likelihood: -5586.011738
+EM: Round [187] log likelihood: -5586.011300
+EM: Round [188] log likelihood: -5586.010869
+EM: Round [189] log likelihood: -5586.010444
+EM: Round [190] log likelihood: -5586.010027
+EM: Round [191] log likelihood: -5586.009615
+EM: Round [192] log likelihood: -5586.009211
+EM: Round [193] log likelihood: -5586.008813
+EM: Round [194] log likelihood: -5586.008421
+EM: Round [195] log likelihood: -5586.008035
+EM: Round [196] log likelihood: -5586.007655
+EM: Round [197] log likelihood: -5586.007282
+EM: Round [198] log likelihood: -5586.006914
+EM: Round [199] log likelihood: -5586.006552
+EM: Round [200] log likelihood: -5586.006196
+EM: Round [201] log likelihood: -5586.005845
+EM: Round [202] log likelihood: -5586.005500
+EM: Round [203] log likelihood: -5586.005160
+EM: Round [204] log likelihood: -5586.004825
+EM: Round [205] log likelihood: -5586.004496
+EM: Round [206] log likelihood: -5586.004172
+EM: Round [207] log likelihood: -5586.003853
+EM: Round [208] log likelihood: -5586.003539
+EM: Round [209] log likelihood: -5586.003230
+EM: Round [210] log likelihood: -5586.002926
+EM: Round [211] log likelihood: -5586.002627
+EM: Round [212] log likelihood: -5586.002332
+EM: Round [213] log likelihood: -5586.002042
+EM: Round [214] log likelihood: -5586.001757
+EM: Round [215] log likelihood: -5586.001476
+EM: Round [216] log likelihood: -5586.001199
+EM: Round [217] log likelihood: -5586.000927
+EM: Round [218] log likelihood: -5586.000659
+EM: Round [219] log likelihood: -5586.000395
+EM: Round [220] log likelihood: -5586.000135
+EM: Round [221] log likelihood: -5585.999879
+EM: Round [222] log likelihood: -5585.999628
+EM: Round [223] log likelihood: -5585.999380
+EM: Round [224] log likelihood: -5585.999136
+EM: Round [225] log likelihood: -5585.998896
+EM: Round [226] log likelihood: -5585.998660
+EM: Round [227] log likelihood: -5585.998427
+EM: Round [228] log likelihood: -5585.998198
+EM: Round [229] log likelihood: -5585.997973
+EM: Round [230] log likelihood: -5585.997751
+EM: Round [231] log likelihood: -5585.997532
+EM: Round [232] log likelihood: -5585.997317
+EM: Round [233] log likelihood: -5585.997106
+EM: Round [234] log likelihood: -5585.996897
+EM: Round [235] log likelihood: -5585.996692
+EM: Round [236] log likelihood: -5585.996490
+EM: Round [237] log likelihood: -5585.996292
+EM: Round [238] log likelihood: -5585.996096
+EM: Round [239] log likelihood: -5585.995903
+EM: Round [240] log likelihood: -5585.995714
+EM: Round [241] log likelihood: -5585.995527
+EM: Round [242] log likelihood: -5585.995343
+EM: Round [243] log likelihood: -5585.995162
+EM: Round [244] log likelihood: -5585.994984
+EM: Round [245] log likelihood: -5585.994809
+EM: Round [246] log likelihood: -5585.994636
+EM: Round [247] log likelihood: -5585.994466
+EM: Round [248] log likelihood: -5585.994299
+EM: Round [249] log likelihood: -5585.994134
+EM: Round [250] log likelihood: -5585.993972
+EM: Round [251] log likelihood: -5585.993813
+EM: Round [252] log likelihood: -5585.993656
+EM: Round [253] log likelihood: -5585.993501
+EM: Round [254] log likelihood: -5585.993349
+EM: Round [255] log likelihood: -5585.993199
+EM: Round [256] log likelihood: -5585.993051
+EM: Round [257] log likelihood: -5585.992906
+EM: Round [258] log likelihood: -5585.992763
+EM: Round [259] log likelihood: -5585.992622
+EM: Round [260] log likelihood: -5585.992483
+EM: Round [261] log likelihood: -5585.992347
+EM: Round [262] log likelihood: -5585.992213
+EM: Round [263] log likelihood: -5585.992080
+EM: Round [264] log likelihood: -5585.991950
+EM: Round [265] log likelihood: -5585.991822
+EM: Round [266] log likelihood: -5585.991696
+EM: Round [267] log likelihood: -5585.991571
+EM: Round [268] log likelihood: -5585.991449
+EM: Round [269] log likelihood: -5585.991329
+EM: Round [270] log likelihood: -5585.991210
+EM: Round [271] log likelihood: -5585.991093
+EM: Round [272] log likelihood: -5585.990979
+EM: Round [273] log likelihood: -5585.990865
+EM: Round [274] log likelihood: -5585.990754
+EM: Round [275] log likelihood: -5585.990644
+EM: Round [276] log likelihood: -5585.990536
+EM: Round [277] log likelihood: -5585.990430
+EM: Round [278] log likelihood: -5585.990325
+EM: Round [279] log likelihood: -5585.990222
+EM: Round [280] log likelihood: -5585.990121
+EM: Round [281] log likelihood: -5585.990021
+EM: Stopping iterations at round 281 due to insufficient improvement in likelihood.
+EM: Starting log likelihood: -5586.966756
+EM: Round [1] log likelihood: -5579.706243
+EM: Round [2] log likelihood: -5576.419796
+EM: Round [3] log likelihood: -5574.727163
+EM: Round [4] log likelihood: -5573.782052
+EM: Round [5] log likelihood: -5573.213917
+EM: Round [6] log likelihood: -5572.849839
+EM: Round [7] log likelihood: -5572.603833
+EM: Round [8] log likelihood: -5572.430161
+EM: Round [9] log likelihood: -5572.302918
+EM: Round [10] log likelihood: -5572.206638
+EM: Round [11] log likelihood: -5572.131688
+EM: Round [12] log likelihood: -5572.071855
+EM: Round [13] log likelihood: -5572.023016
+EM: Round [14] log likelihood: -5571.982359
+EM: Round [15] log likelihood: -5571.947925
+EM: Round [16] log likelihood: -5571.918313
+EM: Round [17] log likelihood: -5571.892506
+EM: Round [18] log likelihood: -5571.869749
+EM: Round [19] log likelihood: -5571.849470
+EM: Round [20] log likelihood: -5571.831232
+EM: Round [21] log likelihood: -5571.814694
+EM: Round [22] log likelihood: -5571.799586
+EM: Round [23] log likelihood: -5571.785694
+EM: Round [24] log likelihood: -5571.772843
+EM: Round [25] log likelihood: -5571.760892
+EM: Round [26] log likelihood: -5571.749723
+EM: Round [27] log likelihood: -5571.739239
+EM: Round [28] log likelihood: -5571.729359
+EM: Round [29] log likelihood: -5571.720014
+EM: Round [30] log likelihood: -5571.711146
+EM: Round [31] log likelihood: -5571.702706
+EM: Round [32] log likelihood: -5571.694651
+EM: Round [33] log likelihood: -5571.686944
+EM: Round [34] log likelihood: -5571.679553
+EM: Round [35] log likelihood: -5571.672451
+EM: Round [36] log likelihood: -5571.665615
+EM: Round [37] log likelihood: -5571.659021
+EM: Round [38] log likelihood: -5571.652653
+EM: Round [39] log likelihood: -5571.646494
+EM: Round [40] log likelihood: -5571.640528
+EM: Round [41] log likelihood: -5571.634744
+EM: Round [42] log likelihood: -5571.629129
+EM: Round [43] log likelihood: -5571.623674
+EM: Round [44] log likelihood: -5571.618369
+EM: Round [45] log likelihood: -5571.613205
+EM: Round [46] log likelihood: -5571.608175
+EM: Round [47] log likelihood: -5571.603273
+EM: Round [48] log likelihood: -5571.598491
+EM: Round [49] log likelihood: -5571.593825
+EM: Round [50] log likelihood: -5571.589269
+EM: Round [51] log likelihood: -5571.584819
+EM: Round [52] log likelihood: -5571.580469
+EM: Round [53] log likelihood: -5571.576216
+EM: Round [54] log likelihood: -5571.572057
+EM: Round [55] log likelihood: -5571.567988
+EM: Round [56] log likelihood: -5571.564005
+EM: Round [57] log likelihood: -5571.560106
+EM: Round [58] log likelihood: -5571.556287
+EM: Round [59] log likelihood: -5571.552547
+EM: Round [60] log likelihood: -5571.548882
+EM: Round [61] log likelihood: -5571.545291
+EM: Round [62] log likelihood: -5571.541771
+EM: Round [63] log likelihood: -5571.538321
+EM: Round [64] log likelihood: -5571.534937
+EM: Round [65] log likelihood: -5571.531619
+EM: Round [66] log likelihood: -5571.528365
+EM: Round [67] log likelihood: -5571.525172
+EM: Round [68] log likelihood: -5571.522040
+EM: Round [69] log likelihood: -5571.518966
+EM: Round [70] log likelihood: -5571.515950
+EM: Round [71] log likelihood: -5571.512990
+EM: Round [72] log likelihood: -5571.510085
+EM: Round [73] log likelihood: -5571.507232
+EM: Round [74] log likelihood: -5571.504432
+EM: Round [75] log likelihood: -5571.501683
+EM: Round [76] log likelihood: -5571.498984
+EM: Round [77] log likelihood: -5571.496333
+EM: Round [78] log likelihood: -5571.493729
+EM: Round [79] log likelihood: -5571.491173
+EM: Round [80] log likelihood: -5571.488661
+EM: Round [81] log likelihood: -5571.486195
+EM: Round [82] log likelihood: -5571.483772
+EM: Round [83] log likelihood: -5571.481391
+EM: Round [84] log likelihood: -5571.479053
+EM: Round [85] log likelihood: -5571.476755
+EM: Round [86] log likelihood: -5571.474498
+EM: Round [87] log likelihood: -5571.472280
+EM: Round [88] log likelihood: -5571.470100
+EM: Round [89] log likelihood: -5571.467958
+EM: Round [90] log likelihood: -5571.465853
+EM: Round [91] log likelihood: -5571.463785
+EM: Round [92] log likelihood: -5571.461752
+EM: Round [93] log likelihood: -5571.459754
+EM: Round [94] log likelihood: -5571.457790
+EM: Round [95] log likelihood: -5571.455859
+EM: Round [96] log likelihood: -5571.453962
+EM: Round [97] log likelihood: -5571.452097
+EM: Round [98] log likelihood: -5571.450264
+EM: Round [99] log likelihood: -5571.448461
+EM: Round [100] log likelihood: -5571.446689
+EM: Round [101] log likelihood: -5571.444947
+EM: Round [102] log likelihood: -5571.443235
+EM: Round [103] log likelihood: -5571.441551
+EM: Round [104] log likelihood: -5571.439896
+EM: Round [105] log likelihood: -5571.438268
+EM: Round [106] log likelihood: -5571.436668
+EM: Round [107] log likelihood: -5571.435094
+EM: Round [108] log likelihood: -5571.433547
+EM: Round [109] log likelihood: -5571.432026
+EM: Round [110] log likelihood: -5571.430530
+EM: Round [111] log likelihood: -5571.429058
+EM: Round [112] log likelihood: -5571.427612
+EM: Round [113] log likelihood: -5571.426189
+EM: Round [114] log likelihood: -5571.424790
+EM: Round [115] log likelihood: -5571.423413
+EM: Round [116] log likelihood: -5571.422060
+EM: Round [117] log likelihood: -5571.420729
+EM: Round [118] log likelihood: -5571.419420
+EM: Round [119] log likelihood: -5571.418133
+EM: Round [120] log likelihood: -5571.416867
+EM: Round [121] log likelihood: -5571.415621
+EM: Round [122] log likelihood: -5571.414396
+EM: Round [123] log likelihood: -5571.413191
+EM: Round [124] log likelihood: -5571.412006
+EM: Round [125] log likelihood: -5571.410840
+EM: Round [126] log likelihood: -5571.409693
+EM: Round [127] log likelihood: -5571.408565
+EM: Round [128] log likelihood: -5571.407456
+EM: Round [129] log likelihood: -5571.406364
+EM: Round [130] log likelihood: -5571.405291
+EM: Round [131] log likelihood: -5571.404234
+EM: Round [132] log likelihood: -5571.403195
+EM: Round [133] log likelihood: -5571.402173
+EM: Round [134] log likelihood: -5571.401168
+EM: Round [135] log likelihood: -5571.400178
+EM: Round [136] log likelihood: -5571.399205
+EM: Round [137] log likelihood: -5571.398247
+EM: Round [138] log likelihood: -5571.397305
+EM: Round [139] log likelihood: -5571.396379
+EM: Round [140] log likelihood: -5571.395467
+EM: Round [141] log likelihood: -5571.394570
+EM: Round [142] log likelihood: -5571.393687
+EM: Round [143] log likelihood: -5571.392818
+EM: Round [144] log likelihood: -5571.391964
+EM: Round [145] log likelihood: -5571.391123
+EM: Round [146] log likelihood: -5571.390296
+EM: Round [147] log likelihood: -5571.389482
+EM: Round [148] log likelihood: -5571.388681
+EM: Round [149] log likelihood: -5571.387893
+EM: Round [150] log likelihood: -5571.387118
+EM: Round [151] log likelihood: -5571.386355
+EM: Round [152] log likelihood: -5571.385604
+EM: Round [153] log likelihood: -5571.384865
+EM: Round [154] log likelihood: -5571.384139
+EM: Round [155] log likelihood: -5571.383423
+EM: Round [156] log likelihood: -5571.382719
+EM: Round [157] log likelihood: -5571.382027
+EM: Round [158] log likelihood: -5571.381345
+EM: Round [159] log likelihood: -5571.380675
+EM: Round [160] log likelihood: -5571.380015
+EM: Round [161] log likelihood: -5571.379365
+EM: Round [162] log likelihood: -5571.378726
+EM: Round [163] log likelihood: -5571.378097
+EM: Round [164] log likelihood: -5571.377478
+EM: Round [165] log likelihood: -5571.376869
+EM: Round [166] log likelihood: -5571.376269
+EM: Round [167] log likelihood: -5571.375679
+EM: Round [168] log likelihood: -5571.375099
+EM: Round [169] log likelihood: -5571.374527
+EM: Round [170] log likelihood: -5571.373965
+EM: Round [171] log likelihood: -5571.373412
+EM: Round [172] log likelihood: -5571.372867
+EM: Round [173] log likelihood: -5571.372331
+EM: Round [174] log likelihood: -5571.371803
+EM: Round [175] log likelihood: -5571.371284
+EM: Round [176] log likelihood: -5571.370773
+EM: Round [177] log likelihood: -5571.370270
+EM: Round [178] log likelihood: -5571.369775
+EM: Round [179] log likelihood: -5571.369288
+EM: Round [180] log likelihood: -5571.368809
+EM: Round [181] log likelihood: -5571.368337
+EM: Round [182] log likelihood: -5571.367873
+EM: Round [183] log likelihood: -5571.367415
+EM: Round [184] log likelihood: -5571.366965
+EM: Round [185] log likelihood: -5571.366523
+EM: Round [186] log likelihood: -5571.366087
+EM: Round [187] log likelihood: -5571.365658
+EM: Round [188] log likelihood: -5571.365236
+EM: Round [189] log likelihood: -5571.364820
+EM: Round [190] log likelihood: -5571.364411
+EM: Round [191] log likelihood: -5571.364008
+EM: Round [192] log likelihood: -5571.363612
+EM: Round [193] log likelihood: -5571.363222
+EM: Round [194] log likelihood: -5571.362838
+EM: Round [195] log likelihood: -5571.362460
+EM: Round [196] log likelihood: -5571.362088
+EM: Round [197] log likelihood: -5571.361722
+EM: Round [198] log likelihood: -5571.361362
+EM: Round [199] log likelihood: -5571.361007
+EM: Round [200] log likelihood: -5571.360658
+EM: Round [201] log likelihood: -5571.360314
+EM: Round [202] log likelihood: -5571.359976
+EM: Round [203] log likelihood: -5571.359643
+EM: Round [204] log likelihood: -5571.359315
+EM: Round [205] log likelihood: -5571.358992
+EM: Round [206] log likelihood: -5571.358674
+EM: Round [207] log likelihood: -5571.358362
+EM: Round [208] log likelihood: -5571.358054
+EM: Round [209] log likelihood: -5571.357751
+EM: Round [210] log likelihood: -5571.357453
+EM: Round [211] log likelihood: -5571.357159
+EM: Round [212] log likelihood: -5571.356870
+EM: Round [213] log likelihood: -5571.356586
+EM: Round [214] log likelihood: -5571.356306
+EM: Round [215] log likelihood: -5571.356030
+EM: Round [216] log likelihood: -5571.355759
+EM: Round [217] log likelihood: -5571.355492
+EM: Round [218] log likelihood: -5571.355229
+EM: Round [219] log likelihood: -5571.354970
+EM: Round [220] log likelihood: -5571.354715
+EM: Round [221] log likelihood: -5571.354464
+EM: Round [222] log likelihood: -5571.354217
+EM: Round [223] log likelihood: -5571.353974
+EM: Round [224] log likelihood: -5571.353735
+EM: Round [225] log likelihood: -5571.353499
+EM: Round [226] log likelihood: -5571.353268
+EM: Round [227] log likelihood: -5571.353039
+EM: Round [228] log likelihood: -5571.352815
+EM: Round [229] log likelihood: -5571.352593
+EM: Round [230] log likelihood: -5571.352376
+EM: Round [231] log likelihood: -5571.352161
+EM: Round [232] log likelihood: -5571.351950
+EM: Round [233] log likelihood: -5571.351742
+EM: Round [234] log likelihood: -5571.351538
+EM: Round [235] log likelihood: -5571.351337
+EM: Round [236] log likelihood: -5571.351138
+EM: Round [237] log likelihood: -5571.350943
+EM: Round [238] log likelihood: -5571.350751
+EM: Round [239] log likelihood: -5571.350562
+EM: Round [240] log likelihood: -5571.350376
+EM: Round [241] log likelihood: -5571.350192
+EM: Round [242] log likelihood: -5571.350012
+EM: Round [243] log likelihood: -5571.349834
+EM: Round [244] log likelihood: -5571.349660
+EM: Round [245] log likelihood: -5571.349487
+EM: Round [246] log likelihood: -5571.349318
+EM: Round [247] log likelihood: -5571.349151
+EM: Round [248] log likelihood: -5571.348987
+EM: Round [249] log likelihood: -5571.348825
+EM: Round [250] log likelihood: -5571.348666
+EM: Round [251] log likelihood: -5571.348509
+EM: Round [252] log likelihood: -5571.348355
+EM: Round [253] log likelihood: -5571.348203
+EM: Round [254] log likelihood: -5571.348053
+EM: Round [255] log likelihood: -5571.347906
+EM: Round [256] log likelihood: -5571.347761
+EM: Round [257] log likelihood: -5571.347618
+EM: Round [258] log likelihood: -5571.347478
+EM: Round [259] log likelihood: -5571.347340
+EM: Round [260] log likelihood: -5571.347204
+EM: Round [261] log likelihood: -5571.347069
+EM: Round [262] log likelihood: -5571.346937
+EM: Round [263] log likelihood: -5571.346808
+EM: Round [264] log likelihood: -5571.346680
+EM: Round [265] log likelihood: -5571.346554
+EM: Round [266] log likelihood: -5571.346430
+EM: Round [267] log likelihood: -5571.346308
+EM: Round [268] log likelihood: -5571.346187
+EM: Round [269] log likelihood: -5571.346069
+EM: Round [270] log likelihood: -5571.345953
+EM: Round [271] log likelihood: -5571.345838
+EM: Round [272] log likelihood: -5571.345725
+EM: Round [273] log likelihood: -5571.345614
+EM: Round [274] log likelihood: -5571.345504
+EM: Round [275] log likelihood: -5571.345397
+EM: Round [276] log likelihood: -5571.345291
+EM: Round [277] log likelihood: -5571.345186
+EM: Round [278] log likelihood: -5571.345083
+EM: Round [279] log likelihood: -5571.344982
+EM: Round [280] log likelihood: -5571.344882
+EM: Stopping iterations at round 280 due to insufficient improvement in likelihood.
+CMD: /usr/local/src/STAR-Fusion/util/../FusionFilter/blast_and_promiscuity_filter.pl --out_prefix /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/star-fusion.preliminary/star-fusion.filter.intermediates_dir/star-fusion --max_promiscuity 10 --min_pct_dom_promiscuity 20  --fusion_preds /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/star-fusion.preliminary/star-fusion.filter.intermediates_dir/star-fusion.pre_blast_filter --genome_lib_dir /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir 
+CMD: /usr/local/src/STAR-Fusion/FusionFilter/util/blast_filter.pl --fusion_preds /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/star-fusion.preliminary/star-fusion.filter.intermediates_dir/star-fusion.pre_blast_filter --genome_lib_dir /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir
+CMD: /usr/local/src/STAR-Fusion/FusionFilter/util/promiscuity_filter.pl --fusion_preds /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/star-fusion.preliminary/star-fusion.filter.intermediates_dir/star-fusion.pre_blast_filter.post_blast_filter  --genome_lib_dir /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir  --max_promiscuity 10  --min_pct_dom_promiscuity 20 
+CMD: cp /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/star-fusion.preliminary/star-fusion.filter.intermediates_dir/star-fusion.pre_blast_filter.post_blast_filter.post_promisc_filter /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/star-fusion.preliminary/star-fusion.filter.intermediates_dir/star-fusion.post_blast_and_promiscuity_filter
+CMD: /usr/local/src/STAR-Fusion/util/column_exclusions.pl /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/star-fusion.preliminary/star-fusion.filter.intermediates_dir/star-fusion.post_blast_and_promiscuity_filter JunctionReads,SpanningFrags > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/star-fusion.preliminary/star-fusion.filter.intermediates_dir/star-fusion.post_blast_and_promiscuity_filter.abridged
+CMD: ln -sf /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/star-fusion.preliminary/star-fusion.filter.intermediates_dir/star-fusion.post_blast_and_promiscuity_filter /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/star-fusion.preliminary/star-fusion.fusion_candidates.preliminary.filtered
+* Running CMD: /usr/local/src/STAR-Fusion/util/incorporate_FFPM_into_final_report.pl /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/star-fusion.preliminary/star-fusion.fusion_candidates.preliminary.filtered 76668309 > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/star-fusion.preliminary/star-fusion.fusion_candidates.preliminary.filtered.FFPM
+* Running CMD: /usr/local/src/STAR-Fusion/util/append_breakpoint_junction_info.pl /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/star-fusion.preliminary/star-fusion.fusion_candidates.preliminary.filtered.FFPM /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/star-fusion.preliminary/star-fusion.fusion_candidates.preliminary.wSpliceInfo
+* Running CMD: /usr/local/src/STAR-Fusion/FusionAnnotator/FusionAnnotator --genome_lib_dir /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir --annotate /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/star-fusion.preliminary/star-fusion.fusion_candidates.preliminary.wSpliceInfo > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/star-fusion.preliminary/star-fusion.fusion_candidates.preliminary.wSpliceInfo.wAnnot
+* Running CMD: /usr/local/src/STAR-Fusion/FusionFilter/util/filter_by_annotation_rules.pl --fusions /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/star-fusion.preliminary/star-fusion.fusion_candidates.preliminary.wSpliceInfo.wAnnot --genome_lib_dir /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir
+-done, see /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/star-fusion.preliminary/star-fusion.fusion_candidates.preliminary.wSpliceInfo.wAnnot.annot_filter.pass
+* Running CMD: /usr/local/src/STAR-Fusion/util/filter_likely_RT_artifacts.pl --fusions /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/star-fusion.preliminary/star-fusion.fusion_candidates.preliminary.wSpliceInfo.wAnnot.annot_filter.pass --genome_lib_dir /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir
+-filter_likely_RT_artifacts: (pass: 275, filtered: 7)
+* Running CMD: /usr/local/src/STAR-Fusion/util/filter_by_min_FFPM.pl /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/star-fusion.preliminary/star-fusion.fusion_candidates.preliminary.wSpliceInfo.wAnnot.annot_filter.pass.RTartifact.pass 0.1
+* Running CMD: cp /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/star-fusion.preliminary/star-fusion.fusion_candidates.preliminary.wSpliceInfo.wAnnot.annot_filter.pass.RTartifact.pass.minFFPM.0.1.pass star-fusion.fusion_predictions.tsv
+* Running CMD: /usr/local/src/STAR-Fusion/util/column_exclusions.pl star-fusion.fusion_predictions.tsv JunctionReads,SpanningFrags > star-fusion.fusion_predictions.abridged.tsv
+* Running CMD: /usr/local/src/STAR-Fusion/FusionAnnotator/util/fusion_to_coding_region_effect.pl  --fusions star-fusion.fusion_predictions.abridged.tsv --genome_lib_dir /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir > star-fusion.fusion_predictions.abridged.coding_effect.tsv
+WARNING, no entry stored in dbm for [ENSG05220038872]
+WARNING, no entry stored in dbm for [ENSG05220038938]
+WARNING, no entry stored in dbm for [ENSG05220018087]
+WARNING, no entry stored in dbm for [ENSG05220018064]
+WARNING, no entry stored in dbm for [ENSG05220062157]
+
+
+	* STAR-Fusion complete.  See output: /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/star-fusion.fusion_predictions.tsv (or .abridged.tsv version)
+
+
+* Running CMD: /usr/local/src/STAR-Fusion/FusionInspector/FusionInspector --fusions star-fusion.fusion_predictions.abridged.coding_effect.tsv  --out_prefix finspector  --min_junction_reads 1  --min_novel_junction_support 3  --min_spanning_frags_only 5  --max_mate_dist 100000  --vis  --max_promiscuity 10  --output_dir /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate  --genome_lib_dir /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir  --CPU 14  --left_fq /staging/leuven/stg_00096/home/rdewin/RNA/results/fastp/P028/P028_rna_R1.trimmed.fq --right_fq /staging/leuven/stg_00096/home/rdewin/RNA/results/fastp/P028/P028_rna_R2.trimmed.fq  --include_Trinity  --annotate  --examine_coding_effect 
+Running: /usr/local/src/STAR-Fusion/FusionInspector/util/fusion_pair_to_mini_genome_join.pl --fusions star-fusion.fusion_predictions.abridged.coding_effect.tsv --gtf /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir/ref_annot.gtf --genome_fa /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir/ref_genome.fa --out_prefix /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector --shrink_introns --max_intron_length 1000 
+Done.
+Execution Time = 0.23 minutes. CMD: /usr/local/src/STAR-Fusion/FusionInspector/util/fusion_pair_to_mini_genome_join.pl --fusions star-fusion.fusion_predictions.abridged.coding_effect.tsv --gtf /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir/ref_annot.gtf --genome_fa /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir/ref_genome.fa --out_prefix /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector --shrink_introns --max_intron_length 1000 
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/fusion_contigs.ok
+Running: cp /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.fa /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fa
+Execution Time = 0.00 minutes. CMD: cp /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.fa /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fa
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/cp_contigs_file_workdir
+Running: cp /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.gtf /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.gtf
+Execution Time = 0.00 minutes. CMD: cp /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.gtf /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.gtf
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/cp_gtf_file_workdir.ok
+Running: /usr/local/src/STAR-Fusion/FusionInspector/util/fasta_and_gtf_to_cytoband.pl /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.fa /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.gtf > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/cytoBand.txt
+Execution Time = 0.00 minutes. CMD: /usr/local/src/STAR-Fusion/FusionInspector/util/fasta_and_gtf_to_cytoband.pl /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.fa /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.gtf > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/cytoBand.txt
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/cytoband.ok
+Running: /usr/local/src/STAR-Fusion/FusionInspector/util/gtf_gene_to_bed.pl /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.gtf > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.bed
+-parsing GTF file: /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.gtf
+Execution Time = 0.00 minutes. CMD: /usr/local/src/STAR-Fusion/FusionInspector/util/gtf_gene_to_bed.pl /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.gtf > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.bed
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/merged_contig_gtf_to_bed.ok
+Running: sort -k1,1 -k2,2n /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.bed > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.bed.sorted.bed
+Execution Time = 0.00 minutes. CMD: sort -k1,1 -k2,2n /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.bed > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.bed.sorted.bed
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/finspector.bed.bedsort.ok
+Running: bgzip -f /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.bed.sorted.bed
+Execution Time = 0.00 minutes. CMD: bgzip -f /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.bed.sorted.bed
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/finspector.bed.bgzip.ok
+Running: tabix -p bed /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.bed.sorted.bed.gz
+Execution Time = 0.00 minutes. CMD: tabix -p bed /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.bed.sorted.bed.gz
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/finspector.bed.tabix.ok
+Running: samtools faidx /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.fa
+Execution Time = 0.01 minutes. CMD: samtools faidx /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.fa
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/merged_contig_fai.ok
+Running: /usr/local/src/STAR-Fusion/FusionInspector/util/run_FI_STAR.pl --genome /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir/ref_genome.fa --patch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fa --max_mate_dist 100000 -G /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.gtf --CPU 14 --out_prefix finspector.star --out_dir /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir --reads "/staging/leuven/stg_00096/home/rdewin/RNA/results/fastp/P028/P028_rna_R1.trimmed.fq /staging/leuven/stg_00096/home/rdewin/RNA/results/fastp/P028/P028_rna_R2.trimmed.fq"
+* Running CMD: /usr/local/bin/STAR  --runThreadN 14  --genomeDir /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir/ref_genome.fa.star.idx  --outSAMtype BAM SortedByCoordinate  --twopassMode None  --alignSJDBoverhangMin 10  --genomeSuffixLengthMax 10000 --limitBAMsortRAM 47538731595  --alignInsertionFlush Right   --alignMatesGapMax 100000  --alignIntronMax 100000  --outSAMattributes All  --readFilesIn /staging/leuven/stg_00096/home/rdewin/RNA/results/fastp/P028/P028_rna_R1.trimmed.fq /staging/leuven/stg_00096/home/rdewin/RNA/results/fastp/P028/P028_rna_R2.trimmed.fq  --genomeFastaFiles /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fa  --outSAMfilter KeepAllAddedReferences  --sjdbGTFfile /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.gtf  --alignSJstitchMismatchNmax 5 -1 5 5  --scoreGapNoncan -6 
+Apr 09 13:47:13 ..... started STAR run
+Apr 09 13:47:13 ..... loading genome
+Apr 09 13:49:50 ... generating Suffix Array index
+Apr 09 13:52:46 ... completed Suffix Array index
+Apr 09 13:52:46 ..... processing annotations GTF
+Apr 09 13:52:46 ..... inserting junctions into the genome indices
+Apr 09 13:54:38 ..... started mapping
+Apr 09 14:08:05 ..... finished mapping
+Apr 09 14:08:06 ..... started sorting BAM
+Apr 09 14:08:08 ..... finished successfully
+* Running CMD: mv Aligned.sortedByCoord.out.bam finspector.star.sortedByCoord.out.bam
+* Running CMD: samtools index finspector.star.sortedByCoord.out.bam
+Execution Time = 20.92 minutes. CMD: /usr/local/src/STAR-Fusion/FusionInspector/util/run_FI_STAR.pl --genome /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir/ref_genome.fa --patch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fa --max_mate_dist 100000 -G /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.gtf --CPU 14 --out_prefix finspector.star --out_dir /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir --reads "/staging/leuven/stg_00096/home/rdewin/RNA/results/fastp/P028/P028_rna_R1.trimmed.fq /staging/leuven/stg_00096/home/rdewin/RNA/results/fastp/P028/P028_rna_R2.trimmed.fq"
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/run_STAR.ok
+Running: /usr/local/src/STAR-Fusion/FusionInspector/util/bam_mark_duplicates.py  -i /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.star.sortedByCoord.out.bam   -o /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.star.cSorted.dupsMarked.bam   --remove_dups 
+14:08:09 : INFO : Done.
+Execution Time = 0.01 minutes. CMD: /usr/local/src/STAR-Fusion/FusionInspector/util/bam_mark_duplicates.py  -i /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.star.sortedByCoord.out.bam   -o /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.star.cSorted.dupsMarked.bam   --remove_dups 
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/mark_dup_reads.ok
+Running: samtools index /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.star.cSorted.dupsMarked.bam
+Execution Time = 0.00 minutes. CMD: samtools index /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.star.cSorted.dupsMarked.bam
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/mark_dups_reads.index.ok
+Running: /usr/local/src/STAR-Fusion/FusionInspector/util/get_fusion_JUNCTION_reads_from_fusion_contig_bam.pl --gtf_file /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.gtf --MIN_ALIGN_PER_ID 96 --bam /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.star.cSorted.dupsMarked.bam  --genome_lib_dir /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir  > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.star.cSorted.dupsMarked.bam.fusion_junc_reads.sam
+-parsing GTF file: /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.gtf
+-parsing /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.star.cSorted.dupsMarked.bam
+[10000]   -done parsing /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.star.cSorted.dupsMarked.bam.  Extracting junction info.
+junction read elimination tally: $VAR1 = {
+          ' ** passed ** ' => 131,
+          'exons hit < 2' => 2,
+          'num genes matched < 2' => 2,
+          'per_id < 96' => 139,
+          'excessive soft clipping' => 414
+        };
+-writing fusion junction support info.
+Execution Time = 0.01 minutes. CMD: /usr/local/src/STAR-Fusion/FusionInspector/util/get_fusion_JUNCTION_reads_from_fusion_contig_bam.pl --gtf_file /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.gtf --MIN_ALIGN_PER_ID 96 --bam /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.star.cSorted.dupsMarked.bam  --genome_lib_dir /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir  > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.star.cSorted.dupsMarked.bam.fusion_junc_reads.sam
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/get_fusion_JUNCTION_reads_from_bam.ok
+Running: /usr/local/src/STAR-Fusion/FusionInspector/util/get_fusion_SPANNING_reads_from_bam.from_chim_summary.pl --gtf_file /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.gtf --MIN_ALIGN_PER_ID 96 --bam /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.star.cSorted.dupsMarked.bam --junction_info /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.star.cSorted.dupsMarked.bam.fusion_junction_info --genome_lib_dir /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir   > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.star.cSorted.dupsMarked.bam.fusion_span_reads.sam
+-outputting the spanning read info: /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.star.cSorted.dupsMarked.bam.fusion_spanning_info.
+ - counting read alignments among fusion contigs.
+[1000]   [2000]   [3000]   [4000]   [5000]   [6000]   -fusion SPANNING read extraction for scaff: ENSG05220038872--ENSG05220038938
+[1000]   [2000]   [3000]   [4000]   [5000]   [6000]   -fusion SPANNING read extraction for scaff: PDCD6IPP1--ENSG05220018064
+-fusion SPANNING read extraction for scaff: UPK3B--ENSG05220062157
+-filtered reads reasons: $VAR1 = {
+          'lacks exon overlap' => 3874
+        };
+Execution Time = 0.04 minutes. CMD: /usr/local/src/STAR-Fusion/FusionInspector/util/get_fusion_SPANNING_reads_from_bam.from_chim_summary.pl --gtf_file /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.gtf --MIN_ALIGN_PER_ID 96 --bam /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.star.cSorted.dupsMarked.bam --junction_info /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.star.cSorted.dupsMarked.bam.fusion_junction_info --genome_lib_dir /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir   > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.star.cSorted.dupsMarked.bam.fusion_span_reads.sam
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/get_fusion_SPANNING_reads_from_bam.ok
+Running: /usr/local/src/STAR-Fusion/FusionInspector/util/coalesce_junction_and_spanning_info.pl /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.star.cSorted.dupsMarked.bam.fusion_junction_info /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.star.cSorted.dupsMarked.bam.fusion_spanning_info 1  > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fusion_preds.coalesced.summary
+Execution Time = 0.00 minutes. CMD: /usr/local/src/STAR-Fusion/FusionInspector/util/coalesce_junction_and_spanning_info.pl /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.star.cSorted.dupsMarked.bam.fusion_junction_info /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.star.cSorted.dupsMarked.bam.fusion_spanning_info 1  > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fusion_preds.coalesced.summary
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/coalesce_junc_n_span.ok
+Running: /usr/local/src/STAR-Fusion/FusionInspector/util/fusion_EM_runner.pl /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fusion_preds.coalesced.summary > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fusion_preds.coalesced.summary.EMadj
+EM: Starting log likelihood: -161.598743
+EM: Round [1] log likelihood: -161.598743
+EM: Stopping iterations at round 1 due to insufficient improvement in likelihood.
+Execution Time = 0.00 minutes. CMD: /usr/local/src/STAR-Fusion/FusionInspector/util/fusion_EM_runner.pl /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fusion_preds.coalesced.summary > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fusion_preds.coalesced.summary.EMadj
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/init_EM_adj_counts.ok
+Running: /usr/local/src/STAR-Fusion/FusionInspector/util/filter_fusions_by_frag_thresholds.pl --min_junction_reads 1 --min_sum_frags 1 --min_novel_junction_support 3 --min_spanning_frags_only 5 --fusion_preds /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fusion_preds.coalesced.summary.EMadj --require_LDAS 1 > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fusion_preds.coalesced.summary.EMadj.min_frag_thresh
+Execution Time = 0.00 minutes. CMD: /usr/local/src/STAR-Fusion/FusionInspector/util/filter_fusions_by_frag_thresholds.pl --min_junction_reads 1 --min_sum_frags 1 --min_novel_junction_support 3 --min_spanning_frags_only 5 --fusion_preds /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fusion_preds.coalesced.summary.EMadj --require_LDAS 1 > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fusion_preds.coalesced.summary.EMadj.min_frag_thresh
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/filter_by_frag_threshs.ok
+Running: /usr/local/src/STAR-Fusion/FusionInspector/util/column_extractions.pl /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fusion_preds.coalesced.summary LeftGene,RightGene,JunctionReads  > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fusion_preds.coalesced.summary.fusion_junction_read_accs
+Execution Time = 0.00 minutes. CMD: /usr/local/src/STAR-Fusion/FusionInspector/util/column_extractions.pl /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fusion_preds.coalesced.summary LeftGene,RightGene,JunctionReads  > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fusion_preds.coalesced.summary.fusion_junction_read_accs
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/prep_igv_extract_junc_reads.ok
+Running: bash -c "set -eof pipefail; /usr/local/src/STAR-Fusion/FusionInspector/util/retrieve_fusion_junction_reads_by_accession.pl /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fusion_preds.coalesced.summary.fusion_junction_read_accs /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.star.cSorted.dupsMarked.bam.fusion_junc_reads.sam | samtools view -@ 14 -bT /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.fa -  | samtools sort -@ 14 - -o /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.junction_reads.bam"
+Execution Time = 0.00 minutes. CMD: bash -c "set -eof pipefail; /usr/local/src/STAR-Fusion/FusionInspector/util/retrieve_fusion_junction_reads_by_accession.pl /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fusion_preds.coalesced.summary.fusion_junction_read_accs /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.star.cSorted.dupsMarked.bam.fusion_junc_reads.sam | samtools view -@ 14 -bT /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.fa -  | samtools sort -@ 14 - -o /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.junction_reads.bam"
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/prep_igv_junc_reads_bam.ok
+Running: samtools index /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.junction_reads.bam
+Execution Time = 0.00 minutes. CMD: samtools index /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.junction_reads.bam
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/samtools_idx_junc_reads_bam.ok
+Running: /usr/local/src/STAR-Fusion/FusionInspector/util/SAM_pair_to_bed.pl /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.junction_reads.bam > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.junction_reads.bam.bed
+Execution Time = 0.00 minutes. CMD: /usr/local/src/STAR-Fusion/FusionInspector/util/SAM_pair_to_bed.pl /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.junction_reads.bam > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.junction_reads.bam.bed
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/finspector.junction_reads.bam.bam_to_bed.ok
+Running: sort -k1,1 -k2,2n /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.junction_reads.bam.bed > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.junction_reads.bam.bed.sorted.bed
+Execution Time = 0.00 minutes. CMD: sort -k1,1 -k2,2n /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.junction_reads.bam.bed > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.junction_reads.bam.bed.sorted.bed
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/finspector.junction_reads.bam.bedsort.ok
+Running: bgzip -f /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.junction_reads.bam.bed.sorted.bed
+Execution Time = 0.00 minutes. CMD: bgzip -f /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.junction_reads.bam.bed.sorted.bed
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/finspector.junction_reads.bam.bgzip.ok
+Running: tabix -p bed /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.junction_reads.bam.bed.sorted.bed.gz
+Execution Time = 0.00 minutes. CMD: tabix -p bed /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.junction_reads.bam.bed.sorted.bed.gz
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/finspector.junction_reads.bam.tabix.ok
+Running: /usr/local/src/STAR-Fusion/FusionInspector/util/column_extractions.pl /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fusion_preds.coalesced.summary LeftGene,RightGene,SpanningFrags  > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fusion_preds.coalesced.summary.fusion_spanning_read_accs
+Execution Time = 0.00 minutes. CMD: /usr/local/src/STAR-Fusion/FusionInspector/util/column_extractions.pl /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fusion_preds.coalesced.summary LeftGene,RightGene,SpanningFrags  > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fusion_preds.coalesced.summary.fusion_spanning_read_accs
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/span_reads_acc.ok
+Running: samtools view -H /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.star.cSorted.dupsMarked.bam -b -o /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.spanning_reads.bam
+Execution Time = 0.00 minutes. CMD: samtools view -H /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.star.cSorted.dupsMarked.bam -b -o /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.spanning_reads.bam
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/init_spanning_reads_bam.ok
+Running: /usr/local/src/STAR-Fusion/FusionInspector/util/retrieve_fusion_spanning_reads_by_accession.pl /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fusion_preds.coalesced.summary.fusion_spanning_read_accs /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.star.cSorted.dupsMarked.bam.fusion_span_reads.sam | samtools view -@ 14 -bT /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.fa -  | samtools sort -@ 14 - -o /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.spanning_reads.bam || : 
+Execution Time = 0.00 minutes. CMD: /usr/local/src/STAR-Fusion/FusionInspector/util/retrieve_fusion_spanning_reads_by_accession.pl /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fusion_preds.coalesced.summary.fusion_spanning_read_accs /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.star.cSorted.dupsMarked.bam.fusion_span_reads.sam | samtools view -@ 14 -bT /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.fa -  | samtools sort -@ 14 - -o /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.spanning_reads.bam || : 
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/prep_spanning_reads.ok
+Running: samtools index /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.spanning_reads.bam
+Execution Time = 0.01 minutes. CMD: samtools index /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.spanning_reads.bam
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/samtools_index_span_reads_bam.ok
+Running: /usr/local/src/STAR-Fusion/FusionInspector/util/SAM_pair_to_bed.pl /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.spanning_reads.bam > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.spanning_reads.bam.bed
+Execution Time = 0.00 minutes. CMD: /usr/local/src/STAR-Fusion/FusionInspector/util/SAM_pair_to_bed.pl /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.spanning_reads.bam > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.spanning_reads.bam.bed
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/finspector.spanning_reads.bam.bam_to_bed.ok
+Running: sort -k1,1 -k2,2n /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.spanning_reads.bam.bed > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.spanning_reads.bam.bed.sorted.bed
+Execution Time = 0.00 minutes. CMD: sort -k1,1 -k2,2n /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.spanning_reads.bam.bed > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.spanning_reads.bam.bed.sorted.bed
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/finspector.spanning_reads.bam.bedsort.ok
+Running: bgzip -f /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.spanning_reads.bam.bed.sorted.bed
+Execution Time = 0.00 minutes. CMD: bgzip -f /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.spanning_reads.bam.bed.sorted.bed
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/finspector.spanning_reads.bam.bgzip.ok
+Running: tabix -p bed /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.spanning_reads.bam.bed.sorted.bed.gz
+Execution Time = 0.00 minutes. CMD: tabix -p bed /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.spanning_reads.bam.bed.sorted.bed.gz
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/finspector.spanning_reads.bam.tabix.ok
+Running: cp /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.star.cSorted.dupsMarked.bam /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.consolidated.bam
+Execution Time = 0.00 minutes. CMD: cp /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.star.cSorted.dupsMarked.bam /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.consolidated.bam
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/cp_consol_bam.ok
+Running: samtools index /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.consolidated.bam
+Execution Time = 0.00 minutes. CMD: samtools index /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.consolidated.bam
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/index_consol_bam.ok
+Running: /usr/local/src/trinityrnaseq-Trinity-v2.8.5/Trinity --genome_guided_bam /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.consolidated.bam --max_memory 20G --genome_guided_max_intron 1000000 --CPU 14 --min_contig_length 100  --output /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/trinity_GG
+
+
+     ______  ____   ____  ____   ____  ______  __ __
+    |      ||    \ |    ||    \ |    ||      ||  |  |
+    |      ||  D  ) |  | |  _  | |  | |      ||  |  |
+    |_|  |_||    /  |  | |  |  | |  | |_|  |_||  ~  |
+      |  |  |    \  |  | |  |  | |  |   |  |  |___, |
+      |  |  |  .  \ |  | |  |  | |  |   |  |  |     |
+      |__|  |__|\_||____||__|__||____|  |__|  |____/
+
+    Trinity-v2.8.5
+
+
+
+Trinity version: Trinity-v2.8.5
+Tuesday, April 9, 2024: 14:08:15	CMD: /usr/local/src/trinityrnaseq-Trinity-v2.8.5/util/support_scripts/ensure_coord_sorted_sam.pl /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.consolidated.bam
+** NOTE: Latest version of Trinity is Trinity-v2.15.1, and can be obtained at:
+	https://github.com/trinityrnaseq/trinityrnaseq/releases
+
+-appears to be a coordinate sorted bam file. ok.
+Tuesday, April 9, 2024: 14:08:15	CMD: java -Xmx64m -XX:ParallelGCThreads=2  -jar /usr/local/src/trinityrnaseq-Trinity-v2.8.5/util/support_scripts/ExitTester.jar 0
+Tuesday, April 9, 2024: 14:08:15	CMD: java -Xmx4g -XX:ParallelGCThreads=2  -jar /usr/local/src/trinityrnaseq-Trinity-v2.8.5/util/support_scripts/ExitTester.jar 1
+Tuesday, April 9, 2024: 14:08:15	CMD: mkdir -p /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/trinity_GG
+
+
+----------------------------------------------------------------------------------
+-------------- Trinity Phase 1: Clustering of RNA-Seq Reads  ---------------------
+----------------------------------------------------------------------------------
+
+Tuesday, April 9, 2024: 14:08:15	CMD: /usr/local/src/trinityrnaseq-Trinity-v2.8.5/util/support_scripts/prep_rnaseq_alignments_for_genome_assisted_assembly.pl --coord_sorted_SAM /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.consolidated.bam -I 1000000 --sort_buffer 20G --CPU 14 
+CMD: ln -sf /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.consolidated.bam
+CMD: /usr/local/src/trinityrnaseq-Trinity-v2.8.5/util/support_scripts//SAM_to_frag_coords.pl --CPU 14 --sort_buffer 20G --sam finspector.consolidated.bam --min_insert_size 1 --max_insert_size 1000000 
+-extracting read coordinates from finspector.consolidated.bam into finspector.consolidated.bam.read_coords
+
+CMD: touch finspector.consolidated.bam.read_coords.ok
+CMD: /usr/bin/sort --parallel=14 -S20G -T . -k1,1 -k2,2 -k4,4n finspector.consolidated.bam.read_coords > finspector.consolidated.bam.read_coords.sort_by_readname
+CMD: cp /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/trinity_GG/finspector.consolidated.bam.read_coords /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/trinity_GG/finspector.consolidated.bam.read_coords.sort_by_readname
+CMD: /usr/bin/sort --parallel=14 -S20G -T . -k1,1 -k3,3n finspector.consolidated.bam.frag_coords > finspector.consolidated.bam.frag_coords.coord_sorted
+CMD: /usr/local/src/trinityrnaseq-Trinity-v2.8.5/util/support_scripts//fragment_coverage_writer.pl finspector.consolidated.bam.frag_coords > finspector.consolidated.bam.frag_coverage.wig
+[1000 lines read]  scaff:ENSG05220038872--ENSG05220038938 lend:8554  rend:8854     [2000 lines read]  scaff:ENSG05220038872--ENSG05220038938 lend:12155  rend:12416     [3000 lines read]  scaff:ENSG05220038872--ENSG05220038938 lend:17280  rend:17504     [4000 lines read]  scaff:PDCD6IPP1--ENSG05220018064 lend:2257  rend:4525     [5000 lines read]  scaff:PDCD6IPP1--ENSG05220018064 lend:5752  rend:8017     [6000 lines read]  scaff:PDCD6IPP1--ENSG05220018064 lend:11488  rend:11696     CMD: touch finspector.consolidated.bam.frag_coverage.wig.ok
+CMD: /usr/local/src/trinityrnaseq-Trinity-v2.8.5/util/support_scripts//define_coverage_partitions.pl finspector.consolidated.bam.frag_coverage.wig 1 + > finspector.consolidated.bam.minC1.gff
+CMD: touch finspector.consolidated.bam.minC1.gff.ok
+CMD: /usr/local/src/trinityrnaseq-Trinity-v2.8.5/util/support_scripts//extract_reads_per_partition.pl --partitions_gff finspector.consolidated.bam.minC1.gff  --coord_sorted_SAM finspector.consolidated.bam --parts_per_directory 100 --min_reads_per_partition 10 
+// parsing paritions.
+[5]  -writing to Dir_finspector.consolidated.bam.minC1.gff/ENSG05220038872--ENSG05220038938/0/259_16838.trinity.reads
+-writing to Dir_finspector.consolidated.bam.minC1.gff/ENSG05220038872--ENSG05220038938/0/16911_18756.trinity.reads
+-writing to Dir_finspector.consolidated.bam.minC1.gff/PDCD6IPP1--ENSG05220018064/0/1_13420.trinity.reads
+-writing to Dir_finspector.consolidated.bam.minC1.gff/UPK3B--ENSG05220062157/0/5_816.trinity.reads
+-writing to Dir_finspector.consolidated.bam.minC1.gff/UPK3B--ENSG05220062157/0/1054_12419.trinity.reads
+CMD: touch Dir_finspector.consolidated.bam.minC1.gff.ok
+Thread(1)	SUCCESS	CMD: unknown	Time to complete: 3 seconds
+##
+Done
+##
+
+Tuesday, April 9, 2024: 14:08:18	CMD: touch partitions.ok
+Tuesday, April 9, 2024: 14:08:18	CMD: find Dir_* -name '*reads' > read_files.list
+Tuesday, April 9, 2024: 14:08:18	CMD: touch read_files.list.ok
+Tuesday, April 9, 2024: 14:08:18	CMD: /usr/local/src/trinityrnaseq-Trinity-v2.8.5/util/support_scripts/write_partitioned_trinity_cmds.pl --reads_list_file read_files.list --CPU 1 --max_memory 1G  --seqType fa --trinity_complete --full_cleanup  --min_contig_length  100  > trinity_GG.cmds
+Tuesday, April 9, 2024: 14:08:18	CMD: touch trinity_GG.cmds.ok
+Tuesday, April 9, 2024: 14:08:18	CMD: touch trinity_GG.cmds.ok
+
+
+--------------------------------------------------------------------------------
+------------ Trinity Phase 2: Assembling Clusters of Reads ---------------------
+------- (involving the Inchworm, Chrysalis, Butterfly trifecta ) ---------------
+--------------------------------------------------------------------------------
+
+Tuesday, April 9, 2024: 14:08:18	CMD: /usr/local/src/trinityrnaseq-Trinity-v2.8.5/trinity-plugins/BIN/ParaFly -c trinity_GG.cmds -CPU 14 -v -shuffle 
+Number of Commands: 4
+succeeded(1)   25% completed.    succeeded(2)   50% completed.    succeeded(3)   75% completed.    succeeded(4)   100% completed.    
+
+All commands completed successfully. :-)
+
+Tuesday, April 9, 2024: 14:08:36	CMD: find Dir_*  -name '*inity.fasta'  | /usr/local/src/trinityrnaseq-Trinity-v2.8.5/util/support_scripts/GG_partitioned_trinity_aggregator.pl TRINITY_GG > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/trinity_GG/Trinity-GG.fasta.tmp
+Tuesday, April 9, 2024: 14:08:36	CMD: /usr/local/src/trinityrnaseq-Trinity-v2.8.5/util/support_scripts/get_Trinity_gene_to_trans_map.pl /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/trinity_GG/Trinity-GG.fasta > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/trinity_GG/Trinity-GG.fasta.gene_trans_map
+
+
+Finished. See /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/trinity_GG/Trinity-GG.fasta for reconstructed transcripts
+
+Execution Time = 0.36 minutes. CMD: /usr/local/src/trinityrnaseq-Trinity-v2.8.5/Trinity --genome_guided_bam /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.consolidated.bam --max_memory 20G --genome_guided_max_intron 1000000 --CPU 14 --min_contig_length 100  --output /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/trinity_GG
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/run_trinity.ok
+Running: /usr/local/src/trinityrnaseq-Trinity-v2.8.5/util/misc/process_GMAP_alignments_gff3_chimeras_ok.pl --genome /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fa --transcripts /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/trinity_GG/Trinity-GG.fasta --no_chimera > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.gmap_trinity_GG.gff3
+CMD: gmap_build -D /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir -T /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir -d finspector.fa.gmap -k 13 /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fa >&2
+Note: the -T flag is no longer necessary, since gmap_build now builds directly in the destination directory
+Sorting chromosomes in chrom order.  To turn off or sort other ways, use the -s flag.
+Creating files in directory /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fa.gmap
+Running "/usr/local/src/gmap-2017-11-15/bin/fa_coords"     -o "/staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fa.gmap.coords" -f "/staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fa.gmap.sources"
+Opening file /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fa
+  Processed short contigs (<1000000 nt): ...
+============================================================
+Contig mapping information has been written to file /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fa.gmap.coords.
+You should look at this file, and edit it if necessary
+If everything is okay, you should proceed by running
+    make gmapdb
+============================================================
+Running "/usr/local/src/gmap-2017-11-15/bin/gmap_process"  -c "/staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fa.gmap.coords" -f "/staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fa.gmap.sources" | "/usr/local/src/gmap-2017-11-15/bin/gmapindex"  -d finspector.fa.gmap -D "/staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fa.gmap" -A 
+Reading coordinates from file /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fa.gmap.coords
+Logging contig ENSG05220038872--ENSG05220038938 at ENSG05220038872--ENSG05220038938:1..18765 in genome finspector.fa.gmap
+ => primary (linear) chromosome
+Logging contig PDCD6IPP1--ENSG05220018064 at PDCD6IPP1--ENSG05220018064:1..13420 in genome finspector.fa.gmap
+ => primary (linear) chromosome
+Logging contig UPK3B--ENSG05220062157 at UPK3B--ENSG05220062157:1..12428 in genome finspector.fa.gmap
+ => primary (linear) chromosome
+Total genomic length = 44613 bp
+Have a total of 3 chromosomes
+Writing chromosome file /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fa.gmap/finspector.fa.gmap.chromosome
+Chromosome ENSG05220038872--ENSG05220038938 has universal coordinates 1..18765
+Chromosome PDCD6IPP1--ENSG05220018064 has universal coordinates 18766..32185
+Chromosome UPK3B--ENSG05220062157 has universal coordinates 32186..44613
+Writing chromosome IIT file /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fa.gmap/finspector.fa.gmap.chromosome.iit
+Writing IIT file header information...coordinates require 4 bytes each...done
+Processing null division/chromosome...sorting...writing...done (3 intervals)
+Writing IIT file footer information...done
+Writing IIT file header information...coordinates require 4 bytes each...done
+Processing null division/chromosome...sorting...writing...done (3 intervals)
+Writing IIT file footer information...done
+No alternate scaffolds observed
+Running "/usr/local/src/gmap-2017-11-15/bin/gmap_process"  -c "/staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fa.gmap.coords" -f "/staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fa.gmap.sources" | "/usr/local/src/gmap-2017-11-15/bin/gmapindex"  -d finspector.fa.gmap -F "/staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fa.gmap" -D "/staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fa.gmap" -G
+Genome length is 44613 nt
+Trying to allocate 4185*4 bytes of memory...succeeded.  Building genome in memory.
+Reading coordinates from file /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fa.gmap.coords
+Writing contig ENSG05220038872--ENSG05220038938 to universal coordinates 1..18765
+Writing contig PDCD6IPP1--ENSG05220018064 to universal coordinates 18766..32185
+Writing contig UPK3B--ENSG05220062157 to universal coordinates 32186..44613
+A total of 0 non-ACGTNX characters were seen in the genome.
+Running cat "/staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fa.gmap/finspector.fa.gmap.genomecomp" | "/usr/local/src/gmap-2017-11-15/bin/gmapindex" -d finspector.fa.gmap -U > "/staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fa.gmap/finspector.fa.gmap.genomebits128"
+Running cat "/staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fa.gmap/finspector.fa.gmap.genomecomp" | "/usr/local/src/gmap-2017-11-15/bin/gmapindex" -k 13 -q 3  -d finspector.fa.gmap -F "/staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fa.gmap" -D "/staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fa.gmap" -N
+Counting positions in genome finspector.fa.gmap (13 bp every 3 bp), position 0
+Number of offsets: 13716 => pages file not required
+Running "/usr/local/src/gmap-2017-11-15/bin/gmapindex" -k 13 -q 3  -d finspector.fa.gmap -F "/staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fa.gmap" -D "/staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fa.gmap" -O  "/staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fa.gmap/finspector.fa.gmap.genomecomp"
+Offset compression types: bitpack64
+Allocating 1048576*1 bytes for packsizes
+Allocating 1048576*8 bytes for bitpacks
+Indexing offsets of oligomers in genome finspector.fa.gmap (13 bp every 3 bp), position 0
+Writing 67108865 offsets compressed via bitpack64...done
+Running "/usr/local/src/gmap-2017-11-15/bin/gmapindex" -k 13 -q 3  -d finspector.fa.gmap -F "/staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fa.gmap" -D "/staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fa.gmap" -P "/staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fa.gmap/finspector.fa.gmap.genomecomp"
+Looking for index files in directory /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fa.gmap
+  Pointers file is finspector.fa.gmap.ref133offsets64meta
+  Offsets file is finspector.fa.gmap.ref133offsets64strm
+  Positions file is finspector.fa.gmap.ref133positions
+Expanding offsetsstrm into counters...done
+Allocating 207056 bytes for counterstrm
+Trying to allocate 13716*4 bytes of memory for positions...succeeded.  Building positions in memory.
+Indexing positions of oligomers in genome finspector.fa.gmap (13 bp every 3 bp), position 0
+Writing 13716 genomic positions to file /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fa.gmap/finspector.fa.gmap.ref133positions ...
+done
+Running "/usr/local/src/gmap-2017-11-15/bin/gmapindex" -d finspector.fa.gmap -F "/staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fa.gmap" -D "/staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fa.gmap" -S
+Genome length is 44613
+Building suffix array
+SACA_K called with n = 44614, K = 5, level 0
+SACA_K called with n = 11359, K = 0, level 1
+SACA_K called with n = 3581, K = 0, level 2
+SACA_K called with n = 1160, K = 0, level 3
+For indexsize 12, occupied 38726/16777216
+Optimal indexsize = 12
+Running "/usr/local/src/gmap-2017-11-15/bin/gmapindex" -d finspector.fa.gmap -F "/staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fa.gmap" -D "/staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fa.gmap" -L
+Building LCP array
+Writing temporary file for rank...done
+Writing temporary file for permuted sarray...done
+Byte-coding: 42376 values < 255, 2238 exceptions >= 255 (5.0%)
+Building DC array
+Building child array
+Byte-coding: 44473 values < 255, 141 exceptions >= 255 (0.3%)
+Writing file /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fa.gmap/finspector.fa.gmap.salcpchilddcdone
+Found 2238 exceptions
+CMD: gmap -D /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir -d finspector.fa.gmap /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/trinity_GG/Trinity-GG.fasta -f 3 -n 1 -x 50 -t 2 -B 5 
+Note: gmap.avx512 does not exist.  For faster speed, may want to compile package on an AVX512 machine
+GMAP version 2017-11-15 called with args: gmap.avx2 -D /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir -d finspector.fa.gmap /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/trinity_GG/Trinity-GG.fasta -f 3 -n 1 -x 50 -t 2 -B 5
+Note: -n 1 will not report chimeric alignments.  If you want a single alignment plus chimeras, use -n 0 instead.
+Note: Batch mode 5 is now the same as batch mode 4.
+Expansion of offsets is now controlled separately by --expand-offsets (default=1).
+Checking compiler assumptions for SSE2: 6B8B4567 327B23C6 xor=59F066A1
+Checking compiler assumptions for SSE4.1: -103 -58 max=198 => compiler zero extends
+Checking compiler options for SSE4.2: 6B8B4567 __builtin_clz=1 __builtin_ctz=0 _mm_popcnt_u32=17 __builtin_popcount=17 
+Finished checking compiler assumptions
+Allocating memory for compressed genome (oligos)...Attached new memory for /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fa.gmap/finspector.fa.gmap.genomecomp...done (16,740 bytes, 0.01 sec)
+Allocating memory for compressed genome (bits)...Attached new memory for /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fa.gmap/finspector.fa.gmap.genomebits128...done (16,752 bytes, 0.00 sec)
+Looking for index files in directory /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fa.gmap
+  Pointers file is finspector.fa.gmap.ref133offsets64meta
+  Offsets file is finspector.fa.gmap.ref133offsets64strm
+  Positions file is finspector.fa.gmap.ref133positions
+Offsets compression type: bitpack64
+Allocating memory for ref offset pointers, kmer 13, interval 3...Attached new memory for /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fa.gmap/finspector.fa.gmap.ref133offsets64meta...done (8,388,624 bytes, 0.00 sec)
+Allocating memory for ref offsets, kmer 13, interval 3...Attached new memory for /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fa.gmap/finspector.fa.gmap.ref133offsets64strm...done (207,056 bytes, 0.00 sec)
+Allocating memory for ref positions, kmer 13, interval 3...Attached new memory for /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fa.gmap/finspector.fa.gmap.ref133positions...done (54,864 bytes, 0.00 sec)
+Starting alignment
+Processed 70 queries in 0.31 seconds (225.81 queries/sec)
+Removed existing memory for shmid 950281
+Removed existing memory for shmid 950280
+Removed existing memory for shmid 950279
+Removed existing memory for shmid 950277
+Removed existing memory for shmid 950278
+Execution Time = 0.51 minutes. CMD: /usr/local/src/trinityrnaseq-Trinity-v2.8.5/util/misc/process_GMAP_alignments_gff3_chimeras_ok.pl --genome /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fa --transcripts /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/trinity_GG/Trinity-GG.fasta --no_chimera > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.gmap_trinity_GG.gff3
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/trinity_gmap_alignment.ok
+Running: /usr/local/src/STAR-Fusion/FusionInspector/util/get_Trinity_fusion_alignments_from_gff3.pl /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.gtf /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.gmap_trinity_GG.gff3 > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.gmap_trinity_GG.fusions.gff3
+Execution Time = 0.00 minutes. CMD: /usr/local/src/STAR-Fusion/FusionInspector/util/get_Trinity_fusion_alignments_from_gff3.pl /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.gtf /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.gmap_trinity_GG.gff3 > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.gmap_trinity_GG.fusions.gff3
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/trinity_fusion_trans_extraction_gff3.ok
+Running: /usr/local/src/STAR-Fusion/FusionInspector/util/get_Trinity_fusion_fasta_seqs.pl /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/trinity_GG/Trinity-GG.fasta /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.gmap_trinity_GG.fusions.gff3 > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.gmap_trinity_GG.fusions.fasta
+Execution Time = 0.00 minutes. CMD: /usr/local/src/STAR-Fusion/FusionInspector/util/get_Trinity_fusion_fasta_seqs.pl /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/trinity_GG/Trinity-GG.fasta /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.gmap_trinity_GG.fusions.gff3 > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.gmap_trinity_GG.fusions.fasta
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/trinity_fusion_trans_extraction_fasta.ok
+Running: /usr/local/src/STAR-Fusion/FusionInspector/util/transcript_gff3_to_bed.pl /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.gmap_trinity_GG.fusions.gff3 95 > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.gmap_trinity_GG.fusions.gff3.bed
+ignoring line: #TrinityFusionTranscript:	TRINITY_GG_4_c0_g1_i4	UPK3B--ENSG05220062157:2358-8878
+ignoring line: #TrinityFusionTranscript:	TRINITY_GG_1_c0_g1_i7	PDCD6IPP1--ENSG05220018064:7969-12352
+ignoring line: #TrinityFusionTranscript:	TRINITY_GG_2_c0_g1_i6	ENSG05220038872--ENSG05220038938:4838-9922
+ignoring line: #TrinityFusionTranscript:	TRINITY_GG_1_c0_g1_i5	PDCD6IPP1--ENSG05220018064:7969-12352
+Execution Time = 0.00 minutes. CMD: /usr/local/src/STAR-Fusion/FusionInspector/util/transcript_gff3_to_bed.pl /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.gmap_trinity_GG.fusions.gff3 95 > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.gmap_trinity_GG.fusions.gff3.bed
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/trinity_fusion_trans_gff3_to_bed.ok
+Running: sort -k1,1 -k2,2n /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.gmap_trinity_GG.fusions.gff3.bed > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.gmap_trinity_GG.fusions.gff3.bed.sorted.bed
+Execution Time = 0.00 minutes. CMD: sort -k1,1 -k2,2n /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.gmap_trinity_GG.fusions.gff3.bed > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.gmap_trinity_GG.fusions.gff3.bed.sorted.bed
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/trinity_fusion.bedsort.ok
+Running: bgzip -f /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.gmap_trinity_GG.fusions.gff3.bed.sorted.bed
+Execution Time = 0.00 minutes. CMD: bgzip -f /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.gmap_trinity_GG.fusions.gff3.bed.sorted.bed
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/trinity_fusion.bgzip.ok
+Running: tabix -p bed /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.gmap_trinity_GG.fusions.gff3.bed.sorted.bed.gz
+Execution Time = 0.00 minutes. CMD: tabix -p bed /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.gmap_trinity_GG.fusions.gff3.bed.sorted.bed.gz
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/trinity_fusion.tabix.ok
+Running: /usr/local/src/STAR-Fusion/FusionInspector/util/add_TrinityGG_to_fusion_summary.pl /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fusion_preds.coalesced.summary.EMadj.min_frag_thresh /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.gmap_trinity_GG.fusions.gff3 > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fusion_preds.coalesced.summary.EMadj.min_frag_thresh.wTrinityGG
+Execution Time = 0.00 minutes. CMD: /usr/local/src/STAR-Fusion/FusionInspector/util/add_TrinityGG_to_fusion_summary.pl /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fusion_preds.coalesced.summary.EMadj.min_frag_thresh /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.gmap_trinity_GG.fusions.gff3 > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fusion_preds.coalesced.summary.EMadj.min_frag_thresh.wTrinityGG
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/add_trinity_fusions_to_summary.ok
+Running: /usr/local/src/STAR-Fusion/FusionInspector/util/SAM_to_frag_coords.pl --sam /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.consolidated.bam --max_insert_size 10000000 
+-extracting read coordinates from /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.consolidated.bam into /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.consolidated.bam.read_coords
+
+CMD: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.consolidated.bam.read_coords.ok
+CMD: /usr/bin/sort --parallel=1 -S10G -T . -k1,1 -k2,2 -k4,4n /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.consolidated.bam.read_coords > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.consolidated.bam.read_coords.sort_by_readname
+CMD: /usr/bin/sort --parallel=1 -S10G -T . -k1,1 -k3,3n /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.consolidated.bam.frag_coords > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.consolidated.bam.frag_coords.coord_sorted
+Execution Time = 0.01 minutes. CMD: /usr/local/src/STAR-Fusion/FusionInspector/util/SAM_to_frag_coords.pl --sam /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.consolidated.bam --max_insert_size 10000000 
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/prep_igv_sam_frag_coordss.ok
+Running: /usr/local/src/STAR-Fusion/FusionInspector/util/fusion_summary_to_igv_JuncSpan_fmt.pl /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fusion_preds.coalesced.summary /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.consolidated.bam.frag_coords > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.igv.FusionJuncSpan
+Execution Time = 0.00 minutes. CMD: /usr/local/src/STAR-Fusion/FusionInspector/util/fusion_summary_to_igv_JuncSpan_fmt.pl /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fusion_preds.coalesced.summary /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.consolidated.bam.frag_coords > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.igv.FusionJuncSpan
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/prep_igv_juncspan_fmt.ok
+Running: /usr/local/src/STAR-Fusion/FusionInspector/util/get_pfam_domain_info.pl --finspector_gtf /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.gtf  --genome_lib_dir /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir  > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.igv.Pfam.gff3 
+Execution Time = 0.00 minutes. CMD: /usr/local/src/STAR-Fusion/FusionInspector/util/get_pfam_domain_info.pl --finspector_gtf /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.gtf  --genome_lib_dir /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir  > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.igv.Pfam.gff3 
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/prep_igv_pfam_gff3.ok
+Running: /usr/local/src/STAR-Fusion/FusionInspector/util/transcript_gff3_to_bed.pl /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.igv.Pfam.gff3 > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.igv.Pfam.bed
+Execution Time = 0.00 minutes. CMD: /usr/local/src/STAR-Fusion/FusionInspector/util/transcript_gff3_to_bed.pl /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.igv.Pfam.gff3 > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.igv.Pfam.bed
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/prep_igv_pfam_bed.ok
+Running: /usr/local/src/STAR-Fusion/FusionInspector/util/get_seq_similar_region_FI_coordinates.pl --finspector_gtf /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.gtf  --genome_lib_dir /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir  > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.igv.seqsimilar.gff3 
+Execution Time = 0.00 minutes. CMD: /usr/local/src/STAR-Fusion/FusionInspector/util/get_seq_similar_region_FI_coordinates.pl --finspector_gtf /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.gtf  --genome_lib_dir /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir  > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.igv.seqsimilar.gff3 
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/prep_igv_seqsim_gff3.ok
+Running: /usr/local/src/STAR-Fusion/FusionInspector/util/transcript_gff3_to_bed.pl /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.igv.seqsimilar.gff3 > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.igv.seqsimilar.bed
+Execution Time = 0.00 minutes. CMD: /usr/local/src/STAR-Fusion/FusionInspector/util/transcript_gff3_to_bed.pl /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.igv.seqsimilar.gff3 > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.igv.seqsimilar.bed
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/prep_igv_seqsim_bed.ok
+Running: /usr/local/src/STAR-Fusion/FusionInspector/util/append_breakpoint_junction_info_via_FI_contigs.pl /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fusion_preds.coalesced.summary.EMadj.min_frag_thresh.wTrinityGG /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.fa > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fusion_preds.coalesced.summary.EMadj.min_frag_thresh.wTrinityGG.wSpliceInfo
+Execution Time = 0.00 minutes. CMD: /usr/local/src/STAR-Fusion/FusionInspector/util/append_breakpoint_junction_info_via_FI_contigs.pl /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fusion_preds.coalesced.summary.EMadj.min_frag_thresh.wTrinityGG /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.fa > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fusion_preds.coalesced.summary.EMadj.min_frag_thresh.wTrinityGG.wSpliceInfo
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/add_splice_infowTrinity.ok
+Running: /usr/local/src/STAR-Fusion/FusionInspector/util/../FusionFilter/blast_and_promiscuity_filter.pl  --fusion_preds /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fusion_preds.coalesced.summary.EMadj.min_frag_thresh.wTrinityGG.wSpliceInfo --out_prefix /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector --genome_lib_dir /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir --max_promiscuity 10 --min_pct_dom_promiscuity 50
+CMD: /usr/local/src/STAR-Fusion/FusionInspector/FusionFilter/util/blast_filter.pl --fusion_preds /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fusion_preds.coalesced.summary.EMadj.min_frag_thresh.wTrinityGG.wSpliceInfo --genome_lib_dir /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir
+CMD: /usr/local/src/STAR-Fusion/FusionInspector/FusionFilter/util/promiscuity_filter.pl --fusion_preds /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fusion_preds.coalesced.summary.EMadj.min_frag_thresh.wTrinityGG.wSpliceInfo.post_blast_filter  --genome_lib_dir /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir  --max_promiscuity 10  --min_pct_dom_promiscuity 50 
+CMD: cp /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fusion_preds.coalesced.summary.EMadj.min_frag_thresh.wTrinityGG.wSpliceInfo.post_blast_filter.post_promisc_filter /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.post_blast_and_promiscuity_filter
+Execution Time = 0.01 minutes. CMD: /usr/local/src/STAR-Fusion/FusionInspector/util/../FusionFilter/blast_and_promiscuity_filter.pl  --fusion_preds /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/finspector.fusion_preds.coalesced.summary.EMadj.min_frag_thresh.wTrinityGG.wSpliceInfo --out_prefix /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector --genome_lib_dir /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir --max_promiscuity 10 --min_pct_dom_promiscuity 50
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/blast_filterwTrinity.ok
+Running: /usr/local/src/STAR-Fusion/FusionInspector/util/../FusionFilter/util/filter_by_annotation_rules.pl  --fusions /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.post_blast_and_promiscuity_filter --genome_lib_dir /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir
+-done, see /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.post_blast_and_promiscuity_filter.annot_filter.pass
+Execution Time = 0.00 minutes. CMD: /usr/local/src/STAR-Fusion/FusionInspector/util/../FusionFilter/util/filter_by_annotation_rules.pl  --fusions /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.post_blast_and_promiscuity_filter --genome_lib_dir /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/annot_filterwTrinity.ok
+Running: /usr/local/src/STAR-Fusion/FusionInspector/util/fusion_EM_runner.pl /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.post_blast_and_promiscuity_filter.annot_filter.pass > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.post_blast_and_promiscuity_filter.annot_filter.pass.EMadj
+EM: Starting log likelihood: -155.807096
+EM: Round [1] log likelihood: -155.807096
+EM: Stopping iterations at round 1 due to insufficient improvement in likelihood.
+Execution Time = 0.00 minutes. CMD: /usr/local/src/STAR-Fusion/FusionInspector/util/fusion_EM_runner.pl /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.post_blast_and_promiscuity_filter.annot_filter.pass > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.post_blast_and_promiscuity_filter.annot_filter.pass.EMadj
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/EM_adj_counts.ok
+Running: /usr/local/src/STAR-Fusion/FusionInspector/util/incorporate_FFPM_into_final_report.pl /staging/leuven/stg_00096/home/rdewin/RNA/results/fastp/P028/P028_rna_R1.trimmed.fq /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.post_blast_and_promiscuity_filter.annot_filter.pass.EMadj > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.post_blast_and_promiscuity_filter.annot_filter.pass.EMadj.FFPM
+-total frags in /staging/leuven/stg_00096/home/rdewin/RNA/results/fastp/P028/P028_rna_R1.trimmed.fq: 76668309
+Execution Time = 0.31 minutes. CMD: /usr/local/src/STAR-Fusion/FusionInspector/util/incorporate_FFPM_into_final_report.pl /staging/leuven/stg_00096/home/rdewin/RNA/results/fastp/P028/P028_rna_R1.trimmed.fq /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.post_blast_and_promiscuity_filter.annot_filter.pass.EMadj > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.post_blast_and_promiscuity_filter.annot_filter.pass.EMadj.FFPM
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/add_FFPMwTrinity.ok
+Running: /usr/local/src/STAR-Fusion/FusionInspector/util/misc/find_microhomologies_by_kmer_matches.pl --fasta /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.fa --gtf /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.gtf  > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/microH.dat
+Execution Time = 0.00 minutes. CMD: /usr/local/src/STAR-Fusion/FusionInspector/util/misc/find_microhomologies_by_kmer_matches.pl --fasta /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.fa --gtf /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.gtf  > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/microH.dat
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/microH.dat.ok
+Running: /usr/local/src/STAR-Fusion/FusionInspector/util/misc/append_microH_distance.py /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/microH.dat /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.post_blast_and_promiscuity_filter.annot_filter.pass.EMadj.FFPM  >  /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.post_blast_and_promiscuity_filter.annot_filter.pass.EMadj.FFPM.wMicroH
+Execution Time = 0.00 minutes. CMD: /usr/local/src/STAR-Fusion/FusionInspector/util/misc/append_microH_distance.py /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/fi_workdir/microH.dat /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.post_blast_and_promiscuity_filter.annot_filter.pass.EMadj.FFPM  >  /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.post_blast_and_promiscuity_filter.annot_filter.pass.EMadj.FFPM.wMicroH
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/append_microH_info.ok
+Running: cp /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.post_blast_and_promiscuity_filter.annot_filter.pass.EMadj.FFPM.wMicroH /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.FusionInspector.fusions.tsv
+Execution Time = 0.00 minutes. CMD: cp /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.post_blast_and_promiscuity_filter.annot_filter.pass.EMadj.FFPM.wMicroH /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.FusionInspector.fusions.tsv
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/cp_finalwTrinity.ok
+Running: /usr/local/src/STAR-Fusion/FusionInspector/util/column_exclusions.pl /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.FusionInspector.fusions.tsv JunctionReads,SpanningFrags,CounterFusionLeftReads,CounterFusionRightReads  > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.FusionInspector.fusions.abridged.tsv
+Execution Time = 0.00 minutes. CMD: /usr/local/src/STAR-Fusion/FusionInspector/util/column_exclusions.pl /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.FusionInspector.fusions.tsv JunctionReads,SpanningFrags,CounterFusionLeftReads,CounterFusionRightReads  > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.FusionInspector.fusions.abridged.tsv
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/final.abridgedwTrinity.ok
+Running: /usr/local/src/STAR-Fusion/FusionInspector/util/create_fusion_inspector_igvjs.py --fusion_inspector_directory /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate --json_outfile /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.fusion_inspector_web.json --file_prefix finspector --include_Trinity
+Execution Time = 0.00 minutes. CMD: /usr/local/src/STAR-Fusion/FusionInspector/util/create_fusion_inspector_igvjs.py --fusion_inspector_directory /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate --json_outfile /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.fusion_inspector_web.json --file_prefix finspector --include_Trinity
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/create_fi_igvjswTrinity.ok
+Running: /usr/local/src/STAR-Fusion/FusionInspector/fusion-reports/create_fusion_report.py --html_template /usr/local/src/STAR-Fusion/FusionInspector/util/fusion_report_html_template/igvjs_fusion.html --fusions_json /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.fusion_inspector_web.json --input_file_prefix finspector --html_output /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.fusion_inspector_web.html
+Execution Time = 0.01 minutes. CMD: /usr/local/src/STAR-Fusion/FusionInspector/fusion-reports/create_fusion_report.py --html_template /usr/local/src/STAR-Fusion/FusionInspector/util/fusion_report_html_template/igvjs_fusion.html --fusions_json /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.fusion_inspector_web.json --input_file_prefix finspector --html_output /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.fusion_inspector_web.html
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/fusion_reports_htmlwTrinity.ok
+Running: /usr/local/src/STAR-Fusion/FusionInspector/FusionAnnotator/FusionAnnotator --annotate /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.FusionInspector.fusions.abridged.tsv  --genome_lib_dir /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.FusionInspector.fusions.abridged.tsv.annotated 
+Execution Time = 0.00 minutes. CMD: /usr/local/src/STAR-Fusion/FusionInspector/FusionAnnotator/FusionAnnotator --annotate /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.FusionInspector.fusions.abridged.tsv  --genome_lib_dir /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.FusionInspector.fusions.abridged.tsv.annotated 
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/fusion_annotatorwTrinity.ok
+Running: /usr/local/src/STAR-Fusion/FusionInspector/FusionAnnotator/util/fusion_to_coding_region_effect.pl --fusions /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.FusionInspector.fusions.abridged.tsv.annotated  --genome_lib_dir /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.FusionInspector.fusions.abridged.tsv.annotated.coding_effect 
+WARNING, no entry stored in dbm for [ENSG05220038872]
+WARNING, no entry stored in dbm for [ENSG05220038938]
+WARNING, no entry stored in dbm for [ENSG05220018087]
+WARNING, no entry stored in dbm for [ENSG05220018064]
+WARNING, no entry stored in dbm for [ENSG05220018087]
+WARNING, no entry stored in dbm for [ENSG05220018064]
+WARNING, no entry stored in dbm for [ENSG05220018087]
+WARNING, no entry stored in dbm for [ENSG05220018064]
+WARNING, no entry stored in dbm for [ENSG05220062157]
+WARNING, no entry stored in dbm for [ENSG05220062157]
+Execution Time = 0.00 minutes. CMD: /usr/local/src/STAR-Fusion/FusionInspector/FusionAnnotator/util/fusion_to_coding_region_effect.pl --fusions /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.FusionInspector.fusions.abridged.tsv.annotated  --genome_lib_dir /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/finspector.FusionInspector.fusions.abridged.tsv.annotated.coding_effect 
+Running: touch /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028/FusionInspector-validate/chckpts_dir/fusion_coding_region_effectwTrinity.ok

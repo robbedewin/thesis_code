@@ -1,0 +1,792 @@
+Assuming unrestricted shared filesystem usage.
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 40
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job                             count
+----------------------------  -------
+all                                 1
+calculate_contamination            10
+filter_mutect2                     10
+funcotate_variants                 10
+get_pileup_summaries               20
+learn_read_orientation_model        1
+mutect2                            10
+mutect_pon3                         1
+select_pass_variants               10
+total                              73
+
+Select jobs to execute...
+Execute 21 jobs...
+
+[Sat Apr 27 13:00:43 2024]
+localrule get_pileup_summaries:
+    input: results/recal/P019/P019_dna_normal_recal.bam, resources/whole_genome.intervals, resources/gnomad_chr.vcf.gz
+    output: results/mutect2/P019/P019_normal_pileup_summaries.table
+    log: logs/mutect2/P019/P019_normal_get_pileup_summaries.log
+    jobid: 381
+    reason: Forced execution
+    wildcards: sample=P019, alias=normal
+    resources: tmpdir=/tmp
+
+
+        gatk GetPileupSummaries              -I results/recal/P019/P019_dna_normal_recal.bam              -L resources/whole_genome.intervals              -V resources/gnomad_chr.vcf.gz              -O results/mutect2/P019/P019_normal_pileup_summaries.table              &> logs/mutect2/P019/P019_normal_get_pileup_summaries.log
+        
+
+[Sat Apr 27 13:00:43 2024]
+localrule get_pileup_summaries:
+    input: results/recal/P026/P026_dna_tumor_recal.bam, resources/whole_genome.intervals, resources/gnomad_chr.vcf.gz
+    output: results/mutect2/P026/P026_tumor_pileup_summaries.table
+    log: logs/mutect2/P026/P026_tumor_get_pileup_summaries.log
+    jobid: 346
+    reason: Forced execution
+    wildcards: sample=P026, alias=tumor
+    resources: tmpdir=/tmp
+
+
+        gatk GetPileupSummaries              -I results/recal/P026/P026_dna_tumor_recal.bam              -L resources/whole_genome.intervals              -V resources/gnomad_chr.vcf.gz              -O results/mutect2/P026/P026_tumor_pileup_summaries.table              &> logs/mutect2/P026/P026_tumor_get_pileup_summaries.log
+        
+
+[Sat Apr 27 13:00:43 2024]
+localrule get_pileup_summaries:
+    input: results/recal/P028/P028_dna_tumor_recal.bam, resources/whole_genome.intervals, resources/gnomad_chr.vcf.gz
+    output: results/mutect2/P028/P028_tumor_pileup_summaries.table
+    log: logs/mutect2/P028/P028_tumor_get_pileup_summaries.log
+    jobid: 358
+    reason: Forced execution
+    wildcards: sample=P028, alias=tumor
+    resources: tmpdir=/tmp
+
+
+        gatk GetPileupSummaries              -I results/recal/P028/P028_dna_tumor_recal.bam              -L resources/whole_genome.intervals              -V resources/gnomad_chr.vcf.gz              -O results/mutect2/P028/P028_tumor_pileup_summaries.table              &> logs/mutect2/P028/P028_tumor_get_pileup_summaries.log
+        
+
+[Sat Apr 27 13:00:43 2024]
+localrule get_pileup_summaries:
+    input: results/recal/P024/P024_dna_tumor_recal.bam, resources/whole_genome.intervals, resources/gnomad_chr.vcf.gz
+    output: results/mutect2/P024/P024_tumor_pileup_summaries.table
+    log: logs/mutect2/P024/P024_tumor_get_pileup_summaries.log
+    jobid: 318
+    reason: Forced execution
+    wildcards: sample=P024, alias=tumor
+    resources: tmpdir=/tmp
+
+
+        gatk GetPileupSummaries              -I results/recal/P024/P024_dna_tumor_recal.bam              -L resources/whole_genome.intervals              -V resources/gnomad_chr.vcf.gz              -O results/mutect2/P024/P024_tumor_pileup_summaries.table              &> logs/mutect2/P024/P024_tumor_get_pileup_summaries.log
+        
+
+[Sat Apr 27 13:00:43 2024]
+localrule get_pileup_summaries:
+    input: results/recal/P022/P022_dna_tumor_recal.bam, resources/whole_genome.intervals, resources/gnomad_chr.vcf.gz
+    output: results/mutect2/P022/P022_tumor_pileup_summaries.table
+    log: logs/mutect2/P022/P022_tumor_get_pileup_summaries.log
+    jobid: 370
+    reason: Forced execution
+    wildcards: sample=P022, alias=tumor
+    resources: tmpdir=/tmp
+
+
+        gatk GetPileupSummaries              -I results/recal/P022/P022_dna_tumor_recal.bam              -L resources/whole_genome.intervals              -V resources/gnomad_chr.vcf.gz              -O results/mutect2/P022/P022_tumor_pileup_summaries.table              &> logs/mutect2/P022/P022_tumor_get_pileup_summaries.log
+        
+
+[Sat Apr 27 13:00:44 2024]
+localrule get_pileup_summaries:
+    input: results/recal/P019/P019_dna_tumor_recal.bam, resources/whole_genome.intervals, resources/gnomad_chr.vcf.gz
+    output: results/mutect2/P019/P019_tumor_pileup_summaries.table
+    log: logs/mutect2/P019/P019_tumor_get_pileup_summaries.log
+    jobid: 382
+    reason: Forced execution
+    wildcards: sample=P019, alias=tumor
+    resources: tmpdir=/tmp
+
+
+        gatk GetPileupSummaries              -I results/recal/P019/P019_dna_tumor_recal.bam              -L resources/whole_genome.intervals              -V resources/gnomad_chr.vcf.gz              -O results/mutect2/P019/P019_tumor_pileup_summaries.table              &> logs/mutect2/P019/P019_tumor_get_pileup_summaries.log
+        
+
+[Sat Apr 27 13:00:44 2024]
+localrule mutect_pon3:
+    input: resources/genome.fa, results/mutect2/pon/pon_db
+    output: results/mutect2/pon/mutect2.pon.vcf.gz
+    log: logs/mutect2/pon/create_somatic_panel_of_normals.log
+    jobid: 301
+    reason: Forced execution
+    resources: tmpdir=/tmp
+
+
+        gatk CreateSomaticPanelOfNormals             -R resources/genome.fa             --germline-resource resources/gnomad_chr.vcf.gz             -V gendb://results/mutect2/pon/pon_db             -O results/mutect2/pon/mutect2.pon.vcf.gz             2>logs/mutect2/pon/create_somatic_panel_of_normals.log
+        
+
+[Sat Apr 27 13:00:44 2024]
+localrule get_pileup_summaries:
+    input: results/recal/P016/P016_dna_normal_recal.bam, resources/whole_genome.intervals, resources/gnomad_chr.vcf.gz
+    output: results/mutect2/P016/P016_normal_pileup_summaries.table
+    log: logs/mutect2/P016/P016_normal_get_pileup_summaries.log
+    jobid: 339
+    reason: Forced execution
+    wildcards: sample=P016, alias=normal
+    resources: tmpdir=/tmp
+
+
+        gatk GetPileupSummaries              -I results/recal/P016/P016_dna_normal_recal.bam              -L resources/whole_genome.intervals              -V resources/gnomad_chr.vcf.gz              -O results/mutect2/P016/P016_normal_pileup_summaries.table              &> logs/mutect2/P016/P016_normal_get_pileup_summaries.log
+        
+
+[Sat Apr 27 13:00:44 2024]
+localrule get_pileup_summaries:
+    input: results/recal/P018/P018_dna_normal_recal.bam, resources/whole_genome.intervals, resources/gnomad_chr.vcf.gz
+    output: results/mutect2/P018/P018_normal_pileup_summaries.table
+    log: logs/mutect2/P018/P018_normal_get_pileup_summaries.log
+    jobid: 351
+    reason: Forced execution
+    wildcards: sample=P018, alias=normal
+    resources: tmpdir=/tmp
+
+
+        gatk GetPileupSummaries              -I results/recal/P018/P018_dna_normal_recal.bam              -L resources/whole_genome.intervals              -V resources/gnomad_chr.vcf.gz              -O results/mutect2/P018/P018_normal_pileup_summaries.table              &> logs/mutect2/P018/P018_normal_get_pileup_summaries.log
+        
+
+[Sat Apr 27 13:00:44 2024]
+localrule get_pileup_summaries:
+    input: results/recal/P020/P020_dna_normal_recal.bam, resources/whole_genome.intervals, resources/gnomad_chr.vcf.gz
+    output: results/mutect2/P020/P020_normal_pileup_summaries.table
+    log: logs/mutect2/P020/P020_normal_get_pileup_summaries.log
+    jobid: 363
+    reason: Forced execution
+    wildcards: sample=P020, alias=normal
+    resources: tmpdir=/tmp
+
+
+        gatk GetPileupSummaries              -I results/recal/P020/P020_dna_normal_recal.bam              -L resources/whole_genome.intervals              -V resources/gnomad_chr.vcf.gz              -O results/mutect2/P020/P020_normal_pileup_summaries.table              &> logs/mutect2/P020/P020_normal_get_pileup_summaries.log
+        
+
+[Sat Apr 27 13:00:44 2024]
+localrule get_pileup_summaries:
+    input: results/recal/P013/P013_dna_normal_recal.bam, resources/whole_genome.intervals, resources/gnomad_chr.vcf.gz
+    output: results/mutect2/P013/P013_normal_pileup_summaries.table
+    log: logs/mutect2/P013/P013_normal_get_pileup_summaries.log
+    jobid: 375
+    reason: Forced execution
+    wildcards: sample=P013, alias=normal
+    resources: tmpdir=/tmp
+
+
+        gatk GetPileupSummaries              -I results/recal/P013/P013_dna_normal_recal.bam              -L resources/whole_genome.intervals              -V resources/gnomad_chr.vcf.gz              -O results/mutect2/P013/P013_normal_pileup_summaries.table              &> logs/mutect2/P013/P013_normal_get_pileup_summaries.log
+        
+
+[Sat Apr 27 13:00:44 2024]
+localrule get_pileup_summaries:
+    input: results/recal/P016/P016_dna_tumor_recal.bam, resources/whole_genome.intervals, resources/gnomad_chr.vcf.gz
+    output: results/mutect2/P016/P016_tumor_pileup_summaries.table
+    log: logs/mutect2/P016/P016_tumor_get_pileup_summaries.log
+    jobid: 340
+    reason: Forced execution
+    wildcards: sample=P016, alias=tumor
+    resources: tmpdir=/tmp
+
+
+        gatk GetPileupSummaries              -I results/recal/P016/P016_dna_tumor_recal.bam              -L resources/whole_genome.intervals              -V resources/gnomad_chr.vcf.gz              -O results/mutect2/P016/P016_tumor_pileup_summaries.table              &> logs/mutect2/P016/P016_tumor_get_pileup_summaries.log
+        
+
+[Sat Apr 27 13:00:44 2024]
+localrule get_pileup_summaries:
+    input: results/recal/P018/P018_dna_tumor_recal.bam, resources/whole_genome.intervals, resources/gnomad_chr.vcf.gz
+    output: results/mutect2/P018/P018_tumor_pileup_summaries.table
+    log: logs/mutect2/P018/P018_tumor_get_pileup_summaries.log
+    jobid: 352
+    reason: Forced execution
+    wildcards: sample=P018, alias=tumor
+    resources: tmpdir=/tmp
+
+
+        gatk GetPileupSummaries              -I results/recal/P018/P018_dna_tumor_recal.bam              -L resources/whole_genome.intervals              -V resources/gnomad_chr.vcf.gz              -O results/mutect2/P018/P018_tumor_pileup_summaries.table              &> logs/mutect2/P018/P018_tumor_get_pileup_summaries.log
+        
+
+[Sat Apr 27 13:00:44 2024]
+localrule get_pileup_summaries:
+    input: results/recal/P020/P020_dna_tumor_recal.bam, resources/whole_genome.intervals, resources/gnomad_chr.vcf.gz
+    output: results/mutect2/P020/P020_tumor_pileup_summaries.table
+    log: logs/mutect2/P020/P020_tumor_get_pileup_summaries.log
+    jobid: 364
+    reason: Forced execution
+    wildcards: sample=P020, alias=tumor
+    resources: tmpdir=/tmp
+
+
+        gatk GetPileupSummaries              -I results/recal/P020/P020_dna_tumor_recal.bam              -L resources/whole_genome.intervals              -V resources/gnomad_chr.vcf.gz              -O results/mutect2/P020/P020_tumor_pileup_summaries.table              &> logs/mutect2/P020/P020_tumor_get_pileup_summaries.log
+        
+
+[Sat Apr 27 13:00:44 2024]
+localrule get_pileup_summaries:
+    input: results/recal/P013/P013_dna_tumor_recal.bam, resources/whole_genome.intervals, resources/gnomad_chr.vcf.gz
+    output: results/mutect2/P013/P013_tumor_pileup_summaries.table
+    log: logs/mutect2/P013/P013_tumor_get_pileup_summaries.log
+    jobid: 376
+    reason: Forced execution
+    wildcards: sample=P013, alias=tumor
+    resources: tmpdir=/tmp
+
+
+        gatk GetPileupSummaries              -I results/recal/P013/P013_dna_tumor_recal.bam              -L resources/whole_genome.intervals              -V resources/gnomad_chr.vcf.gz              -O results/mutect2/P013/P013_tumor_pileup_summaries.table              &> logs/mutect2/P013/P013_tumor_get_pileup_summaries.log
+        
+
+[Sat Apr 27 13:00:44 2024]
+localrule get_pileup_summaries:
+    input: results/recal/P023/P023_dna_normal_recal.bam, resources/whole_genome.intervals, resources/gnomad_chr.vcf.gz
+    output: results/mutect2/P023/P023_normal_pileup_summaries.table
+    log: logs/mutect2/P023/P023_normal_get_pileup_summaries.log
+    jobid: 333
+    reason: Forced execution
+    wildcards: sample=P023, alias=normal
+    resources: tmpdir=/tmp
+
+
+        gatk GetPileupSummaries              -I results/recal/P023/P023_dna_normal_recal.bam              -L resources/whole_genome.intervals              -V resources/gnomad_chr.vcf.gz              -O results/mutect2/P023/P023_normal_pileup_summaries.table              &> logs/mutect2/P023/P023_normal_get_pileup_summaries.log
+        
+
+[Sat Apr 27 13:00:44 2024]
+localrule get_pileup_summaries:
+    input: results/recal/P026/P026_dna_normal_recal.bam, resources/whole_genome.intervals, resources/gnomad_chr.vcf.gz
+    output: results/mutect2/P026/P026_normal_pileup_summaries.table
+    log: logs/mutect2/P026/P026_normal_get_pileup_summaries.log
+    jobid: 345
+    reason: Forced execution
+    wildcards: sample=P026, alias=normal
+    resources: tmpdir=/tmp
+
+
+        gatk GetPileupSummaries              -I results/recal/P026/P026_dna_normal_recal.bam              -L resources/whole_genome.intervals              -V resources/gnomad_chr.vcf.gz              -O results/mutect2/P026/P026_normal_pileup_summaries.table              &> logs/mutect2/P026/P026_normal_get_pileup_summaries.log
+        
+
+[Sat Apr 27 13:00:44 2024]
+localrule get_pileup_summaries:
+    input: results/recal/P024/P024_dna_normal_recal.bam, resources/whole_genome.intervals, resources/gnomad_chr.vcf.gz
+    output: results/mutect2/P024/P024_normal_pileup_summaries.table
+    log: logs/mutect2/P024/P024_normal_get_pileup_summaries.log
+    jobid: 315
+    reason: Forced execution
+    wildcards: sample=P024, alias=normal
+    resources: tmpdir=/tmp
+
+
+        gatk GetPileupSummaries              -I results/recal/P024/P024_dna_normal_recal.bam              -L resources/whole_genome.intervals              -V resources/gnomad_chr.vcf.gz              -O results/mutect2/P024/P024_normal_pileup_summaries.table              &> logs/mutect2/P024/P024_normal_get_pileup_summaries.log
+        
+
+[Sat Apr 27 13:00:44 2024]
+localrule get_pileup_summaries:
+    input: results/recal/P028/P028_dna_normal_recal.bam, resources/whole_genome.intervals, resources/gnomad_chr.vcf.gz
+    output: results/mutect2/P028/P028_normal_pileup_summaries.table
+    log: logs/mutect2/P028/P028_normal_get_pileup_summaries.log
+    jobid: 357
+    reason: Forced execution
+    wildcards: sample=P028, alias=normal
+    resources: tmpdir=/tmp
+
+
+        gatk GetPileupSummaries              -I results/recal/P028/P028_dna_normal_recal.bam              -L resources/whole_genome.intervals              -V resources/gnomad_chr.vcf.gz              -O results/mutect2/P028/P028_normal_pileup_summaries.table              &> logs/mutect2/P028/P028_normal_get_pileup_summaries.log
+        
+
+[Sat Apr 27 13:00:44 2024]
+localrule get_pileup_summaries:
+    input: results/recal/P023/P023_dna_tumor_recal.bam, resources/whole_genome.intervals, resources/gnomad_chr.vcf.gz
+    output: results/mutect2/P023/P023_tumor_pileup_summaries.table
+    log: logs/mutect2/P023/P023_tumor_get_pileup_summaries.log
+    jobid: 334
+    reason: Forced execution
+    wildcards: sample=P023, alias=tumor
+    resources: tmpdir=/tmp
+
+
+        gatk GetPileupSummaries              -I results/recal/P023/P023_dna_tumor_recal.bam              -L resources/whole_genome.intervals              -V resources/gnomad_chr.vcf.gz              -O results/mutect2/P023/P023_tumor_pileup_summaries.table              &> logs/mutect2/P023/P023_tumor_get_pileup_summaries.log
+        
+
+[Sat Apr 27 13:00:44 2024]
+localrule get_pileup_summaries:
+    input: results/recal/P022/P022_dna_normal_recal.bam, resources/whole_genome.intervals, resources/gnomad_chr.vcf.gz
+    output: results/mutect2/P022/P022_normal_pileup_summaries.table
+    log: logs/mutect2/P022/P022_normal_get_pileup_summaries.log
+    jobid: 369
+    reason: Forced execution
+    wildcards: sample=P022, alias=normal
+    resources: tmpdir=/tmp
+
+
+        gatk GetPileupSummaries              -I results/recal/P022/P022_dna_normal_recal.bam              -L resources/whole_genome.intervals              -V resources/gnomad_chr.vcf.gz              -O results/mutect2/P022/P022_normal_pileup_summaries.table              &> logs/mutect2/P022/P022_normal_get_pileup_summaries.log
+        
+[Sat Apr 27 13:24:43 2024]
+Finished job 301.
+1 of 73 steps (1%) done
+Select jobs to execute...
+Execute 5 jobs...
+
+[Sat Apr 27 13:24:43 2024]
+localrule mutect2:
+    input: results/recal/P026/P026_dna_tumor_recal.bam, results/recal/P026/P026_dna_normal_recal.bam, results/mutect2/pon/mutect2.pon.vcf.gz
+    output: results/mutect2/P026/P026_variants.vcf, results/mutect2/P026/P026_f1r2.tar.gz
+    log: logs/mutect2/P026/P026_variants.log
+    jobid: 322
+    reason: Input files updated by another job: results/mutect2/pon/mutect2.pon.vcf.gz
+    wildcards: sample=P026
+    threads: 4
+    resources: tmpdir=/tmp
+
+
+        gatk Mutect2              -R resources/genome.fa              -I results/recal/P026/P026_dna_tumor_recal.bam              -I  results/recal/P026/P026_dna_normal_recal.bam              -normal P026_normal              --germline-resource resources/gnomad_chr.vcf.gz              --panel-of-normals results/mutect2/pon/mutect2.pon.vcf.gz              -O results/mutect2/P026/P026_variants.vcf              --f1r2-tar-gz results/mutect2/P026/P026_f1r2.tar.gz              --native-pair-hmm-threads 4             &> logs/mutect2/P026/P026_variants.log
+        
+
+[Sat Apr 27 13:24:43 2024]
+localrule mutect2:
+    input: results/recal/P019/P019_dna_tumor_recal.bam, results/recal/P019/P019_dna_normal_recal.bam, results/mutect2/pon/mutect2.pon.vcf.gz
+    output: results/mutect2/P019/P019_variants.vcf, results/mutect2/P019/P019_f1r2.tar.gz
+    log: logs/mutect2/P019/P019_variants.log
+    jobid: 328
+    reason: Input files updated by another job: results/mutect2/pon/mutect2.pon.vcf.gz
+    wildcards: sample=P019
+    threads: 4
+    resources: tmpdir=/tmp
+
+
+        gatk Mutect2              -R resources/genome.fa              -I results/recal/P019/P019_dna_tumor_recal.bam              -I  results/recal/P019/P019_dna_normal_recal.bam              -normal P019_normal              --germline-resource resources/gnomad_chr.vcf.gz              --panel-of-normals results/mutect2/pon/mutect2.pon.vcf.gz              -O results/mutect2/P019/P019_variants.vcf              --f1r2-tar-gz results/mutect2/P019/P019_f1r2.tar.gz              --native-pair-hmm-threads 4             &> logs/mutect2/P019/P019_variants.log
+        
+
+[Sat Apr 27 13:24:43 2024]
+localrule mutect2:
+    input: results/recal/P020/P020_dna_tumor_recal.bam, results/recal/P020/P020_dna_normal_recal.bam, results/mutect2/pon/mutect2.pon.vcf.gz
+    output: results/mutect2/P020/P020_variants.vcf, results/mutect2/P020/P020_f1r2.tar.gz
+    log: logs/mutect2/P020/P020_variants.log
+    jobid: 325
+    reason: Input files updated by another job: results/mutect2/pon/mutect2.pon.vcf.gz
+    wildcards: sample=P020
+    threads: 4
+    resources: tmpdir=/tmp
+
+
+        gatk Mutect2              -R resources/genome.fa              -I results/recal/P020/P020_dna_tumor_recal.bam              -I  results/recal/P020/P020_dna_normal_recal.bam              -normal P020_normal              --germline-resource resources/gnomad_chr.vcf.gz              --panel-of-normals results/mutect2/pon/mutect2.pon.vcf.gz              -O results/mutect2/P020/P020_variants.vcf              --f1r2-tar-gz results/mutect2/P020/P020_f1r2.tar.gz              --native-pair-hmm-threads 4             &> logs/mutect2/P020/P020_variants.log
+        
+
+[Sat Apr 27 13:24:43 2024]
+localrule mutect2:
+    input: results/recal/P018/P018_dna_tumor_recal.bam, results/recal/P018/P018_dna_normal_recal.bam, results/mutect2/pon/mutect2.pon.vcf.gz
+    output: results/mutect2/P018/P018_variants.vcf, results/mutect2/P018/P018_f1r2.tar.gz
+    log: logs/mutect2/P018/P018_variants.log
+    jobid: 323
+    reason: Input files updated by another job: results/mutect2/pon/mutect2.pon.vcf.gz
+    wildcards: sample=P018
+    threads: 4
+    resources: tmpdir=/tmp
+
+
+        gatk Mutect2              -R resources/genome.fa              -I results/recal/P018/P018_dna_tumor_recal.bam              -I  results/recal/P018/P018_dna_normal_recal.bam              -normal P018_normal              --germline-resource resources/gnomad_chr.vcf.gz              --panel-of-normals results/mutect2/pon/mutect2.pon.vcf.gz              -O results/mutect2/P018/P018_variants.vcf              --f1r2-tar-gz results/mutect2/P018/P018_f1r2.tar.gz              --native-pair-hmm-threads 4             &> logs/mutect2/P018/P018_variants.log
+        
+
+[Sat Apr 27 13:24:43 2024]
+localrule mutect2:
+    input: results/recal/P024/P024_dna_tumor_recal.bam, results/recal/P024/P024_dna_normal_recal.bam, results/mutect2/pon/mutect2.pon.vcf.gz
+    output: results/mutect2/P024/P024_variants.vcf, results/mutect2/P024/P024_f1r2.tar.gz
+    log: logs/mutect2/P024/P024_variants.log
+    jobid: 300
+    reason: Missing output files: results/mutect2/P024/P024_f1r2.tar.gz; Input files updated by another job: results/mutect2/pon/mutect2.pon.vcf.gz
+    wildcards: sample=P024
+    threads: 4
+    resources: tmpdir=/tmp
+
+
+        gatk Mutect2              -R resources/genome.fa              -I results/recal/P024/P024_dna_tumor_recal.bam              -I  results/recal/P024/P024_dna_normal_recal.bam              -normal P024_normal              --germline-resource resources/gnomad_chr.vcf.gz              --panel-of-normals results/mutect2/pon/mutect2.pon.vcf.gz              -O results/mutect2/P024/P024_variants.vcf              --f1r2-tar-gz results/mutect2/P024/P024_f1r2.tar.gz              --native-pair-hmm-threads 4             &> logs/mutect2/P024/P024_variants.log
+        
+[Sat Apr 27 14:18:47 2024]
+Finished job 375.
+2 of 73 steps (3%) done
+Select jobs to execute...
+[Sat Apr 27 14:24:04 2024]
+Finished job 369.
+3 of 73 steps (4%) done
+[Sat Apr 27 14:24:37 2024]
+Finished job 333.
+4 of 73 steps (5%) done
+[Sat Apr 27 14:25:01 2024]
+Finished job 339.
+5 of 73 steps (7%) done
+Execute 1 jobs...
+
+[Sat Apr 27 14:25:01 2024]
+localrule mutect2:
+    input: results/recal/P016/P016_dna_tumor_recal.bam, results/recal/P016/P016_dna_normal_recal.bam, results/mutect2/pon/mutect2.pon.vcf.gz
+    output: results/mutect2/P016/P016_variants.vcf, results/mutect2/P016/P016_f1r2.tar.gz
+    log: logs/mutect2/P016/P016_variants.log
+    jobid: 321
+    reason: Input files updated by another job: results/mutect2/pon/mutect2.pon.vcf.gz
+    wildcards: sample=P016
+    threads: 4
+    resources: tmpdir=/tmp
+
+
+        gatk Mutect2              -R resources/genome.fa              -I results/recal/P016/P016_dna_tumor_recal.bam              -I  results/recal/P016/P016_dna_normal_recal.bam              -normal P016_normal              --germline-resource resources/gnomad_chr.vcf.gz              --panel-of-normals results/mutect2/pon/mutect2.pon.vcf.gz              -O results/mutect2/P016/P016_variants.vcf              --f1r2-tar-gz results/mutect2/P016/P016_f1r2.tar.gz              --native-pair-hmm-threads 4             &> logs/mutect2/P016/P016_variants.log
+        
+[Sat Apr 27 14:41:41 2024]
+Finished job 381.
+6 of 73 steps (8%) done
+Select jobs to execute...
+[Sat Apr 27 14:43:43 2024]
+Finished job 363.
+7 of 73 steps (10%) done
+[Sat Apr 27 14:49:16 2024]
+Finished job 351.
+8 of 73 steps (11%) done
+[Sat Apr 27 14:50:49 2024]
+Finished job 345.
+9 of 73 steps (12%) done
+Execute 1 jobs...
+
+[Sat Apr 27 14:50:49 2024]
+localrule mutect2:
+    input: results/recal/P028/P028_dna_tumor_recal.bam, results/recal/P028/P028_dna_normal_recal.bam, results/mutect2/pon/mutect2.pon.vcf.gz
+    output: results/mutect2/P028/P028_variants.vcf, results/mutect2/P028/P028_f1r2.tar.gz
+    log: logs/mutect2/P028/P028_variants.log
+    jobid: 324
+    reason: Missing output files: results/mutect2/P028/P028_f1r2.tar.gz; Input files updated by another job: results/mutect2/pon/mutect2.pon.vcf.gz
+    wildcards: sample=P028
+    threads: 4
+    resources: tmpdir=/tmp
+
+
+        gatk Mutect2              -R resources/genome.fa              -I results/recal/P028/P028_dna_tumor_recal.bam              -I  results/recal/P028/P028_dna_normal_recal.bam              -normal P028_normal              --germline-resource resources/gnomad_chr.vcf.gz              --panel-of-normals results/mutect2/pon/mutect2.pon.vcf.gz              -O results/mutect2/P028/P028_variants.vcf              --f1r2-tar-gz results/mutect2/P028/P028_f1r2.tar.gz              --native-pair-hmm-threads 4             &> logs/mutect2/P028/P028_variants.log
+        
+[Sat Apr 27 15:18:40 2024]
+Finished job 370.
+10 of 73 steps (14%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Sat Apr 27 15:18:40 2024]
+localrule calculate_contamination:
+    input: results/mutect2/P022/P022_normal_pileup_summaries.table, results/mutect2/P022/P022_tumor_pileup_summaries.table
+    output: results/mutect2/P022/P022_contamination.table
+    log: logs/mutect2/P022/P022_calculate_contamination.log
+    jobid: 368
+    reason: Missing output files: results/mutect2/P022/P022_contamination.table; Input files updated by another job: results/mutect2/P022/P022_tumor_pileup_summaries.table, results/mutect2/P022/P022_normal_pileup_summaries.table
+    wildcards: sample=P022
+    resources: tmpdir=/tmp
+
+
+        gatk CalculateContamination              -I results/mutect2/P022/P022_tumor_pileup_summaries.table              -matched results/mutect2/P022/P022_normal_pileup_summaries.table              -O results/mutect2/P022/P022_contamination.table              &> logs/mutect2/P022/P022_calculate_contamination.log
+        
+[Sat Apr 27 15:18:45 2024]
+Finished job 368.
+11 of 73 steps (15%) done
+Select jobs to execute...
+[Sat Apr 27 15:20:34 2024]
+Finished job 334.
+12 of 73 steps (16%) done
+Execute 1 jobs...
+
+[Sat Apr 27 15:20:34 2024]
+localrule calculate_contamination:
+    input: results/mutect2/P023/P023_normal_pileup_summaries.table, results/mutect2/P023/P023_tumor_pileup_summaries.table
+    output: results/mutect2/P023/P023_contamination.table
+    log: logs/mutect2/P023/P023_calculate_contamination.log
+    jobid: 332
+    reason: Missing output files: results/mutect2/P023/P023_contamination.table; Input files updated by another job: results/mutect2/P023/P023_normal_pileup_summaries.table, results/mutect2/P023/P023_tumor_pileup_summaries.table
+    wildcards: sample=P023
+    resources: tmpdir=/tmp
+
+
+        gatk CalculateContamination              -I results/mutect2/P023/P023_tumor_pileup_summaries.table              -matched results/mutect2/P023/P023_normal_pileup_summaries.table              -O results/mutect2/P023/P023_contamination.table              &> logs/mutect2/P023/P023_calculate_contamination.log
+        
+[Sat Apr 27 15:20:36 2024]
+Finished job 332.
+13 of 73 steps (18%) done
+Select jobs to execute...
+[Sat Apr 27 15:23:22 2024]
+Finished job 364.
+14 of 73 steps (19%) done
+Execute 1 jobs...
+
+[Sat Apr 27 15:23:22 2024]
+localrule calculate_contamination:
+    input: results/mutect2/P020/P020_normal_pileup_summaries.table, results/mutect2/P020/P020_tumor_pileup_summaries.table
+    output: results/mutect2/P020/P020_contamination.table
+    log: logs/mutect2/P020/P020_calculate_contamination.log
+    jobid: 362
+    reason: Missing output files: results/mutect2/P020/P020_contamination.table; Input files updated by another job: results/mutect2/P020/P020_tumor_pileup_summaries.table, results/mutect2/P020/P020_normal_pileup_summaries.table
+    wildcards: sample=P020
+    resources: tmpdir=/tmp
+
+
+        gatk CalculateContamination              -I results/mutect2/P020/P020_tumor_pileup_summaries.table              -matched results/mutect2/P020/P020_normal_pileup_summaries.table              -O results/mutect2/P020/P020_contamination.table              &> logs/mutect2/P020/P020_calculate_contamination.log
+        
+[Sat Apr 27 15:23:24 2024]
+Finished job 362.
+15 of 73 steps (21%) done
+Select jobs to execute...
+[Sat Apr 27 15:26:42 2024]
+Finished job 376.
+16 of 73 steps (22%) done
+Execute 1 jobs...
+
+[Sat Apr 27 15:26:42 2024]
+localrule mutect2:
+    input: results/recal/P022/P022_dna_tumor_recal.bam, results/recal/P022/P022_dna_normal_recal.bam, results/mutect2/pon/mutect2.pon.vcf.gz
+    output: results/mutect2/P022/P022_variants.vcf, results/mutect2/P022/P022_f1r2.tar.gz
+    log: logs/mutect2/P022/P022_variants.log
+    jobid: 326
+    reason: Input files updated by another job: results/mutect2/pon/mutect2.pon.vcf.gz
+    wildcards: sample=P022
+    threads: 4
+    resources: tmpdir=/tmp
+
+
+        gatk Mutect2              -R resources/genome.fa              -I results/recal/P022/P022_dna_tumor_recal.bam              -I  results/recal/P022/P022_dna_normal_recal.bam              -normal P022_normal              --germline-resource resources/gnomad_chr.vcf.gz              --panel-of-normals results/mutect2/pon/mutect2.pon.vcf.gz              -O results/mutect2/P022/P022_variants.vcf              --f1r2-tar-gz results/mutect2/P022/P022_f1r2.tar.gz              --native-pair-hmm-threads 4             &> logs/mutect2/P022/P022_variants.log
+        
+[Sat Apr 27 15:43:26 2024]
+Finished job 346.
+17 of 73 steps (23%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Sat Apr 27 15:43:27 2024]
+localrule calculate_contamination:
+    input: results/mutect2/P026/P026_normal_pileup_summaries.table, results/mutect2/P026/P026_tumor_pileup_summaries.table
+    output: results/mutect2/P026/P026_contamination.table
+    log: logs/mutect2/P026/P026_calculate_contamination.log
+    jobid: 344
+    reason: Missing output files: results/mutect2/P026/P026_contamination.table; Input files updated by another job: results/mutect2/P026/P026_normal_pileup_summaries.table, results/mutect2/P026/P026_tumor_pileup_summaries.table
+    wildcards: sample=P026
+    resources: tmpdir=/tmp
+
+
+        gatk CalculateContamination              -I results/mutect2/P026/P026_tumor_pileup_summaries.table              -matched results/mutect2/P026/P026_normal_pileup_summaries.table              -O results/mutect2/P026/P026_contamination.table              &> logs/mutect2/P026/P026_calculate_contamination.log
+        
+[Sat Apr 27 15:43:30 2024]
+Finished job 344.
+18 of 73 steps (25%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Sat Apr 27 15:43:30 2024]
+localrule calculate_contamination:
+    input: results/mutect2/P013/P013_normal_pileup_summaries.table, results/mutect2/P013/P013_tumor_pileup_summaries.table
+    output: results/mutect2/P013/P013_contamination.table
+    log: logs/mutect2/P013/P013_calculate_contamination.log
+    jobid: 374
+    reason: Missing output files: results/mutect2/P013/P013_contamination.table; Input files updated by another job: results/mutect2/P013/P013_normal_pileup_summaries.table, results/mutect2/P013/P013_tumor_pileup_summaries.table
+    wildcards: sample=P013
+    resources: tmpdir=/tmp
+
+
+        gatk CalculateContamination              -I results/mutect2/P013/P013_tumor_pileup_summaries.table              -matched results/mutect2/P013/P013_normal_pileup_summaries.table              -O results/mutect2/P013/P013_contamination.table              &> logs/mutect2/P013/P013_calculate_contamination.log
+        
+[Sat Apr 27 15:43:31 2024]
+Finished job 374.
+19 of 73 steps (26%) done
+Select jobs to execute...
+[Sat Apr 27 15:52:15 2024]
+Finished job 352.
+20 of 73 steps (27%) done
+Execute 1 jobs...
+
+[Sat Apr 27 15:52:15 2024]
+localrule calculate_contamination:
+    input: results/mutect2/P018/P018_normal_pileup_summaries.table, results/mutect2/P018/P018_tumor_pileup_summaries.table
+    output: results/mutect2/P018/P018_contamination.table
+    log: logs/mutect2/P018/P018_calculate_contamination.log
+    jobid: 350
+    reason: Missing output files: results/mutect2/P018/P018_contamination.table; Input files updated by another job: results/mutect2/P018/P018_tumor_pileup_summaries.table, results/mutect2/P018/P018_normal_pileup_summaries.table
+    wildcards: sample=P018
+    resources: tmpdir=/tmp
+
+
+        gatk CalculateContamination              -I results/mutect2/P018/P018_tumor_pileup_summaries.table              -matched results/mutect2/P018/P018_normal_pileup_summaries.table              -O results/mutect2/P018/P018_contamination.table              &> logs/mutect2/P018/P018_calculate_contamination.log
+        
+[Sat Apr 27 15:52:16 2024]
+Finished job 350.
+21 of 73 steps (29%) done
+Select jobs to execute...
+[Sat Apr 27 15:53:18 2024]
+Finished job 357.
+22 of 73 steps (30%) done
+[Sat Apr 27 16:02:14 2024]
+Finished job 315.
+23 of 73 steps (32%) done
+Execute 1 jobs...
+
+[Sat Apr 27 16:02:14 2024]
+localrule mutect2:
+    input: results/recal/P023/P023_dna_tumor_recal.bam, results/recal/P023/P023_dna_normal_recal.bam, results/mutect2/pon/mutect2.pon.vcf.gz
+    output: results/mutect2/P023/P023_variants.vcf, results/mutect2/P023/P023_f1r2.tar.gz
+    log: logs/mutect2/P023/P023_variants.log
+    jobid: 320
+    reason: Input files updated by another job: results/mutect2/pon/mutect2.pon.vcf.gz
+    wildcards: sample=P023
+    threads: 4
+    resources: tmpdir=/tmp
+
+
+        gatk Mutect2              -R resources/genome.fa              -I results/recal/P023/P023_dna_tumor_recal.bam              -I  results/recal/P023/P023_dna_normal_recal.bam              -normal P023_normal              --germline-resource resources/gnomad_chr.vcf.gz              --panel-of-normals results/mutect2/pon/mutect2.pon.vcf.gz              -O results/mutect2/P023/P023_variants.vcf              --f1r2-tar-gz results/mutect2/P023/P023_f1r2.tar.gz              --native-pair-hmm-threads 4             &> logs/mutect2/P023/P023_variants.log
+        
+[Sat Apr 27 16:02:36 2024]
+Finished job 340.
+24 of 73 steps (33%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Sat Apr 27 16:02:36 2024]
+localrule calculate_contamination:
+    input: results/mutect2/P016/P016_normal_pileup_summaries.table, results/mutect2/P016/P016_tumor_pileup_summaries.table
+    output: results/mutect2/P016/P016_contamination.table
+    log: logs/mutect2/P016/P016_calculate_contamination.log
+    jobid: 338
+    reason: Missing output files: results/mutect2/P016/P016_contamination.table; Input files updated by another job: results/mutect2/P016/P016_normal_pileup_summaries.table, results/mutect2/P016/P016_tumor_pileup_summaries.table
+    wildcards: sample=P016
+    resources: tmpdir=/tmp
+
+
+        gatk CalculateContamination              -I results/mutect2/P016/P016_tumor_pileup_summaries.table              -matched results/mutect2/P016/P016_normal_pileup_summaries.table              -O results/mutect2/P016/P016_contamination.table              &> logs/mutect2/P016/P016_calculate_contamination.log
+        
+[Sat Apr 27 16:02:38 2024]
+Finished job 338.
+25 of 73 steps (34%) done
+Select jobs to execute...
+[Sat Apr 27 16:23:17 2024]
+Finished job 382.
+26 of 73 steps (36%) done
+Execute 1 jobs...
+
+[Sat Apr 27 16:23:17 2024]
+localrule calculate_contamination:
+    input: results/mutect2/P019/P019_normal_pileup_summaries.table, results/mutect2/P019/P019_tumor_pileup_summaries.table
+    output: results/mutect2/P019/P019_contamination.table
+    log: logs/mutect2/P019/P019_calculate_contamination.log
+    jobid: 380
+    reason: Missing output files: results/mutect2/P019/P019_contamination.table; Input files updated by another job: results/mutect2/P019/P019_normal_pileup_summaries.table, results/mutect2/P019/P019_tumor_pileup_summaries.table
+    wildcards: sample=P019
+    resources: tmpdir=/tmp
+
+
+        gatk CalculateContamination              -I results/mutect2/P019/P019_tumor_pileup_summaries.table              -matched results/mutect2/P019/P019_normal_pileup_summaries.table              -O results/mutect2/P019/P019_contamination.table              &> logs/mutect2/P019/P019_calculate_contamination.log
+        
+[Sat Apr 27 16:23:19 2024]
+Finished job 380.
+27 of 73 steps (37%) done
+Select jobs to execute...
+[Sat Apr 27 19:09:18 2024]
+Finished job 358.
+28 of 73 steps (38%) done
+Execute 1 jobs...
+
+[Sat Apr 27 19:09:21 2024]
+localrule calculate_contamination:
+    input: results/mutect2/P028/P028_normal_pileup_summaries.table, results/mutect2/P028/P028_tumor_pileup_summaries.table
+    output: results/mutect2/P028/P028_contamination.table
+    log: logs/mutect2/P028/P028_calculate_contamination.log
+    jobid: 356
+    reason: Missing output files: results/mutect2/P028/P028_contamination.table; Input files updated by another job: results/mutect2/P028/P028_tumor_pileup_summaries.table, results/mutect2/P028/P028_normal_pileup_summaries.table
+    wildcards: sample=P028
+    resources: tmpdir=/tmp
+
+
+        gatk CalculateContamination              -I results/mutect2/P028/P028_tumor_pileup_summaries.table              -matched results/mutect2/P028/P028_normal_pileup_summaries.table              -O results/mutect2/P028/P028_contamination.table              &> logs/mutect2/P028/P028_calculate_contamination.log
+        
+[Sat Apr 27 19:09:30 2024]
+Finished job 356.
+29 of 73 steps (40%) done
+Select jobs to execute...
+[Sat Apr 27 19:19:51 2024]
+Finished job 318.
+30 of 73 steps (41%) done
+Execute 1 jobs...
+
+[Sat Apr 27 19:19:51 2024]
+localrule mutect2:
+    input: results/recal/P013/P013_dna_tumor_recal.bam, results/recal/P013/P013_dna_normal_recal.bam, results/mutect2/pon/mutect2.pon.vcf.gz
+    output: results/mutect2/P013/P013_variants.vcf, results/mutect2/P013/P013_f1r2.tar.gz
+    log: logs/mutect2/P013/P013_variants.log
+    jobid: 327
+    reason: Input files updated by another job: results/mutect2/pon/mutect2.pon.vcf.gz
+    wildcards: sample=P013
+    threads: 4
+    resources: tmpdir=/tmp
+
+
+        gatk Mutect2              -R resources/genome.fa              -I results/recal/P013/P013_dna_tumor_recal.bam              -I  results/recal/P013/P013_dna_normal_recal.bam              -normal P013_normal              --germline-resource resources/gnomad_chr.vcf.gz              --panel-of-normals results/mutect2/pon/mutect2.pon.vcf.gz              -O results/mutect2/P013/P013_variants.vcf              --f1r2-tar-gz results/mutect2/P013/P013_f1r2.tar.gz              --native-pair-hmm-threads 4             &> logs/mutect2/P013/P013_variants.log
+        
+[Sun Apr 28 11:56:51 2024]
+Finished job 325.
+31 of 73 steps (42%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Sun Apr 28 11:56:51 2024]
+localrule calculate_contamination:
+    input: results/mutect2/P024/P024_normal_pileup_summaries.table, results/mutect2/P024/P024_tumor_pileup_summaries.table
+    output: results/mutect2/P024/P024_contamination.table
+    log: logs/mutect2/P024/P024_calculate_contamination.log
+    jobid: 314
+    reason: Missing output files: results/mutect2/P024/P024_contamination.table; Input files updated by another job: results/mutect2/P024/P024_normal_pileup_summaries.table, results/mutect2/P024/P024_tumor_pileup_summaries.table
+    wildcards: sample=P024
+    resources: tmpdir=/tmp
+
+
+        gatk CalculateContamination              -I results/mutect2/P024/P024_tumor_pileup_summaries.table              -matched results/mutect2/P024/P024_normal_pileup_summaries.table              -O results/mutect2/P024/P024_contamination.table              &> logs/mutect2/P024/P024_calculate_contamination.log
+        
+[Sun Apr 28 11:56:59 2024]
+Finished job 314.
+32 of 73 steps (44%) done
+[Sun Apr 28 12:03:09 2024]
+Finished job 320.
+33 of 73 steps (45%) done
+[Sun Apr 28 13:04:30 2024]
+Finished job 326.
+34 of 73 steps (47%) done
+[Sun Apr 28 15:04:30 2024]
+Finished job 328.
+35 of 73 steps (48%) done
+[Sun Apr 28 15:31:58 2024]
+Finished job 322.
+36 of 73 steps (49%) done
+[Sun Apr 28 15:47:08 2024]
+Finished job 323.
+37 of 73 steps (51%) done
+[Sun Apr 28 16:57:55 2024]
+Finished job 327.
+38 of 73 steps (52%) done
+[Sun Apr 28 18:18:41 2024]
+Finished job 321.
+39 of 73 steps (53%) done
+[Mon Apr 29 15:11:37 2024]
+Finished job 324.
+40 of 73 steps (55%) done
+[Mon Apr 29 16:23:24 2024]
+Finished job 300.
+41 of 73 steps (56%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Apr 29 16:23:24 2024]
+localrule learn_read_orientation_model:
+    input: results/mutect2/P024/P024_f1r2.tar.gz, results/mutect2/P023/P023_f1r2.tar.gz, results/mutect2/P016/P016_f1r2.tar.gz, results/mutect2/P026/P026_f1r2.tar.gz, results/mutect2/P018/P018_f1r2.tar.gz, results/mutect2/P028/P028_f1r2.tar.gz, results/mutect2/P020/P020_f1r2.tar.gz, results/mutect2/P022/P022_f1r2.tar.gz, results/mutect2/P013/P013_f1r2.tar.gz, results/mutect2/P019/P019_f1r2.tar.gz
+    output: results/mutect2/read_orientation_model.tar.gz
+    log: logs/mutect2/learn_read_orientation_model.log
+    jobid: 319
+    reason: Missing output files: results/mutect2/read_orientation_model.tar.gz; Input files updated by another job: results/mutect2/P018/P018_f1r2.tar.gz, results/mutect2/P022/P022_f1r2.tar.gz, results/mutect2/P020/P020_f1r2.tar.gz, results/mutect2/P026/P026_f1r2.tar.gz, results/mutect2/P016/P016_f1r2.tar.gz, results/mutect2/P013/P013_f1r2.tar.gz, results/mutect2/P024/P024_f1r2.tar.gz, results/mutect2/P023/P023_f1r2.tar.gz, results/mutect2/P028/P028_f1r2.tar.gz, results/mutect2/P019/P019_f1r2.tar.gz
+    resources: tmpdir=/tmp
+
+
+        gatk LearnReadOrientationModel              -I results/mutect2/P024/P024_f1r2.tar.gz results/mutect2/P023/P023_f1r2.tar.gz results/mutect2/P016/P016_f1r2.tar.gz results/mutect2/P026/P026_f1r2.tar.gz results/mutect2/P018/P018_f1r2.tar.gz results/mutect2/P028/P028_f1r2.tar.gz results/mutect2/P020/P020_f1r2.tar.gz results/mutect2/P022/P022_f1r2.tar.gz results/mutect2/P013/P013_f1r2.tar.gz results/mutect2/P019/P019_f1r2.tar.gz              -O results/mutect2/read_orientation_model.tar.gz              &> logs/mutect2/learn_read_orientation_model.log
+        
+[Mon Apr 29 16:23:33 2024]
+Error in rule learn_read_orientation_model:
+    jobid: 319
+    input: results/mutect2/P024/P024_f1r2.tar.gz, results/mutect2/P023/P023_f1r2.tar.gz, results/mutect2/P016/P016_f1r2.tar.gz, results/mutect2/P026/P026_f1r2.tar.gz, results/mutect2/P018/P018_f1r2.tar.gz, results/mutect2/P028/P028_f1r2.tar.gz, results/mutect2/P020/P020_f1r2.tar.gz, results/mutect2/P022/P022_f1r2.tar.gz, results/mutect2/P013/P013_f1r2.tar.gz, results/mutect2/P019/P019_f1r2.tar.gz
+    output: results/mutect2/read_orientation_model.tar.gz
+    log: logs/mutect2/learn_read_orientation_model.log (check log file(s) for error details)
+    shell:
+        
+        gatk LearnReadOrientationModel              -I results/mutect2/P024/P024_f1r2.tar.gz results/mutect2/P023/P023_f1r2.tar.gz results/mutect2/P016/P016_f1r2.tar.gz results/mutect2/P026/P026_f1r2.tar.gz results/mutect2/P018/P018_f1r2.tar.gz results/mutect2/P028/P028_f1r2.tar.gz results/mutect2/P020/P020_f1r2.tar.gz results/mutect2/P022/P022_f1r2.tar.gz results/mutect2/P013/P013_f1r2.tar.gz results/mutect2/P019/P019_f1r2.tar.gz              -O results/mutect2/read_orientation_model.tar.gz              &> logs/mutect2/learn_read_orientation_model.log
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2024-04-27T130037.158026.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

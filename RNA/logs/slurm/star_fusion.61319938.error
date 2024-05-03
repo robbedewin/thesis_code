@@ -1,0 +1,214 @@
+Assuming unrestricted shared filesystem usage.
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 28
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job            count
+-----------  -------
+STAR_Fusion        9
+all                1
+total             10
+
+Select jobs to execute...
+Execute 2 jobs...
+
+[Tue Apr  9 13:04:25 2024]
+localrule STAR_Fusion:
+    input: results/fastp/P019/P019_rna_R1.trimmed.fq, results/fastp/P019/P019_rna_R2.trimmed.fq
+    output: /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P019
+    log: logs/star_fusion/P019/P019_fusion.log
+    jobid: 1
+    reason: Missing output files: /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P019
+    wildcards: sample=P019
+    threads: 14
+    resources: tmpdir=/tmp
+
+
+        mkdir -p /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P019
+        singularity exec -e -B `pwd` -B /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir -B /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P019         /staging/leuven/stg_00096/home/rdewin/singularity/star-fusion.v1.12.0.simg          STAR-Fusion             --left_fq results/fastp/P019/P019_rna_R1.trimmed.fq             --right_fq results/fastp/P019/P019_rna_R2.trimmed.fq             --genome_lib_dir /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir             --CPU 14             --output_dir /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P019             --FusionInspector validate             --examine_coding_effect             --denovo_reconstruct         > logs/star_fusion/P019/P019_fusion.log 2>&1
+        
+
+[Tue Apr  9 13:04:25 2024]
+localrule STAR_Fusion:
+    input: results/fastp/P028/P028_rna_R1.trimmed.fq, results/fastp/P028/P028_rna_R2.trimmed.fq
+    output: /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028
+    log: logs/star_fusion/P028/P028_fusion.log
+    jobid: 11
+    reason: Missing output files: /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028
+    wildcards: sample=P028
+    threads: 14
+    resources: tmpdir=/tmp
+
+
+        mkdir -p /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028
+        singularity exec -e -B `pwd` -B /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir -B /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028         /staging/leuven/stg_00096/home/rdewin/singularity/star-fusion.v1.12.0.simg          STAR-Fusion             --left_fq results/fastp/P028/P028_rna_R1.trimmed.fq             --right_fq results/fastp/P028/P028_rna_R2.trimmed.fq             --genome_lib_dir /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir             --CPU 14             --output_dir /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028             --FusionInspector validate             --examine_coding_effect             --denovo_reconstruct         > logs/star_fusion/P028/P028_fusion.log 2>&1
+        
+[Tue Apr  9 13:38:57 2024]
+Finished job 1.
+1 of 10 steps (10%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Apr  9 13:38:57 2024]
+localrule STAR_Fusion:
+    input: results/fastp/P022/P022_rna_R1.trimmed.fq, results/fastp/P022/P022_rna_R2.trimmed.fq
+    output: /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P022
+    log: logs/star_fusion/P022/P022_fusion.log
+    jobid: 19
+    reason: Missing output files: /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P022
+    wildcards: sample=P022
+    threads: 14
+    resources: tmpdir=/tmp
+
+
+        mkdir -p /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P022
+        singularity exec -e -B `pwd` -B /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir -B /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P022         /staging/leuven/stg_00096/home/rdewin/singularity/star-fusion.v1.12.0.simg          STAR-Fusion             --left_fq results/fastp/P022/P022_rna_R1.trimmed.fq             --right_fq results/fastp/P022/P022_rna_R2.trimmed.fq             --genome_lib_dir /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir             --CPU 14             --output_dir /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P022             --FusionInspector validate             --examine_coding_effect             --denovo_reconstruct         > logs/star_fusion/P022/P022_fusion.log 2>&1
+        
+[Tue Apr  9 14:09:28 2024]
+Finished job 11.
+2 of 10 steps (20%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Apr  9 14:09:28 2024]
+localrule STAR_Fusion:
+    input: results/fastp/P018/P018_rna_R1.trimmed.fq, results/fastp/P018/P018_rna_R2.trimmed.fq
+    output: /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P018
+    log: logs/star_fusion/P018/P018_fusion.log
+    jobid: 9
+    reason: Missing output files: /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P018
+    wildcards: sample=P018
+    threads: 14
+    resources: tmpdir=/tmp
+
+
+        mkdir -p /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P018
+        singularity exec -e -B `pwd` -B /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir -B /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P018         /staging/leuven/stg_00096/home/rdewin/singularity/star-fusion.v1.12.0.simg          STAR-Fusion             --left_fq results/fastp/P018/P018_rna_R1.trimmed.fq             --right_fq results/fastp/P018/P018_rna_R2.trimmed.fq             --genome_lib_dir /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir             --CPU 14             --output_dir /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P018             --FusionInspector validate             --examine_coding_effect             --denovo_reconstruct         > logs/star_fusion/P018/P018_fusion.log 2>&1
+        
+[Tue Apr  9 14:13:22 2024]
+Finished job 19.
+3 of 10 steps (30%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Apr  9 14:13:22 2024]
+localrule STAR_Fusion:
+    input: results/fastp/P016/P016_rna_R1.trimmed.fq, results/fastp/P016/P016_rna_R2.trimmed.fq
+    output: /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P016
+    log: logs/star_fusion/P016/P016_fusion.log
+    jobid: 17
+    reason: Missing output files: /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P016
+    wildcards: sample=P016
+    threads: 14
+    resources: tmpdir=/tmp
+
+
+        mkdir -p /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P016
+        singularity exec -e -B `pwd` -B /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir -B /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P016         /staging/leuven/stg_00096/home/rdewin/singularity/star-fusion.v1.12.0.simg          STAR-Fusion             --left_fq results/fastp/P016/P016_rna_R1.trimmed.fq             --right_fq results/fastp/P016/P016_rna_R2.trimmed.fq             --genome_lib_dir /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir             --CPU 14             --output_dir /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P016             --FusionInspector validate             --examine_coding_effect             --denovo_reconstruct         > logs/star_fusion/P016/P016_fusion.log 2>&1
+        
+[Tue Apr  9 14:33:24 2024]
+Finished job 9.
+4 of 10 steps (40%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Apr  9 14:33:24 2024]
+localrule STAR_Fusion:
+    input: results/fastp/P024/P024_rna_R1.trimmed.fq, results/fastp/P024/P024_rna_R2.trimmed.fq
+    output: /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P024
+    log: logs/star_fusion/P024/P024_fusion.log
+    jobid: 5
+    reason: Missing output files: /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P024
+    wildcards: sample=P024
+    threads: 14
+    resources: tmpdir=/tmp
+
+
+        mkdir -p /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P024
+        singularity exec -e -B `pwd` -B /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir -B /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P024         /staging/leuven/stg_00096/home/rdewin/singularity/star-fusion.v1.12.0.simg          STAR-Fusion             --left_fq results/fastp/P024/P024_rna_R1.trimmed.fq             --right_fq results/fastp/P024/P024_rna_R2.trimmed.fq             --genome_lib_dir /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir             --CPU 14             --output_dir /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P024             --FusionInspector validate             --examine_coding_effect             --denovo_reconstruct         > logs/star_fusion/P024/P024_fusion.log 2>&1
+        
+[Tue Apr  9 14:34:47 2024]
+Finished job 17.
+5 of 10 steps (50%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Apr  9 14:34:48 2024]
+localrule STAR_Fusion:
+    input: results/fastp/P026/P026_rna_R1.trimmed.fq, results/fastp/P026/P026_rna_R2.trimmed.fq
+    output: /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P026
+    log: logs/star_fusion/P026/P026_fusion.log
+    jobid: 7
+    reason: Missing output files: /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P026
+    wildcards: sample=P026
+    threads: 14
+    resources: tmpdir=/tmp
+
+
+        mkdir -p /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P026
+        singularity exec -e -B `pwd` -B /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir -B /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P026         /staging/leuven/stg_00096/home/rdewin/singularity/star-fusion.v1.12.0.simg          STAR-Fusion             --left_fq results/fastp/P026/P026_rna_R1.trimmed.fq             --right_fq results/fastp/P026/P026_rna_R2.trimmed.fq             --genome_lib_dir /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir             --CPU 14             --output_dir /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P026             --FusionInspector validate             --examine_coding_effect             --denovo_reconstruct         > logs/star_fusion/P026/P026_fusion.log 2>&1
+        
+[Tue Apr  9 14:45:01 2024]
+Finished job 7.
+6 of 10 steps (60%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Apr  9 14:45:01 2024]
+localrule STAR_Fusion:
+    input: results/fastp/P020/P020_rna_R1.trimmed.fq, results/fastp/P020/P020_rna_R2.trimmed.fq
+    output: /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P020
+    log: logs/star_fusion/P020/P020_fusion.log
+    jobid: 15
+    reason: Missing output files: /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P020
+    wildcards: sample=P020
+    threads: 14
+    resources: tmpdir=/tmp
+
+
+        mkdir -p /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P020
+        singularity exec -e -B `pwd` -B /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir -B /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P020         /staging/leuven/stg_00096/home/rdewin/singularity/star-fusion.v1.12.0.simg          STAR-Fusion             --left_fq results/fastp/P020/P020_rna_R1.trimmed.fq             --right_fq results/fastp/P020/P020_rna_R2.trimmed.fq             --genome_lib_dir /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir             --CPU 14             --output_dir /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P020             --FusionInspector validate             --examine_coding_effect             --denovo_reconstruct         > logs/star_fusion/P020/P020_fusion.log 2>&1
+        
+[Tue Apr  9 15:01:31 2024]
+Finished job 5.
+7 of 10 steps (70%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Apr  9 15:01:32 2024]
+localrule STAR_Fusion:
+    input: results/fastp/P023/P023_rna_R1.trimmed.fq, results/fastp/P023/P023_rna_R2.trimmed.fq
+    output: /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P023
+    log: logs/star_fusion/P023/P023_fusion.log
+    jobid: 3
+    reason: Missing output files: /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P023
+    wildcards: sample=P023
+    threads: 14
+    resources: tmpdir=/tmp
+
+
+        mkdir -p /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P023
+        singularity exec -e -B `pwd` -B /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir -B /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P023         /staging/leuven/stg_00096/home/rdewin/singularity/star-fusion.v1.12.0.simg          STAR-Fusion             --left_fq results/fastp/P023/P023_rna_R1.trimmed.fq             --right_fq results/fastp/P023/P023_rna_R2.trimmed.fq             --genome_lib_dir /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir             --CPU 14             --output_dir /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P023             --FusionInspector validate             --examine_coding_effect             --denovo_reconstruct         > logs/star_fusion/P023/P023_fusion.log 2>&1
+        
+[Tue Apr  9 15:08:13 2024]
+Finished job 15.
+8 of 10 steps (80%) done
+[Tue Apr  9 15:23:06 2024]
+Finished job 3.
+9 of 10 steps (90%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Apr  9 15:23:06 2024]
+localrule all:
+    input: /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P019, /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P023, /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P024, /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P026, /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P018, /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028, /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P013, /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P020, /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P016, /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P022
+    jobid: 0
+    reason: Input files updated by another job: /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P022, /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P020, /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P028, /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P019, /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P016, /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P024, /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P023, /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P018, /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P026
+    resources: tmpdir=/tmp
+
+[Tue Apr  9 15:23:07 2024]
+Finished job 0.
+10 of 10 steps (100%) done
+Complete log: .snakemake/log/2024-04-09T130420.568161.snakemake.log

@@ -1,0 +1,258 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 36
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job                    count
+-------------------  -------
+all                        1
+bwa_mem2                  10
+link_files                 1
+samtools_sort_index       10
+total                     22
+
+Select jobs to execute...
+
+[Tue Apr  9 23:49:35 2024]
+rule link_files:
+    output: resources/genome.fa, resources/genome.fa.fai, resources/genome.dict, resources/annotation.gtf, resources/genome.fa.0123, resources/genome.fa.amb, resources/genome.fa.ann, resources/genome.fa.bwt.2bit.64, resources/genome.fa.pac
+    jobid: 4
+    reason: Missing output files: resources/genome.fa, resources/genome.fa.0123, resources/genome.fa.amb, resources/genome.fa.pac, resources/genome.fa.ann, resources/genome.fa.bwt.2bit.64
+    resources: tmpdir=/tmp
+
+
+        ln -s /staging/leuven/stg_00096/home/rdewin/WGS/resources/genome.fa resources/genome.fa
+        ln -s /staging/leuven/stg_00096/home/rdewin/WGS/resources/genome.fa.fai resources/genome.fa.fai
+        ln -s /staging/leuven/stg_00096/home/rdewin/WGS/resources/genome.dict resources/genome.dict
+        ln -s /staging/leuven/stg_00096/home/rdewin/WGS/resources/annotation.gtf resources/annotation.gtf
+        ln -s /staging/leuven/stg_00096/home/rdewin/WGS/resources/genome.fa.0123 resources/genome.fa.0123
+        ln -s /staging/leuven/stg_00096/home/rdewin/WGS/resources/genome.fa.amb resources/genome.fa.amb
+        ln -s /staging/leuven/stg_00096/home/rdewin/WGS/resources/genome.fa.ann resources/genome.fa.ann
+        ln -s /staging/leuven/stg_00096/home/rdewin/WGS/resources/genome.fa.bwt.2bit.64 resources/genome.fa.bwt.2bit.64
+        ln -s /staging/leuven/stg_00096/home/rdewin/WGS/resources/genome.fa.pac resources/genome.fa.pac
+        
+[Tue Apr  9 23:49:35 2024]
+Finished job 4.
+1 of 22 steps (5%) done
+Select jobs to execute...
+
+[Tue Apr  9 23:49:38 2024]
+rule bwa_mem2:
+    input: results/fastp/P023/P023_atac_R1.trimmed.fq, results/fastp/P023/P023_atac_R2.trimmed.fq, resources/genome.fa, resources/genome.fa.0123, resources/genome.fa.amb, resources/genome.fa.ann, resources/genome.fa.bwt.2bit.64, resources/genome.fa.pac
+    output: results/bwamem2/P023/P023_aligned.sam
+    log: logs/bwamem2/P023_bwamem2.log
+    jobid: 24
+    reason: Missing output files: results/bwamem2/P023/P023_aligned.sam; Input files updated by another job: resources/genome.fa, resources/genome.fa.ann, resources/genome.fa.bwt.2bit.64, resources/genome.fa.0123, resources/genome.fa.amb, resources/genome.fa.pac
+    wildcards: sample=P023
+    threads: 18
+    resources: tmpdir=/tmp
+
+
+        read -r first_line < <(cat results/fastp/P023/P023_atac_R1.trimmed.fq | head -n 1)
+        IFS=':' read -r -a rgdata <<< "$first_line"
+        FLOWCELLID=${rgdata[2]}
+        LANE=${rgdata[3]}
+        BC=${rgdata[-1]}
+        RG="@RG\tID:${FLOWCELLID}.${LANE}\tPL:ILLUMINA\tPU:${FLOWCELLID}.${LANE}.${BC}\tLB:LIB-P023_atac-1\tSM:P023_atac"
+
+        bwa-mem2 mem -o results/bwamem2/P023/P023_aligned.sam -t 18 - R "$RG"         resources/genome.fa results/fastp/P023/P023_atac_R1.trimmed.fq results/fastp/P023/P023_atac_R2.trimmed.fq &> logs/bwamem2/P023_bwamem2.log
+        
+
+[Tue Apr  9 23:49:38 2024]
+rule bwa_mem2:
+    input: results/fastp/P018/P018_atac_R1.trimmed.fq, results/fastp/P018/P018_atac_R2.trimmed.fq, resources/genome.fa, resources/genome.fa.0123, resources/genome.fa.amb, resources/genome.fa.ann, resources/genome.fa.bwt.2bit.64, resources/genome.fa.pac
+    output: results/bwamem2/P018/P018_aligned.sam
+    log: logs/bwamem2/P018_bwamem2.log
+    jobid: 30
+    reason: Missing output files: results/bwamem2/P018/P018_aligned.sam; Input files updated by another job: resources/genome.fa, resources/genome.fa.ann, resources/genome.fa.bwt.2bit.64, resources/genome.fa.0123, resources/genome.fa.amb, resources/genome.fa.pac
+    wildcards: sample=P018
+    threads: 18
+    resources: tmpdir=/tmp
+
+
+        read -r first_line < <(cat results/fastp/P018/P018_atac_R1.trimmed.fq | head -n 1)
+        IFS=':' read -r -a rgdata <<< "$first_line"
+        FLOWCELLID=${rgdata[2]}
+        LANE=${rgdata[3]}
+        BC=${rgdata[-1]}
+        RG="@RG\tID:${FLOWCELLID}.${LANE}\tPL:ILLUMINA\tPU:${FLOWCELLID}.${LANE}.${BC}\tLB:LIB-P018_atac-1\tSM:P018_atac"
+
+        bwa-mem2 mem -o results/bwamem2/P018/P018_aligned.sam -t 18 - R "$RG"         resources/genome.fa results/fastp/P018/P018_atac_R1.trimmed.fq results/fastp/P018/P018_atac_R2.trimmed.fq &> logs/bwamem2/P018_bwamem2.log
+        
+[Tue Apr  9 23:49:39 2024]
+Finished job 24.
+2 of 22 steps (9%) done
+[Tue Apr  9 23:49:39 2024]
+Finished job 30.
+3 of 22 steps (14%) done
+Select jobs to execute...
+
+[Tue Apr  9 23:49:39 2024]
+rule bwa_mem2:
+    input: results/fastp/P013/P013_atac_R1.trimmed.fq, results/fastp/P013/P013_atac_R2.trimmed.fq, resources/genome.fa, resources/genome.fa.0123, resources/genome.fa.amb, resources/genome.fa.ann, resources/genome.fa.bwt.2bit.64, resources/genome.fa.pac
+    output: results/bwamem2/P013/P013_aligned.sam
+    log: logs/bwamem2/P013_bwamem2.log
+    jobid: 15
+    reason: Missing output files: results/bwamem2/P013/P013_aligned.sam; Input files updated by another job: resources/genome.fa, resources/genome.fa.ann, resources/genome.fa.bwt.2bit.64, resources/genome.fa.0123, resources/genome.fa.amb, resources/genome.fa.pac
+    wildcards: sample=P013
+    threads: 18
+    resources: tmpdir=/tmp
+
+
+        read -r first_line < <(cat results/fastp/P013/P013_atac_R1.trimmed.fq | head -n 1)
+        IFS=':' read -r -a rgdata <<< "$first_line"
+        FLOWCELLID=${rgdata[2]}
+        LANE=${rgdata[3]}
+        BC=${rgdata[-1]}
+        RG="@RG\tID:${FLOWCELLID}.${LANE}\tPL:ILLUMINA\tPU:${FLOWCELLID}.${LANE}.${BC}\tLB:LIB-P013_atac-1\tSM:P013_atac"
+
+        bwa-mem2 mem -o results/bwamem2/P013/P013_aligned.sam -t 18 - R "$RG"         resources/genome.fa results/fastp/P013/P013_atac_R1.trimmed.fq results/fastp/P013/P013_atac_R2.trimmed.fq &> logs/bwamem2/P013_bwamem2.log
+        
+
+[Tue Apr  9 23:49:39 2024]
+rule bwa_mem2:
+    input: results/fastp/P028/P028_atac_R1.trimmed.fq, results/fastp/P028/P028_atac_R2.trimmed.fq, resources/genome.fa, resources/genome.fa.0123, resources/genome.fa.amb, resources/genome.fa.ann, resources/genome.fa.bwt.2bit.64, resources/genome.fa.pac
+    output: results/bwamem2/P028/P028_aligned.sam
+    log: logs/bwamem2/P028_bwamem2.log
+    jobid: 6
+    reason: Missing output files: results/bwamem2/P028/P028_aligned.sam; Input files updated by another job: resources/genome.fa, resources/genome.fa.ann, resources/genome.fa.bwt.2bit.64, resources/genome.fa.0123, resources/genome.fa.amb, resources/genome.fa.pac
+    wildcards: sample=P028
+    threads: 18
+    resources: tmpdir=/tmp
+
+
+        read -r first_line < <(cat results/fastp/P028/P028_atac_R1.trimmed.fq | head -n 1)
+        IFS=':' read -r -a rgdata <<< "$first_line"
+        FLOWCELLID=${rgdata[2]}
+        LANE=${rgdata[3]}
+        BC=${rgdata[-1]}
+        RG="@RG\tID:${FLOWCELLID}.${LANE}\tPL:ILLUMINA\tPU:${FLOWCELLID}.${LANE}.${BC}\tLB:LIB-P028_atac-1\tSM:P028_atac"
+
+        bwa-mem2 mem -o results/bwamem2/P028/P028_aligned.sam -t 18 - R "$RG"         resources/genome.fa results/fastp/P028/P028_atac_R1.trimmed.fq results/fastp/P028/P028_atac_R2.trimmed.fq &> logs/bwamem2/P028_bwamem2.log
+        
+Select jobs to execute...
+[Tue Apr  9 23:49:41 2024]
+Finished job 6.
+4 of 22 steps (18%) done
+
+[Tue Apr  9 23:49:41 2024]
+rule bwa_mem2:
+    input: results/fastp/P020/P020_atac_R1.trimmed.fq, results/fastp/P020/P020_atac_R2.trimmed.fq, resources/genome.fa, resources/genome.fa.0123, resources/genome.fa.amb, resources/genome.fa.ann, resources/genome.fa.bwt.2bit.64, resources/genome.fa.pac
+    output: results/bwamem2/P020/P020_aligned.sam
+    log: logs/bwamem2/P020_bwamem2.log
+    jobid: 9
+    reason: Missing output files: results/bwamem2/P020/P020_aligned.sam; Input files updated by another job: resources/genome.fa, resources/genome.fa.ann, resources/genome.fa.bwt.2bit.64, resources/genome.fa.0123, resources/genome.fa.amb, resources/genome.fa.pac
+    wildcards: sample=P020
+    threads: 18
+    resources: tmpdir=/tmp
+
+
+        read -r first_line < <(cat results/fastp/P020/P020_atac_R1.trimmed.fq | head -n 1)
+        IFS=':' read -r -a rgdata <<< "$first_line"
+        FLOWCELLID=${rgdata[2]}
+        LANE=${rgdata[3]}
+        BC=${rgdata[-1]}
+        RG="@RG\tID:${FLOWCELLID}.${LANE}\tPL:ILLUMINA\tPU:${FLOWCELLID}.${LANE}.${BC}\tLB:LIB-P020_atac-1\tSM:P020_atac"
+
+        bwa-mem2 mem -o results/bwamem2/P020/P020_aligned.sam -t 18 - R "$RG"         resources/genome.fa results/fastp/P020/P020_atac_R1.trimmed.fq results/fastp/P020/P020_atac_R2.trimmed.fq &> logs/bwamem2/P020_bwamem2.log
+        
+[Tue Apr  9 23:49:41 2024]
+Finished job 15.
+5 of 22 steps (23%) done
+Select jobs to execute...
+
+[Tue Apr  9 23:49:41 2024]
+rule bwa_mem2:
+    input: results/fastp/P016/P016_atac_R1.trimmed.fq, results/fastp/P016/P016_atac_R2.trimmed.fq, resources/genome.fa, resources/genome.fa.0123, resources/genome.fa.amb, resources/genome.fa.ann, resources/genome.fa.bwt.2bit.64, resources/genome.fa.pac
+    output: results/bwamem2/P016/P016_aligned.sam
+    log: logs/bwamem2/P016_bwamem2.log
+    jobid: 18
+    reason: Missing output files: results/bwamem2/P016/P016_aligned.sam; Input files updated by another job: resources/genome.fa, resources/genome.fa.ann, resources/genome.fa.bwt.2bit.64, resources/genome.fa.0123, resources/genome.fa.amb, resources/genome.fa.pac
+    wildcards: sample=P016
+    threads: 18
+    resources: tmpdir=/tmp
+
+
+        read -r first_line < <(cat results/fastp/P016/P016_atac_R1.trimmed.fq | head -n 1)
+        IFS=':' read -r -a rgdata <<< "$first_line"
+        FLOWCELLID=${rgdata[2]}
+        LANE=${rgdata[3]}
+        BC=${rgdata[-1]}
+        RG="@RG\tID:${FLOWCELLID}.${LANE}\tPL:ILLUMINA\tPU:${FLOWCELLID}.${LANE}.${BC}\tLB:LIB-P016_atac-1\tSM:P016_atac"
+
+        bwa-mem2 mem -o results/bwamem2/P016/P016_aligned.sam -t 18 - R "$RG"         resources/genome.fa results/fastp/P016/P016_atac_R1.trimmed.fq results/fastp/P016/P016_atac_R2.trimmed.fq &> logs/bwamem2/P016_bwamem2.log
+        
+[Tue Apr  9 23:49:42 2024]
+Finished job 18.
+6 of 22 steps (27%) done
+Select jobs to execute...
+
+[Tue Apr  9 23:49:42 2024]
+rule samtools_sort_index:
+    input: results/bwamem2/P028/P028_aligned.sam, resources/genome.fa
+    output: results/samtools/P028/P028_atac.bam, results/samtools/P028/P028_atac.bam.bai
+    log: logs/samtools/P028/P028_sort.log, logs/samtools/P028/P028_index.log
+    jobid: 5
+    reason: Missing output files: results/samtools/P028/P028_atac.bam; Input files updated by another job: resources/genome.fa, results/bwamem2/P028/P028_aligned.sam
+    wildcards: sample=P028
+    threads: 18
+    resources: tmpdir=/tmp
+
+
+        samtools sort --threads 18 --write-index -m 2G         --reference resources/genome.fa -T sorttmp_{wildcards.sample}         -o results/samtools/P028/P028_atac.bam results/bwamem2/P028/P028_aligned.sam &> logs/samtools/P028/P028_sort.log
+
+        samtools index --threads 18         results/samtools/P028/P028_atac.bam results/samtools/P028/P028_atac.bam.bai &> logs/samtools/P028/P028_index.log
+        
+[Tue Apr  9 23:49:42 2024]
+Finished job 9.
+7 of 22 steps (32%) done
+Select jobs to execute...
+
+[Tue Apr  9 23:49:42 2024]
+rule samtools_sort_index:
+    input: results/bwamem2/P013/P013_aligned.sam, resources/genome.fa
+    output: results/samtools/P013/P013_atac.bam, results/samtools/P013/P013_atac.bam.bai
+    log: logs/samtools/P013/P013_sort.log, logs/samtools/P013/P013_index.log
+    jobid: 14
+    reason: Missing output files: results/samtools/P013/P013_atac.bam; Input files updated by another job: resources/genome.fa, results/bwamem2/P013/P013_aligned.sam
+    wildcards: sample=P013
+    threads: 18
+    resources: tmpdir=/tmp
+
+
+        samtools sort --threads 18 --write-index -m 2G         --reference resources/genome.fa -T sorttmp_{wildcards.sample}         -o results/samtools/P013/P013_atac.bam results/bwamem2/P013/P013_aligned.sam &> logs/samtools/P013/P013_sort.log
+
+        samtools index --threads 18         results/samtools/P013/P013_atac.bam results/samtools/P013/P013_atac.bam.bai &> logs/samtools/P013/P013_index.log
+        
+[Tue Apr  9 23:49:43 2024]
+Error in rule samtools_sort_index:
+    jobid: 5
+    input: results/bwamem2/P028/P028_aligned.sam, resources/genome.fa
+    output: results/samtools/P028/P028_atac.bam, results/samtools/P028/P028_atac.bam.bai
+    log: logs/samtools/P028/P028_sort.log, logs/samtools/P028/P028_index.log (check log file(s) for error details)
+    shell:
+        
+        samtools sort --threads 18 --write-index -m 2G         --reference resources/genome.fa -T sorttmp_{wildcards.sample}         -o results/samtools/P028/P028_atac.bam results/bwamem2/P028/P028_aligned.sam &> logs/samtools/P028/P028_sort.log
+
+        samtools index --threads 18         results/samtools/P028/P028_atac.bam results/samtools/P028/P028_atac.bam.bai &> logs/samtools/P028/P028_index.log
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+[Tue Apr  9 23:49:43 2024]
+Error in rule samtools_sort_index:
+    jobid: 14
+    input: results/bwamem2/P013/P013_aligned.sam, resources/genome.fa
+    output: results/samtools/P013/P013_atac.bam, results/samtools/P013/P013_atac.bam.bai
+    log: logs/samtools/P013/P013_sort.log, logs/samtools/P013/P013_index.log (check log file(s) for error details)
+    shell:
+        
+        samtools sort --threads 18 --write-index -m 2G         --reference resources/genome.fa -T sorttmp_{wildcards.sample}         -o results/samtools/P013/P013_atac.bam results/bwamem2/P013/P013_aligned.sam &> logs/samtools/P013/P013_sort.log
+
+        samtools index --threads 18         results/samtools/P013/P013_atac.bam results/samtools/P013/P013_atac.bam.bai &> logs/samtools/P013/P013_index.log
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2024-04-09T234857.533765.snakemake.log

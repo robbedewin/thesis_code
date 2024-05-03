@@ -1,0 +1,495 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 36
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job                    count
+-------------------  -------
+all                        1
+bwa_mem2                  10
+samtools_sort_index       10
+total                     21
+
+Select jobs to execute...
+
+[Wed Apr 10 21:29:08 2024]
+rule bwa_mem2:
+    input: results/fastp/P013/P013_atac_R1.trimmed.fq, results/fastp/P013/P013_atac_R2.trimmed.fq, resources/genome.fa, resources/genome.fa.0123, resources/genome.fa.amb, resources/genome.fa.ann, resources/genome.fa.bwt.2bit.64, resources/genome.fa.pac
+    output: results/bwamem2/P013/P013_aligned.sam
+    log: logs/bwamem2/P013_bwamem2.log
+    jobid: 24
+    reason: Forced execution
+    wildcards: sample=P013
+    threads: 18
+    resources: tmpdir=/tmp
+
+
+        read -r first_line < <(cat results/fastp/P013/P013_atac_R1.trimmed.fq | head -n 1)
+        IFS=':' read -r -a rgdata <<< "$first_line"
+        FLOWCELLID=${rgdata[2]}
+        LANE=${rgdata[3]}
+        BC=${rgdata[-1]}
+        RG="@RG\tID:${FLOWCELLID}.${LANE}\tPL:ILLUMINA\tPU:${FLOWCELLID}.${LANE}.${BC}\tLB:LIB-P013_atac-1\tSM:P013_atac"
+
+        bwa-mem2 mem -o results/bwamem2/P013/P013_aligned.sam -t 18 -R "$RG"         resources/genome.fa results/fastp/P013/P013_atac_R1.trimmed.fq results/fastp/P013/P013_atac_R2.trimmed.fq &> logs/bwamem2/P013_bwamem2.log
+        
+
+[Wed Apr 10 21:29:08 2024]
+rule bwa_mem2:
+    input: results/fastp/P020/P020_atac_R1.trimmed.fq, results/fastp/P020/P020_atac_R2.trimmed.fq, resources/genome.fa, resources/genome.fa.0123, resources/genome.fa.amb, resources/genome.fa.ann, resources/genome.fa.bwt.2bit.64, resources/genome.fa.pac
+    output: results/bwamem2/P020/P020_aligned.sam
+    log: logs/bwamem2/P020_bwamem2.log
+    jobid: 30
+    reason: Missing output files: results/bwamem2/P020/P020_aligned.sam; Code has changed since last execution
+    wildcards: sample=P020
+    threads: 18
+    resources: tmpdir=/tmp
+
+
+        read -r first_line < <(cat results/fastp/P020/P020_atac_R1.trimmed.fq | head -n 1)
+        IFS=':' read -r -a rgdata <<< "$first_line"
+        FLOWCELLID=${rgdata[2]}
+        LANE=${rgdata[3]}
+        BC=${rgdata[-1]}
+        RG="@RG\tID:${FLOWCELLID}.${LANE}\tPL:ILLUMINA\tPU:${FLOWCELLID}.${LANE}.${BC}\tLB:LIB-P020_atac-1\tSM:P020_atac"
+
+        bwa-mem2 mem -o results/bwamem2/P020/P020_aligned.sam -t 18 -R "$RG"         resources/genome.fa results/fastp/P020/P020_atac_R1.trimmed.fq results/fastp/P020/P020_atac_R2.trimmed.fq &> logs/bwamem2/P020_bwamem2.log
+        
+[Wed Apr 10 21:45:25 2024]
+Finished job 30.
+1 of 21 steps (5%) done
+Select jobs to execute...
+
+[Wed Apr 10 21:45:25 2024]
+rule bwa_mem2:
+    input: results/fastp/P018/P018_atac_R1.trimmed.fq, results/fastp/P018/P018_atac_R2.trimmed.fq, resources/genome.fa, resources/genome.fa.0123, resources/genome.fa.amb, resources/genome.fa.ann, resources/genome.fa.bwt.2bit.64, resources/genome.fa.pac
+    output: results/bwamem2/P018/P018_aligned.sam
+    log: logs/bwamem2/P018_bwamem2.log
+    jobid: 9
+    reason: Missing output files: results/bwamem2/P018/P018_aligned.sam; Code has changed since last execution
+    wildcards: sample=P018
+    threads: 18
+    resources: tmpdir=/tmp
+
+
+        read -r first_line < <(cat results/fastp/P018/P018_atac_R1.trimmed.fq | head -n 1)
+        IFS=':' read -r -a rgdata <<< "$first_line"
+        FLOWCELLID=${rgdata[2]}
+        LANE=${rgdata[3]}
+        BC=${rgdata[-1]}
+        RG="@RG\tID:${FLOWCELLID}.${LANE}\tPL:ILLUMINA\tPU:${FLOWCELLID}.${LANE}.${BC}\tLB:LIB-P018_atac-1\tSM:P018_atac"
+
+        bwa-mem2 mem -o results/bwamem2/P018/P018_aligned.sam -t 18 -R "$RG"         resources/genome.fa results/fastp/P018/P018_atac_R1.trimmed.fq results/fastp/P018/P018_atac_R2.trimmed.fq &> logs/bwamem2/P018_bwamem2.log
+        
+[Wed Apr 10 21:50:24 2024]
+Finished job 24.
+2 of 21 steps (10%) done
+Select jobs to execute...
+
+[Wed Apr 10 21:50:24 2024]
+rule bwa_mem2:
+    input: results/fastp/P026/P026_atac_R1.trimmed.fq, results/fastp/P026/P026_atac_R2.trimmed.fq, resources/genome.fa, resources/genome.fa.0123, resources/genome.fa.amb, resources/genome.fa.ann, resources/genome.fa.bwt.2bit.64, resources/genome.fa.pac
+    output: results/bwamem2/P026/P026_aligned.sam
+    log: logs/bwamem2/P026_bwamem2.log
+    jobid: 18
+    reason: Missing output files: results/bwamem2/P026/P026_aligned.sam
+    wildcards: sample=P026
+    threads: 18
+    resources: tmpdir=/tmp
+
+
+        read -r first_line < <(cat results/fastp/P026/P026_atac_R1.trimmed.fq | head -n 1)
+        IFS=':' read -r -a rgdata <<< "$first_line"
+        FLOWCELLID=${rgdata[2]}
+        LANE=${rgdata[3]}
+        BC=${rgdata[-1]}
+        RG="@RG\tID:${FLOWCELLID}.${LANE}\tPL:ILLUMINA\tPU:${FLOWCELLID}.${LANE}.${BC}\tLB:LIB-P026_atac-1\tSM:P026_atac"
+
+        bwa-mem2 mem -o results/bwamem2/P026/P026_aligned.sam -t 18 -R "$RG"         resources/genome.fa results/fastp/P026/P026_atac_R1.trimmed.fq results/fastp/P026/P026_atac_R2.trimmed.fq &> logs/bwamem2/P026_bwamem2.log
+        
+[Wed Apr 10 22:00:25 2024]
+Finished job 9.
+3 of 21 steps (14%) done
+Select jobs to execute...
+
+[Wed Apr 10 22:00:25 2024]
+rule samtools_sort_index:
+    input: results/bwamem2/P020/P020_aligned.sam, resources/genome.fa
+    output: results/samtools/P020/P020_atac.bam, results/samtools/P020/P020_atac.bam.bai
+    log: logs/samtools/P020/P020_sort.log, logs/samtools/P020/P020_index.log
+    jobid: 29
+    reason: Missing output files: results/samtools/P020/P020_atac.bam; Input files updated by another job: results/bwamem2/P020/P020_aligned.sam
+    wildcards: sample=P020
+    threads: 18
+    resources: tmpdir=/tmp
+
+
+        samtools sort --threads 18 --write-index -m 2G         --reference resources/genome.fa -T sorttmp_{wildcards.sample}         -o results/samtools/P020/P020_atac.bam results/bwamem2/P020/P020_aligned.sam &> logs/samtools/P020/P020_sort.log
+
+        samtools index --threads 18         results/samtools/P020/P020_atac.bam results/samtools/P020/P020_atac.bam.bai &> logs/samtools/P020/P020_index.log
+        
+[Wed Apr 10 22:02:22 2024]
+Finished job 29.
+4 of 21 steps (19%) done
+Select jobs to execute...
+
+[Wed Apr 10 22:02:22 2024]
+rule bwa_mem2:
+    input: results/fastp/P016/P016_atac_R1.trimmed.fq, results/fastp/P016/P016_atac_R2.trimmed.fq, resources/genome.fa, resources/genome.fa.0123, resources/genome.fa.amb, resources/genome.fa.ann, resources/genome.fa.bwt.2bit.64, resources/genome.fa.pac
+    output: results/bwamem2/P016/P016_aligned.sam
+    log: logs/bwamem2/P016_bwamem2.log
+    jobid: 12
+    reason: Missing output files: results/bwamem2/P016/P016_aligned.sam; Code has changed since last execution
+    wildcards: sample=P016
+    threads: 18
+    resources: tmpdir=/tmp
+
+
+        read -r first_line < <(cat results/fastp/P016/P016_atac_R1.trimmed.fq | head -n 1)
+        IFS=':' read -r -a rgdata <<< "$first_line"
+        FLOWCELLID=${rgdata[2]}
+        LANE=${rgdata[3]}
+        BC=${rgdata[-1]}
+        RG="@RG\tID:${FLOWCELLID}.${LANE}\tPL:ILLUMINA\tPU:${FLOWCELLID}.${LANE}.${BC}\tLB:LIB-P016_atac-1\tSM:P016_atac"
+
+        bwa-mem2 mem -o results/bwamem2/P016/P016_aligned.sam -t 18 -R "$RG"         resources/genome.fa results/fastp/P016/P016_atac_R1.trimmed.fq results/fastp/P016/P016_atac_R2.trimmed.fq &> logs/bwamem2/P016_bwamem2.log
+        
+[Wed Apr 10 22:12:39 2024]
+Finished job 18.
+5 of 21 steps (24%) done
+Select jobs to execute...
+
+[Wed Apr 10 22:12:39 2024]
+rule bwa_mem2:
+    input: results/fastp/P024/P024_atac_R1.trimmed.fq, results/fastp/P024/P024_atac_R2.trimmed.fq, resources/genome.fa, resources/genome.fa.0123, resources/genome.fa.amb, resources/genome.fa.ann, resources/genome.fa.bwt.2bit.64, resources/genome.fa.pac
+    output: results/bwamem2/P024/P024_aligned.sam
+    log: logs/bwamem2/P024_bwamem2.log
+    jobid: 27
+    reason: Missing output files: results/bwamem2/P024/P024_aligned.sam
+    wildcards: sample=P024
+    threads: 18
+    resources: tmpdir=/tmp
+
+
+        read -r first_line < <(cat results/fastp/P024/P024_atac_R1.trimmed.fq | head -n 1)
+        IFS=':' read -r -a rgdata <<< "$first_line"
+        FLOWCELLID=${rgdata[2]}
+        LANE=${rgdata[3]}
+        BC=${rgdata[-1]}
+        RG="@RG\tID:${FLOWCELLID}.${LANE}\tPL:ILLUMINA\tPU:${FLOWCELLID}.${LANE}.${BC}\tLB:LIB-P024_atac-1\tSM:P024_atac"
+
+        bwa-mem2 mem -o results/bwamem2/P024/P024_aligned.sam -t 18 -R "$RG"         resources/genome.fa results/fastp/P024/P024_atac_R1.trimmed.fq results/fastp/P024/P024_atac_R2.trimmed.fq &> logs/bwamem2/P024_bwamem2.log
+        
+[Wed Apr 10 22:13:24 2024]
+Finished job 12.
+6 of 21 steps (29%) done
+Select jobs to execute...
+
+[Wed Apr 10 22:13:24 2024]
+rule samtools_sort_index:
+    input: results/bwamem2/P013/P013_aligned.sam, resources/genome.fa
+    output: results/samtools/P013/P013_atac.bam, results/samtools/P013/P013_atac.bam.bai
+    log: logs/samtools/P013/P013_sort.log, logs/samtools/P013/P013_index.log
+    jobid: 23
+    reason: Missing output files: results/samtools/P013/P013_atac.bam; Input files updated by another job: results/bwamem2/P013/P013_aligned.sam
+    wildcards: sample=P013
+    threads: 18
+    resources: tmpdir=/tmp
+
+
+        samtools sort --threads 18 --write-index -m 2G         --reference resources/genome.fa -T sorttmp_{wildcards.sample}         -o results/samtools/P013/P013_atac.bam results/bwamem2/P013/P013_aligned.sam &> logs/samtools/P013/P013_sort.log
+
+        samtools index --threads 18         results/samtools/P013/P013_atac.bam results/samtools/P013/P013_atac.bam.bai &> logs/samtools/P013/P013_index.log
+        
+[Wed Apr 10 22:17:19 2024]
+Finished job 23.
+7 of 21 steps (33%) done
+Select jobs to execute...
+
+[Wed Apr 10 22:17:19 2024]
+rule bwa_mem2:
+    input: results/fastp/P028/P028_atac_R1.trimmed.fq, results/fastp/P028/P028_atac_R2.trimmed.fq, resources/genome.fa, resources/genome.fa.0123, resources/genome.fa.amb, resources/genome.fa.ann, resources/genome.fa.bwt.2bit.64, resources/genome.fa.pac
+    output: results/bwamem2/P028/P028_aligned.sam
+    log: logs/bwamem2/P028_bwamem2.log
+    jobid: 2
+    reason: Missing output files: results/bwamem2/P028/P028_aligned.sam; Code has changed since last execution
+    wildcards: sample=P028
+    threads: 18
+    resources: tmpdir=/tmp
+
+
+        read -r first_line < <(cat results/fastp/P028/P028_atac_R1.trimmed.fq | head -n 1)
+        IFS=':' read -r -a rgdata <<< "$first_line"
+        FLOWCELLID=${rgdata[2]}
+        LANE=${rgdata[3]}
+        BC=${rgdata[-1]}
+        RG="@RG\tID:${FLOWCELLID}.${LANE}\tPL:ILLUMINA\tPU:${FLOWCELLID}.${LANE}.${BC}\tLB:LIB-P028_atac-1\tSM:P028_atac"
+
+        bwa-mem2 mem -o results/bwamem2/P028/P028_aligned.sam -t 18 -R "$RG"         resources/genome.fa results/fastp/P028/P028_atac_R1.trimmed.fq results/fastp/P028/P028_atac_R2.trimmed.fq &> logs/bwamem2/P028_bwamem2.log
+        
+[Wed Apr 10 22:30:32 2024]
+Finished job 2.
+8 of 21 steps (38%) done
+Select jobs to execute...
+
+[Wed Apr 10 22:30:32 2024]
+rule bwa_mem2:
+    input: results/fastp/P022/P022_atac_R1.trimmed.fq, results/fastp/P022/P022_atac_R2.trimmed.fq, resources/genome.fa, resources/genome.fa.0123, resources/genome.fa.amb, resources/genome.fa.ann, resources/genome.fa.bwt.2bit.64, resources/genome.fa.pac
+    output: results/bwamem2/P022/P022_aligned.sam
+    log: logs/bwamem2/P022_bwamem2.log
+    jobid: 21
+    reason: Missing output files: results/bwamem2/P022/P022_aligned.sam
+    wildcards: sample=P022
+    threads: 18
+    resources: tmpdir=/tmp
+
+
+        read -r first_line < <(cat results/fastp/P022/P022_atac_R1.trimmed.fq | head -n 1)
+        IFS=':' read -r -a rgdata <<< "$first_line"
+        FLOWCELLID=${rgdata[2]}
+        LANE=${rgdata[3]}
+        BC=${rgdata[-1]}
+        RG="@RG\tID:${FLOWCELLID}.${LANE}\tPL:ILLUMINA\tPU:${FLOWCELLID}.${LANE}.${BC}\tLB:LIB-P022_atac-1\tSM:P022_atac"
+
+        bwa-mem2 mem -o results/bwamem2/P022/P022_aligned.sam -t 18 -R "$RG"         resources/genome.fa results/fastp/P022/P022_atac_R1.trimmed.fq results/fastp/P022/P022_atac_R2.trimmed.fq &> logs/bwamem2/P022_bwamem2.log
+        
+[Wed Apr 10 22:34:33 2024]
+Finished job 27.
+9 of 21 steps (43%) done
+Select jobs to execute...
+
+[Wed Apr 10 22:34:34 2024]
+rule samtools_sort_index:
+    input: results/bwamem2/P018/P018_aligned.sam, resources/genome.fa
+    output: results/samtools/P018/P018_atac.bam, results/samtools/P018/P018_atac.bam.bai
+    log: logs/samtools/P018/P018_sort.log, logs/samtools/P018/P018_index.log
+    jobid: 8
+    reason: Missing output files: results/samtools/P018/P018_atac.bam; Input files updated by another job: results/bwamem2/P018/P018_aligned.sam
+    wildcards: sample=P018
+    threads: 18
+    resources: tmpdir=/tmp
+
+
+        samtools sort --threads 18 --write-index -m 2G         --reference resources/genome.fa -T sorttmp_{wildcards.sample}         -o results/samtools/P018/P018_atac.bam results/bwamem2/P018/P018_aligned.sam &> logs/samtools/P018/P018_sort.log
+
+        samtools index --threads 18         results/samtools/P018/P018_atac.bam results/samtools/P018/P018_atac.bam.bai &> logs/samtools/P018/P018_index.log
+        
+[Wed Apr 10 22:37:39 2024]
+Finished job 8.
+10 of 21 steps (48%) done
+Select jobs to execute...
+
+[Wed Apr 10 22:37:39 2024]
+rule bwa_mem2:
+    input: results/fastp/P023/P023_atac_R1.trimmed.fq, results/fastp/P023/P023_atac_R2.trimmed.fq, resources/genome.fa, resources/genome.fa.0123, resources/genome.fa.amb, resources/genome.fa.ann, resources/genome.fa.bwt.2bit.64, resources/genome.fa.pac
+    output: results/bwamem2/P023/P023_aligned.sam
+    log: logs/bwamem2/P023_bwamem2.log
+    jobid: 6
+    reason: Missing output files: results/bwamem2/P023/P023_aligned.sam; Code has changed since last execution
+    wildcards: sample=P023
+    threads: 18
+    resources: tmpdir=/tmp
+
+
+        read -r first_line < <(cat results/fastp/P023/P023_atac_R1.trimmed.fq | head -n 1)
+        IFS=':' read -r -a rgdata <<< "$first_line"
+        FLOWCELLID=${rgdata[2]}
+        LANE=${rgdata[3]}
+        BC=${rgdata[-1]}
+        RG="@RG\tID:${FLOWCELLID}.${LANE}\tPL:ILLUMINA\tPU:${FLOWCELLID}.${LANE}.${BC}\tLB:LIB-P023_atac-1\tSM:P023_atac"
+
+        bwa-mem2 mem -o results/bwamem2/P023/P023_aligned.sam -t 18 -R "$RG"         resources/genome.fa results/fastp/P023/P023_atac_R1.trimmed.fq results/fastp/P023/P023_atac_R2.trimmed.fq &> logs/bwamem2/P023_bwamem2.log
+        
+[Wed Apr 10 22:48:23 2024]
+Finished job 21.
+11 of 21 steps (52%) done
+Select jobs to execute...
+
+[Wed Apr 10 22:48:23 2024]
+rule samtools_sort_index:
+    input: results/bwamem2/P022/P022_aligned.sam, resources/genome.fa
+    output: results/samtools/P022/P022_atac.bam, results/samtools/P022/P022_atac.bam.bai
+    log: logs/samtools/P022/P022_sort.log, logs/samtools/P022/P022_index.log
+    jobid: 20
+    reason: Missing output files: results/samtools/P022/P022_atac.bam; Input files updated by another job: results/bwamem2/P022/P022_aligned.sam
+    wildcards: sample=P022
+    threads: 18
+    resources: tmpdir=/tmp
+
+
+        samtools sort --threads 18 --write-index -m 2G         --reference resources/genome.fa -T sorttmp_{wildcards.sample}         -o results/samtools/P022/P022_atac.bam results/bwamem2/P022/P022_aligned.sam &> logs/samtools/P022/P022_sort.log
+
+        samtools index --threads 18         results/samtools/P022/P022_atac.bam results/samtools/P022/P022_atac.bam.bai &> logs/samtools/P022/P022_index.log
+        
+[Wed Apr 10 22:51:30 2024]
+Finished job 20.
+12 of 21 steps (57%) done
+Select jobs to execute...
+
+[Wed Apr 10 22:51:30 2024]
+rule samtools_sort_index:
+    input: results/bwamem2/P026/P026_aligned.sam, resources/genome.fa
+    output: results/samtools/P026/P026_atac.bam, results/samtools/P026/P026_atac.bam.bai
+    log: logs/samtools/P026/P026_sort.log, logs/samtools/P026/P026_index.log
+    jobid: 17
+    reason: Missing output files: results/samtools/P026/P026_atac.bam; Input files updated by another job: results/bwamem2/P026/P026_aligned.sam
+    wildcards: sample=P026
+    threads: 18
+    resources: tmpdir=/tmp
+
+
+        samtools sort --threads 18 --write-index -m 2G         --reference resources/genome.fa -T sorttmp_{wildcards.sample}         -o results/samtools/P026/P026_atac.bam results/bwamem2/P026/P026_aligned.sam &> logs/samtools/P026/P026_sort.log
+
+        samtools index --threads 18         results/samtools/P026/P026_atac.bam results/samtools/P026/P026_atac.bam.bai &> logs/samtools/P026/P026_index.log
+        
+[Wed Apr 10 22:55:26 2024]
+Finished job 17.
+13 of 21 steps (62%) done
+Select jobs to execute...
+
+[Wed Apr 10 22:55:26 2024]
+rule samtools_sort_index:
+    input: results/bwamem2/P028/P028_aligned.sam, resources/genome.fa
+    output: results/samtools/P028/P028_atac.bam, results/samtools/P028/P028_atac.bam.bai
+    log: logs/samtools/P028/P028_sort.log, logs/samtools/P028/P028_index.log
+    jobid: 1
+    reason: Missing output files: results/samtools/P028/P028_atac.bam; Input files updated by another job: results/bwamem2/P028/P028_aligned.sam
+    wildcards: sample=P028
+    threads: 18
+    resources: tmpdir=/tmp
+
+
+        samtools sort --threads 18 --write-index -m 2G         --reference resources/genome.fa -T sorttmp_{wildcards.sample}         -o results/samtools/P028/P028_atac.bam results/bwamem2/P028/P028_aligned.sam &> logs/samtools/P028/P028_sort.log
+
+        samtools index --threads 18         results/samtools/P028/P028_atac.bam results/samtools/P028/P028_atac.bam.bai &> logs/samtools/P028/P028_index.log
+        
+[Wed Apr 10 22:56:37 2024]
+Finished job 6.
+14 of 21 steps (67%) done
+Select jobs to execute...
+
+[Wed Apr 10 22:56:37 2024]
+rule samtools_sort_index:
+    input: results/bwamem2/P016/P016_aligned.sam, resources/genome.fa
+    output: results/samtools/P016/P016_atac.bam, results/samtools/P016/P016_atac.bam.bai
+    log: logs/samtools/P016/P016_sort.log, logs/samtools/P016/P016_index.log
+    jobid: 11
+    reason: Missing output files: results/samtools/P016/P016_atac.bam; Input files updated by another job: results/bwamem2/P016/P016_aligned.sam
+    wildcards: sample=P016
+    threads: 18
+    resources: tmpdir=/tmp
+
+
+        samtools sort --threads 18 --write-index -m 2G         --reference resources/genome.fa -T sorttmp_{wildcards.sample}         -o results/samtools/P016/P016_atac.bam results/bwamem2/P016/P016_aligned.sam &> logs/samtools/P016/P016_sort.log
+
+        samtools index --threads 18         results/samtools/P016/P016_atac.bam results/samtools/P016/P016_atac.bam.bai &> logs/samtools/P016/P016_index.log
+        
+[Wed Apr 10 22:57:27 2024]
+Finished job 1.
+15 of 21 steps (71%) done
+Select jobs to execute...
+
+[Wed Apr 10 22:57:27 2024]
+rule samtools_sort_index:
+    input: results/bwamem2/P024/P024_aligned.sam, resources/genome.fa
+    output: results/samtools/P024/P024_atac.bam, results/samtools/P024/P024_atac.bam.bai
+    log: logs/samtools/P024/P024_sort.log, logs/samtools/P024/P024_index.log
+    jobid: 26
+    reason: Missing output files: results/samtools/P024/P024_atac.bam; Input files updated by another job: results/bwamem2/P024/P024_aligned.sam
+    wildcards: sample=P024
+    threads: 18
+    resources: tmpdir=/tmp
+
+
+        samtools sort --threads 18 --write-index -m 2G         --reference resources/genome.fa -T sorttmp_{wildcards.sample}         -o results/samtools/P024/P024_atac.bam results/bwamem2/P024/P024_aligned.sam &> logs/samtools/P024/P024_sort.log
+
+        samtools index --threads 18         results/samtools/P024/P024_atac.bam results/samtools/P024/P024_atac.bam.bai &> logs/samtools/P024/P024_index.log
+        
+[Wed Apr 10 22:58:27 2024]
+Finished job 11.
+16 of 21 steps (76%) done
+Select jobs to execute...
+
+[Wed Apr 10 22:58:27 2024]
+rule bwa_mem2:
+    input: results/fastp/P019/P019_atac_R1.trimmed.fq, results/fastp/P019/P019_atac_R2.trimmed.fq, resources/genome.fa, resources/genome.fa.0123, resources/genome.fa.amb, resources/genome.fa.ann, resources/genome.fa.bwt.2bit.64, resources/genome.fa.pac
+    output: results/bwamem2/P019/P019_aligned.sam
+    log: logs/bwamem2/P019_bwamem2.log
+    jobid: 15
+    reason: Missing output files: results/bwamem2/P019/P019_aligned.sam
+    wildcards: sample=P019
+    threads: 18
+    resources: tmpdir=/tmp
+
+
+        read -r first_line < <(cat results/fastp/P019/P019_atac_R1.trimmed.fq | head -n 1)
+        IFS=':' read -r -a rgdata <<< "$first_line"
+        FLOWCELLID=${rgdata[2]}
+        LANE=${rgdata[3]}
+        BC=${rgdata[-1]}
+        RG="@RG\tID:${FLOWCELLID}.${LANE}\tPL:ILLUMINA\tPU:${FLOWCELLID}.${LANE}.${BC}\tLB:LIB-P019_atac-1\tSM:P019_atac"
+
+        bwa-mem2 mem -o results/bwamem2/P019/P019_aligned.sam -t 18 -R "$RG"         resources/genome.fa results/fastp/P019/P019_atac_R1.trimmed.fq results/fastp/P019/P019_atac_R2.trimmed.fq &> logs/bwamem2/P019_bwamem2.log
+        
+[Wed Apr 10 23:01:10 2024]
+Finished job 26.
+17 of 21 steps (81%) done
+Select jobs to execute...
+
+[Wed Apr 10 23:01:10 2024]
+rule samtools_sort_index:
+    input: results/bwamem2/P023/P023_aligned.sam, resources/genome.fa
+    output: results/samtools/P023/P023_atac.bam, results/samtools/P023/P023_atac.bam.bai
+    log: logs/samtools/P023/P023_sort.log, logs/samtools/P023/P023_index.log
+    jobid: 5
+    reason: Missing output files: results/samtools/P023/P023_atac.bam; Input files updated by another job: results/bwamem2/P023/P023_aligned.sam
+    wildcards: sample=P023
+    threads: 18
+    resources: tmpdir=/tmp
+
+
+        samtools sort --threads 18 --write-index -m 2G         --reference resources/genome.fa -T sorttmp_{wildcards.sample}         -o results/samtools/P023/P023_atac.bam results/bwamem2/P023/P023_aligned.sam &> logs/samtools/P023/P023_sort.log
+
+        samtools index --threads 18         results/samtools/P023/P023_atac.bam results/samtools/P023/P023_atac.bam.bai &> logs/samtools/P023/P023_index.log
+        
+[Wed Apr 10 23:04:12 2024]
+Finished job 5.
+18 of 21 steps (86%) done
+[Wed Apr 10 23:17:54 2024]
+Finished job 15.
+19 of 21 steps (90%) done
+Select jobs to execute...
+
+[Wed Apr 10 23:17:54 2024]
+rule samtools_sort_index:
+    input: results/bwamem2/P019/P019_aligned.sam, resources/genome.fa
+    output: results/samtools/P019/P019_atac.bam, results/samtools/P019/P019_atac.bam.bai
+    log: logs/samtools/P019/P019_sort.log, logs/samtools/P019/P019_index.log
+    jobid: 14
+    reason: Missing output files: results/samtools/P019/P019_atac.bam; Input files updated by another job: results/bwamem2/P019/P019_aligned.sam
+    wildcards: sample=P019
+    threads: 18
+    resources: tmpdir=/tmp
+
+
+        samtools sort --threads 18 --write-index -m 2G         --reference resources/genome.fa -T sorttmp_{wildcards.sample}         -o results/samtools/P019/P019_atac.bam results/bwamem2/P019/P019_aligned.sam &> logs/samtools/P019/P019_sort.log
+
+        samtools index --threads 18         results/samtools/P019/P019_atac.bam results/samtools/P019/P019_atac.bam.bai &> logs/samtools/P019/P019_index.log
+        
+[Wed Apr 10 23:20:47 2024]
+Finished job 14.
+20 of 21 steps (95%) done
+Select jobs to execute...
+
+[Wed Apr 10 23:20:47 2024]
+localrule all:
+    input: results/samtools/P028/P028_atac.bam, results/samtools/P023/P023_atac.bam, results/samtools/P018/P018_atac.bam, results/samtools/P016/P016_atac.bam, results/samtools/P019/P019_atac.bam, results/samtools/P026/P026_atac.bam, results/samtools/P022/P022_atac.bam, results/samtools/P013/P013_atac.bam, results/samtools/P024/P024_atac.bam, results/samtools/P020/P020_atac.bam
+    jobid: 0
+    reason: Input files updated by another job: results/samtools/P013/P013_atac.bam, results/samtools/P019/P019_atac.bam, results/samtools/P023/P023_atac.bam, results/samtools/P028/P028_atac.bam, results/samtools/P016/P016_atac.bam, results/samtools/P022/P022_atac.bam, results/samtools/P018/P018_atac.bam, results/samtools/P020/P020_atac.bam, results/samtools/P026/P026_atac.bam, results/samtools/P024/P024_atac.bam
+    resources: tmpdir=/tmp
+
+[Wed Apr 10 23:20:47 2024]
+Finished job 0.
+21 of 21 steps (100%) done
+Complete log: .snakemake/log/2024-04-10T212810.939019.snakemake.log

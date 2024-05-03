@@ -1,0 +1,34 @@
+Assuming unrestricted shared filesystem usage.
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 18
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job           count
+----------  -------
+apply_bqsr        1
+total             1
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Sat Mar 30 23:10:48 2024]
+localrule apply_bqsr:
+    input: results/mapped_reads/P013test_dna_tumor.marked.bam, results/recal/table/P013test_dna_tumor_recal_data.table, resources/genome.fa
+    output: results/recal/P013test_dna_tumor_recal.bam
+    log: logs/recal/P013test_dna_tumor_apply_recal.log
+    jobid: 0
+    reason: Missing output files: results/recal/P013test_dna_tumor_recal.bam
+    wildcards: sample=P013test, alias=tumor
+    resources: tmpdir=/tmp
+
+
+        gatk ApplyBQSR             -R resources/genome.fa             -I results/mapped_reads/P013test_dna_tumor.marked.bam             --bqsr-recal-file results/recal/table/P013test_dna_tumor_recal_data.table             -O results/recal/P013test_dna_tumor_recal.bam             --create-output-bam-index false             &> logs/recal/P013test_dna_tumor_apply_recal.log
+        
+Write-protecting output file results/recal/P013test_dna_tumor_recal.bam.
+[Sat Mar 30 23:22:16 2024]
+Finished job 0.
+1 of 1 steps (100%) done
+Removing temporary output results/mapped_reads/P013test_dna_tumor.marked.bam.
+Complete log: .snakemake/log/2024-03-30T231048.902123.snakemake.log

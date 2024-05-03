@@ -1,0 +1,61 @@
+Assuming unrestricted shared filesystem usage.
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 16
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job                      count
+---------------------  -------
+germline_resource_chr        1
+mutect_pon3                  1
+total                        2
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Apr  8 10:29:02 2024]
+localrule germline_resource_chr:
+    input: resources/gnomad.vcf.gz
+    output: resources/gnomad_chr.vcf.gz, resources/gnomad_chr.vcf.gz.tbi
+    log: logs/reference/germline_resource_chr.log
+    jobid: 2
+    reason: Forced execution
+    resources: tmpdir=/tmp
+
+
+        # Extract the header
+        bcftools view -h resources/gnomad.vcf.gz > header.txt
+
+        # Modify the header to rename the contigs and write the modified header to a new file
+        awk -F'=' '/^##contig=<ID=/{sub(/ID=/, "ID=chr", $0)}1' header.txt > modified_header.txt
+        
+        # Replace the header of the VCF file with the modified header
+        bcftools reheader -h modified_header.txt -o resources/gnomad_chr.vcf.gz resources/gnomad.vcf.gz
+
+        # Generate a new .tbi file
+        tabix -p vcf resources/gnomad_chr.vcf.gz
+        
+[W::bcf_hrec_check] Invalid tag name: "T2T-CHM13v2.0.gff.gz"
+[Mon Apr  8 10:44:37 2024]
+Finished job 2.
+1 of 2 steps (50%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Apr  8 10:44:37 2024]
+localrule mutect_pon3:
+    input: resources/genome.fa, resources/gnomad_chr.vcf.gz, results/mutect2/pon/pon_db
+    output: results/mutect2/pon/mutect2.pon.vcf.gz
+    log: logs/mutect2/pon/create_somatic_panel_of_normals.log
+    jobid: 0
+    reason: Input files updated by another job: resources/gnomad_chr.vcf.gz
+    resources: tmpdir=/tmp
+
+
+        gatk CreateSomaticPanelOfNormals             -R resources/genome.fa             --germline-resource resources/gnomad_chr.vcf.gz             -V gendb://results/mutect2/pon/pon_db             -O results/mutect2/pon/mutect2.pon.vcf.gz             2>logs/mutect2/pon/create_somatic_panel_of_normals.log
+        
+[Mon Apr  8 11:12:35 2024]
+Finished job 0.
+2 of 2 steps (100%) done
+Complete log: .snakemake/log/2024-04-08T102900.524283.snakemake.log

@@ -1,0 +1,14 @@
+configfile: "config/config_10samples.yaml"
+
+include: "rules/ref.smk"
+include: "rules/common.smk"
+include: "rules/qc.smk"
+include: "rules/mapping.smk"
+
+
+
+rule all:
+    input:
+        "results/qc/multiqc_RNA.html",
+        expand("results/star/{sample}/{sample}_Aligned.sortedByCoord.out.bam", sample=unique_samples),
+        expand("results/star_fusion/{sample}/star-fusion.fusion_predictions.abridged.tsv", sample=unique_samples)

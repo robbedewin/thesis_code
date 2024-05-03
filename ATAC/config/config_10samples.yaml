@@ -1,0 +1,5 @@
+units: config/units_10samples.tsv
+samples: config/samples_10samples.tsv
+
+
+genome_size: 3117292070 #https://deeptools.readthedocs.io/en/latest/content/feature/effectiveGenomeSize.html

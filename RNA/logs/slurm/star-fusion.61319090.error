@@ -1,0 +1,40 @@
+Assuming unrestricted shared filesystem usage.
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 14
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job           count
+----------  -------
+STAR_align       10
+all               1
+total            11
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Apr  9 03:11:12 2024]
+localrule STAR_align:
+    input: results/fastp/P013/P013_rna_R1.trimmed.fq, results/fastp/P013/P013_rna_R2.trimmed.fq, resources/star_genome
+    output: results/star/P013/P013_Aligned.sortedByCoord.out.bam, results/star/P013/P013_ReadsPerGene.out.tab
+    log: logs/star/P013/P013_align.log
+    jobid: 11
+    reason: Missing output files: results/star/P013/P013_Aligned.sortedByCoord.out.bam
+    wildcards: sample=P013
+    threads: 14
+    resources: tmpdir=/tmp
+
+
+        STAR --runThreadN 14              --genomeDir resources/star_genome              --readFilesIn results/fastp/P013/P013_rna_R1.trimmed.fq results/fastp/P013/P013_rna_R2.trimmed.fq              --outFileNamePrefix results/star/P013/              --outSAMtype BAM SortedByCoordinate              --outSAMattributes NH HI AS NM MD              --outSAMstrandField intronMotif              --quantMode GeneCounts              --twopassMode Basic         > logs/star/P013/P013_align.log 2>&1
+        
+Waiting at most 5 seconds for missing files.
+MissingOutputException in rule STAR_align in file /lustre1/project/stg_00096/home/rdewin/RNA/rules/mapping.smk, line 18:
+Job 11  completed successfully, but some output files are missing. Missing files after 5 seconds. This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait:
+results/star/P013/P013_Aligned.sortedByCoord.out.bam (missing locally, parent dir contents: Log.out, ReadsPerGene.out.tab, Log.progress.out, _STARgenome, SJ.out.tab, Log.final.out, Aligned.sortedByCoord.out.bam, _STARpass1)
+results/star/P013/P013_ReadsPerGene.out.tab (missing locally, parent dir contents: Log.out, ReadsPerGene.out.tab, Log.progress.out, _STARgenome, SJ.out.tab, Log.final.out, Aligned.sortedByCoord.out.bam, _STARpass1)
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2024-04-09T031108.994369.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

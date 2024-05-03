@@ -1,0 +1,390 @@
+Using GATK jar /lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gatk4-4.5.0.0-0/gatk-package-4.5.0.0-local.jar
+Running:
+    java -Dsamjdk.use_async_io_read_samtools=false -Dsamjdk.use_async_io_write_samtools=true -Dsamjdk.use_async_io_write_tribble=false -Dsamjdk.compression_level=2 -jar /lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gatk4-4.5.0.0-0/gatk-package-4.5.0.0-local.jar LearnReadOrientationModel -I results/mutect2/P018/P018_f1r2.tar.gz -I results/mutect2/P026/P026_f1r2.tar.gz -I results/mutect2/P016/P016_f1r2.tar.gz -I results/mutect2/P022/P022_f1r2.tar.gz -I results/mutect2/P019/P019_f1r2.tar.gz -I results/mutect2/P023/P023_f1r2.tar.gz -I results/mutect2/P013/P013_f1r2.tar.gz -I results/mutect2/P024/P024_f1r2.tar.gz -I results/mutect2/P028/P028_f1r2.tar.gz -I results/mutect2/P020/P020_f1r2.tar.gz -O results/mutect2/read_orientation_model.tar.gz
+17:03:06.177 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gatk4-4.5.0.0-0/gatk-package-4.5.0.0-local.jar!/com/intel/gkl/native/libgkl_compression.so
+17:03:06.434 INFO  LearnReadOrientationModel - ------------------------------------------------------------
+17:03:06.437 INFO  LearnReadOrientationModel - The Genome Analysis Toolkit (GATK) v4.5.0.0
+17:03:06.437 INFO  LearnReadOrientationModel - For support and documentation go to https://software.broadinstitute.org/gatk/
+17:03:06.437 INFO  LearnReadOrientationModel - Executing as vsc35407@i28l10 on Linux v4.18.0-513.24.1.el8_9.x86_64 amd64
+17:03:06.437 INFO  LearnReadOrientationModel - Java runtime: OpenJDK 64-Bit Server VM v17.0.10-internal+0-adhoc..src
+17:03:06.437 INFO  LearnReadOrientationModel - Start Date/Time: April 29, 2024 at 5:03:06 PM CEST
+17:03:06.437 INFO  LearnReadOrientationModel - ------------------------------------------------------------
+17:03:06.437 INFO  LearnReadOrientationModel - ------------------------------------------------------------
+17:03:06.438 INFO  LearnReadOrientationModel - HTSJDK Version: 4.1.0
+17:03:06.438 INFO  LearnReadOrientationModel - Picard Version: 3.1.1
+17:03:06.438 INFO  LearnReadOrientationModel - Built for Spark Version: 3.5.0
+17:03:06.439 INFO  LearnReadOrientationModel - HTSJDK Defaults.COMPRESSION_LEVEL : 2
+17:03:06.439 INFO  LearnReadOrientationModel - HTSJDK Defaults.USE_ASYNC_IO_READ_FOR_SAMTOOLS : false
+17:03:06.439 INFO  LearnReadOrientationModel - HTSJDK Defaults.USE_ASYNC_IO_WRITE_FOR_SAMTOOLS : true
+17:03:06.439 INFO  LearnReadOrientationModel - HTSJDK Defaults.USE_ASYNC_IO_WRITE_FOR_TRIBBLE : false
+17:03:06.439 INFO  LearnReadOrientationModel - Deflater: IntelDeflater
+17:03:06.439 INFO  LearnReadOrientationModel - Inflater: IntelInflater
+17:03:06.439 INFO  LearnReadOrientationModel - GCS max retries/reopens: 20
+17:03:06.439 INFO  LearnReadOrientationModel - Requester pays: disabled
+17:03:06.440 INFO  LearnReadOrientationModel - Initializing engine
+17:03:06.440 INFO  LearnReadOrientationModel - Done initializing engine
+17:03:06.444 INFO  IOUtils - Extracting data from archive: file:///lustre1/project/stg_00096/home/rdewin/WGS/results/mutect2/P018/P018_f1r2.tar.gz
+17:03:06.537 INFO  IOUtils - Extracting file: ./P018_tumor.alt_table
+17:03:08.610 INFO  IOUtils - Extracting file: ./P018_tumor.alt_histogram
+17:03:08.614 INFO  IOUtils - Extracting file: ./P018_tumor.ref_histogram
+17:03:08.615 INFO  IOUtils - Extracting data from archive: file:///lustre1/project/stg_00096/home/rdewin/WGS/results/mutect2/P026/P026_f1r2.tar.gz
+17:03:08.778 INFO  IOUtils - Extracting file: ./P026_tumor.ref_histogram
+17:03:08.781 INFO  IOUtils - Extracting file: ./P026_tumor.alt_histogram
+17:03:08.791 INFO  IOUtils - Extracting file: ./P026_tumor.alt_table
+17:03:10.750 INFO  IOUtils - Extracting data from archive: file:///lustre1/project/stg_00096/home/rdewin/WGS/results/mutect2/P016/P016_f1r2.tar.gz
+17:03:10.836 INFO  IOUtils - Extracting file: ./P016_tumor.alt_table
+17:03:12.819 INFO  IOUtils - Extracting file: ./P016_tumor.ref_histogram
+17:03:12.821 INFO  IOUtils - Extracting file: ./P016_tumor.alt_histogram
+17:03:12.823 INFO  IOUtils - Extracting data from archive: file:///lustre1/project/stg_00096/home/rdewin/WGS/results/mutect2/P022/P022_f1r2.tar.gz
+17:03:12.887 INFO  IOUtils - Extracting file: ./P022_tumor.alt_table
+17:03:14.589 INFO  IOUtils - Extracting file: ./P022_tumor.ref_histogram
+17:03:14.589 INFO  IOUtils - Extracting file: ./P022_tumor.alt_histogram
+17:03:14.591 INFO  IOUtils - Extracting data from archive: file:///lustre1/project/stg_00096/home/rdewin/WGS/results/mutect2/P019/P019_f1r2.tar.gz
+17:03:14.658 INFO  IOUtils - Extracting file: ./P019_tumor.alt_table
+17:03:16.819 INFO  IOUtils - Extracting file: ./P019_tumor.alt_histogram
+17:03:16.820 INFO  IOUtils - Extracting file: ./P019_tumor.ref_histogram
+17:03:16.822 INFO  IOUtils - Extracting data from archive: file:///lustre1/project/stg_00096/home/rdewin/WGS/results/mutect2/P023/P023_f1r2.tar.gz
+17:03:16.943 INFO  IOUtils - Extracting file: ./P023_tumor.alt_histogram
+17:03:16.947 INFO  IOUtils - Extracting file: ./P023_tumor.alt_table
+17:03:18.703 INFO  IOUtils - Extracting file: ./P023_tumor.ref_histogram
+17:03:18.704 INFO  IOUtils - Extracting data from archive: file:///lustre1/project/stg_00096/home/rdewin/WGS/results/mutect2/P013/P013_f1r2.tar.gz
+17:03:18.812 INFO  IOUtils - Extracting file: ./P013_tumor_tumor.ref_histogram
+17:03:18.814 INFO  IOUtils - Extracting file: ./P013_tumor_tumor.alt_histogram
+17:03:18.816 INFO  IOUtils - Extracting file: ./P013_tumor_tumor.alt_table
+17:03:20.262 INFO  IOUtils - Extracting data from archive: file:///lustre1/project/stg_00096/home/rdewin/WGS/results/mutect2/P024/P024_f1r2.tar.gz
+17:03:20.338 INFO  IOUtils - Extracting file: ./P024_tumor.alt_histogram
+17:03:20.341 INFO  IOUtils - Extracting file: ./P024_tumor.ref_histogram
+17:03:20.342 INFO  IOUtils - Extracting file: ./P024_tumor.alt_table
+17:03:24.810 INFO  IOUtils - Extracting data from archive: file:///lustre1/project/stg_00096/home/rdewin/WGS/results/mutect2/P028/P028_f1r2.tar.gz
+17:03:24.908 INFO  IOUtils - Extracting file: ./P028_tumor.alt_histogram
+17:03:24.911 INFO  IOUtils - Extracting file: ./P028_tumor.alt_table
+17:03:28.935 INFO  IOUtils - Extracting file: ./P028_tumor.ref_histogram
+17:03:28.938 INFO  IOUtils - Extracting data from archive: file:///lustre1/project/stg_00096/home/rdewin/WGS/results/mutect2/P020/P020_f1r2.tar.gz
+17:03:29.033 INFO  IOUtils - Extracting file: ./P020_tumor.alt_histogram
+17:03:29.036 INFO  IOUtils - Extracting file: ./P020_tumor.ref_histogram
+17:03:29.037 INFO  IOUtils - Extracting file: ./P020_tumor.alt_table
+17:04:23.874 INFO  LearnReadOrientationModel - Context AAC: with 80110530 ref and 626537 alt examples, EM converged in 9 steps
+17:04:33.166 INFO  LearnReadOrientationModel - Context AAG: with 109501553 ref and 1104091 alt examples, EM converged in 5 steps
+17:04:54.526 INFO  LearnReadOrientationModel - Context AAT: with 137914283 ref and 1039524 alt examples, EM converged in 9 steps
+17:05:29.879 INFO  LearnReadOrientationModel - Context ACA: with 110430672 ref and 1312435 alt examples, EM converged in 10 steps
+17:05:43.763 INFO  LearnReadOrientationModel - Context ACC: with 63784019 ref and 546242 alt examples, EM converged in 9 steps
+17:06:16.367 INFO  LearnReadOrientationModel - Context ACG: with 13467253 ref and 419364 alt examples, EM converged in 13 steps
+17:06:38.748 INFO  LearnReadOrientationModel - Context ACT: with 88653176 ref and 815931 alt examples, EM converged in 10 steps
+17:06:50.431 INFO  LearnReadOrientationModel - Context AGA: with 121322716 ref and 1225478 alt examples, EM converged in 5 steps
+17:07:03.557 INFO  LearnReadOrientationModel - Context AGC: with 76640650 ref and 779621 alt examples, EM converged in 9 steps
+17:07:19.617 INFO  LearnReadOrientationModel - Context AGG: with 97443672 ref and 907152 alt examples, EM converged in 9 steps
+17:07:45.077 INFO  LearnReadOrientationModel - Context ATA: with 112846135 ref and 982329 alt examples, EM converged in 9 steps
+17:07:57.142 INFO  LearnReadOrientationModel - Context ATC: with 73631919 ref and 480157 alt examples, EM converged in 9 steps
+17:08:28.145 INFO  LearnReadOrientationModel - Context ATG: with 101420404 ref and 926501 alt examples, EM converged in 10 steps
+17:08:35.288 INFO  LearnReadOrientationModel - Context CAA: with 103983855 ref and 832206 alt examples, EM converged in 4 steps
+17:08:47.542 INFO  LearnReadOrientationModel - Context CAC: with 82623452 ref and 880150 alt examples, EM converged in 5 steps
+17:09:01.052 INFO  LearnReadOrientationModel - Context CAG: with 110809349 ref and 1434948 alt examples, EM converged in 5 steps
+17:09:08.975 INFO  LearnReadOrientationModel - Context CCA: with 101627950 ref and 1016756 alt examples, EM converged in 5 steps
+17:09:22.128 INFO  LearnReadOrientationModel - Context CCC: with 71923114 ref and 704177 alt examples, EM converged in 9 steps
+17:09:45.315 INFO  LearnReadOrientationModel - Context CCG: with 14783399 ref and 368658 alt examples, EM converged in 12 steps
+17:10:01.503 INFO  LearnReadOrientationModel - Context CGA: with 12031420 ref and 275300 alt examples, EM converged in 12 steps
+17:10:23.230 INFO  LearnReadOrientationModel - Context CGC: with 12595479 ref and 428329 alt examples, EM converged in 12 steps
+17:10:29.459 INFO  LearnReadOrientationModel - Context CTA: with 70833840 ref and 709224 alt examples, EM converged in 5 steps
+17:10:37.265 INFO  LearnReadOrientationModel - Context CTC: with 92400362 ref and 1006997 alt examples, EM converged in 5 steps
+17:10:42.830 INFO  LearnReadOrientationModel - Context GAA: with 109386125 ref and 623405 alt examples, EM converged in 4 steps
+17:10:52.444 INFO  LearnReadOrientationModel - Context GAC: with 51892083 ref and 364842 alt examples, EM converged in 9 steps
+17:11:08.336 INFO  LearnReadOrientationModel - Context GCA: with 78767100 ref and 1107582 alt examples, EM converged in 9 steps
+17:11:21.596 INFO  LearnReadOrientationModel - Context GCC: with 64895929 ref and 867309 alt examples, EM converged in 9 steps
+17:11:34.137 INFO  LearnReadOrientationModel - Context GGA: with 85341503 ref and 757492 alt examples, EM converged in 8 steps
+17:11:44.634 INFO  LearnReadOrientationModel - Context GTA: with 62521336 ref and 455911 alt examples, EM converged in 9 steps
+17:11:53.018 INFO  LearnReadOrientationModel - Context TAA: with 114600438 ref and 850613 alt examples, EM converged in 5 steps
+17:12:02.220 INFO  LearnReadOrientationModel - Context TCA: with 107455840 ref and 1172196 alt examples, EM converged in 5 steps
+17:12:12.284 INFO  LearnReadOrientationModel - Context AAA: with 211990691 ref and 1428002 alt examples, EM converged in 4 steps
+17:12:26.448 INFO  LearnReadOrientationModel - Context AAC: with 79550358 ref and 767327 alt examples, EM converged in 8 steps
+17:12:37.494 INFO  LearnReadOrientationModel - Context AAG: with 108669286 ref and 1373148 alt examples, EM converged in 5 steps
+17:12:58.751 INFO  LearnReadOrientationModel - Context AAT: with 136840730 ref and 1332938 alt examples, EM converged in 8 steps
+17:13:31.154 INFO  LearnReadOrientationModel - Context ACA: with 109538572 ref and 1620400 alt examples, EM converged in 8 steps
+17:13:44.789 INFO  LearnReadOrientationModel - Context ACC: with 63356194 ref and 667110 alt examples, EM converged in 8 steps
+17:14:16.798 INFO  LearnReadOrientationModel - Context ACG: with 13343852 ref and 485055 alt examples, EM converged in 12 steps
+17:14:39.226 INFO  LearnReadOrientationModel - Context ACT: with 87988528 ref and 1016444 alt examples, EM converged in 9 steps
+17:14:58.361 INFO  LearnReadOrientationModel - Context AGA: with 120411856 ref and 1510868 alt examples, EM converged in 7 steps
+17:15:11.879 INFO  LearnReadOrientationModel - Context AGC: with 76123227 ref and 960331 alt examples, EM converged in 8 steps
+17:15:27.998 INFO  LearnReadOrientationModel - Context AGG: with 96790431 ref and 1105913 alt examples, EM converged in 8 steps
+17:15:53.520 INFO  LearnReadOrientationModel - Context ATA: with 112347798 ref and 1165884 alt examples, EM converged in 8 steps
+17:16:05.555 INFO  LearnReadOrientationModel - Context ATC: with 73142928 ref and 575454 alt examples, EM converged in 8 steps
+17:16:35.176 INFO  LearnReadOrientationModel - Context ATG: with 100687503 ref and 1065665 alt examples, EM converged in 9 steps
+17:16:49.399 INFO  LearnReadOrientationModel - Context CAA: with 103281780 ref and 969558 alt examples, EM converged in 7 steps
+17:17:02.978 INFO  LearnReadOrientationModel - Context CAC: with 82070411 ref and 1016364 alt examples, EM converged in 5 steps
+17:17:27.587 INFO  LearnReadOrientationModel - Context CAG: with 110054488 ref and 1669869 alt examples, EM converged in 8 steps
+17:17:40.460 INFO  LearnReadOrientationModel - Context CCA: with 100854637 ref and 1233894 alt examples, EM converged in 7 steps
+17:17:53.420 INFO  LearnReadOrientationModel - Context CCC: with 71497640 ref and 839131 alt examples, EM converged in 8 steps
+17:18:15.874 INFO  LearnReadOrientationModel - Context CCG: with 14672321 ref and 426819 alt examples, EM converged in 11 steps
+17:18:31.716 INFO  LearnReadOrientationModel - Context CGA: with 11915713 ref and 321179 alt examples, EM converged in 11 steps
+17:18:53.276 INFO  LearnReadOrientationModel - Context CGC: with 12488492 ref and 496230 alt examples, EM converged in 11 steps
+17:19:03.278 INFO  LearnReadOrientationModel - Context CTA: with 70348889 ref and 841289 alt examples, EM converged in 7 steps
+17:19:12.505 INFO  LearnReadOrientationModel - Context CTC: with 91763510 ref and 1207233 alt examples, EM converged in 5 steps
+17:19:18.778 INFO  LearnReadOrientationModel - Context GAA: with 108627679 ref and 731266 alt examples, EM converged in 4 steps
+17:19:28.043 INFO  LearnReadOrientationModel - Context GAC: with 51575537 ref and 424698 alt examples, EM converged in 8 steps
+17:19:44.876 INFO  LearnReadOrientationModel - Context GCA: with 78126609 ref and 1357393 alt examples, EM converged in 8 steps
+17:19:59.021 INFO  LearnReadOrientationModel - Context GCC: with 64441845 ref and 1060843 alt examples, EM converged in 8 steps
+17:20:11.099 INFO  LearnReadOrientationModel - Context GGA: with 84693446 ref and 914880 alt examples, EM converged in 7 steps
+17:20:21.297 INFO  LearnReadOrientationModel - Context GTA: with 62132618 ref and 533983 alt examples, EM converged in 8 steps
+17:20:34.696 INFO  LearnReadOrientationModel - Context TAA: with 113904953 ref and 995059 alt examples, EM converged in 7 steps
+17:20:47.940 INFO  LearnReadOrientationModel - Context TCA: with 106621700 ref and 1439689 alt examples, EM converged in 6 steps
+17:20:59.404 INFO  LearnReadOrientationModel - Context AAA: with 210597366 ref and 1781718 alt examples, EM converged in 4 steps
+17:21:12.896 INFO  LearnReadOrientationModel - Context AAC: with 79496153 ref and 771018 alt examples, EM converged in 8 steps
+17:21:23.370 INFO  LearnReadOrientationModel - Context AAG: with 108579517 ref and 1393237 alt examples, EM converged in 5 steps
+17:21:43.786 INFO  LearnReadOrientationModel - Context AAT: with 136700028 ref and 1369032 alt examples, EM converged in 8 steps
+17:22:19.601 INFO  LearnReadOrientationModel - Context ACA: with 109508790 ref and 1594658 alt examples, EM converged in 9 steps
+17:22:34.398 INFO  LearnReadOrientationModel - Context ACC: with 63324435 ref and 662160 alt examples, EM converged in 9 steps
+17:23:05.390 INFO  LearnReadOrientationModel - Context ACG: with 13367879 ref and 452051 alt examples, EM converged in 12 steps
+17:23:27.236 INFO  LearnReadOrientationModel - Context ACT: with 87933138 ref and 1015038 alt examples, EM converged in 9 steps
+17:23:48.846 INFO  LearnReadOrientationModel - Context AGA: with 120319166 ref and 1535004 alt examples, EM converged in 8 steps
+17:24:03.673 INFO  LearnReadOrientationModel - Context AGC: with 76035835 ref and 1007964 alt examples, EM converged in 9 steps
+17:24:19.232 INFO  LearnReadOrientationModel - Context AGG: with 96749405 ref and 1095123 alt examples, EM converged in 8 steps
+17:24:48.317 INFO  LearnReadOrientationModel - Context ATA: with 112531960 ref and 1274038 alt examples, EM converged in 9 steps
+17:24:59.776 INFO  LearnReadOrientationModel - Context ATC: with 73093275 ref and 589301 alt examples, EM converged in 8 steps
+17:25:28.515 INFO  LearnReadOrientationModel - Context ATG: with 100538788 ref and 1106646 alt examples, EM converged in 9 steps
+17:25:38.028 INFO  LearnReadOrientationModel - Context CAA: with 103174253 ref and 1006554 alt examples, EM converged in 5 steps
+17:25:50.728 INFO  LearnReadOrientationModel - Context CAC: with 82034183 ref and 1011191 alt examples, EM converged in 5 steps
+17:26:14.259 INFO  LearnReadOrientationModel - Context CAG: with 109934586 ref and 1735128 alt examples, EM converged in 8 steps
+17:26:28.416 INFO  LearnReadOrientationModel - Context CCA: with 100769990 ref and 1200028 alt examples, EM converged in 8 steps
+17:26:40.842 INFO  LearnReadOrientationModel - Context CCC: with 71481887 ref and 816831 alt examples, EM converged in 8 steps
+17:27:04.529 INFO  LearnReadOrientationModel - Context CCG: with 14695685 ref and 392343 alt examples, EM converged in 12 steps
+17:27:19.822 INFO  LearnReadOrientationModel - Context CGA: with 11924422 ref and 299461 alt examples, EM converged in 11 steps
+17:27:42.250 INFO  LearnReadOrientationModel - Context CGC: with 12516404 ref and 460924 alt examples, EM converged in 12 steps
+17:27:49.132 INFO  LearnReadOrientationModel - Context CTA: with 70267403 ref and 894142 alt examples, EM converged in 5 steps
+17:27:57.766 INFO  LearnReadOrientationModel - Context CTC: with 91714966 ref and 1206794 alt examples, EM converged in 5 steps
+17:28:03.676 INFO  LearnReadOrientationModel - Context GAA: with 108483141 ref and 737201 alt examples, EM converged in 4 steps
+17:28:13.681 INFO  LearnReadOrientationModel - Context GAC: with 51549250 ref and 424648 alt examples, EM converged in 9 steps
+17:28:32.082 INFO  LearnReadOrientationModel - Context GCA: with 78047411 ref and 1390726 alt examples, EM converged in 9 steps
+17:28:47.549 INFO  LearnReadOrientationModel - Context GCC: with 64350025 ref and 1123098 alt examples, EM converged in 9 steps
+17:29:00.910 INFO  LearnReadOrientationModel - Context GGA: with 84576181 ref and 912799 alt examples, EM converged in 8 steps
+17:29:10.712 INFO  LearnReadOrientationModel - Context GTA: with 62078712 ref and 556001 alt examples, EM converged in 8 steps
+17:29:25.733 INFO  LearnReadOrientationModel - Context TAA: with 113824698 ref and 1063299 alt examples, EM converged in 8 steps
+17:29:36.287 INFO  LearnReadOrientationModel - Context TCA: with 106565387 ref and 1432022 alt examples, EM converged in 5 steps
+17:29:47.535 INFO  LearnReadOrientationModel - Context AAA: with 210443166 ref and 1832569 alt examples, EM converged in 4 steps
+17:30:01.473 INFO  LearnReadOrientationModel - Context AAC: with 77179944 ref and 3138247 alt examples, EM converged in 6 steps
+17:30:10.264 INFO  LearnReadOrientationModel - Context AAG: with 107469253 ref and 2666021 alt examples, EM converged in 4 steps
+17:30:30.489 INFO  LearnReadOrientationModel - Context AAT: with 133684727 ref and 4476409 alt examples, EM converged in 6 steps
+17:31:06.112 INFO  LearnReadOrientationModel - Context ACA: with 106659407 ref and 4485244 alt examples, EM converged in 6 steps
+17:31:22.214 INFO  LearnReadOrientationModel - Context ACC: with 61548934 ref and 2419315 alt examples, EM converged in 7 steps
+17:31:45.682 INFO  LearnReadOrientationModel - Context ACG: with 13091106 ref and 721272 alt examples, EM converged in 8 steps
+17:32:06.739 INFO  LearnReadOrientationModel - Context ACT: with 86146262 ref and 2790259 alt examples, EM converged in 7 steps
+17:32:28.920 INFO  LearnReadOrientationModel - Context AGA: with 117630857 ref and 4329618 alt examples, EM converged in 5 steps
+17:32:40.263 INFO  LearnReadOrientationModel - Context AGC: with 74654516 ref and 2390673 alt examples, EM converged in 6 steps
+17:32:55.683 INFO  LearnReadOrientationModel - Context AGG: with 94735974 ref and 3139551 alt examples, EM converged in 6 steps
+17:33:21.564 INFO  LearnReadOrientationModel - Context ATA: with 109755329 ref and 4464678 alt examples, EM converged in 5 steps
+17:33:35.708 INFO  LearnReadOrientationModel - Context ATC: with 70333983 ref and 3328327 alt examples, EM converged in 6 steps
+17:34:06.306 INFO  LearnReadOrientationModel - Context ATG: with 97532921 ref and 4022893 alt examples, EM converged in 7 steps
+17:34:18.850 INFO  LearnReadOrientationModel - Context CAA: with 101198099 ref and 3099577 alt examples, EM converged in 5 steps
+17:34:47.429 INFO  LearnReadOrientationModel - Context CAC: with 78790917 ref and 4187600 alt examples, EM converged in 6 steps
+17:35:07.015 INFO  LearnReadOrientationModel - Context CAG: with 108559904 ref and 3066993 alt examples, EM converged in 6 steps
+17:35:20.556 INFO  LearnReadOrientationModel - Context CCA: with 97958621 ref and 3866185 alt examples, EM converged in 5 steps
+17:35:33.272 INFO  LearnReadOrientationModel - Context CCC: with 69523946 ref and 2767509 alt examples, EM converged in 6 steps
+17:35:52.380 INFO  LearnReadOrientationModel - Context CCG: with 14375135 ref and 705915 alt examples, EM converged in 8 steps
+17:36:06.098 INFO  LearnReadOrientationModel - Context CGA: with 11614860 ref and 590597 alt examples, EM converged in 8 steps
+17:36:21.689 INFO  LearnReadOrientationModel - Context CGC: with 12324164 ref and 666238 alt examples, EM converged in 7 steps
+17:36:30.184 INFO  LearnReadOrientationModel - Context CTA: with 69335050 ref and 1827636 alt examples, EM converged in 5 steps
+17:36:43.893 INFO  LearnReadOrientationModel - Context CTC: with 89346935 ref and 3533947 alt examples, EM converged in 5 steps
+17:36:52.014 INFO  LearnReadOrientationModel - Context GAA: with 105697878 ref and 3489716 alt examples, EM converged in 4 steps
+17:37:02.312 INFO  LearnReadOrientationModel - Context GAC: with 49539936 ref and 2410530 alt examples, EM converged in 6 steps
+17:37:15.177 INFO  LearnReadOrientationModel - Context GCA: with 76457762 ref and 2954388 alt examples, EM converged in 5 steps
+17:37:27.250 INFO  LearnReadOrientationModel - Context GCC: with 63154290 ref and 2303174 alt examples, EM converged in 7 steps
+17:37:41.199 INFO  LearnReadOrientationModel - Context GGA: with 82236269 ref and 3129723 alt examples, EM converged in 6 steps
+17:37:50.539 INFO  LearnReadOrientationModel - Context GTA: with 60283882 ref and 2366856 alt examples, EM converged in 5 steps
+17:38:02.884 INFO  LearnReadOrientationModel - Context TAA: with 111891692 ref and 3228057 alt examples, EM converged in 5 steps
+17:38:23.199 INFO  LearnReadOrientationModel - Context TCA: with 103804960 ref and 4243012 alt examples, EM converged in 5 steps
+17:38:37.680 INFO  LearnReadOrientationModel - Context AAA: with 206384985 ref and 5887700 alt examples, EM converged in 4 steps
+17:38:50.962 INFO  LearnReadOrientationModel - Context AAC: with 79612301 ref and 643267 alt examples, EM converged in 9 steps
+17:38:59.295 INFO  LearnReadOrientationModel - Context AAG: with 108736754 ref and 1228393 alt examples, EM converged in 5 steps
+17:39:19.887 INFO  LearnReadOrientationModel - Context AAT: with 136896632 ref and 1111892 alt examples, EM converged in 9 steps
+17:39:55.455 INFO  LearnReadOrientationModel - Context ACA: with 109974672 ref and 1117111 alt examples, EM converged in 10 steps
+17:40:08.914 INFO  LearnReadOrientationModel - Context ACC: with 63541192 ref and 436129 alt examples, EM converged in 9 steps
+17:40:41.111 INFO  LearnReadOrientationModel - Context ACG: with 13399800 ref and 414061 alt examples, EM converged in 13 steps
+17:41:03.230 INFO  LearnReadOrientationModel - Context ACT: with 88264385 ref and 666769 alt examples, EM converged in 10 steps
+17:41:15.040 INFO  LearnReadOrientationModel - Context AGA: with 120862637 ref and 968515 alt examples, EM converged in 5 steps
+17:41:27.296 INFO  LearnReadOrientationModel - Context AGC: with 76343399 ref and 699418 alt examples, EM converged in 9 steps
+17:41:42.514 INFO  LearnReadOrientationModel - Context AGG: with 97088305 ref and 746714 alt examples, EM converged in 9 steps
+17:42:08.921 INFO  LearnReadOrientationModel - Context ATA: with 112901098 ref and 957464 alt examples, EM converged in 9 steps
+17:42:21.081 INFO  LearnReadOrientationModel - Context ATC: with 73105990 ref and 564569 alt examples, EM converged in 9 steps
+17:42:50.125 INFO  LearnReadOrientationModel - Context ATG: with 100747907 ref and 840895 alt examples, EM converged in 10 steps
+17:42:56.660 INFO  LearnReadOrientationModel - Context CAA: with 103343347 ref and 826236 alt examples, EM converged in 4 steps
+17:43:07.531 INFO  LearnReadOrientationModel - Context CAC: with 82245088 ref and 789430 alt examples, EM converged in 5 steps
+17:43:19.122 INFO  LearnReadOrientationModel - Context CAG: with 110196589 ref and 1470053 alt examples, EM converged in 5 steps
+17:43:25.000 INFO  LearnReadOrientationModel - Context CCA: with 101137634 ref and 773327 alt examples, EM converged in 4 steps
+17:43:37.526 INFO  LearnReadOrientationModel - Context CCC: with 71755519 ref and 546410 alt examples, EM converged in 9 steps
+17:44:00.227 INFO  LearnReadOrientationModel - Context CCG: with 14725866 ref and 360027 alt examples, EM converged in 12 steps
+17:44:16.267 INFO  LearnReadOrientationModel - Context CGA: with 11959498 ref and 257991 alt examples, EM converged in 12 steps
+17:44:37.264 INFO  LearnReadOrientationModel - Context CGC: with 12549583 ref and 438468 alt examples, EM converged in 12 steps
+17:44:43.090 INFO  LearnReadOrientationModel - Context CTA: with 70410447 ref and 744374 alt examples, EM converged in 5 steps
+17:44:51.318 INFO  LearnReadOrientationModel - Context CTC: with 91671753 ref and 1242464 alt examples, EM converged in 5 steps
+17:44:56.547 INFO  LearnReadOrientationModel - Context GAA: with 108435689 ref and 716460 alt examples, EM converged in 4 steps
+17:45:05.495 INFO  LearnReadOrientationModel - Context GAC: with 51580793 ref and 389808 alt examples, EM converged in 9 steps
+17:45:19.463 INFO  LearnReadOrientationModel - Context GCA: with 78362961 ref and 1061278 alt examples, EM converged in 9 steps
+17:45:31.082 INFO  LearnReadOrientationModel - Context GCC: with 64589242 ref and 891734 alt examples, EM converged in 9 steps
+17:45:44.509 INFO  LearnReadOrientationModel - Context GGA: with 84863921 ref and 557603 alt examples, EM converged in 9 steps
+17:45:54.302 INFO  LearnReadOrientationModel - Context GTA: with 62188061 ref and 447164 alt examples, EM converged in 9 steps
+17:46:00.576 INFO  LearnReadOrientationModel - Context TAA: with 114052218 ref and 837133 alt examples, EM converged in 4 steps
+17:46:09.550 INFO  LearnReadOrientationModel - Context TCA: with 107084916 ref and 891427 alt examples, EM converged in 5 steps
+17:46:19.498 INFO  LearnReadOrientationModel - Context AAA: with 210693069 ref and 1589318 alt examples, EM converged in 4 steps
+17:46:33.501 INFO  LearnReadOrientationModel - Context AAC: with 79544546 ref and 734529 alt examples, EM converged in 9 steps
+17:46:42.659 INFO  LearnReadOrientationModel - Context AAG: with 108876163 ref and 1119270 alt examples, EM converged in 5 steps
+17:47:04.047 INFO  LearnReadOrientationModel - Context AAT: with 136898993 ref and 1227903 alt examples, EM converged in 9 steps
+17:47:40.233 INFO  LearnReadOrientationModel - Context ACA: with 109926321 ref and 1174170 alt examples, EM converged in 10 steps
+17:47:55.774 INFO  LearnReadOrientationModel - Context ACC: with 63491166 ref and 497744 alt examples, EM converged in 10 steps
+17:48:28.102 INFO  LearnReadOrientationModel - Context ACG: with 13452269 ref and 369665 alt examples, EM converged in 13 steps
+17:48:51.047 INFO  LearnReadOrientationModel - Context ACT: with 88146505 ref and 804824 alt examples, EM converged in 10 steps
+17:49:03.126 INFO  LearnReadOrientationModel - Context AGA: with 120713423 ref and 1155133 alt examples, EM converged in 5 steps
+17:49:18.016 INFO  LearnReadOrientationModel - Context AGC: with 76309549 ref and 742376 alt examples, EM converged in 10 steps
+17:49:34.114 INFO  LearnReadOrientationModel - Context AGG: with 97069652 ref and 784246 alt examples, EM converged in 9 steps
+17:50:04.451 INFO  LearnReadOrientationModel - Context ATA: with 112710660 ref and 1031242 alt examples, EM converged in 10 steps
+17:50:11.421 INFO  LearnReadOrientationModel - Context ATC: with 73040133 ref and 635937 alt examples, EM converged in 5 steps
+17:50:41.102 INFO  LearnReadOrientationModel - Context ATG: with 100732138 ref and 941061 alt examples, EM converged in 10 steps
+17:50:47.942 INFO  LearnReadOrientationModel - Context CAA: with 103319880 ref and 887679 alt examples, EM converged in 4 steps
+17:50:58.869 INFO  LearnReadOrientationModel - Context CAC: with 82164925 ref and 878276 alt examples, EM converged in 5 steps
+17:51:11.370 INFO  LearnReadOrientationModel - Context CAG: with 110319540 ref and 1355854 alt examples, EM converged in 5 steps
+17:51:17.627 INFO  LearnReadOrientationModel - Context CCA: with 101219767 ref and 794706 alt examples, EM converged in 4 steps
+17:51:30.731 INFO  LearnReadOrientationModel - Context CCC: with 71726265 ref and 576553 alt examples, EM converged in 9 steps
+17:51:55.372 INFO  LearnReadOrientationModel - Context CCG: with 14788862 ref and 313160 alt examples, EM converged in 13 steps
+17:52:11.476 INFO  LearnReadOrientationModel - Context CGA: with 12002924 ref and 227546 alt examples, EM converged in 12 steps
+17:52:34.472 INFO  LearnReadOrientationModel - Context CGC: with 12619255 ref and 373397 alt examples, EM converged in 13 steps
+17:52:40.858 INFO  LearnReadOrientationModel - Context CTA: with 70459758 ref and 696358 alt examples, EM converged in 5 steps
+17:52:50.280 INFO  LearnReadOrientationModel - Context CTC: with 91688639 ref and 1240977 alt examples, EM converged in 5 steps
+17:52:55.949 INFO  LearnReadOrientationModel - Context GAA: with 108490762 ref and 788907 alt examples, EM converged in 4 steps
+17:53:05.487 INFO  LearnReadOrientationModel - Context GAC: with 51546478 ref and 428334 alt examples, EM converged in 9 steps
+17:53:21.427 INFO  LearnReadOrientationModel - Context GCA: with 78473028 ref and 970406 alt examples, EM converged in 9 steps
+17:53:36.410 INFO  LearnReadOrientationModel - Context GCC: with 64659814 ref and 827782 alt examples, EM converged in 10 steps
+17:53:43.993 INFO  LearnReadOrientationModel - Context GGA: with 84909734 ref and 627395 alt examples, EM converged in 5 steps
+17:53:54.388 INFO  LearnReadOrientationModel - Context GTA: with 62134691 ref and 492690 alt examples, EM converged in 9 steps
+17:54:01.081 INFO  LearnReadOrientationModel - Context TAA: with 114018830 ref and 877911 alt examples, EM converged in 4 steps
+17:54:10.304 INFO  LearnReadOrientationModel - Context TCA: with 107041212 ref and 962811 alt examples, EM converged in 5 steps
+17:54:20.653 INFO  LearnReadOrientationModel - Context AAA: with 210581638 ref and 1712840 alt examples, EM converged in 4 steps
+17:54:34.020 INFO  LearnReadOrientationModel - Context AAC: with 80042502 ref and 690890 alt examples, EM converged in 8 steps
+17:54:44.207 INFO  LearnReadOrientationModel - Context AAG: with 109349766 ref and 1244809 alt examples, EM converged in 5 steps
+17:55:04.159 INFO  LearnReadOrientationModel - Context AAT: with 137789083 ref and 1199214 alt examples, EM converged in 8 steps
+17:55:38.517 INFO  LearnReadOrientationModel - Context ACA: with 110345516 ref and 1414935 alt examples, EM converged in 9 steps
+17:55:52.898 INFO  LearnReadOrientationModel - Context ACC: with 63754652 ref and 576548 alt examples, EM converged in 9 steps
+17:56:26.067 INFO  LearnReadOrientationModel - Context ACG: with 13446016 ref and 436789 alt examples, EM converged in 13 steps
+17:56:47.200 INFO  LearnReadOrientationModel - Context ACT: with 88595791 ref and 873755 alt examples, EM converged in 9 steps
+17:57:07.608 INFO  LearnReadOrientationModel - Context AGA: with 121229873 ref and 1302744 alt examples, EM converged in 8 steps
+17:57:21.639 INFO  LearnReadOrientationModel - Context AGC: with 76566283 ref and 853193 alt examples, EM converged in 9 steps
+17:57:36.531 INFO  LearnReadOrientationModel - Context AGG: with 97380262 ref and 958349 alt examples, EM converged in 8 steps
+17:58:04.066 INFO  LearnReadOrientationModel - Context ATA: with 113257236 ref and 1045147 alt examples, EM converged in 9 steps
+17:58:15.248 INFO  LearnReadOrientationModel - Context ATC: with 73586974 ref and 516887 alt examples, EM converged in 8 steps
+17:58:43.140 INFO  LearnReadOrientationModel - Context ATG: with 101417085 ref and 931428 alt examples, EM converged in 9 steps
+17:58:50.423 INFO  LearnReadOrientationModel - Context CAA: with 103944752 ref and 859306 alt examples, EM converged in 4 steps
+17:59:02.679 INFO  LearnReadOrientationModel - Context CAC: with 82607109 ref and 897972 alt examples, EM converged in 5 steps
+17:59:24.974 INFO  LearnReadOrientationModel - Context CAG: with 110751895 ref and 1491943 alt examples, EM converged in 8 steps
+17:59:33.178 INFO  LearnReadOrientationModel - Context CCA: with 101565407 ref and 1065795 alt examples, EM converged in 5 steps
+17:59:45.088 INFO  LearnReadOrientationModel - Context CCC: with 71877218 ref and 739349 alt examples, EM converged in 8 steps
+18:00:08.305 INFO  LearnReadOrientationModel - Context CCG: with 14762620 ref and 369960 alt examples, EM converged in 12 steps
+18:00:24.715 INFO  LearnReadOrientationModel - Context CGA: with 12012842 ref and 280865 alt examples, EM converged in 12 steps
+18:00:46.691 INFO  LearnReadOrientationModel - Context CGC: with 12552244 ref and 450704 alt examples, EM converged in 12 steps
+18:00:53.218 INFO  LearnReadOrientationModel - Context CTA: with 70798440 ref and 750865 alt examples, EM converged in 5 steps
+18:01:01.688 INFO  LearnReadOrientationModel - Context CTC: with 92298043 ref and 1099344 alt examples, EM converged in 5 steps
+18:01:07.518 INFO  LearnReadOrientationModel - Context GAA: with 109324408 ref and 655905 alt examples, EM converged in 4 steps
+18:01:16.196 INFO  LearnReadOrientationModel - Context GAC: with 51870156 ref and 384776 alt examples, EM converged in 8 steps
+18:01:31.553 INFO  LearnReadOrientationModel - Context GCA: with 78624442 ref and 1246690 alt examples, EM converged in 8 steps
+18:01:46.154 INFO  LearnReadOrientationModel - Context GCC: with 64754054 ref and 993375 alt examples, EM converged in 9 steps
+18:01:58.995 INFO  LearnReadOrientationModel - Context GGA: with 85279709 ref and 793456 alt examples, EM converged in 8 steps
+18:02:08.536 INFO  LearnReadOrientationModel - Context GTA: with 62530148 ref and 475009 alt examples, EM converged in 8 steps
+18:02:15.550 INFO  LearnReadOrientationModel - Context TAA: with 114622732 ref and 887680 alt examples, EM converged in 4 steps
+18:02:25.519 INFO  LearnReadOrientationModel - Context TCA: with 107366604 ref and 1246916 alt examples, EM converged in 5 steps
+18:02:36.370 INFO  LearnReadOrientationModel - Context AAA: with 211874495 ref and 1600834 alt examples, EM converged in 4 steps
+18:02:50.368 INFO  LearnReadOrientationModel - Context AAC: with 79959699 ref and 769360 alt examples, EM converged in 8 steps
+18:03:01.390 INFO  LearnReadOrientationModel - Context AAG: with 109098925 ref and 1472445 alt examples, EM converged in 5 steps
+18:03:22.441 INFO  LearnReadOrientationModel - Context AAT: with 137678079 ref and 1322087 alt examples, EM converged in 8 steps
+18:03:54.743 INFO  LearnReadOrientationModel - Context ACA: with 110163595 ref and 1569601 alt examples, EM converged in 8 steps
+18:04:08.074 INFO  LearnReadOrientationModel - Context ACC: with 63701047 ref and 624277 alt examples, EM converged in 8 steps
+18:04:37.138 INFO  LearnReadOrientationModel - Context ACG: with 13402816 ref and 486204 alt examples, EM converged in 11 steps
+18:04:56.763 INFO  LearnReadOrientationModel - Context ACT: with 88481258 ref and 973860 alt examples, EM converged in 8 steps
+18:05:16.010 INFO  LearnReadOrientationModel - Context AGA: with 121038338 ref and 1469834 alt examples, EM converged in 7 steps
+18:05:29.140 INFO  LearnReadOrientationModel - Context AGC: with 76440808 ref and 974440 alt examples, EM converged in 8 steps
+18:05:44.638 INFO  LearnReadOrientationModel - Context AGG: with 97270522 ref and 1060452 alt examples, EM converged in 8 steps
+18:06:10.218 INFO  LearnReadOrientationModel - Context ATA: with 113157187 ref and 1136577 alt examples, EM converged in 8 steps
+18:06:22.024 INFO  LearnReadOrientationModel - Context ATC: with 73515786 ref and 588355 alt examples, EM converged in 8 steps
+18:06:48.234 INFO  LearnReadOrientationModel - Context ATG: with 101321084 ref and 1048288 alt examples, EM converged in 8 steps
+18:07:02.241 INFO  LearnReadOrientationModel - Context CAA: with 103815456 ref and 971856 alt examples, EM converged in 7 steps
+18:07:15.754 INFO  LearnReadOrientationModel - Context CAC: with 82484699 ref and 1016195 alt examples, EM converged in 5 steps
+18:07:37.096 INFO  LearnReadOrientationModel - Context CAG: with 110459375 ref and 1779490 alt examples, EM converged in 7 steps
+18:07:49.483 INFO  LearnReadOrientationModel - Context CCA: with 101499813 ref and 1152371 alt examples, EM converged in 7 steps
+18:08:02.064 INFO  LearnReadOrientationModel - Context CCC: with 71869048 ref and 773309 alt examples, EM converged in 8 steps
+18:08:22.639 INFO  LearnReadOrientationModel - Context CCG: with 14736024 ref and 425853 alt examples, EM converged in 10 steps
+18:08:36.853 INFO  LearnReadOrientationModel - Context CGA: with 11986383 ref and 319603 alt examples, EM converged in 10 steps
+18:08:56.359 INFO  LearnReadOrientationModel - Context CGC: with 12507866 ref and 522633 alt examples, EM converged in 10 steps
+18:09:06.217 INFO  LearnReadOrientationModel - Context CTA: with 70678799 ref and 863032 alt examples, EM converged in 7 steps
+18:09:15.484 INFO  LearnReadOrientationModel - Context CTC: with 92093974 ref and 1304825 alt examples, EM converged in 5 steps
+18:09:21.822 INFO  LearnReadOrientationModel - Context GAA: with 109259851 ref and 745049 alt examples, EM converged in 4 steps
+18:09:30.985 INFO  LearnReadOrientationModel - Context GAC: with 51813932 ref and 439344 alt examples, EM converged in 8 steps
+18:09:47.504 INFO  LearnReadOrientationModel - Context GCA: with 78444245 ref and 1430462 alt examples, EM converged in 8 steps
+18:10:01.448 INFO  LearnReadOrientationModel - Context GCC: with 64612200 ref and 1156179 alt examples, EM converged in 8 steps
+18:10:13.315 INFO  LearnReadOrientationModel - Context GGA: with 85240167 ref and 864800 alt examples, EM converged in 7 steps
+18:10:23.223 INFO  LearnReadOrientationModel - Context GTA: with 62460933 ref and 526400 alt examples, EM converged in 8 steps
+18:10:36.432 INFO  LearnReadOrientationModel - Context TAA: with 114503445 ref and 980781 alt examples, EM converged in 7 steps
+18:10:47.303 INFO  LearnReadOrientationModel - Context TCA: with 107189536 ref and 1411404 alt examples, EM converged in 5 steps
+18:10:58.770 INFO  LearnReadOrientationModel - Context AAA: with 211675317 ref and 1768832 alt examples, EM converged in 4 steps
+18:11:12.727 INFO  LearnReadOrientationModel - Context AAC: with 80097824 ref and 602479 alt examples, EM converged in 9 steps
+18:11:21.730 INFO  LearnReadOrientationModel - Context AAG: with 109480642 ref and 1089937 alt examples, EM converged in 5 steps
+18:11:42.844 INFO  LearnReadOrientationModel - Context AAT: with 137745691 ref and 1020330 alt examples, EM converged in 9 steps
+18:12:17.779 INFO  LearnReadOrientationModel - Context ACA: with 110477067 ref and 1231716 alt examples, EM converged in 10 steps
+18:12:33.042 INFO  LearnReadOrientationModel - Context ACC: with 63797801 ref and 505943 alt examples, EM converged in 10 steps
+18:13:05.448 INFO  LearnReadOrientationModel - Context ACG: with 13461917 ref and 409564 alt examples, EM converged in 13 steps
+18:13:27.780 INFO  LearnReadOrientationModel - Context ACT: with 88638071 ref and 768164 alt examples, EM converged in 10 steps
+18:13:39.356 INFO  LearnReadOrientationModel - Context AGA: with 121353078 ref and 1151218 alt examples, EM converged in 5 steps
+18:13:51.982 INFO  LearnReadOrientationModel - Context AGC: with 76675875 ref and 729192 alt examples, EM converged in 9 steps
+18:14:07.740 INFO  LearnReadOrientationModel - Context AGG: with 97464175 ref and 848709 alt examples, EM converged in 9 steps
+18:14:32.825 INFO  LearnReadOrientationModel - Context ATA: with 112999233 ref and 874300 alt examples, EM converged in 9 steps
+18:14:44.599 INFO  LearnReadOrientationModel - Context ATC: with 73606439 ref and 450594 alt examples, EM converged in 9 steps
+18:15:14.847 INFO  LearnReadOrientationModel - Context ATG: with 101355780 ref and 831711 alt examples, EM converged in 10 steps
+18:15:21.698 INFO  LearnReadOrientationModel - Context CAA: with 104006781 ref and 753720 alt examples, EM converged in 4 steps
+18:15:33.477 INFO  LearnReadOrientationModel - Context CAC: with 82639604 ref and 803066 alt examples, EM converged in 5 steps
+18:15:45.915 INFO  LearnReadOrientationModel - Context CAG: with 110894914 ref and 1312511 alt examples, EM converged in 5 steps
+18:15:53.694 INFO  LearnReadOrientationModel - Context CCA: with 101542155 ref and 929278 alt examples, EM converged in 5 steps
+18:16:06.543 INFO  LearnReadOrientationModel - Context CCC: with 71950958 ref and 643251 alt examples, EM converged in 9 steps
+18:16:29.553 INFO  LearnReadOrientationModel - Context CCG: with 14772146 ref and 357902 alt examples, EM converged in 12 steps
+18:16:45.674 INFO  LearnReadOrientationModel - Context CGA: with 12006383 ref and 266510 alt examples, EM converged in 12 steps
+18:17:06.965 INFO  LearnReadOrientationModel - Context CGC: with 12593619 ref and 418317 alt examples, EM converged in 12 steps
+18:17:12.866 INFO  LearnReadOrientationModel - Context CTA: with 70880625 ref and 639548 alt examples, EM converged in 5 steps
+18:17:20.280 INFO  LearnReadOrientationModel - Context CTC: with 92380536 ref and 961331 alt examples, EM converged in 5 steps
+18:17:25.621 INFO  LearnReadOrientationModel - Context GAA: with 109241260 ref and 579986 alt examples, EM converged in 4 steps
+18:17:34.878 INFO  LearnReadOrientationModel - Context GAC: with 51896818 ref and 340274 alt examples, EM converged in 9 steps
+18:17:49.778 INFO  LearnReadOrientationModel - Context GCA: with 78789276 ref and 1043898 alt examples, EM converged in 9 steps
+18:18:02.115 INFO  LearnReadOrientationModel - Context GCC: with 64917278 ref and 825388 alt examples, EM converged in 9 steps
+18:18:16.068 INFO  LearnReadOrientationModel - Context GGA: with 85214017 ref and 698476 alt examples, EM converged in 9 steps
+18:18:26.221 INFO  LearnReadOrientationModel - Context GTA: with 62548236 ref and 408590 alt examples, EM converged in 9 steps
+18:18:32.571 INFO  LearnReadOrientationModel - Context TAA: with 114679590 ref and 755050 alt examples, EM converged in 4 steps
+18:18:41.553 INFO  LearnReadOrientationModel - Context TCA: with 107466059 ref and 1095817 alt examples, EM converged in 5 steps
+18:18:51.278 INFO  LearnReadOrientationModel - Context AAA: with 211995232 ref and 1374069 alt examples, EM converged in 4 steps
+18:19:05.196 INFO  LearnReadOrientationModel - Context AAC: with 77778794 ref and 3041266 alt examples, EM converged in 6 steps
+18:19:14.346 INFO  LearnReadOrientationModel - Context AAG: with 107973543 ref and 2824926 alt examples, EM converged in 4 steps
+18:19:31.187 INFO  LearnReadOrientationModel - Context AAT: with 134832971 ref and 4395774 alt examples, EM converged in 5 steps
+18:20:08.747 INFO  LearnReadOrientationModel - Context ACA: with 106822701 ref and 5037349 alt examples, EM converged in 6 steps
+18:20:25.845 INFO  LearnReadOrientationModel - Context ACC: with 61647153 ref and 2702580 alt examples, EM converged in 7 steps
+18:20:52.536 INFO  LearnReadOrientationModel - Context ACG: with 13097238 ref and 794217 alt examples, EM converged in 9 steps
+18:21:11.302 INFO  LearnReadOrientationModel - Context ACT: with 86491914 ref and 3039973 alt examples, EM converged in 6 steps
+18:21:33.745 INFO  LearnReadOrientationModel - Context AGA: with 118059469 ref and 4643131 alt examples, EM converged in 5 steps
+18:21:45.496 INFO  LearnReadOrientationModel - Context AGC: with 74860904 ref and 2596458 alt examples, EM converged in 6 steps
+18:22:01.267 INFO  LearnReadOrientationModel - Context AGG: with 95097225 ref and 3333884 alt examples, EM converged in 6 steps
+18:22:26.999 INFO  LearnReadOrientationModel - Context ATA: with 110437152 ref and 4536253 alt examples, EM converged in 5 steps
+18:22:38.557 INFO  LearnReadOrientationModel - Context ATC: with 70888501 ref and 3256329 alt examples, EM converged in 5 steps
+18:23:09.938 INFO  LearnReadOrientationModel - Context ATG: with 98249097 ref and 4127617 alt examples, EM converged in 7 steps
+18:23:23.074 INFO  LearnReadOrientationModel - Context CAA: with 101691554 ref and 3279432 alt examples, EM converged in 5 steps
+18:23:52.615 INFO  LearnReadOrientationModel - Context CAC: with 79230524 ref and 4292970 alt examples, EM converged in 6 steps
+18:24:09.787 INFO  LearnReadOrientationModel - Context CAG: with 108860750 ref and 3409377 alt examples, EM converged in 5 steps
+18:24:24.075 INFO  LearnReadOrientationModel - Context CCA: with 98468930 ref and 4145832 alt examples, EM converged in 5 steps
+18:24:37.397 INFO  LearnReadOrientationModel - Context CCC: with 69718095 ref and 2957509 alt examples, EM converged in 6 steps
+18:24:56.841 INFO  LearnReadOrientationModel - Context CCG: with 14384628 ref and 772853 alt examples, EM converged in 8 steps
+18:25:10.904 INFO  LearnReadOrientationModel - Context CGA: with 11644671 ref and 653918 alt examples, EM converged in 8 steps
+18:25:27.004 INFO  LearnReadOrientationModel - Context CGC: with 12311561 ref and 733334 alt examples, EM converged in 7 steps
+18:25:35.940 INFO  LearnReadOrientationModel - Context CTA: with 69597502 ref and 1999613 alt examples, EM converged in 5 steps
+18:25:50.178 INFO  LearnReadOrientationModel - Context CTC: with 89736085 ref and 3710295 alt examples, EM converged in 5 steps
+18:25:58.555 INFO  LearnReadOrientationModel - Context GAA: with 106530005 ref and 3527446 alt examples, EM converged in 4 steps
+18:26:08.837 INFO  LearnReadOrientationModel - Context GAC: with 49919394 ref and 2349531 alt examples, EM converged in 6 steps
+18:26:22.669 INFO  LearnReadOrientationModel - Context GCA: with 76625328 ref and 3276482 alt examples, EM converged in 5 steps
+18:26:33.577 INFO  LearnReadOrientationModel - Context GCC: with 63244159 ref and 2542633 alt examples, EM converged in 6 steps
+18:26:45.691 INFO  LearnReadOrientationModel - Context GGA: with 82655634 ref and 3423437 alt examples, EM converged in 5 steps
+18:26:55.366 INFO  LearnReadOrientationModel - Context GTA: with 60649716 ref and 2405232 alt examples, EM converged in 5 steps
+18:27:05.188 INFO  LearnReadOrientationModel - Context TAA: with 112444505 ref and 3365404 alt examples, EM converged in 4 steps
+18:27:26.375 INFO  LearnReadOrientationModel - Context TCA: with 104063862 ref and 4674234 alt examples, EM converged in 5 steps
+18:27:41.021 INFO  LearnReadOrientationModel - Context AAA: with 207627744 ref and 5948524 alt examples, EM converged in 4 steps
+18:27:42.113 INFO  LearnReadOrientationModel - Shutting down engine
+[April 29, 2024 at 6:27:42 PM CEST] org.broadinstitute.hellbender.tools.walkers.readorientation.LearnReadOrientationModel done. Elapsed time: 84.60 minutes.
+Runtime.totalMemory()=13002342400
+Tool returned:
+SUCCESS

@@ -1,0 +1,118 @@
+Assuming unrestricted shared filesystem usage.
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 40
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job        count
+-------  -------
+all            1
+mutect2        6
+total          7
+
+Select jobs to execute...
+Execute 6 jobs...
+
+[Wed Apr 10 19:36:39 2024]
+localrule mutect2:
+    input: results/recal/P028/P028_dna_tumor_recal.bam, results/recal/P028/P028_dna_normal_recal.bam, results/mutect2/pon/mutect2.pon.vcf.gz
+    output: results/mutect2/P028/P028_variants.vcf, results/mutect2/P028/P028_f1r2.tar.gz
+    log: logs/mutect2/P028/P028_variants.log
+    jobid: 58
+    reason: Forced execution
+    wildcards: sample=P028
+    threads: 4
+    resources: tmpdir=/tmp
+
+
+        gatk Mutect2              -R resources/genome.fa              -I results/recal/P028/P028_dna_tumor_recal.bam              -I  results/recal/P028/P028_dna_normal_recal.bam              -normal P028_normal              --germline-resource resources/gnomad_chr.vcf.gz              --panel-of-normals results/mutect2/pon/mutect2.pon.vcf.gz              -O results/mutect2/P028/P028_variants.vcf              --f1r2-tar-gz results/mutect2/P028/P028_f1r2.tar.gz              --native-pair-hmm-threads 4             &> logs/mutect2/P028/P028_variants.log
+        
+
+[Wed Apr 10 19:36:39 2024]
+localrule mutect2:
+    input: results/recal/P016/P016_dna_tumor_recal.bam, results/recal/P016/P016_dna_normal_recal.bam, results/mutect2/pon/mutect2.pon.vcf.gz
+    output: results/mutect2/P016/P016_variants.vcf, results/mutect2/P016/P016_f1r2.tar.gz
+    log: logs/mutect2/P016/P016_variants.log
+    jobid: 1
+    reason: Forced execution
+    wildcards: sample=P016
+    threads: 4
+    resources: tmpdir=/tmp
+
+
+        gatk Mutect2              -R resources/genome.fa              -I results/recal/P016/P016_dna_tumor_recal.bam              -I  results/recal/P016/P016_dna_normal_recal.bam              -normal P016_normal              --germline-resource resources/gnomad_chr.vcf.gz              --panel-of-normals results/mutect2/pon/mutect2.pon.vcf.gz              -O results/mutect2/P016/P016_variants.vcf              --f1r2-tar-gz results/mutect2/P016/P016_f1r2.tar.gz              --native-pair-hmm-threads 4             &> logs/mutect2/P016/P016_variants.log
+        
+
+[Wed Apr 10 19:36:39 2024]
+localrule mutect2:
+    input: results/recal/P024/P024_dna_tumor_recal.bam, results/recal/P024/P024_dna_normal_recal.bam, results/mutect2/pon/mutect2.pon.vcf.gz
+    output: results/mutect2/P024/P024_variants.vcf, results/mutect2/P024/P024_f1r2.tar.gz
+    log: logs/mutect2/P024/P024_variants.log
+    jobid: 32
+    reason: Forced execution
+    wildcards: sample=P024
+    threads: 4
+    resources: tmpdir=/tmp
+
+
+        gatk Mutect2              -R resources/genome.fa              -I results/recal/P024/P024_dna_tumor_recal.bam              -I  results/recal/P024/P024_dna_normal_recal.bam              -normal P024_normal              --germline-resource resources/gnomad_chr.vcf.gz              --panel-of-normals results/mutect2/pon/mutect2.pon.vcf.gz              -O results/mutect2/P024/P024_variants.vcf              --f1r2-tar-gz results/mutect2/P024/P024_f1r2.tar.gz              --native-pair-hmm-threads 4             &> logs/mutect2/P024/P024_variants.log
+        
+
+[Wed Apr 10 19:36:39 2024]
+localrule mutect2:
+    input: results/recal/P019/P019_dna_tumor_recal.bam, results/recal/P019/P019_dna_normal_recal.bam, results/mutect2/pon/mutect2.pon.vcf.gz
+    output: results/mutect2/P019/P019_variants.vcf, results/mutect2/P019/P019_f1r2.tar.gz
+    log: logs/mutect2/P019/P019_variants.log
+    jobid: 110
+    reason: Forced execution
+    wildcards: sample=P019
+    threads: 4
+    resources: tmpdir=/tmp
+
+
+        gatk Mutect2              -R resources/genome.fa              -I results/recal/P019/P019_dna_tumor_recal.bam              -I  results/recal/P019/P019_dna_normal_recal.bam              -normal P019_normal              --germline-resource resources/gnomad_chr.vcf.gz              --panel-of-normals results/mutect2/pon/mutect2.pon.vcf.gz              -O results/mutect2/P019/P019_variants.vcf              --f1r2-tar-gz results/mutect2/P019/P019_f1r2.tar.gz              --native-pair-hmm-threads 4             &> logs/mutect2/P019/P019_variants.log
+        
+
+[Wed Apr 10 19:36:39 2024]
+localrule mutect2:
+    input: results/recal/P026/P026_dna_tumor_recal.bam, results/recal/P026/P026_dna_normal_recal.bam, results/mutect2/pon/mutect2.pon.vcf.gz
+    output: results/mutect2/P026/P026_variants.vcf, results/mutect2/P026/P026_f1r2.tar.gz
+    log: logs/mutect2/P026/P026_variants.log
+    jobid: 97
+    reason: Forced execution
+    wildcards: sample=P026
+    threads: 4
+    resources: tmpdir=/tmp
+
+
+        gatk Mutect2              -R resources/genome.fa              -I results/recal/P026/P026_dna_tumor_recal.bam              -I  results/recal/P026/P026_dna_normal_recal.bam              -normal P026_normal              --germline-resource resources/gnomad_chr.vcf.gz              --panel-of-normals results/mutect2/pon/mutect2.pon.vcf.gz              -O results/mutect2/P026/P026_variants.vcf              --f1r2-tar-gz results/mutect2/P026/P026_f1r2.tar.gz              --native-pair-hmm-threads 4             &> logs/mutect2/P026/P026_variants.log
+        
+
+[Wed Apr 10 19:36:39 2024]
+localrule mutect2:
+    input: results/recal/P018/P018_dna_tumor_recal.bam, results/recal/P018/P018_dna_normal_recal.bam, results/mutect2/pon/mutect2.pon.vcf.gz
+    output: results/mutect2/P018/P018_variants.vcf, results/mutect2/P018/P018_f1r2.tar.gz
+    log: logs/mutect2/P018/P018_variants.log
+    jobid: 84
+    reason: Forced execution
+    wildcards: sample=P018
+    threads: 4
+    resources: tmpdir=/tmp
+
+
+        gatk Mutect2              -R resources/genome.fa              -I results/recal/P018/P018_dna_tumor_recal.bam              -I  results/recal/P018/P018_dna_normal_recal.bam              -normal P018_normal              --germline-resource resources/gnomad_chr.vcf.gz              --panel-of-normals results/mutect2/pon/mutect2.pon.vcf.gz              -O results/mutect2/P018/P018_variants.vcf              --f1r2-tar-gz results/mutect2/P018/P018_f1r2.tar.gz              --native-pair-hmm-threads 4             &> logs/mutect2/P018/P018_variants.log
+        
+[Thu Apr 11 21:24:24 2024]
+Finished job 84.
+1 of 7 steps (14%) done
+[Thu Apr 11 21:30:26 2024]
+Finished job 110.
+2 of 7 steps (29%) done
+[Thu Apr 11 21:48:36 2024]
+Finished job 1.
+3 of 7 steps (43%) done
+[Thu Apr 11 21:56:35 2024]
+Finished job 97.
+4 of 7 steps (57%) done
+slurmstepd: error: *** JOB 61323436 ON i28l10 CANCELLED AT 2024-04-12T19:36:00 DUE TO TIME LIMIT ***

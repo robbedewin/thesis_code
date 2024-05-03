@@ -1,0 +1,54 @@
+Assuming unrestricted shared filesystem usage.
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 18
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job               count
+--------------  -------
+apply_bqsr            1
+samtools_index        1
+total                 2
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Apr  2 00:06:27 2024]
+localrule apply_bqsr:
+    input: results/mapped_reads/P028/P028_dna_tumor.marked.bam, results/recal/P028/P028_dna_tumor_recal_data.table, resources/genome.fa
+    output: results/recal/P028/P028_dna_tumor_recal.bam
+    log: logs/recal/P028/P028_dna_tumor_apply_recal.log
+    jobid: 1
+    reason: Missing output files: results/recal/P028/P028_dna_tumor_recal.bam
+    wildcards: sample=P028, alias=tumor
+    resources: tmpdir=/tmp
+
+
+        gatk ApplyBQSR             -R resources/genome.fa             -I results/mapped_reads/P028/P028_dna_tumor.marked.bam             --bqsr-recal-file results/recal/P028/P028_dna_tumor_recal_data.table             -O results/recal/P028/P028_dna_tumor_recal.bam             --create-output-bam-index false             &> logs/recal/P028/P028_dna_tumor_apply_recal.log
+        
+Write-protecting output file results/recal/P028/P028_dna_tumor_recal.bam.
+[Tue Apr  2 10:50:27 2024]
+Finished job 1.
+1 of 2 steps (50%) done
+Removing temporary output results/mapped_reads/P028/P028_dna_tumor.marked.bam.
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Apr  2 10:50:36 2024]
+localrule samtools_index:
+    input: results/recal/P028/P028_dna_tumor_recal.bam
+    output: results/recal/P028/P028_dna_tumor_recal.bai
+    log: logs/samtools/P028/P028_dna_tumor_index.log
+    jobid: 0
+    reason: Missing output files: results/recal/P028/P028_dna_tumor_recal.bai; Input files updated by another job: results/recal/P028/P028_dna_tumor_recal.bam
+    wildcards: sample=P028, alias=tumor
+    resources: tmpdir=/tmp
+
+
+        samtools index -@ 18 results/recal/P028/P028_dna_tumor_recal.bam results/recal/P028/P028_dna_tumor_recal.bai &> logs/samtools/P028/P028_dna_tumor_index.log
+        
+[Tue Apr  2 10:55:00 2024]
+Finished job 0.
+2 of 2 steps (100%) done
+Complete log: .snakemake/log/2024-04-02T000626.173990.snakemake.log

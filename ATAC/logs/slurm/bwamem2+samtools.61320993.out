@@ -1,0 +1,12 @@
+Tue Apr  9 23:48:45 CEST 2024
+
+rule all:
+    input:
+       expand(
+            [
+                results/samtools/{sample}/{sample}_atac.bam
+            ],
+            sample=unique_samples,
+            read=[R1, R2]
+        ), 
+Snakemake encountered an error at Tue Apr  9 23:49:43 CEST 2024

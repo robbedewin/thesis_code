@@ -1,0 +1,5 @@
+Wed Apr 10 19:36:02 CEST 2024
+
+rule all:
+    input:
+        expand(results/mutect2/{sample}/{sample}_variants.vcf, sample=unique_samples),

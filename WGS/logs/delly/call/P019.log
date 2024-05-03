@@ -1,0 +1,14 @@
+Warning: Duplicate sample names: P019
+Warning: Changing sample name to P019_0
+[2024-Apr-06 16:56:38] delly call -x resources/T2T.excluderanges.bed -g resources/genome.fa -o results/delly/call/P019.bcf results/recal/P019/P019_dna_tumor_recal.bam results/recal/P019/P019_dna_normal_recal.bam 
+[2024-Apr-06 16:56:44] Paired-end and split-read scanning
+[2024-Apr-06 17:28:51] Split-read clustering
+[2024-Apr-06 17:28:52] Paired-end clustering
+[2024-Apr-06 17:28:53] Split-read assembly
+[2024-Apr-06 18:03:17] Generate REF and ALT probes
+[2024-Apr-06 18:03:43] SV annotation
+[2024-Apr-06 19:09:15] Genotyping
+[2024-Apr-06 19:09:15] Sample statistics
+Sample:P019,ReadSize=150,Median=303,MAD=39,UniqueDiscordantPairs=1527735
+Sample:P019_0,ReadSize=150,Median=308,MAD=41,UniqueDiscordantPairs=911089
+[2024-Apr-06 19:09:15] Done.

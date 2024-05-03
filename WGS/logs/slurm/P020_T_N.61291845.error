@@ -1,0 +1,309 @@
+Assuming unrestricted shared filesystem usage.
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 32
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job                 count
+----------------  -------
+apply_bqsr              2
+base_recal_table        2
+bwa_map                 2
+mark_duplicates         2
+samtools_index          2
+samtools_sort           2
+trim_reads              2
+total                  14
+
+Select jobs to execute...
+Execute 2 jobs...
+
+[Sat Mar 30 23:43:22 2024]
+localrule trim_reads:
+    input: /staging/leuven/stg_00096/home/rdewin/data/TALL_IF/TALL_IF/WGS/WGS_batch1/S158/S158_R01.fq.gz, /staging/leuven/stg_00096/home/rdewin/data/TALL_IF/TALL_IF/WGS/WGS_batch1/S158/S158_R02.fq.gz
+    output: results/fastp/P020_dna_normal_R1.trimmed.fq, results/fastp/P020_dna_normal_R2.trimmed.fq, logs/fastp/P020_dna_normal.fastp.html, logs/fastp/P020_dna_normal.fastp.json
+    log: logs/fastp/P020_dna_normal.fastp.log
+    jobid: 5
+    reason: Missing output files: results/fastp/P020_dna_normal_R1.trimmed.fq, results/fastp/P020_dna_normal_R2.trimmed.fq
+    wildcards: sample=P020, alias=normal
+    resources: tmpdir=/tmp
+
+
+        fastp -w 12 -i /staging/leuven/stg_00096/home/rdewin/data/TALL_IF/TALL_IF/WGS/WGS_batch1/S158/S158_R01.fq.gz -I /staging/leuven/stg_00096/home/rdewin/data/TALL_IF/TALL_IF/WGS/WGS_batch1/S158/S158_R02.fq.gz               -o results/fastp/P020_dna_normal_R1.trimmed.fq -O results/fastp/P020_dna_normal_R2.trimmed.fq               -j logs/fastp/P020_dna_normal.fastp.json -h logs/fastp/P020_dna_normal.fastp.html &> logs/fastp/P020_dna_normal.fastp.log
+        
+
+[Sat Mar 30 23:43:23 2024]
+localrule trim_reads:
+    input: /staging/leuven/stg_00096/home/rdewin/data/TALL_IF/TALL_IF/WGS/WGS_batch1/S044/S044_R01.fq.gz, /staging/leuven/stg_00096/home/rdewin/data/TALL_IF/TALL_IF/WGS/WGS_batch1/S044/S044_R02.fq.gz
+    output: results/fastp/P020_dna_tumor_R1.trimmed.fq, results/fastp/P020_dna_tumor_R2.trimmed.fq, logs/fastp/P020_dna_tumor.fastp.html, logs/fastp/P020_dna_tumor.fastp.json
+    log: logs/fastp/P020_dna_tumor.fastp.log
+    jobid: 17
+    reason: Missing output files: results/fastp/P020_dna_tumor_R2.trimmed.fq, results/fastp/P020_dna_tumor_R1.trimmed.fq
+    wildcards: sample=P020, alias=tumor
+    resources: tmpdir=/tmp
+
+
+        fastp -w 12 -i /staging/leuven/stg_00096/home/rdewin/data/TALL_IF/TALL_IF/WGS/WGS_batch1/S044/S044_R01.fq.gz -I /staging/leuven/stg_00096/home/rdewin/data/TALL_IF/TALL_IF/WGS/WGS_batch1/S044/S044_R02.fq.gz               -o results/fastp/P020_dna_tumor_R1.trimmed.fq -O results/fastp/P020_dna_tumor_R2.trimmed.fq               -j logs/fastp/P020_dna_tumor.fastp.json -h logs/fastp/P020_dna_tumor.fastp.html &> logs/fastp/P020_dna_tumor.fastp.log
+        
+[Sat Mar 30 23:52:46 2024]
+Finished job 5.
+1 of 14 steps (7%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Sat Mar 30 23:52:46 2024]
+localrule bwa_map:
+    input: results/fastp/P020_dna_normal_R1.trimmed.fq, results/fastp/P020_dna_normal_R2.trimmed.fq, resources/genome.fa, resources/genome.fa.0123, resources/genome.fa.amb, resources/genome.fa.ann, resources/genome.fa.bwt.2bit.64, resources/genome.fa.pac
+    output: results/mapped_reads/P020_dna_normal.sam
+    log: logs/mapped_reads/P020_dna_normal.log.bwamem
+    jobid: 4
+    reason: Missing output files: results/mapped_reads/P020_dna_normal.sam; Input files updated by another job: results/fastp/P020_dna_normal_R1.trimmed.fq, results/fastp/P020_dna_normal_R2.trimmed.fq
+    wildcards: sample=P020, alias=normal
+    threads: 18
+    resources: tmpdir=/tmp
+
+
+        read -r first_line < <(cat results/fastp/P020_dna_normal_R1.trimmed.fq | head -n 1)
+        IFS=':' read -r -a rgdata <<< "$first_line"
+        FLOWCELLID=${rgdata[2]}
+        LANE=${rgdata[3]}
+        BC=${rgdata[-1]}
+        RG="@RG\tID:${FLOWCELLID}.${LANE}\tPL:ILLUMINA\tPU:${FLOWCELLID}.${LANE}.${BC}\tLB:LIB-P020_normal-1\tSM:P020"
+
+        bwa-mem2 mem -o results/mapped_reads/P020_dna_normal.sam -t 18 -R "$RG"         resources/genome.fa results/fastp/P020_dna_normal_R1.trimmed.fq results/fastp/P020_dna_normal_R2.trimmed.fq &> logs/mapped_reads/P020_dna_normal.log.bwamem
+        
+[Sat Mar 30 23:58:15 2024]
+Finished job 17.
+2 of 14 steps (14%) done
+Select jobs to execute...
+[Sun Mar 31 03:58:17 2024]
+Finished job 4.
+3 of 14 steps (21%) done
+Removing temporary output results/fastp/P020_dna_normal_R1.trimmed.fq.
+Removing temporary output results/fastp/P020_dna_normal_R2.trimmed.fq.
+Execute 2 jobs...
+
+[Sun Mar 31 03:58:32 2024]
+localrule samtools_sort:
+    input: results/mapped_reads/P020_dna_normal.sam, resources/genome.fa
+    output: results/mapped_reads/P020_dna_normal.sorted.bam
+    log: logs/samtools/P020_dna_normal_sort.log
+    jobid: 3
+    reason: Missing output files: results/mapped_reads/P020_dna_normal.sorted.bam; Input files updated by another job: results/mapped_reads/P020_dna_normal.sam
+    wildcards: sample=P020, alias=normal
+    resources: tmpdir=/tmp
+
+
+        samtools sort -@ 18 --write-index         -m 2G         --reference resources/genome.fa         -T sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}         -o results/mapped_reads/P020_dna_normal.sorted.bam results/mapped_reads/P020_dna_normal.sam &> logs/samtools/P020_dna_normal_sort.log
+        
+
+[Sun Mar 31 03:58:32 2024]
+localrule bwa_map:
+    input: results/fastp/P020_dna_tumor_R1.trimmed.fq, results/fastp/P020_dna_tumor_R2.trimmed.fq, resources/genome.fa, resources/genome.fa.0123, resources/genome.fa.amb, resources/genome.fa.ann, resources/genome.fa.bwt.2bit.64, resources/genome.fa.pac
+    output: results/mapped_reads/P020_dna_tumor.sam
+    log: logs/mapped_reads/P020_dna_tumor.log.bwamem
+    jobid: 16
+    reason: Missing output files: results/mapped_reads/P020_dna_tumor.sam; Input files updated by another job: results/fastp/P020_dna_tumor_R2.trimmed.fq, results/fastp/P020_dna_tumor_R1.trimmed.fq
+    wildcards: sample=P020, alias=tumor
+    threads: 18
+    resources: tmpdir=/tmp
+
+
+        read -r first_line < <(cat results/fastp/P020_dna_tumor_R1.trimmed.fq | head -n 1)
+        IFS=':' read -r -a rgdata <<< "$first_line"
+        FLOWCELLID=${rgdata[2]}
+        LANE=${rgdata[3]}
+        BC=${rgdata[-1]}
+        RG="@RG\tID:${FLOWCELLID}.${LANE}\tPL:ILLUMINA\tPU:${FLOWCELLID}.${LANE}.${BC}\tLB:LIB-P020_tumor-1\tSM:P020"
+
+        bwa-mem2 mem -o results/mapped_reads/P020_dna_tumor.sam -t 18 -R "$RG"         resources/genome.fa results/fastp/P020_dna_tumor_R1.trimmed.fq results/fastp/P020_dna_tumor_R2.trimmed.fq &> logs/mapped_reads/P020_dna_tumor.log.bwamem
+        
+[Sun Mar 31 04:24:33 2024]
+Finished job 3.
+4 of 14 steps (29%) done
+Removing temporary output results/mapped_reads/P020_dna_normal.sam.
+Select jobs to execute...
+Execute 1 jobs...
+
+[Sun Mar 31 04:24:56 2024]
+localrule mark_duplicates:
+    input: results/mapped_reads/P020_dna_normal.sorted.bam
+    output: results/mapped_reads/P020_dna_normal.marked.bam, results/qc/dedup/P020_dna_normal_duplication_metrics.txt
+    log: logs/picard/P020_dna_normal_markdup.log
+    jobid: 2
+    reason: Missing output files: results/mapped_reads/P020_dna_normal.marked.bam; Input files updated by another job: results/mapped_reads/P020_dna_normal.sorted.bam
+    wildcards: sample=P020, alias=normal
+    resources: tmpdir=/tmp
+
+
+        picard MarkDuplicates             I=results/mapped_reads/P020_dna_normal.sorted.bam             O=results/mapped_reads/P020_dna_normal.marked.bam             M=results/qc/dedup/P020_dna_normal_duplication_metrics.txt             &> logs/picard/P020_dna_normal_markdup.log
+        
+[Sun Mar 31 07:19:58 2024]
+Finished job 2.
+5 of 14 steps (36%) done
+Removing temporary output results/mapped_reads/P020_dna_normal.sorted.bam.
+Select jobs to execute...
+Execute 1 jobs...
+
+[Sun Mar 31 07:20:00 2024]
+localrule base_recal_table:
+    input: results/mapped_reads/P020_dna_normal.marked.bam, resources/genome.fa, resources/genome.fa.fai, resources/genome.dict, resources/dbSNPv155_common.vcf.gz, resources/dbSNPv155_common.vcf.gz.tbi
+    output: results/recal/table/P020_dna_normal_recal_data.table
+    log: logs/recal/P020_dna_normal_recal.log
+    jobid: 8
+    reason: Missing output files: results/recal/table/P020_dna_normal_recal_data.table; Input files updated by another job: results/mapped_reads/P020_dna_normal.marked.bam
+    wildcards: sample=P020, alias=normal
+    resources: tmpdir=/tmp
+
+
+        gatk BaseRecalibrator             -I results/mapped_reads/P020_dna_normal.marked.bam             -R resources/genome.fa             --known-sites resources/dbSNPv155_common.vcf.gz             -O results/recal/table/P020_dna_normal_recal_data.table             &> logs/recal/P020_dna_normal_recal.log
+        
+[Sun Mar 31 08:11:41 2024]
+Finished job 16.
+6 of 14 steps (43%) done
+Removing temporary output results/fastp/P020_dna_tumor_R2.trimmed.fq.
+Removing temporary output results/fastp/P020_dna_tumor_R1.trimmed.fq.
+Select jobs to execute...
+Execute 1 jobs...
+
+[Sun Mar 31 08:12:07 2024]
+localrule samtools_sort:
+    input: results/mapped_reads/P020_dna_tumor.sam, resources/genome.fa
+    output: results/mapped_reads/P020_dna_tumor.sorted.bam
+    log: logs/samtools/P020_dna_tumor_sort.log
+    jobid: 15
+    reason: Missing output files: results/mapped_reads/P020_dna_tumor.sorted.bam; Input files updated by another job: results/mapped_reads/P020_dna_tumor.sam
+    wildcards: sample=P020, alias=tumor
+    resources: tmpdir=/tmp
+
+
+        samtools sort -@ 18 --write-index         -m 2G         --reference resources/genome.fa         -T sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}         -o results/mapped_reads/P020_dna_tumor.sorted.bam results/mapped_reads/P020_dna_tumor.sam &> logs/samtools/P020_dna_tumor_sort.log
+        
+[Sun Mar 31 08:50:26 2024]
+Finished job 15.
+7 of 14 steps (50%) done
+Removing temporary output results/mapped_reads/P020_dna_tumor.sam.
+Select jobs to execute...
+Execute 1 jobs...
+
+[Sun Mar 31 08:50:49 2024]
+localrule mark_duplicates:
+    input: results/mapped_reads/P020_dna_tumor.sorted.bam
+    output: results/mapped_reads/P020_dna_tumor.marked.bam, results/qc/dedup/P020_dna_tumor_duplication_metrics.txt
+    log: logs/picard/P020_dna_tumor_markdup.log
+    jobid: 14
+    reason: Missing output files: results/mapped_reads/P020_dna_tumor.marked.bam; Input files updated by another job: results/mapped_reads/P020_dna_tumor.sorted.bam
+    wildcards: sample=P020, alias=tumor
+    resources: tmpdir=/tmp
+
+
+        picard MarkDuplicates             I=results/mapped_reads/P020_dna_tumor.sorted.bam             O=results/mapped_reads/P020_dna_tumor.marked.bam             M=results/qc/dedup/P020_dna_tumor_duplication_metrics.txt             &> logs/picard/P020_dna_tumor_markdup.log
+        
+[Sun Mar 31 10:55:03 2024]
+Finished job 8.
+8 of 14 steps (57%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Sun Mar 31 10:55:03 2024]
+localrule apply_bqsr:
+    input: results/mapped_reads/P020_dna_normal.marked.bam, results/recal/table/P020_dna_normal_recal_data.table, resources/genome.fa
+    output: results/recal/P020_dna_normal_recal.bam
+    log: logs/recal/P020_dna_normal_apply_recal.log
+    jobid: 1
+    reason: Missing output files: results/recal/P020_dna_normal_recal.bam; Input files updated by another job: results/mapped_reads/P020_dna_normal.marked.bam, results/recal/table/P020_dna_normal_recal_data.table
+    wildcards: sample=P020, alias=normal
+    resources: tmpdir=/tmp
+
+
+        gatk ApplyBQSR             -R resources/genome.fa             -I results/mapped_reads/P020_dna_normal.marked.bam             --bqsr-recal-file results/recal/table/P020_dna_normal_recal_data.table             -O results/recal/P020_dna_normal_recal.bam             --create-output-bam-index false             &> logs/recal/P020_dna_normal_apply_recal.log
+        
+[Sun Mar 31 12:59:04 2024]
+Finished job 14.
+9 of 14 steps (64%) done
+Removing temporary output results/mapped_reads/P020_dna_tumor.sorted.bam.
+Select jobs to execute...
+Execute 1 jobs...
+
+[Sun Mar 31 12:59:07 2024]
+localrule base_recal_table:
+    input: results/mapped_reads/P020_dna_tumor.marked.bam, resources/genome.fa, resources/genome.fa.fai, resources/genome.dict, resources/dbSNPv155_common.vcf.gz, resources/dbSNPv155_common.vcf.gz.tbi
+    output: results/recal/table/P020_dna_tumor_recal_data.table
+    log: logs/recal/P020_dna_tumor_recal.log
+    jobid: 18
+    reason: Missing output files: results/recal/table/P020_dna_tumor_recal_data.table; Input files updated by another job: results/mapped_reads/P020_dna_tumor.marked.bam
+    wildcards: sample=P020, alias=tumor
+    resources: tmpdir=/tmp
+
+
+        gatk BaseRecalibrator             -I results/mapped_reads/P020_dna_tumor.marked.bam             -R resources/genome.fa             --known-sites resources/dbSNPv155_common.vcf.gz             -O results/recal/table/P020_dna_tumor_recal_data.table             &> logs/recal/P020_dna_tumor_recal.log
+        
+Write-protecting output file results/recal/P020_dna_normal_recal.bam.
+[Sun Mar 31 13:50:57 2024]
+Finished job 1.
+10 of 14 steps (71%) done
+Removing temporary output results/mapped_reads/P020_dna_normal.marked.bam.
+Select jobs to execute...
+Execute 1 jobs...
+
+[Sun Mar 31 13:51:00 2024]
+localrule samtools_index:
+    input: results/recal/P020_dna_normal_recal.bam
+    output: results/recal/P020_dna_normal_recal.bai
+    log: logs/samtools/P020_dna_normal_index.log
+    jobid: 0
+    reason: Missing output files: results/recal/P020_dna_normal_recal.bai; Input files updated by another job: results/recal/P020_dna_normal_recal.bam
+    wildcards: sample=P020, alias=normal
+    resources: tmpdir=/tmp
+
+
+        samtools index -@ 18 results/recal/P020_dna_normal_recal.bam results/recal/P020_dna_normal_recal.bai &> logs/samtools/P020_dna_normal_index.log
+        
+[Sun Mar 31 13:52:21 2024]
+Finished job 0.
+11 of 14 steps (79%) done
+[Sun Mar 31 18:06:33 2024]
+Finished job 18.
+12 of 14 steps (86%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Sun Mar 31 18:06:33 2024]
+localrule apply_bqsr:
+    input: results/mapped_reads/P020_dna_tumor.marked.bam, results/recal/table/P020_dna_tumor_recal_data.table, resources/genome.fa
+    output: results/recal/P020_dna_tumor_recal.bam
+    log: logs/recal/P020_dna_tumor_apply_recal.log
+    jobid: 13
+    reason: Missing output files: results/recal/P020_dna_tumor_recal.bam; Input files updated by another job: results/mapped_reads/P020_dna_tumor.marked.bam, results/recal/table/P020_dna_tumor_recal_data.table
+    wildcards: sample=P020, alias=tumor
+    resources: tmpdir=/tmp
+
+
+        gatk ApplyBQSR             -R resources/genome.fa             -I results/mapped_reads/P020_dna_tumor.marked.bam             --bqsr-recal-file results/recal/table/P020_dna_tumor_recal_data.table             -O results/recal/P020_dna_tumor_recal.bam             --create-output-bam-index false             &> logs/recal/P020_dna_tumor_apply_recal.log
+        
+Write-protecting output file results/recal/P020_dna_tumor_recal.bam.
+[Sun Mar 31 22:30:07 2024]
+Finished job 13.
+13 of 14 steps (93%) done
+Removing temporary output results/mapped_reads/P020_dna_tumor.marked.bam.
+Select jobs to execute...
+Execute 1 jobs...
+
+[Sun Mar 31 22:30:09 2024]
+localrule samtools_index:
+    input: results/recal/P020_dna_tumor_recal.bam
+    output: results/recal/P020_dna_tumor_recal.bai
+    log: logs/samtools/P020_dna_tumor_index.log
+    jobid: 12
+    reason: Missing output files: results/recal/P020_dna_tumor_recal.bai; Input files updated by another job: results/recal/P020_dna_tumor_recal.bam
+    wildcards: sample=P020, alias=tumor
+    resources: tmpdir=/tmp
+
+
+        samtools index -@ 18 results/recal/P020_dna_tumor_recal.bam results/recal/P020_dna_tumor_recal.bai &> logs/samtools/P020_dna_tumor_index.log
+        
+[Sun Mar 31 22:32:04 2024]
+Finished job 12.
+14 of 14 steps (100%) done
+Complete log: .snakemake/log/2024-03-30T234321.254805.snakemake.log

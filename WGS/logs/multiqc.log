@@ -1,0 +1,57 @@
+
+  /// MultiQC 🔍 | v1.21
+
+[2024-04-04 23:42:32,212] multiqc                                            [DEBUG  ]  This is MultiQC v1.21
+[2024-04-04 23:42:32,213] multiqc                                            [DEBUG  ]  Command used: /lustre1/project/stg_00096/home/rdewin/WGS/.snakemake/conda/1594d4401a0e092c72a6cb16b2b84d26_/bin/multiqc --verbose --fn_as_s_name --no-data-dir --outdir results/qc --filename multiqc_test results/qc/fastqc/P022 results/qc/dedup/P020 results/qc/dedup/P023 results/qc/samtools/P020 results/qc/samtools/P023 results/qc/fastqc/P019 results/qc/fastqc/P020 results/qc/fastqc/P023 results/qc/dedup/P016 results/qc/dedup/P028 results/qc/samtools/P016 results/qc/samtools/P028 results/qc/dedup/P013 results/qc/samtools/P013 results/qc/dedup/P024 results/qc/dedup/P026 results/qc/samtools/P024 results/qc/fastqc/P016 results/qc/samtools/P026 results/qc/fastqc/P028 results/qc/fastqc/P013 results/qc/dedup/P018 results/qc/samtools/P018 results/qc/fastqc/P024 results/qc/fastqc/P026 results/qc/dedup/P022 results/qc/samtools/P022 results/qc/fastqc/P018 results/qc/dedup/P019 results/qc/samtools/P019
+[2024-04-04 23:42:33,061] multiqc                                            [DEBUG  ]  Latest MultiQC version is v1.21, released 2024-02-28
+[2024-04-04 23:42:33,061] multiqc                                            [INFO   ]  Using log filenames for sample names
+[2024-04-04 23:42:33,061] multiqc                                            [DEBUG  ]  Working dir : /lustre1/project/stg_00096/home/rdewin/WGS
+[2024-04-04 23:42:33,061] multiqc                                            [DEBUG  ]  Template    : default
+[2024-04-04 23:42:33,061] multiqc                                            [DEBUG  ]  Running Python 3.11.8 | packaged by conda-forge | (main, Feb 16 2024, 20:53:32) [GCC 12.3.0]
+[2024-04-04 23:42:33,062] multiqc                                            [DEBUG  ]  Analysing modules: custom_content, ccs, ngsderive, purple, conpair, isoseq, lima, peddy, somalier, methylqa, mosdepth, phantompeakqualtools, qualimap, bamdst, preseq, hifiasm, quast, qorts, rna_seqc, rockhopper, rsem, rseqc, busco, bustools, goleft_indexcov, gffcompare, disambiguate, supernova, deeptools, sargasso, verifybamid, mirtrace, happy, mirtop, sambamba, gopeaks, homer, hops, macs2, theta2, snpeff, gatk, htseq, bcftools, featureCounts, fgbio, dragen, dragen_fastqc, dedup, pbmarkdup, damageprofiler, mapdamage, biobambam2, jcvi, mtnucratio, picard, vep, bakta, prokka, qc3C, nanostat, samblaster, samtools, sexdeterrmine, seqera_cli, eigenstratdatabasetools, bamtools, jellyfish, vcftools, longranger, stacks, varscan2, snippy, umitools, truvari, megahit, bbmap, bismark, biscuit, diamond, hicexplorer, hicup, hicpro, salmon, kallisto, slamdunk, star, hisat2, tophat, bowtie2, bowtie1, cellranger, snpsplit, odgi, pangolin, nextclade, freyja, humid, kat, leehom, librarian, nonpareil, adapterRemoval, bbduk, clipandmerge, cutadapt, flexbar, sourmash, kaiju, bracken, kraken, malt, motus, trimmomatic, sickle, skewer, sortmerna, biobloomtools, fastq_screen, afterqc, fastp, fastqc, filtlong, prinseqplusplus, pychopper, porechop, pycoqc, minionqc, anglerfish, multivcfanalyzer, clusterflow, checkqc, bcl2fastq, bclconvert, interop, ivar, flash, seqyclean, optitype, whatshap, spaceranger, xenome, xengsort, metaphlan, seqwho
+[2024-04-04 23:42:33,062] multiqc                                            [DEBUG  ]  Using temporary directory for creating report: /tmp/tmpsl20b6eu
+[2024-04-04 23:42:33,085] multiqc                                            [INFO   ]  Search path : /lustre1/project/stg_00096/home/rdewin/WGS/results/qc/fastqc/P022
+[2024-04-04 23:42:33,086] multiqc                                            [INFO   ]  Search path : /lustre1/project/stg_00096/home/rdewin/WGS/results/qc/dedup/P020
+[2024-04-04 23:42:33,086] multiqc                                            [INFO   ]  Search path : /lustre1/project/stg_00096/home/rdewin/WGS/results/qc/dedup/P023
+[2024-04-04 23:42:33,086] multiqc                                            [INFO   ]  Search path : /lustre1/project/stg_00096/home/rdewin/WGS/results/qc/samtools/P020
+[2024-04-04 23:42:33,086] multiqc                                            [INFO   ]  Search path : /lustre1/project/stg_00096/home/rdewin/WGS/results/qc/samtools/P023
+[2024-04-04 23:42:33,086] multiqc                                            [INFO   ]  Search path : /lustre1/project/stg_00096/home/rdewin/WGS/results/qc/fastqc/P019
+[2024-04-04 23:42:33,086] multiqc                                            [INFO   ]  Search path : /lustre1/project/stg_00096/home/rdewin/WGS/results/qc/fastqc/P020
+[2024-04-04 23:42:33,086] multiqc                                            [INFO   ]  Search path : /lustre1/project/stg_00096/home/rdewin/WGS/results/qc/fastqc/P023
+[2024-04-04 23:42:33,086] multiqc                                            [INFO   ]  Search path : /lustre1/project/stg_00096/home/rdewin/WGS/results/qc/dedup/P016
+[2024-04-04 23:42:33,086] multiqc                                            [INFO   ]  Search path : /lustre1/project/stg_00096/home/rdewin/WGS/results/qc/dedup/P028
+[2024-04-04 23:42:33,086] multiqc                                            [INFO   ]  Search path : /lustre1/project/stg_00096/home/rdewin/WGS/results/qc/samtools/P016
+[2024-04-04 23:42:33,086] multiqc                                            [INFO   ]  Search path : /lustre1/project/stg_00096/home/rdewin/WGS/results/qc/samtools/P028
+[2024-04-04 23:42:33,086] multiqc                                            [INFO   ]  Search path : /lustre1/project/stg_00096/home/rdewin/WGS/results/qc/dedup/P013
+[2024-04-04 23:42:33,086] multiqc                                            [INFO   ]  Search path : /lustre1/project/stg_00096/home/rdewin/WGS/results/qc/samtools/P013
+[2024-04-04 23:42:33,086] multiqc                                            [INFO   ]  Search path : /lustre1/project/stg_00096/home/rdewin/WGS/results/qc/dedup/P024
+[2024-04-04 23:42:33,086] multiqc                                            [INFO   ]  Search path : /lustre1/project/stg_00096/home/rdewin/WGS/results/qc/dedup/P026
+[2024-04-04 23:42:33,086] multiqc                                            [INFO   ]  Search path : /lustre1/project/stg_00096/home/rdewin/WGS/results/qc/samtools/P024
+[2024-04-04 23:42:33,086] multiqc                                            [INFO   ]  Search path : /lustre1/project/stg_00096/home/rdewin/WGS/results/qc/fastqc/P016
+[2024-04-04 23:42:33,086] multiqc                                            [INFO   ]  Search path : /lustre1/project/stg_00096/home/rdewin/WGS/results/qc/samtools/P026
+[2024-04-04 23:42:33,086] multiqc                                            [INFO   ]  Search path : /lustre1/project/stg_00096/home/rdewin/WGS/results/qc/fastqc/P028
+[2024-04-04 23:42:33,086] multiqc                                            [INFO   ]  Search path : /lustre1/project/stg_00096/home/rdewin/WGS/results/qc/fastqc/P013
+[2024-04-04 23:42:33,086] multiqc                                            [INFO   ]  Search path : /lustre1/project/stg_00096/home/rdewin/WGS/results/qc/dedup/P018
+[2024-04-04 23:42:33,086] multiqc                                            [INFO   ]  Search path : /lustre1/project/stg_00096/home/rdewin/WGS/results/qc/samtools/P018
+[2024-04-04 23:42:33,087] multiqc                                            [INFO   ]  Search path : /lustre1/project/stg_00096/home/rdewin/WGS/results/qc/fastqc/P024
+[2024-04-04 23:42:33,087] multiqc                                            [INFO   ]  Search path : /lustre1/project/stg_00096/home/rdewin/WGS/results/qc/fastqc/P026
+[2024-04-04 23:42:33,087] multiqc                                            [INFO   ]  Search path : /lustre1/project/stg_00096/home/rdewin/WGS/results/qc/dedup/P022
+[2024-04-04 23:42:33,087] multiqc                                            [INFO   ]  Search path : /lustre1/project/stg_00096/home/rdewin/WGS/results/qc/samtools/P022
+[2024-04-04 23:42:33,087] multiqc                                            [INFO   ]  Search path : /lustre1/project/stg_00096/home/rdewin/WGS/results/qc/fastqc/P018
+[2024-04-04 23:42:33,087] multiqc                                            [INFO   ]  Search path : /lustre1/project/stg_00096/home/rdewin/WGS/results/qc/dedup/P019
+[2024-04-04 23:42:33,087] multiqc                                            [INFO   ]  Search path : /lustre1/project/stg_00096/home/rdewin/WGS/results/qc/samtools/P019
+|         searching | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 220/220  
+[2024-04-04 23:42:34,351] multiqc                                            [DEBUG  ]  Summary of files that were skipped by the search: [skipped_module_specific_max_filesize: 185] // [skipped_ignore_pattern: 80] // [skipped_no_match: 80]
+[2024-04-04 23:42:34,862] multiqc                                            [DEBUG  ]  No samples found: custom_content
+[2024-04-04 23:42:37,735] multiqc.modules.picard.picard                      [INFO   ]  Found 20 MarkDuplicates reports
+[2024-04-04 23:42:38,172] multiqc.modules.samtools.samtools                  [INFO   ]  Found 20 stats reports
+[2024-04-04 23:42:38,416] multiqc.modules.samtools.samtools                  [INFO   ]  Found 20 idxstats reports
+[2024-04-04 23:42:49,127] multiqc.modules.fastqc.fastqc                      [INFO   ]  Found 80 reports
+[2024-04-04 23:42:49,677] multiqc.plots.plotly.heatmap                       [DEBUG  ]  Resizing from 495x880 to fit the maximum size 900x500
+[2024-04-04 23:42:49,677] multiqc.plots.plotly.heatmap                       [DEBUG  ]  Heatmap size: 900x500, px per element: 81.82x6.25
+[2024-04-04 23:42:49,841] multiqc.utils.software_versions                    [DEBUG  ]  Reading software versions from config.software_versions
+[2024-04-04 23:42:49,960] multiqc                                            [DEBUG  ]  Compressing plot data
+[2024-04-04 23:42:50,825] multiqc                                            [INFO   ]  Report      : results/qc/multiqc_test.html
+[2024-04-04 23:42:50,825] multiqc                                            [INFO   ]  Data        : None
+[2024-04-04 23:42:50,825] multiqc                                            [DEBUG  ]  Full report path: /lustre1/project/stg_00096/home/rdewin/WGS/results/qc/multiqc_test.html
+[2024-04-04 23:42:52,528] multiqc                                            [INFO   ]  MultiQC complete

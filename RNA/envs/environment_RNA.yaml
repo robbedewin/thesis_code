@@ -1,0 +1,24 @@
+name: RNA
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - python=3.12
+  - snakemake=8.9.0
+  - samtools=1.19
+  - fastp=0.23.4
+  - gatk4=4.5
+  - star=2.7.11
+  - star-fusion
+  - bioconductor-deseq2=1.42
+  - gffread=0.12.7
+  - bedtools=2.31
+  - graphviz=9.0.0
+  - matplotlib=3.8.3
+  - bcftools=1.19
+  - jinja2=3.1.3
+  - pip
+  - pip:
+      - pysam==0.19.1
+

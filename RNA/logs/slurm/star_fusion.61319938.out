@@ -1,0 +1,6 @@
+Tue Apr  9 13:03:36 CEST 2024
+
+rule all:
+    input:
+        expand(/staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/{sample}, sample=unique_samples)
+Snakemake completed successfully at Tue Apr  9 15:23:21 CEST 2024

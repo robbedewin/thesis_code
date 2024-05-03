@@ -1,0 +1,15 @@
+Sat Apr  6 13:49:39 CEST 2024
+command: snakemake -p results/mutect2/pon/mutect2.pon.vcf.gz --cores all
+Tool returned:
+SUCCESS
+Tool returned:
+SUCCESS
+Tool returned:
+SUCCESS
+Tool returned:
+SUCCESS
+Tool returned:
+SUCCESS
+Tool returned:
+SUCCESS
+Snakemake encountered an error at Sun Apr  7 07:07:05 CEST 2024

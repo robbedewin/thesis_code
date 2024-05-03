@@ -1,0 +1,422 @@
+Assuming unrestricted shared filesystem usage.
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 16
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job      count
+-----  -------
+ascat        2
+total        2
+
+Select jobs to execute...
+Execute 2 jobs...
+
+[Sun Apr  7 19:29:59 2024]
+localrule ascat:
+    input: results/recal/P028/P028_dna_tumor_recal.bam, results/recal/P028/P028_dna_normal_recal.bam
+    output: results/ascat/P028
+    log: logs/ascat/P028.log
+    jobid: 0
+    reason: Missing output files: results/ascat/P028
+    wildcards: sample=P028
+    threads: 8
+    resources: tmpdir=/tmp
+
+[Sun Apr  7 19:29:59 2024]
+localrule ascat:
+    input: results/recal/P024/P024_dna_tumor_recal.bam, results/recal/P024/P024_dna_normal_recal.bam
+    output: results/ascat/P024
+    log: logs/ascat/P024.log
+    jobid: 18
+    reason: Missing output files: results/ascat/P024
+    wildcards: sample=P024
+    threads: 8
+    resources: tmpdir=/tmp
+
+Loading required package: RColorBrewer
+Loading required package: RColorBrewer
+Loading required package: splines
+Loading required package: splines
+Loading required package: data.table
+Loading required package: data.table
+Loading required package: GenomicRanges
+Loading required package: GenomicRanges
+Loading required package: stats4
+Loading required package: stats4
+Loading required package: BiocGenerics
+Loading required package: BiocGenerics
+
+Attaching package: ‘BiocGenerics’
+
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, sd, var, xtabs
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, sd, var, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    Filter, Find, Map, Position, Reduce, anyDuplicated, aperm, append,
+    as.data.frame, basename, cbind, colnames, dirname, do.call,
+    duplicated, eval, evalq, get, grep, grepl, intersect, is.unsorted,
+    lapply, mapply, match, mget, order, paste, pmax, pmax.int, pmin,
+    pmin.int, rank, rbind, rownames, sapply, setdiff, sort, table,
+    tapply, union, unique, unsplit, which.max, which.min
+
+The following objects are masked from ‘package:base’:
+
+    Filter, Find, Map, Position, Reduce, anyDuplicated, aperm, append,
+    as.data.frame, basename, cbind, colnames, dirname, do.call,
+    duplicated, eval, evalq, get, grep, grepl, intersect, is.unsorted,
+    lapply, mapply, match, mget, order, paste, pmax, pmax.int, pmin,
+    pmin.int, rank, rbind, rownames, sapply, setdiff, sort, table,
+    tapply, union, unique, unsplit, which.max, which.min
+
+Loading required package: S4Vectors
+Loading required package: S4Vectors
+
+Attaching package: ‘S4Vectors’
+
+The following objects are masked from ‘package:data.table’:
+
+    first, second
+
+The following object is masked from ‘package:utils’:
+
+    findMatches
+
+The following objects are masked from ‘package:base’:
+
+    I, expand.grid, unname
+
+
+Attaching package: ‘S4Vectors’
+
+The following objects are masked from ‘package:data.table’:
+
+    first, second
+
+The following object is masked from ‘package:utils’:
+
+    findMatches
+
+The following objects are masked from ‘package:base’:
+
+    I, expand.grid, unname
+
+Loading required package: IRanges
+Loading required package: IRanges
+
+Attaching package: ‘IRanges’
+
+The following object is masked from ‘package:data.table’:
+
+    shift
+
+
+Attaching package: ‘IRanges’
+
+The following object is masked from ‘package:data.table’:
+
+    shift
+
+Loading required package: GenomeInfoDb
+Loading required package: GenomeInfoDb
+Loading required package: parallel
+Loading required package: parallel
+Loading required package: doParallel
+Loading required package: doParallel
+Loading required package: foreach
+Loading required package: foreach
+Loading required package: iterators
+Loading required package: iterators
+Reading locis
+Reading locis
+Reading locis
+Reading locis
+Reading locis
+Reading locis
+Reading locis
+Reading locis
+Reading locis
+Reading locis
+Reading locis
+Reading locis
+Reading locis
+Reading locis
+Reading locis
+Reading locis
+Done reading locis
+Multi pos start:
+Done reading locis
+Multi pos start:
+Done reading locis
+Multi pos start:
+Done reading locis
+Multi pos start:
+Done reading locis
+Multi pos start:
+Done reading locis
+Multi pos start:
+Done reading locis
+Multi pos start:
+Done reading locis
+Multi pos start:
+Done reading locis
+Multi pos start:
+Done reading locis
+Multi pos start:
+Done reading locis
+Multi pos start:
+Done reading locis
+Multi pos start:
+Done reading locis
+Multi pos start:
+Done reading locis
+Multi pos start:
+Done reading locis
+Multi pos start:
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Reading locis
+Reading locis
+Reading locis
+Reading locis
+Reading locis
+Reading locis
+Reading locis
+Done reading locis
+Multi pos start:
+Done reading locis
+Multi pos start:
+Done reading locis
+Multi pos start:
+Done reading locis
+Multi pos start:
+Done reading locis
+Multi pos start:
+Done reading locis
+Multi pos start:
+Done reading locis
+Multi pos start:
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Reading locis
+Reading locis
+Reading locis
+Reading locis
+Reading locis
+Reading locis
+Reading locis
+Done reading locis
+Multi pos start:
+Done reading locis
+Multi pos start:
+Done reading locis
+Multi pos start:
+Done reading locis
+Multi pos start:
+Done reading locis
+Multi pos start:
+Done reading locis
+Multi pos start:
+Done reading locis
+Multi pos start:
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+[Sun Apr  7 20:03:14 2024]
+Finished job 0.
+1 of 2 steps (50%) done
+[Sun Apr  7 20:06:46 2024]
+Finished job 18.
+2 of 2 steps (100%) done
+Complete log: .snakemake/log/2024-04-07T192956.293782.snakemake.log

@@ -1,0 +1,41 @@
+Read1 before filtering:
+total reads: 659664342
+total bases: 98949651300
+Q20 bases: 95676430990(96.692%)
+Q30 bases: 90558538935(91.5198%)
+
+Read2 before filtering:
+total reads: 659664342
+total bases: 98949651300
+Q20 bases: 95174866706(96.1851%)
+Q30 bases: 89627240791(90.5786%)
+
+Read1 after filtering:
+total reads: 652215141
+total bases: 97597678164
+Q20 bases: 94645946840(96.9756%)
+Q30 bases: 89704375851(91.9124%)
+
+Read2 after filtering:
+total reads: 652215141
+total bases: 97591785928
+Q20 bases: 94304434153(96.6315%)
+Q30 bases: 88943895251(91.1387%)
+
+Filtering result:
+reads passed filter: 1304430282
+reads failed due to low quality: 14192980
+reads failed due to too many N: 174146
+reads failed due to too short: 531276
+reads with adapter trimmed: 7509568
+bases trimmed due to adapters: 446115286
+
+Duplication rate: 14.2873%
+
+Insert size peak (evaluated by paired-end reads): 269
+
+JSON report: logs/qc/fastp/P019/P019_dna_tumor.fastp.json
+HTML report: logs/qc/fastp/P019/P019_dna_tumor.fastp.html
+
+fastp -w 12 -i /staging/leuven/stg_00096/home/rdewin/data/TALL_IF/TALL_IF/WGS/WGS_batch1/S041/S041_R01.fq.gz -I /staging/leuven/stg_00096/home/rdewin/data/TALL_IF/TALL_IF/WGS/WGS_batch1/S041/S041_R02.fq.gz -o results/qc/fastp/P019/P019_dna_tumor_R1.trimmed.fq -O results/qc/fastp/P019/P019_dna_tumor_R2.trimmed.fq -j logs/qc/fastp/P019/P019_dna_tumor.fastp.json -h logs/qc/fastp/P019/P019_dna_tumor.fastp.html 
+fastp v0.23.4, time used: 2009 seconds

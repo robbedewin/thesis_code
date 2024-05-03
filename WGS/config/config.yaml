@@ -1,0 +1,16 @@
+samples: config/samples.tsv
+units: config/units.tsv
+
+
+ref_genome: /staging/leuven/stg_00096/references/chm13_v2.0_maskedY.rCRS/fasta/chm13v2.0_maskedY_rCRS.fa
+ref_genome_bwa: /staging/leuven/stg_00096/references/chm13_v2.0_maskedY.rCRS/indexes/bwa-mem2/genome.fa
+known_sites: /staging/leuven/stg_00096/references/chm13_v2.0_maskedY.rCRS/annotation/chm13v2.0_dbSNPv155_common.vcf.gz
+
+#ASCAT
+allelecounter: /staging/leuven/stg_00096/software/alleleCount/4.0.0-GCCcore-6.4.0/bin/alleleCounter
+alleles_prefix: /staging/leuven/stg_00096/home/rdewin/projects/ascat/chm13/ReferenceFiles/allele_T2T_chr
+loci_prefix: /staging/leuven/stg_00096/home/rdewin/projects/ascat/chm13/ReferenceFiles/loci_T2T_chr
+GC_file: /staging/leuven/stg_00096/home/rdewin/projects/ascat/chm13/ReferenceFiles/GCcontent_SNPloci.txt
+
+#STAR
+genome_lib: /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir

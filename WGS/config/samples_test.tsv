@@ -1,0 +1,9 @@
+sample_name	alias	unit_name	platform	datatype
+P013	tumor	A0012	ILLUMINA	atac
+P013	tumor	D0037	ILLUMINA	dna
+P013	normal	D0080	ILLUMINA	dna
+P013	tumor	R027	ILLUMINA	rna
+P013test	tumor	A0012	ILLUMINA	atac
+P013test	tumor	D0037	ILLUMINA	dna
+P013test	normal	D0080	ILLUMINA	dna
+P013test	tumor	R027	ILLUMINA	rna

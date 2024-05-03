@@ -1,0 +1,370 @@
+Assuming unrestricted shared filesystem usage.
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 10
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job               count
+--------------  -------
+all                   1
+samtools_index       19
+total                20
+
+Select jobs to execute...
+Execute 10 jobs...
+
+[Mon Apr  8 22:40:50 2024]
+localrule samtools_index:
+    input: results/recal/P024/P024_dna_normal_recal.bam
+    output: results/recal/P024/P024_dna_normal_recal.bai
+    log: logs/samtools/P024/P024_dna_normal_index.log
+    jobid: 55
+    reason: Updated input files: results/recal/P024/P024_dna_normal_recal.bam
+    wildcards: sample=P024, alias=normal
+    resources: tmpdir=/tmp
+
+
+        samtools index -@ 18 results/recal/P024/P024_dna_normal_recal.bam results/recal/P024/P024_dna_normal_recal.bai &> logs/samtools/P024/P024_dna_normal_index.log
+        
+
+[Mon Apr  8 22:40:50 2024]
+localrule samtools_index:
+    input: results/recal/P018/P018_dna_normal_recal.bam
+    output: results/recal/P018/P018_dna_normal_recal.bai
+    log: logs/samtools/P018/P018_dna_normal_index.log
+    jobid: 69
+    reason: Updated input files: results/recal/P018/P018_dna_normal_recal.bam
+    wildcards: sample=P018, alias=normal
+    resources: tmpdir=/tmp
+
+
+        samtools index -@ 18 results/recal/P018/P018_dna_normal_recal.bam results/recal/P018/P018_dna_normal_recal.bai &> logs/samtools/P018/P018_dna_normal_index.log
+        
+
+[Mon Apr  8 22:40:50 2024]
+localrule samtools_index:
+    input: results/recal/P016/P016_dna_tumor_recal.bam
+    output: results/recal/P016/P016_dna_tumor_recal.bai
+    log: logs/samtools/P016/P016_dna_tumor_index.log
+    jobid: 1
+    reason: Updated input files: results/recal/P016/P016_dna_tumor_recal.bam
+    wildcards: sample=P016, alias=tumor
+    resources: tmpdir=/tmp
+
+
+        samtools index -@ 18 results/recal/P016/P016_dna_tumor_recal.bam results/recal/P016/P016_dna_tumor_recal.bai &> logs/samtools/P016/P016_dna_tumor_index.log
+        
+
+[Mon Apr  8 22:40:50 2024]
+localrule samtools_index:
+    input: results/recal/P013/P013_dna_normal_recal.bam
+    output: results/recal/P013/P013_dna_normal_recal.bai
+    log: logs/samtools/P013/P013_dna_normal_index.log
+    jobid: 111
+    reason: Updated input files: results/recal/P013/P013_dna_normal_recal.bam
+    wildcards: sample=P013, alias=normal
+    resources: tmpdir=/tmp
+
+
+        samtools index -@ 18 results/recal/P013/P013_dna_normal_recal.bam results/recal/P013/P013_dna_normal_recal.bai &> logs/samtools/P013/P013_dna_normal_index.log
+        
+
+[Mon Apr  8 22:40:50 2024]
+localrule samtools_index:
+    input: results/recal/P016/P016_dna_normal_recal.bam
+    output: results/recal/P016/P016_dna_normal_recal.bai
+    log: logs/samtools/P016/P016_dna_normal_index.log
+    jobid: 13
+    reason: Updated input files: results/recal/P016/P016_dna_normal_recal.bam
+    wildcards: sample=P016, alias=normal
+    resources: tmpdir=/tmp
+
+
+        samtools index -@ 18 results/recal/P016/P016_dna_normal_recal.bam results/recal/P016/P016_dna_normal_recal.bai &> logs/samtools/P016/P016_dna_normal_index.log
+        
+
+[Mon Apr  8 22:40:50 2024]
+localrule samtools_index:
+    input: results/recal/P028/P028_dna_normal_recal.bam
+    output: results/recal/P028/P028_dna_normal_recal.bai
+    log: logs/samtools/P028/P028_dna_normal_index.log
+    jobid: 139
+    reason: Updated input files: results/recal/P028/P028_dna_normal_recal.bam
+    wildcards: sample=P028, alias=normal
+    resources: tmpdir=/tmp
+
+
+        samtools index -@ 18 results/recal/P028/P028_dna_normal_recal.bam results/recal/P028/P028_dna_normal_recal.bai &> logs/samtools/P028/P028_dna_normal_index.log
+        
+
+[Mon Apr  8 22:40:50 2024]
+localrule samtools_index:
+    input: results/recal/P024/P024_dna_tumor_recal.bam
+    output: results/recal/P024/P024_dna_tumor_recal.bai
+    log: logs/samtools/P024/P024_dna_tumor_index.log
+    jobid: 48
+    reason: Updated input files: results/recal/P024/P024_dna_tumor_recal.bam
+    wildcards: sample=P024, alias=tumor
+    resources: tmpdir=/tmp
+
+
+        samtools index -@ 18 results/recal/P024/P024_dna_tumor_recal.bam results/recal/P024/P024_dna_tumor_recal.bai &> logs/samtools/P024/P024_dna_tumor_index.log
+        
+
+[Mon Apr  8 22:40:50 2024]
+localrule samtools_index:
+    input: results/recal/P018/P018_dna_tumor_recal.bam
+    output: results/recal/P018/P018_dna_tumor_recal.bai
+    log: logs/samtools/P018/P018_dna_tumor_index.log
+    jobid: 62
+    reason: Updated input files: results/recal/P018/P018_dna_tumor_recal.bam
+    wildcards: sample=P018, alias=tumor
+    resources: tmpdir=/tmp
+
+
+        samtools index -@ 18 results/recal/P018/P018_dna_tumor_recal.bam results/recal/P018/P018_dna_tumor_recal.bai &> logs/samtools/P018/P018_dna_tumor_index.log
+        
+
+[Mon Apr  8 22:40:50 2024]
+localrule samtools_index:
+    input: results/recal/P026/P026_dna_tumor_recal.bam
+    output: results/recal/P026/P026_dna_tumor_recal.bai
+    log: logs/samtools/P026/P026_dna_tumor_index.log
+    jobid: 90
+    reason: Updated input files: results/recal/P026/P026_dna_tumor_recal.bam
+    wildcards: sample=P026, alias=tumor
+    resources: tmpdir=/tmp
+
+
+        samtools index -@ 18 results/recal/P026/P026_dna_tumor_recal.bam results/recal/P026/P026_dna_tumor_recal.bai &> logs/samtools/P026/P026_dna_tumor_index.log
+        
+
+[Mon Apr  8 22:40:50 2024]
+localrule samtools_index:
+    input: results/recal/P023/P023_dna_tumor_recal.bam
+    output: results/recal/P023/P023_dna_tumor_recal.bai
+    log: logs/samtools/P023/P023_dna_tumor_index.log
+    jobid: 118
+    reason: Updated input files: results/recal/P023/P023_dna_tumor_recal.bam
+    wildcards: sample=P023, alias=tumor
+    resources: tmpdir=/tmp
+
+
+        samtools index -@ 18 results/recal/P023/P023_dna_tumor_recal.bam results/recal/P023/P023_dna_tumor_recal.bai &> logs/samtools/P023/P023_dna_tumor_index.log
+        
+[Mon Apr  8 22:43:59 2024]
+Finished job 111.
+1 of 20 steps (5%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Apr  8 22:44:00 2024]
+localrule samtools_index:
+    input: results/recal/P020/P020_dna_tumor_recal.bam
+    output: results/recal/P020/P020_dna_tumor_recal.bai
+    log: logs/samtools/P020/P020_dna_tumor_index.log
+    jobid: 76
+    reason: Updated input files: results/recal/P020/P020_dna_tumor_recal.bam
+    wildcards: sample=P020, alias=tumor
+    resources: tmpdir=/tmp
+
+
+        samtools index -@ 18 results/recal/P020/P020_dna_tumor_recal.bam results/recal/P020/P020_dna_tumor_recal.bai &> logs/samtools/P020/P020_dna_tumor_index.log
+        
+[Mon Apr  8 22:46:38 2024]
+Finished job 1.
+2 of 20 steps (10%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Apr  8 22:46:38 2024]
+localrule samtools_index:
+    input: results/recal/P022/P022_dna_tumor_recal.bam
+    output: results/recal/P022/P022_dna_tumor_recal.bai
+    log: logs/samtools/P022/P022_dna_tumor_index.log
+    jobid: 34
+    reason: Updated input files: results/recal/P022/P022_dna_tumor_recal.bam
+    wildcards: sample=P022, alias=tumor
+    resources: tmpdir=/tmp
+
+
+        samtools index -@ 18 results/recal/P022/P022_dna_tumor_recal.bam results/recal/P022/P022_dna_tumor_recal.bai &> logs/samtools/P022/P022_dna_tumor_index.log
+        
+[Mon Apr  8 22:47:24 2024]
+Finished job 55.
+3 of 20 steps (15%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Apr  8 22:47:24 2024]
+localrule samtools_index:
+    input: results/recal/P023/P023_dna_normal_recal.bam
+    output: results/recal/P023/P023_dna_normal_recal.bai
+    log: logs/samtools/P023/P023_dna_normal_index.log
+    jobid: 125
+    reason: Updated input files: results/recal/P023/P023_dna_normal_recal.bam
+    wildcards: sample=P023, alias=normal
+    resources: tmpdir=/tmp
+
+
+        samtools index -@ 18 results/recal/P023/P023_dna_normal_recal.bam results/recal/P023/P023_dna_normal_recal.bai &> logs/samtools/P023/P023_dna_normal_index.log
+        
+[Mon Apr  8 23:11:34 2024]
+Finished job 69.
+4 of 20 steps (20%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Apr  8 23:11:38 2024]
+localrule samtools_index:
+    input: results/recal/P019/P019_dna_tumor_recal.bam
+    output: results/recal/P019/P019_dna_tumor_recal.bai
+    log: logs/samtools/P019/P019_dna_tumor_index.log
+    jobid: 20
+    reason: Updated input files: results/recal/P019/P019_dna_tumor_recal.bam
+    wildcards: sample=P019, alias=tumor
+    resources: tmpdir=/tmp
+
+
+        samtools index -@ 18 results/recal/P019/P019_dna_tumor_recal.bam results/recal/P019/P019_dna_tumor_recal.bai &> logs/samtools/P019/P019_dna_tumor_index.log
+        
+[Mon Apr  8 23:13:12 2024]
+Finished job 13.
+5 of 20 steps (25%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Apr  8 23:13:12 2024]
+localrule samtools_index:
+    input: results/recal/P026/P026_dna_normal_recal.bam
+    output: results/recal/P026/P026_dna_normal_recal.bai
+    log: logs/samtools/P026/P026_dna_normal_index.log
+    jobid: 97
+    reason: Updated input files: results/recal/P026/P026_dna_normal_recal.bam
+    wildcards: sample=P026, alias=normal
+    resources: tmpdir=/tmp
+
+
+        samtools index -@ 18 results/recal/P026/P026_dna_normal_recal.bam results/recal/P026/P026_dna_normal_recal.bai &> logs/samtools/P026/P026_dna_normal_index.log
+        
+[Mon Apr  8 23:15:25 2024]
+Finished job 20.
+6 of 20 steps (30%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Apr  8 23:15:26 2024]
+localrule samtools_index:
+    input: results/recal/P020/P020_dna_normal_recal.bam
+    output: results/recal/P020/P020_dna_normal_recal.bai
+    log: logs/samtools/P020/P020_dna_normal_index.log
+    jobid: 83
+    reason: Updated input files: results/recal/P020/P020_dna_normal_recal.bam
+    wildcards: sample=P020, alias=normal
+    resources: tmpdir=/tmp
+
+
+        samtools index -@ 18 results/recal/P020/P020_dna_normal_recal.bam results/recal/P020/P020_dna_normal_recal.bai &> logs/samtools/P020/P020_dna_normal_index.log
+        
+[Mon Apr  8 23:16:27 2024]
+Finished job 97.
+7 of 20 steps (35%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Apr  8 23:16:27 2024]
+localrule samtools_index:
+    input: results/recal/P022/P022_dna_normal_recal.bam
+    output: results/recal/P022/P022_dna_normal_recal.bai
+    log: logs/samtools/P022/P022_dna_normal_index.log
+    jobid: 41
+    reason: Updated input files: results/recal/P022/P022_dna_normal_recal.bam
+    wildcards: sample=P022, alias=normal
+    resources: tmpdir=/tmp
+
+
+        samtools index -@ 18 results/recal/P022/P022_dna_normal_recal.bam results/recal/P022/P022_dna_normal_recal.bai &> logs/samtools/P022/P022_dna_normal_index.log
+        
+[Mon Apr  8 23:17:05 2024]
+Finished job 125.
+8 of 20 steps (40%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Apr  8 23:17:06 2024]
+localrule samtools_index:
+    input: results/recal/P019/P019_dna_normal_recal.bam
+    output: results/recal/P019/P019_dna_normal_recal.bai
+    log: logs/samtools/P019/P019_dna_normal_index.log
+    jobid: 27
+    reason: Updated input files: results/recal/P019/P019_dna_normal_recal.bam
+    wildcards: sample=P019, alias=normal
+    resources: tmpdir=/tmp
+
+
+        samtools index -@ 18 results/recal/P019/P019_dna_normal_recal.bam results/recal/P019/P019_dna_normal_recal.bai &> logs/samtools/P019/P019_dna_normal_index.log
+        
+[Mon Apr  8 23:19:10 2024]
+Finished job 83.
+9 of 20 steps (45%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Apr  8 23:19:10 2024]
+localrule samtools_index:
+    input: results/recal/P028/P028_dna_tumor_recal.bam
+    output: results/recal/P028/P028_dna_tumor_recal.bai
+    log: logs/samtools/P028/P028_dna_tumor_index.log
+    jobid: 132
+    reason: Updated input files: results/recal/P028/P028_dna_tumor_recal.bam
+    wildcards: sample=P028, alias=tumor
+    resources: tmpdir=/tmp
+
+
+        samtools index -@ 18 results/recal/P028/P028_dna_tumor_recal.bam results/recal/P028/P028_dna_tumor_recal.bai &> logs/samtools/P028/P028_dna_tumor_index.log
+        
+[Mon Apr  8 23:20:25 2024]
+Finished job 41.
+10 of 20 steps (50%) done
+[Mon Apr  8 23:22:09 2024]
+Finished job 76.
+11 of 20 steps (55%) done
+[Mon Apr  8 23:22:25 2024]
+Finished job 27.
+12 of 20 steps (60%) done
+[Mon Apr  8 23:22:52 2024]
+Finished job 34.
+13 of 20 steps (65%) done
+[Mon Apr  8 23:23:15 2024]
+Finished job 118.
+14 of 20 steps (70%) done
+[Mon Apr  8 23:23:40 2024]
+Finished job 90.
+15 of 20 steps (75%) done
+[Mon Apr  8 23:23:58 2024]
+Finished job 62.
+16 of 20 steps (80%) done
+[Mon Apr  8 23:24:19 2024]
+Finished job 139.
+17 of 20 steps (85%) done
+[Mon Apr  8 23:29:56 2024]
+Finished job 48.
+18 of 20 steps (90%) done
+[Mon Apr  8 23:31:01 2024]
+Finished job 132.
+19 of 20 steps (95%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Apr  8 23:31:02 2024]
+localrule all:
+    input: results/recal/P016/P016_dna_tumor_recal.bai, results/recal/P016/P016_dna_normal_recal.bai, results/recal/P019/P019_dna_tumor_recal.bai, results/recal/P019/P019_dna_normal_recal.bai, results/recal/P022/P022_dna_tumor_recal.bai, results/recal/P022/P022_dna_normal_recal.bai, results/recal/P024/P024_dna_tumor_recal.bai, results/recal/P024/P024_dna_normal_recal.bai, results/recal/P018/P018_dna_tumor_recal.bai, results/recal/P018/P018_dna_normal_recal.bai, results/recal/P020/P020_dna_tumor_recal.bai, results/recal/P020/P020_dna_normal_recal.bai, results/recal/P026/P026_dna_tumor_recal.bai, results/recal/P026/P026_dna_normal_recal.bai, results/recal/P013/P013_dna_tumor_recal.bai, results/recal/P013/P013_dna_normal_recal.bai, results/recal/P023/P023_dna_tumor_recal.bai, results/recal/P023/P023_dna_normal_recal.bai, results/recal/P028/P028_dna_tumor_recal.bai, results/recal/P028/P028_dna_normal_recal.bai
+    jobid: 0
+    reason: Input files updated by another job: results/recal/P019/P019_dna_tumor_recal.bai, results/recal/P026/P026_dna_tumor_recal.bai, results/recal/P020/P020_dna_normal_recal.bai, results/recal/P013/P013_dna_normal_recal.bai, results/recal/P020/P020_dna_tumor_recal.bai, results/recal/P023/P023_dna_tumor_recal.bai, results/recal/P026/P026_dna_normal_recal.bai, results/recal/P024/P024_dna_normal_recal.bai, results/recal/P022/P022_dna_normal_recal.bai, results/recal/P016/P016_dna_tumor_recal.bai, results/recal/P018/P018_dna_tumor_recal.bai, results/recal/P028/P028_dna_tumor_recal.bai, results/recal/P018/P018_dna_normal_recal.bai, results/recal/P019/P019_dna_normal_recal.bai, results/recal/P022/P022_dna_tumor_recal.bai, results/recal/P016/P016_dna_normal_recal.bai, results/recal/P023/P023_dna_normal_recal.bai, results/recal/P024/P024_dna_tumor_recal.bai, results/recal/P028/P028_dna_normal_recal.bai
+    resources: tmpdir=/tmp
+
+[Mon Apr  8 23:31:02 2024]
+Finished job 0.
+20 of 20 steps (100%) done
+Complete log: .snakemake/log/2024-04-08T224050.122037.snakemake.log

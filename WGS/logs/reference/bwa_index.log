@@ -1,0 +1,11 @@
+Looking to launch executable "/staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/WGS/bin/bwa-mem2.avx512bw", simd = .avx512bw
+Launching executable "/staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/WGS/bin/bwa-mem2.avx512bw"
+[bwa_index] Pack FASTA... 13.82 sec
+* Entering FMI_search
+init ticks = 283741712822
+ref seq len = 6234584140
+binary seq ticks = 146320070704
+build suffix-array ticks = 1664192209350
+pos: 779323018, ref_seq_len__: 779323017
+build fm-index ticks = 440055727532
+Total time taken: 1070.2490

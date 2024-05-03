@@ -1,0 +1,159 @@
+Assuming unrestricted shared filesystem usage.
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 16
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job                  count
+-----------------  -------
+create_sample_map        1
+germline_resource        1
+mutect_pon1             10
+mutect_pon2              1
+mutect_pon3              1
+total                   14
+
+Select jobs to execute...
+Execute 4 jobs...
+
+[Fri Apr  5 14:24:33 2024]
+localrule mutect_pon1:
+    input: resources/genome.fa, results/recal/P018/P018_dna_normal_recal.bam
+    output: results/mutect2/pon/P018_normal_for_pon.vcf.gz
+    log: logs/mutect2/pon/P018.log
+    jobid: 23
+    reason: Missing output files: results/mutect2/pon/P018_normal_for_pon.vcf.gz
+    wildcards: sample=P018
+    threads: 4
+    resources: tmpdir=/tmp
+
+
+        gatk --java-options "-Xmx200g -XX:+UseParallelGC -XX:ParallelGCThreads=4"         Mutect2             -R resources/genome.fa             -I results/recal/P018/P018_dna_normal_recal.bam             --max-mnp-distance 0             -O results/mutect2/pon/P018_normal_for_pon.vcf.gz             2>logs/mutect2/pon/P018.log
+        
+
+[Fri Apr  5 14:24:33 2024]
+localrule mutect_pon1:
+    input: resources/genome.fa, results/recal/P020/P020_dna_normal_recal.bam
+    output: results/mutect2/pon/P020_normal_for_pon.vcf.gz
+    log: logs/mutect2/pon/P020.log
+    jobid: 37
+    reason: Missing output files: results/mutect2/pon/P020_normal_for_pon.vcf.gz
+    wildcards: sample=P020
+    threads: 4
+    resources: tmpdir=/tmp
+
+
+        gatk --java-options "-Xmx200g -XX:+UseParallelGC -XX:ParallelGCThreads=4"         Mutect2             -R resources/genome.fa             -I results/recal/P020/P020_dna_normal_recal.bam             --max-mnp-distance 0             -O results/mutect2/pon/P020_normal_for_pon.vcf.gz             2>logs/mutect2/pon/P020.log
+        
+
+[Fri Apr  5 14:24:33 2024]
+localrule mutect_pon1:
+    input: resources/genome.fa, results/recal/P028/P028_dna_normal_recal.bam
+    output: results/mutect2/pon/P028_normal_for_pon.vcf.gz
+    log: logs/mutect2/pon/P028.log
+    jobid: 72
+    reason: Missing output files: results/mutect2/pon/P028_normal_for_pon.vcf.gz
+    wildcards: sample=P028
+    threads: 4
+    resources: tmpdir=/tmp
+
+
+        gatk --java-options "-Xmx200g -XX:+UseParallelGC -XX:ParallelGCThreads=4"         Mutect2             -R resources/genome.fa             -I results/recal/P028/P028_dna_normal_recal.bam             --max-mnp-distance 0             -O results/mutect2/pon/P028_normal_for_pon.vcf.gz             2>logs/mutect2/pon/P028.log
+        
+
+[Fri Apr  5 14:24:33 2024]
+localrule mutect_pon1:
+    input: resources/genome.fa, results/recal/P024/P024_dna_normal_recal.bam
+    output: results/mutect2/pon/P024_normal_for_pon.vcf.gz
+    log: logs/mutect2/pon/P024.log
+    jobid: 58
+    reason: Missing output files: results/mutect2/pon/P024_normal_for_pon.vcf.gz
+    wildcards: sample=P024
+    threads: 4
+    resources: tmpdir=/tmp
+
+
+        gatk --java-options "-Xmx200g -XX:+UseParallelGC -XX:ParallelGCThreads=4"         Mutect2             -R resources/genome.fa             -I results/recal/P024/P024_dna_normal_recal.bam             --max-mnp-distance 0             -O results/mutect2/pon/P024_normal_for_pon.vcf.gz             2>logs/mutect2/pon/P024.log
+        
+[Sat Apr  6 03:47:22 2024]
+Finished job 37.
+1 of 14 steps (7%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Sat Apr  6 03:47:25 2024]
+localrule mutect_pon1:
+    input: resources/genome.fa, results/recal/P022/P022_dna_normal_recal.bam
+    output: results/mutect2/pon/P022_normal_for_pon.vcf.gz
+    log: logs/mutect2/pon/P022.log
+    jobid: 44
+    reason: Forced execution
+    wildcards: sample=P022
+    threads: 4
+    resources: tmpdir=/tmp
+
+
+        gatk --java-options "-Xmx200g -XX:+UseParallelGC -XX:ParallelGCThreads=4"         Mutect2             -R resources/genome.fa             -I results/recal/P022/P022_dna_normal_recal.bam             --max-mnp-distance 0             -O results/mutect2/pon/P022_normal_for_pon.vcf.gz             2>logs/mutect2/pon/P022.log
+        
+[Sat Apr  6 06:25:03 2024]
+Finished job 23.
+2 of 14 steps (14%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Sat Apr  6 06:25:07 2024]
+localrule mutect_pon1:
+    input: resources/genome.fa, results/recal/P019/P019_dna_normal_recal.bam
+    output: results/mutect2/pon/P019_normal_for_pon.vcf.gz
+    log: logs/mutect2/pon/P019.log
+    jobid: 30
+    reason: Missing output files: results/mutect2/pon/P019_normal_for_pon.vcf.gz
+    wildcards: sample=P019
+    threads: 4
+    resources: tmpdir=/tmp
+
+
+        gatk --java-options "-Xmx200g -XX:+UseParallelGC -XX:ParallelGCThreads=4"         Mutect2             -R resources/genome.fa             -I results/recal/P019/P019_dna_normal_recal.bam             --max-mnp-distance 0             -O results/mutect2/pon/P019_normal_for_pon.vcf.gz             2>logs/mutect2/pon/P019.log
+        
+[Sat Apr  6 09:22:48 2024]
+Finished job 72.
+3 of 14 steps (21%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Sat Apr  6 09:22:51 2024]
+localrule mutect_pon1:
+    input: resources/genome.fa, results/recal/P026/P026_dna_normal_recal.bam
+    output: results/mutect2/pon/P026_normal_for_pon.vcf.gz
+    log: logs/mutect2/pon/P026.log
+    jobid: 65
+    reason: Missing output files: results/mutect2/pon/P026_normal_for_pon.vcf.gz
+    wildcards: sample=P026
+    threads: 4
+    resources: tmpdir=/tmp
+
+
+        gatk --java-options "-Xmx200g -XX:+UseParallelGC -XX:ParallelGCThreads=4"         Mutect2             -R resources/genome.fa             -I results/recal/P026/P026_dna_normal_recal.bam             --max-mnp-distance 0             -O results/mutect2/pon/P026_normal_for_pon.vcf.gz             2>logs/mutect2/pon/P026.log
+        
+[Sat Apr  6 10:05:25 2024]
+Finished job 58.
+4 of 14 steps (29%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Sat Apr  6 10:05:25 2024]
+localrule mutect_pon1:
+    input: resources/genome.fa, results/recal/P013/P013_dna_normal_recal.bam
+    output: results/mutect2/pon/P013_normal_for_pon.vcf.gz
+    log: logs/mutect2/pon/P013.log
+    jobid: 5
+    reason: Missing output files: results/mutect2/pon/P013_normal_for_pon.vcf.gz
+    wildcards: sample=P013
+    threads: 4
+    resources: tmpdir=/tmp
+
+
+        gatk --java-options "-Xmx200g -XX:+UseParallelGC -XX:ParallelGCThreads=4"         Mutect2             -R resources/genome.fa             -I results/recal/P013/P013_dna_normal_recal.bam             --max-mnp-distance 0             -O results/mutect2/pon/P013_normal_for_pon.vcf.gz             2>logs/mutect2/pon/P013.log
+        
+slurmstepd: error: *** JOB 61315923 ON i28l17 CANCELLED AT 2024-04-06T13:44:28 ***

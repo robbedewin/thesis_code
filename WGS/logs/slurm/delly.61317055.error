@@ -1,0 +1,199 @@
+Assuming unrestricted shared filesystem usage.
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 16
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job           count
+----------  -------
+all               1
+delly_call       10
+total            11
+
+Select jobs to execute...
+Execute 10 jobs...
+
+[Sat Apr  6 16:56:37 2024]
+localrule delly_call:
+    input: results/recal/P020/P020_dna_tumor_recal.bam, results/recal/P020/P020_dna_normal_recal.bam, resources/genome.fa, resources/T2T.excluderanges.bed
+    output: results/delly/call/P020.bcf
+    log: logs/delly/call/P020.log
+    jobid: 98
+    reason: Missing output files: results/delly/call/P020.bcf
+    wildcards: sample=P020
+    resources: tmpdir=/tmp
+
+
+        delly call             -x resources/T2T.excluderanges.bed             -g resources/genome.fa             -o results/delly/call/P020.bcf             results/recal/P020/P020_dna_tumor_recal.bam             results/recal/P020/P020_dna_normal_recal.bam             > logs/delly/call/P020.log 2>&1
+        
+
+[Sat Apr  6 16:56:37 2024]
+localrule delly_call:
+    input: results/recal/P018/P018_dna_tumor_recal.bam, results/recal/P018/P018_dna_normal_recal.bam, resources/genome.fa, resources/T2T.excluderanges.bed
+    output: results/delly/call/P018.bcf
+    log: logs/delly/call/P018.log
+    jobid: 85
+    reason: Missing output files: results/delly/call/P018.bcf
+    wildcards: sample=P018
+    resources: tmpdir=/tmp
+
+
+        delly call             -x resources/T2T.excluderanges.bed             -g resources/genome.fa             -o results/delly/call/P018.bcf             results/recal/P018/P018_dna_tumor_recal.bam             results/recal/P018/P018_dna_normal_recal.bam             > logs/delly/call/P018.log 2>&1
+        
+
+[Sat Apr  6 16:56:37 2024]
+localrule delly_call:
+    input: results/recal/P026/P026_dna_tumor_recal.bam, results/recal/P026/P026_dna_normal_recal.bam, resources/genome.fa, resources/T2T.excluderanges.bed
+    output: results/delly/call/P026.bcf
+    log: logs/delly/call/P026.log
+    jobid: 1
+    reason: Missing output files: results/delly/call/P026.bcf
+    wildcards: sample=P026
+    resources: tmpdir=/tmp
+
+
+        delly call             -x resources/T2T.excluderanges.bed             -g resources/genome.fa             -o results/delly/call/P026.bcf             results/recal/P026/P026_dna_tumor_recal.bam             results/recal/P026/P026_dna_normal_recal.bam             > logs/delly/call/P026.log 2>&1
+        
+
+[Sat Apr  6 16:56:37 2024]
+localrule delly_call:
+    input: results/recal/P028/P028_dna_tumor_recal.bam, results/recal/P028/P028_dna_normal_recal.bam, resources/genome.fa, resources/T2T.excluderanges.bed
+    output: results/delly/call/P028.bcf
+    log: logs/delly/call/P028.log
+    jobid: 20
+    reason: Missing output files: results/delly/call/P028.bcf
+    wildcards: sample=P028
+    resources: tmpdir=/tmp
+
+
+        delly call             -x resources/T2T.excluderanges.bed             -g resources/genome.fa             -o results/delly/call/P028.bcf             results/recal/P028/P028_dna_tumor_recal.bam             results/recal/P028/P028_dna_normal_recal.bam             > logs/delly/call/P028.log 2>&1
+        
+
+[Sat Apr  6 16:56:37 2024]
+localrule delly_call:
+    input: results/recal/P022/P022_dna_tumor_recal.bam, results/recal/P022/P022_dna_normal_recal.bam, resources/genome.fa, resources/T2T.excluderanges.bed
+    output: results/delly/call/P022.bcf
+    log: logs/delly/call/P022.log
+    jobid: 72
+    reason: Missing output files: results/delly/call/P022.bcf
+    wildcards: sample=P022
+    resources: tmpdir=/tmp
+
+
+        delly call             -x resources/T2T.excluderanges.bed             -g resources/genome.fa             -o results/delly/call/P022.bcf             results/recal/P022/P022_dna_tumor_recal.bam             results/recal/P022/P022_dna_normal_recal.bam             > logs/delly/call/P022.log 2>&1
+        
+
+[Sat Apr  6 16:56:37 2024]
+localrule delly_call:
+    input: results/recal/P023/P023_dna_tumor_recal.bam, results/recal/P023/P023_dna_normal_recal.bam, resources/genome.fa, resources/T2T.excluderanges.bed
+    output: results/delly/call/P023.bcf
+    log: logs/delly/call/P023.log
+    jobid: 59
+    reason: Missing output files: results/delly/call/P023.bcf
+    wildcards: sample=P023
+    resources: tmpdir=/tmp
+
+
+        delly call             -x resources/T2T.excluderanges.bed             -g resources/genome.fa             -o results/delly/call/P023.bcf             results/recal/P023/P023_dna_tumor_recal.bam             results/recal/P023/P023_dna_normal_recal.bam             > logs/delly/call/P023.log 2>&1
+        
+
+[Sat Apr  6 16:56:37 2024]
+localrule delly_call:
+    input: results/recal/P019/P019_dna_tumor_recal.bam, results/recal/P019/P019_dna_normal_recal.bam, resources/genome.fa, resources/T2T.excluderanges.bed
+    output: results/delly/call/P019.bcf
+    log: logs/delly/call/P019.log
+    jobid: 46
+    reason: Missing output files: results/delly/call/P019.bcf
+    wildcards: sample=P019
+    resources: tmpdir=/tmp
+
+
+        delly call             -x resources/T2T.excluderanges.bed             -g resources/genome.fa             -o results/delly/call/P019.bcf             results/recal/P019/P019_dna_tumor_recal.bam             results/recal/P019/P019_dna_normal_recal.bam             > logs/delly/call/P019.log 2>&1
+        
+
+[Sat Apr  6 16:56:37 2024]
+localrule delly_call:
+    input: results/recal/P016/P016_dna_tumor_recal.bam, results/recal/P016/P016_dna_normal_recal.bam, resources/genome.fa, resources/T2T.excluderanges.bed
+    output: results/delly/call/P016.bcf
+    log: logs/delly/call/P016.log
+    jobid: 33
+    reason: Missing output files: results/delly/call/P016.bcf
+    wildcards: sample=P016
+    resources: tmpdir=/tmp
+
+
+        delly call             -x resources/T2T.excluderanges.bed             -g resources/genome.fa             -o results/delly/call/P016.bcf             results/recal/P016/P016_dna_tumor_recal.bam             results/recal/P016/P016_dna_normal_recal.bam             > logs/delly/call/P016.log 2>&1
+        
+
+[Sat Apr  6 16:56:37 2024]
+localrule delly_call:
+    input: results/recal/P013/P013_dna_tumor_recal.bam, results/recal/P013/P013_dna_normal_recal.bam, resources/genome.fa, resources/T2T.excluderanges.bed
+    output: results/delly/call/P013.bcf
+    log: logs/delly/call/P013.log
+    jobid: 124
+    reason: Missing output files: results/delly/call/P013.bcf
+    wildcards: sample=P013
+    resources: tmpdir=/tmp
+
+
+        delly call             -x resources/T2T.excluderanges.bed             -g resources/genome.fa             -o results/delly/call/P013.bcf             results/recal/P013/P013_dna_tumor_recal.bam             results/recal/P013/P013_dna_normal_recal.bam             > logs/delly/call/P013.log 2>&1
+        
+
+[Sat Apr  6 16:56:37 2024]
+localrule delly_call:
+    input: results/recal/P024/P024_dna_tumor_recal.bam, results/recal/P024/P024_dna_normal_recal.bam, resources/genome.fa, resources/T2T.excluderanges.bed
+    output: results/delly/call/P024.bcf
+    log: logs/delly/call/P024.log
+    jobid: 111
+    reason: Missing output files: results/delly/call/P024.bcf
+    wildcards: sample=P024
+    resources: tmpdir=/tmp
+
+
+        delly call             -x resources/T2T.excluderanges.bed             -g resources/genome.fa             -o results/delly/call/P024.bcf             results/recal/P024/P024_dna_tumor_recal.bam             results/recal/P024/P024_dna_normal_recal.bam             > logs/delly/call/P024.log 2>&1
+        
+[Sat Apr  6 18:49:59 2024]
+Finished job 72.
+1 of 11 steps (9%) done
+[Sat Apr  6 18:51:33 2024]
+Finished job 59.
+2 of 11 steps (18%) done
+[Sat Apr  6 18:57:30 2024]
+Finished job 98.
+3 of 11 steps (27%) done
+[Sat Apr  6 18:59:02 2024]
+Finished job 124.
+4 of 11 steps (36%) done
+[Sat Apr  6 19:09:17 2024]
+Finished job 46.
+5 of 11 steps (45%) done
+[Sat Apr  6 19:12:57 2024]
+Finished job 33.
+6 of 11 steps (55%) done
+[Sat Apr  6 19:13:38 2024]
+Finished job 1.
+7 of 11 steps (64%) done
+[Sat Apr  6 19:17:41 2024]
+Finished job 85.
+8 of 11 steps (73%) done
+[Sat Apr  6 22:14:41 2024]
+Finished job 20.
+9 of 11 steps (82%) done
+[Sat Apr  6 22:31:45 2024]
+Finished job 111.
+10 of 11 steps (91%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Sat Apr  6 22:31:46 2024]
+localrule all:
+    input: results/delly/call/P026.bcf, results/delly/call/P028.bcf, results/delly/call/P016.bcf, results/delly/call/P019.bcf, results/delly/call/P023.bcf, results/delly/call/P022.bcf, results/delly/call/P018.bcf, results/delly/call/P020.bcf, results/delly/call/P024.bcf, results/delly/call/P013.bcf
+    jobid: 0
+    reason: Input files updated by another job: results/delly/call/P019.bcf, results/delly/call/P028.bcf, results/delly/call/P026.bcf, results/delly/call/P022.bcf, results/delly/call/P024.bcf, results/delly/call/P020.bcf, results/delly/call/P018.bcf, results/delly/call/P023.bcf, results/delly/call/P013.bcf, results/delly/call/P016.bcf
+    resources: tmpdir=/tmp
+
+[Sat Apr  6 22:31:46 2024]
+Finished job 0.
+11 of 11 steps (100%) done
+Complete log: .snakemake/log/2024-04-06T165634.462944.snakemake.log

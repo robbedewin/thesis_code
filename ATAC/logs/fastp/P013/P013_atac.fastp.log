@@ -1,0 +1,41 @@
+Read1 before filtering:
+total reads: 81546044
+total bases: 12231906600
+Q20 bases: 11479142225(93.8459%)
+Q30 bases: 10555679514(86.2963%)
+
+Read2 before filtering:
+total reads: 81546044
+total bases: 12231906600
+Q20 bases: 11772067772(96.2407%)
+Q30 bases: 11251137534(91.9819%)
+
+Read1 after filtering:
+total reads: 80138578
+total bases: 7935523736
+Q20 bases: 7650882897(96.4131%)
+Q30 bases: 7172478498(90.3844%)
+
+Read2 after filtering:
+total reads: 80138578
+total bases: 7934798518
+Q20 bases: 7788100062(98.1512%)
+Q30 bases: 7502759943(94.5551%)
+
+Filtering result:
+reads passed filter: 160277156
+reads failed due to low quality: 2434194
+reads failed due to too many N: 12518
+reads failed due to too short: 368220
+reads with adapter trimmed: 105604126
+bases trimmed due to adapters: 6317268559
+
+Duplication rate: 6.20558%
+
+Insert size peak (evaluated by paired-end reads): 45
+
+JSON report: logs/fastp/P013/P013_atac.fastp.json
+HTML report: logs/fastp/P013/P013_atac.fastp.html
+
+fastp -w 12 -i /staging/leuven/stg_00096/home/rdewin/data/merged/A0012/A0012_R1.fq.gz -I /staging/leuven/stg_00096/home/rdewin/data/merged/A0012/A0012_R2.fq.gz -o results/fastp/P013/P013_atac_R1.trimmed.fq -O results/fastp/P013/P013_atac_R2.trimmed.fq -j logs/fastp/P013/P013_atac.fastp.json -h logs/fastp/P013/P013_atac.fastp.html 
+fastp v0.23.4, time used: 626 seconds

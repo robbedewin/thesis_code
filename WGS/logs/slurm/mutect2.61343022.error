@@ -1,0 +1,316 @@
+Assuming unrestricted shared filesystem usage.
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 40
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job                             count
+----------------------------  -------
+all                                 1
+calculate_contamination            10
+filter_mutect2                     10
+funcotate_variants                 10
+get_pileup_summaries               20
+learn_read_orientation_model        1
+mutect2                            10
+mutect_pon3                         1
+select_pass_variants               10
+total                              73
+
+Select jobs to execute...
+Execute 21 jobs...
+
+[Sat Apr 20 15:01:23 2024]
+localrule get_pileup_summaries:
+    input: results/recal/P023/P023_dna_tumor_recal.bam, resources/whole_genome.intervals, resources/gnomad_chr.vcf.gz
+    output: results/mutect2/P023/P023_tumor_pileup_summaries.table
+    log: logs/mutect2/P023/P023_tumor_get_pileup_summaries.log
+    jobid: 318
+    reason: Missing output files: results/mutect2/P023/P023_tumor_pileup_summaries.table
+    wildcards: sample=P023, alias=tumor
+    resources: tmpdir=/tmp
+
+
+        gatk GetPileupSummaries              -I results/recal/P023/P023_dna_tumor_recal.bam              -L resources/whole_genome.intervals              -V resources/gnomad_chr.vcf.gz              -O results/mutect2/P023/P023_tumor_pileup_summaries.table              &> logs/mutect2/P023/P023_tumor_get_pileup_summaries.log
+        
+
+[Sat Apr 20 15:01:23 2024]
+localrule get_pileup_summaries:
+    input: results/recal/P024/P024_dna_normal_recal.bam, resources/whole_genome.intervals, resources/gnomad_chr.vcf.gz
+    output: results/mutect2/P024/P024_normal_pileup_summaries.table
+    log: logs/mutect2/P024/P024_normal_get_pileup_summaries.log
+    jobid: 357
+    reason: Missing output files: results/mutect2/P024/P024_normal_pileup_summaries.table
+    wildcards: sample=P024, alias=normal
+    resources: tmpdir=/tmp
+
+
+        gatk GetPileupSummaries              -I results/recal/P024/P024_dna_normal_recal.bam              -L resources/whole_genome.intervals              -V resources/gnomad_chr.vcf.gz              -O results/mutect2/P024/P024_normal_pileup_summaries.table              &> logs/mutect2/P024/P024_normal_get_pileup_summaries.log
+        
+
+[Sat Apr 20 15:01:23 2024]
+localrule mutect_pon3:
+    input: resources/genome.fa, resources/gnomad_chr.vcf.gz, results/mutect2/pon/pon_db
+    output: results/mutect2/pon/mutect2.pon.vcf.gz
+    log: logs/mutect2/pon/create_somatic_panel_of_normals.log
+    jobid: 301
+    reason: Missing output files: results/mutect2/pon/mutect2.pon.vcf.gz; Updated input files: resources/gnomad_chr.vcf.gz
+    resources: tmpdir=/tmp
+
+
+        gatk CreateSomaticPanelOfNormals             -R resources/genome.fa             --germline-resource resources/gnomad_chr.vcf.gz             -V gendb://results/mutect2/pon/pon_db             -O results/mutect2/pon/mutect2.pon.vcf.gz             2>logs/mutect2/pon/create_somatic_panel_of_normals.log
+        
+
+[Sat Apr 20 15:01:23 2024]
+localrule get_pileup_summaries:
+    input: results/recal/P028/P028_dna_tumor_recal.bam, resources/whole_genome.intervals, resources/gnomad_chr.vcf.gz
+    output: results/mutect2/P028/P028_tumor_pileup_summaries.table
+    log: logs/mutect2/P028/P028_tumor_get_pileup_summaries.log
+    jobid: 340
+    reason: Missing output files: results/mutect2/P028/P028_tumor_pileup_summaries.table
+    wildcards: sample=P028, alias=tumor
+    resources: tmpdir=/tmp
+
+
+        gatk GetPileupSummaries              -I results/recal/P028/P028_dna_tumor_recal.bam              -L resources/whole_genome.intervals              -V resources/gnomad_chr.vcf.gz              -O results/mutect2/P028/P028_tumor_pileup_summaries.table              &> logs/mutect2/P028/P028_tumor_get_pileup_summaries.log
+        
+
+[Sat Apr 20 15:01:23 2024]
+localrule get_pileup_summaries:
+    input: results/recal/P020/P020_dna_tumor_recal.bam, resources/whole_genome.intervals, resources/gnomad_chr.vcf.gz
+    output: results/mutect2/P020/P020_tumor_pileup_summaries.table
+    log: logs/mutect2/P020/P020_tumor_get_pileup_summaries.log
+    jobid: 370
+    reason: Missing output files: results/mutect2/P020/P020_tumor_pileup_summaries.table
+    wildcards: sample=P020, alias=tumor
+    resources: tmpdir=/tmp
+
+
+        gatk GetPileupSummaries              -I results/recal/P020/P020_dna_tumor_recal.bam              -L resources/whole_genome.intervals              -V resources/gnomad_chr.vcf.gz              -O results/mutect2/P020/P020_tumor_pileup_summaries.table              &> logs/mutect2/P020/P020_tumor_get_pileup_summaries.log
+        
+
+[Sat Apr 20 15:01:23 2024]
+localrule get_pileup_summaries:
+    input: results/recal/P018/P018_dna_normal_recal.bam, resources/whole_genome.intervals, resources/gnomad_chr.vcf.gz
+    output: results/mutect2/P018/P018_normal_pileup_summaries.table
+    log: logs/mutect2/P018/P018_normal_get_pileup_summaries.log
+    jobid: 345
+    reason: Missing output files: results/mutect2/P018/P018_normal_pileup_summaries.table
+    wildcards: sample=P018, alias=normal
+    resources: tmpdir=/tmp
+
+
+        gatk GetPileupSummaries              -I results/recal/P018/P018_dna_normal_recal.bam              -L resources/whole_genome.intervals              -V resources/gnomad_chr.vcf.gz              -O results/mutect2/P018/P018_normal_pileup_summaries.table              &> logs/mutect2/P018/P018_normal_get_pileup_summaries.log
+        
+
+[Sat Apr 20 15:01:23 2024]
+localrule get_pileup_summaries:
+    input: results/recal/P024/P024_dna_tumor_recal.bam, resources/whole_genome.intervals, resources/gnomad_chr.vcf.gz
+    output: results/mutect2/P024/P024_tumor_pileup_summaries.table
+    log: logs/mutect2/P024/P024_tumor_get_pileup_summaries.log
+    jobid: 358
+    reason: Missing output files: results/mutect2/P024/P024_tumor_pileup_summaries.table
+    wildcards: sample=P024, alias=tumor
+    resources: tmpdir=/tmp
+
+
+        gatk GetPileupSummaries              -I results/recal/P024/P024_dna_tumor_recal.bam              -L resources/whole_genome.intervals              -V resources/gnomad_chr.vcf.gz              -O results/mutect2/P024/P024_tumor_pileup_summaries.table              &> logs/mutect2/P024/P024_tumor_get_pileup_summaries.log
+        
+
+[Sat Apr 20 15:01:23 2024]
+localrule get_pileup_summaries:
+    input: results/recal/P022/P022_dna_normal_recal.bam, resources/whole_genome.intervals, resources/gnomad_chr.vcf.gz
+    output: results/mutect2/P022/P022_normal_pileup_summaries.table
+    log: logs/mutect2/P022/P022_normal_get_pileup_summaries.log
+    jobid: 375
+    reason: Missing output files: results/mutect2/P022/P022_normal_pileup_summaries.table
+    wildcards: sample=P022, alias=normal
+    resources: tmpdir=/tmp
+
+
+        gatk GetPileupSummaries              -I results/recal/P022/P022_dna_normal_recal.bam              -L resources/whole_genome.intervals              -V resources/gnomad_chr.vcf.gz              -O results/mutect2/P022/P022_normal_pileup_summaries.table              &> logs/mutect2/P022/P022_normal_get_pileup_summaries.log
+        
+
+[Sat Apr 20 15:01:23 2024]
+localrule get_pileup_summaries:
+    input: results/recal/P022/P022_dna_tumor_recal.bam, resources/whole_genome.intervals, resources/gnomad_chr.vcf.gz
+    output: results/mutect2/P022/P022_tumor_pileup_summaries.table
+    log: logs/mutect2/P022/P022_tumor_get_pileup_summaries.log
+    jobid: 376
+    reason: Missing output files: results/mutect2/P022/P022_tumor_pileup_summaries.table
+    wildcards: sample=P022, alias=tumor
+    resources: tmpdir=/tmp
+
+
+        gatk GetPileupSummaries              -I results/recal/P022/P022_dna_tumor_recal.bam              -L resources/whole_genome.intervals              -V resources/gnomad_chr.vcf.gz              -O results/mutect2/P022/P022_tumor_pileup_summaries.table              &> logs/mutect2/P022/P022_tumor_get_pileup_summaries.log
+        
+
+[Sat Apr 20 15:01:23 2024]
+localrule get_pileup_summaries:
+    input: results/recal/P018/P018_dna_tumor_recal.bam, resources/whole_genome.intervals, resources/gnomad_chr.vcf.gz
+    output: results/mutect2/P018/P018_tumor_pileup_summaries.table
+    log: logs/mutect2/P018/P018_tumor_get_pileup_summaries.log
+    jobid: 346
+    reason: Missing output files: results/mutect2/P018/P018_tumor_pileup_summaries.table
+    wildcards: sample=P018, alias=tumor
+    resources: tmpdir=/tmp
+
+
+        gatk GetPileupSummaries              -I results/recal/P018/P018_dna_tumor_recal.bam              -L resources/whole_genome.intervals              -V resources/gnomad_chr.vcf.gz              -O results/mutect2/P018/P018_tumor_pileup_summaries.table              &> logs/mutect2/P018/P018_tumor_get_pileup_summaries.log
+        
+
+[Sat Apr 20 15:01:23 2024]
+localrule get_pileup_summaries:
+    input: results/recal/P019/P019_dna_normal_recal.bam, resources/whole_genome.intervals, resources/gnomad_chr.vcf.gz
+    output: results/mutect2/P019/P019_normal_pileup_summaries.table
+    log: logs/mutect2/P019/P019_normal_get_pileup_summaries.log
+    jobid: 333
+    reason: Missing output files: results/mutect2/P019/P019_normal_pileup_summaries.table
+    wildcards: sample=P019, alias=normal
+    resources: tmpdir=/tmp
+
+
+        gatk GetPileupSummaries              -I results/recal/P019/P019_dna_normal_recal.bam              -L resources/whole_genome.intervals              -V resources/gnomad_chr.vcf.gz              -O results/mutect2/P019/P019_normal_pileup_summaries.table              &> logs/mutect2/P019/P019_normal_get_pileup_summaries.log
+        
+
+[Sat Apr 20 15:01:23 2024]
+localrule get_pileup_summaries:
+    input: results/recal/P013/P013_dna_normal_recal.bam, resources/whole_genome.intervals, resources/gnomad_chr.vcf.gz
+    output: results/mutect2/P013/P013_normal_pileup_summaries.table
+    log: logs/mutect2/P013/P013_normal_get_pileup_summaries.log
+    jobid: 363
+    reason: Missing output files: results/mutect2/P013/P013_normal_pileup_summaries.table
+    wildcards: sample=P013, alias=normal
+    resources: tmpdir=/tmp
+
+
+        gatk GetPileupSummaries              -I results/recal/P013/P013_dna_normal_recal.bam              -L resources/whole_genome.intervals              -V resources/gnomad_chr.vcf.gz              -O results/mutect2/P013/P013_normal_pileup_summaries.table              &> logs/mutect2/P013/P013_normal_get_pileup_summaries.log
+        
+
+[Sat Apr 20 15:01:23 2024]
+localrule get_pileup_summaries:
+    input: results/recal/P026/P026_dna_normal_recal.bam, resources/whole_genome.intervals, resources/gnomad_chr.vcf.gz
+    output: results/mutect2/P026/P026_normal_pileup_summaries.table
+    log: logs/mutect2/P026/P026_normal_get_pileup_summaries.log
+    jobid: 381
+    reason: Missing output files: results/mutect2/P026/P026_normal_pileup_summaries.table
+    wildcards: sample=P026, alias=normal
+    resources: tmpdir=/tmp
+
+
+        gatk GetPileupSummaries              -I results/recal/P026/P026_dna_normal_recal.bam              -L resources/whole_genome.intervals              -V resources/gnomad_chr.vcf.gz              -O results/mutect2/P026/P026_normal_pileup_summaries.table              &> logs/mutect2/P026/P026_normal_get_pileup_summaries.log
+        
+
+[Sat Apr 20 15:01:23 2024]
+localrule get_pileup_summaries:
+    input: results/recal/P013/P013_dna_tumor_recal.bam, resources/whole_genome.intervals, resources/gnomad_chr.vcf.gz
+    output: results/mutect2/P013/P013_tumor_pileup_summaries.table
+    log: logs/mutect2/P013/P013_tumor_get_pileup_summaries.log
+    jobid: 364
+    reason: Missing output files: results/mutect2/P013/P013_tumor_pileup_summaries.table
+    wildcards: sample=P013, alias=tumor
+    resources: tmpdir=/tmp
+
+
+        gatk GetPileupSummaries              -I results/recal/P013/P013_dna_tumor_recal.bam              -L resources/whole_genome.intervals              -V resources/gnomad_chr.vcf.gz              -O results/mutect2/P013/P013_tumor_pileup_summaries.table              &> logs/mutect2/P013/P013_tumor_get_pileup_summaries.log
+        
+
+[Sat Apr 20 15:01:23 2024]
+localrule get_pileup_summaries:
+    input: results/recal/P016/P016_dna_normal_recal.bam, resources/whole_genome.intervals, resources/gnomad_chr.vcf.gz
+    output: results/mutect2/P016/P016_normal_pileup_summaries.table
+    log: logs/mutect2/P016/P016_normal_get_pileup_summaries.log
+    jobid: 351
+    reason: Missing output files: results/mutect2/P016/P016_normal_pileup_summaries.table
+    wildcards: sample=P016, alias=normal
+    resources: tmpdir=/tmp
+
+
+        gatk GetPileupSummaries              -I results/recal/P016/P016_dna_normal_recal.bam              -L resources/whole_genome.intervals              -V resources/gnomad_chr.vcf.gz              -O results/mutect2/P016/P016_normal_pileup_summaries.table              &> logs/mutect2/P016/P016_normal_get_pileup_summaries.log
+        
+
+[Sat Apr 20 15:01:23 2024]
+localrule get_pileup_summaries:
+    input: results/recal/P019/P019_dna_tumor_recal.bam, resources/whole_genome.intervals, resources/gnomad_chr.vcf.gz
+    output: results/mutect2/P019/P019_tumor_pileup_summaries.table
+    log: logs/mutect2/P019/P019_tumor_get_pileup_summaries.log
+    jobid: 334
+    reason: Missing output files: results/mutect2/P019/P019_tumor_pileup_summaries.table
+    wildcards: sample=P019, alias=tumor
+    resources: tmpdir=/tmp
+
+
+        gatk GetPileupSummaries              -I results/recal/P019/P019_dna_tumor_recal.bam              -L resources/whole_genome.intervals              -V resources/gnomad_chr.vcf.gz              -O results/mutect2/P019/P019_tumor_pileup_summaries.table              &> logs/mutect2/P019/P019_tumor_get_pileup_summaries.log
+        
+
+[Sat Apr 20 15:01:23 2024]
+localrule get_pileup_summaries:
+    input: results/recal/P023/P023_dna_normal_recal.bam, resources/whole_genome.intervals, resources/gnomad_chr.vcf.gz
+    output: results/mutect2/P023/P023_normal_pileup_summaries.table
+    log: logs/mutect2/P023/P023_normal_get_pileup_summaries.log
+    jobid: 317
+    reason: Missing output files: results/mutect2/P023/P023_normal_pileup_summaries.table
+    wildcards: sample=P023, alias=normal
+    resources: tmpdir=/tmp
+
+
+        gatk GetPileupSummaries              -I results/recal/P023/P023_dna_normal_recal.bam              -L resources/whole_genome.intervals              -V resources/gnomad_chr.vcf.gz              -O results/mutect2/P023/P023_normal_pileup_summaries.table              &> logs/mutect2/P023/P023_normal_get_pileup_summaries.log
+        
+
+[Sat Apr 20 15:01:23 2024]
+localrule get_pileup_summaries:
+    input: results/recal/P028/P028_dna_normal_recal.bam, resources/whole_genome.intervals, resources/gnomad_chr.vcf.gz
+    output: results/mutect2/P028/P028_normal_pileup_summaries.table
+    log: logs/mutect2/P028/P028_normal_get_pileup_summaries.log
+    jobid: 339
+    reason: Missing output files: results/mutect2/P028/P028_normal_pileup_summaries.table
+    wildcards: sample=P028, alias=normal
+    resources: tmpdir=/tmp
+
+
+        gatk GetPileupSummaries              -I results/recal/P028/P028_dna_normal_recal.bam              -L resources/whole_genome.intervals              -V resources/gnomad_chr.vcf.gz              -O results/mutect2/P028/P028_normal_pileup_summaries.table              &> logs/mutect2/P028/P028_normal_get_pileup_summaries.log
+        
+
+[Sat Apr 20 15:01:23 2024]
+localrule get_pileup_summaries:
+    input: results/recal/P016/P016_dna_tumor_recal.bam, resources/whole_genome.intervals, resources/gnomad_chr.vcf.gz
+    output: results/mutect2/P016/P016_tumor_pileup_summaries.table
+    log: logs/mutect2/P016/P016_tumor_get_pileup_summaries.log
+    jobid: 352
+    reason: Missing output files: results/mutect2/P016/P016_tumor_pileup_summaries.table
+    wildcards: sample=P016, alias=tumor
+    resources: tmpdir=/tmp
+
+
+        gatk GetPileupSummaries              -I results/recal/P016/P016_dna_tumor_recal.bam              -L resources/whole_genome.intervals              -V resources/gnomad_chr.vcf.gz              -O results/mutect2/P016/P016_tumor_pileup_summaries.table              &> logs/mutect2/P016/P016_tumor_get_pileup_summaries.log
+        
+
+[Sat Apr 20 15:01:23 2024]
+localrule get_pileup_summaries:
+    input: results/recal/P020/P020_dna_normal_recal.bam, resources/whole_genome.intervals, resources/gnomad_chr.vcf.gz
+    output: results/mutect2/P020/P020_normal_pileup_summaries.table
+    log: logs/mutect2/P020/P020_normal_get_pileup_summaries.log
+    jobid: 369
+    reason: Missing output files: results/mutect2/P020/P020_normal_pileup_summaries.table
+    wildcards: sample=P020, alias=normal
+    resources: tmpdir=/tmp
+
+
+        gatk GetPileupSummaries              -I results/recal/P020/P020_dna_normal_recal.bam              -L resources/whole_genome.intervals              -V resources/gnomad_chr.vcf.gz              -O results/mutect2/P020/P020_normal_pileup_summaries.table              &> logs/mutect2/P020/P020_normal_get_pileup_summaries.log
+        
+
+[Sat Apr 20 15:01:23 2024]
+localrule get_pileup_summaries:
+    input: results/recal/P026/P026_dna_tumor_recal.bam, resources/whole_genome.intervals, resources/gnomad_chr.vcf.gz
+    output: results/mutect2/P026/P026_tumor_pileup_summaries.table
+    log: logs/mutect2/P026/P026_tumor_get_pileup_summaries.log
+    jobid: 382
+    reason: Missing output files: results/mutect2/P026/P026_tumor_pileup_summaries.table
+    wildcards: sample=P026, alias=tumor
+    resources: tmpdir=/tmp
+
+
+        gatk GetPileupSummaries              -I results/recal/P026/P026_dna_tumor_recal.bam              -L resources/whole_genome.intervals              -V resources/gnomad_chr.vcf.gz              -O results/mutect2/P026/P026_tumor_pileup_summaries.table              &> logs/mutect2/P026/P026_tumor_get_pileup_summaries.log
+        
+slurmstepd: error: *** JOB 61343022 ON g28l15 CANCELLED AT 2024-04-20T15:08:28 ***

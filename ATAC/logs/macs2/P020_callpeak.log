@@ -1,0 +1,94 @@
+INFO  @ Wed, 17 Apr 2024 13:04:00: 
+# Command line: callpeak -t results/samtools/P020/P020_atac.bam -f BAM -g 3117292070 -n P020 --outdir results/macs2/P020
+# ARGUMENTS LIST:
+# name = P020
+# format = BAM
+# ChIP-seq file = ['results/samtools/P020/P020_atac.bam']
+# control file = None
+# effective genome size = 3.12e+09
+# band width = 300
+# model fold = [5, 50]
+# qvalue cutoff = 5.00e-02
+# The maximum gap between significant sites is assigned as the read length/tag size.
+# The minimum length of peaks is assigned as the predicted fragment length "d".
+# Larger dataset will be scaled towards smaller dataset.
+# Range for calculating regional lambda is: 10000 bps
+# Broad region calling is off
+# Paired-End mode is off
+ 
+INFO  @ Wed, 17 Apr 2024 13:04:00: #1 read tag files... 
+INFO  @ Wed, 17 Apr 2024 13:04:00: #1 read treatment tags... 
+INFO  @ Wed, 17 Apr 2024 13:04:04:  1000000 
+INFO  @ Wed, 17 Apr 2024 13:04:08:  2000000 
+INFO  @ Wed, 17 Apr 2024 13:04:12:  3000000 
+INFO  @ Wed, 17 Apr 2024 13:04:16:  4000000 
+INFO  @ Wed, 17 Apr 2024 13:04:20:  5000000 
+INFO  @ Wed, 17 Apr 2024 13:04:24:  6000000 
+INFO  @ Wed, 17 Apr 2024 13:04:28:  7000000 
+INFO  @ Wed, 17 Apr 2024 13:04:32:  8000000 
+INFO  @ Wed, 17 Apr 2024 13:04:36:  9000000 
+INFO  @ Wed, 17 Apr 2024 13:04:40:  10000000 
+INFO  @ Wed, 17 Apr 2024 13:04:44:  11000000 
+INFO  @ Wed, 17 Apr 2024 13:04:48:  12000000 
+INFO  @ Wed, 17 Apr 2024 13:04:52:  13000000 
+INFO  @ Wed, 17 Apr 2024 13:04:56:  14000000 
+INFO  @ Wed, 17 Apr 2024 13:05:00:  15000000 
+INFO  @ Wed, 17 Apr 2024 13:05:04:  16000000 
+INFO  @ Wed, 17 Apr 2024 13:05:08:  17000000 
+INFO  @ Wed, 17 Apr 2024 13:05:12:  18000000 
+INFO  @ Wed, 17 Apr 2024 13:05:16:  19000000 
+INFO  @ Wed, 17 Apr 2024 13:05:20:  20000000 
+INFO  @ Wed, 17 Apr 2024 13:05:23:  21000000 
+INFO  @ Wed, 17 Apr 2024 13:05:28:  22000000 
+INFO  @ Wed, 17 Apr 2024 13:05:31:  23000000 
+INFO  @ Wed, 17 Apr 2024 13:05:35:  24000000 
+INFO  @ Wed, 17 Apr 2024 13:05:39:  25000000 
+INFO  @ Wed, 17 Apr 2024 13:05:43:  26000000 
+INFO  @ Wed, 17 Apr 2024 13:05:47:  27000000 
+INFO  @ Wed, 17 Apr 2024 13:05:51:  28000000 
+INFO  @ Wed, 17 Apr 2024 13:05:55:  29000000 
+INFO  @ Wed, 17 Apr 2024 13:05:59:  30000000 
+INFO  @ Wed, 17 Apr 2024 13:06:03:  31000000 
+INFO  @ Wed, 17 Apr 2024 13:06:07:  32000000 
+INFO  @ Wed, 17 Apr 2024 13:06:11:  33000000 
+INFO  @ Wed, 17 Apr 2024 13:06:15:  34000000 
+INFO  @ Wed, 17 Apr 2024 13:06:19:  35000000 
+INFO  @ Wed, 17 Apr 2024 13:06:23:  36000000 
+INFO  @ Wed, 17 Apr 2024 13:06:27:  37000000 
+INFO  @ Wed, 17 Apr 2024 13:06:31:  38000000 
+INFO  @ Wed, 17 Apr 2024 13:06:35:  39000000 
+INFO  @ Wed, 17 Apr 2024 13:06:39:  40000000 
+INFO  @ Wed, 17 Apr 2024 13:06:43:  41000000 
+INFO  @ Wed, 17 Apr 2024 13:06:46:  42000000 
+INFO  @ Wed, 17 Apr 2024 13:06:49:  43000000 
+INFO  @ Wed, 17 Apr 2024 13:06:53:  44000000 
+INFO  @ Wed, 17 Apr 2024 13:06:56:  45000000 
+INFO  @ Wed, 17 Apr 2024 13:06:58: 45017203 reads have been read. 
+INFO  @ Wed, 17 Apr 2024 13:06:58: #1 tag size is determined as 74 bps 
+INFO  @ Wed, 17 Apr 2024 13:06:58: #1 tag size = 74.0 
+INFO  @ Wed, 17 Apr 2024 13:06:58: #1  total tags in treatment: 45017203 
+INFO  @ Wed, 17 Apr 2024 13:06:58: #1 user defined the maximum tags... 
+INFO  @ Wed, 17 Apr 2024 13:06:58: #1 filter out redundant tags at the same location and the same strand by allowing at most 1 tag(s) 
+INFO  @ Wed, 17 Apr 2024 13:06:59: #1  tags after filtering in treatment: 32630373 
+INFO  @ Wed, 17 Apr 2024 13:06:59: #1  Redundant rate of treatment: 0.28 
+INFO  @ Wed, 17 Apr 2024 13:06:59: #1 finished! 
+INFO  @ Wed, 17 Apr 2024 13:06:59: #2 Build Peak Model... 
+INFO  @ Wed, 17 Apr 2024 13:06:59: #2 looking for paired plus/minus strand peaks... 
+INFO  @ Wed, 17 Apr 2024 13:07:02: #2 number of paired peaks: 31257 
+INFO  @ Wed, 17 Apr 2024 13:07:02: start model_add_line... 
+INFO  @ Wed, 17 Apr 2024 13:07:03: start X-correlation... 
+INFO  @ Wed, 17 Apr 2024 13:07:03: end of X-cor 
+INFO  @ Wed, 17 Apr 2024 13:07:03: #2 finished! 
+INFO  @ Wed, 17 Apr 2024 13:07:03: #2 predicted fragment length is 100 bps 
+INFO  @ Wed, 17 Apr 2024 13:07:03: #2 alternative fragment length(s) may be 100 bps 
+INFO  @ Wed, 17 Apr 2024 13:07:03: #2.2 Generate R script for model : results/macs2/P020/P020_model.r 
+WARNING @ Wed, 17 Apr 2024 13:07:03: #2 Since the d (100) calculated from paired-peaks are smaller than 2*tag length, it may be influenced by unknown sequencing problem! 
+WARNING @ Wed, 17 Apr 2024 13:07:03: #2 You may need to consider one of the other alternative d(s): 100 
+WARNING @ Wed, 17 Apr 2024 13:07:03: #2 You can restart the process with --nomodel --extsize XXX with your choice or an arbitrary number. Nontheless, MACS will continute computing. 
+INFO  @ Wed, 17 Apr 2024 13:07:03: #3 Call peaks... 
+INFO  @ Wed, 17 Apr 2024 13:07:03: #3 Pre-compute pvalue-qvalue table... 
+INFO  @ Wed, 17 Apr 2024 13:08:11: #3 Call peaks for each chromosome... 
+INFO  @ Wed, 17 Apr 2024 13:08:49: #4 Write output xls file... results/macs2/P020/P020_peaks.xls 
+INFO  @ Wed, 17 Apr 2024 13:08:50: #4 Write peak in narrowPeak format file... results/macs2/P020/P020_peaks.narrowPeak 
+INFO  @ Wed, 17 Apr 2024 13:08:50: #4 Write summits bed file... results/macs2/P020/P020_summits.bed 
+INFO  @ Wed, 17 Apr 2024 13:08:50: Done! 

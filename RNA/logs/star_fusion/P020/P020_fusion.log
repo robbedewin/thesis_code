@@ -1,0 +1,211 @@
+INFO:    fuse: warning: library too old, some operations may not work
+-ctat genome lib [/staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir] validates.
+CMD: mkdir -p /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P020/_starF_checkpoints
+CMD: mkdir -p /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P020/star-fusion.preliminary
+* Running CMD: /usr/local/bin/STAR --genomeDir /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir/ref_genome.fa.star.idx  --outReadsUnmapped None  --chimSegmentMin 12  --chimJunctionOverhangMin 8  --chimOutJunctionFormat 1  --alignSJDBoverhangMin 10  --alignMatesGapMax 100000  --alignIntronMax 100000  --alignSJstitchMismatchNmax 5 -1 5 5  --runThreadN 14 --outSAMstrandField intronMotif  --outSAMunmapped Within  --alignInsertionFlush Right  --alignSplicedMateMapLminOverLmate 0  --alignSplicedMateMapLmin 30  --outSAMtype BAM Unsorted  --readFilesIn /staging/leuven/stg_00096/home/rdewin/RNA/results/fastp/P020/P020_rna_R1.trimmed.fq /staging/leuven/stg_00096/home/rdewin/RNA/results/fastp/P020/P020_rna_R2.trimmed.fq  --outSAMattrRGline ID:GRPundef  --chimMultimapScoreRange 3  --chimScoreJunctionNonGTAG -4  --chimMultimapNmax 20  --chimNonchimScoreDropMin 10  --peOverlapNbasesMin 12 --peOverlapMMp 0.1  --genomeLoad NoSharedMemory  --twopassMode None  --quantMode GeneCounts
+Apr 09 14:45:02 ..... started STAR run
+Apr 09 14:45:02 ..... loading genome
+Apr 09 14:45:12 ..... started mapping
+Apr 09 15:01:14 ..... finished mapping
+Apr 09 15:01:15 ..... finished successfully
+-sample contains 84891664 rnaseq fragments
+* Running CMD: /usr/local/src/STAR-Fusion/util/STAR-Fusion.map_chimeric_reads_to_genes  --genome_lib_dir /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir  -J Chimeric.out.junction  -O /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P020/star-fusion.preliminary/star-fusion.junction_breakpts_to_genes.txt --CPU 14 
+-parsing fusion evidence: Chimeric.out.junction
+-building interval tree based on /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir/ref_annot.gtf.mini.sortu
+-done building interval tree (0.13 min).
+-mapping reads to genes
+[10000], rate=50000.00/min [20000], rate=52173.91/min [30000], rate=52941.18/min [40000], rate=53333.33/min [50000], rate=52631.58/min [60000], rate=53731.34/min [70000], rate=55263.16/min [80000], rate=56470.59/min [90000], rate=56842.11/min [100000], rate=57142.86/min [110000], rate=57391.30/min [120000], rate=58064.52/min [130000], rate=56934.31/min -building interval tree based on /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir/ref_annot.gtf.mini.sortu
+-done building interval tree (0.13 min).
+-mapping reads to genes
+[10000], rate=54545.45/min [20000], rate=52173.91/min [30000], rate=51428.57/min [40000], rate=52173.91/min [50000], rate=52631.58/min [60000], rate=52173.91/min [70000], rate=51851.85/min [80000], rate=51063.83/min [90000], rate=50467.29/min [100000], rate=50420.17/min [110000], rate=50000.00/min [120000], rate=49655.17/min [130000], rate=49681.53/min -building interval tree based on /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir/ref_annot.gtf.mini.sortu
+-done building interval tree (0.13 min).
+-mapping reads to genes
+[10000], rate=50000.00/min [20000], rate=52173.91/min [30000], rate=51428.57/min [40000], rate=52173.91/min [50000], rate=51724.14/min [60000], rate=51428.57/min [70000], rate=50602.41/min [80000], rate=50526.32/min [90000], rate=50000.00/min [100000], rate=50000.00/min [110000], rate=49624.06/min [120000], rate=49655.17/min [130000], rate=49367.09/min -building interval tree based on /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir/ref_annot.gtf.mini.sortu
+-done building interval tree (0.13 min).
+-mapping reads to genes
+[10000], rate=50000.00/min [20000], rate=52173.91/min [30000], rate=52941.18/min [40000], rate=52173.91/min [50000], rate=52631.58/min [60000], rate=51428.57/min [70000], rate=51219.51/min [80000], rate=50526.32/min [90000], rate=50467.29/min [100000], rate=50000.00/min [110000], rate=49624.06/min [120000], rate=49315.07/min [130000], rate=49367.09/min -building interval tree based on /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir/ref_annot.gtf.mini.sortu
+-done building interval tree (0.13 min).
+-mapping reads to genes
+[10000], rate=50000.00/min [20000], rate=52173.91/min [30000], rate=51428.57/min [40000], rate=51063.83/min [50000], rate=51724.14/min [60000], rate=51428.57/min [70000], rate=51219.51/min [80000], rate=50526.32/min [90000], rate=50000.00/min [100000], rate=50000.00/min [110000], rate=49624.06/min [120000], rate=49315.07/min [130000], rate=49367.09/min -building interval tree based on /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir/ref_annot.gtf.mini.sortu
+-done building interval tree (0.13 min).
+-mapping reads to genes
+[10000], rate=50000.00/min [20000], rate=50000.00/min [30000], rate=51428.57/min [40000], rate=51063.83/min [50000], rate=50847.46/min [60000], rate=50704.23/min [70000], rate=50000.00/min [80000], rate=50000.00/min [90000], rate=49541.28/min [100000], rate=49586.78/min [110000], rate=49253.73/min [120000], rate=48979.59/min [130000], rate=49056.60/min -building interval tree based on /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir/ref_annot.gtf.mini.sortu
+-done building interval tree (0.13 min).
+-mapping reads to genes
+[10000], rate=50000.00/min [20000], rate=50000.00/min [30000], rate=51428.57/min [40000], rate=51063.83/min [50000], rate=51724.14/min [60000], rate=51428.57/min [70000], rate=50602.41/min [80000], rate=50000.00/min [90000], rate=49541.28/min [100000], rate=49180.33/min [110000], rate=48888.89/min [120000], rate=48648.65/min [130000], rate=48750.00/min -building interval tree based on /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir/ref_annot.gtf.mini.sortu
+-done building interval tree (0.13 min).
+-mapping reads to genes
+[10000], rate=50000.00/min [20000], rate=52173.91/min [30000], rate=52941.18/min [40000], rate=53333.33/min [50000], rate=53571.43/min [60000], rate=51428.57/min [70000], rate=48837.21/min [80000], rate=48484.85/min [90000], rate=48214.29/min [100000], rate=48000.00/min [110000], rate=47826.09/min [120000], rate=48000.00/min [130000], rate=47852.76/min -building interval tree based on /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir/ref_annot.gtf.mini.sortu
+-done building interval tree (0.13 min).
+-mapping reads to genes
+[10000], rate=50000.00/min [20000], rate=52173.91/min [30000], rate=51428.57/min [40000], rate=52173.91/min [50000], rate=52631.58/min [60000], rate=50000.00/min [70000], rate=47727.27/min [80000], rate=47524.75/min [90000], rate=47368.42/min [100000], rate=47244.09/min [110000], rate=47142.86/min [120000], rate=47368.42/min [130000], rate=47272.73/min -building interval tree based on /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir/ref_annot.gtf.mini.sortu
+-done building interval tree (0.13 min).
+-mapping reads to genes
+[10000], rate=50000.00/min [20000], rate=52173.91/min [30000], rate=52941.18/min [40000], rate=53333.33/min [50000], rate=52631.58/min [60000], rate=50000.00/min [70000], rate=47727.27/min [80000], rate=47524.75/min [90000], rate=47368.42/min [100000], rate=47244.09/min [110000], rate=47142.86/min [120000], rate=47058.82/min [130000], rate=46987.95/min -building interval tree based on /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir/ref_annot.gtf.mini.sortu
+-done building interval tree (0.13 min).
+-mapping reads to genes
+[10000], rate=50000.00/min [20000], rate=52173.91/min [30000], rate=52941.18/min [40000], rate=53333.33/min [50000], rate=53571.43/min [60000], rate=51428.57/min [70000], rate=48275.86/min [80000], rate=48000.00/min [90000], rate=47787.61/min [100000], rate=47244.09/min [110000], rate=47142.86/min [120000], rate=47058.82/min [130000], rate=46987.95/min -building interval tree based on /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir/ref_annot.gtf.mini.sortu
+-done building interval tree (0.13 min).
+-mapping reads to genes
+[10000], rate=40000.00/min [20000], rate=44444.44/min [30000], rate=46153.85/min [40000], rate=47058.82/min [50000], rate=47619.05/min [60000], rate=47368.42/min [70000], rate=47191.01/min [80000], rate=47058.82/min [90000], rate=46956.52/min [100000], rate=46875.00/min [110000], rate=46478.87/min [120000], rate=46451.61/min [130000], rate=46706.59/min -building interval tree based on /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir/ref_annot.gtf.mini.sortu
+-done building interval tree (0.13 min).
+-mapping reads to genes
+[10000], rate=40000.00/min [20000], rate=44444.44/min [30000], rate=46153.85/min [40000], rate=47058.82/min [50000], rate=47619.05/min [60000], rate=44444.44/min [70000], rate=44680.85/min [80000], rate=45283.02/min [90000], rate=45000.00/min [100000], rate=45454.55/min [110000], rate=45517.24/min [120000], rate=45859.87/min [130000], rate=46153.85/min -building interval tree based on /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir/ref_annot.gtf.mini.sortu
+-done building interval tree (0.13 min).
+-mapping reads to genes
+[10000], rate=37500.00/min [20000], rate=42857.14/min [30000], rate=45000.00/min [40000], rate=46153.85/min [50000], rate=46875.00/min [60000], rate=46153.85/min [70000], rate=45652.17/min [80000], rate=45283.02/min [90000], rate=45000.00/min [100000], rate=44776.12/min [110000], rate=44897.96/min [120000], rate=45000.00/min [130000], rate=45348.84/min * Running CMD: /usr/local/src/STAR-Fusion/util/STAR-Fusion.handle_multimapping_reads  -J /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P020/star-fusion.preliminary/star-fusion.junction_breakpts_to_genes.txt  --genome_lib_dir /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir  --filt_file /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P020/star-fusion.preliminary/star-fusion.junction_breakpts_to_genes.txt.fail  -M 50  > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P020/star-fusion.preliminary/star-fusion.junction_breakpts_to_genes.txt.pass 
+-parsing /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P020/star-fusion.preliminary/star-fusion.junction_breakpts_to_genes.txt, organizing read mapping info.
+ 171428.57 reads per min processed...   171428.57 reads per min processed...   178217.82 reads per min processed...   184615.38 reads per min processed...   186335.40 reads per min processed...   191489.36 reads per min processed...  
+done.
+
+* Running CMD: /usr/local/src/STAR-Fusion/util/STAR-Fusion.predict  -J /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P020/star-fusion.preliminary/star-fusion.junction_breakpts_to_genes.txt.pass  -O /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P020/star-fusion.preliminary/star-fusion 
+-parsing fusion evidence: /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P020/star-fusion.preliminary/star-fusion.junction_breakpts_to_genes.txt.pass
+-outputting fusion candidates to file: /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P020/star-fusion.preliminary/star-fusion.fusion_candidates.preliminary
+* Running CMD: /usr/local/src/STAR-Fusion/util/STAR-Fusion.filter  --fusion_preds /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P020/star-fusion.preliminary/star-fusion.fusion_candidates.preliminary  -J Chimeric.out.junction  --tmpdir /tmp  --min_junction_reads 1  --min_sum_frags 2  --require_LDAS 1  --max_promiscuity 10  --min_pct_dom_promiscuity 20  --min_novel_junction_support 3  --min_alt_pct_junction 10  --aggregate_novel_junction_dist 5  --min_spanning_frags_only 5  --genome_lib_dir /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir  --out_prefix /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P020/star-fusion.preliminary/star-fusion
+CMD: mkdir -p /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P020/star-fusion.preliminary/star-fusion.filter.intermediates_dir
+EM: Starting log likelihood: -1342.889788
+EM: Round [1] log likelihood: -1339.896147
+EM: Round [2] log likelihood: -1338.798719
+EM: Round [3] log likelihood: -1338.224736
+EM: Round [4] log likelihood: -1337.873110
+EM: Round [5] log likelihood: -1337.638194
+EM: Round [6] log likelihood: -1337.472557
+EM: Round [7] log likelihood: -1337.351337
+EM: Round [8] log likelihood: -1337.260113
+EM: Round [9] log likelihood: -1337.189928
+EM: Round [10] log likelihood: -1337.134947
+EM: Round [11] log likelihood: -1337.091228
+EM: Round [12] log likelihood: -1337.056023
+EM: Round [13] log likelihood: -1337.027371
+EM: Round [14] log likelihood: -1337.003841
+EM: Round [15] log likelihood: -1336.984366
+EM: Round [16] log likelihood: -1336.968138
+EM: Round [17] log likelihood: -1336.954533
+EM: Round [18] log likelihood: -1336.943066
+EM: Round [19] log likelihood: -1336.933354
+EM: Round [20] log likelihood: -1336.925091
+EM: Round [21] log likelihood: -1336.918031
+EM: Round [22] log likelihood: -1336.911975
+EM: Round [23] log likelihood: -1336.906761
+EM: Round [24] log likelihood: -1336.902255
+EM: Round [25] log likelihood: -1336.898348
+EM: Round [26] log likelihood: -1336.894949
+EM: Round [27] log likelihood: -1336.891982
+EM: Round [28] log likelihood: -1336.889386
+EM: Round [29] log likelihood: -1336.887107
+EM: Round [30] log likelihood: -1336.885101
+EM: Round [31] log likelihood: -1336.883330
+EM: Round [32] log likelihood: -1336.881764
+EM: Round [33] log likelihood: -1336.880376
+EM: Round [34] log likelihood: -1336.879142
+EM: Round [35] log likelihood: -1336.878044
+EM: Round [36] log likelihood: -1336.877065
+EM: Round [37] log likelihood: -1336.876189
+EM: Round [38] log likelihood: -1336.875406
+EM: Round [39] log likelihood: -1336.874704
+EM: Round [40] log likelihood: -1336.874075
+EM: Round [41] log likelihood: -1336.873509
+EM: Round [42] log likelihood: -1336.873000
+EM: Round [43] log likelihood: -1336.872542
+EM: Round [44] log likelihood: -1336.872128
+EM: Round [45] log likelihood: -1336.871756
+EM: Round [46] log likelihood: -1336.871420
+EM: Round [47] log likelihood: -1336.871116
+EM: Round [48] log likelihood: -1336.870841
+EM: Round [49] log likelihood: -1336.870593
+EM: Round [50] log likelihood: -1336.870368
+EM: Round [51] log likelihood: -1336.870165
+EM: Round [52] log likelihood: -1336.869981
+EM: Round [53] log likelihood: -1336.869814
+EM: Round [54] log likelihood: -1336.869662
+EM: Round [55] log likelihood: -1336.869525
+EM: Round [56] log likelihood: -1336.869401
+EM: Round [57] log likelihood: -1336.869288
+EM: Round [58] log likelihood: -1336.869185
+EM: Round [59] log likelihood: -1336.869093
+EM: Stopping iterations at round 59 due to insufficient improvement in likelihood.
+EM: Starting log likelihood: -1335.064018
+EM: Round [1] log likelihood: -1332.949410
+EM: Round [2] log likelihood: -1332.022773
+EM: Round [3] log likelihood: -1331.511599
+EM: Round [4] log likelihood: -1331.194033
+EM: Round [5] log likelihood: -1330.981919
+EM: Round [6] log likelihood: -1330.833058
+EM: Round [7] log likelihood: -1330.724645
+EM: Round [8] log likelihood: -1330.643337
+EM: Round [9] log likelihood: -1330.580874
+EM: Round [10] log likelihood: -1330.531920
+EM: Round [11] log likelihood: -1330.492910
+EM: Round [12] log likelihood: -1330.461385
+EM: Round [13] log likelihood: -1330.435610
+EM: Round [14] log likelihood: -1330.414327
+EM: Round [15] log likelihood: -1330.396607
+EM: Round [16] log likelihood: -1330.381749
+EM: Round [17] log likelihood: -1330.369214
+EM: Round [18] log likelihood: -1330.358582
+EM: Round [19] log likelihood: -1330.349520
+EM: Round [20] log likelihood: -1330.341765
+EM: Round [21] log likelihood: -1330.335100
+EM: Round [22] log likelihood: -1330.329352
+EM: Round [23] log likelihood: -1330.324378
+EM: Round [24] log likelihood: -1330.320059
+EM: Round [25] log likelihood: -1330.316298
+EM: Round [26] log likelihood: -1330.313012
+EM: Round [27] log likelihood: -1330.310134
+EM: Round [28] log likelihood: -1330.307606
+EM: Round [29] log likelihood: -1330.305381
+EM: Round [30] log likelihood: -1330.303416
+EM: Round [31] log likelihood: -1330.301678
+EM: Round [32] log likelihood: -1330.300137
+EM: Round [33] log likelihood: -1330.298769
+EM: Round [34] log likelihood: -1330.297550
+EM: Round [35] log likelihood: -1330.296464
+EM: Round [36] log likelihood: -1330.295493
+EM: Round [37] log likelihood: -1330.294625
+EM: Round [38] log likelihood: -1330.293848
+EM: Round [39] log likelihood: -1330.293150
+EM: Round [40] log likelihood: -1330.292524
+EM: Round [41] log likelihood: -1330.291961
+EM: Round [42] log likelihood: -1330.291454
+EM: Round [43] log likelihood: -1330.290997
+EM: Round [44] log likelihood: -1330.290585
+EM: Round [45] log likelihood: -1330.290214
+EM: Round [46] log likelihood: -1330.289878
+EM: Round [47] log likelihood: -1330.289575
+EM: Round [48] log likelihood: -1330.289301
+EM: Round [49] log likelihood: -1330.289053
+EM: Round [50] log likelihood: -1330.288828
+EM: Round [51] log likelihood: -1330.288625
+EM: Round [52] log likelihood: -1330.288441
+EM: Round [53] log likelihood: -1330.288274
+EM: Round [54] log likelihood: -1330.288123
+EM: Round [55] log likelihood: -1330.287986
+EM: Round [56] log likelihood: -1330.287862
+EM: Round [57] log likelihood: -1330.287749
+EM: Round [58] log likelihood: -1330.287647
+EM: Round [59] log likelihood: -1330.287554
+EM: Stopping iterations at round 59 due to insufficient improvement in likelihood.
+CMD: /usr/local/src/STAR-Fusion/util/../FusionFilter/blast_and_promiscuity_filter.pl --out_prefix /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P020/star-fusion.preliminary/star-fusion.filter.intermediates_dir/star-fusion --max_promiscuity 10 --min_pct_dom_promiscuity 20  --fusion_preds /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P020/star-fusion.preliminary/star-fusion.filter.intermediates_dir/star-fusion.pre_blast_filter --genome_lib_dir /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir 
+CMD: /usr/local/src/STAR-Fusion/FusionFilter/util/blast_filter.pl --fusion_preds /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P020/star-fusion.preliminary/star-fusion.filter.intermediates_dir/star-fusion.pre_blast_filter --genome_lib_dir /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir
+CMD: /usr/local/src/STAR-Fusion/FusionFilter/util/promiscuity_filter.pl --fusion_preds /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P020/star-fusion.preliminary/star-fusion.filter.intermediates_dir/star-fusion.pre_blast_filter.post_blast_filter  --genome_lib_dir /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir  --max_promiscuity 10  --min_pct_dom_promiscuity 20 
+CMD: cp /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P020/star-fusion.preliminary/star-fusion.filter.intermediates_dir/star-fusion.pre_blast_filter.post_blast_filter.post_promisc_filter /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P020/star-fusion.preliminary/star-fusion.filter.intermediates_dir/star-fusion.post_blast_and_promiscuity_filter
+CMD: /usr/local/src/STAR-Fusion/util/column_exclusions.pl /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P020/star-fusion.preliminary/star-fusion.filter.intermediates_dir/star-fusion.post_blast_and_promiscuity_filter JunctionReads,SpanningFrags > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P020/star-fusion.preliminary/star-fusion.filter.intermediates_dir/star-fusion.post_blast_and_promiscuity_filter.abridged
+CMD: ln -sf /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P020/star-fusion.preliminary/star-fusion.filter.intermediates_dir/star-fusion.post_blast_and_promiscuity_filter /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P020/star-fusion.preliminary/star-fusion.fusion_candidates.preliminary.filtered
+* Running CMD: /usr/local/src/STAR-Fusion/util/incorporate_FFPM_into_final_report.pl /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P020/star-fusion.preliminary/star-fusion.fusion_candidates.preliminary.filtered 84891664 > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P020/star-fusion.preliminary/star-fusion.fusion_candidates.preliminary.filtered.FFPM
+* Running CMD: /usr/local/src/STAR-Fusion/util/append_breakpoint_junction_info.pl /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P020/star-fusion.preliminary/star-fusion.fusion_candidates.preliminary.filtered.FFPM /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P020/star-fusion.preliminary/star-fusion.fusion_candidates.preliminary.wSpliceInfo
+* Running CMD: /usr/local/src/STAR-Fusion/FusionAnnotator/FusionAnnotator --genome_lib_dir /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir --annotate /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P020/star-fusion.preliminary/star-fusion.fusion_candidates.preliminary.wSpliceInfo > /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P020/star-fusion.preliminary/star-fusion.fusion_candidates.preliminary.wSpliceInfo.wAnnot
+* Running CMD: /usr/local/src/STAR-Fusion/FusionFilter/util/filter_by_annotation_rules.pl --fusions /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P020/star-fusion.preliminary/star-fusion.fusion_candidates.preliminary.wSpliceInfo.wAnnot --genome_lib_dir /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir
+-done, see /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P020/star-fusion.preliminary/star-fusion.fusion_candidates.preliminary.wSpliceInfo.wAnnot.annot_filter.pass
+* Running CMD: /usr/local/src/STAR-Fusion/util/filter_likely_RT_artifacts.pl --fusions /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P020/star-fusion.preliminary/star-fusion.fusion_candidates.preliminary.wSpliceInfo.wAnnot.annot_filter.pass --genome_lib_dir /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir
+-filter_likely_RT_artifacts: (pass: 44, filtered: 9)
+* Running CMD: /usr/local/src/STAR-Fusion/util/filter_by_min_FFPM.pl /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P020/star-fusion.preliminary/star-fusion.fusion_candidates.preliminary.wSpliceInfo.wAnnot.annot_filter.pass.RTartifact.pass 0.1
+* Running CMD: cp /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P020/star-fusion.preliminary/star-fusion.fusion_candidates.preliminary.wSpliceInfo.wAnnot.annot_filter.pass.RTartifact.pass.minFFPM.0.1.pass star-fusion.fusion_predictions.tsv
+* Running CMD: /usr/local/src/STAR-Fusion/util/column_exclusions.pl star-fusion.fusion_predictions.tsv JunctionReads,SpanningFrags > star-fusion.fusion_predictions.abridged.tsv
+* Running CMD: /usr/local/src/STAR-Fusion/FusionAnnotator/util/fusion_to_coding_region_effect.pl  --fusions star-fusion.fusion_predictions.abridged.tsv --genome_lib_dir /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir > star-fusion.fusion_predictions.abridged.coding_effect.tsv
+
+
+	* STAR-Fusion complete.  See output: /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P020/star-fusion.fusion_predictions.tsv (or .abridged.tsv version)
+
+
+* Running CMD: /usr/local/src/STAR-Fusion/FusionInspector/FusionInspector --fusions star-fusion.fusion_predictions.abridged.coding_effect.tsv  --out_prefix finspector  --min_junction_reads 1  --min_novel_junction_support 3  --min_spanning_frags_only 5  --max_mate_dist 100000  --vis  --max_promiscuity 10  --output_dir /staging/leuven/stg_00096/home/rdewin/RNA/results/star_fusion/P020/FusionInspector-validate  --genome_lib_dir /staging/leuven/stg_00096/references/CTAT_Resources/T2T-CHM13_CTAT_lib_Feb162023.plug-n-play/ctat_genome_lib_build_dir  --CPU 14  --left_fq /staging/leuven/stg_00096/home/rdewin/RNA/results/fastp/P020/P020_rna_R1.trimmed.fq --right_fq /staging/leuven/stg_00096/home/rdewin/RNA/results/fastp/P020/P020_rna_R2.trimmed.fq  --include_Trinity  --annotate  --examine_coding_effect 
+No fusions listed in input file: star-fusion.fusion_predictions.abridged.coding_effect.tsv, exiting gracefully.

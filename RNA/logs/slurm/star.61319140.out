@@ -1,0 +1,6 @@
+Tue Apr  9 08:38:19 CEST 2024
+
+rule all:
+    input:
+        expand(results/star/{sample}/{sample}_Aligned.sortedByCoord.out.bam, sample=unique_samples)
+Snakemake completed successfully at Tue Apr  9 11:28:17 CEST 2024

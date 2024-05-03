@@ -1,0 +1,112 @@
+INFO  @ Wed, 17 Apr 2024 13:04:00: 
+# Command line: callpeak -t results/samtools/P018/P018_atac.bam -f BAM -g 3117292070 -n P018 --outdir results/macs2/P018
+# ARGUMENTS LIST:
+# name = P018
+# format = BAM
+# ChIP-seq file = ['results/samtools/P018/P018_atac.bam']
+# control file = None
+# effective genome size = 3.12e+09
+# band width = 300
+# model fold = [5, 50]
+# qvalue cutoff = 5.00e-02
+# The maximum gap between significant sites is assigned as the read length/tag size.
+# The minimum length of peaks is assigned as the predicted fragment length "d".
+# Larger dataset will be scaled towards smaller dataset.
+# Range for calculating regional lambda is: 10000 bps
+# Broad region calling is off
+# Paired-End mode is off
+ 
+INFO  @ Wed, 17 Apr 2024 13:04:00: #1 read tag files... 
+INFO  @ Wed, 17 Apr 2024 13:04:00: #1 read treatment tags... 
+INFO  @ Wed, 17 Apr 2024 13:04:04:  1000000 
+INFO  @ Wed, 17 Apr 2024 13:04:08:  2000000 
+INFO  @ Wed, 17 Apr 2024 13:04:12:  3000000 
+INFO  @ Wed, 17 Apr 2024 13:04:15:  4000000 
+INFO  @ Wed, 17 Apr 2024 13:04:19:  5000000 
+INFO  @ Wed, 17 Apr 2024 13:04:23:  6000000 
+INFO  @ Wed, 17 Apr 2024 13:04:27:  7000000 
+INFO  @ Wed, 17 Apr 2024 13:04:30:  8000000 
+INFO  @ Wed, 17 Apr 2024 13:04:34:  9000000 
+INFO  @ Wed, 17 Apr 2024 13:04:38:  10000000 
+INFO  @ Wed, 17 Apr 2024 13:04:42:  11000000 
+INFO  @ Wed, 17 Apr 2024 13:04:45:  12000000 
+INFO  @ Wed, 17 Apr 2024 13:04:49:  13000000 
+INFO  @ Wed, 17 Apr 2024 13:04:53:  14000000 
+INFO  @ Wed, 17 Apr 2024 13:04:57:  15000000 
+INFO  @ Wed, 17 Apr 2024 13:05:00:  16000000 
+INFO  @ Wed, 17 Apr 2024 13:05:04:  17000000 
+INFO  @ Wed, 17 Apr 2024 13:05:08:  18000000 
+INFO  @ Wed, 17 Apr 2024 13:05:12:  19000000 
+INFO  @ Wed, 17 Apr 2024 13:05:16:  20000000 
+INFO  @ Wed, 17 Apr 2024 13:05:19:  21000000 
+INFO  @ Wed, 17 Apr 2024 13:05:23:  22000000 
+INFO  @ Wed, 17 Apr 2024 13:05:27:  23000000 
+INFO  @ Wed, 17 Apr 2024 13:05:31:  24000000 
+INFO  @ Wed, 17 Apr 2024 13:05:35:  25000000 
+INFO  @ Wed, 17 Apr 2024 13:05:38:  26000000 
+INFO  @ Wed, 17 Apr 2024 13:05:42:  27000000 
+INFO  @ Wed, 17 Apr 2024 13:05:46:  28000000 
+INFO  @ Wed, 17 Apr 2024 13:05:50:  29000000 
+INFO  @ Wed, 17 Apr 2024 13:05:53:  30000000 
+INFO  @ Wed, 17 Apr 2024 13:05:57:  31000000 
+INFO  @ Wed, 17 Apr 2024 13:06:01:  32000000 
+INFO  @ Wed, 17 Apr 2024 13:06:05:  33000000 
+INFO  @ Wed, 17 Apr 2024 13:06:08:  34000000 
+INFO  @ Wed, 17 Apr 2024 13:06:12:  35000000 
+INFO  @ Wed, 17 Apr 2024 13:06:16:  36000000 
+INFO  @ Wed, 17 Apr 2024 13:06:20:  37000000 
+INFO  @ Wed, 17 Apr 2024 13:06:23:  38000000 
+INFO  @ Wed, 17 Apr 2024 13:06:27:  39000000 
+INFO  @ Wed, 17 Apr 2024 13:06:31:  40000000 
+INFO  @ Wed, 17 Apr 2024 13:06:35:  41000000 
+INFO  @ Wed, 17 Apr 2024 13:06:38:  42000000 
+INFO  @ Wed, 17 Apr 2024 13:06:42:  43000000 
+INFO  @ Wed, 17 Apr 2024 13:06:46:  44000000 
+INFO  @ Wed, 17 Apr 2024 13:06:50:  45000000 
+INFO  @ Wed, 17 Apr 2024 13:06:53:  46000000 
+INFO  @ Wed, 17 Apr 2024 13:06:57:  47000000 
+INFO  @ Wed, 17 Apr 2024 13:07:01:  48000000 
+INFO  @ Wed, 17 Apr 2024 13:07:04:  49000000 
+INFO  @ Wed, 17 Apr 2024 13:07:08:  50000000 
+INFO  @ Wed, 17 Apr 2024 13:07:12:  51000000 
+INFO  @ Wed, 17 Apr 2024 13:07:15:  52000000 
+INFO  @ Wed, 17 Apr 2024 13:07:19:  53000000 
+INFO  @ Wed, 17 Apr 2024 13:07:23:  54000000 
+INFO  @ Wed, 17 Apr 2024 13:07:27:  55000000 
+INFO  @ Wed, 17 Apr 2024 13:07:30:  56000000 
+INFO  @ Wed, 17 Apr 2024 13:07:34:  57000000 
+INFO  @ Wed, 17 Apr 2024 13:07:38:  58000000 
+INFO  @ Wed, 17 Apr 2024 13:07:41:  59000000 
+INFO  @ Wed, 17 Apr 2024 13:07:45:  60000000 
+INFO  @ Wed, 17 Apr 2024 13:07:48:  61000000 
+INFO  @ Wed, 17 Apr 2024 13:07:52:  62000000 
+INFO  @ Wed, 17 Apr 2024 13:07:55:  63000000 
+INFO  @ Wed, 17 Apr 2024 13:08:04: 63930089 reads have been read. 
+INFO  @ Wed, 17 Apr 2024 13:08:04: #1 tag size is determined as 73 bps 
+INFO  @ Wed, 17 Apr 2024 13:08:04: #1 tag size = 73.0 
+INFO  @ Wed, 17 Apr 2024 13:08:04: #1  total tags in treatment: 63930089 
+INFO  @ Wed, 17 Apr 2024 13:08:04: #1 user defined the maximum tags... 
+INFO  @ Wed, 17 Apr 2024 13:08:04: #1 filter out redundant tags at the same location and the same strand by allowing at most 1 tag(s) 
+INFO  @ Wed, 17 Apr 2024 13:08:05: #1  tags after filtering in treatment: 38195068 
+INFO  @ Wed, 17 Apr 2024 13:08:05: #1  Redundant rate of treatment: 0.40 
+INFO  @ Wed, 17 Apr 2024 13:08:05: #1 finished! 
+INFO  @ Wed, 17 Apr 2024 13:08:05: #2 Build Peak Model... 
+INFO  @ Wed, 17 Apr 2024 13:08:05: #2 looking for paired plus/minus strand peaks... 
+INFO  @ Wed, 17 Apr 2024 13:08:11: #2 number of paired peaks: 79559 
+INFO  @ Wed, 17 Apr 2024 13:08:11: start model_add_line... 
+INFO  @ Wed, 17 Apr 2024 13:08:12: start X-correlation... 
+INFO  @ Wed, 17 Apr 2024 13:08:12: end of X-cor 
+INFO  @ Wed, 17 Apr 2024 13:08:12: #2 finished! 
+INFO  @ Wed, 17 Apr 2024 13:08:12: #2 predicted fragment length is 70 bps 
+INFO  @ Wed, 17 Apr 2024 13:08:12: #2 alternative fragment length(s) may be 70 bps 
+INFO  @ Wed, 17 Apr 2024 13:08:12: #2.2 Generate R script for model : results/macs2/P018/P018_model.r 
+WARNING @ Wed, 17 Apr 2024 13:08:12: #2 Since the d (70) calculated from paired-peaks are smaller than 2*tag length, it may be influenced by unknown sequencing problem! 
+WARNING @ Wed, 17 Apr 2024 13:08:12: #2 You may need to consider one of the other alternative d(s): 70 
+WARNING @ Wed, 17 Apr 2024 13:08:12: #2 You can restart the process with --nomodel --extsize XXX with your choice or an arbitrary number. Nontheless, MACS will continute computing. 
+INFO  @ Wed, 17 Apr 2024 13:08:12: #3 Call peaks... 
+INFO  @ Wed, 17 Apr 2024 13:08:12: #3 Pre-compute pvalue-qvalue table... 
+INFO  @ Wed, 17 Apr 2024 13:09:32: #3 Call peaks for each chromosome... 
+INFO  @ Wed, 17 Apr 2024 13:10:18: #4 Write output xls file... results/macs2/P018/P018_peaks.xls 
+INFO  @ Wed, 17 Apr 2024 13:10:19: #4 Write peak in narrowPeak format file... results/macs2/P018/P018_peaks.narrowPeak 
+INFO  @ Wed, 17 Apr 2024 13:10:19: #4 Write summits bed file... results/macs2/P018/P018_summits.bed 
+INFO  @ Wed, 17 Apr 2024 13:10:19: Done! 

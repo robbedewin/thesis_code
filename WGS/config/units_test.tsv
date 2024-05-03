@@ -1,0 +1,10 @@
+sample_name	unit_name	alias	datatype	fq1	fq2
+P013	A0012	tumor	atac	/staging/leuven/stg_00096/home/rdewin/data/merged/A0012/A0012_R1.fq.gz	/staging/leuven/stg_00096/home/rdewin/data/merged/A0012/A0012_R2.fq.gz
+P013	D0037	tumor	dna	/staging/leuven/stg_00096/home/rdewin/data/TALL_IF/TALL_IF/WGS/WGS_batch3/D0037/D0037_R1.fq.gz	/staging/leuven/stg_00096/home/rdewin/data/TALL_IF/TALL_IF/WGS/WGS_batch3/D0037/D0037_R2.fq.gz
+P013	D0080	normal	dna	/staging/leuven/stg_00096/home/rdewin/data/TALL_IF/TALL_IF/WGS/WGS_batch3/D0080/D0080_R1.fq.gz	/staging/leuven/stg_00096/home/rdewin/data/TALL_IF/TALL_IF/WGS/WGS_batch3/D0080/D0080_R2.fq.gz
+P013	R027	tumor	rna	/staging/leuven/stg_00096/home/rdewin/data/TALL_IF/TALL_IF/RNAseq/fastq/batch1/R0027/NM5829_R0027_S6_R1_001.fastq.gz	/staging/leuven/stg_00096/home/rdewin/data/TALL_IF/TALL_IF/RNAseq/fastq/batch1/R0027/NM5829_R0027_S6_R2_001.fastq.gz
+P013test	A0012 	tumor	atac	/staging/leuven/stg_00096/home/rdewin/WGS/test_data/subset_A0012_R1.fq.gz	/staging/leuven/stg_00096/home/rdewin/WGS/test_data/subset_A0012_R2.fq.gz
+P013test	D0037	tumor	dna	/staging/leuven/stg_00096/home/rdewin/WGS/test_data/subset_D0037_R1.fq.gz	/staging/leuven/stg_00096/home/rdewin/WGS/test_data/subset_D0037_R2.fq.gz
+P013test	D0080	normal	dna	/staging/leuven/stg_00096/home/rdewin/WGS/test_data/subset_D0080_R1.fq.gz	/staging/leuven/stg_00096/home/rdewin/WGS/test_data/subset_D0080_R2.fq.gz
+P013test	R027	tumor	rna	/staging/leuven/stg_00096/home/rdewin/WGS/test_data/subset_R0027_R1.fastq.gz	/staging/leuven/stg_00096/home/rdewin/WGS/test_data/subset_R0027_R2.fastq.gz
+P018test	S039	tumor	dna	/staging/leuven/stg_00096/home/rdewin/WGS/test_data/subset_S039_R1.fq.gz	/staging/leuven/stg_00096/home/rdewin/WGS/test_data/subset_S039_R2.fq.gz

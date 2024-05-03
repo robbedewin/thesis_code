@@ -1,0 +1,34 @@
+# Load configuration
+#configfile: "config/config.yaml"
+
+# Test config
+configfile: "config/config_10samples.yaml"
+
+# Define common variables
+# ref_genome = config["ref_genome"]
+
+
+# Set PATH for all rules
+#shell.prefix("export PATH=/staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/WGS/bin:$PATH; ")
+
+
+# Load rules
+include: "rules/common.smk"
+include: "rules/ref.smk"
+include: "rules/qc.smk"
+include: "rules/mapping.smk"
+include: "rules/ascat.smk"
+include: "rules/mutect2.smk"
+include: "rules/structural_variation.smk"
+#include: "rules/calling.smk"
+
+
+rule all:
+    input:
+        #expand("results/recal/{sample}/{sample}_dna_{alias}_recal.bai", alias=unique_aliases, sample=SAMPLES),
+        "results/qc/multiqc_test.html",
+        #expand("results/delly/call/{sample}.bcf", sample=unique_samples),
+        #expand("results/recal/{sample}/{sample}_dna_{alias}_recal.bai", sample=unique_samples, alias=unique_aliases),
+        expand("results/ascat/{sample}/", sample=unique_samples),
+        #expand("results/mutect2/{sample}/{sample}_variants.vcf", sample=unique_samples),
+        expand("results/mutect2/{sample}/{sample}_pass_variants.vcf", sample=unique_samples),

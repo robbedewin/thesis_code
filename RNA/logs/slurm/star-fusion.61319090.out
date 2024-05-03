@@ -1,0 +1,6 @@
+Tue Apr  9 03:10:29 CEST 2024
+
+rule all:
+    input:
+        expand(results/star/{sample}/{sample}_Aligned.sortedByCoord.out.bam, sample=unique_samples)
+Snakemake encountered an error at Tue Apr  9 03:26:04 CEST 2024

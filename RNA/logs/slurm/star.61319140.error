@@ -1,0 +1,227 @@
+Assuming unrestricted shared filesystem usage.
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 14
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job           count
+----------  -------
+STAR_align       10
+all               1
+total            11
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Apr  9 08:38:51 2024]
+localrule STAR_align:
+    input: results/fastp/P028/P028_rna_R1.trimmed.fq, results/fastp/P028/P028_rna_R2.trimmed.fq, resources/star_genome
+    output: results/star/P028/P028_Aligned.sortedByCoord.out.bam, results/star/P028/P028_ReadsPerGene.out.tab
+    log: logs/star/P028/P028_align.log
+    jobid: 11
+    reason: Missing output files: results/star/P028/P028_Aligned.sortedByCoord.out.bam
+    wildcards: sample=P028
+    threads: 14
+    resources: tmpdir=/tmp
+
+
+        STAR --runThreadN 14              --genomeDir resources/star_genome              --readFilesIn results/fastp/P028/P028_rna_R1.trimmed.fq results/fastp/P028/P028_rna_R2.trimmed.fq              --outFileNamePrefix results/star/P028/P028_              --outSAMtype BAM SortedByCoordinate              --outSAMattributes NH HI AS NM MD              --outSAMstrandField intronMotif              --quantMode GeneCounts              --twopassMode Basic         > logs/star/P028/P028_align.log 2>&1
+        
+[Tue Apr  9 09:39:29 2024]
+Finished job 11.
+1 of 11 steps (9%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Apr  9 09:39:29 2024]
+localrule STAR_align:
+    input: results/fastp/P022/P022_rna_R1.trimmed.fq, results/fastp/P022/P022_rna_R2.trimmed.fq, resources/star_genome
+    output: results/star/P022/P022_Aligned.sortedByCoord.out.bam, results/star/P022/P022_ReadsPerGene.out.tab
+    log: logs/star/P022/P022_align.log
+    jobid: 19
+    reason: Missing output files: results/star/P022/P022_Aligned.sortedByCoord.out.bam
+    wildcards: sample=P022
+    threads: 14
+    resources: tmpdir=/tmp
+
+
+        STAR --runThreadN 14              --genomeDir resources/star_genome              --readFilesIn results/fastp/P022/P022_rna_R1.trimmed.fq results/fastp/P022/P022_rna_R2.trimmed.fq              --outFileNamePrefix results/star/P022/P022_              --outSAMtype BAM SortedByCoordinate              --outSAMattributes NH HI AS NM MD              --outSAMstrandField intronMotif              --quantMode GeneCounts              --twopassMode Basic         > logs/star/P022/P022_align.log 2>&1
+        
+[Tue Apr  9 09:52:02 2024]
+Finished job 19.
+2 of 11 steps (18%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Apr  9 09:52:03 2024]
+localrule STAR_align:
+    input: results/fastp/P016/P016_rna_R1.trimmed.fq, results/fastp/P016/P016_rna_R2.trimmed.fq, resources/star_genome
+    output: results/star/P016/P016_Aligned.sortedByCoord.out.bam, results/star/P016/P016_ReadsPerGene.out.tab
+    log: logs/star/P016/P016_align.log
+    jobid: 17
+    reason: Missing output files: results/star/P016/P016_Aligned.sortedByCoord.out.bam
+    wildcards: sample=P016
+    threads: 14
+    resources: tmpdir=/tmp
+
+
+        STAR --runThreadN 14              --genomeDir resources/star_genome              --readFilesIn results/fastp/P016/P016_rna_R1.trimmed.fq results/fastp/P016/P016_rna_R2.trimmed.fq              --outFileNamePrefix results/star/P016/P016_              --outSAMtype BAM SortedByCoordinate              --outSAMattributes NH HI AS NM MD              --outSAMstrandField intronMotif              --quantMode GeneCounts              --twopassMode Basic         > logs/star/P016/P016_align.log 2>&1
+        
+[Tue Apr  9 10:00:53 2024]
+Finished job 17.
+3 of 11 steps (27%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Apr  9 10:00:53 2024]
+localrule STAR_align:
+    input: results/fastp/P019/P019_rna_R1.trimmed.fq, results/fastp/P019/P019_rna_R2.trimmed.fq, resources/star_genome
+    output: results/star/P019/P019_Aligned.sortedByCoord.out.bam, results/star/P019/P019_ReadsPerGene.out.tab
+    log: logs/star/P019/P019_align.log
+    jobid: 9
+    reason: Missing output files: results/star/P019/P019_Aligned.sortedByCoord.out.bam
+    wildcards: sample=P019
+    threads: 14
+    resources: tmpdir=/tmp
+
+
+        STAR --runThreadN 14              --genomeDir resources/star_genome              --readFilesIn results/fastp/P019/P019_rna_R1.trimmed.fq results/fastp/P019/P019_rna_R2.trimmed.fq              --outFileNamePrefix results/star/P019/P019_              --outSAMtype BAM SortedByCoordinate              --outSAMattributes NH HI AS NM MD              --outSAMstrandField intronMotif              --quantMode GeneCounts              --twopassMode Basic         > logs/star/P019/P019_align.log 2>&1
+        
+[Tue Apr  9 10:11:05 2024]
+Finished job 9.
+4 of 11 steps (36%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Apr  9 10:11:05 2024]
+localrule STAR_align:
+    input: results/fastp/P020/P020_rna_R1.trimmed.fq, results/fastp/P020/P020_rna_R2.trimmed.fq, resources/star_genome
+    output: results/star/P020/P020_Aligned.sortedByCoord.out.bam, results/star/P020/P020_ReadsPerGene.out.tab
+    log: logs/star/P020/P020_align.log
+    jobid: 5
+    reason: Missing output files: results/star/P020/P020_Aligned.sortedByCoord.out.bam
+    wildcards: sample=P020
+    threads: 14
+    resources: tmpdir=/tmp
+
+
+        STAR --runThreadN 14              --genomeDir resources/star_genome              --readFilesIn results/fastp/P020/P020_rna_R1.trimmed.fq results/fastp/P020/P020_rna_R2.trimmed.fq              --outFileNamePrefix results/star/P020/P020_              --outSAMtype BAM SortedByCoordinate              --outSAMattributes NH HI AS NM MD              --outSAMstrandField intronMotif              --quantMode GeneCounts              --twopassMode Basic         > logs/star/P020/P020_align.log 2>&1
+        
+[Tue Apr  9 10:32:15 2024]
+Finished job 5.
+5 of 11 steps (45%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Apr  9 10:32:15 2024]
+localrule STAR_align:
+    input: results/fastp/P024/P024_rna_R1.trimmed.fq, results/fastp/P024/P024_rna_R2.trimmed.fq, resources/star_genome
+    output: results/star/P024/P024_Aligned.sortedByCoord.out.bam, results/star/P024/P024_ReadsPerGene.out.tab
+    log: logs/star/P024/P024_align.log
+    jobid: 15
+    reason: Missing output files: results/star/P024/P024_Aligned.sortedByCoord.out.bam
+    wildcards: sample=P024
+    threads: 14
+    resources: tmpdir=/tmp
+
+
+        STAR --runThreadN 14              --genomeDir resources/star_genome              --readFilesIn results/fastp/P024/P024_rna_R1.trimmed.fq results/fastp/P024/P024_rna_R2.trimmed.fq              --outFileNamePrefix results/star/P024/P024_              --outSAMtype BAM SortedByCoordinate              --outSAMattributes NH HI AS NM MD              --outSAMstrandField intronMotif              --quantMode GeneCounts              --twopassMode Basic         > logs/star/P024/P024_align.log 2>&1
+        
+[Tue Apr  9 10:42:42 2024]
+Finished job 15.
+6 of 11 steps (55%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Apr  9 10:42:42 2024]
+localrule STAR_align:
+    input: results/fastp/P026/P026_rna_R1.trimmed.fq, results/fastp/P026/P026_rna_R2.trimmed.fq, resources/star_genome
+    output: results/star/P026/P026_Aligned.sortedByCoord.out.bam, results/star/P026/P026_ReadsPerGene.out.tab
+    log: logs/star/P026/P026_align.log
+    jobid: 1
+    reason: Missing output files: results/star/P026/P026_Aligned.sortedByCoord.out.bam
+    wildcards: sample=P026
+    threads: 14
+    resources: tmpdir=/tmp
+
+
+        STAR --runThreadN 14              --genomeDir resources/star_genome              --readFilesIn results/fastp/P026/P026_rna_R1.trimmed.fq results/fastp/P026/P026_rna_R2.trimmed.fq              --outFileNamePrefix results/star/P026/P026_              --outSAMtype BAM SortedByCoordinate              --outSAMattributes NH HI AS NM MD              --outSAMstrandField intronMotif              --quantMode GeneCounts              --twopassMode Basic         > logs/star/P026/P026_align.log 2>&1
+        
+[Tue Apr  9 10:54:16 2024]
+Finished job 1.
+7 of 11 steps (64%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Apr  9 10:54:16 2024]
+localrule STAR_align:
+    input: results/fastp/P013/P013_rna_R1.trimmed.fq, results/fastp/P013/P013_rna_R2.trimmed.fq, resources/star_genome
+    output: results/star/P013/P013_Aligned.sortedByCoord.out.bam, results/star/P013/P013_ReadsPerGene.out.tab
+    log: logs/star/P013/P013_align.log
+    jobid: 13
+    reason: Missing output files: results/star/P013/P013_Aligned.sortedByCoord.out.bam
+    wildcards: sample=P013
+    threads: 14
+    resources: tmpdir=/tmp
+
+
+        STAR --runThreadN 14              --genomeDir resources/star_genome              --readFilesIn results/fastp/P013/P013_rna_R1.trimmed.fq results/fastp/P013/P013_rna_R2.trimmed.fq              --outFileNamePrefix results/star/P013/P013_              --outSAMtype BAM SortedByCoordinate              --outSAMattributes NH HI AS NM MD              --outSAMstrandField intronMotif              --quantMode GeneCounts              --twopassMode Basic         > logs/star/P013/P013_align.log 2>&1
+        
+[Tue Apr  9 11:08:29 2024]
+Finished job 13.
+8 of 11 steps (73%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Apr  9 11:08:29 2024]
+localrule STAR_align:
+    input: results/fastp/P018/P018_rna_R1.trimmed.fq, results/fastp/P018/P018_rna_R2.trimmed.fq, resources/star_genome
+    output: results/star/P018/P018_Aligned.sortedByCoord.out.bam, results/star/P018/P018_ReadsPerGene.out.tab
+    log: logs/star/P018/P018_align.log
+    jobid: 21
+    reason: Missing output files: results/star/P018/P018_Aligned.sortedByCoord.out.bam
+    wildcards: sample=P018
+    threads: 14
+    resources: tmpdir=/tmp
+
+
+        STAR --runThreadN 14              --genomeDir resources/star_genome              --readFilesIn results/fastp/P018/P018_rna_R1.trimmed.fq results/fastp/P018/P018_rna_R2.trimmed.fq              --outFileNamePrefix results/star/P018/P018_              --outSAMtype BAM SortedByCoordinate              --outSAMattributes NH HI AS NM MD              --outSAMstrandField intronMotif              --quantMode GeneCounts              --twopassMode Basic         > logs/star/P018/P018_align.log 2>&1
+        
+[Tue Apr  9 11:18:55 2024]
+Finished job 21.
+9 of 11 steps (82%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Apr  9 11:18:55 2024]
+localrule STAR_align:
+    input: results/fastp/P023/P023_rna_R1.trimmed.fq, results/fastp/P023/P023_rna_R2.trimmed.fq, resources/star_genome
+    output: results/star/P023/P023_Aligned.sortedByCoord.out.bam, results/star/P023/P023_ReadsPerGene.out.tab
+    log: logs/star/P023/P023_align.log
+    jobid: 7
+    reason: Missing output files: results/star/P023/P023_Aligned.sortedByCoord.out.bam
+    wildcards: sample=P023
+    threads: 14
+    resources: tmpdir=/tmp
+
+
+        STAR --runThreadN 14              --genomeDir resources/star_genome              --readFilesIn results/fastp/P023/P023_rna_R1.trimmed.fq results/fastp/P023/P023_rna_R2.trimmed.fq              --outFileNamePrefix results/star/P023/P023_              --outSAMtype BAM SortedByCoordinate              --outSAMattributes NH HI AS NM MD              --outSAMstrandField intronMotif              --quantMode GeneCounts              --twopassMode Basic         > logs/star/P023/P023_align.log 2>&1
+        
+[Tue Apr  9 11:28:07 2024]
+Finished job 7.
+10 of 11 steps (91%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Apr  9 11:28:07 2024]
+localrule all:
+    input: results/star/P026/P026_Aligned.sortedByCoord.out.bam, results/star/P020/P020_Aligned.sortedByCoord.out.bam, results/star/P023/P023_Aligned.sortedByCoord.out.bam, results/star/P019/P019_Aligned.sortedByCoord.out.bam, results/star/P028/P028_Aligned.sortedByCoord.out.bam, results/star/P013/P013_Aligned.sortedByCoord.out.bam, results/star/P024/P024_Aligned.sortedByCoord.out.bam, results/star/P016/P016_Aligned.sortedByCoord.out.bam, results/star/P022/P022_Aligned.sortedByCoord.out.bam, results/star/P018/P018_Aligned.sortedByCoord.out.bam
+    jobid: 0
+    reason: Input files updated by another job: results/star/P026/P026_Aligned.sortedByCoord.out.bam, results/star/P028/P028_Aligned.sortedByCoord.out.bam, results/star/P013/P013_Aligned.sortedByCoord.out.bam, results/star/P020/P020_Aligned.sortedByCoord.out.bam, results/star/P016/P016_Aligned.sortedByCoord.out.bam, results/star/P018/P018_Aligned.sortedByCoord.out.bam, results/star/P023/P023_Aligned.sortedByCoord.out.bam, results/star/P024/P024_Aligned.sortedByCoord.out.bam, results/star/P019/P019_Aligned.sortedByCoord.out.bam, results/star/P022/P022_Aligned.sortedByCoord.out.bam
+    resources: tmpdir=/tmp
+
+[Tue Apr  9 11:28:07 2024]
+Finished job 0.
+11 of 11 steps (100%) done
+Complete log: .snakemake/log/2024-04-09T083847.827213.snakemake.log

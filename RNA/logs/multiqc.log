@@ -1,0 +1,19 @@
+
+  /// MultiQC 🔍 | v1.21
+
+|           multiqc | Using log filenames for sample names
+|           multiqc | Search path : /lustre1/project/stg_00096/home/rdewin/RNA/results/qc/fastqc/P023
+|           multiqc | Search path : /lustre1/project/stg_00096/home/rdewin/RNA/results/qc/fastqc/P013
+|           multiqc | Search path : /lustre1/project/stg_00096/home/rdewin/RNA/results/qc/fastqc/P019
+|           multiqc | Search path : /lustre1/project/stg_00096/home/rdewin/RNA/results/qc/fastqc/P026
+|           multiqc | Search path : /lustre1/project/stg_00096/home/rdewin/RNA/results/qc/fastqc/P020
+|           multiqc | Search path : /lustre1/project/stg_00096/home/rdewin/RNA/results/qc/fastqc/P018
+|           multiqc | Search path : /lustre1/project/stg_00096/home/rdewin/RNA/results/qc/fastqc/P028
+|           multiqc | Search path : /lustre1/project/stg_00096/home/rdewin/RNA/results/qc/fastqc/P022
+|           multiqc | Search path : /lustre1/project/stg_00096/home/rdewin/RNA/results/qc/fastqc/P024
+|           multiqc | Search path : /lustre1/project/stg_00096/home/rdewin/RNA/results/qc/fastqc/P016
+|         searching | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 80/80  
+|            fastqc | Found 40 reports
+|           multiqc | Report      : results/qc/multiqc_RNA.html
+|           multiqc | Data        : None
+|           multiqc | MultiQC complete

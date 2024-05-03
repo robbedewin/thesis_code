@@ -1,0 +1,13 @@
+The Snakemake rules crafted above integrate the key aspects of RNA-Seq analysis
+pertinent to the research focus on T-ALL induction failure:
+•	General Gene Expression Analysis:
+ This step is foundational, as it facilitates a broad understanding of gene expression patterns within T-ALL samples. 
+ By employing STAR for alignment, we capture a comprehensive snapshot of the transcriptomic landscape, 
+ essential for elucidating the underlying biological mechanisms and identifying potential therapeutic targets.
+•	Fusion Gene Detection:
+ The utilization of STAR-Fusion underscores our targeted approach to identifying fusion genes, 
+ which are significant contributors to the oncogenic processes in T-ALL. 
+ Fusion genes can serve as both diagnostic markers and therapeutic targets, 
+ highlighting their importance in precision medicine strategies for treating induction failure in T-ALL.
+ 
+This dual analytical strategy enables a holistic exploration of the genetic underpinnings associated with T-ALL induction failure, facilitating the discovery of novel insights and potential interventions that could improve patient outcomes.

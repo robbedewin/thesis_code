@@ -1,0 +1,14 @@
+Warning: Duplicate sample names: P028
+Warning: Changing sample name to P028_0
+[2024-Apr-06 16:56:38] delly call -x resources/T2T.excluderanges.bed -g resources/genome.fa -o results/delly/call/P028.bcf results/recal/P028/P028_dna_tumor_recal.bam results/recal/P028/P028_dna_normal_recal.bam 
+[2024-Apr-06 16:56:52] Paired-end and split-read scanning
+[2024-Apr-06 18:12:51] Split-read clustering
+[2024-Apr-06 18:12:56] Paired-end clustering
+[2024-Apr-06 18:12:59] Split-read assembly
+[2024-Apr-06 19:29:01] Generate REF and ALT probes
+[2024-Apr-06 19:29:42] SV annotation
+[2024-Apr-06 22:14:38] Genotyping
+[2024-Apr-06 22:14:40] Sample statistics
+Sample:P028,ReadSize=150,Median=508,MAD=78,UniqueDiscordantPairs=1058260
+Sample:P028_0,ReadSize=150,Median=512,MAD=79,UniqueDiscordantPairs=614666
+[2024-Apr-06 22:14:40] Done.

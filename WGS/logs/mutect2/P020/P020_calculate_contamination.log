@@ -1,0 +1,30 @@
+Using GATK jar /lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gatk4-4.5.0.0-0/gatk-package-4.5.0.0-local.jar
+Running:
+    java -Dsamjdk.use_async_io_read_samtools=false -Dsamjdk.use_async_io_write_samtools=true -Dsamjdk.use_async_io_write_tribble=false -Dsamjdk.compression_level=2 -jar /lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gatk4-4.5.0.0-0/gatk-package-4.5.0.0-local.jar CalculateContamination -I results/mutect2/P020/P020_tumor_pileup_summaries.table -matched results/mutect2/P020/P020_normal_pileup_summaries.table -O results/mutect2/P020/P020_contamination.table
+15:23:24.345 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gatk4-4.5.0.0-0/gatk-package-4.5.0.0-local.jar!/com/intel/gkl/native/libgkl_compression.so
+15:23:24.502 INFO  CalculateContamination - ------------------------------------------------------------
+15:23:24.505 INFO  CalculateContamination - The Genome Analysis Toolkit (GATK) v4.5.0.0
+15:23:24.505 INFO  CalculateContamination - For support and documentation go to https://software.broadinstitute.org/gatk/
+15:23:24.505 INFO  CalculateContamination - Executing as vsc35407@g28l05 on Linux v4.18.0-513.24.1.el8_9.x86_64 amd64
+15:23:24.505 INFO  CalculateContamination - Java runtime: OpenJDK 64-Bit Server VM v17.0.10-internal+0-adhoc..src
+15:23:24.505 INFO  CalculateContamination - Start Date/Time: April 27, 2024 at 3:23:24 PM CEST
+15:23:24.506 INFO  CalculateContamination - ------------------------------------------------------------
+15:23:24.506 INFO  CalculateContamination - ------------------------------------------------------------
+15:23:24.506 INFO  CalculateContamination - HTSJDK Version: 4.1.0
+15:23:24.506 INFO  CalculateContamination - Picard Version: 3.1.1
+15:23:24.507 INFO  CalculateContamination - Built for Spark Version: 3.5.0
+15:23:24.507 INFO  CalculateContamination - HTSJDK Defaults.COMPRESSION_LEVEL : 2
+15:23:24.507 INFO  CalculateContamination - HTSJDK Defaults.USE_ASYNC_IO_READ_FOR_SAMTOOLS : false
+15:23:24.507 INFO  CalculateContamination - HTSJDK Defaults.USE_ASYNC_IO_WRITE_FOR_SAMTOOLS : true
+15:23:24.507 INFO  CalculateContamination - HTSJDK Defaults.USE_ASYNC_IO_WRITE_FOR_TRIBBLE : false
+15:23:24.507 INFO  CalculateContamination - Deflater: IntelDeflater
+15:23:24.507 INFO  CalculateContamination - Inflater: IntelInflater
+15:23:24.508 INFO  CalculateContamination - GCS max retries/reopens: 20
+15:23:24.508 INFO  CalculateContamination - Requester pays: disabled
+15:23:24.508 INFO  CalculateContamination - Initializing engine
+15:23:24.508 INFO  CalculateContamination - Done initializing engine
+15:23:24.553 INFO  CalculateContamination - Shutting down engine
+[April 27, 2024 at 3:23:24 PM CEST] org.broadinstitute.hellbender.tools.walkers.contamination.CalculateContamination done. Elapsed time: 0.01 minutes.
+Runtime.totalMemory()=285212672
+Tool returned:
+SUCCESS

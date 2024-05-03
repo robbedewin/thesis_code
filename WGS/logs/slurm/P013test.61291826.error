@@ -1,0 +1,34 @@
+Assuming unrestricted shared filesystem usage.
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 18
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job               count
+--------------  -------
+samtools_index        1
+total                 1
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Sat Mar 30 23:23:31 2024]
+localrule samtools_index:
+    input: results/recal/P013test_dna_tumor_recal.bam
+    output: results/recal/P013test_dna_tumor_recal.bai
+    log: logs/samtools/P013test_dna_tumor_index.log
+    jobid: 0
+    reason: Updated input files: results/recal/P013test_dna_tumor_recal.bam
+    wildcards: sample=P013test, alias=tumor
+    resources: tmpdir=/tmp
+
+
+        samtools index -@ 18 results/recal/P013test_dna_tumor_recal.bam results/recal/P013test_dna_tumor_recal.bai &> logs/samtools/P013test_dna_tumor_index.log
+        
+ProtectedOutputException in rule samtools_index in file /lustre1/project/stg_00096/home/rdewin/WGS/rules/mapping.smk, line 121:
+Write-protected output files for rule samtools_index:
+    output: results/recal/P013test_dna_tumor_recal.bai
+    wildcards: sample=P013test, alias=tumor
+    affected files:
+        results/recal/P013test_dna_tumor_recal.bai

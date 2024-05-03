@@ -1,0 +1,5 @@
+Mon Apr  8 10:28:28 CEST 2024
+snakemake -p results/mutect2/pon/mutect2.pon.vcf.gz --cores all --rerun-incomplete
+Tool returned:
+SUCCESS
+Snakemake completed successfully at Mon Apr  8 11:12:37 CEST 2024

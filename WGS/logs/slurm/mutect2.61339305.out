@@ -1,0 +1,5 @@
+Wed Apr 17 22:42:30 CEST 2024
+rule all:
+    input:
+        expand(results/mutect2/{sample}/{sample}_annotated_variants.maf, sample=unique_samples),
+Snakemake encountered an error at Wed Apr 17 22:43:13 CEST 2024
