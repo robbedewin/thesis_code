@@ -214,6 +214,29 @@ rule select_pass_variants:
              &> {log}
         """
 
+
+rule liftover_chm13_to_grch38_vcf:
+    input:
+        original_vcf="results/mutect2/{sample}/{sample}_pass_variants.vcf"
+    output:
+        lifted="results/mutect2/{sample}/{sample}_pass_variants_lifted.vcf",
+        unlifted="results/mutect2/{sample}/{sample}_pass_variants_unlifted.vcf",
+    params:
+        genome="/staging/leuven/stg_00096/references/GRCh38.alt-masked-V2/fasta/Homo_sapiens_assembly38_masked.fasta", 
+        chain="/staging/leuven/stg_00096/home/rdewin/WGS/resources/liftover/chm13v2-to-grch38.chain",
+    log:
+        "logs/mutect2/{sample}/{sample}_liftover.log",
+    shell:
+        """
+        picard -Xmx4g  LiftoverVcf \
+            -I {input.original_vcf} \
+            -O {output.lifted} \
+            -CHAIN {params.chain} \
+            -REJECT {output.unlifted} \
+            -R {params.genome} \
+            &> {log}
+        """
+
 # Annotates the final PASS variants with functional information using GATK's Funcotator.
 rule funcotate_variants:
     input:

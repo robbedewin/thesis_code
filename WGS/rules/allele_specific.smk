@@ -25,7 +25,7 @@ rule liftover_chm13_to_grch37_vcf:
             REJECT={output.unlifted} \
             R={params.genome}
         """
-
+#liftover naar meerdere lcoaties??
 
 rule normalize_expression_data:
     input:

@@ -19,7 +19,7 @@ library(parallel)
 
 source(file = "/camp/project/proj-emedlab-vanloo/jdemeul/projects/2016_mansour_ASE_T-ALL/ASE_analysis/1000Genomes_getAllelecounts.R")
 source(file = "/camp/project/proj-emedlab-vanloo/jdemeul/projects/2016_mansour_ASE_T-ALL/ASE_analysis/utils.R")
-source(file = "/camp/project/proj-emedlab-vanloo/jdemeul/projects/2021_OConnor_refractory_T-ALL/code/ase_nomatch_hg38_functions_refractoryALL.R")
+source(file = "/staging/leuven/stg_00096/home/rdewin/WGS/rules/scripts/ase_nomatch_hg38_functions_refractoryALL.R")
 
 ## statics
 REFANNOT <- "/camp/lab/vanloop/working/camp_pipeline_files/human/references/STAR-Fusion/GRCh38_gencode_v37_CTAT_lib_Mar012021/ref_annot.gtf"

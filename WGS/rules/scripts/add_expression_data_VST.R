@@ -1,7 +1,12 @@
 ###!/usr/bin/env Rscript
 ### reattemt to normalize log2fc values
 
-#BiocManager::install("DESeq2")
+if (!requireNamespace("DESeq2", quietly = TRUE)) {
+    if (!requireNamespace("BiocManager", quietly = TRUE)) {
+        install.packages("BiocManager")
+    }
+    BiocManager::install("DESeq2")
+}
 ## get log2-fold expression values of T-ALL samples
 library(DESeq2)
 
@@ -18,9 +23,6 @@ library(DESeq2)
 countsdir <- "/staging/leuven/stg_00096/home/rdewin/RNA/results/star"
 
 setwd(countsdir)
-
-sampleFiles
-sampleName
 
 sampleFiles <- list.files(path = countsdir, pattern = "ReadsPerGene.out.tab", recursive = T)
 sampleName <- sapply(X = strsplit(x = sampleFiles, split = "/", fixed = T), FUN = "[", 1)
@@ -64,11 +66,15 @@ resdf$gene_name <- gene_ids_names[rownames(resdf), "V6"]
 
 write.table(x = l2fcdf, file = "/staging/leuven/stg_00096/home/rdewin/RNA/results/ASE/RNAlog2fc_vst.txt", quote = F, sep = "\t", row.names = T, col.names = T)
 write.table(x = as.data.frame(assay(dds_vst)), file = "/staging/leuven/stg_00096/home/rdewin/RNA/results/ASE/RNAcounts_vst.txt", quote = F, sep = "\t", row.names = T, col.names = T)
-write.table(x = resdf, file = "//staging/leuven/stg_00096/home/rdewin/RNA/results/ASE/RNAcounts_normalised_T-ALL.txt", quote = F, sep = "\t", row.names = T, col.names = T)
+write.table(x = resdf, file = "/staging/leuven/stg_00096/home/rdewin/RNA/results/ASE/RNAcounts_normalised_T-ALL.txt", quote = F, sep = "\t", row.names = T, col.names = T)
 
 
-
-
+if (!requireNamespace("ggplot2", quietly = TRUE)) {
+    install.packages("ggplot2")
+}
+if (!requireNamespace("GenomicFeatures", quietly = TRUE)) {
+    BiocManager::install("GenomicFeatures")
+}
 
 ## combine p-values (of powered SNP loci) per gene
 library(GenomicFeatures)
@@ -135,24 +141,32 @@ hstxdb <- makeTxDbFromGFF(file = gtffile, organism = "Homo sapiens")
 hsexondb <- exons(x = hstxdb, columns = c("gene_id"))
 seqlevelsStyle(hsexondb) <- "Ensembl"
 
-sampledf <- read.delim(file = "/camp/lab/vanloop/working/demeulj/projects/2021_OConnor_refractory_T-ALL/data/20210826_full_cohort.txt", as.is = T)
-sampledf <- sampledf[sampledf$R_Pres_FASTQ != "", ]
+#sampledf <- read.delim(file = "/camp/lab/vanloop/working/demeulj/projects/2021_OConnor_refractory_T-ALL/data/20210826_full_cohort.txt", as.is = T)
+#sampledf <- sampledf[sampledf$R_Pres_FASTQ != "", ]
 
 # add in the log2-fold change data and actual gene names
 l2fcfile <- "/staging/leuven/stg_00096/home/rdewin/RNA/results/ASE/RNAlog2fc_vst.txt"
 l2fcdf <-  read.delim(file = l2fcfile, as.is = T)
 
-for (i in 1:nrow(sampledf)) {
+
+for (SAMPLEID in sampleName) {
+#for (i in 1:nrow(sampledf)) {
   # i <- 1
-  SAMPLEID <- sampledf[i, "R_Pres_FASTQ"]
+  #SAMPLEID <- sampledf[i, "R_Pres_FASTQ"]
   
   ## read a results file
   # if (sampledf[i, "cell_line"]) {
   #   ase_resultsfile <- paste0("/srv/shared/vanloo/home/jdemeul/projects/2016_mansour_ASE_T-ALL/results/cell_lines/", SAMPLEID, "/", SAMPLEID, "_ase_out.txt")
   # } else {
-    WGSID <- sampledf[i, "WGS_Pres_FASTQ"]
-    ase_resultsfile <- paste0("/staging/leuven/stg_00096/home/rdewin/RNA/results/ASE/", WGSID, "/", WGSID, "_ase_out.txt")
+    #WGSID <- sampledf[i, "WGS_Pres_FASTQ"]
+    ase_resultsfile <- paste0("/staging/leuven/stg_00096/home/rdewin/RNA/results/ASE/", SAMPLEID, "/", SAMPLEID, "_ase_out.txt")
   # }
+  outDir <- dirname(ase_resultsfile)
+
+# Create the directory if it does not exist
+  if (!dir.exists(outDir)) {
+    dir.create(outDir, recursive = TRUE)
+  }
   ase_results <- read.delim(file = ase_resultsfile, as.is = T)
   
   
@@ -179,20 +193,15 @@ for (i in 1:nrow(sampledf)) {
   # if (sampledf[i, "cell_line"]) {
   #   outfile <- paste0("/srv/shared/vanloo/home/jdemeul/projects/2016_mansour_ASE_T-ALL/results/cell_lines/", SAMPLEID, "/", SAMPLEID, "_imbalance_expression_vst.txt")
   # } else {
-    outfile <- paste0("/staging/leuven/stg_00096/home/rdewin/RNA/results/ASE/", WGSID, "/", WGSID, "_imbalance_expression_vst.txt")
+    outfile <- paste0("/staging/leuven/stg_00096/home/rdewin/RNA/results/ASE/", SAMPLEID, "/", SAMPLEID, "_imbalance_expression_vst.txt")
   # }
-  write.table(x = outdf, file = outfile, quote = F, sep = "\t", row.names = F, col.names = T)
-  
   
   # plot
   p1 <- plot_imbalance_expression(imbalancedf = outdf)
   # if (sampledf[i, "cell_line"]) {
   #   plotfile <- paste0("/srv/shared/vanloo/home/jdemeul/projects/2016_mansour_ASE_T-ALL/results/cell_lines/", SAMPLEID, "/", SAMPLEID, "_imbalance_expression_vst.png")
   # } else {
-    plotfile <- paste0("/staging/leuven/stg_00096/home/rdewin/RNA/results/ASE/", WGSID, "/", WGSID, "_imbalance_expression_vst.png")
+    plotfile <- paste0("/staging/leuven/stg_00096/home/rdewin/RNA/results/ASE/", SAMPLEID, "/", SAMPLEID, "_imbalance_expression_vst.png")
   # }
   ggsave(filename = plotfile, plot = p1, dpi = 300, width = 15, height = 6)
 }
-
-
-
