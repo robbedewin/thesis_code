@@ -222,8 +222,8 @@ rule liftover_chm13_to_grch38_vcf:
         lifted="results/mutect2/{sample}/{sample}_pass_variants_lifted.vcf",
         unlifted="results/mutect2/{sample}/{sample}_pass_variants_unlifted.vcf",
     params:
-        genome="/staging/leuven/stg_00096/references/GRCh38.alt-masked-V2/fasta/Homo_sapiens_assembly38_masked.fasta", 
-        chain="/staging/leuven/stg_00096/home/rdewin/WGS/resources/liftover/chm13v2-to-grch38.chain",
+        genome="resources/GRCh38/GRCh38.fasta", 
+        chain="resources/liftover/chm13v2-to-grch38.chain",
     log:
         "logs/mutect2/{sample}/{sample}_liftover.log",
     shell:
@@ -234,18 +234,19 @@ rule liftover_chm13_to_grch38_vcf:
             -CHAIN {params.chain} \
             -REJECT {output.unlifted} \
             -R {params.genome} \
+            --LIFTOVER_MIN_MATCH 0.95 \
             &> {log}
         """
 
 # Annotates the final PASS variants with functional information using GATK's Funcotator.
 rule funcotate_variants:
     input:
-        vcf="results/mutect2/{sample}/{sample}_pass_variants.vcf",
+        vcf="results/mutect2/{sample}/{sample}_pass_variants_lifted.vcf"
     output:
-        annotated_vcf="results/mutect2/{sample}/{sample}_annotated_variants.maf",
+        annotated_vcf="results/mutect2/{sample}/{sample}_annotated_lifted_variants.maf",
     params:
-        genome="resources/genome.fa",
-        data_sources_path="resources/funcotator_data_sources",
+        genome="resources/GRCh38/GRCh38.fasta",
+        data_sources_path="/staging/leuven/stg_00096/references/GRCh38.alt-masked-V2/annotation/funcotator/funcotator_dataSources.v1.7.20200521s/",
     log:
         "logs/mutect2/{sample}/{sample}_funcotate_variants.log",
     shell:
@@ -255,21 +256,7 @@ rule funcotate_variants:
             -V {input.vcf} \
             -O {output.annotated_vcf} \
             --data-sources-path {params.data_sources_path} \
+            --ref-version hg38 \
             --output-file-format MAF \
             &> {log}
-        """
-
-# Generates an HTML report summarizing the somatic variant calls using the maftools R package.
-rule maftools_analysis:
-    input:
-        maf_dir="results/mutect2/{sample}/"
-    output:
-        html="results/mutect2/{sample}/{sample}_maftools_summary.html",
-        plot="results/mutect2/{sample}/{sample}_oncoplot.pdf"
-    log:
-        "logs/mutect2/{sample}/maftools_analysis.log"
-    shell:
-        """
-        mkdir -p {output.html | dirname}
-        Rscript scripts/maftools_analysis.R {input.maf_dir} {output.html | dirname} &> {log}
         """

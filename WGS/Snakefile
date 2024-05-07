@@ -20,6 +20,7 @@ include: "rules/mapping.smk"
 include: "rules/ascat.smk"
 include: "rules/mutect2.smk"
 include: "rules/structural_variation.smk"
+include: "rules/visuals.smk"
 #include: "rules/calling.smk"
 
 
@@ -33,3 +34,4 @@ rule all:
         #expand("results/mutect2/{sample}/{sample}_variants.vcf", sample=unique_samples),
         expand("results/mutect2/{sample}/{sample}_pass_variants.vcf", sample=unique_samples),
         expand("results/mutect2/{sample}/{sample}_pass_variants_lifted.vcf", sample=unique_samples),
+        expand("results/mutect2/{sample}/{sample}_annotated_lifted_variants.maf", sample=unique_samples),
