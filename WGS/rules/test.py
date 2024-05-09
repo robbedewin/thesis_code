@@ -17,6 +17,11 @@ samples = pd.read_csv(
     comment="#",
 ).set_index(["sample_name", "unit_name"], drop=False).sort_index()
 
+# Generate a list of unique sample names from the units DataFrame
+unique_samples = list(set(u.sample_name for u in units.itertuples()))
+unique_datatypes = list(set(u.datatype for u in units.itertuples()))
+unique_aliases = list(set(u.alias for u in units.itertuples()))
+
 
 # Create a new 'identifier' column by combining 'sample_name', 'datatype', and 'alias'
 units['identifier'] = units['sample_name'] + '_' + units['datatype'] + '_' + units['alias']
@@ -58,6 +63,9 @@ print(units)
 class Wildcards:
     def __init__(self, sample):
         self.sample = sample
+        
+        
+print(expand("results/gridss/{sample}_normal.vcf", sample=unique_samples))
 
 wildcards = Wildcards(sample='P013')
 get_fastq_rna(wildcards)

@@ -21,6 +21,7 @@ include: "rules/ascat.smk"
 include: "rules/mutect2.smk"
 include: "rules/structural_variation.smk"
 include: "rules/visuals.smk"
+include: "rules/gridss.smk"
 #include: "rules/calling.smk"
 
 

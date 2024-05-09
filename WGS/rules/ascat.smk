@@ -17,7 +17,7 @@ rule ascat_qc:
         qc_output="results/ascat/qc/summary.csv",
         seg_plot="results/ascat/qc/segments_plot.png",
     params:
-        sample_ids=unique_samples
+        sample_ids=unique_samples,
         ascat_dir="results/ascat/"
     log:
         "logs/ascat/qc.log"
