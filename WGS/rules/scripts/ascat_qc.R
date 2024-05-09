@@ -1,4 +1,5 @@
-library(BSgenome.Hsapiens.UCSC.hg38)
+.libPaths("/staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/R/lib/R/library")
+#library(BSgenome.Hsapiens.UCSC.hg38)
 library(ggplot2)
 library(GenomicRanges)
 library(RColorBrewer)
@@ -9,160 +10,188 @@ library(stringr)
 library(tidyverse)
 
 # Open the log file
-log <- file(snakemake@log[[1]], open = "wt")
-sink(log)
-sink(log, type = "message")
+#log <- file(snakemake@log[[1]], open = "wt")
+#sink(log)
+#sink(log, type = "message")
 
-#Define all the inutfiles
-sample_id <- snakemake@wildcards[["sample"]]
+# Define input files and output directories based on snakemake parameters
+#sample_ids <- snakemake@params[["sample_ids"]]
+#ascatfiles <- dirname(snakemake@params[["ascat_dir"]])
 
-outbase <- snakemake@output[[1]]
+#outdir <- dirname(snakemake@output[[1]])
+#qc_output_file <- snakemake@output[[1]]
+#seg_plot <- snakemake@output[[2]]
 
+# Hard-coded sample IDs and paths for debugging or standalone runs
+sample_ids <- c("P028", "P022", "P024", "P018", "P019", "P020", "P023", "P026", "P013", "P016")
+ascatfiles <- "/staging/leuven/stg_00096/home/rdewin/WGS/results/ascat/"
 
-#List all files for ASCAT (some files are tumour only, others not)
-OUTBASE <- "/home/rstudio/host/lig/home/rcools/projects/data_Cools_2022/ASCAT_data"
-sampleid <- c("PTCL1","PTCL23", "PTCL15", "PTCL17", "PTCL23", "PTCL26", "PTCL27", "PTCL3", "PTCL5", "PTCL9", "PTCL11","PTCL14", "PTCL18", "PTCL28")
-OUTBASE1 <- "/home/rstudio/host/lig/home/rcools/projects/data_Cools_2022/ASCAT_data/Tumour_only"
-sampleid_tumour_only <- c("PTCL12", "PTCL13", "PTCL16")
-OUTBASE2 <- "/home/rstudio/host/lig/home/rcools/projects/data_Cools_2022/ASCAT_data/Tumour_only/new_update"
-sampleid_tumour_only_new_update <- c("PTCL19", "PTCL20", "PTCL21", "PTCL22", "PTCL25")
+outdir <- dirname("/staging/leuven/stg_00096/home/rdewin/WGS/results/ascat/qc/summary.csv")
+qc_output_file <- "/staging/leuven/stg_00096/home/rdewin/WGS/results/ascat/qc/summary.csv"
+seg_plot <- "/staging/leuven/stg_00096/home/rdewin/WGS/results/ascat/qc/segments_plot.png"
 
-getwd()
-setwd("/home/rstudio/host/lig/home/rcools/projects/data_Cools_2022/ASCAT_data/")
-?list.dirs
-#Normal
-dir_list <- list.dirs(path = OUTBASE, full.names = FALSE)
-PTCL_dirs <- dir_list[dir_list %in% sampleid]
-PTCL_dirs
-paths <- paste0(OUTBASE, "/",PTCL_dirs)
-paths
-segfiles <- list.files(path = paths, pattern = ".segments.txt$", full.names = T, recursive = T)
-segfiles
-#Tumour_only
-dir_list1 <- list.dirs(path = OUTBASE1, full.names = FALSE)
-dir_list1
-PTCL_dirs1 <- dir_list1[dir_list1%in% sampleid_tumour_only]
-PTCL_dirs1
-paths1 <- paste0(OUTBASE1, "/",PTCL_dirs1)
-paths1
-segfiles1 <- list.files(path = paths1, pattern = ".segments.txt$", full.names = T, recursive = T)
-segfiles1
-#Tumour_only_update
-dir_list2 <- list.dirs(path = OUTBASE2, full.names = FALSE)
-dir_list2
-PTCL_dirs2 <- dir_list2[dir_list2%in% sampleid_tumour_only_new_update]
-PTCL_dirs2
-paths2 <- paste0(OUTBASE2, "/",PTCL_dirs2)
-paths2
-segfiles2 <- list.files(path = paths2, pattern = ".segments.txt$", full.names = T, recursive = T)
-segfiles2
-#combine all seg files
-all_ascat_seg_files <- c(segfiles,segfiles1,segfiles2)
-all_ascat_seg_files
-
-#list QC files
-qcfiles <- list.files(path = paths, pattern = "objects.Rdata$", full.names = T, recursive = T)
-qcfiles
-qcfiles1 <- list.files(path = paths1, pattern = "_objects.Rdata$", full.names = T, recursive = T)
-qcfiles1
-qcfiles2 <- list.files(path = paths2, pattern = "_objects.Rdata$", full.names = T, recursive = T)
-qcfiles2
-all_qc_files23 <- c(qcfiles,qcfiles1,qcfiles2)
-all_qc_files23
-
-# Initialize a data frame to store the "QC" components
-qc_data <- data.frame()
-
-# Loop through each file
-for (x in all_qc_files23) {
-  # Load the object from the file
-  load(x)
-  
-  # Extract the "QC"
-  qc_component <- QC  
-  
-  # Create a data frame row with the "QC" component and the file name
-  row <- data.frame(Sample = x, QC = qc_component)
-  
-  # Add the row to the qc_data data frame
-  qc_data <- rbind(qc_data, row)
+# Create output directory if it does not exist
+if (!dir.exists(outdir)) {
+  dir.create(outdir, recursive = TRUE)
 }
-# Write the qc_data data frame to a tab-separated .csv file
-write.table(qc_data, "qc_data.csv", sep = "\t", row.names = FALSE, quote = FALSE)
-qc_file <- paste("/home/rstudio/host/lig/home/rcools/projects/data_Cools_2022/ASCAT_data/qc_data.csv")
+
+setwd(ascatfiles)
 getwd()
-qcdata <- read.delim("/home/rstudio/host/lig/home/rcools/projects/data_Cools_2022/ASCAT_data/qc_data.csv", as.is = T)
-qcdata
 
-#Read in segfiles and create a GR with "annotations"
-segdata <- lapply(X = all_ascat_seg_files, FUN = function(x) {
-  y <- read.delim(x, as.is = T)
-  y$chr <- gsub ("^([0-9, X]+)$", "chr\\1", as.character(y$chr))
-  y <- GRanges(seqnames = y$chr, ranges = IRanges(start = y$startpos, end = y$endpos),
-               sample = y$sample, nMajor = y$nMajor, nMinor = y$nMinor, seqinfo = seqinfo(BSgenome.Hsapiens.UCSC.hg38))
-  y <- keepSeqlevels(x = y, value = paste0("chr", 1:22), pruning.mode = "coarse")
-  return(y)
+# Store all segmentsfiles in a list
+seg_files <- list.files(
+  path = file.path(ascatfiles, list.dirs(path = ascatfiles, full.names = FALSE)[list.dirs(path = ascatfiles, full.names = FALSE) %in% sample_ids]),
+  pattern = ".segments.txt$",
+  full.names = TRUE,
+  recursive = TRUE
+)
+seg_files
+# Store all qc files in a list
+qc_files <- list.files(
+  path = file.path(ascatfiles, list.dirs(path = ascatfiles, full.names = FALSE)[list.dirs(path = ascatfiles, full.names = FALSE) %in% sample_ids]),
+  pattern = "_objects.Rdata$",
+  full.names = TRUE,
+  recursive = TRUE
+)
+qc_files
+
+
+qc_data <- lapply(qc_files, function(x) {
+  load(x)
+  data.frame(Sample = sub(".*/(P\\d+)_ASCAT_objects\\.Rdata$", "\\1", x), QC = QC)
+}) %>% bind_rows()
+qc_data
+
+# Write the qc_data data frame to a tab-separated .csv file
+write.table(qc_data, qc_output_file, sep = "\t", row.names = FALSE, quote = FALSE)
+
+# Creating a Seqinfo object for CHM13-T2T from genome.dict
+genome_dict <- readLines("/staging/leuven/stg_00096/home/rdewin/WGS/resources/genome.dict")
+
+# Parse the genome dictionary data
+seq_info_list <- lapply(genome_dict, function(line) {
+  if (grepl("^@SQ", line)) {
+    parts <- strsplit(line, "\t")[[1]]
+    sn <- sub("^SN:(.*)$", "\\1", parts[grep("^SN:", parts)])
+    ln <- as.integer(sub("^LN:(.*)$", "\\1", parts[grep("^LN:", parts)]))
+    return(list(name = sn, length = ln))
+  }
 })
-segdata[[1]]
-length(segdata)
-names(segdata) <- sapply(X = segdata, FUN = function(x) x$sample[1])
-#qcdata$Sample <- sapply(X = segdata, FUN = function(x) x$sample[1])
-qcdata
+# Remove NULL values
+seq_info_list <- Filter(Negate(is.null), seq_info_list)
 
-#Overal QC
-qcdata$
+# Create Seqinfo object
+seqnames <- sapply(seq_info_list, function(x) x$name)
+seqlengths <- sapply(seq_info_list, function(x) x$length)
+seqinfoCHM13 <- Seqinfo(seqnames = seqnames, seqlengths = seqlengths, isCircular = rep(FALSE, length(seqnames)))
+genome(seqinfoCHM13) <- "CHM13-T2T"
+print(seqinfoCHM13)
+
+
+# Read in seg_files and create a GRanges object with annotations
+segdata <- setNames(  # Set names for each GRanges object in the list
+  lapply(seg_files, function(x) {
+    y <- read.delim(x, as.is = TRUE)
+    # Ensure chromosome names are correctly prefixed with 'chr' if necessary
+    y$chr <- gsub("^([0-9XY]+)$", "chr\\1", as.character(y$chr))
+    y$sample <- sub("_tumor", "", y$sample)
+    
+    gr <- GRanges(
+      seqnames = y$chr,
+      ranges = IRanges(start = y$startpos, end = y$endpos),
+      sample = y$sample,
+      nMajor = y$nMajor,
+      nMinor = y$nMinor,
+      seqinfo = seqinfoCHM13
+    )
+    gr <- keepSeqlevels(gr, value = paste0("chr", c(1:22, "X", "Y")), pruning.mode = "coarse")
+    return(gr)
+  }),
+  # Extract the sample IDs from the filenames to use as names for GRanges objects
+  sapply(seg_files, function(x) {
+    sub(".*/(P\\d+).*\\.segments\\.txt$", "\\1", x)
+  })
+)
+
+
+# Load the QC data for plotting
+qcdata <- read.delim(qc_output_file, as.is = TRUE)
+
 #Plotting loh and ploidy
-m <- (2.9 - 1)/(0-0.93)
+m <- (2.9 - 1)/(0-0.93) #??
+
+# Define and create the plot
 p1 <- ggplot(data = qcdata, mapping = aes(x = QC.LOH, y = QC.ploidy, colour = QC.WGD))
-p1 <- p1 + geom_point() + geom_abline(slope = m, intercept = 2.9) + theme_minimal() + theme(plot.background = element_rect(fill = "white"))
-p1
-setwd("/home/rstudio/host/lig/home/rcools/projects/data_Cools_2022/ASCAT_data/plots/")
-ggsave(filename = "frac_loh_vs_ploidy.png", plot = p1, width = 10, height = 7 )
+p1 <- p1 + geom_point() +
+  geom_abline(slope = m, intercept = 2.9) +
+  theme_minimal() +
+  theme(plot.background = element_rect(fill = "white"))
 
-p1 <- ggplot(data = qcdata, mapping = aes(x = QC.LOH, y = QC.ploidy, colour = QC.WGD))
-p1 <- p1 + geom_point() + geom_abline(slope = m, intercept = 2.9) + theme_minimal() + theme(plot.background = element_rect(fill = "white"))
-p1 <- p1 + geom_label_repel(aes(label = Sample), label.size  = 0.3, size = 1.8, max.overlaps = Inf)
-p1
-ggsave(filename = "annotated_frac_loh_vs_ploidy.png", plot = p1, width = 10, height = 7 )
+# Add labels with geom_label_repel
+p1 <- p1 + geom_label_repel(
+  aes(label = Sample),  
+  label.size = 0.3,     # Controls the border size around labels, set to NA to remove
+  size = 1.8,           # Text size
+  max.overlaps = Inf    # Allows for infinite overlaps; adjust as necessary
+)
 
-#frac genome 
-checkfiles <- sapply(X = segfiles, FUN = function(x) file.size(x) > 1)
-segfiles <- segfiles[checkfiles]
-fracaberdip <- sapply(X = segdata, FUN = function(x) sum(width(x[which(x$nMajor != 1 & x$nMinor != 1), ])) / sum(width(x)))
-fracabertet <- sapply(X = segdata, FUN = function(x) sum(width(x[which(x$nMajor != 2 & x$nMinor != 2), ])) / sum(width(x)))
-fracloh <- sapply(X = segdata, FUN = function(x) sum(width(x[which(xor(x = x$nMinor == 0, y = x$nMajor == 0)), ])) / sum(width(x)))
-outdf1 <- data.frame(sampleid = sub(pattern = ".segments.txt", replacement = "", x = basename(all_ascat_seg_files)),
-                     frac_aber_dip = fracaberdip, frac_aber_tet = fracabertet, frac_loh = fracloh)
+ggsave(filename = "qc/annotated_frac_loh_vs_ploidy.png", plot = p1, width = 10, height = 7)
 
-outdf1
-qcdata$QC.GI
-qcdata
-#Use of pipe statement instead of the or statement
+# Plot LOH vs Ploidy
+plotLOH <-  ggplot(qcdata, aes(x = QC.LOH, y = QC.ploidy, color = QC.WGD)) +
+              geom_point() +
+              geom_abline(slope = (2.9 - 1)/(0 - 0.93), intercept = 2.9) +
+              theme_minimal() +
+              theme(plot.background = element_rect(fill = "white")) +
+              geom_label_repel(aes(label = Sample), label.size = 0.3, size = 1.8, max.overlaps = Inf) +
+              ggsave("qc/fraction_loh_vs_ploidy.png", width = 10, height = 7)
 
-sum(width(segdata$PTCL11_T[which(segdata$PTCL11_T$nMajor != 1 & segdata$PTCL11_T$nMinor != 1), ])) / sum(width(segdata$PTCL11_T))
-sum(width(segdata$PTCL11_T[which(segdata$PTCL11_T$nMajor != 1 | segdata$PTCL11_T$nMinor != 1), ])) / sum(width(segdata$PTCL11_T))
-qcdata
-#add values to qcdata, not the same as GI column...
+#Fraction of genome altered
+# Check if segment files are non-empty and filter out empty files
+checkfiles <- sapply(seg_files, FUN = function(x) file.size(x) > 1)
+seg_files <- seg_files[checkfiles]
+
+# Calculate the fractional aberration for diploid and tetraploid states, and LOH
+fracaberdip <- sapply(segdata, FUN = function(x) sum(width(x[x$nMajor != 1 & x$nMinor != 1])) / sum(width(x)))
+fracabertet <- sapply(segdata, FUN = function(x) sum(width(x[x$nMajor != 2 & x$nMinor != 2])) / sum(width(x)))
+fracloh <- sapply(segdata, FUN = function(x) sum(width(x[xor(x$nMinor == 0, x$nMajor == 0)])) / sum(width(x)))
+
+
+# Organize output into a data frame
+outdf1 <- data.frame(
+  sampleid = sub("_tumor.segments.txt", "", basename(seg_files)),
+  frac_aber_dip = fracaberdip,
+  frac_aber_tet = fracabertet,
+  frac_loh = fracloh
+)
+
+print(outdf1)
+
+
+#Integrating Aberration Data into QC Data
 qcdata$QC.frac_aber <- ifelse(qcdata$QC.WGD, outdf1$frac_aber_tet, outdf1$frac_aber_dip)
 qcdata$QC.frac_aber[is.na(qcdata$ploidy)] <- NA
 qcdata
-MYC_pos <- c("PTCL12_T", "PTCL16_T", "PTCL19_T", "PTCL22_T", "PTCL25_T", "PTCL26_T", "PTCL28_T", "PTCL5_T")
-qcdata$MYC_sig <- ifelse(qcdata$Sample %in% MYC_pos,1,0)
-qcdata
 
+# Identify samples with specific characteristics, e.g., presence of MYC amplifications
+MYC_pos <- sample_ids
+qcdata$MYC_sig <- ifelse(qcdata$Sample %in% MYC_pos, 1, 0)
+
+# Prepare a color palette
 colpal <- colorRampPalette(brewer.pal(12, "Set2"))
 myPal <- colpal(length(unique(qcdata$Sample)))
 
-#Plotting
-p1 <- ggplot(data = qcdata, aes(x = Sample, y = QC.frac_aber, size = 0.2, color = MYC_sig)) + 
-  geom_jitter(width = 0.25, show.legend = TRUE) + theme(axis.text.x = element_text(angle = 90, hjust = 1)) 
-p1
-ggsave(filename = "Frac_aberatted_with_Myc.png", plot =p1, width=10, height = 5)
+# Plot fractional aberration with indication of MYC signaling
+p1 <- ggplot(qcdata, aes(x = Sample, y = QC.frac_aber, size = 0.2, color = MYC_sig)) + 
+  geom_jitter(width = 0.25, show.legend = TRUE) + 
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+ggsave("qc/Frac_aberrated_with_Myc.png", plot = p1, width = 10, height = 5)
 
-p1 <- ggplot(data = qcdata, aes(x = Sample, y = QC.GI, size = 0.2, color = MYC_sig)) + 
-  geom_jitter(width = 0.25, show.legend = TRUE) + theme(axis.text.x = element_text(angle = 90, hjust = 1)) 
-p1
-ggsave(filename = "QC.GI_of_the_cohort.png", plot = p1, width = 10, height = 5)
+# Plot genetic instability index
+p2 <- ggplot(qcdata, aes(x = Sample, y = QC.GI, size = 0.2, color = MYC_sig)) + 
+  geom_jitter(width = 0.25, show.legend = TRUE) + 
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+ggsave("qc/QC.GI_of_the_cohort.png", plot = p2, width = 10, height = 5)
 
 
 p2 <- ggplot(data = qcdata, mapping = aes(x = Sample, y = QC.GI, size = 0.2)) + 
@@ -170,17 +199,12 @@ p2 <- ggplot(data = qcdata, mapping = aes(x = Sample, y = QC.GI, size = 0.2)) +
 p2 <- p2 + theme(axis.text.x = element_text(size = 12))  # Adjust the size (e.g., size = 12)
 p2 <- p2 + scale_fill_manual(values = myPal) + scale_color_manual(values = myPal) + theme_minimal() + theme(plot.background = element_rect(fill = "white")) + theme(axis.text.x = element_text(angle = 90, hjust = 1)) 
 p2
-ggsave(filename = "QC.GI.png", plot = p2, width = 10, height = 5)
+ggsave(filename = "qc/QC.GI.png", plot = p2, width = 10, height = 5)
 
-segdata
-#Make overal ASCAT plot
-length(segdata)
-segdata
+# Generate a joint genomic region from sample segment data
 sampleseg <- unlist(GRangesList(segdata[qcdata$Sample]))
-sampleseg
 joints <- disjoin(sampleseg)
-joints
-list(bins = joints)
+
 out <- mapply(sampleid = qcdata$Sample, wgd = qcdata$QC.WGD, nsamples = 1, MoreArgs = list(bins = joints),
               FUN = function(sampleid, wgd, nsamples, bins){
                 if (wgd == 0) {
@@ -195,24 +219,31 @@ out <- mapply(sampleid = qcdata$Sample, wgd = qcdata$QC.WGD, nsamples = 1, MoreA
 
 joints$ngains <- Reduce(f = '+', x = lapply(X = out, FUN = function(x) x$gains))
 joints$nlosses <- Reduce(f = '+', x = lapply(X = out, FUN = function(x) x$losses))
-joints$ncases <- 20
-
+joints$ncases <- length(qcdata$Sample)
+joints
 joints$gains <- joints$ngains / joints$ncases
 joints$losses <- joints$nlosses / joints$ncases
 
-cumdist <- setNames(object = c(0, cumsum(as.numeric(seqlengths(BSgenome.Hsapiens.UCSC.hg38)[1:22]))), nm = paste0("chr", 1:23))
+# Calculate cumulative positions
+cumdist <- setNames(c(0, cumsum(as.numeric(seqlengths(seqinfoCHM13)[1:22]))), paste0("chr", 1:22))
 joints$cumstart <- start(joints) + cumdist[as.character(seqnames(joints))]
 joints$cumend <- end(joints) + cumdist[as.character(seqnames(joints))]
-joints
 
-p1 <- ggplot(data = as.data.frame(joints)) + geom_rect(mapping = aes(xmin = cumstart, xmax = cumend, ymin = 0, ymax = gains), fill = "#fc8d59", alpha = .6)
-p1 <- p1 + geom_rect(mapping = aes(xmin = cumstart, xmax = cumend, ymin = 0, ymax = -losses), fill = "#91bfdb", alpha = .6)
-p1 <- p1 + geom_vline(xintercept = cumdist) + ylim(c(-1,1))
-p1 <- p1 + theme_minimal() + theme(panel.grid.major.x = element_blank(), panel.grid.minor.x = element_blank())
-p1 <- p1 + scale_x_continuous(breaks = filter(x = cumdist, filter = c(.5, .5), sides = 1)[-1], labels = 1:22) + theme_minimal()+ theme(plot.background = element_rect(fill = "white"))
-p1 <- p1 + labs(x = "", y = "Frequency")
-p1
-ggsave(filename = "ascat_overview.png", plot = p1, width =10, height= 5)
+# Use names of cumdist as breaks for the plot
+breaks_positions <- cumdist[names(cumdist) %in% paste0("chr", 1:22)]
+labels_chr <- 1:22
+
+# Generate ASCAT overview plot
+# Generate the ASCAT overview plot
+p3 <- ggplot(as.data.frame(joints)) + 
+  geom_rect(aes(xmin = cumstart, xmax = cumend, ymin = 0, ymax = gains), fill = "#fc8d59", alpha = .6) +
+  geom_rect(aes(xmin = cumstart, xmax = cumend, ymin = 0, ymax = -losses), fill = "#91bfdb", alpha = .6) +
+  geom_vline(xintercept = cumdist) + ylim(c(-1, 1)) +
+  theme_minimal() + theme(panel.grid.major.x = element_blank(), panel.grid.minor.x = element_blank()) +
+  scale_x_continuous(breaks = breaks_positions, labels = labels_chr) +
+  theme(plot.background = element_rect(fill = "white")) +
+  labs(x = "", y = "Frequency")
+ggsave("qc/ascat_overview.png", plot = p3, width = 10, height = 5)
 
 
 #Additional QC from the ASCAT plots
@@ -227,25 +258,50 @@ ggsave(filename = "ascat_overview.png", plot = p1, width =10, height= 5)
 #- **Contamination or swap** and **Large CNV**: germline data contains copy-number changes. Filter: we ran aspcf on all germline samples and manually reviewed cases where events were spotted. Cases with large stretches of homozygosity were considered as valid and were not discarded.
 #- **Pass**: sample has correct metrics.
 
-qcdata$Likely_normal <- ifelse(qcdata$QC.LOH < 0.1 & qcdata$QC.GI < 0.1 & qcdata$QC.purity == 1 & ((qcdata$QC.sex == 'XX' & qcdata$QC.ploidy >= 1.99 & qcdata$QC.ploidy <= 2.01) | (qcdata$QC.sex == 'XY' & qcdata$QC.ploidy >= 1.945 & qcdata$QC.ploidy <= 1.965)), TRUE, FALSE)
-qcdata                               
-qcdata$Noisy_LogR <- ifelse(qcdata$QC.tumour_mapd >= 0.75 | (!is.na(qcdata$QC.normal_mapd) & qcdata$QC.normal_mapd >= 0.75), TRUE, FALSE)
-qcdata$Likely_wrong_Germline <- ifelse(qcdata$QC.tumour_mapd > 0.4 | (!is.na(qcdata$QC.normal_mapd) & qcdata$QC.normal_mapd >= 0.4) & qcdata$QC.frac_homo > 0.1, TRUE, FALSE)
-qcdata$Oversegmented <- ifelse(qcdata$QC.n_segs_logR-qcdata$QC.n_segs_BAF > 250, TRUE, FALSE)
+# Applying QC conditions based on ASCAT analysis outputs
+qcdata$Likely_normal <- ifelse(
+  qcdata$QC.LOH < 0.1 & qcdata$QC.GI < 0.1 & qcdata$QC.purity == 1 & (
+    (qcdata$QC.sex == 'XX' & qcdata$QC.ploidy >= 1.99 & qcdata$QC.ploidy <= 2.01) |
+    (qcdata$QC.sex == 'XY' & qcdata$QC.ploidy >= 1.945 & qcdata$QC.ploidy <= 1.965)
+  ), TRUE, FALSE
+)
+
+qcdata$Noisy_LogR <- ifelse(
+  qcdata$QC.tumour_mapd >= 0.75 | (!is.na(qcdata$QC.normal_mapd) & qcdata$QC.normal_mapd >= 0.75),
+  TRUE, FALSE
+)
+
+qcdata$Likely_wrong_Germline <- ifelse(
+  qcdata$QC.tumour_mapd > 0.4 | (!is.na(qcdata$QC.normal_mapd) & qcdata$QC.normal_mapd >= 0.4) & qcdata$QC.frac_homo > 0.1,
+  TRUE, FALSE
+)
+
+qcdata$Oversegmented <- ifelse(
+  qcdata$QC.n_segs_logR - qcdata$QC.n_segs_BAF > 250,
+  TRUE, FALSE
+)
+
 qcdata$wrong_fit <- ifelse(qcdata$QC.mode_majA == 0, TRUE, FALSE)
-qcdata$HD_size <- ifelse(qcdata$QC.homdel_largest >= 20e6 | qcdata$QC.homdel_size >= 40e6, TRUE, FALSE)
+
+qcdata$HD_size <- ifelse(
+  qcdata$QC.homdel_largest >= 20e6 | qcdata$QC.homdel_size >= 40e6,
+  TRUE, FALSE
+)
+
+# Write updated QC data to a file
 write.table(qcdata, "qc_data.csv", sep = "\t", row.names = FALSE, quote = FALSE)
-qcdata
 
-p1 <- ggplot(data = qcdata, mapping = aes(x = QC.n_segs_BAF, y = QC.n_segs_logR, colour = QC.WGD))
-p1 <- p1 + geom_point() + geom_abline(slope = m, intercept = 250) + theme_minimal() + theme(plot.background = element_rect(fill = "white"))
-p1 <- p1 + geom_label_repel(aes(label = Sample), label.size  = 0.3, size = 1.8, max.overlaps = Inf)
-p1
-ggsave(filename = "oversegmented.pdf",plot = p1, width =10, height= 5 )
-setwd("/home/rstudio/host/lig/home/rcools/projects/data_Cools_2022/ASCAT_data/plots")
 
-m <- 1
 m <- (2.9 - 1)/(0-0.93)
+# Plotting segmentation differences
+p1 <- ggplot(qcdata, aes(x = QC.n_segs_BAF, y = QC.n_segs_logR, colour = QC.WGD)) +
+  geom_point() +
+  geom_abline(slope = m, intercept = 250) + 
+  theme_minimal() +
+  theme(plot.background = element_rect(fill = "white")) +
+  geom_label_repel(aes(label = Sample), label.size = 0.3, size = 1.8, max.overlaps = Inf)
+
+ggsave("qc/oversegmented.pdf", plot = p1, width = 10, height = 5)
 
 # Making Heatmap of the CNV landscape (following some steps of cnSpec)
 #BiocManager::install("ComplexHeatmap")
@@ -254,21 +310,17 @@ library(ComplexHeatmap)
 library(EnrichedHeatmap)
 library(circlize)
 
-#GRanges of all chromosomes and divide in in windows of 1MB
-chr_df = read.chromInfo()$df
-chr_df = chr_df[chr_df$chr %in% paste0("chr", 1:22), ]
-chr_gr = GRanges(seqnames = chr_df[, 1], ranges = IRanges(chr_df[, 2] + 1, chr_df[, 3]))
-chr_gr
-chr_window = makeWindows(chr_gr, w = 5e6)
-chr_window
-#joints$cumstart <- start(joints) + cumdist[as.character(seqnames(joints))]
-#joints$cumend <- end(joints) + cumdist[as.character(seqnames(joints))]
+# Define genomic ranges and create windows of 5 million bases
+chr_df <- read.chromInfo()$df
+chr_df <- chr_df[chr_df$chr %in% paste0("chr", 1:22), ]
+chr_gr <- GRanges(seqnames = chr_df[, 1], ranges = IRanges(chr_df[, 2] + 1, chr_df[, 3]))
+chr_window <- makeWindows(chr_gr, w = 5e6)
 
+# Define a new window based on joint data
 new_window <- GRanges(seqnames = seqnames(joints), ranges = ranges(joints))
 
-segdata[[1]]
-#calculate the average signals in the 1MB windows 
-average_in_window = function(window, gr, v, empty_v=NA, method = "weighted") { 
+# Define a function to calculate average signals over windows, handling both numeric and character vectors
+average_in_window <- function(window, gr, v, empty_v = NA, method = "weighted") {
   v = as.matrix(v)
   if(is.character(v) && ncol(v) > 1) {
     stop("`v` can only be a character vector.")
@@ -333,47 +385,47 @@ PTCL1_test <- sampleseg[sampleseg$sample == "PTCL1_T",]
 #sampleseg
 #CN_data <- average_in_window(new_window,PTCL1_test,PTCL1_test$total_CN)
 
-CNsegdata <- lapply(segdata, FUN = function(x){
+# Calculate total copy number and apply the function to segment data
+CNsegdata <- lapply(segdata, function(x) {
   x$total_CN <- x$nMinor + x$nMajor
-  return(x)
+  x
 })
-CNsegdata
 
 
-segdata
-total_CN_data <- lapply(X = CNsegdata, FUN = function(x) {
-  y <- average_in_window(new_window, x,x$total_CN)
-  return(y)
+total_CN_data <- lapply(CNsegdata, function(x) {
+  average_in_window(new_window, x, x$total_CN)
 })
-total_CN_data[[20]]
-names(total_CN_data) <- sapply(X = segdata, FUN = function(x) x$sample[1])
 
+# Prepare data frame for Complex Heatmap
 chr_window_df <- as.data.frame(new_window)
 sample_names <- names(total_CN_data)
 
-# Loop through each sample and add it as a new column
+# Populate the data frame with CN data for each sample
 for (sample_name in sample_names) {
   chr_window_df[[sample_name]] <- total_CN_data[[sample_name]]
 }
-chr_window_df
-
-segdata[[4]]
-
-final_table <- chr_window_df %>% select(-width,-strand)
-final_table
-
-long_table <- final_table %>% pivot_longer(cols = starts_with("PTCL"), names_to="sample", values_to="cn")
-long_table <- long_table %>% rename("chromosome" = "seqnames")
-long_table <- long_table %>% rename("segmean" = "cn")
-names(long_table)
-
-#Complex Heatmap
-col_fun = colorRamp2(c(0,2,6), c("blue","white","red"))
-col_fun(seq(-3, 3))
 
 
-final_table
-joints
+
+final_table <- chr_window_df %>% select(-width, -strand)
+long_table <- final_table %>% pivot_longer(cols = starts_with("P"), names_to = "sample", values_to = "cn")
+long_table <- long_table %>% rename(chromosome = "seqnames", segmean = "cn")
+
+# Define a color function for heatmap and generate heatmap
+col_fun <- colorRamp2(c(0, 2, 6), c("blue", "white", "red"))
+p1 <- cnSpec(long_table, y = genomeBoundaries, genome = "CHM13-T2T", CNscale = "absolute")
+ggsave("heatmap_first_time.pdf", plot = p1, width = 10, height = 5)
+
+# Assuming long_table has columns named 'chromosome', 'start', 'end', 'sample', and 'cn' for copy number
+# Creating a matrix from the long_table for heatmap plotting
+heatmap_matrix <- with(long_table, matrix(cn, nrow = length(unique(chromosome)), ncol = length(unique(sample)), dimnames = list(unique(chromosome), unique(sample))))
+
+# Create the heatmap
+heatmap <- Heatmap(heatmap_matrix, name = "CNV", col = colorRamp2(c(0, 2, 6), c("blue", "white", "red")), 
+                   row_title = "Chromosome", column_title = "Sample", 
+                   cluster_rows = FALSE, cluster_columns = FALSE)
+
+draw(heatmap)
 
 
 #GenVisR heatmap
