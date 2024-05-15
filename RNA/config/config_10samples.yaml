@@ -1,4 +1,4 @@
-units: config/units_10samples.tsv
+units: config/units_10samples_stranded_ETPstatus.tsv
 samples: config/samples_10samples.tsv
 
 #ASCAT

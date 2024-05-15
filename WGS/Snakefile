@@ -22,17 +22,21 @@ include: "rules/mutect2.smk"
 include: "rules/structural_variation.smk"
 include: "rules/visuals.smk"
 include: "rules/gridss.smk"
+include: "rules/svaba.smk"
 #include: "rules/calling.smk"
 
 
 rule all:
     input:
         #expand("results/recal/{sample}/{sample}_dna_{alias}_recal.bai", alias=unique_aliases, sample=SAMPLES),
-        "results/qc/multiqc_test.html",
+        #"results/qc/multiqc_test.html",
         #expand("results/delly/call/{sample}.bcf", sample=unique_samples),
         #expand("results/recal/{sample}/{sample}_dna_{alias}_recal.bai", sample=unique_samples, alias=unique_aliases),
-        expand("results/ascat/{sample}/", sample=unique_samples),
+        #expand("results/ascat/{sample}/", sample=unique_samples),
         #expand("results/mutect2/{sample}/{sample}_variants.vcf", sample=unique_samples),
-        expand("results/mutect2/{sample}/{sample}_pass_variants.vcf", sample=unique_samples),
-        expand("results/mutect2/{sample}/{sample}_pass_variants_lifted.vcf", sample=unique_samples),
-        expand("results/mutect2/{sample}/{sample}_annotated_lifted_variants.maf", sample=unique_samples),
+        #expand("results/mutect2/{sample}/{sample}_pass_variants.vcf", sample=unique_samples),
+        #expand("results/mutect2/{sample}/{sample}_pass_variants_lifted.vcf", sample=unique_samples),
+        #expand("results/mutect2/{sample}/{sample}_annotated_lifted_variants.maf", sample=unique_samples),
+        expand("results/gridss/{sample}/{sample}_all_calls.vcf", sample=unique_samples),
+        expand("results/gridss/{sample}/{sample}_high_confidence_somatic.vcf.bgz", sample=unique_samples),
+        #expand("results/svaba/{sample}/{sample}_svaba.somatic.sv.vcf", sample=unique_samples),

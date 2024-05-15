@@ -65,8 +65,6 @@ class Wildcards:
         self.sample = sample
         
         
-print(expand("results/gridss/{sample}_normal.vcf", sample=unique_samples))
-
 wildcards = Wildcards(sample='P013')
 get_fastq_rna(wildcards)
 print(get_fastq_rna(wildcards))

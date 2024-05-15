@@ -10,7 +10,7 @@ units = pd.read_csv(
 )
 
 # Generate a list of unique sample names from the units DataFrame
-unique_samples = list(set(u.sample_name for u in units.itertuples()))
+unique_samples = sorted(list(set(u.sample_name for u in units.itertuples())))
 unique_datatypes = list(set(u.datatype for u in units.itertuples()))
 unique_aliases = list(set(u.alias for u in units.itertuples()))
 
@@ -58,8 +58,33 @@ def get_fastq_atac(wildcards):
         raise ValueError(f"Missing ATAC FASTQ data for identifier: {identifier}")
 
 
+# def get_strandedness(sample_name):
+#     df = pd.read_csv(config['units'], sep='\t')
+#     subset = df.loc[(df['sample_name'] == sample_name) & (df['datatype'] == 'rna'), 'stranded']
+#     if subset.empty:
+#         return 'unknown'
+#     else:
+#         return subset.values[0]
 
+def get_strandedness(sample_name):
+    subset = units.loc[(units["sample_name"] == sample_name) & (units["datatype"] == "rna"), "stranded"]
+    return subset.values[0] if not subset.empty else "unknown"
+    
+def get_ETPstatus(sample_name):
+    units = pd.read_csv(config["units"], sep="\t", comment="#")
+    subset = units.loc[(units["sample_name"] == sample_name) & (units["datatype"] == "rna"), "ETPstatus"]
+    return subset.values[0] if not subset.empty else "unknown"
 
+etp_status_list = [get_ETPstatus(sample) for sample in units["sample_name"].unique()]
+
+samples = units["sample_name"].unique()
+sample_info = pd.DataFrame({
+    "sample_name": samples,
+    "ETPstatus": [get_ETPstatus(sample) for sample in samples],
+    "stranded": [get_strandedness(sample) for sample in samples]
+})
+
+        
 # # Create a new 'identifier' column by combining 'sample_name', 'datatype', and 'alias'
 # units['identifier'] = units['sample_name'] + '_' + units['datatype'] + '_' + units['alias']
 

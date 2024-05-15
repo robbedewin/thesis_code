@@ -4,6 +4,7 @@ include: "rules/ref.smk"
 include: "rules/common.smk"
 include: "rules/qc.smk"
 include: "rules/mapping.smk"
+include: "rules/diffexp.smk"
 
 
 
@@ -11,4 +12,6 @@ rule all:
     input:
         "results/qc/multiqc_RNA.html",
         expand("results/star/{sample}/{sample}_Aligned.sortedByCoord.out.bam", sample=unique_samples),
-        expand("results/star_fusion/{sample}/star-fusion.fusion_predictions.abridged.tsv", sample=unique_samples)
+        expand("results/star_fusion/{sample}/star-fusion.fusion_predictions.abridged.tsv", sample=unique_samples),
+        "results/counts/combined_counts.tsv",
+        "results/deseq2/deseq2_results.tsv",

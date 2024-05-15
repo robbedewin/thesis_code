@@ -5,11 +5,16 @@ library(data.table)
 library(ggplot2)
 library(tidyverse)
 
+setwd("/staging/leuven/stg_00096/home/rdewin/zzz")
+input_dir <- "/staging/leuven/stg_00096/home/rdewin/WGS/results/mutect2/"
+output_html <- "/staging/leuven/stg_00096/home/rdewin/WGS/results/maftools/maftools_summary.html"
+output_pdf <- "/staging/leuven/stg_00096/home/rdewin/WGS/results/maftools/maftools_oncoplot2.pdf"
+output_dir <- "/staging/leuven/stg_00096/home/rdewin/WGS/results/maftools/"
 # Define paths directly from Snakemake variables (set these in the Snakemake rule)
-input_dir <- snakemake@params[["dir"]]
-output_dir <- dirname(snakemake@output[["html"]])
-output_html <- snakemake@output[["html"]]
-output_pdf <- snakemake@output[["pdf"]]
+# input_dir <- snakemake@params[["dir"]]
+# output_dir <- dirname(snakemake@output[["html"]])
+# output_html <- snakemake@output[["html"]]
+# output_pdf <- snakemake@output[["pdf"]]
 
 # Create output directory if it does not exist
 if (!dir.exists(output_dir)) {
@@ -17,14 +22,12 @@ if (!dir.exists(output_dir)) {
 }
 
 # Open the log file
-log <- file(snakemake@log[[1]], open = "wt")
-sink(log)
-sink(log, type = "message")
+# log <- file(snakemake@log[[1]], open = "wt")
+# sink(log)
+# sink(log, type = "message")
 
 
-#input_dir <- "/staging/leuven/stg_00096/home/rdewin/WGS/results/mutect2/"
-#output_html <- "/staging/leuven/stg_00096/home/rdewin/WGS/results/maftools/maftools_summary.html"
-#output_pdf <- "/staging/leuven/stg_00096/home/rdewin/WGS/results/maftools/maftools_oncoplot.pdf"
+
 
 # List the MAF files
 maffiles <- list.files(path = input_dir, pattern = "P.*_annotated_lifted_variants\\.maf$", full.names = TRUE, recursive = TRUE)
