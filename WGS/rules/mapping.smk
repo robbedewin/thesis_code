@@ -2,8 +2,8 @@ rule trim_reads:
     input:
         unpack(get_fastq_dna),
     output:
-        trimmed_r1=temp("results/fastp/{sample}/{sample}_dna_{alias}_R1.trimmed.fq"),
-        trimmed_r2=temp("results/fastp/{sample}/{sample}_dna_{alias}_R2.trimmed.fq"),
+        trimmed_r1="results/fastp/{sample}/{sample}_dna_{alias}_R1.trimmed.fq",
+        trimmed_r2="results/fastp/{sample}/{sample}_dna_{alias}_R2.trimmed.fq",
         html="logs/fastp/{sample}/{sample}_dna_{alias}.fastp.html",
         json="logs/fastp/{sample}/{sample}_dna_{alias}.fastp.json",
     log:
@@ -22,7 +22,7 @@ rule bwa_map:
         genome="resources/genome.fa",
         idx=multiext("resources/genome.fa", ".0123", ".amb", ".ann", ".bwt.2bit.64", ".pac"),
     output:
-        sam=temp("results/mapped_reads/{sample}/{sample}_dna_{alias}.sam")
+        sam="results/mapped_reads/{sample}/{sample}_dna_{alias}.sam"
     log:
         map_log="logs/mapped_reads/{sample}/{sample}_dna_{alias}.log.bwamem"
     threads: 18
@@ -44,7 +44,7 @@ rule samtools_sort:
         sam="results/mapped_reads/{sample}/{sample}_dna_{alias}.sam",
         genome="resources/genome.fa"
     output:
-        bam=temp("results/mapped_reads/{sample}/{sample}_dna_{alias}.sorted.bam"),
+        bam="results/mapped_reads/{sample}/{sample}_dna_{alias}.sorted.bam",
     log:
         sort_log="logs/samtools/{sample}/{sample}_dna_{alias}_sort.log"
     params:
@@ -62,7 +62,7 @@ rule mark_duplicates:
     input:
         bam="results/mapped_reads/{sample}/{sample}_dna_{alias}.sorted.bam"
     output:
-        marked_bam=temp("results/mapped_reads/{sample}/{sample}_dna_{alias}.marked.bam"),
+        marked_bam="results/mapped_reads/{sample}/{sample}_dna_{alias}.marked.bam",
         metrics="results/qc/dedup/{sample}/{sample}_dna_{alias}_duplication_metrics.txt"
     log:
         markdup_log="logs/picard/{sample}/{sample}_dna_{alias}_markdup.log"

@@ -18,26 +18,26 @@ rule fastqc_raw:
         "v3.7.0/bio/fastqc"
 
 
-rule trim_reads_for_fastqc:
-    input:
-        unpack(get_fastq_dna),
-    output:
-        trimmed_r1=temp("results/qc/fastp/{sample}/{sample}_dna_{alias}_R1.trimmed.fq"),
-        trimmed_r2=temp("results/qc/fastp/{sample}/{sample}_dna_{alias}_R2.trimmed.fq"),
-        html="logs/qc/fastp/{sample}/{sample}_dna_{alias}.fastp.html",
-        json="logs/qc/fastp/{sample}/{sample}_dna_{alias}.fastp.json",
-    log:
-        fastp_log="logs/fastp/{sample}/{sample}_dna_{alias}.fastp.log"
-    shell:
-        """
-        fastp -w 12 -i {input.R1} -I {input.R2} \
-              -o {output.trimmed_r1} -O {output.trimmed_r2} \
-              -j {output.json} -h {output.html} &> {log.fastp_log}
-        """
+# rule trim_reads_for_fastqc:
+#     input:
+#         unpack(get_fastq_dna),
+#     output:
+#         trimmed_r1=temp("results/qc/fastp/{sample}/{sample}_dna_{alias}_R1.trimmed.fq"),
+#         trimmed_r2=temp("results/qc/fastp/{sample}/{sample}_dna_{alias}_R2.trimmed.fq"),
+#         html="logs/qc/fastp/{sample}/{sample}_dna_{alias}.fastp.html",
+#         json="logs/qc/fastp/{sample}/{sample}_dna_{alias}.fastp.json",
+#     log:
+#         fastp_log="logs/fastp/{sample}/{sample}_dna_{alias}.fastp.log"
+#     shell:
+#         """
+#         fastp -w 12 -i {input.R1} -I {input.R2} \
+#               -o {output.trimmed_r1} -O {output.trimmed_r2} \
+#               -j {output.json} -h {output.html} &> {log.fastp_log}
+#         """
 
 rule fastqc_trimmed:
     input:
-        "results/qc/fastp/{sample}/{sample}_dna_{alias}_{read}.trimmed.fq"
+        "results/fastp/{sample}/{sample}_dna_{alias}_{read}.trimmed.fq"
     output:
         html="results/qc/fastqc/{sample}/{sample}_dna_{alias}_trimmed_{read}.html",
         zip="results/qc/fastqc/{sample}/{sample}_dna_{alias}_trimmed_{read}_fastqc.zip" # the suffix _fastqc.zip is necessary for multiqc to find the file. If not using multiqc, you are free to choose an arbitrary filename
@@ -91,7 +91,7 @@ rule multiqc:
         ),
     output:
         report(
-            "results/qc/multiqc_test.html",
+            "results/qc/multiqc_34samples.html",
             caption="../report/multiqc.rst",
             category="Quality control",
         ),

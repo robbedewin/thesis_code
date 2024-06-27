@@ -408,5 +408,5 @@
 		"overrepresented_sequences": {
 		}
 	},
-	"command": "fastp -w 12 -i /staging/leuven/stg_00096/home/rdewin/data/merged/a0225/a0225_R1.fq.gz -I /staging/leuven/stg_00096/home/rdewin/data/merged/a0225/a0225_R2.fq.gz -o results/fastp/P022_dna_normal_R1.trimmed.fq -O results/fastp/P022_dna_normal_R2.trimmed.fq -j logs/fastp/P022_dna_normal.fastp.json -h logs/fastp/P022_dna_normal.fastp.html "
+	"command": "fastp -w 12 -i /staging/leuven/stg_00096/home/rdewin/data/merged/a0225/a0225_R1.fq.gz -I /staging/leuven/stg_00096/home/rdewin/data/merged/a0225/a0225_R2.fq.gz -o results/fastp/P022/P022_dna_normal_R1.trimmed.fq -O results/fastp/P022/P022_dna_normal_R2.trimmed.fq -j logs/fastp/P022/P022_dna_normal.fastp.json -h logs/fastp/P022/P022_dna_normal.fastp.html "
 }

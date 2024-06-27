@@ -1,4 +1,0 @@
-Sat Apr 20 15:00:48 CEST 2024
-rule all:
-    input:
-        expand(results/mutect2/{sample}/{sample}_annotated_variants.maf, sample=unique_samples),

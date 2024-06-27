@@ -56,7 +56,7 @@ rule generate_pon:
         """
 
 # Somatic structural variant calling
-rule call_somatic_structural_variants:
+rule gridss_call_somatic_SV:
     input:
         normal="results/recal/{sample}/{sample}_dna_normal_recal.bam",
         tumor="results/recal/{sample}/{sample}_dna_tumor_recal.bam",
@@ -109,4 +109,8 @@ rule gridss_somatic_filter:
             -n 1 \
             -t 2 \
             &> {log}
+        mv {output.high_confidence_somatic}.bgz {output.high_confidence_somatic}
+        mv {output.high_confidence_somatic}.bgz.tbi {output.high_confidence_somatic}.tbi
+        mv {output.high_and_low_confidence_somatic}.bgz {output.high_and_low_confidence_somatic}
+        mv {output.high_and_low_confidence_somatic}.bgz.tbi {output.high_and_low_confidence_somatic}.tbi
         """

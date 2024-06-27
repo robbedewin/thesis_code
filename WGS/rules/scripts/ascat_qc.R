@@ -10,33 +10,39 @@ library(stringr)
 library(tidyverse)
 
 # Open the log file
-#log <- file(snakemake@log[[1]], open = "wt")
-#sink(log)
-#sink(log, type = "message")
+log <- file(snakemake@log[[1]], open = "wt")
+sink(log)
+sink(log, type = "message")
 
 # Define input files and output directories based on snakemake parameters
-#sample_ids <- snakemake@params[["sample_ids"]]
-#ascatfiles <- dirname(snakemake@params[["ascat_dir"]])
+sample_ids <- snakemake@params[["sample_ids"]]
+print(sample_ids)
+ascatfiles <- snakemake@params[["ascat_dir"]]
+print(ascatfiles)
 
-#outdir <- dirname(snakemake@output[[1]])
-#qc_output_file <- snakemake@output[[1]]
-#seg_plot <- snakemake@output[[2]]
+outdir <- dirname(snakemake@output[[1]])
+qc_output_file <- snakemake@output[[1]]
+seg_plot <- snakemake@output[[2]]
 
 # Hard-coded sample IDs and paths for debugging or standalone runs
-sample_ids <- c("P028", "P022", "P024", "P018", "P019", "P020", "P023", "P026", "P013", "P016")
-ascatfiles <- "/staging/leuven/stg_00096/home/rdewin/WGS/results/ascat/"
+# sample_ids <- c("P028", "P022", "P024", "P018", "P019", "P020", "P023", "P026", "P013", "P016")
+# ascatfiles <- "/staging/leuven/stg_00096/home/rdewin/WGS/results/ascat/"
 
-outdir <- dirname("/staging/leuven/stg_00096/home/rdewin/WGS/results/ascat/qc/summary.csv")
-qc_output_file <- "/staging/leuven/stg_00096/home/rdewin/WGS/results/ascat/qc/summary.csv"
-seg_plot <- "/staging/leuven/stg_00096/home/rdewin/WGS/results/ascat/qc/segments_plot.png"
+# outdir <- dirname("/staging/leuven/stg_00096/home/rdewin/WGS/results/ascat/qc/summary.csv")
+# qc_output_file <- "/staging/leuven/stg_00096/home/rdewin/WGS/results/ascat/qc/summary.csv"
+# seg_plot <- "/staging/leuven/stg_00096/home/rdewin/WGS/results/ascat/qc/segments_plot.png"
 
 # Create output directory if it does not exist
 if (!dir.exists(outdir)) {
   dir.create(outdir, recursive = TRUE)
 }
 
-setwd(ascatfiles)
+setwd("/staging/leuven/stg_00096/home/rdewin/WGS")
 getwd()
+
+# Debugging: Print the current working directory and the output directory path
+print(paste("Current working directory:", getwd()))
+print(paste("Output directory:", outdir))
 
 # Store all segmentsfiles in a list
 seg_files <- list.files(
@@ -45,7 +51,7 @@ seg_files <- list.files(
   full.names = TRUE,
   recursive = TRUE
 )
-seg_files
+print(seg_files)
 # Store all qc files in a list
 qc_files <- list.files(
   path = file.path(ascatfiles, list.dirs(path = ascatfiles, full.names = FALSE)[list.dirs(path = ascatfiles, full.names = FALSE) %in% sample_ids]),
@@ -53,7 +59,7 @@ qc_files <- list.files(
   full.names = TRUE,
   recursive = TRUE
 )
-qc_files
+print(qc_files)
 
 
 qc_data <- lapply(qc_files, function(x) {
@@ -134,8 +140,7 @@ p1 <- p1 + geom_label_repel(
   size = 1.8,           # Text size
   max.overlaps = Inf    # Allows for infinite overlaps; adjust as necessary
 )
-
-ggsave(filename = "qc/annotated_frac_loh_vs_ploidy.png", plot = p1, width = 10, height = 7)
+ggsave(filename = paste0(outdir, "/annotated_frac_loh_vs_ploidy.png"), plot = p1, width = 10, height = 7)
 
 # Plot LOH vs Ploidy
 plotLOH <-  ggplot(qcdata, aes(x = QC.LOH, y = QC.ploidy, color = QC.WGD)) +
@@ -143,8 +148,9 @@ plotLOH <-  ggplot(qcdata, aes(x = QC.LOH, y = QC.ploidy, color = QC.WGD)) +
               geom_abline(slope = (2.9 - 1)/(0 - 0.93), intercept = 2.9) +
               theme_minimal() +
               theme(plot.background = element_rect(fill = "white")) +
-              geom_label_repel(aes(label = Sample), label.size = 0.3, size = 1.8, max.overlaps = Inf) +
-              ggsave("qc/fraction_loh_vs_ploidy.png", width = 10, height = 7)
+              geom_label_repel(aes(label = Sample), label.size = 0.3, size = 1.8, max.overlaps = Inf)
+
+ggsave(filename = paste0(outdir, "/fraction_loh_vs_ploidy.png"), width = 10, height = 7)
 
 #Fraction of genome altered
 # Check if segment files are non-empty and filter out empty files
@@ -185,13 +191,13 @@ myPal <- colpal(length(unique(qcdata$Sample)))
 p1 <- ggplot(qcdata, aes(x = Sample, y = QC.frac_aber, size = 0.2, color = MYC_sig)) + 
   geom_jitter(width = 0.25, show.legend = TRUE) + 
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
-ggsave("qc/Frac_aberrated_with_Myc.png", plot = p1, width = 10, height = 5)
+ggsave(filename = paste0(outdir, "/Frac_aberrated_with_Myc.png"), plot = p1, width = 10, height = 5)
 
 # Plot genetic instability index
 p2 <- ggplot(qcdata, aes(x = Sample, y = QC.GI, size = 0.2, color = MYC_sig)) + 
   geom_jitter(width = 0.25, show.legend = TRUE) + 
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
-ggsave("qc/QC.GI_of_the_cohort.png", plot = p2, width = 10, height = 5)
+ggsave(filename = paste0(outdir, "/QC.GI_of_the_cohort.png"), plot = p2, width = 10, height = 5)
 
 
 p2 <- ggplot(data = qcdata, mapping = aes(x = Sample, y = QC.GI, size = 0.2)) + 
@@ -199,7 +205,7 @@ p2 <- ggplot(data = qcdata, mapping = aes(x = Sample, y = QC.GI, size = 0.2)) +
 p2 <- p2 + theme(axis.text.x = element_text(size = 12))  # Adjust the size (e.g., size = 12)
 p2 <- p2 + scale_fill_manual(values = myPal) + scale_color_manual(values = myPal) + theme_minimal() + theme(plot.background = element_rect(fill = "white")) + theme(axis.text.x = element_text(angle = 90, hjust = 1)) 
 p2
-ggsave(filename = "qc/QC.GI.png", plot = p2, width = 10, height = 5)
+ggsave(filename = paste0(outdir, "/QC.GI.png"), plot = p2, width = 10, height = 5)
 
 # Generate a joint genomic region from sample segment data
 sampleseg <- unlist(GRangesList(segdata[qcdata$Sample]))
@@ -243,7 +249,7 @@ p3 <- ggplot(as.data.frame(joints)) +
   scale_x_continuous(breaks = breaks_positions, labels = labels_chr) +
   theme(plot.background = element_rect(fill = "white")) +
   labs(x = "", y = "Frequency")
-ggsave("qc/ascat_overview.png", plot = p3, width = 10, height = 5)
+ggsave(filename = paste0(outdir, "/ascat_overview.png"), plot = p3, width = 10, height = 5)
 
 
 #Additional QC from the ASCAT plots
@@ -301,7 +307,7 @@ p1 <- ggplot(qcdata, aes(x = QC.n_segs_BAF, y = QC.n_segs_logR, colour = QC.WGD)
   theme(plot.background = element_rect(fill = "white")) +
   geom_label_repel(aes(label = Sample), label.size = 0.3, size = 1.8, max.overlaps = Inf)
 
-ggsave("qc/oversegmented.pdf", plot = p1, width = 10, height = 5)
+ggsave(filename = paste0(outdir, "/oversegmented.pdf"), plot = p1, width = 10, height = 5)
 
 # Making Heatmap of the CNV landscape (following some steps of cnSpec)
 #BiocManager::install("ComplexHeatmap")
@@ -414,7 +420,7 @@ long_table <- long_table %>% rename(chromosome = "seqnames", segmean = "cn")
 # Define a color function for heatmap and generate heatmap
 col_fun <- colorRamp2(c(0, 2, 6), c("blue", "white", "red"))
 p1 <- cnSpec(long_table, y = genomeBoundaries, genome = "CHM13-T2T", CNscale = "absolute")
-ggsave("heatmap_first_time.pdf", plot = p1, width = 10, height = 5)
+ggsave(filename = paste0(outdir, "/heatmap_first_time.pdf"), plot = p1, width = 10, height = 5)
 
 # Assuming long_table has columns named 'chromosome', 'start', 'end', 'sample', and 'cn' for copy number
 # Creating a matrix from the long_table for heatmap plotting
@@ -429,23 +435,23 @@ draw(heatmap)
 
 
 #GenVisR heatmap
-BiocManager::install("GenVisR")
-library(GenVisR)
+# BiocManager::install("GenVisR")
+# library(GenVisR)
 
-genomeBoundaries <- aggregate(chromEnd ~ chrom, data=cytoGeno[cytoGeno$genome=="hg38",], max)
-genomeBoundaries$chromStart <- 0
-colnames(genomeBoundaries) <- c("chromosome", "end", "start")
-cumdist
+# genomeBoundaries <- aggregate(chromEnd ~ chrom, data=cytoGeno[cytoGeno$genome=="hg38",], max)
+# genomeBoundaries$chromStart <- 0
+# colnames(genomeBoundaries) <- c("chromosome", "end", "start")
+# cumdist
 
-replace_na_with_2 <- function(x) {
-  x[is.na(x)] <- 2
-  return(x)
-}
-replace_na_with_2(long_table$segmean)
-p1 <- cnSpec(long_table, y = genomeBoundaries, genome = "hg38", CNscale = "absolute")
-p1
-ggsave(filename = "heatmap_first_time.pdf",plot = p1, width =10, height= 5 )
-setwd("/home/rstudio/host/lig/home/rcools/projects/data_Cools_2022/ASCAT_data/plots")
-genomeBoundaries_2 <- genomeBoundaries
-genomeBoundaries_2$start <- genomeBoundaries_2$start - 1e8
-genomeBoundaries_2$end <- genomeBoundaries_2$end + 1e8
+# replace_na_with_2 <- function(x) {
+#   x[is.na(x)] <- 2
+#   return(x)
+# }
+# replace_na_with_2(long_table$segmean)
+# p1 <- cnSpec(long_table, y = genomeBoundaries, genome = "hg38", CNscale = "absolute")
+# p1
+# ggsave(filename = "heatmap_first_time.pdf",plot = p1, width =10, height= 5 )
+# setwd("/home/rstudio/host/lig/home/rcools/projects/data_Cools_2022/ASCAT_data/plots")
+# genomeBoundaries_2 <- genomeBoundaries
+# genomeBoundaries_2$start <- genomeBoundaries_2$start - 1e8
+# genomeBoundaries_2$end <- genomeBoundaries_2$end + 1e8

@@ -408,5 +408,5 @@
 		"overrepresented_sequences": {
 		}
 	},
-	"command": "fastp -w 12 -i /staging/leuven/stg_00096/home/rdewin/data/TALL_IF/TALL_IF/WGS/WGS_batch1/S039/S039_R01.fq.gz -I /staging/leuven/stg_00096/home/rdewin/data/TALL_IF/TALL_IF/WGS/WGS_batch1/S039/S039_R02.fq.gz -o results/fastp/P018_dna_tumor_R1.trimmed.fq -O results/fastp/P018_dna_tumor_R2.trimmed.fq -j logs/fastp/P018_dna_tumor.fastp.json -h logs/fastp/P018_dna_tumor.fastp.html "
+	"command": "fastp -w 12 -i /staging/leuven/stg_00096/home/rdewin/data/TALL_IF/TALL_IF/WGS/WGS_batch1/S039/S039_R01.fq.gz -I /staging/leuven/stg_00096/home/rdewin/data/TALL_IF/TALL_IF/WGS/WGS_batch1/S039/S039_R02.fq.gz -o results/fastp/P018/P018_dna_tumor_R1.trimmed.fq -O results/fastp/P018/P018_dna_tumor_R2.trimmed.fq -j logs/fastp/P018/P018_dna_tumor.fastp.json -h logs/fastp/P018/P018_dna_tumor.fastp.html "
 }

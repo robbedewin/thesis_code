@@ -1,13 +1,3 @@
 [E::hts_open_format] Failed to open file "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0000.bam" : File exists
 samtools sort: failed to create "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0000.bam": File exists
-[E::hts_open_format] Failed to open file "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0001.bam" : File exists
-samtools sort: failed to create "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0001.bam": File exists
-[E::hts_open_format] Failed to open file "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0002.bam" : File exists
-samtools sort: failed to create "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0002.bam": File exists
-[E::hts_open_format] Failed to open file "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0003.bam" : File exists
-samtools sort: failed to create "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0003.bam": File exists
-[E::hts_open_format] Failed to open file "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0004.bam" : File exists
-samtools sort: failed to create "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0004.bam": File exists
-[E::hts_open_format] Failed to open file "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0005.bam" : File exists
-samtools sort: failed to create "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0005.bam": File exists
 [bam_sort_core] merging from 8 files and 18 in-memory blocks...

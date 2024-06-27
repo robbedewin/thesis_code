@@ -12,7 +12,8 @@ rule ascat:
 
 rule ascat_qc:
     input:
-        expand(["results/ascat/{sample}/"], sample=[u.sample_name for u in units.itertuples()])
+        #expand(["results/ascat/{sample}/"], sample=[u.sample_name for u in units.itertuples()])
+        expand(["results/ascat/{sample}/"], sample=unique_samples)
     output:
         qc_output="results/ascat/qc/summary.csv",
         seg_plot="results/ascat/qc/segments_plot.png",

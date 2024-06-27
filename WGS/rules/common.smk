@@ -10,7 +10,7 @@ units = pd.read_csv(
 )
 
 # Generate a list of unique sample names from the units DataFrame
-unique_samples = list(set(u.sample_name for u in units.itertuples()))
+unique_samples = sorted(list(set(u.sample_name for u in units.itertuples())))
 unique_datatypes = list(set(u.datatype for u in units.itertuples()))
 unique_aliases = list(set(u.alias for u in units.itertuples()))
 

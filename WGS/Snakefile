@@ -2,7 +2,10 @@
 #configfile: "config/config.yaml"
 
 # Test config
-configfile: "config/config_10samples.yaml"
+# configfile: "config/config_10samples.yaml"
+
+# matched samples config
+configfile: "config/config_matched.yaml"
 
 # Define common variables
 # ref_genome = config["ref_genome"]
@@ -17,6 +20,7 @@ include: "rules/common.smk"
 include: "rules/ref.smk"
 include: "rules/qc.smk"
 include: "rules/mapping.smk"
+#include: "rules/touch.smk"
 include: "rules/ascat.smk"
 include: "rules/mutect2.smk"
 include: "rules/structural_variation.smk"
@@ -25,18 +29,37 @@ include: "rules/gridss.smk"
 include: "rules/svaba.smk"
 #include: "rules/calling.smk"
 
+old_samples= ["P013", "P016", "P018", "P019", "P020", "P022", "P023", "P024", "P026", "P028"]
+new_samples = sorted(list(set(unique_samples) - set(old_samples)))
 
 rule all:
     input:
-        #expand("results/recal/{sample}/{sample}_dna_{alias}_recal.bai", alias=unique_aliases, sample=SAMPLES),
-        #"results/qc/multiqc_test.html",
-        #expand("results/delly/call/{sample}.bcf", sample=unique_samples),
-        #expand("results/recal/{sample}/{sample}_dna_{alias}_recal.bai", sample=unique_samples, alias=unique_aliases),
-        #expand("results/ascat/{sample}/", sample=unique_samples),
-        #expand("results/mutect2/{sample}/{sample}_variants.vcf", sample=unique_samples),
-        #expand("results/mutect2/{sample}/{sample}_pass_variants.vcf", sample=unique_samples),
-        #expand("results/mutect2/{sample}/{sample}_pass_variants_lifted.vcf", sample=unique_samples),
-        #expand("results/mutect2/{sample}/{sample}_annotated_lifted_variants.maf", sample=unique_samples),
-        expand("results/gridss/{sample}/{sample}_all_calls.vcf", sample=unique_samples),
-        expand("results/gridss/{sample}/{sample}_high_confidence_somatic.vcf.bgz", sample=unique_samples),
-        #expand("results/svaba/{sample}/{sample}_svaba.somatic.sv.vcf", sample=unique_samples),
+        #Mappping with bwa mem // dont uncomment this line, because of the temporary files, it will try to run everything again
+        #expand("results/mapped_reads/{sample}/{sample}_dna_{alias}.sorted.bam", sample=new_samples, alias=unique_aliases),
+        # #deduplication
+        # expand("results/mapped_reads/{sample}/{sample}_dna_{alias}.marked.bam", sample=new_samples, alias=unique_aliases),
+        #Final step of mapping recalibration (table and applying) (only this file will be held)
+        expand("results/recal/{sample}/{sample}_dna_{alias}_recal.bam", sample=unique_samples, alias=unique_aliases),
+        # #mulitqc report (fastqc, samtools_(idx)stats, duplication_metrics)
+        "results/qc/multiqc_test.html",
+        #ascat
+        expand("results/ascat/{sample}/", sample=unique_samples),
+        # #mutect2 PON
+        # "results/mutect2/pon/mutect2.pon.vcf.gz",
+        # #mutect2
+        # expand("results/mutect2/{sample}/{sample}_variants.vcf", sample=unique_samples),
+        # #mutect2 filtering and PASS variants
+        # expand("results/mutect2/{sample}/{sample}_pass_variants.vcf", sample=unique_samples),
+        # #mutect2 liftover and annotation
+        # expand("results/mutect2/{sample}/{sample}_pass_variants_lifted.vcf", sample=unique_samples),
+        # expand("results/mutect2/{sample}/{sample}_annotated_lifted_variants.maf", sample=unique_samples),
+        # #svaba
+        # expand("results/svaba/{sample}/{sample}_svaba.somatic.sv.vcf", sample=unique_samples),
+        # #gridss PON
+        # "results/gridss/pondir/gridss_pon_breakpoint.bedpe",
+        # #gridss SV calling
+        # expand("results/gridss/{sample}/{sample}_all_calls.vcf", sample=unique_samples),
+        # #gridss filtering
+        # expand("results/gridss/{sample}/{sample}_high_confidence_somatic.vcf.bgz", sample=unique_samples),
+        # #expand("results/svaba/{sample}/{sample}_svaba.somatic.sv.vcf", sample=unique_samples),
+        

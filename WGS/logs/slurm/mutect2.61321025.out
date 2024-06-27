@@ -1,6 +1,0 @@
-Wed Apr 10 00:15:47 CEST 2024
-
-rule all:
-    input:
-        expand(results/mutect2/{sample}/{sample}_variants.vcf, sample=unique_samples),
-Snakemake encountered an error at Wed Apr 10 00:16:20 CEST 2024

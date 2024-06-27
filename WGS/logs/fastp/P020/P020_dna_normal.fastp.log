@@ -34,8 +34,8 @@ Duplication rate: 9.60878%
 
 Insert size peak (evaluated by paired-end reads): 269
 
-JSON report: logs/qc/fastp/P020/P020_dna_normal.fastp.json
-HTML report: logs/qc/fastp/P020/P020_dna_normal.fastp.html
+JSON report: logs/fastp/P020/P020_dna_normal.fastp.json
+HTML report: logs/fastp/P020/P020_dna_normal.fastp.html
 
-fastp -w 12 -i /staging/leuven/stg_00096/home/rdewin/data/TALL_IF/TALL_IF/WGS/WGS_batch1/S158/S158_R01.fq.gz -I /staging/leuven/stg_00096/home/rdewin/data/TALL_IF/TALL_IF/WGS/WGS_batch1/S158/S158_R02.fq.gz -o results/qc/fastp/P020/P020_dna_normal_R1.trimmed.fq -O results/qc/fastp/P020/P020_dna_normal_R2.trimmed.fq -j logs/qc/fastp/P020/P020_dna_normal.fastp.json -h logs/qc/fastp/P020/P020_dna_normal.fastp.html 
-fastp v0.23.4, time used: 3038 seconds
+fastp -w 12 -i /staging/leuven/stg_00096/home/rdewin/data/TALL_IF/TALL_IF/WGS/WGS_batch1/S158/S158_R01.fq.gz -I /staging/leuven/stg_00096/home/rdewin/data/TALL_IF/TALL_IF/WGS/WGS_batch1/S158/S158_R02.fq.gz -o results/fastp/P020/P020_dna_normal_R1.trimmed.fq -O results/fastp/P020/P020_dna_normal_R2.trimmed.fq -j logs/fastp/P020/P020_dna_normal.fastp.json -h logs/fastp/P020/P020_dna_normal.fastp.html 
+fastp v0.23.4, time used: 851 seconds

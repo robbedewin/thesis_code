@@ -89,7 +89,7 @@ rule mutect2:
         germline_resource="resources/gnomad_chr.vcf.gz",
     log:
         "logs/mutect2/{sample}/{sample}_variants.log",
-    threads: 4,
+    threads: 16,
     shell: 
         """
         gatk Mutect2 \
@@ -135,7 +135,7 @@ rule learn_read_orientation_model:
 # This information is vital for estimating cross-sample contamination in the CalculateContamination step.
 rule get_pileup_summaries:
     input:
-        normal="results/recal/{sample}/{sample}_dna_{alias}_recal.bam",
+        bam="results/recal/{sample}/{sample}_dna_{alias}_recal.bam",
         intervals="resources/whole_genome.intervals",
         germline_resource="resources/gnomad_chr.vcf.gz",
     output:
@@ -145,7 +145,7 @@ rule get_pileup_summaries:
     shell:
         """
         gatk GetPileupSummaries \
-             -I {input.normal} \
+             -I {input.bam} \
              -L {input.intervals} \
              -V {input.germline_resource} \
              -O {output.summaries} \
