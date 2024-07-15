@@ -1,7 +1,7 @@
 rule bigWig:
     input:
         bam="results/samtools/{sample}/{sample}_atac.bam",
-        bai="results/samtools/{sample}/{sample}_atac.bam.bai",
+        bai="results/samtools/{sample}/{sample}_atac.bam.csi", #changed to .csi instead of .bai
     output:
         bigWig="results/deepTools/{sample}/{sample}.bigWig",
     log:
@@ -20,7 +20,7 @@ rule bigWig:
 rule callpeak:
     input:
         bam="results/samtools/{sample}/{sample}_atac.bam",
-        bai="results/samtools/{sample}/{sample}_atac.bam.bai",
+        bai="results/samtools/{sample}/{sample}_atac.bam.csi",  #changed to .csi instead of .bai
     output:
         peaks="results/macs2/{sample}/{sample}_peaks.narrowPeak",
         summits="results/macs2/{sample}/{sample}_summits.bed",

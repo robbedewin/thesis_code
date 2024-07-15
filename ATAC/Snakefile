@@ -1,4 +1,4 @@
-configfile: "config/config_10samples.yaml"
+configfile: "config/config_all.yaml"
 
 include: "rules/ref.smk"
 include: "rules/common.smk"
@@ -11,6 +11,8 @@ include: "rules/calling.smk"
 rule all:
     input:
         "results/qc/multiqc_ATAC.html",
+        expand("results/bwamem2/{sample}/{sample}_aligned.sam", sample=unique_samples),
+        expand("results/samtools/{sample}/{sample}_atac.bam", sample=unique_samples),
         expand("results/deepTools/{sample}/{sample}.bigWig", sample=unique_samples),
         expand("results/macs2/{sample}/{sample}_peaks.narrowPeak", sample=unique_samples),
         

@@ -1,4 +1,4 @@
-INFO  @ Wed, 17 Apr 2024 13:04:00: 
+INFO  @ Sat, 06 Jul 2024 07:25:52: 
 # Command line: callpeak -t results/samtools/P022/P022_atac.bam -f BAM -g 3117292070 -n P022 --outdir results/macs2/P022
 # ARGUMENTS LIST:
 # name = P022
@@ -16,98 +16,98 @@ INFO  @ Wed, 17 Apr 2024 13:04:00:
 # Broad region calling is off
 # Paired-End mode is off
  
-INFO  @ Wed, 17 Apr 2024 13:04:00: #1 read tag files... 
-INFO  @ Wed, 17 Apr 2024 13:04:00: #1 read treatment tags... 
-INFO  @ Wed, 17 Apr 2024 13:04:04:  1000000 
-INFO  @ Wed, 17 Apr 2024 13:04:08:  2000000 
-INFO  @ Wed, 17 Apr 2024 13:04:12:  3000000 
-INFO  @ Wed, 17 Apr 2024 13:04:16:  4000000 
-INFO  @ Wed, 17 Apr 2024 13:04:20:  5000000 
-INFO  @ Wed, 17 Apr 2024 13:04:24:  6000000 
-INFO  @ Wed, 17 Apr 2024 13:04:28:  7000000 
-INFO  @ Wed, 17 Apr 2024 13:04:31:  8000000 
-INFO  @ Wed, 17 Apr 2024 13:04:35:  9000000 
-INFO  @ Wed, 17 Apr 2024 13:04:39:  10000000 
-INFO  @ Wed, 17 Apr 2024 13:04:43:  11000000 
-INFO  @ Wed, 17 Apr 2024 13:04:47:  12000000 
-INFO  @ Wed, 17 Apr 2024 13:04:51:  13000000 
-INFO  @ Wed, 17 Apr 2024 13:04:55:  14000000 
-INFO  @ Wed, 17 Apr 2024 13:04:59:  15000000 
-INFO  @ Wed, 17 Apr 2024 13:05:03:  16000000 
-INFO  @ Wed, 17 Apr 2024 13:05:07:  17000000 
-INFO  @ Wed, 17 Apr 2024 13:05:11:  18000000 
-INFO  @ Wed, 17 Apr 2024 13:05:15:  19000000 
-INFO  @ Wed, 17 Apr 2024 13:05:19:  20000000 
-INFO  @ Wed, 17 Apr 2024 13:05:23:  21000000 
-INFO  @ Wed, 17 Apr 2024 13:05:26:  22000000 
-INFO  @ Wed, 17 Apr 2024 13:05:30:  23000000 
-INFO  @ Wed, 17 Apr 2024 13:05:34:  24000000 
-INFO  @ Wed, 17 Apr 2024 13:05:38:  25000000 
-INFO  @ Wed, 17 Apr 2024 13:05:42:  26000000 
-INFO  @ Wed, 17 Apr 2024 13:05:46:  27000000 
-INFO  @ Wed, 17 Apr 2024 13:05:50:  28000000 
-INFO  @ Wed, 17 Apr 2024 13:05:54:  29000000 
-INFO  @ Wed, 17 Apr 2024 13:05:58:  30000000 
-INFO  @ Wed, 17 Apr 2024 13:06:02:  31000000 
-INFO  @ Wed, 17 Apr 2024 13:06:06:  32000000 
-INFO  @ Wed, 17 Apr 2024 13:06:10:  33000000 
-INFO  @ Wed, 17 Apr 2024 13:06:14:  34000000 
-INFO  @ Wed, 17 Apr 2024 13:06:18:  35000000 
-INFO  @ Wed, 17 Apr 2024 13:06:22:  36000000 
-INFO  @ Wed, 17 Apr 2024 13:06:25:  37000000 
-INFO  @ Wed, 17 Apr 2024 13:06:29:  38000000 
-INFO  @ Wed, 17 Apr 2024 13:06:33:  39000000 
-INFO  @ Wed, 17 Apr 2024 13:06:37:  40000000 
-INFO  @ Wed, 17 Apr 2024 13:06:41:  41000000 
-INFO  @ Wed, 17 Apr 2024 13:06:45:  42000000 
-INFO  @ Wed, 17 Apr 2024 13:06:49:  43000000 
-INFO  @ Wed, 17 Apr 2024 13:06:53:  44000000 
-INFO  @ Wed, 17 Apr 2024 13:06:57:  45000000 
-INFO  @ Wed, 17 Apr 2024 13:07:01:  46000000 
-INFO  @ Wed, 17 Apr 2024 13:07:05:  47000000 
-INFO  @ Wed, 17 Apr 2024 13:07:08:  48000000 
-INFO  @ Wed, 17 Apr 2024 13:07:12:  49000000 
-INFO  @ Wed, 17 Apr 2024 13:07:16:  50000000 
-INFO  @ Wed, 17 Apr 2024 13:07:20:  51000000 
-INFO  @ Wed, 17 Apr 2024 13:07:24:  52000000 
-INFO  @ Wed, 17 Apr 2024 13:07:28:  53000000 
-INFO  @ Wed, 17 Apr 2024 13:07:32:  54000000 
-INFO  @ Wed, 17 Apr 2024 13:07:35:  55000000 
-INFO  @ Wed, 17 Apr 2024 13:07:39:  56000000 
-INFO  @ Wed, 17 Apr 2024 13:07:43:  57000000 
-INFO  @ Wed, 17 Apr 2024 13:07:47:  58000000 
-INFO  @ Wed, 17 Apr 2024 13:07:51:  59000000 
-INFO  @ Wed, 17 Apr 2024 13:07:55:  60000000 
-INFO  @ Wed, 17 Apr 2024 13:07:59:  61000000 
-INFO  @ Wed, 17 Apr 2024 13:08:03:  62000000 
-INFO  @ Wed, 17 Apr 2024 13:08:07:  63000000 
-INFO  @ Wed, 17 Apr 2024 13:08:10:  64000000 
-INFO  @ Wed, 17 Apr 2024 13:08:17: 64628173 reads have been read. 
-INFO  @ Wed, 17 Apr 2024 13:08:18: #1 tag size is determined as 68 bps 
-INFO  @ Wed, 17 Apr 2024 13:08:18: #1 tag size = 68.0 
-INFO  @ Wed, 17 Apr 2024 13:08:18: #1  total tags in treatment: 64628173 
-INFO  @ Wed, 17 Apr 2024 13:08:18: #1 user defined the maximum tags... 
-INFO  @ Wed, 17 Apr 2024 13:08:18: #1 filter out redundant tags at the same location and the same strand by allowing at most 1 tag(s) 
-INFO  @ Wed, 17 Apr 2024 13:08:18: #1  tags after filtering in treatment: 44744751 
-INFO  @ Wed, 17 Apr 2024 13:08:18: #1  Redundant rate of treatment: 0.31 
-INFO  @ Wed, 17 Apr 2024 13:08:18: #1 finished! 
-INFO  @ Wed, 17 Apr 2024 13:08:18: #2 Build Peak Model... 
-INFO  @ Wed, 17 Apr 2024 13:08:18: #2 looking for paired plus/minus strand peaks... 
-INFO  @ Wed, 17 Apr 2024 13:08:25: #2 number of paired peaks: 67068 
-INFO  @ Wed, 17 Apr 2024 13:08:25: start model_add_line... 
-INFO  @ Wed, 17 Apr 2024 13:08:26: start X-correlation... 
-INFO  @ Wed, 17 Apr 2024 13:08:26: end of X-cor 
-INFO  @ Wed, 17 Apr 2024 13:08:26: #2 finished! 
-INFO  @ Wed, 17 Apr 2024 13:08:26: #2 predicted fragment length is 69 bps 
-INFO  @ Wed, 17 Apr 2024 13:08:26: #2 alternative fragment length(s) may be 69 bps 
-INFO  @ Wed, 17 Apr 2024 13:08:26: #2.2 Generate R script for model : results/macs2/P022/P022_model.r 
-WARNING @ Wed, 17 Apr 2024 13:08:26: #2 Since the d (69) calculated from paired-peaks are smaller than 2*tag length, it may be influenced by unknown sequencing problem! 
-WARNING @ Wed, 17 Apr 2024 13:08:26: #2 You may need to consider one of the other alternative d(s): 69 
-WARNING @ Wed, 17 Apr 2024 13:08:26: #2 You can restart the process with --nomodel --extsize XXX with your choice or an arbitrary number. Nontheless, MACS will continute computing. 
-INFO  @ Wed, 17 Apr 2024 13:08:26: #3 Call peaks... 
-INFO  @ Wed, 17 Apr 2024 13:08:26: #3 Pre-compute pvalue-qvalue table... 
-INFO  @ Wed, 17 Apr 2024 13:09:58: #3 Call peaks for each chromosome... 
-INFO  @ Wed, 17 Apr 2024 13:10:49: #4 Write output xls file... results/macs2/P022/P022_peaks.xls 
-INFO  @ Wed, 17 Apr 2024 13:10:50: #4 Write peak in narrowPeak format file... results/macs2/P022/P022_peaks.narrowPeak 
-INFO  @ Wed, 17 Apr 2024 13:10:50: #4 Write summits bed file... results/macs2/P022/P022_summits.bed 
-INFO  @ Wed, 17 Apr 2024 13:10:50: Done! 
+INFO  @ Sat, 06 Jul 2024 07:25:52: #1 read tag files... 
+INFO  @ Sat, 06 Jul 2024 07:25:52: #1 read treatment tags... 
+INFO  @ Sat, 06 Jul 2024 07:25:57:  1000000 
+INFO  @ Sat, 06 Jul 2024 07:26:01:  2000000 
+INFO  @ Sat, 06 Jul 2024 07:26:06:  3000000 
+INFO  @ Sat, 06 Jul 2024 07:26:32:  4000000 
+INFO  @ Sat, 06 Jul 2024 07:26:54:  5000000 
+INFO  @ Sat, 06 Jul 2024 07:27:30:  6000000 
+INFO  @ Sat, 06 Jul 2024 07:28:07:  7000000 
+INFO  @ Sat, 06 Jul 2024 07:28:43:  8000000 
+INFO  @ Sat, 06 Jul 2024 07:29:20:  9000000 
+INFO  @ Sat, 06 Jul 2024 07:29:55:  10000000 
+INFO  @ Sat, 06 Jul 2024 07:30:27:  11000000 
+INFO  @ Sat, 06 Jul 2024 07:30:59:  12000000 
+INFO  @ Sat, 06 Jul 2024 07:31:32:  13000000 
+INFO  @ Sat, 06 Jul 2024 07:32:04:  14000000 
+INFO  @ Sat, 06 Jul 2024 07:32:31:  15000000 
+INFO  @ Sat, 06 Jul 2024 07:33:00:  16000000 
+INFO  @ Sat, 06 Jul 2024 07:33:33:  17000000 
+INFO  @ Sat, 06 Jul 2024 07:34:11:  18000000 
+INFO  @ Sat, 06 Jul 2024 07:34:47:  19000000 
+INFO  @ Sat, 06 Jul 2024 07:35:20:  20000000 
+INFO  @ Sat, 06 Jul 2024 07:35:52:  21000000 
+INFO  @ Sat, 06 Jul 2024 07:36:24:  22000000 
+INFO  @ Sat, 06 Jul 2024 07:36:57:  23000000 
+INFO  @ Sat, 06 Jul 2024 07:37:27:  24000000 
+INFO  @ Sat, 06 Jul 2024 07:37:56:  25000000 
+INFO  @ Sat, 06 Jul 2024 07:38:22:  26000000 
+INFO  @ Sat, 06 Jul 2024 07:38:43:  27000000 
+INFO  @ Sat, 06 Jul 2024 07:39:03:  28000000 
+INFO  @ Sat, 06 Jul 2024 07:39:23:  29000000 
+INFO  @ Sat, 06 Jul 2024 07:39:35:  30000000 
+INFO  @ Sat, 06 Jul 2024 07:39:43:  31000000 
+INFO  @ Sat, 06 Jul 2024 07:39:50:  32000000 
+INFO  @ Sat, 06 Jul 2024 07:39:54:  33000000 
+INFO  @ Sat, 06 Jul 2024 07:39:58:  34000000 
+INFO  @ Sat, 06 Jul 2024 07:40:02:  35000000 
+INFO  @ Sat, 06 Jul 2024 07:40:06:  36000000 
+INFO  @ Sat, 06 Jul 2024 07:40:10:  37000000 
+INFO  @ Sat, 06 Jul 2024 07:40:14:  38000000 
+INFO  @ Sat, 06 Jul 2024 07:40:18:  39000000 
+INFO  @ Sat, 06 Jul 2024 07:40:21:  40000000 
+INFO  @ Sat, 06 Jul 2024 07:40:25:  41000000 
+INFO  @ Sat, 06 Jul 2024 07:40:29:  42000000 
+INFO  @ Sat, 06 Jul 2024 07:40:33:  43000000 
+INFO  @ Sat, 06 Jul 2024 07:40:37:  44000000 
+INFO  @ Sat, 06 Jul 2024 07:40:41:  45000000 
+INFO  @ Sat, 06 Jul 2024 07:40:45:  46000000 
+INFO  @ Sat, 06 Jul 2024 07:40:49:  47000000 
+INFO  @ Sat, 06 Jul 2024 07:40:53:  48000000 
+INFO  @ Sat, 06 Jul 2024 07:40:57:  49000000 
+INFO  @ Sat, 06 Jul 2024 07:41:01:  50000000 
+INFO  @ Sat, 06 Jul 2024 07:41:05:  51000000 
+INFO  @ Sat, 06 Jul 2024 07:41:08:  52000000 
+INFO  @ Sat, 06 Jul 2024 07:41:12:  53000000 
+INFO  @ Sat, 06 Jul 2024 07:41:16:  54000000 
+INFO  @ Sat, 06 Jul 2024 07:41:20:  55000000 
+INFO  @ Sat, 06 Jul 2024 07:41:24:  56000000 
+INFO  @ Sat, 06 Jul 2024 07:41:28:  57000000 
+INFO  @ Sat, 06 Jul 2024 07:41:31:  58000000 
+INFO  @ Sat, 06 Jul 2024 07:41:36:  59000000 
+INFO  @ Sat, 06 Jul 2024 07:41:43:  60000000 
+INFO  @ Sat, 06 Jul 2024 07:41:49:  61000000 
+INFO  @ Sat, 06 Jul 2024 07:41:53:  62000000 
+INFO  @ Sat, 06 Jul 2024 07:42:01:  63000000 
+INFO  @ Sat, 06 Jul 2024 07:42:08:  64000000 
+INFO  @ Sat, 06 Jul 2024 07:42:24: 64628173 reads have been read. 
+INFO  @ Sat, 06 Jul 2024 07:42:24: #1 tag size is determined as 68 bps 
+INFO  @ Sat, 06 Jul 2024 07:42:24: #1 tag size = 68.0 
+INFO  @ Sat, 06 Jul 2024 07:42:24: #1  total tags in treatment: 64628173 
+INFO  @ Sat, 06 Jul 2024 07:42:24: #1 user defined the maximum tags... 
+INFO  @ Sat, 06 Jul 2024 07:42:24: #1 filter out redundant tags at the same location and the same strand by allowing at most 1 tag(s) 
+INFO  @ Sat, 06 Jul 2024 07:42:25: #1  tags after filtering in treatment: 44744751 
+INFO  @ Sat, 06 Jul 2024 07:42:25: #1  Redundant rate of treatment: 0.31 
+INFO  @ Sat, 06 Jul 2024 07:42:25: #1 finished! 
+INFO  @ Sat, 06 Jul 2024 07:42:25: #2 Build Peak Model... 
+INFO  @ Sat, 06 Jul 2024 07:42:25: #2 looking for paired plus/minus strand peaks... 
+INFO  @ Sat, 06 Jul 2024 07:42:38: #2 number of paired peaks: 67068 
+INFO  @ Sat, 06 Jul 2024 07:42:38: start model_add_line... 
+INFO  @ Sat, 06 Jul 2024 07:42:42: start X-correlation... 
+INFO  @ Sat, 06 Jul 2024 07:42:42: end of X-cor 
+INFO  @ Sat, 06 Jul 2024 07:42:42: #2 finished! 
+INFO  @ Sat, 06 Jul 2024 07:42:42: #2 predicted fragment length is 69 bps 
+INFO  @ Sat, 06 Jul 2024 07:42:42: #2 alternative fragment length(s) may be 69 bps 
+INFO  @ Sat, 06 Jul 2024 07:42:42: #2.2 Generate R script for model : results/macs2/P022/P022_model.r 
+WARNING @ Sat, 06 Jul 2024 07:42:42: #2 Since the d (69) calculated from paired-peaks are smaller than 2*tag length, it may be influenced by unknown sequencing problem! 
+WARNING @ Sat, 06 Jul 2024 07:42:42: #2 You may need to consider one of the other alternative d(s): 69 
+WARNING @ Sat, 06 Jul 2024 07:42:42: #2 You can restart the process with --nomodel --extsize XXX with your choice or an arbitrary number. Nontheless, MACS will continute computing. 
+INFO  @ Sat, 06 Jul 2024 07:42:42: #3 Call peaks... 
+INFO  @ Sat, 06 Jul 2024 07:42:42: #3 Pre-compute pvalue-qvalue table... 
+INFO  @ Sat, 06 Jul 2024 07:51:22: #3 Call peaks for each chromosome... 
+INFO  @ Sat, 06 Jul 2024 07:53:22: #4 Write output xls file... results/macs2/P022/P022_peaks.xls 
+INFO  @ Sat, 06 Jul 2024 07:53:23: #4 Write peak in narrowPeak format file... results/macs2/P022/P022_peaks.narrowPeak 
+INFO  @ Sat, 06 Jul 2024 07:53:23: #4 Write summits bed file... results/macs2/P022/P022_summits.bed 
+INFO  @ Sat, 06 Jul 2024 07:53:23: Done! 

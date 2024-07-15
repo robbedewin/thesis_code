@@ -58,7 +58,7 @@ rule STAR_Fusion:
     shell:
         """
         mkdir -p {output.dir}
-        singularity exec -e -B `pwd` -B {params.genome_lib_dir} -B {output.dir} \
+        singularity exec -e -B `pwd` -B {params.genome_lib_dir} -B /staging/leuven/stg_00096/home/rdewin/RNA/{output.dir} \
         {params.singularity_image} \
          STAR-Fusion \
             --left_fq {input.r1} \

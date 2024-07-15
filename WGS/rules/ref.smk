@@ -119,6 +119,27 @@ rule germline_resource_chr:
         # tabix -p vcf {output.vcf_chr}
         """
 
+rule filter_gnomad_vcf:
+    input:
+        vcf_chr="resources/gnomad_chr.vcf.gz"
+    output:
+        filtered_vcf="resources/filtered_gnomad.vcf.gz"
+    shell:
+        """
+        bcftools view -i 'INFO/AF>0.01 & INFO/AF<=0.2' -m2 -M2 -v snps {input.vcf_chr} -Oz -o {output.filtered_vcf}
+        bcftools index -t {output.filtered_vcf}
+        """
+
+rule create_interval_list:
+    input:
+        filtered_vcf="resources/filtered_gnomad.vcf.gz"
+    output:
+        interval_list="resources/filtered_gnomad.interval_list"
+    shell:
+        """
+        bcftools query -f'%CHROM\t%POS0\t%POS\t%ID\n' {input.filtered_vcf} > {output.interval_list}
+        """
+
 # Downloads the T2T-CHM13 exclusion regions BED file
 rule get_exclude_regions:
     output:
@@ -127,6 +148,22 @@ rule get_exclude_regions:
         """
         gdown --id 1p8qGWHzv8ayud1g_Vx9QDYhprlbWWjKD -O {output.exclusion_bed}
         """
+#Downloaded from https://drive.google.com/drive/folders/1sF9m8Y3eZouTZ3IEEywjs2kfHOWFBSJT 
+
+
+# Downloads the ClinVar database for variant interpretation
+rule get_clinvar:
+    output:
+        vcf="resources/clinvar.vcf.gz",
+    log:
+        "logs/reference/get_clinvar.log"
+    shell:
+        """
+        wget -O {output.vcf} https://s3-us-west-2.amazonaws.com/human-pangenomics/T2T/CHM13/assemblies/annotation/liftover/chm13v2.0_ClinVar20220313.vcf.gz
+        tabix -p vcf {output.vcf}
+        &> {log}
+        """
+
 
 # Downloads the T2T-CHM13 chain files for liftover from GRCh38 and GRCh37
 rule get_chain:
@@ -170,4 +207,35 @@ rule gridss_pon:
         """
         wget -O {output} "https://nextcloud.hartwigmedicalfoundation.nl/s/LTiKTd8XxBqwaiC/download?path=%2FHMFTools-Resources%2FDNA-Resources&files=hmf_pipeline_resources.38_v5.31.gz"
         tar -xvzf {output} -C resources/gridss
+        """
+
+#Get the download link from the website https://www.openbioinformatics.org/annovar/annovar_download_form.php
+rule get_annovar:
+    output:
+        directory("resources/annovar")
+    shell:
+        """
+        wget -O annovar.tar.gz http://www.openbioinformatics.org/annovar/download/0wgxR2rIVP/annovar.latest.tar.gz
+        mkdir -p {output}
+        tar -xvzf annovar.tar.gz -C {output} --strip-components 1
+        rm annovar.tar.gz
+        """
+
+rule download_databases:
+    input:
+        annovar_dir="resources/annovar"
+    output:
+        touch("resources/annovar_humandb_download_complete")
+    shell:
+        """
+        mkdir -p {input.annovar_dir}/humandb
+        #{input.annovar_dir}/annotate_variation.pl -buildver hs1 -downdb -webfrom annovar refGene {input.annovar_dir}/humandb || true
+        #{input.annovar_dir}/annotate_variation.pl -buildver hs1 -downdb -webfrom annovar cytoBand {input.annovar_dir}/humandb
+        {input.annovar_dir}/annotate_variation.pl -buildver hs1 -downdb -webfrom annovar gnomad_genome {input.annovar_dir}/humandb
+        
+        # Additional steps for generating FASTA files
+        {input.annovar_dir}/annotate_variation.pl --buildver hs1 --downdb seq {input.annovar_dir}/humandb/hs1_seq
+        {input.annovar_dir}/retrieve_seq_from_fasta.pl {input.annovar_dir}/humandb/hs1_refGene.txt -seqdir {input.annovar_dir}/humandb/hs1_seq -format refGene -outfile {input.annovar_dir}/humandb/hs1_refGeneMrna.fa
+        
+        touch {output}
         """

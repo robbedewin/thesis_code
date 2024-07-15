@@ -1,61 +1,61 @@
 Using GATK jar /lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gatk4-4.5.0.0-0/gatk-package-4.5.0.0-local.jar
 Running:
     java -Dsamjdk.use_async_io_read_samtools=false -Dsamjdk.use_async_io_write_samtools=true -Dsamjdk.use_async_io_write_tribble=false -Dsamjdk.compression_level=2 -jar /lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gatk4-4.5.0.0-0/gatk-package-4.5.0.0-local.jar GenomicsDBImport -R resources/genome.fa -L resources/whole_genome.intervals --genomicsdb-workspace-path results/mutect2/pon/pon_db --sample-name-map results/mutect2/pon/sample_map
-18:59:53.152 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gatk4-4.5.0.0-0/gatk-package-4.5.0.0-local.jar!/com/intel/gkl/native/libgkl_compression.so
-18:59:53.398 INFO  GenomicsDBImport - ------------------------------------------------------------
-18:59:53.400 INFO  GenomicsDBImport - The Genome Analysis Toolkit (GATK) v4.5.0.0
-18:59:53.400 INFO  GenomicsDBImport - For support and documentation go to https://software.broadinstitute.org/gatk/
-18:59:53.400 INFO  GenomicsDBImport - Executing as vsc35407@i28l07 on Linux v4.18.0-513.9.1.el8_9.x86_64 amd64
-18:59:53.401 INFO  GenomicsDBImport - Java runtime: OpenJDK 64-Bit Server VM v17.0.10-internal+0-adhoc..src
-18:59:53.401 INFO  GenomicsDBImport - Start Date/Time: April 7, 2024 at 6:59:53 PM CEST
-18:59:53.401 INFO  GenomicsDBImport - ------------------------------------------------------------
-18:59:53.401 INFO  GenomicsDBImport - ------------------------------------------------------------
-18:59:53.402 INFO  GenomicsDBImport - HTSJDK Version: 4.1.0
-18:59:53.402 INFO  GenomicsDBImport - Picard Version: 3.1.1
-18:59:53.402 INFO  GenomicsDBImport - Built for Spark Version: 3.5.0
-18:59:53.402 INFO  GenomicsDBImport - HTSJDK Defaults.COMPRESSION_LEVEL : 2
-18:59:53.402 INFO  GenomicsDBImport - HTSJDK Defaults.USE_ASYNC_IO_READ_FOR_SAMTOOLS : false
-18:59:53.402 INFO  GenomicsDBImport - HTSJDK Defaults.USE_ASYNC_IO_WRITE_FOR_SAMTOOLS : true
-18:59:53.402 INFO  GenomicsDBImport - HTSJDK Defaults.USE_ASYNC_IO_WRITE_FOR_TRIBBLE : false
-18:59:53.402 INFO  GenomicsDBImport - Deflater: IntelDeflater
-18:59:53.403 INFO  GenomicsDBImport - Inflater: IntelInflater
-18:59:53.403 INFO  GenomicsDBImport - GCS max retries/reopens: 20
-18:59:53.403 INFO  GenomicsDBImport - Requester pays: disabled
-18:59:53.403 INFO  GenomicsDBImport - Initializing engine
-18:59:53.772 INFO  IntervalArgumentCollection - Processing 3117292070 bp from intervals
-18:59:53.832 INFO  GenomicsDBImport - Done initializing engine
-18:59:54.080 INFO  GenomicsDBLibLoader - GenomicsDB native library version : 1.5.1-84e800e
-18:59:54.083 INFO  GenomicsDBImport - Vid Map JSON file will be written to /lustre1/project/stg_00096/home/rdewin/WGS/results/mutect2/pon/pon_db/vidmap.json
-18:59:54.083 INFO  GenomicsDBImport - Callset Map JSON file will be written to /lustre1/project/stg_00096/home/rdewin/WGS/results/mutect2/pon/pon_db/callset.json
-18:59:54.083 INFO  GenomicsDBImport - Complete VCF Header will be written to /lustre1/project/stg_00096/home/rdewin/WGS/results/mutect2/pon/pon_db/vcfheader.vcf
-18:59:54.083 INFO  GenomicsDBImport - Importing to workspace - /lustre1/project/stg_00096/home/rdewin/WGS/results/mutect2/pon/pon_db
-18:59:56.211 INFO  GenomicsDBImport - Importing batch 1 with 10 samples
-19:02:50.648 INFO  GenomicsDBImport - Importing batch 1 with 10 samples
-19:05:41.683 INFO  GenomicsDBImport - Importing batch 1 with 10 samples
-19:08:10.246 INFO  GenomicsDBImport - Importing batch 1 with 10 samples
-19:10:38.350 INFO  GenomicsDBImport - Importing batch 1 with 10 samples
-19:12:50.586 INFO  GenomicsDBImport - Importing batch 1 with 10 samples
-19:15:07.866 INFO  GenomicsDBImport - Importing batch 1 with 10 samples
-19:17:12.014 INFO  GenomicsDBImport - Importing batch 1 with 10 samples
-19:18:59.571 INFO  GenomicsDBImport - Importing batch 1 with 10 samples
-19:20:52.079 INFO  GenomicsDBImport - Importing batch 1 with 10 samples
-19:22:39.222 INFO  GenomicsDBImport - Importing batch 1 with 10 samples
-19:24:18.702 INFO  GenomicsDBImport - Importing batch 1 with 10 samples
-19:25:58.742 INFO  GenomicsDBImport - Importing batch 1 with 10 samples
-19:27:19.878 INFO  GenomicsDBImport - Importing batch 1 with 10 samples
-19:28:43.883 INFO  GenomicsDBImport - Importing batch 1 with 10 samples
-19:29:58.638 INFO  GenomicsDBImport - Importing batch 1 with 10 samples
-19:31:05.646 INFO  GenomicsDBImport - Importing batch 1 with 10 samples
-19:32:11.898 INFO  GenomicsDBImport - Importing batch 1 with 10 samples
-19:33:11.143 INFO  GenomicsDBImport - Importing batch 1 with 10 samples
-19:34:08.882 INFO  GenomicsDBImport - Importing batch 1 with 10 samples
-19:35:03.283 INFO  GenomicsDBImport - Importing batch 1 with 10 samples
-19:35:44.818 INFO  GenomicsDBImport - Importing batch 1 with 10 samples
-19:36:34.919 INFO  GenomicsDBImport - Importing batch 1 with 10 samples
-19:37:35.213 INFO  GenomicsDBImport - Importing batch 1 with 10 samples
-19:37:40.454 INFO  GenomicsDBImport - Importing batch 1 with 10 samples
-19:37:41.216 INFO  GenomicsDBImport - Done importing batch 1/1
-19:37:41.218 INFO  GenomicsDBImport - Import completed!
-19:37:41.218 INFO  GenomicsDBImport - Shutting down engine
-[April 7, 2024 at 7:37:41 PM CEST] org.broadinstitute.hellbender.tools.genomicsdb.GenomicsDBImport done. Elapsed time: 37.80 minutes.
-Runtime.totalMemory()=1442840576
+21:19:22.833 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gatk4-4.5.0.0-0/gatk-package-4.5.0.0-local.jar!/com/intel/gkl/native/libgkl_compression.so
+21:19:23.058 INFO  GenomicsDBImport - ------------------------------------------------------------
+21:19:23.060 INFO  GenomicsDBImport - The Genome Analysis Toolkit (GATK) v4.5.0.0
+21:19:23.061 INFO  GenomicsDBImport - For support and documentation go to https://software.broadinstitute.org/gatk/
+21:19:23.061 INFO  GenomicsDBImport - Executing as vsc35407@g28l15 on Linux v4.18.0-513.24.1.el8_9.x86_64 amd64
+21:19:23.061 INFO  GenomicsDBImport - Java runtime: OpenJDK 64-Bit Server VM v17.0.10-internal+0-adhoc..src
+21:19:23.061 INFO  GenomicsDBImport - Start Date/Time: June 27, 2024 at 9:19:22 PM CEST
+21:19:23.061 INFO  GenomicsDBImport - ------------------------------------------------------------
+21:19:23.061 INFO  GenomicsDBImport - ------------------------------------------------------------
+21:19:23.062 INFO  GenomicsDBImport - HTSJDK Version: 4.1.0
+21:19:23.062 INFO  GenomicsDBImport - Picard Version: 3.1.1
+21:19:23.062 INFO  GenomicsDBImport - Built for Spark Version: 3.5.0
+21:19:23.062 INFO  GenomicsDBImport - HTSJDK Defaults.COMPRESSION_LEVEL : 2
+21:19:23.062 INFO  GenomicsDBImport - HTSJDK Defaults.USE_ASYNC_IO_READ_FOR_SAMTOOLS : false
+21:19:23.062 INFO  GenomicsDBImport - HTSJDK Defaults.USE_ASYNC_IO_WRITE_FOR_SAMTOOLS : true
+21:19:23.063 INFO  GenomicsDBImport - HTSJDK Defaults.USE_ASYNC_IO_WRITE_FOR_TRIBBLE : false
+21:19:23.063 INFO  GenomicsDBImport - Deflater: IntelDeflater
+21:19:23.063 INFO  GenomicsDBImport - Inflater: IntelInflater
+21:19:23.063 INFO  GenomicsDBImport - GCS max retries/reopens: 20
+21:19:23.063 INFO  GenomicsDBImport - Requester pays: disabled
+21:19:23.063 INFO  GenomicsDBImport - Initializing engine
+21:19:23.555 INFO  IntervalArgumentCollection - Processing 3117292070 bp from intervals
+21:19:23.576 INFO  GenomicsDBImport - Done initializing engine
+21:19:23.814 INFO  GenomicsDBLibLoader - GenomicsDB native library version : 1.5.1-84e800e
+21:19:23.816 INFO  GenomicsDBImport - Vid Map JSON file will be written to /lustre1/project/stg_00096/home/rdewin/WGS/results/mutect2/pon/pon_db/vidmap.json
+21:19:23.816 INFO  GenomicsDBImport - Callset Map JSON file will be written to /lustre1/project/stg_00096/home/rdewin/WGS/results/mutect2/pon/pon_db/callset.json
+21:19:23.816 INFO  GenomicsDBImport - Complete VCF Header will be written to /lustre1/project/stg_00096/home/rdewin/WGS/results/mutect2/pon/pon_db/vcfheader.vcf
+21:19:23.816 INFO  GenomicsDBImport - Importing to workspace - /lustre1/project/stg_00096/home/rdewin/WGS/results/mutect2/pon/pon_db
+21:19:30.754 INFO  GenomicsDBImport - Importing batch 1 with 34 samples
+21:29:18.419 INFO  GenomicsDBImport - Importing batch 1 with 34 samples
+21:38:43.118 INFO  GenomicsDBImport - Importing batch 1 with 34 samples
+21:46:55.340 INFO  GenomicsDBImport - Importing batch 1 with 34 samples
+21:55:07.068 INFO  GenomicsDBImport - Importing batch 1 with 34 samples
+22:02:28.535 INFO  GenomicsDBImport - Importing batch 1 with 34 samples
+22:10:20.255 INFO  GenomicsDBImport - Importing batch 1 with 34 samples
+22:17:24.213 INFO  GenomicsDBImport - Importing batch 1 with 34 samples
+22:23:29.453 INFO  GenomicsDBImport - Importing batch 1 with 34 samples
+22:29:55.869 INFO  GenomicsDBImport - Importing batch 1 with 34 samples
+22:35:52.944 INFO  GenomicsDBImport - Importing batch 1 with 34 samples
+22:41:30.323 INFO  GenomicsDBImport - Importing batch 1 with 34 samples
+22:47:06.479 INFO  GenomicsDBImport - Importing batch 1 with 34 samples
+22:51:35.559 INFO  GenomicsDBImport - Importing batch 1 with 34 samples
+22:56:21.775 INFO  GenomicsDBImport - Importing batch 1 with 34 samples
+23:00:22.034 INFO  GenomicsDBImport - Importing batch 1 with 34 samples
+23:04:00.333 INFO  GenomicsDBImport - Importing batch 1 with 34 samples
+23:07:32.711 INFO  GenomicsDBImport - Importing batch 1 with 34 samples
+23:10:41.726 INFO  GenomicsDBImport - Importing batch 1 with 34 samples
+23:13:46.752 INFO  GenomicsDBImport - Importing batch 1 with 34 samples
+23:16:45.990 INFO  GenomicsDBImport - Importing batch 1 with 34 samples
+23:19:06.326 INFO  GenomicsDBImport - Importing batch 1 with 34 samples
+23:21:52.940 INFO  GenomicsDBImport - Importing batch 1 with 34 samples
+23:24:46.831 INFO  GenomicsDBImport - Importing batch 1 with 34 samples
+23:25:01.399 INFO  GenomicsDBImport - Importing batch 1 with 34 samples
+23:25:02.556 INFO  GenomicsDBImport - Done importing batch 1/1
+23:25:02.557 INFO  GenomicsDBImport - Import completed!
+23:25:02.557 INFO  GenomicsDBImport - Shutting down engine
+[June 27, 2024 at 11:25:02 PM CEST] org.broadinstitute.hellbender.tools.genomicsdb.GenomicsDBImport done. Elapsed time: 125.66 minutes.
+Runtime.totalMemory()=4479516672

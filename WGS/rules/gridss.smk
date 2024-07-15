@@ -114,3 +114,16 @@ rule gridss_somatic_filter:
         mv {output.high_and_low_confidence_somatic}.bgz {output.high_and_low_confidence_somatic}
         mv {output.high_and_low_confidence_somatic}.bgz.tbi {output.high_and_low_confidence_somatic}.tbi
         """
+
+rule unzip_bgz_files:
+    input:
+        high_confidence_somatic="results/gridss/{sample}/{sample}_high_confidence_somatic.vcf.bgz",
+        high_and_low_confidence_somatic="results/gridss/{sample}/{sample}_high_and_low_confidence_somatic.vcf.bgz",
+    output:
+        high_confidence_somatic="results/gridss/{sample}/{sample}_high_confidence_somatic.vcf",
+        high_and_low_confidence_somatic="results/gridss/{sample}/{sample}_high_and_low_confidence_somatic.vcf",
+    shell:
+        """
+        bgzip -d -c {input.high_confidence_somatic} > {output.high_confidence_somatic}
+        bgzip -d -c {input.high_and_low_confidence_somatic} > {output.high_and_low_confidence_somatic}
+        """

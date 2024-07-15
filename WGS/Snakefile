@@ -21,6 +21,7 @@ include: "rules/ref.smk"
 include: "rules/qc.smk"
 include: "rules/mapping.smk"
 #include: "rules/touch.smk"
+include: "rules/annotation.smk"
 include: "rules/ascat.smk"
 include: "rules/mutect2.smk"
 include: "rules/structural_variation.smk"
@@ -31,6 +32,7 @@ include: "rules/svaba.smk"
 
 old_samples= ["P013", "P016", "P018", "P019", "P020", "P022", "P023", "P024", "P026", "P028"]
 new_samples = sorted(list(set(unique_samples) - set(old_samples)))
+caller_filtering = ["mutect_pass_variants", "gridss_high_confidence_somatic", "svaba_somatic_sv"]
 
 rule all:
     input:
@@ -39,17 +41,17 @@ rule all:
         # #deduplication
         # expand("results/mapped_reads/{sample}/{sample}_dna_{alias}.marked.bam", sample=new_samples, alias=unique_aliases),
         #Final step of mapping recalibration (table and applying) (only this file will be held)
-        expand("results/recal/{sample}/{sample}_dna_{alias}_recal.bam", sample=unique_samples, alias=unique_aliases),
+        #expand("results/recal/{sample}/{sample}_dna_{alias}_recal.bam", sample=unique_samples, alias=unique_aliases),
         # #mulitqc report (fastqc, samtools_(idx)stats, duplication_metrics)
-        "results/qc/multiqc_test.html",
+        #"results/qc/multiqc_test.html",
         #ascat
-        expand("results/ascat/{sample}/", sample=unique_samples),
+        #expand("results/ascat/{sample}/", sample=unique_samples),
         # #mutect2 PON
         # "results/mutect2/pon/mutect2.pon.vcf.gz",
         # #mutect2
         # expand("results/mutect2/{sample}/{sample}_variants.vcf", sample=unique_samples),
         # #mutect2 filtering and PASS variants
-        # expand("results/mutect2/{sample}/{sample}_pass_variants.vcf", sample=unique_samples),
+        expand("results/mutect2/{sample}/{sample}_pass_variants.vcf", sample=unique_samples),
         # #mutect2 liftover and annotation
         # expand("results/mutect2/{sample}/{sample}_pass_variants_lifted.vcf", sample=unique_samples),
         # expand("results/mutect2/{sample}/{sample}_annotated_lifted_variants.maf", sample=unique_samples),
@@ -61,5 +63,12 @@ rule all:
         # expand("results/gridss/{sample}/{sample}_all_calls.vcf", sample=unique_samples),
         # #gridss filtering
         # expand("results/gridss/{sample}/{sample}_high_confidence_somatic.vcf.bgz", sample=unique_samples),
+        # expand("results/gridss/{sample}/{sample}_high_confidence_somatic.vcf", sample=unique_samples),
         # #expand("results/svaba/{sample}/{sample}_svaba.somatic.sv.vcf", sample=unique_samples),
-        
+        # Annotation
+        #"resources/vep/cache/",
+        expand("results/vep/{sample}/{sample}_mutect_pass_variants_annotated.vcf", sample=unique_samples),
+        expand("results/vep/{sample}/{sample}_gridss_high_confidence_somatic_annotated.vcf", sample=unique_samples),
+        expand("results/vep/{sample}/{sample}_svaba_somatic_sv_annotated.vcf", sample=unique_samples),
+        # Maffiles
+        expand("results/vcf2maf/{sample}/{sample}_mutect_pass_variants_annotated.maf", sample=unique_samples, caller_filtering=caller_filtering),

@@ -52,7 +52,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1623378 reads in 285.635 CPU sec, 16.076 real sec
+	[0000][ M::mem_process_seqs] Processed 1623378 reads in 348.713 CPU sec, 19.990 real sec
 [0000] Calling mem_process_seqs.., task: 1
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000137, nseq: 1619314
@@ -69,7 +69,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1621360 reads in 290.062 CPU sec, 16.330 real sec
+	[0000][ M::mem_process_seqs] Processed 1621360 reads in 353.000 CPU sec, 19.948 real sec
 [0000] Calling mem_process_seqs.., task: 2
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000104, nseq: 1601754
@@ -86,7 +86,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1619314 reads in 295.728 CPU sec, 16.622 real sec
+	[0000][ M::mem_process_seqs] Processed 1619314 reads in 356.833 CPU sec, 20.172 real sec
 [0000] Calling mem_process_seqs.., task: 3
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000206, nseq: 1606158
@@ -103,7 +103,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1601754 reads in 290.336 CPU sec, 16.379 real sec
+	[0000][ M::mem_process_seqs] Processed 1601754 reads in 356.725 CPU sec, 20.151 real sec
 [0000] Calling mem_process_seqs.., task: 4
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000210, nseq: 1612434
@@ -120,7 +120,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1606158 reads in 287.286 CPU sec, 16.175 real sec
+	[0000][ M::mem_process_seqs] Processed 1606158 reads in 355.022 CPU sec, 20.064 real sec
 [0000] Calling mem_process_seqs.., task: 5
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000056, nseq: 1606836
@@ -137,7 +137,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1612434 reads in 293.011 CPU sec, 16.575 real sec
+	[0000][ M::mem_process_seqs] Processed 1612434 reads in 356.640 CPU sec, 20.161 real sec
 [0000] Calling mem_process_seqs.., task: 6
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000191, nseq: 1604158
@@ -154,7 +154,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1606836 reads in 286.511 CPU sec, 16.151 real sec
+	[0000][ M::mem_process_seqs] Processed 1606836 reads in 353.610 CPU sec, 19.996 real sec
 [0000] Calling mem_process_seqs.., task: 7
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000271, nseq: 1607140
@@ -171,7 +171,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1604158 reads in 293.186 CPU sec, 16.520 real sec
+	[0000][ M::mem_process_seqs] Processed 1604158 reads in 354.421 CPU sec, 20.034 real sec
 [0000] Calling mem_process_seqs.., task: 8
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000214, nseq: 1616128
@@ -188,7 +188,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1607140 reads in 290.828 CPU sec, 16.370 real sec
+	[0000][ M::mem_process_seqs] Processed 1607140 reads in 355.822 CPU sec, 20.112 real sec
 [0000] Calling mem_process_seqs.., task: 9
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000044, nseq: 1625514
@@ -205,7 +205,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1616128 reads in 288.762 CPU sec, 16.244 real sec
+	[0000][ M::mem_process_seqs] Processed 1616128 reads in 352.241 CPU sec, 19.905 real sec
 [0000] Reallocating initial memory allocations!!
 [0000] Calling mem_process_seqs.., task: 10
 [0000] 1. Calling kt_for - worker_bwt
@@ -223,7 +223,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1625514 reads in 294.361 CPU sec, 16.503 real sec
+	[0000][ M::mem_process_seqs] Processed 1625514 reads in 353.586 CPU sec, 19.916 real sec
 [0000] Calling mem_process_seqs.., task: 11
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000067, nseq: 1606972
@@ -240,7 +240,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1610650 reads in 289.901 CPU sec, 16.304 real sec
+	[0000][ M::mem_process_seqs] Processed 1610650 reads in 355.176 CPU sec, 20.088 real sec
 [0000] Calling mem_process_seqs.., task: 12
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000228, nseq: 1605668
@@ -257,7 +257,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1606972 reads in 290.248 CPU sec, 16.318 real sec
+	[0000][ M::mem_process_seqs] Processed 1606972 reads in 355.460 CPU sec, 20.080 real sec
 [0000] Calling mem_process_seqs.., task: 13
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000028, nseq: 1616606
@@ -274,7 +274,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1605668 reads in 291.032 CPU sec, 16.378 real sec
+	[0000][ M::mem_process_seqs] Processed 1605668 reads in 355.202 CPU sec, 20.117 real sec
 [0000] Calling mem_process_seqs.., task: 14
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000223, nseq: 1625802
@@ -291,7 +291,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1616606 reads in 290.009 CPU sec, 16.289 real sec
+	[0000][ M::mem_process_seqs] Processed 1616606 reads in 355.025 CPU sec, 20.068 real sec
 [0000] Reallocating initial memory allocations!!
 [0000] Calling mem_process_seqs.., task: 15
 [0000] 1. Calling kt_for - worker_bwt
@@ -309,7 +309,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1625802 reads in 288.220 CPU sec, 16.167 real sec
+	[0000][ M::mem_process_seqs] Processed 1625802 reads in 351.323 CPU sec, 19.799 real sec
 [0000] Calling mem_process_seqs.., task: 16
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000047, nseq: 1605764
@@ -326,7 +326,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1625150 reads in 290.376 CPU sec, 16.376 real sec
+	[0000][ M::mem_process_seqs] Processed 1625150 reads in 355.188 CPU sec, 20.067 real sec
 [0000] Calling mem_process_seqs.., task: 17
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000009, nseq: 1606982
@@ -343,7 +343,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1605764 reads in 288.741 CPU sec, 16.264 real sec
+	[0000][ M::mem_process_seqs] Processed 1605764 reads in 353.532 CPU sec, 20.001 real sec
 [0000] Calling mem_process_seqs.., task: 18
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000024, nseq: 1608944
@@ -360,7 +360,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1606982 reads in 291.756 CPU sec, 16.420 real sec
+	[0000][ M::mem_process_seqs] Processed 1606982 reads in 355.306 CPU sec, 20.065 real sec
 [0000] Calling mem_process_seqs.., task: 19
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000294, nseq: 1624458
@@ -377,7 +377,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1608944 reads in 290.252 CPU sec, 16.341 real sec
+	[0000][ M::mem_process_seqs] Processed 1608944 reads in 355.439 CPU sec, 20.099 real sec
 [0000] Calling mem_process_seqs.., task: 20
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000215, nseq: 1628164
@@ -394,7 +394,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1624458 reads in 285.734 CPU sec, 16.055 real sec
+	[0000][ M::mem_process_seqs] Processed 1624458 reads in 353.187 CPU sec, 19.964 real sec
 [0000] Reallocating initial memory allocations!!
 [0000] Calling mem_process_seqs.., task: 21
 [0000] 1. Calling kt_for - worker_bwt
@@ -412,7 +412,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1628164 reads in 286.277 CPU sec, 16.039 real sec
+	[0000][ M::mem_process_seqs] Processed 1628164 reads in 352.620 CPU sec, 19.895 real sec
 [0000] Calling mem_process_seqs.., task: 22
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000063, nseq: 1608520
@@ -429,7 +429,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1612418 reads in 287.023 CPU sec, 16.146 real sec
+	[0000][ M::mem_process_seqs] Processed 1612418 reads in 353.496 CPU sec, 19.979 real sec
 [0000] Calling mem_process_seqs.., task: 23
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000114, nseq: 1608356
@@ -446,7 +446,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1608520 reads in 284.462 CPU sec, 15.961 real sec
+	[0000][ M::mem_process_seqs] Processed 1608520 reads in 351.376 CPU sec, 19.856 real sec
 [0000] Calling mem_process_seqs.., task: 24
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000081, nseq: 1616302
@@ -463,7 +463,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1608356 reads in 289.342 CPU sec, 16.287 real sec
+	[0000][ M::mem_process_seqs] Processed 1608356 reads in 356.737 CPU sec, 20.147 real sec
 [0000] Calling mem_process_seqs.., task: 25
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000107, nseq: 1626226
@@ -480,7 +480,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1616302 reads in 282.984 CPU sec, 15.917 real sec
+	[0000][ M::mem_process_seqs] Processed 1616302 reads in 348.801 CPU sec, 19.715 real sec
 [0000] Calling mem_process_seqs.., task: 26
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000095, nseq: 1627474
@@ -497,7 +497,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1626226 reads in 285.836 CPU sec, 16.030 real sec
+	[0000][ M::mem_process_seqs] Processed 1626226 reads in 353.025 CPU sec, 19.938 real sec
 [0000] Calling mem_process_seqs.., task: 27
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000085, nseq: 1592718
@@ -514,7 +514,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1627474 reads in 287.444 CPU sec, 16.170 real sec
+	[0000][ M::mem_process_seqs] Processed 1627474 reads in 353.031 CPU sec, 19.953 real sec
 [0000] Calling mem_process_seqs.., task: 28
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000130, nseq: 1613210
@@ -531,7 +531,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1592718 reads in 286.770 CPU sec, 16.091 real sec
+	[0000][ M::mem_process_seqs] Processed 1592718 reads in 354.268 CPU sec, 20.039 real sec
 [0000] Calling mem_process_seqs.., task: 29
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000153, nseq: 1626518
@@ -548,7 +548,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1613210 reads in 287.006 CPU sec, 16.135 real sec
+	[0000][ M::mem_process_seqs] Processed 1613210 reads in 354.157 CPU sec, 20.013 real sec
 [0000] Calling mem_process_seqs.., task: 30
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000283, nseq: 1640594
@@ -565,7 +565,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1626518 reads in 284.492 CPU sec, 15.947 real sec
+	[0000][ M::mem_process_seqs] Processed 1626518 reads in 352.727 CPU sec, 19.926 real sec
 [0000] Reallocating initial memory allocations!!
 [0000] Calling mem_process_seqs.., task: 31
 [0000] 1. Calling kt_for - worker_bwt
@@ -583,7 +583,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1640594 reads in 286.369 CPU sec, 16.031 real sec
+	[0000][ M::mem_process_seqs] Processed 1640594 reads in 353.933 CPU sec, 19.994 real sec
 [0000] Calling mem_process_seqs.., task: 32
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000103, nseq: 1622152
@@ -600,7 +600,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1637620 reads in 284.382 CPU sec, 15.958 real sec
+	[0000][ M::mem_process_seqs] Processed 1637620 reads in 354.288 CPU sec, 20.020 real sec
 [0000] Calling mem_process_seqs.., task: 33
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000106, nseq: 1585618
@@ -617,7 +617,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1622152 reads in 289.332 CPU sec, 16.214 real sec
+	[0000][ M::mem_process_seqs] Processed 1622152 reads in 358.402 CPU sec, 20.233 real sec
 [0000] Calling mem_process_seqs.., task: 34
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000121, nseq: 1573738
@@ -634,7 +634,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1585618 reads in 304.163 CPU sec, 17.071 real sec
+	[0000][ M::mem_process_seqs] Processed 1585618 reads in 376.470 CPU sec, 21.265 real sec
 [0000] Calling mem_process_seqs.., task: 35
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000059, nseq: 1605462
@@ -651,7 +651,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1573738 reads in 309.384 CPU sec, 17.383 real sec
+	[0000][ M::mem_process_seqs] Processed 1573738 reads in 381.539 CPU sec, 21.527 real sec
 [0000] Calling mem_process_seqs.., task: 36
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000139, nseq: 1618950
@@ -668,7 +668,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1605462 reads in 294.577 CPU sec, 16.521 real sec
+	[0000][ M::mem_process_seqs] Processed 1605462 reads in 365.717 CPU sec, 20.668 real sec
 [0000] Calling mem_process_seqs.., task: 37
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000068, nseq: 1605276
@@ -685,7 +685,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1618950 reads in 290.021 CPU sec, 16.268 real sec
+	[0000][ M::mem_process_seqs] Processed 1618950 reads in 358.784 CPU sec, 20.285 real sec
 [0000] Calling mem_process_seqs.., task: 38
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000190, nseq: 1581970
@@ -702,7 +702,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1605276 reads in 291.039 CPU sec, 16.339 real sec
+	[0000][ M::mem_process_seqs] Processed 1605276 reads in 360.726 CPU sec, 20.394 real sec
 [0000] Calling mem_process_seqs.., task: 39
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000001, nseq: 1568912
@@ -719,7 +719,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1581970 reads in 294.112 CPU sec, 16.510 real sec
+	[0000][ M::mem_process_seqs] Processed 1581970 reads in 361.913 CPU sec, 20.459 real sec
 [0000] Calling mem_process_seqs.., task: 40
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000237, nseq: 1589434
@@ -736,7 +736,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1568912 reads in 296.596 CPU sec, 16.637 real sec
+	[0000][ M::mem_process_seqs] Processed 1568912 reads in 366.760 CPU sec, 20.717 real sec
 [0000] Calling mem_process_seqs.., task: 41
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000071, nseq: 1600504
@@ -753,7 +753,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1589434 reads in 290.545 CPU sec, 16.291 real sec
+	[0000][ M::mem_process_seqs] Processed 1589434 reads in 359.345 CPU sec, 20.300 real sec
 [0000] Calling mem_process_seqs.., task: 42
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000080, nseq: 1601958
@@ -770,7 +770,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1600504 reads in 289.553 CPU sec, 16.238 real sec
+	[0000][ M::mem_process_seqs] Processed 1600504 reads in 357.358 CPU sec, 20.203 real sec
 [0000] Calling mem_process_seqs.., task: 43
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000255, nseq: 1588948
@@ -787,7 +787,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1601958 reads in 293.505 CPU sec, 16.517 real sec
+	[0000][ M::mem_process_seqs] Processed 1601958 reads in 358.633 CPU sec, 20.270 real sec
 [0000] Calling mem_process_seqs.., task: 44
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000105, nseq: 1575892
@@ -804,7 +804,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1588948 reads in 290.629 CPU sec, 16.300 real sec
+	[0000][ M::mem_process_seqs] Processed 1588948 reads in 358.776 CPU sec, 20.281 real sec
 [0000] Calling mem_process_seqs.., task: 45
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000181, nseq: 1587648
@@ -821,7 +821,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1575892 reads in 296.743 CPU sec, 16.669 real sec
+	[0000][ M::mem_process_seqs] Processed 1575892 reads in 365.791 CPU sec, 20.684 real sec
 [0000] Calling mem_process_seqs.., task: 46
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000038, nseq: 1602374
@@ -838,7 +838,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1587648 reads in 290.807 CPU sec, 16.311 real sec
+	[0000][ M::mem_process_seqs] Processed 1587648 reads in 360.127 CPU sec, 20.353 real sec
 [0000] Calling mem_process_seqs.., task: 47
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000201, nseq: 1607508
@@ -855,7 +855,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1602374 reads in 287.163 CPU sec, 16.096 real sec
+	[0000][ M::mem_process_seqs] Processed 1602374 reads in 357.214 CPU sec, 20.198 real sec
 [0000] Calling mem_process_seqs.., task: 48
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000299, nseq: 1592406
@@ -872,7 +872,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1607508 reads in 289.916 CPU sec, 16.277 real sec
+	[0000][ M::mem_process_seqs] Processed 1607508 reads in 360.191 CPU sec, 20.348 real sec
 [0000] Calling mem_process_seqs.., task: 49
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000258, nseq: 1584538
@@ -889,7 +889,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1592406 reads in 287.651 CPU sec, 16.167 real sec
+	[0000][ M::mem_process_seqs] Processed 1592406 reads in 356.664 CPU sec, 20.166 real sec
 [0000] Calling mem_process_seqs.., task: 50
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000086, nseq: 1584984
@@ -906,7 +906,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1584538 reads in 290.358 CPU sec, 16.282 real sec
+	[0000][ M::mem_process_seqs] Processed 1584538 reads in 358.556 CPU sec, 20.263 real sec
 [0000] Calling mem_process_seqs.., task: 51
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000195, nseq: 1602210
@@ -923,7 +923,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1584984 reads in 291.348 CPU sec, 16.357 real sec
+	[0000][ M::mem_process_seqs] Processed 1584984 reads in 361.219 CPU sec, 20.406 real sec
 [0000] Calling mem_process_seqs.., task: 52
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000086, nseq: 1605734
@@ -940,7 +940,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1602210 reads in 286.891 CPU sec, 16.090 real sec
+	[0000][ M::mem_process_seqs] Processed 1602210 reads in 356.337 CPU sec, 20.121 real sec
 [0000] Calling mem_process_seqs.., task: 53
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000290, nseq: 1600896
@@ -957,7 +957,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1605734 reads in 287.108 CPU sec, 16.157 real sec
+	[0000][ M::mem_process_seqs] Processed 1605734 reads in 355.928 CPU sec, 20.121 real sec
 [0000] Calling mem_process_seqs.., task: 54
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000257, nseq: 1590076
@@ -974,7 +974,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1600896 reads in 288.038 CPU sec, 16.170 real sec
+	[0000][ M::mem_process_seqs] Processed 1600896 reads in 357.508 CPU sec, 20.193 real sec
 [0000] Calling mem_process_seqs.., task: 55
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000135, nseq: 1576784
@@ -991,7 +991,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1590076 reads in 289.924 CPU sec, 16.275 real sec
+	[0000][ M::mem_process_seqs] Processed 1590076 reads in 359.550 CPU sec, 20.336 real sec
 [0000] Calling mem_process_seqs.., task: 56
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000279, nseq: 1593998
@@ -1008,7 +1008,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1576784 reads in 292.986 CPU sec, 16.429 real sec
+	[0000][ M::mem_process_seqs] Processed 1576784 reads in 363.420 CPU sec, 20.537 real sec
 [0000] Calling mem_process_seqs.., task: 57
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000060, nseq: 1604748
@@ -1025,7 +1025,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1593998 reads in 289.189 CPU sec, 16.237 real sec
+	[0000][ M::mem_process_seqs] Processed 1593998 reads in 358.007 CPU sec, 20.256 real sec
 [0000] Calling mem_process_seqs.., task: 58
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000159, nseq: 1606178
@@ -1042,7 +1042,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1604748 reads in 290.716 CPU sec, 16.307 real sec
+	[0000][ M::mem_process_seqs] Processed 1604748 reads in 361.729 CPU sec, 20.433 real sec
 [0000] Calling mem_process_seqs.., task: 59
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000070, nseq: 1605436
@@ -1059,7 +1059,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1606178 reads in 290.451 CPU sec, 16.278 real sec
+	[0000][ M::mem_process_seqs] Processed 1606178 reads in 360.593 CPU sec, 20.377 real sec
 [0000] Calling mem_process_seqs.., task: 60
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000100, nseq: 1576280
@@ -1076,7 +1076,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1605436 reads in 292.647 CPU sec, 16.417 real sec
+	[0000][ M::mem_process_seqs] Processed 1605436 reads in 359.820 CPU sec, 20.339 real sec
 [0000] Calling mem_process_seqs.., task: 61
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000098, nseq: 1595220
@@ -1093,7 +1093,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1576280 reads in 302.283 CPU sec, 16.969 real sec
+	[0000][ M::mem_process_seqs] Processed 1576280 reads in 373.591 CPU sec, 21.072 real sec
 [0000] Calling mem_process_seqs.., task: 62
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000239, nseq: 1616962
@@ -1110,7 +1110,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1595220 reads in 291.425 CPU sec, 16.330 real sec
+	[0000][ M::mem_process_seqs] Processed 1595220 reads in 362.527 CPU sec, 20.463 real sec
 [0000] Calling mem_process_seqs.., task: 63
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000288, nseq: 1622310
@@ -1127,7 +1127,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1616962 reads in 287.772 CPU sec, 16.168 real sec
+	[0000][ M::mem_process_seqs] Processed 1616962 reads in 358.078 CPU sec, 20.239 real sec
 [0000] Calling mem_process_seqs.., task: 64
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000010, nseq: 1583578
@@ -1144,7 +1144,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1622310 reads in 289.790 CPU sec, 16.258 real sec
+	[0000][ M::mem_process_seqs] Processed 1622310 reads in 360.263 CPU sec, 20.378 real sec
 [0000] Calling mem_process_seqs.., task: 65
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000078, nseq: 1572786
@@ -1161,7 +1161,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1583578 reads in 281.810 CPU sec, 15.808 real sec
+	[0000][ M::mem_process_seqs] Processed 1583578 reads in 349.722 CPU sec, 19.765 real sec
 [0000] Calling mem_process_seqs.., task: 66
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000011, nseq: 1581094
@@ -1178,7 +1178,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1572786 reads in 282.314 CPU sec, 15.905 real sec
+	[0000][ M::mem_process_seqs] Processed 1572786 reads in 350.269 CPU sec, 19.804 real sec
 [0000] Calling mem_process_seqs.., task: 67
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000176, nseq: 1567956
@@ -1195,7 +1195,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1581094 reads in 280.900 CPU sec, 15.745 real sec
+	[0000][ M::mem_process_seqs] Processed 1581094 reads in 349.238 CPU sec, 19.735 real sec
 [0000] Calling mem_process_seqs.., task: 68
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000210, nseq: 1552930
@@ -1212,7 +1212,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1567956 reads in 292.962 CPU sec, 16.438 real sec
+	[0000][ M::mem_process_seqs] Processed 1567956 reads in 364.368 CPU sec, 20.575 real sec
 [0000] Calling mem_process_seqs.., task: 69
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 180000151, nseq: 1558860
@@ -1229,7 +1229,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1552930 reads in 288.157 CPU sec, 16.196 real sec
+	[0000][ M::mem_process_seqs] Processed 1552930 reads in 357.418 CPU sec, 20.193 real sec
 [0000] Calling mem_process_seqs.., task: 70
 [0000] 1. Calling kt_for - worker_bwt
 [0000] read_chunk: 180000000, work_chunk_size: 22358159, nseq: 195794
@@ -1246,7 +1246,7 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
-	[0000][ M::mem_process_seqs] Processed 1558860 reads in 288.608 CPU sec, 16.284 real sec
+	[0000][ M::mem_process_seqs] Processed 1558860 reads in 358.156 CPU sec, 20.401 real sec
 [0000] Calling mem_process_seqs.., task: 71
 [0000] 1. Calling kt_for - worker_bwt
 [0000] 2. Calling kt_for - worker_aln
@@ -1261,36 +1261,36 @@ Executing in AVX512 mode!!
 [0000][PE] skip orientation RF as there are not enough pairs
 [0000][PE] skip orientation RR as there are not enough pairs
 [0000] 3. Calling kt_for - worker_sam
+	[0000][ M::mem_process_seqs] Processed 195794 reads in 48.101 CPU sec, 2.772 real sec
 [0000] read_chunk: 180000000, work_chunk_size: 0, nseq: 0
-	[0000][ M::mem_process_seqs] Processed 195794 reads in 38.233 CPU sec, 2.143 real sec
 [0000] read_chunk: 180000000, work_chunk_size: 0, nseq: 0
 [0000] Computation ends..
 No. of OMP threads: 18
-Processor is running @2400.157906 MHz
+Processor is running @2400.205452 MHz
 Runtime profile:
 
-	Time taken for main_mem function: 1166.31 sec
+	Time taken for main_mem function: 1470.96 sec
 
 	IO times (sec) :
-	Reading IO time (reads) avg: 78.24, (78.24, 78.24)
-	Writing IO time (SAM) avg: 126.37, (126.37, 126.37)
-	Reading IO time (Reference Genome) avg: 1.86, (1.86, 1.86)
-	Index read time avg: 3.53, (3.53, 3.53)
+	Reading IO time (reads) avg: 171.31, (171.31, 171.31)
+	Writing IO time (SAM) avg: 249.43, (249.43, 249.43)
+	Reading IO time (Reference Genome) avg: 10.84, (10.84, 10.84)
+	Index read time avg: 18.04, (18.04, 18.04)
 
 	Overall time (sec) (Excluding Index reading time):
-	PROCESS() (Total compute time + (read + SAM) IO time) : 1160.84
-	MEM_PROCESS_SEQ() (Total compute time (Kernel + SAM)), avg: 1158.55, (1158.55, 1158.55)
+	PROCESS() (Total compute time + (read + SAM) IO time) : 1441.77
+	MEM_PROCESS_SEQ() (Total compute time (Kernel + SAM)), avg: 1437.28, (1437.28, 1437.28)
 
 	 SAM Processing time (sec):
-	--WORKER_SAM avg: 378.36, (378.36, 378.36)
+	--WORKER_SAM avg: 527.40, (527.40, 527.40)
 
 	Kernels' compute time (sec):
-	Total kernel (smem+sal+bsw) time avg: 767.78, (767.78, 767.78)
-		SMEM compute avg: 287.63, (288.46, 286.92)
-		SAL compute avg: 104.97, (105.32, 104.61)
-				MEM_SA avg: 51.17, (51.27, 51.04)
+	Total kernel (smem+sal+bsw) time avg: 896.83, (896.83, 896.83)
+		SMEM compute avg: 308.51, (309.00, 308.11)
+		SAL compute avg: 135.91, (136.27, 135.67)
+				MEM_SA avg: 59.19, (59.38, 58.89)
 
-		BSW time, avg: 269.27, (269.43, 269.02)
+		BSW time, avg: 300.01, (300.26, 299.86)
 
 Important parameter settings: 
 	BATCH_SIZE: 512

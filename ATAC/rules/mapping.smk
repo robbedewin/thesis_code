@@ -15,26 +15,26 @@ rule trim_atac_reads:
               -j {output.json} -h {output.html} &> {log.fastp_log}
         """
 
-rule minimap2:
-    input:
-        r1="results/fastp/{sample}/{sample}_atac_R1.trimmed.fq",
-        r2="results/fastp/{sample}/{sample}_atac_R2.trimmed.fq",
-        reference_index="resources/genome.mmi"
-    output:
-        sam="results/minimap2/{sample}/{sample}_aligned.sam"
-    params:
-        preset="-ax sr", #'sr' for short reads
-        extra="", 
-    threads: 8 
-    log:
-        "logs/minimap2/{sample}_minimap2.log"
-    shell:
-        """
-        minimap2 {params.preset} {params.extra} \
-                 -t {threads} \
-                 {input.reference_index} {input.r1} {input.r2} > {output.sam} \
-                 2> {log}
-        """
+# rule minimap2:
+#     input:
+#         r1="results/fastp/{sample}/{sample}_atac_R1.trimmed.fq",
+#         r2="results/fastp/{sample}/{sample}_atac_R2.trimmed.fq",
+#         reference_index="resources/genome.mmi"
+#     output:
+#         sam="results/minimap2/{sample}/{sample}_aligned.sam"
+#     params:
+#         preset="-ax sr", #'sr' for short reads
+#         extra="", 
+#     threads: 8 
+#     log:
+#         "logs/minimap2/{sample}_minimap2.log"
+#     shell:
+#         """
+#         minimap2 {params.preset} {params.extra} \
+#                  -t {threads} \
+#                  {input.reference_index} {input.r1} {input.r2} > {output.sam} \
+#                  2> {log}
+#         """
 
 rule bwa_mem2:
     input:
@@ -43,7 +43,7 @@ rule bwa_mem2:
         ref_genome="resources/genome.fa",
         idx=multiext("resources/genome.fa", ".0123", ".amb", ".ann", ".bwt.2bit.64", ".pac"),
     output:
-        sam="results/bwamem2/{sample}/{sample}_aligned.sam"
+        sam=temp("results/bwamem2/{sample}/{sample}_aligned.sam"),
     params:
         extra="",  # Placeholder for any additional BWA-MEM2 parameters you might need
     threads: 18  # Adjust based on your system's resources
@@ -68,7 +68,7 @@ rule samtools_sort_index:
         sam="results/bwamem2/{sample}/{sample}_aligned.sam",
         genome="resources/genome.fa",
     output:
-        bam="results/samtools/{sample}/{sample}_atac.bam",
+        bam=protected("results/samtools/{sample}/{sample}_atac.bam"),
         csi="results/samtools/{sample}/{sample}_atac.bam.csi",
     log:
         sort_log="logs/samtools/{sample}/{sample}_sort.log",

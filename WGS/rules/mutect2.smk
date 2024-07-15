@@ -120,11 +120,11 @@ rule learn_read_orientation_model:
         # Create input files list
         echo {input.f1r2} | tr ' ' '\\n' | awk '{{print "-I "$$0}}' | paste -sd' ' > input_files.txt
 
-        # Execute GATK command
-        gatk LearnReadOrientationModel \
-             -I $(cat input_files.txt) \
+        # Execute GATK command with increased heap size
+        gatk --java-options "-Xmx500g" LearnReadOrientationModel \
+             $(cat input_files.txt) \
              -O {output.model} \
-             &> {log}
+             &>> {log}
 
         # Clean up temporary file
         rm input_files.txt
@@ -136,8 +136,7 @@ rule learn_read_orientation_model:
 rule get_pileup_summaries:
     input:
         bam="results/recal/{sample}/{sample}_dna_{alias}_recal.bam",
-        intervals="resources/whole_genome.intervals",
-        germline_resource="resources/gnomad_chr.vcf.gz",
+        germline_resource="resources/filtered_gnomad_chr.vcf.gz",
     output:
         summaries="results/mutect2/{sample}/{sample}_{alias}_pileup_summaries.table",
     log:
@@ -146,7 +145,7 @@ rule get_pileup_summaries:
         """
         gatk GetPileupSummaries \
              -I {input.bam} \
-             -L {input.intervals} \
+             -L {input.germline_resource} \
              -V {input.germline_resource} \
              -O {output.summaries} \
              &> {log}
@@ -202,7 +201,7 @@ rule select_pass_variants:
     input:
         vcf="results/mutect2/{sample}/{sample}_filtered_variants.vcf",
     output:
-        vcf="results/mutect2/{sample}/{sample}_pass_variants.vcf",
+        vcf="results/mutect2/{sample}/{sample}_pass_variants_new.vcf", #changed to pass_variants_new for fixed pileup_summaries to compare with the old pipeline
     log:
         "logs/mutect2/{sample}/{sample}_select_pass_variants.log",
     shell:
