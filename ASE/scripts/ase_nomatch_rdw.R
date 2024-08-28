@@ -141,7 +141,7 @@ combine_loci_nomatch_1 <- function(countsdir, sample_id, alias="tumor") {
 
 # Execute the function
 sample_id <- "P011"
-countsdir <- "/staging/leuven/stg_00096/home/rdewin/ASE/"
+countsdir <- "/staging/leuven/stg_00096/home/rdewin/ASE/results"
 combine_loci_nomatch_1(countsdir = countsdir, sample_id = sample_id)
 
 
