@@ -1,0 +1,53 @@
+Using GATK jar /lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gatk4-4.5.0.0-0/gatk-package-4.5.0.0-local.jar
+Running:
+    java -Dsamjdk.use_async_io_read_samtools=false -Dsamjdk.use_async_io_write_samtools=true -Dsamjdk.use_async_io_write_tribble=false -Dsamjdk.compression_level=2 -jar /lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gatk4-4.5.0.0-0/gatk-package-4.5.0.0-local.jar CalculateContamination -I results/mutect2/P011/P011_tumor_pileup_summaries.table -matched results/mutect2/P011/P011_normal_pileup_summaries.table -O results/mutect2/P011/P011_contamination.table
+15:10:39.901 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gatk4-4.5.0.0-0/gatk-package-4.5.0.0-local.jar!/com/intel/gkl/native/libgkl_compression.so
+15:10:40.043 INFO  CalculateContamination - ------------------------------------------------------------
+15:10:40.046 INFO  CalculateContamination - The Genome Analysis Toolkit (GATK) v4.5.0.0
+15:10:40.046 INFO  CalculateContamination - For support and documentation go to https://software.broadinstitute.org/gatk/
+15:10:40.046 INFO  CalculateContamination - Executing as vsc35407@g28l12 on Linux v4.18.0-513.24.1.el8_9.x86_64 amd64
+15:10:40.046 INFO  CalculateContamination - Java runtime: OpenJDK 64-Bit Server VM v17.0.10-internal+0-adhoc..src
+15:10:40.046 INFO  CalculateContamination - Start Date/Time: July 14, 2024 at 3:10:39 PM CEST
+15:10:40.047 INFO  CalculateContamination - ------------------------------------------------------------
+15:10:40.047 INFO  CalculateContamination - ------------------------------------------------------------
+15:10:40.047 INFO  CalculateContamination - HTSJDK Version: 4.1.0
+15:10:40.047 INFO  CalculateContamination - Picard Version: 3.1.1
+15:10:40.047 INFO  CalculateContamination - Built for Spark Version: 3.5.0
+15:10:40.048 INFO  CalculateContamination - HTSJDK Defaults.COMPRESSION_LEVEL : 2
+15:10:40.048 INFO  CalculateContamination - HTSJDK Defaults.USE_ASYNC_IO_READ_FOR_SAMTOOLS : false
+15:10:40.048 INFO  CalculateContamination - HTSJDK Defaults.USE_ASYNC_IO_WRITE_FOR_SAMTOOLS : true
+15:10:40.048 INFO  CalculateContamination - HTSJDK Defaults.USE_ASYNC_IO_WRITE_FOR_TRIBBLE : false
+15:10:40.048 INFO  CalculateContamination - Deflater: IntelDeflater
+15:10:40.048 INFO  CalculateContamination - Inflater: IntelInflater
+15:10:40.048 INFO  CalculateContamination - GCS max retries/reopens: 20
+15:10:40.049 INFO  CalculateContamination - Requester pays: disabled
+15:10:40.049 INFO  CalculateContamination - Initializing engine
+15:10:40.049 INFO  CalculateContamination - Done initializing engine
+15:11:03.138 INFO  KernelSegmenter - Found 5 changepoints after applying the changepoint penalty.
+15:11:04.364 INFO  KernelSegmenter - Found 5 changepoints after applying the changepoint penalty.
+15:11:05.129 INFO  KernelSegmenter - Found 6 changepoints after applying the changepoint penalty.
+15:11:06.117 INFO  KernelSegmenter - Found 2 changepoints after applying the changepoint penalty.
+15:11:07.369 INFO  KernelSegmenter - Found 6 changepoints after applying the changepoint penalty.
+15:11:08.596 INFO  KernelSegmenter - Found 2 changepoints after applying the changepoint penalty.
+15:11:09.101 INFO  KernelSegmenter - Found 3 changepoints after applying the changepoint penalty.
+15:11:09.922 INFO  KernelSegmenter - Found 8 changepoints after applying the changepoint penalty.
+15:11:11.152 INFO  KernelSegmenter - Found 8 changepoints after applying the changepoint penalty.
+15:11:11.694 INFO  KernelSegmenter - Found 5 changepoints after applying the changepoint penalty.
+15:11:12.342 INFO  KernelSegmenter - Found 6 changepoints after applying the changepoint penalty.
+15:11:13.431 INFO  KernelSegmenter - Found 6 changepoints after applying the changepoint penalty.
+15:11:14.428 INFO  KernelSegmenter - Found 3 changepoints after applying the changepoint penalty.
+15:11:15.898 INFO  KernelSegmenter - Found 4 changepoints after applying the changepoint penalty.
+15:11:16.771 INFO  KernelSegmenter - Found 7 changepoints after applying the changepoint penalty.
+15:11:17.971 INFO  KernelSegmenter - Found 6 changepoints after applying the changepoint penalty.
+15:11:18.626 INFO  KernelSegmenter - Found 5 changepoints after applying the changepoint penalty.
+15:11:19.117 INFO  KernelSegmenter - Found 0 changepoints after applying the changepoint penalty.
+15:11:19.571 INFO  KernelSegmenter - Found 6 changepoints after applying the changepoint penalty.
+15:11:20.093 INFO  KernelSegmenter - Found 5 changepoints after applying the changepoint penalty.
+15:11:20.600 INFO  KernelSegmenter - Found 2 changepoints after applying the changepoint penalty.
+15:11:21.148 INFO  KernelSegmenter - Found 9 changepoints after applying the changepoint penalty.
+15:11:21.640 INFO  KernelSegmenter - Found 4 changepoints after applying the changepoint penalty.
+15:21:23.197 INFO  CalculateContamination - Shutting down engine
+[July 14, 2024 at 3:21:23 PM CEST] org.broadinstitute.hellbender.tools.walkers.contamination.CalculateContamination done. Elapsed time: 10.72 minutes.
+Runtime.totalMemory()=6190792704
+Tool returned:
+SUCCESS

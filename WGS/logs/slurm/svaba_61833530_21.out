@@ -1,0 +1,17 @@
+SLURM_JOB_ID: 61833560
+SLURM_JOB_USER: vsc35407
+SLURM_JOB_ACCOUNT: lp_big_wice_cpu
+SLURM_JOB_NAME: svaba
+SLURM_CLUSTER_NAME: wice
+SLURM_JOB_PARTITION: dedicated_big_bigmem
+SLURM_ARRAY_JOB_ID: 61833530
+SLURM_ARRAY_TASK_ID: 21
+SLURM_NNODES: 1
+SLURM_NODELIST: g28l20
+SLURM_JOB_CPUS_PER_NODE: 8
+Date: Wed Jun 26 10:26:01 CEST 2024
+Walltime: 00-10:00:00
+========================================================================
+Wed Jun 26 10:26:01 CEST 2024
+Running SVABA on: P056
+Snakemake completed successfully for sample P056 at Wed Jun 26 12:56:15 CEST 2024

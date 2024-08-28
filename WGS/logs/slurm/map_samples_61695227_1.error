@@ -1,0 +1,143 @@
+Assuming unrestricted shared filesystem usage.
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 40
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job              count
+-------------  -------
+bwa_map              2
+samtools_sort        2
+trim_reads           2
+total                6
+
+Select jobs to execute...
+Execute 2 jobs...
+
+[Thu Jun 20 04:43:55 2024]
+localrule trim_reads:
+    input: /staging/leuven/stg_00096/home/rdewin/data/TALL_IF/TALL_IF/WGS/WGS_batch1/S176/S176_R01.fq.gz, /staging/leuven/stg_00096/home/rdewin/data/TALL_IF/TALL_IF/WGS/WGS_batch1/S176/S176_R02.fq.gz
+    output: results/fastp/P017/P017_dna_tumor_R1.trimmed.fq, results/fastp/P017/P017_dna_tumor_R2.trimmed.fq, logs/fastp/P017/P017_dna_tumor.fastp.html, logs/fastp/P017/P017_dna_tumor.fastp.json
+    log: logs/fastp/P017/P017_dna_tumor.fastp.log
+    jobid: 2
+    reason: Missing output files: results/fastp/P017/P017_dna_tumor_R1.trimmed.fq, results/fastp/P017/P017_dna_tumor_R2.trimmed.fq
+    wildcards: sample=P017, alias=tumor
+    resources: tmpdir=/tmp
+
+
+        fastp -w 12 -i /staging/leuven/stg_00096/home/rdewin/data/TALL_IF/TALL_IF/WGS/WGS_batch1/S176/S176_R01.fq.gz -I /staging/leuven/stg_00096/home/rdewin/data/TALL_IF/TALL_IF/WGS/WGS_batch1/S176/S176_R02.fq.gz               -o results/fastp/P017/P017_dna_tumor_R1.trimmed.fq -O results/fastp/P017/P017_dna_tumor_R2.trimmed.fq               -j logs/fastp/P017/P017_dna_tumor.fastp.json -h logs/fastp/P017/P017_dna_tumor.fastp.html &> logs/fastp/P017/P017_dna_tumor.fastp.log
+        
+
+[Thu Jun 20 04:43:56 2024]
+localrule trim_reads:
+    input: /staging/leuven/stg_00096/home/rdewin/data/TALL_IF/TALL_IF/RNAseq/fastq/batch1/R0049/NM5826_R0049_S3_R1_001.fastq.gz, /staging/leuven/stg_00096/home/rdewin/data/TALL_IF/TALL_IF/RNAseq/fastq/batch1/R0049/NM5826_R0049_S3_R2_001.fastq.gz
+    output: results/fastp/P017/P017_dna_normal_R1.trimmed.fq, results/fastp/P017/P017_dna_normal_R2.trimmed.fq, logs/fastp/P017/P017_dna_normal.fastp.html, logs/fastp/P017/P017_dna_normal.fastp.json
+    log: logs/fastp/P017/P017_dna_normal.fastp.log
+    jobid: 7
+    reason: Missing output files: results/fastp/P017/P017_dna_normal_R2.trimmed.fq, results/fastp/P017/P017_dna_normal_R1.trimmed.fq
+    wildcards: sample=P017, alias=normal
+    resources: tmpdir=/tmp
+
+
+        fastp -w 12 -i /staging/leuven/stg_00096/home/rdewin/data/TALL_IF/TALL_IF/RNAseq/fastq/batch1/R0049/NM5826_R0049_S3_R1_001.fastq.gz -I /staging/leuven/stg_00096/home/rdewin/data/TALL_IF/TALL_IF/RNAseq/fastq/batch1/R0049/NM5826_R0049_S3_R2_001.fastq.gz               -o results/fastp/P017/P017_dna_normal_R1.trimmed.fq -O results/fastp/P017/P017_dna_normal_R2.trimmed.fq               -j logs/fastp/P017/P017_dna_normal.fastp.json -h logs/fastp/P017/P017_dna_normal.fastp.html &> logs/fastp/P017/P017_dna_normal.fastp.log
+        
+[Thu Jun 20 04:44:55 2024]
+Finished job 7.
+1 of 6 steps (17%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Jun 20 04:44:55 2024]
+localrule bwa_map:
+    input: results/fastp/P017/P017_dna_normal_R1.trimmed.fq, results/fastp/P017/P017_dna_normal_R2.trimmed.fq, resources/genome.fa, resources/genome.fa.0123, resources/genome.fa.amb, resources/genome.fa.ann, resources/genome.fa.bwt.2bit.64, resources/genome.fa.pac
+    output: results/mapped_reads/P017/P017_dna_normal.sam
+    log: logs/mapped_reads/P017/P017_dna_normal.log.bwamem
+    jobid: 6
+    reason: Missing output files: results/mapped_reads/P017/P017_dna_normal.sam; Input files updated by another job: results/fastp/P017/P017_dna_normal_R2.trimmed.fq, results/fastp/P017/P017_dna_normal_R1.trimmed.fq
+    wildcards: sample=P017, alias=normal
+    threads: 18
+    resources: tmpdir=/tmp
+
+
+        read -r first_line < <(cat results/fastp/P017/P017_dna_normal_R1.trimmed.fq | head -n 1)
+        IFS=':' read -r -a rgdata <<< "$first_line"
+        FLOWCELLID=${rgdata[2]}
+        LANE=${rgdata[3]}
+        BC=${rgdata[-1]}
+        RG="@RG\tID:${FLOWCELLID}.${LANE}\tPL:ILLUMINA\tPU:${FLOWCELLID}.${LANE}.${BC}\tLB:LIB-P017_normal-1\tSM:P017_normal"
+
+        bwa-mem2 mem -o results/mapped_reads/P017/P017_dna_normal.sam -t 18 -R "$RG"         resources/genome.fa results/fastp/P017/P017_dna_normal_R1.trimmed.fq results/fastp/P017/P017_dna_normal_R2.trimmed.fq &> logs/mapped_reads/P017/P017_dna_normal.log.bwamem
+        
+[Thu Jun 20 04:55:25 2024]
+Finished job 2.
+2 of 6 steps (33%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Jun 20 04:55:25 2024]
+localrule bwa_map:
+    input: results/fastp/P017/P017_dna_tumor_R1.trimmed.fq, results/fastp/P017/P017_dna_tumor_R2.trimmed.fq, resources/genome.fa, resources/genome.fa.0123, resources/genome.fa.amb, resources/genome.fa.ann, resources/genome.fa.bwt.2bit.64, resources/genome.fa.pac
+    output: results/mapped_reads/P017/P017_dna_tumor.sam
+    log: logs/mapped_reads/P017/P017_dna_tumor.log.bwamem
+    jobid: 1
+    reason: Missing output files: results/mapped_reads/P017/P017_dna_tumor.sam; Input files updated by another job: results/fastp/P017/P017_dna_tumor_R1.trimmed.fq, results/fastp/P017/P017_dna_tumor_R2.trimmed.fq
+    wildcards: sample=P017, alias=tumor
+    threads: 18
+    resources: tmpdir=/tmp
+
+
+        read -r first_line < <(cat results/fastp/P017/P017_dna_tumor_R1.trimmed.fq | head -n 1)
+        IFS=':' read -r -a rgdata <<< "$first_line"
+        FLOWCELLID=${rgdata[2]}
+        LANE=${rgdata[3]}
+        BC=${rgdata[-1]}
+        RG="@RG\tID:${FLOWCELLID}.${LANE}\tPL:ILLUMINA\tPU:${FLOWCELLID}.${LANE}.${BC}\tLB:LIB-P017_tumor-1\tSM:P017_tumor"
+
+        bwa-mem2 mem -o results/mapped_reads/P017/P017_dna_tumor.sam -t 18 -R "$RG"         resources/genome.fa results/fastp/P017/P017_dna_tumor_R1.trimmed.fq results/fastp/P017/P017_dna_tumor_R2.trimmed.fq &> logs/mapped_reads/P017/P017_dna_tumor.log.bwamem
+        
+[Thu Jun 20 05:29:33 2024]
+Finished job 6.
+3 of 6 steps (50%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Jun 20 05:29:34 2024]
+localrule samtools_sort:
+    input: results/mapped_reads/P017/P017_dna_normal.sam, resources/genome.fa
+    output: results/mapped_reads/P017/P017_dna_normal.sorted.bam
+    log: logs/samtools/P017/P017_dna_normal_sort.log
+    jobid: 5
+    reason: Missing output files: results/mapped_reads/P017/P017_dna_normal.sorted.bam; Input files updated by another job: results/mapped_reads/P017/P017_dna_normal.sam
+    wildcards: sample=P017, alias=normal
+    resources: tmpdir=/tmp
+
+
+        samtools sort -@ 18 --write-index         -m 2G         --reference resources/genome.fa         -T sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}         -o results/mapped_reads/P017/P017_dna_normal.sorted.bam results/mapped_reads/P017/P017_dna_normal.sam &> logs/samtools/P017/P017_dna_normal_sort.log
+        
+[Thu Jun 20 05:32:53 2024]
+Finished job 5.
+4 of 6 steps (67%) done
+[Thu Jun 20 08:14:38 2024]
+Finished job 1.
+5 of 6 steps (83%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Jun 20 08:14:38 2024]
+localrule samtools_sort:
+    input: results/mapped_reads/P017/P017_dna_tumor.sam, resources/genome.fa
+    output: results/mapped_reads/P017/P017_dna_tumor.sorted.bam
+    log: logs/samtools/P017/P017_dna_tumor_sort.log
+    jobid: 0
+    reason: Missing output files: results/mapped_reads/P017/P017_dna_tumor.sorted.bam; Input files updated by another job: results/mapped_reads/P017/P017_dna_tumor.sam
+    wildcards: sample=P017, alias=tumor
+    resources: tmpdir=/tmp
+
+
+        samtools sort -@ 18 --write-index         -m 2G         --reference resources/genome.fa         -T sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}         -o results/mapped_reads/P017/P017_dna_tumor.sorted.bam results/mapped_reads/P017/P017_dna_tumor.sam &> logs/samtools/P017/P017_dna_tumor_sort.log
+        
+[Thu Jun 20 08:43:26 2024]
+Finished job 0.
+6 of 6 steps (100%) done
+Complete log: .snakemake/log/2024-06-20T044353.588516.snakemake.log

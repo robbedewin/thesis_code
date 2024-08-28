@@ -1,0 +1,53 @@
+Using working directory "results/gridss/wrk/P022/"
+Wed Jun 26 12:29:59 CEST 2024: Full log file is: results/gridss/wrk/P022/gridss.full.20240626_122959.i28l15.2516752.log
+Wed Jun 26 12:29:59 CEST 2024: Found /usr/bin/time
+Wed Jun 26 12:29:59 CEST 2024: Using GRIDSS jar /lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gridss-2.13.2-3/gridss.jar
+Wed Jun 26 12:29:59 CEST 2024: Using reference genome "resources/genome.fa"
+Wed Jun 26 12:29:59 CEST 2024: Using output VCF results/gridss/P022/P022_all_calls.vcf
+Wed Jun 26 12:29:59 CEST 2024: Using assembly bam results/gridss/P022/P022_all_calls.vcf.assembly.bam
+Wed Jun 26 12:29:59 CEST 2024: Using 8 worker threads.
+Wed Jun 26 12:29:59 CEST 2024: Using blacklist resources/T2T.excluderanges.bed
+Wed Jun 26 12:29:59 CEST 2024: Using JVM maximum heap size of 30g for assembly and variant calling.
+Wed Jun 26 12:29:59 CEST 2024: Using input file results/recal/P022/P022_dna_normal_recal.bam
+Wed Jun 26 12:29:59 CEST 2024: Using input file results/recal/P022/P022_dna_tumor_recal.bam
+Wed Jun 26 12:29:59 CEST 2024: Found /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/WGS/bin/Rscript
+Wed Jun 26 12:30:00 CEST 2024: Found /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/WGS/bin/samtools
+Wed Jun 26 12:30:00 CEST 2024: Found /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/WGS/bin/java
+Wed Jun 26 12:30:00 CEST 2024: Found /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/WGS/bin/bwa
+Wed Jun 26 12:30:00 CEST 2024: samtools version: 1.19+htslib-1.19.1
+Wed Jun 26 12:30:00 CEST 2024: R version: Rscript (R) version 4.3.3 (2024-02-29)
+Wed Jun 26 12:30:00 CEST 2024: bwa Version: 0.7.18-r1243-dirty
+Wed Jun 26 12:30:00 CEST 2024: time version: time (GNU Time) UNKNOWN
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+Written by David Keppel, David MacKenzie, and Assaf Gordon.
+Wed Jun 26 12:30:00 CEST 2024: bash version: GNU bash, version 4.4.20(1)-release (x86_64-redhat-linux-gnu)
+Wed Jun 26 12:30:01 CEST 2024: java version: openjdk version "17.0.10-internal" 2024-01-16	OpenJDK Runtime Environment (build 17.0.10-internal+0-adhoc..src)	OpenJDK 64-Bit Server VM (build 17.0.10-internal+0-adhoc..src, mixed mode, sharing)	
+Wed Jun 26 12:30:01 CEST 2024: Max file handles: 131072
+Wed Jun 26 12:30:01 CEST 2024: Running GRIDSS steps: setupreference, preprocess, assemble, call,
+Wed Jun 26 12:30:01 CEST 2024: Start pre-processing	results/recal/P022/P022_dna_normal_recal.bam
+Wed Jun 26 12:30:01 CEST 2024: Running	CollectGridssMetrics	results/recal/P022/P022_dna_normal_recal.bam	first 10000000 records
+Wed Jun 26 12:30:26 CEST 2024: Running	CollectGridssMetricsAndExtractSVReads|samtools	results/recal/P022/P022_dna_normal_recal.bam
+Wed Jun 26 12:38:33 CEST 2024: Running	ComputeSamTags|samtools	results/recal/P022/P022_dna_normal_recal.bam
+Wed Jun 26 12:41:09 CEST 2024: Skipping	SoftClipsToSplitReads	results/recal/P022/P022_dna_normal_recal.bam
+Wed Jun 26 12:41:09 CEST 2024: Complete pre-processing	results/recal/P022/P022_dna_normal_recal.bam
+Wed Jun 26 12:41:09 CEST 2024: Start pre-processing	results/recal/P022/P022_dna_tumor_recal.bam
+Wed Jun 26 12:41:09 CEST 2024: Running	CollectGridssMetrics	results/recal/P022/P022_dna_tumor_recal.bam	first 10000000 records
+Wed Jun 26 12:41:30 CEST 2024: Running	CollectGridssMetricsAndExtractSVReads|samtools	results/recal/P022/P022_dna_tumor_recal.bam
+Wed Jun 26 12:56:11 CEST 2024: Running	ComputeSamTags|samtools	results/recal/P022/P022_dna_tumor_recal.bam
+Wed Jun 26 13:02:20 CEST 2024: Skipping	SoftClipsToSplitReads	results/recal/P022/P022_dna_tumor_recal.bam
+Wed Jun 26 13:02:20 CEST 2024: Complete pre-processing	results/recal/P022/P022_dna_tumor_recal.bam
+Wed Jun 26 13:02:20 CEST 2024: Start assembly	results/gridss/P022/P022_all_calls.vcf.assembly.bam
+Wed Jun 26 13:02:20 CEST 2024: Running	AssembleBreakends	results/gridss/P022/P022_all_calls.vcf.assembly.bam	job 0	total jobs 1
+Wed Jun 26 13:23:03 CEST 2024: Running	CollectGridssMetrics	results/gridss/P022/P022_all_calls.vcf.assembly.bam
+Wed Jun 26 13:23:15 CEST 2024: Running	SoftClipsToSplitReads	results/gridss/P022/P022_all_calls.vcf.assembly.bam
+Wed Jun 26 13:26:04 CEST 2024: Complete assembly	results/gridss/P022/P022_all_calls.vcf.assembly.bam
+Wed Jun 26 13:26:04 CEST 2024: Start calling	results/gridss/P022/P022_all_calls.vcf
+Wed Jun 26 13:26:04 CEST 2024: Running	IdentifyVariants	results/gridss/P022/P022_all_calls.vcf
+Wed Jun 26 13:27:55 CEST 2024: Running	AnnotateVariants	results/gridss/P022/P022_all_calls.vcf
+Wed Jun 26 13:41:36 CEST 2024: Running	AnnotateInsertedSequence	results/gridss/P022/P022_all_calls.vcf
+Wed Jun 26 13:42:09 CEST 2024: Complete calling	results/gridss/P022/P022_all_calls.vcf
+Wed Jun 26 13:42:10 CEST 2024: Run complete with 79 warnings and 0 errors.

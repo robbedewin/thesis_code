@@ -1,0 +1,86 @@
+
+Attaching package: ‘Matrix’
+
+The following object is masked from ‘package:S4Vectors’:
+
+    expand
+
+The following objects are masked from ‘package:tidyr’:
+
+    expand, pack, unpack
+
+
+Attaching package: ‘MatrixGenerics’
+
+The following objects are masked from ‘package:matrixStats’:
+
+    colAlls, colAnyNAs, colAnys, colAvgsPerRowSet, colCollapse,
+    colCounts, colCummaxs, colCummins, colCumprods, colCumsums,
+    colDiffs, colIQRDiffs, colIQRs, colLogSumExps, colMadDiffs,
+    colMads, colMaxs, colMeans2, colMedians, colMins, colOrderStats,
+    colProds, colQuantiles, colRanges, colRanks, colSdDiffs, colSds,
+    colSums2, colTabulates, colVarDiffs, colVars, colWeightedMads,
+    colWeightedMeans, colWeightedMedians, colWeightedSds,
+    colWeightedVars, rowAlls, rowAnyNAs, rowAnys, rowAvgsPerColSet,
+    rowCollapse, rowCounts, rowCummaxs, rowCummins, rowCumprods,
+    rowCumsums, rowDiffs, rowIQRDiffs, rowIQRs, rowLogSumExps,
+    rowMadDiffs, rowMads, rowMaxs, rowMeans2, rowMedians, rowMins,
+    rowOrderStats, rowProds, rowQuantiles, rowRanges, rowRanks,
+    rowSdDiffs, rowSds, rowSums2, rowTabulates, rowVarDiffs, rowVars,
+    rowWeightedMads, rowWeightedMeans, rowWeightedMedians,
+    rowWeightedSds, rowWeightedVars
+
+
+Attaching package: ‘S4Arrays’
+
+The following object is masked from ‘package:abind’:
+
+    abind
+
+The following object is masked from ‘package:base’:
+
+    rowsum
+
+Test passed 😸
+Test passed 🌈
+Loading required package: BSgenome
+Loading required package: BiocIO
+
+Attaching package: ‘BiocIO’
+
+The following object is masked from ‘package:rtracklayer’:
+
+    FileForFormat
+
+2024-07-09 21:59:14.986167 Reading results/gridss/P029/P029_all_calls.vcf
+Tumour samples: P029_tumor
+Matched normals: P029_normal
+2024-07-09 22:00:50.328467 Parsing single breakends results/gridss/P029/P029_all_calls.vcf
+2024-07-09 22:01:01.71241 Calculating single breakend VAF results/gridss/P029/P029_all_calls.vcf
+2024-07-09 22:01:08.606135 Filtering single breakends results/gridss/P029/P029_all_calls.vcf
+2024-07-09 22:01:09.525067 Loading from cache  results/gridss/pondir//gridss_pon_single_breakend.bed.cached.parsed.rds
+2024-07-09 22:01:13.697318 Parsing breakpoints results/gridss/P029/P029_all_calls.vcf
+2024-07-09 22:01:18.258378 Calculating breakpoint VAF results/gridss/P029/P029_all_calls.vcf
+2024-07-09 22:01:20.311335 Filtering breakpoints results/gridss/P029/P029_all_calls.vcf
+2024-07-09 22:01:21.410887 Loading from cache  results/gridss/pondir//gridss_pon_breakpoint.bedpe.cached.parsed.rds
+Warning message:
+In .merge_two_Seqinfo_objects(x, y) :
+  The 2 combined objects have no sequence levels in common. (Use
+  suppressWarnings() to suppress this warning.)
+2024-07-09 22:01:30.734694 Calculating transitive links results/gridss/P029/P029_all_calls.vcf
+2024-07-09 22:01:35.700057 Calculating assembly links results/gridss/P029/P029_all_calls.vcf
+2024-07-09 22:01:36.596009 Calculating bebe insertion links results/gridss/P029/P029_all_calls.vcf
+2024-07-09 22:01:36.86868 Calculating bebp insertion links results/gridss/P029/P029_all_calls.vcf
+2024-07-09 22:01:37.027411 Calculating simple inversions results/gridss/P029/P029_all_calls.vcf
+2024-07-09 22:01:37.285132 Calculating dsb links results/gridss/P029/P029_all_calls.vcf
+2024-07-09 22:01:37.62604 Removing duplicated/conflicting links results/gridss/P029/P029_all_calls.vcf
+2024-07-09 22:01:37.990886 Calculating final linkage annotation results/gridss/P029/P029_all_calls.vcf
+Warning messages:
+1: In get_partner_anchor_sequence(gr, anchor_bases, bsgenome) :
+  Ignoring contigs not in reference genome:  chr1 Ignoring contigs not in reference genome:  chr2 Ignoring contigs not in reference genome:  chr3 Ignoring contigs not in reference genome:  chr4 Ignoring contigs not in reference genome:  chr5 Ignoring contigs not in reference genome:  chr6 Ignoring contigs not in reference genome:  chr7 Ignoring contigs not in reference genome:  chr8 Ignoring contigs not in reference genome:  chr9 Ignoring contigs not in reference genome:  chr10 Ignoring contigs not in reference genome:  chr11 Ignoring contigs not in reference genome:  chr12 Ignoring contigs not in reference genome:  chr13 Ignoring contigs not in reference genome:  chr14 Ignoring contigs not in reference genome:  chr15 Ignoring contigs not in reference genome:  chr16 Ignoring contigs not in reference genome:  chr17 Ignoring contigs not in reference genome:  chr18 Ignoring contigs not in reference genome:  chr19 Ignoring contigs not in reference genome:  chr20 Ignoring contigs not in refer [... truncated]
+2: In .merge_two_Seqinfo_objects(x, y) :
+  The 2 combined objects have no sequence levels in common. (Use
+  suppressWarnings() to suppress this warning.)
+2024-07-09 22:01:40.932868 Final qual filtering  results/gridss/P029/P029_high_confidence_somatic.vcf.bgz
+2024-07-09 22:01:41.331302 Writing  results/gridss/P029/P029_high_confidence_somatic.vcf.bgz
+2024-07-09 22:01:41.771342 Writing  results/gridss/P029/P029_high_and_low_confidence_somatic.vcf.bgz

@@ -1,0 +1,33 @@
+Assuming unrestricted shared filesystem usage.
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 8
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job              count
+-------------  -------
+gridss_normal        1
+total                1
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Jun 25 11:14:28 2024]
+localrule gridss_normal:
+    input: results/recal/P061/P061_dna_normal_recal.bam, resources/T2T.excluderanges.bed
+    output: results/gridss/normal/P061_normal.vcf, results/gridss/normal/P061_normal.assembly.bam
+    log: /staging/leuven/stg_00096/home/rdewin/WGS/logs/gridss/normal/P061_normal.log
+    jobid: 0
+    reason: Missing output files: results/gridss/normal/P061_normal.vcf
+    wildcards: sample=P061
+    threads: 8
+    resources: tmpdir=/tmp
+
+
+        gridss             --reference resources/genome.fa             --jar /lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gridss-2.13.2-3/gridss.jar             --output results/gridss/normal/P061_normal.vcf             --assembly results/gridss/normal/P061_normal.assembly.bam             --blacklist resources/T2T.excluderanges.bed             --threads 8             --workingdir results/gridss/temp/P061/             results/recal/P061/P061_dna_normal_recal.bam             &> /staging/leuven/stg_00096/home/rdewin/WGS/logs/gridss/normal/P061_normal.log
+        
+[Tue Jun 25 13:00:37 2024]
+Finished job 0.
+1 of 1 steps (100%) done
+Complete log: .snakemake/log/2024-06-25T111427.013253.snakemake.log

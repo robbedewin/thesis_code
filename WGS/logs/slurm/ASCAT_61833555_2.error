@@ -1,0 +1,219 @@
+Assuming unrestricted shared filesystem usage.
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 8
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job      count
+-----  -------
+ascat        1
+total        1
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Wed Jun 26 10:26:02 2024]
+localrule ascat:
+    input: results/recal/P016/P016_dna_tumor_recal.bam, results/recal/P016/P016_dna_normal_recal.bam
+    output: results/ascat/P016
+    log: logs/ascat/P016.log
+    jobid: 0
+    reason: Updated input files: results/recal/P016/P016_dna_tumor_recal.bam, results/recal/P016/P016_dna_normal_recal.bam
+    wildcards: sample=P016
+    threads: 8
+    resources: tmpdir=/tmp
+
+Loading required package: RColorBrewer
+Loading required package: splines
+Loading required package: data.table
+Loading required package: GenomicRanges
+Loading required package: stats4
+Loading required package: BiocGenerics
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, sd, var, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    Filter, Find, Map, Position, Reduce, anyDuplicated, aperm, append,
+    as.data.frame, basename, cbind, colnames, dirname, do.call,
+    duplicated, eval, evalq, get, grep, grepl, intersect, is.unsorted,
+    lapply, mapply, match, mget, order, paste, pmax, pmax.int, pmin,
+    pmin.int, rank, rbind, rownames, sapply, setdiff, sort, table,
+    tapply, union, unique, unsplit, which.max, which.min
+
+Loading required package: S4Vectors
+
+Attaching package: ‘S4Vectors’
+
+The following objects are masked from ‘package:data.table’:
+
+    first, second
+
+The following object is masked from ‘package:utils’:
+
+    findMatches
+
+The following objects are masked from ‘package:base’:
+
+    I, expand.grid, unname
+
+Loading required package: IRanges
+
+Attaching package: ‘IRanges’
+
+The following object is masked from ‘package:data.table’:
+
+    shift
+
+Loading required package: GenomeInfoDb
+Loading required package: parallel
+Loading required package: doParallel
+Loading required package: foreach
+Loading required package: iterators
+Reading locis
+Reading locis
+Reading locis
+Reading locis
+Reading locis
+Reading locis
+Reading locis
+Reading locis
+Done reading locis
+Multi pos start:
+Done reading locis
+Multi pos start:
+Done reading locis
+Multi pos start:
+Done reading locis
+Multi pos start:
+Done reading locis
+Multi pos start:
+Done reading locis
+Multi pos start:
+Done reading locis
+Multi pos start:
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Reading locis
+Reading locis
+Reading locis
+Reading locis
+Reading locis
+Reading locis
+Reading locis
+Done reading locis
+Multi pos start:
+Done reading locis
+Multi pos start:
+Done reading locis
+Multi pos start:
+Done reading locis
+Multi pos start:
+Done reading locis
+Multi pos start:
+Done reading locis
+Multi pos start:
+Done reading locis
+Multi pos start:
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+Reading locis
+Done reading locis
+Multi pos start:
+[Wed Jun 26 11:08:47 2024]
+Finished job 0.
+1 of 1 steps (100%) done
+Complete log: .snakemake/log/2024-06-26T102601.311281.snakemake.log

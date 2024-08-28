@@ -1,0 +1,8 @@
+units: config/units_matched_dna.tsv
+samples: config/samples_matched_dna.tsv
+
+#ASCAT
+allelecounter: /staging/leuven/stg_00096/software/alleleCount/4.0.0-GCCcore-6.4.0/bin/alleleCounter
+alleles_prefix: /staging/leuven/stg_00096/home/rdewin/projects/ascat/chm13/ReferenceFiles/allele_T2T_chr
+loci_prefix: /staging/leuven/stg_00096/home/rdewin/projects/ascat/chm13/ReferenceFiles/loci_T2T_chr
+GC_file: /staging/leuven/stg_00096/home/rdewin/projects/ascat/chm13/ReferenceFiles/GCcontent_SNPloci.txt

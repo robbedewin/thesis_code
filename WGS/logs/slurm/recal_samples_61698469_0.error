@@ -1,0 +1,46 @@
+Assuming unrestricted shared filesystem usage.
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 40
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job                 count
+----------------  -------
+apply_bqsr              2
+base_recal_table        2
+mark_duplicates         2
+samtools_index          2
+total                   8
+
+Select jobs to execute...
+Execute 2 jobs...
+
+[Thu Jun 20 22:46:16 2024]
+localrule mark_duplicates:
+    input: results/mapped_reads/P011/P011_dna_tumor.sorted.bam
+    output: results/mapped_reads/P011/P011_dna_tumor.marked.bam, results/qc/dedup/P011/P011_dna_tumor_duplication_metrics.txt
+    log: logs/picard/P011/P011_dna_tumor_markdup.log
+    jobid: 2
+    reason: Missing output files: results/mapped_reads/P011/P011_dna_tumor.marked.bam
+    wildcards: sample=P011, alias=tumor
+    resources: tmpdir=/tmp
+
+
+        picard MarkDuplicates             I=results/mapped_reads/P011/P011_dna_tumor.sorted.bam             O=results/mapped_reads/P011/P011_dna_tumor.marked.bam             M=results/qc/dedup/P011/P011_dna_tumor_duplication_metrics.txt             &> logs/picard/P011/P011_dna_tumor_markdup.log
+        
+
+[Thu Jun 20 22:46:16 2024]
+localrule mark_duplicates:
+    input: results/mapped_reads/P011/P011_dna_normal.sorted.bam
+    output: results/mapped_reads/P011/P011_dna_normal.marked.bam, results/qc/dedup/P011/P011_dna_normal_duplication_metrics.txt
+    log: logs/picard/P011/P011_dna_normal_markdup.log
+    jobid: 14
+    reason: Missing output files: results/mapped_reads/P011/P011_dna_normal.marked.bam
+    wildcards: sample=P011, alias=normal
+    resources: tmpdir=/tmp
+
+
+        picard MarkDuplicates             I=results/mapped_reads/P011/P011_dna_normal.sorted.bam             O=results/mapped_reads/P011/P011_dna_normal.marked.bam             M=results/qc/dedup/P011/P011_dna_normal_duplication_metrics.txt             &> logs/picard/P011/P011_dna_normal_markdup.log
+        
+slurmstepd: error: *** JOB 61698471 ON g28l15 CANCELLED AT 2024-06-20T23:10:34 ***

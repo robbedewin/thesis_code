@@ -1,0 +1,33 @@
+Using GATK jar /lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gatk4-4.5.0.0-0/gatk-package-4.5.0.0-local.jar
+Running:
+    java -Dsamjdk.use_async_io_read_samtools=false -Dsamjdk.use_async_io_write_samtools=true -Dsamjdk.use_async_io_write_tribble=false -Dsamjdk.compression_level=2 -jar /lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gatk4-4.5.0.0-0/gatk-package-4.5.0.0-local.jar SelectVariants -V results/mutect2/P062/P062_filtered_variants.vcf --exclude-filtered -O results/mutect2/P062/P062_pass_variants_new.vcf
+20:16:33.134 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gatk4-4.5.0.0-0/gatk-package-4.5.0.0-local.jar!/com/intel/gkl/native/libgkl_compression.so
+20:16:33.476 INFO  SelectVariants - ------------------------------------------------------------
+20:16:33.479 INFO  SelectVariants - The Genome Analysis Toolkit (GATK) v4.5.0.0
+20:16:33.479 INFO  SelectVariants - For support and documentation go to https://software.broadinstitute.org/gatk/
+20:16:33.481 INFO  SelectVariants - Executing as vsc35407@g28l22 on Linux v4.18.0-513.24.1.el8_9.x86_64 amd64
+20:16:33.481 INFO  SelectVariants - Java runtime: OpenJDK 64-Bit Server VM v17.0.10-internal+0-adhoc..src
+20:16:33.481 INFO  SelectVariants - Start Date/Time: July 14, 2024 at 8:16:32 PM CEST
+20:16:33.482 INFO  SelectVariants - ------------------------------------------------------------
+20:16:33.482 INFO  SelectVariants - ------------------------------------------------------------
+20:16:33.483 INFO  SelectVariants - HTSJDK Version: 4.1.0
+20:16:33.483 INFO  SelectVariants - Picard Version: 3.1.1
+20:16:33.483 INFO  SelectVariants - Built for Spark Version: 3.5.0
+20:16:33.483 INFO  SelectVariants - HTSJDK Defaults.COMPRESSION_LEVEL : 2
+20:16:33.484 INFO  SelectVariants - HTSJDK Defaults.USE_ASYNC_IO_READ_FOR_SAMTOOLS : false
+20:16:33.484 INFO  SelectVariants - HTSJDK Defaults.USE_ASYNC_IO_WRITE_FOR_SAMTOOLS : true
+20:16:33.485 INFO  SelectVariants - HTSJDK Defaults.USE_ASYNC_IO_WRITE_FOR_TRIBBLE : false
+20:16:33.485 INFO  SelectVariants - Deflater: IntelDeflater
+20:16:33.486 INFO  SelectVariants - Inflater: IntelInflater
+20:16:33.486 INFO  SelectVariants - GCS max retries/reopens: 20
+20:16:33.486 INFO  SelectVariants - Requester pays: disabled
+20:16:33.486 INFO  SelectVariants - Initializing engine
+20:16:33.644 INFO  FeatureManager - Using codec VCFCodec to read file file:///lustre1/project/stg_00096/home/rdewin/WGS/results/mutect2/P062/P062_filtered_variants.vcf
+20:16:33.979 INFO  SelectVariants - Done initializing engine
+20:16:34.070 INFO  ProgressMeter - Starting traversal
+20:16:34.073 INFO  ProgressMeter -        Current Locus  Elapsed Minutes    Variants Processed  Variants/Minute
+20:16:36.796 INFO  ProgressMeter -        chrY:21080580              0.0                150453        3320036.8
+20:16:36.796 INFO  ProgressMeter - Traversal complete. Processed 150453 total variants in 0.0 minutes.
+20:16:37.232 INFO  SelectVariants - Shutting down engine
+[July 14, 2024 at 8:16:37 PM CEST] org.broadinstitute.hellbender.tools.walkers.variantutils.SelectVariants done. Elapsed time: 0.07 minutes.
+Runtime.totalMemory()=1224736768

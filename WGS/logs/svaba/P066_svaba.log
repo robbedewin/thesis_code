@@ -1,0 +1,15 @@
+-----------------------------------------------------------
+---  Running svaba SV and indel detection on 8 threads ----
+---    (inspect *.log for real-time progress updates)   ---
+-----------------------------------------------------------
+[M::bwa_idx_load_from_disk] read 0 ALT contigs
+--- Loaded non-read data. Starting detection pipeline
+...vcf - reading in the breakpoints file
+...vcf sizeof empty VCFEntryPair 64 bytes 
+...read in 2,046,936 indels and 108,469 SVs 
+...vcf - deduplicating 108,469 events
+...dedupe at 0 of 108,469
+...hashing 2,046,936 indels for dedupe
+...done deduping indels
+...vcf - deduplicated down to 84,657 break pairs
+Done with SvABA

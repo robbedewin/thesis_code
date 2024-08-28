@@ -1,0 +1,60 @@
+Assuming unrestricted shared filesystem usage.
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 40
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job              count
+-------------  -------
+bwa_map              1
+samtools_sort        1
+total                2
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Fri Jun 21 10:43:07 2024]
+localrule bwa_map:
+    input: results/fastp/P061/P061_dna_tumor_R1.trimmed.fq, results/fastp/P061/P061_dna_tumor_R2.trimmed.fq, resources/genome.fa, resources/genome.fa.0123, resources/genome.fa.amb, resources/genome.fa.ann, resources/genome.fa.bwt.2bit.64, resources/genome.fa.pac
+    output: results/mapped_reads/P061/P061_dna_tumor.sam
+    log: logs/mapped_reads/P061/P061_dna_tumor.log.bwamem
+    jobid: 6
+    reason: Forced execution
+    wildcards: sample=P061, alias=tumor
+    threads: 18
+    resources: tmpdir=/tmp
+
+
+        read -r first_line < <(cat results/fastp/P061/P061_dna_tumor_R1.trimmed.fq | head -n 1)
+        IFS=':' read -r -a rgdata <<< "$first_line"
+        FLOWCELLID=${rgdata[2]}
+        LANE=${rgdata[3]}
+        BC=${rgdata[-1]}
+        RG="@RG\tID:${FLOWCELLID}.${LANE}\tPL:ILLUMINA\tPU:${FLOWCELLID}.${LANE}.${BC}\tLB:LIB-P061_tumor-1\tSM:P061_tumor"
+
+        bwa-mem2 mem -o results/mapped_reads/P061/P061_dna_tumor.sam -t 18 -R "$RG"         resources/genome.fa results/fastp/P061/P061_dna_tumor_R1.trimmed.fq results/fastp/P061/P061_dna_tumor_R2.trimmed.fq &> logs/mapped_reads/P061/P061_dna_tumor.log.bwamem
+        
+[Sat Jun 22 00:26:56 2024]
+Finished job 6.
+1 of 2 steps (50%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Sat Jun 22 00:26:56 2024]
+localrule samtools_sort:
+    input: results/mapped_reads/P061/P061_dna_tumor.sam, resources/genome.fa
+    output: results/mapped_reads/P061/P061_dna_tumor.sorted.bam
+    log: logs/samtools/P061/P061_dna_tumor_sort.log
+    jobid: 5
+    reason: Input files updated by another job: results/mapped_reads/P061/P061_dna_tumor.sam
+    wildcards: sample=P061, alias=tumor
+    resources: tmpdir=/tmp
+
+
+        samtools sort -@ 18 --write-index         -m 2G         --reference resources/genome.fa         -T sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}         -o results/mapped_reads/P061/P061_dna_tumor.sorted.bam results/mapped_reads/P061/P061_dna_tumor.sam &> logs/samtools/P061/P061_dna_tumor_sort.log
+        
+[Sat Jun 22 02:38:19 2024]
+Finished job 5.
+2 of 2 steps (100%) done
+Complete log: .snakemake/log/2024-06-21T104306.658590.snakemake.log

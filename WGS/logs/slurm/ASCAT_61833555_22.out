@@ -1,0 +1,17 @@
+SLURM_JOB_ID: 61833678
+SLURM_JOB_USER: vsc35407
+SLURM_JOB_ACCOUNT: lp_big_wice_cpu
+SLURM_JOB_NAME: ASCAT
+SLURM_CLUSTER_NAME: wice
+SLURM_JOB_PARTITION: dedicated_big_bigmem
+SLURM_ARRAY_JOB_ID: 61833555
+SLURM_ARRAY_TASK_ID: 22
+SLURM_NNODES: 1
+SLURM_NODELIST: g28l15
+SLURM_JOB_CPUS_PER_NODE: 8
+Date: Wed Jun 26 10:59:14 CEST 2024
+Walltime: 00-01:30:00
+========================================================================
+Wed Jun 26 10:59:15 CEST 2024
+Running ASCAT on: P057
+Snakemake completed successfully for sample P057 at Wed Jun 26 11:29:55 CEST 2024

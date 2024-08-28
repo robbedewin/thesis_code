@@ -1,0 +1,11 @@
+	/staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/RNA/bin/STAR-avx2 --runThreadN 14 --genomeDir resources/star_genome --readFilesIn results/fastp/P011/P011_rna_R1.trimmed.fq results/fastp/P011/P011_rna_R2.trimmed.fq --outFileNamePrefix results/star/P011/P011_ --outSAMtype BAM SortedByCoordinate --outSAMattributes NH HI AS NM MD --outSAMstrandField intronMotif --quantMode GeneCounts --twopassMode Basic
+	STAR version: 2.7.11a   compiled: 2023-09-15T02:58:53+0000 :/opt/conda/conda-bld/star_1694746407721/work/source
+Jul 06 09:06:18 ..... started STAR run
+Jul 06 09:06:18 ..... loading genome
+Jul 06 09:06:56 ..... started 1st pass mapping
+Jul 06 09:10:07 ..... finished 1st pass mapping
+Jul 06 09:10:09 ..... inserting junctions into the genome indices
+Jul 06 09:12:18 ..... started mapping
+Jul 06 09:16:22 ..... finished mapping
+Jul 06 09:16:24 ..... started sorting BAM
+Jul 06 09:17:01 ..... finished successfully

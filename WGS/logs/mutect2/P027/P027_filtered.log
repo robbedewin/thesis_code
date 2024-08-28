@@ -1,0 +1,96 @@
+Using GATK jar /lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gatk4-4.5.0.0-0/gatk-package-4.5.0.0-local.jar
+Running:
+    java -Dsamjdk.use_async_io_read_samtools=false -Dsamjdk.use_async_io_write_samtools=true -Dsamjdk.use_async_io_write_tribble=false -Dsamjdk.compression_level=2 -jar /lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gatk4-4.5.0.0-0/gatk-package-4.5.0.0-local.jar FilterMutectCalls -R resources/genome.fa -V results/mutect2/P027/P027_variants.vcf --contamination-table results/mutect2/P027/P027_contamination.table --ob-priors results/mutect2/read_orientation_model.tar.gz -O results/mutect2/P027/P027_filtered_variants.vcf
+20:14:08.845 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gatk4-4.5.0.0-0/gatk-package-4.5.0.0-local.jar!/com/intel/gkl/native/libgkl_compression.so
+20:14:09.585 INFO  FilterMutectCalls - ------------------------------------------------------------
+20:14:09.588 INFO  FilterMutectCalls - The Genome Analysis Toolkit (GATK) v4.5.0.0
+20:14:09.588 INFO  FilterMutectCalls - For support and documentation go to https://software.broadinstitute.org/gatk/
+20:14:09.595 INFO  FilterMutectCalls - Executing as vsc35407@g28l22 on Linux v4.18.0-513.24.1.el8_9.x86_64 amd64
+20:14:09.595 INFO  FilterMutectCalls - Java runtime: OpenJDK 64-Bit Server VM v17.0.10-internal+0-adhoc..src
+20:14:09.596 INFO  FilterMutectCalls - Start Date/Time: July 14, 2024 at 8:14:08 PM CEST
+20:14:09.596 INFO  FilterMutectCalls - ------------------------------------------------------------
+20:14:09.596 INFO  FilterMutectCalls - ------------------------------------------------------------
+20:14:09.598 INFO  FilterMutectCalls - HTSJDK Version: 4.1.0
+20:14:09.598 INFO  FilterMutectCalls - Picard Version: 3.1.1
+20:14:09.598 INFO  FilterMutectCalls - Built for Spark Version: 3.5.0
+20:14:09.598 INFO  FilterMutectCalls - HTSJDK Defaults.COMPRESSION_LEVEL : 2
+20:14:09.598 INFO  FilterMutectCalls - HTSJDK Defaults.USE_ASYNC_IO_READ_FOR_SAMTOOLS : false
+20:14:09.599 INFO  FilterMutectCalls - HTSJDK Defaults.USE_ASYNC_IO_WRITE_FOR_SAMTOOLS : true
+20:14:09.602 INFO  FilterMutectCalls - HTSJDK Defaults.USE_ASYNC_IO_WRITE_FOR_TRIBBLE : false
+20:14:09.602 INFO  FilterMutectCalls - Deflater: IntelDeflater
+20:14:09.617 INFO  FilterMutectCalls - Inflater: IntelInflater
+20:14:09.618 INFO  FilterMutectCalls - GCS max retries/reopens: 20
+20:14:09.618 INFO  FilterMutectCalls - Requester pays: disabled
+20:14:09.627 INFO  FilterMutectCalls - Initializing engine
+20:14:10.353 INFO  FeatureManager - Using codec VCFCodec to read file file:///lustre1/project/stg_00096/home/rdewin/WGS/results/mutect2/P027/P027_variants.vcf
+20:14:10.823 INFO  FilterMutectCalls - Done initializing engine
+20:14:11.324 INFO  IOUtils - Extracting data from archive: file:///lustre1/project/stg_00096/home/rdewin/WGS/results/mutect2/read_orientation_model.tar.gz
+20:14:11.400 INFO  IOUtils - Extracting file: ./P011_tumor.orientation_priors
+20:14:11.401 INFO  IOUtils - Extracting file: ./P022_tumor.orientation_priors
+20:14:11.402 INFO  IOUtils - Extracting file: ./P060_tumor.orientation_priors
+20:14:11.402 INFO  IOUtils - Extracting file: ./P059_tumor.orientation_priors
+20:14:11.402 INFO  IOUtils - Extracting file: ./P038_tumor.orientation_priors
+20:14:11.427 INFO  IOUtils - Extracting file: ./P062_tumor.orientation_priors
+20:14:11.428 INFO  IOUtils - Extracting file: ./P018_tumor.orientation_priors
+20:14:11.428 INFO  IOUtils - Extracting file: ./P058_tumor.orientation_priors
+20:14:11.428 INFO  IOUtils - Extracting file: ./P103_tumor.orientation_priors
+20:14:11.429 INFO  IOUtils - Extracting file: ./P033_tumor.orientation_priors
+20:14:11.429 INFO  IOUtils - Extracting file: ./P029_tumor.orientation_priors
+20:14:11.430 INFO  IOUtils - Extracting file: ./P024_tumor.orientation_priors
+20:14:11.430 INFO  IOUtils - Extracting file: ./P016_tumor.orientation_priors
+20:14:11.431 INFO  IOUtils - Extracting file: ./P066_tumor.orientation_priors
+20:14:11.453 INFO  IOUtils - Extracting file: ./P036_tumor.orientation_priors
+20:14:11.454 INFO  IOUtils - Extracting file: ./P020_tumor.orientation_priors
+20:14:11.454 INFO  IOUtils - Extracting file: ./P026_tumor.orientation_priors
+20:14:11.468 INFO  IOUtils - Extracting file: ./P056_tumor.orientation_priors
+20:14:11.469 INFO  IOUtils - Extracting file: ./P064_tumor.orientation_priors
+20:14:11.469 INFO  IOUtils - Extracting file: ./P034_tumor.orientation_priors
+20:14:11.470 INFO  IOUtils - Extracting file: ./P028_tumor.orientation_priors
+20:14:11.482 INFO  IOUtils - Extracting file: ./P017_tumor.orientation_priors
+20:14:11.483 INFO  IOUtils - Extracting file: ./P065_tumor.orientation_priors
+20:14:11.483 INFO  IOUtils - Extracting file: ./P023_tumor.orientation_priors
+20:14:11.484 INFO  IOUtils - Extracting file: ./P037_tumor.orientation_priors
+20:14:11.485 INFO  IOUtils - Extracting file: ./P013_tumor.orientation_priors
+20:14:11.485 INFO  IOUtils - Extracting file: ./P057_tumor.orientation_priors
+20:14:11.485 INFO  IOUtils - Extracting file: ./P019_tumor.orientation_priors
+20:14:11.486 INFO  IOUtils - Extracting file: ./P061_tumor.orientation_priors
+20:14:11.486 INFO  IOUtils - Extracting file: ./P041_tumor.orientation_priors
+20:14:11.486 INFO  IOUtils - Extracting file: ./P035_tumor.orientation_priors
+20:14:11.503 INFO  IOUtils - Extracting file: ./P086_tumor.orientation_priors
+20:14:11.504 INFO  IOUtils - Extracting file: ./P105_tumor.orientation_priors
+20:14:11.504 INFO  IOUtils - Extracting file: ./P027_tumor.orientation_priors
+20:14:12.281 INFO  ProgressMeter - Starting traversal
+20:14:12.281 INFO  ProgressMeter -        Current Locus  Elapsed Minutes    Variants Processed  Variants/Minute
+20:14:12.292 INFO  FilterMutectCalls - Starting pass 0 through the variants
+20:14:23.349 INFO  ProgressMeter -       chr1:126377768              0.2                  6000          32588.0
+20:14:33.374 INFO  ProgressMeter -       chr4:130615169              0.4                 39000         110947.8
+20:14:43.428 INFO  ProgressMeter -       chr11:71513307              0.5                 92000         177235.5
+20:14:53.468 INFO  ProgressMeter -        chr21:7127840              0.7                143000         208328.3
+20:14:55.437 INFO  FilterMutectCalls - Finished pass 0 through the variants
+20:15:12.650 INFO  FilterMutectCalls - Starting pass 1 through the variants
+20:15:12.864 INFO  ProgressMeter -        chr1:13004313              1.0                155000         153513.5
+20:15:23.104 INFO  ProgressMeter -       chr6:125551684              1.2                210000         177913.3
+20:15:33.354 INFO  ProgressMeter -       chr12:59020062              1.4                252000         186503.2
+20:15:43.379 INFO  ProgressMeter -        chr21:6891539              1.5                297000         195645.7
+20:15:45.478 INFO  FilterMutectCalls - Finished pass 1 through the variants
+20:15:50.013 INFO  FilterMutectCalls - Starting pass 2 through the variants
+20:15:53.445 INFO  ProgressMeter -       chr2:161870598              1.7                328000         194537.5
+20:16:03.716 INFO  ProgressMeter -        chr7:83280915              1.9                370000         199221.1
+20:16:14.128 INFO  ProgressMeter -       chr13:94437241              2.0                414000         203865.6
+20:16:24.439 INFO  ProgressMeter -       chr20:11611518              2.2                446000         202488.0
+20:16:27.973 INFO  FilterMutectCalls - Finished pass 2 through the variants
+20:16:28.004 INFO  FilterMutectCalls - Starting pass 3 through the variants
+20:16:34.604 INFO  ProgressMeter -       chr1:209375345              2.4                473000         199425.2
+20:16:44.869 INFO  ProgressMeter -       chr3:154792030              2.5                493000         193856.6
+20:16:55.040 INFO  ProgressMeter -       chr6:171965002              2.7                520000         191701.5
+20:17:05.457 INFO  ProgressMeter -        chr12:1170898              2.9                557000         192986.2
+20:17:15.828 INFO  ProgressMeter -       chr18:33659665              3.1                591000         193195.1
+20:17:21.948 INFO  FilterMutectCalls - Finished pass 3 through the variants
+20:17:22.006 INFO  FilterMutectCalls - No variants filtered by: AllowAllVariantsVariantFilter
+20:17:22.007 INFO  FilterMutectCalls - 0 read(s) filtered by: AllowAllReadsReadFilter 
+
+20:17:22.008 INFO  ProgressMeter -        chrY:24037625              3.2                616112         194842.7
+20:17:22.008 INFO  ProgressMeter - Traversal complete. Processed 616112 total variants in 3.2 minutes.
+20:17:22.408 INFO  FilterMutectCalls - Shutting down engine
+[July 14, 2024 at 8:17:22 PM CEST] org.broadinstitute.hellbender.tools.walkers.mutect.filtering.FilterMutectCalls done. Elapsed time: 3.23 minutes.
+Runtime.totalMemory()=2583691264

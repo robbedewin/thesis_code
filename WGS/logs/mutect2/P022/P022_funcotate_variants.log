@@ -1,0 +1,194 @@
+Using GATK jar /lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gatk4-4.5.0.0-0/gatk-package-4.5.0.0-local.jar
+Running:
+    java -Dsamjdk.use_async_io_read_samtools=false -Dsamjdk.use_async_io_write_samtools=true -Dsamjdk.use_async_io_write_tribble=false -Dsamjdk.compression_level=2 -jar /lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gatk4-4.5.0.0-0/gatk-package-4.5.0.0-local.jar Funcotator -R resources/GRCh38/GRCh38.fasta -V results/mutect2/P022/P022_pass_variants_lifted.vcf -O results/mutect2/P022/P022_annotated_lifted_variants.maf --data-sources-path /staging/leuven/stg_00096/references/GRCh38.alt-masked-V2/annotation/funcotator/funcotator_dataSources.v1.7.20200521s/ --ref-version hg38 --output-file-format MAF
+17:04:06.732 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gatk4-4.5.0.0-0/gatk-package-4.5.0.0-local.jar!/com/intel/gkl/native/libgkl_compression.so
+17:04:07.277 INFO  Funcotator - ------------------------------------------------------------
+17:04:07.290 INFO  Funcotator - The Genome Analysis Toolkit (GATK) v4.5.0.0
+17:04:07.290 INFO  Funcotator - For support and documentation go to https://software.broadinstitute.org/gatk/
+17:04:07.290 INFO  Funcotator - Executing as vsc35407@g28l17 on Linux v4.18.0-513.24.1.el8_9.x86_64 amd64
+17:04:07.290 INFO  Funcotator - Java runtime: OpenJDK 64-Bit Server VM v17.0.10-internal+0-adhoc..src
+17:04:07.291 INFO  Funcotator - Start Date/Time: May 6, 2024 at 5:04:06 PM CEST
+17:04:07.291 INFO  Funcotator - ------------------------------------------------------------
+17:04:07.291 INFO  Funcotator - ------------------------------------------------------------
+17:04:07.292 INFO  Funcotator - HTSJDK Version: 4.1.0
+17:04:07.293 INFO  Funcotator - Picard Version: 3.1.1
+17:04:07.293 INFO  Funcotator - Built for Spark Version: 3.5.0
+17:04:07.293 INFO  Funcotator - HTSJDK Defaults.COMPRESSION_LEVEL : 2
+17:04:07.294 INFO  Funcotator - HTSJDK Defaults.USE_ASYNC_IO_READ_FOR_SAMTOOLS : false
+17:04:07.294 INFO  Funcotator - HTSJDK Defaults.USE_ASYNC_IO_WRITE_FOR_SAMTOOLS : true
+17:04:07.294 INFO  Funcotator - HTSJDK Defaults.USE_ASYNC_IO_WRITE_FOR_TRIBBLE : false
+17:04:07.294 INFO  Funcotator - Deflater: IntelDeflater
+17:04:07.294 INFO  Funcotator - Inflater: IntelInflater
+17:04:07.294 INFO  Funcotator - GCS max retries/reopens: 20
+17:04:07.294 INFO  Funcotator - Requester pays: disabled
+17:04:07.295 INFO  Funcotator - Initializing engine
+17:04:07.736 INFO  FeatureManager - Using codec VCFCodec to read file file:///lustre1/project/stg_00096/home/rdewin/WGS/results/mutect2/P022/P022_pass_variants_lifted.vcf
+17:04:08.038 INFO  Funcotator - Done initializing engine
+17:04:08.039 INFO  Funcotator - Validating sequence dictionaries...
+17:04:08.066 INFO  Funcotator - Processing user transcripts/defaults/overrides...
+17:04:08.067 INFO  Funcotator - Initializing data sources...
+17:04:08.096 INFO  DataSourceUtils - Initializing data sources from directory: /staging/leuven/stg_00096/references/GRCh38.alt-masked-V2/annotation/funcotator/funcotator_dataSources.v1.7.20200521s/
+17:04:08.097 WARN  DataSourceUtils - README file has improperly formatted version string: Version:          1.7.20200429s
+17:04:08.097 WARN  DataSourceUtils - Unable to read version information from data sources info/readme file: file:///staging/leuven/stg_00096/references/GRCh38.alt-masked-V2/annotation/funcotator/funcotator_dataSources.v1.7.20200521s/MANIFEST.txt
+17:04:08.098 INFO  DataSourceUtils - Data sources source: ftp://gsapubftp-anonymous@ftp.broadinstitute.org/bundle/funcotator/funcotator_dataSources.v1.7.20200429s.tar.gz
+17:04:08.098 INFO  DataSourceUtils - Data sources alternate source: gs://broad-public-datasets/funcotator/funcotator_dataSources.v1.7.20200429s.tar.gz
+17:04:08.104 INFO  DataSourceUtils - Resolved data source file path: file:///lustre1/project/stg_00096/home/rdewin/WGS/dnaRepairGenes.20180524T145835.csv -> file:///staging/leuven/stg_00096/references/GRCh38.alt-masked-V2/annotation/funcotator/funcotator_dataSources.v1.7.20200521s/dna_repair_genes/hg38/dnaRepairGenes.20180524T145835.csv
+17:04:08.117 INFO  DataSourceUtils - Resolved data source file path: file:///lustre1/project/stg_00096/home/rdewin/WGS/gencode_xhgnc_v90_38.hg38.tsv -> file:///staging/leuven/stg_00096/references/GRCh38.alt-masked-V2/annotation/funcotator/funcotator_dataSources.v1.7.20200521s/gencode_xhgnc/hg38/gencode_xhgnc_v90_38.hg38.tsv
+17:04:08.119 INFO  DataSourceUtils - Resolved data source file path: file:///lustre1/project/stg_00096/home/rdewin/WGS/CancerGeneCensus_Table_1_full_2012-03-15.txt -> file:///staging/leuven/stg_00096/references/GRCh38.alt-masked-V2/annotation/funcotator/funcotator_dataSources.v1.7.20200521s/cancer_gene_census/hg38/CancerGeneCensus_Table_1_full_2012-03-15.txt
+17:04:08.120 INFO  DataSourceUtils - Resolved data source file path: file:///lustre1/project/stg_00096/home/rdewin/WGS/gencode.v34.annotation.REORDERED.gtf -> file:///staging/leuven/stg_00096/references/GRCh38.alt-masked-V2/annotation/funcotator/funcotator_dataSources.v1.7.20200521s/gencode/hg38/gencode.v34.annotation.REORDERED.gtf
+17:04:08.121 INFO  DataSourceUtils - Resolved data source file path: file:///lustre1/project/stg_00096/home/rdewin/WGS/gencode.v34.pc_transcripts.fa -> file:///staging/leuven/stg_00096/references/GRCh38.alt-masked-V2/annotation/funcotator/funcotator_dataSources.v1.7.20200521s/gencode/hg38/gencode.v34.pc_transcripts.fa
+17:04:08.122 INFO  DataSourceUtils - Resolved data source file path: file:///lustre1/project/stg_00096/home/rdewin/WGS/oreganno.tsv -> file:///staging/leuven/stg_00096/references/GRCh38.alt-masked-V2/annotation/funcotator/funcotator_dataSources.v1.7.20200521s/oreganno/hg38/oreganno.tsv
+17:04:08.124 INFO  DataSourceUtils - Resolved data source file path: file:///lustre1/project/stg_00096/home/rdewin/WGS/Familial_Cancer_Genes.no_dupes.tsv -> file:///staging/leuven/stg_00096/references/GRCh38.alt-masked-V2/annotation/funcotator/funcotator_dataSources.v1.7.20200521s/familial/hg38/Familial_Cancer_Genes.no_dupes.tsv
+17:04:08.126 INFO  DataSourceUtils - Resolved data source file path: file:///lustre1/project/stg_00096/home/rdewin/WGS/Cosmic.db -> file:///staging/leuven/stg_00096/references/GRCh38.alt-masked-V2/annotation/funcotator/funcotator_dataSources.v1.7.20200521s/cosmic/hg38/Cosmic.db
+17:04:08.127 INFO  DataSourceUtils - Resolved data source file path: file:///lustre1/project/stg_00096/home/rdewin/WGS/clinvar_20180429_hg38.vcf -> file:///staging/leuven/stg_00096/references/GRCh38.alt-masked-V2/annotation/funcotator/funcotator_dataSources.v1.7.20200521s/clinvar/hg38/clinvar_20180429_hg38.vcf
+17:04:08.136 INFO  DataSourceUtils - Resolved data source file path: file:///lustre1/project/stg_00096/home/rdewin/WGS/simple_uniprot_Dec012014.tsv -> file:///staging/leuven/stg_00096/references/GRCh38.alt-masked-V2/annotation/funcotator/funcotator_dataSources.v1.7.20200521s/simple_uniprot/hg38/simple_uniprot_Dec012014.tsv
+17:04:08.146 INFO  DataSourceUtils - Resolved data source file path: file:///lustre1/project/stg_00096/home/rdewin/WGS/cosmic_tissue.tsv -> file:///staging/leuven/stg_00096/references/GRCh38.alt-masked-V2/annotation/funcotator/funcotator_dataSources.v1.7.20200521s/cosmic_tissue/hg38/cosmic_tissue.tsv
+17:04:08.147 INFO  DataSourceUtils - Resolved data source file path: file:///lustre1/project/stg_00096/home/rdewin/WGS/cosmic_fusion.tsv -> file:///staging/leuven/stg_00096/references/GRCh38.alt-masked-V2/annotation/funcotator/funcotator_dataSources.v1.7.20200521s/cosmic_fusion/hg38/cosmic_fusion.tsv
+17:04:08.147 INFO  DataSourceUtils - Resolved data source file path: file:///lustre1/project/stg_00096/home/rdewin/WGS/gencode_xrefseq_v90_38.tsv -> file:///staging/leuven/stg_00096/references/GRCh38.alt-masked-V2/annotation/funcotator/funcotator_dataSources.v1.7.20200521s/gencode_xrefseq/hg38/gencode_xrefseq_v90_38.tsv
+17:04:08.148 INFO  DataSourceUtils - Resolved data source file path: file:///lustre1/project/stg_00096/home/rdewin/WGS/achilles_lineage_results.import.txt -> file:///staging/leuven/stg_00096/references/GRCh38.alt-masked-V2/annotation/funcotator/funcotator_dataSources.v1.7.20200521s/achilles/hg38/achilles_lineage_results.import.txt
+17:04:08.149 INFO  DataSourceUtils - Resolved data source file path: file:///lustre1/project/stg_00096/home/rdewin/WGS/hgnc_download_Nov302017.tsv -> file:///staging/leuven/stg_00096/references/GRCh38.alt-masked-V2/annotation/funcotator/funcotator_dataSources.v1.7.20200521s/hgnc/hg38/hgnc_download_Nov302017.tsv
+17:04:10.572 INFO  DataSourceUtils - Resolved data source file path: file:///lustre1/project/stg_00096/home/rdewin/WGS/hg38_All_20180418.vcf.gz -> file:///staging/leuven/stg_00096/references/GRCh38.alt-masked-V2/annotation/funcotator/funcotator_dataSources.v1.7.20200521s/dbsnp/hg38/hg38_All_20180418.vcf.gz
+17:04:11.576 INFO  Funcotator - Finalizing data sources (this step can be long if data sources are cloud-based)...
+17:04:11.577 INFO  DataSourceUtils - Resolved data source file path: file:///lustre1/project/stg_00096/home/rdewin/WGS/dnaRepairGenes.20180524T145835.csv -> file:///staging/leuven/stg_00096/references/GRCh38.alt-masked-V2/annotation/funcotator/funcotator_dataSources.v1.7.20200521s/dna_repair_genes/hg38/dnaRepairGenes.20180524T145835.csv
+17:04:11.579 INFO  DataSourceUtils - Resolved data source file path: file:///lustre1/project/stg_00096/home/rdewin/WGS/gencode_xhgnc_v90_38.hg38.tsv -> file:///staging/leuven/stg_00096/references/GRCh38.alt-masked-V2/annotation/funcotator/funcotator_dataSources.v1.7.20200521s/gencode_xhgnc/hg38/gencode_xhgnc_v90_38.hg38.tsv
+17:04:12.551 INFO  DataSourceUtils - Resolved data source file path: file:///lustre1/project/stg_00096/home/rdewin/WGS/CancerGeneCensus_Table_1_full_2012-03-15.txt -> file:///staging/leuven/stg_00096/references/GRCh38.alt-masked-V2/annotation/funcotator/funcotator_dataSources.v1.7.20200521s/cancer_gene_census/hg38/CancerGeneCensus_Table_1_full_2012-03-15.txt
+17:04:12.556 INFO  DataSourceUtils - Resolved data source file path: file:///lustre1/project/stg_00096/home/rdewin/WGS/gencode.v34.annotation.REORDERED.gtf -> file:///staging/leuven/stg_00096/references/GRCh38.alt-masked-V2/annotation/funcotator/funcotator_dataSources.v1.7.20200521s/gencode/hg38/gencode.v34.annotation.REORDERED.gtf
+17:04:12.558 INFO  DataSourceUtils - Setting lookahead cache for data source: Gencode : 100000
+17:04:12.561 INFO  FeatureManager - Using codec GencodeGtfCodec to read file file:///staging/leuven/stg_00096/references/GRCh38.alt-masked-V2/annotation/funcotator/funcotator_dataSources.v1.7.20200521s/gencode/hg38/gencode.v34.annotation.REORDERED.gtf
+17:04:12.581 INFO  DataSourceUtils - Resolved data source file path: file:///lustre1/project/stg_00096/home/rdewin/WGS/gencode.v34.pc_transcripts.fa -> file:///staging/leuven/stg_00096/references/GRCh38.alt-masked-V2/annotation/funcotator/funcotator_dataSources.v1.7.20200521s/gencode/hg38/gencode.v34.pc_transcripts.fa
+17:04:15.514 INFO  DataSourceUtils - Setting lookahead cache for data source: Oreganno : 100000
+17:04:15.519 INFO  DataSourceUtils - Resolved data source file path: file:///lustre1/project/stg_00096/home/rdewin/WGS/oreganno.tsv -> file:///staging/leuven/stg_00096/references/GRCh38.alt-masked-V2/annotation/funcotator/funcotator_dataSources.v1.7.20200521s/oreganno/hg38/oreganno.tsv
+17:04:15.568 INFO  FeatureManager - Using codec XsvLocatableTableCodec to read file file:///staging/leuven/stg_00096/references/GRCh38.alt-masked-V2/annotation/funcotator/funcotator_dataSources.v1.7.20200521s/oreganno/hg38/oreganno.config
+17:04:15.653 INFO  DataSourceUtils - Resolved data source file path: file:///lustre1/project/stg_00096/home/rdewin/WGS/oreganno.tsv -> file:///staging/leuven/stg_00096/references/GRCh38.alt-masked-V2/annotation/funcotator/funcotator_dataSources.v1.7.20200521s/oreganno/hg38/oreganno.tsv
+17:04:15.653 INFO  DataSourceUtils - Resolved data source file path: file:///lustre1/project/stg_00096/home/rdewin/WGS/oreganno.tsv -> file:///staging/leuven/stg_00096/references/GRCh38.alt-masked-V2/annotation/funcotator/funcotator_dataSources.v1.7.20200521s/oreganno/hg38/oreganno.tsv
+WARNING	2024-05-06 17:04:15	AsciiLineReader	Creating an indexable source for an AsciiFeatureCodec using a stream that is neither a PositionalBufferedStream nor a BlockCompressedInputStream
+17:04:15.658 INFO  DataSourceUtils - Resolved data source file path: file:///lustre1/project/stg_00096/home/rdewin/WGS/Familial_Cancer_Genes.no_dupes.tsv -> file:///staging/leuven/stg_00096/references/GRCh38.alt-masked-V2/annotation/funcotator/funcotator_dataSources.v1.7.20200521s/familial/hg38/Familial_Cancer_Genes.no_dupes.tsv
+17:04:15.668 INFO  DataSourceUtils - Resolved data source file path: file:///lustre1/project/stg_00096/home/rdewin/WGS/Cosmic.db -> file:///staging/leuven/stg_00096/references/GRCh38.alt-masked-V2/annotation/funcotator/funcotator_dataSources.v1.7.20200521s/cosmic/hg38/Cosmic.db
+17:04:15.982 INFO  DataSourceUtils - Resolved data source file path: file:///lustre1/project/stg_00096/home/rdewin/WGS/clinvar_20180429_hg38.vcf -> file:///staging/leuven/stg_00096/references/GRCh38.alt-masked-V2/annotation/funcotator/funcotator_dataSources.v1.7.20200521s/clinvar/hg38/clinvar_20180429_hg38.vcf
+17:04:15.982 INFO  DataSourceUtils - Setting lookahead cache for data source: ClinVar_VCF : 100000
+17:04:15.999 INFO  FeatureManager - Using codec VCFCodec to read file file:///staging/leuven/stg_00096/references/GRCh38.alt-masked-V2/annotation/funcotator/funcotator_dataSources.v1.7.20200521s/clinvar/hg38/clinvar_20180429_hg38.vcf
+17:04:16.151 INFO  DataSourceUtils - Resolved data source file path: file:///lustre1/project/stg_00096/home/rdewin/WGS/clinvar_20180429_hg38.vcf -> file:///staging/leuven/stg_00096/references/GRCh38.alt-masked-V2/annotation/funcotator/funcotator_dataSources.v1.7.20200521s/clinvar/hg38/clinvar_20180429_hg38.vcf
+17:04:16.229 INFO  FeatureManager - Using codec VCFCodec to read file file:///staging/leuven/stg_00096/references/GRCh38.alt-masked-V2/annotation/funcotator/funcotator_dataSources.v1.7.20200521s/clinvar/hg38/clinvar_20180429_hg38.vcf
+17:04:16.289 INFO  DataSourceUtils - Resolved data source file path: file:///lustre1/project/stg_00096/home/rdewin/WGS/simple_uniprot_Dec012014.tsv -> file:///staging/leuven/stg_00096/references/GRCh38.alt-masked-V2/annotation/funcotator/funcotator_dataSources.v1.7.20200521s/simple_uniprot/hg38/simple_uniprot_Dec012014.tsv
+17:04:16.572 INFO  DataSourceUtils - Resolved data source file path: file:///lustre1/project/stg_00096/home/rdewin/WGS/cosmic_tissue.tsv -> file:///staging/leuven/stg_00096/references/GRCh38.alt-masked-V2/annotation/funcotator/funcotator_dataSources.v1.7.20200521s/cosmic_tissue/hg38/cosmic_tissue.tsv
+17:04:16.625 INFO  DataSourceUtils - Resolved data source file path: file:///lustre1/project/stg_00096/home/rdewin/WGS/cosmic_fusion.tsv -> file:///staging/leuven/stg_00096/references/GRCh38.alt-masked-V2/annotation/funcotator/funcotator_dataSources.v1.7.20200521s/cosmic_fusion/hg38/cosmic_fusion.tsv
+17:04:16.654 INFO  DataSourceUtils - Resolved data source file path: file:///lustre1/project/stg_00096/home/rdewin/WGS/gencode_xrefseq_v90_38.tsv -> file:///staging/leuven/stg_00096/references/GRCh38.alt-masked-V2/annotation/funcotator/funcotator_dataSources.v1.7.20200521s/gencode_xrefseq/hg38/gencode_xrefseq_v90_38.tsv
+17:04:16.814 INFO  DataSourceUtils - Resolved data source file path: file:///lustre1/project/stg_00096/home/rdewin/WGS/achilles_lineage_results.import.txt -> file:///staging/leuven/stg_00096/references/GRCh38.alt-masked-V2/annotation/funcotator/funcotator_dataSources.v1.7.20200521s/achilles/hg38/achilles_lineage_results.import.txt
+17:04:16.815 INFO  DataSourceUtils - Resolved data source file path: file:///lustre1/project/stg_00096/home/rdewin/WGS/hgnc_download_Nov302017.tsv -> file:///staging/leuven/stg_00096/references/GRCh38.alt-masked-V2/annotation/funcotator/funcotator_dataSources.v1.7.20200521s/hgnc/hg38/hgnc_download_Nov302017.tsv
+17:04:16.967 INFO  DataSourceUtils - Setting lookahead cache for data source: gnomAD_exome : 100000
+17:04:29.046 INFO  FeatureManager - Using codec VCFCodec to read file gs://broad-public-datasets/funcotator/gnomAD_2.1_VCF_INFO_AF_Only/hg38/gnomad.exomes.r2.1.sites.liftoverToHg38.INFO_ANNOTATIONS_FIXED.vcf.gz
+17:04:47.526 INFO  FeatureManager - Using codec VCFCodec to read file gs://broad-public-datasets/funcotator/gnomAD_2.1_VCF_INFO_AF_Only/hg38/gnomad.exomes.r2.1.sites.liftoverToHg38.INFO_ANNOTATIONS_FIXED.vcf.gz
+17:04:50.574 INFO  DataSourceUtils - Resolved data source file path: file:///lustre1/project/stg_00096/home/rdewin/WGS/hg38_All_20180418.vcf.gz -> file:///staging/leuven/stg_00096/references/GRCh38.alt-masked-V2/annotation/funcotator/funcotator_dataSources.v1.7.20200521s/dbsnp/hg38/hg38_All_20180418.vcf.gz
+17:04:50.574 INFO  DataSourceUtils - Setting lookahead cache for data source: dbSNP : 100000
+17:04:50.576 INFO  FeatureManager - Using codec VCFCodec to read file file:///staging/leuven/stg_00096/references/GRCh38.alt-masked-V2/annotation/funcotator/funcotator_dataSources.v1.7.20200521s/dbsnp/hg38/hg38_All_20180418.vcf.gz
+17:04:50.613 INFO  DataSourceUtils - Resolved data source file path: file:///lustre1/project/stg_00096/home/rdewin/WGS/hg38_All_20180418.vcf.gz -> file:///staging/leuven/stg_00096/references/GRCh38.alt-masked-V2/annotation/funcotator/funcotator_dataSources.v1.7.20200521s/dbsnp/hg38/hg38_All_20180418.vcf.gz
+17:04:50.655 INFO  FeatureManager - Using codec VCFCodec to read file file:///staging/leuven/stg_00096/references/GRCh38.alt-masked-V2/annotation/funcotator/funcotator_dataSources.v1.7.20200521s/dbsnp/hg38/hg38_All_20180418.vcf.gz
+17:04:50.692 INFO  DataSourceUtils - Setting lookahead cache for data source: gnomAD_genome : 100000
+17:05:02.852 INFO  FeatureManager - Using codec VCFCodec to read file gs://broad-public-datasets/funcotator/gnomAD_2.1_VCF_INFO_AF_Only/hg38/gnomad.genomes.r2.1.sites.liftoverToHg38.INFO_ANNOTATIONS_FIXED.vcf.gz
+17:05:21.716 INFO  FeatureManager - Using codec VCFCodec to read file gs://broad-public-datasets/funcotator/gnomAD_2.1_VCF_INFO_AF_Only/hg38/gnomad.genomes.r2.1.sites.liftoverToHg38.INFO_ANNOTATIONS_FIXED.vcf.gz
+17:05:24.144 INFO  Funcotator - Initializing Funcotator Engine...
+17:05:24.153 INFO  FuncotatorEngine - Using given VCF and Reference.  No conversion required.
+17:05:24.158 INFO  FuncotatorUtils - Input VCF has been determined to not based on b37:
+17:05:24.159 INFO  FuncotatorUtils -   The following contigs are present in b37 and missing in the input VCF sequence dictionary:
+17:05:24.162 INFO  FuncotatorUtils -     1 (len=249250621,assembly=GRCh37)
+17:05:24.162 INFO  FuncotatorUtils -     2 (len=243199373,assembly=GRCh37)
+17:05:24.162 INFO  FuncotatorUtils -     3 (len=198022430,assembly=GRCh37)
+17:05:24.162 INFO  FuncotatorUtils -     4 (len=191154276,assembly=GRCh37)
+17:05:24.162 INFO  FuncotatorUtils -     5 (len=180915260,assembly=GRCh37)
+17:05:24.162 INFO  FuncotatorUtils -     6 (len=171115067,assembly=GRCh37)
+17:05:24.162 INFO  FuncotatorUtils -     7 (len=159138663,assembly=GRCh37)
+17:05:24.162 INFO  FuncotatorUtils -     8 (len=146364022,assembly=GRCh37)
+17:05:24.162 INFO  FuncotatorUtils -     9 (len=141213431,assembly=GRCh37)
+17:05:24.162 INFO  FuncotatorUtils -     10 (len=135534747,assembly=GRCh37)
+17:05:24.162 INFO  FuncotatorUtils -     11 (len=135006516,assembly=GRCh37)
+17:05:24.162 INFO  FuncotatorUtils -     12 (len=133851895,assembly=GRCh37)
+17:05:24.162 INFO  FuncotatorUtils -     13 (len=115169878,assembly=GRCh37)
+17:05:24.162 INFO  FuncotatorUtils -     14 (len=107349540,assembly=GRCh37)
+17:05:24.162 INFO  FuncotatorUtils -     15 (len=102531392,assembly=GRCh37)
+17:05:24.162 INFO  FuncotatorUtils -     16 (len=90354753,assembly=GRCh37)
+17:05:24.162 INFO  FuncotatorUtils -     17 (len=81195210,assembly=GRCh37)
+17:05:24.162 INFO  FuncotatorUtils -     18 (len=78077248,assembly=GRCh37)
+17:05:24.162 INFO  FuncotatorUtils -     19 (len=59128983,assembly=GRCh37)
+17:05:24.162 INFO  FuncotatorUtils -     20 (len=63025520,assembly=GRCh37)
+17:05:24.162 INFO  FuncotatorUtils -     21 (len=48129895,assembly=GRCh37)
+17:05:24.162 INFO  FuncotatorUtils -     22 (len=51304566,assembly=GRCh37)
+17:05:24.162 INFO  FuncotatorUtils -     X (len=155270560,assembly=GRCh37)
+17:05:24.163 INFO  FuncotatorUtils -     Y (len=59373566,assembly=GRCh37)
+17:05:24.163 INFO  FuncotatorUtils -     MT (len=16569,assembly=GRCh37)
+17:05:24.163 INFO  FuncotatorUtils -     GL000207.1 (len=4262,assembly=GRCh37)
+17:05:24.163 INFO  FuncotatorUtils -     GL000226.1 (len=15008,assembly=GRCh37)
+17:05:24.163 INFO  FuncotatorUtils -     GL000229.1 (len=19913,assembly=GRCh37)
+17:05:24.163 INFO  FuncotatorUtils -     GL000231.1 (len=27386,assembly=GRCh37)
+17:05:24.163 INFO  FuncotatorUtils -     GL000210.1 (len=27682,assembly=GRCh37)
+17:05:24.163 INFO  FuncotatorUtils -     GL000239.1 (len=33824,assembly=GRCh37)
+17:05:24.163 INFO  FuncotatorUtils -     GL000235.1 (len=34474,assembly=GRCh37)
+17:05:24.163 INFO  FuncotatorUtils -     GL000201.1 (len=36148,assembly=GRCh37)
+17:05:24.163 INFO  FuncotatorUtils -     GL000247.1 (len=36422,assembly=GRCh37)
+17:05:24.163 INFO  FuncotatorUtils -     GL000245.1 (len=36651,assembly=GRCh37)
+17:05:24.163 INFO  FuncotatorUtils -     GL000197.1 (len=37175,assembly=GRCh37)
+17:05:24.163 INFO  FuncotatorUtils -     GL000203.1 (len=37498,assembly=GRCh37)
+17:05:24.163 INFO  FuncotatorUtils -     GL000246.1 (len=38154,assembly=GRCh37)
+17:05:24.163 INFO  FuncotatorUtils -     GL000249.1 (len=38502,assembly=GRCh37)
+17:05:24.163 INFO  FuncotatorUtils -     GL000196.1 (len=38914,assembly=GRCh37)
+17:05:24.163 INFO  FuncotatorUtils -     GL000248.1 (len=39786,assembly=GRCh37)
+17:05:24.163 INFO  FuncotatorUtils -     GL000244.1 (len=39929,assembly=GRCh37)
+17:05:24.163 INFO  FuncotatorUtils -     GL000238.1 (len=39939,assembly=GRCh37)
+17:05:24.163 INFO  FuncotatorUtils -     GL000202.1 (len=40103,assembly=GRCh37)
+17:05:24.163 INFO  FuncotatorUtils -     GL000234.1 (len=40531,assembly=GRCh37)
+17:05:24.164 INFO  FuncotatorUtils -     GL000232.1 (len=40652,assembly=GRCh37)
+17:05:24.164 INFO  FuncotatorUtils -     GL000206.1 (len=41001,assembly=GRCh37)
+17:05:24.164 INFO  FuncotatorUtils -     GL000240.1 (len=41933,assembly=GRCh37)
+17:05:24.164 INFO  FuncotatorUtils -     GL000236.1 (len=41934,assembly=GRCh37)
+17:05:24.164 INFO  FuncotatorUtils -     GL000241.1 (len=42152,assembly=GRCh37)
+17:05:24.164 INFO  FuncotatorUtils -     GL000243.1 (len=43341,assembly=GRCh37)
+17:05:24.164 INFO  FuncotatorUtils -     GL000242.1 (len=43523,assembly=GRCh37)
+17:05:24.164 INFO  FuncotatorUtils -     GL000230.1 (len=43691,assembly=GRCh37)
+17:05:24.164 INFO  FuncotatorUtils -     GL000237.1 (len=45867,assembly=GRCh37)
+17:05:24.164 INFO  FuncotatorUtils -     GL000233.1 (len=45941,assembly=GRCh37)
+17:05:24.164 INFO  FuncotatorUtils -     GL000204.1 (len=81310,assembly=GRCh37)
+17:05:24.164 INFO  FuncotatorUtils -     GL000198.1 (len=90085,assembly=GRCh37)
+17:05:24.164 INFO  FuncotatorUtils -     GL000208.1 (len=92689,assembly=GRCh37)
+17:05:24.164 INFO  FuncotatorUtils -     GL000191.1 (len=106433,assembly=GRCh37)
+17:05:24.164 INFO  FuncotatorUtils -     GL000227.1 (len=128374,assembly=GRCh37)
+17:05:24.164 INFO  FuncotatorUtils -     GL000228.1 (len=129120,assembly=GRCh37)
+17:05:24.164 INFO  FuncotatorUtils -     GL000214.1 (len=137718,assembly=GRCh37)
+17:05:24.164 INFO  FuncotatorUtils -     GL000221.1 (len=155397,assembly=GRCh37)
+17:05:24.164 INFO  FuncotatorUtils -     GL000209.1 (len=159169,assembly=GRCh37)
+17:05:24.164 INFO  FuncotatorUtils -     GL000218.1 (len=161147,assembly=GRCh37)
+17:05:24.164 INFO  FuncotatorUtils -     GL000220.1 (len=161802,assembly=GRCh37)
+17:05:24.164 INFO  FuncotatorUtils -     GL000213.1 (len=164239,assembly=GRCh37)
+17:05:24.164 INFO  FuncotatorUtils -     GL000211.1 (len=166566,assembly=GRCh37)
+17:05:24.164 INFO  FuncotatorUtils -     GL000199.1 (len=169874,assembly=GRCh37)
+17:05:24.164 INFO  FuncotatorUtils -     GL000217.1 (len=172149,assembly=GRCh37)
+17:05:24.164 INFO  FuncotatorUtils -     GL000216.1 (len=172294,assembly=GRCh37)
+17:05:24.165 INFO  FuncotatorUtils -     GL000215.1 (len=172545,assembly=GRCh37)
+17:05:24.165 INFO  FuncotatorUtils -     GL000205.1 (len=174588,assembly=GRCh37)
+17:05:24.165 INFO  FuncotatorUtils -     GL000219.1 (len=179198,assembly=GRCh37)
+17:05:24.165 INFO  FuncotatorUtils -     GL000224.1 (len=179693,assembly=GRCh37)
+17:05:24.165 INFO  FuncotatorUtils -     GL000223.1 (len=180455,assembly=GRCh37)
+17:05:24.165 INFO  FuncotatorUtils -     GL000195.1 (len=182896,assembly=GRCh37)
+17:05:24.165 INFO  FuncotatorUtils -     GL000212.1 (len=186858,assembly=GRCh37)
+17:05:24.165 INFO  FuncotatorUtils -     GL000222.1 (len=186861,assembly=GRCh37)
+17:05:24.165 INFO  FuncotatorUtils -     GL000200.1 (len=187035,assembly=GRCh37)
+17:05:24.165 INFO  FuncotatorUtils -     GL000193.1 (len=189789,assembly=GRCh37)
+17:05:24.165 INFO  FuncotatorUtils -     GL000194.1 (len=191469,assembly=GRCh37)
+17:05:24.165 INFO  FuncotatorUtils -     GL000225.1 (len=211173,assembly=GRCh37)
+17:05:24.165 INFO  FuncotatorUtils -     GL000192.1 (len=547496,assembly=GRCh37)
+17:05:24.165 INFO  FuncotatorUtils -     NC_007605 (len=171823,assembly=NC_007605.1)
+17:05:24.166 INFO  Funcotator - Creating a MAF file for output: file:/lustre1/project/stg_00096/home/rdewin/WGS/results/mutect2/P022/P022_annotated_lifted_variants.maf
+17:05:24.176 INFO  ProgressMeter - Starting traversal
+17:05:24.177 INFO  ProgressMeter -        Current Locus  Elapsed Minutes    Variants Processed  Variants/Minute
+17:09:32.600 ERROR GencodeFuncotationFactory - Problem creating a GencodeFuncotation on transcript ENST00000510767.5 for variant: chr4:138088959-138089029(ACGCGCGCAGCCCCGGTTCCCGCCCGCGCGGAGCCCACGCCCACCCGGAACTCATTCTGTCTGGCAAGCGC* -> A): Variant overlaps transcript but is not completely contained within it. Funcotator cannot currently handle this case. Transcript: ENST00000510767.5  Variant: [VC Unknown @ chr4:138088959-138089029 Q. of type=INDEL alleles=[ACGCGCGCAGCCCCGGTTCCCGCCCGCGCGGAGCCCACGCCCACCCGGAACTCATTCTGTCTGGCAAGCGC*, A] attr={AS_FilterStatus=SITE, AS_SB_TABLE=[44, 35|1, 2], DP=86, ECNT=1, GERMQ=93, MBQ=[36, 36], MFRL=[306, 229], MMQ=[60, 60], MPOS=66, NALOD=1.59, NLOD=11.44, POPAF=6.00, ROQ=93, TLOD=10.65} GT=GT:AD:AF:DP:F1R2:F2R1:FAD:SB	0/0:45,0:0.025:45:11,0:6,0:38,0:21,24,0,0	0/1:34,3:0.059:37:6,1:10,0:31,1:23,11,1,2 filters=
+17:09:32.606 WARN  GencodeFuncotationFactory - Creating default GencodeFuncotation on transcript ENST00000510767.5 for problem variant: chr4:138088959-138089029(ACGCGCGCAGCCCCGGTTCCCGCCCGCGCGGAGCCCACGCCCACCCGGAACTCATTCTGTCTGGCAAGCGC* -> A)
+17:13:37.064 INFO  ProgressMeter -        chr9:83022344              8.2                  1000            121.7
+17:20:11.751 INFO  ProgressMeter -        chr9:83022344             14.8                  1844            124.7
+17:20:11.751 INFO  ProgressMeter - Traversal complete. Processed 1844 total variants in 14.8 minutes.
+17:20:11.755 INFO  VcfFuncotationFactory - ClinVar_VCF 20180429_hg38 cache hits/total: 0/1
+17:20:11.757 INFO  VcfFuncotationFactory - dbSNP 9606_b151 cache hits/total: 0/1159
+17:20:11.757 INFO  VcfFuncotationFactory - gnomAD_exome 2.1 cache hits/total: 0/24
+17:20:11.757 INFO  VcfFuncotationFactory - gnomAD_genome 2.1 cache hits/total: 0/818
+17:20:11.757 INFO  Funcotator - Shutting down engine
+[May 6, 2024 at 5:20:11 PM CEST] org.broadinstitute.hellbender.tools.funcotator.Funcotator done. Elapsed time: 16.09 minutes.
+Runtime.totalMemory()=3858759680
+Tool returned:
+true

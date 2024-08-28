@@ -1,0 +1,86 @@
+Assuming unrestricted shared filesystem usage.
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 4
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job                  count
+-----------------  -------
+create_sample_map        1
+mutect_pon1              1
+mutect_pon2              1
+mutect_pon3              1
+total                    4
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Jun 27 00:31:54 2024]
+localrule mutect_pon1:
+    input: resources/genome.fa, results/recal/P058/P058_dna_normal_recal.bam
+    output: results/mutect2/pon/P058_normal_for_pon.vcf.gz
+    log: logs/mutect2/pon/P058.log
+    jobid: 169
+    reason: Forced execution
+    wildcards: sample=P058
+    threads: 4
+    resources: tmpdir=/tmp
+
+
+        gatk --java-options "-Xmx200g -XX:+UseParallelGC -XX:ParallelGCThreads=4"         Mutect2             -R resources/genome.fa             -I results/recal/P058/P058_dna_normal_recal.bam             --max-mnp-distance 0             -O results/mutect2/pon/P058_normal_for_pon.vcf.gz             2>logs/mutect2/pon/P058.log
+        
+[Thu Jun 27 21:18:33 2024]
+Finished job 169.
+1 of 4 steps (25%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Jun 27 21:18:33 2024]
+localrule create_sample_map:
+    input: results/mutect2/pon/P011_normal_for_pon.vcf.gz, results/mutect2/pon/P013_normal_for_pon.vcf.gz, results/mutect2/pon/P016_normal_for_pon.vcf.gz, results/mutect2/pon/P017_normal_for_pon.vcf.gz, results/mutect2/pon/P018_normal_for_pon.vcf.gz, results/mutect2/pon/P019_normal_for_pon.vcf.gz, results/mutect2/pon/P020_normal_for_pon.vcf.gz, results/mutect2/pon/P022_normal_for_pon.vcf.gz, results/mutect2/pon/P023_normal_for_pon.vcf.gz, results/mutect2/pon/P024_normal_for_pon.vcf.gz, results/mutect2/pon/P026_normal_for_pon.vcf.gz, results/mutect2/pon/P027_normal_for_pon.vcf.gz, results/mutect2/pon/P028_normal_for_pon.vcf.gz, results/mutect2/pon/P029_normal_for_pon.vcf.gz, results/mutect2/pon/P033_normal_for_pon.vcf.gz, results/mutect2/pon/P034_normal_for_pon.vcf.gz, results/mutect2/pon/P035_normal_for_pon.vcf.gz, results/mutect2/pon/P036_normal_for_pon.vcf.gz, results/mutect2/pon/P037_normal_for_pon.vcf.gz, results/mutect2/pon/P038_normal_for_pon.vcf.gz, results/mutect2/pon/P041_normal_for_pon.vcf.gz, results/mutect2/pon/P056_normal_for_pon.vcf.gz, results/mutect2/pon/P057_normal_for_pon.vcf.gz, results/mutect2/pon/P058_normal_for_pon.vcf.gz, results/mutect2/pon/P059_normal_for_pon.vcf.gz, results/mutect2/pon/P060_normal_for_pon.vcf.gz, results/mutect2/pon/P061_normal_for_pon.vcf.gz, results/mutect2/pon/P062_normal_for_pon.vcf.gz, results/mutect2/pon/P064_normal_for_pon.vcf.gz, results/mutect2/pon/P065_normal_for_pon.vcf.gz, results/mutect2/pon/P066_normal_for_pon.vcf.gz, results/mutect2/pon/P086_normal_for_pon.vcf.gz, results/mutect2/pon/P103_normal_for_pon.vcf.gz, results/mutect2/pon/P105_normal_for_pon.vcf.gz
+    output: results/mutect2/pon/sample_map
+    jobid: 3
+    reason: Input files updated by another job: results/mutect2/pon/P058_normal_for_pon.vcf.gz
+    resources: tmpdir=/tmp
+
+[Thu Jun 27 21:19:14 2024]
+Finished job 3.
+2 of 4 steps (50%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Jun 27 21:19:14 2024]
+localrule mutect_pon2:
+    input: resources/genome.fa, results/mutect2/pon/sample_map, resources/whole_genome.intervals
+    output: results/mutect2/pon/pon_db
+    log: logs/mutect2/pon/genomicsdbImport.log
+    jobid: 2
+    reason: Input files updated by another job: results/mutect2/pon/sample_map
+    resources: tmpdir=/tmp
+
+
+        gatk GenomicsDBImport             -R resources/genome.fa             -L resources/whole_genome.intervals             --genomicsdb-workspace-path results/mutect2/pon/pon_db             --sample-name-map results/mutect2/pon/sample_map             2>logs/mutect2/pon/genomicsdbImport.log
+        
+[Thu Jun 27 23:25:04 2024]
+Finished job 2.
+3 of 4 steps (75%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Jun 27 23:25:04 2024]
+localrule mutect_pon3:
+    input: resources/genome.fa, results/mutect2/pon/pon_db
+    output: results/mutect2/pon/mutect2.pon.vcf.gz
+    log: logs/mutect2/pon/create_somatic_panel_of_normals.log
+    jobid: 0
+    reason: Input files updated by another job: results/mutect2/pon/pon_db
+    resources: tmpdir=/tmp
+
+
+        gatk CreateSomaticPanelOfNormals             -R resources/genome.fa             --germline-resource resources/gnomad_chr.vcf.gz             -V gendb://results/mutect2/pon/pon_db             -O results/mutect2/pon/mutect2.pon.vcf.gz             2>logs/mutect2/pon/create_somatic_panel_of_normals.log
+        
+[Fri Jun 28 00:32:09 2024]
+Finished job 0.
+4 of 4 steps (100%) done
+Complete log: .snakemake/log/2024-06-27T003151.610291.snakemake.log

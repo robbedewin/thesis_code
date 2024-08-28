@@ -1,0 +1,41 @@
+Read1 before filtering:
+total reads: 381282074
+total bases: 57192311100
+Q20 bases: 55643382899(97.2917%)
+Q30 bases: 53091400433(92.8296%)
+
+Read2 before filtering:
+total reads: 381282074
+total bases: 57192311100
+Q20 bases: 55089101857(96.3226%)
+Q30 bases: 51929991257(90.7989%)
+
+Read1 after filtering:
+total reads: 377192635
+total bases: 56371055046
+Q20 bases: 54996888583(97.5623%)
+Q30 bases: 52540995953(93.2056%)
+
+Read2 after filtering:
+total reads: 377192635
+total bases: 56367215950
+Q20 bases: 54540854416(96.7599%)
+Q30 bases: 51491045071(91.3493%)
+
+Filtering result:
+reads passed filter: 754385270
+reads failed due to low quality: 7603524
+reads failed due to too many N: 89892
+reads failed due to too short: 485462
+reads with adapter trimmed: 6390488
+bases trimmed due to adapters: 403939398
+
+Duplication rate: 12.5419%
+
+Insert size peak (evaluated by paired-end reads): 269
+
+JSON report: logs/fastp/P033/P033_dna_normal.fastp.json
+HTML report: logs/fastp/P033/P033_dna_normal.fastp.html
+
+fastp -w 12 -i /staging/leuven/stg_00096/home/rdewin/data/TALL_IF/TALL_IF/WGS/WGS_batch1/S117/S117_R01.fq.gz -I /staging/leuven/stg_00096/home/rdewin/data/TALL_IF/TALL_IF/WGS/WGS_batch1/S117/S117_R02.fq.gz -o results/fastp/P033/P033_dna_normal_R1.trimmed.fq -O results/fastp/P033/P033_dna_normal_R2.trimmed.fq -j logs/fastp/P033/P033_dna_normal.fastp.json -h logs/fastp/P033/P033_dna_normal.fastp.html 
+fastp v0.23.4, time used: 1315 seconds

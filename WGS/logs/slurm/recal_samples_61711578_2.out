@@ -1,0 +1,17 @@
+SLURM_JOB_ID: 61711585
+SLURM_JOB_USER: vsc35407
+SLURM_JOB_ACCOUNT: lp_big_wice_cpu
+SLURM_JOB_NAME: dedup_recal_samples
+SLURM_CLUSTER_NAME: wice
+SLURM_JOB_PARTITION: dedicated_big_bigmem
+SLURM_ARRAY_JOB_ID: 61711578
+SLURM_ARRAY_TASK_ID: 2
+SLURM_NNODES: 1
+SLURM_NODELIST: g28l22
+SLURM_JOB_CPUS_PER_NODE: 40
+Date: Mon Jun 24 14:38:58 CEST 2024
+Walltime: 02-00:00:00
+========================================================================
+Mon Jun 24 14:38:58 CEST 2024
+Processing sample: P018
+Snakemake completed successfully for sample P018 at Tue Jun 25 06:27:36 CEST 2024

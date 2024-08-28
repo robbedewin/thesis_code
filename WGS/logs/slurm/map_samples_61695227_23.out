@@ -1,0 +1,18 @@
+SLURM_JOB_ID: 61695227
+SLURM_JOB_USER: vsc35407
+SLURM_JOB_ACCOUNT: lp_big_wice_cpu
+SLURM_JOB_NAME: map_samples
+SLURM_CLUSTER_NAME: wice
+SLURM_JOB_PARTITION: dedicated_big_bigmem
+SLURM_ARRAY_JOB_ID: 61695227
+SLURM_ARRAY_TASK_ID: 23
+SLURM_NNODES: 1
+SLURM_NODELIST: g28l12
+SLURM_JOB_CPUS_PER_NODE: 40
+Date: Thu Jun 20 07:33:20 CEST 2024
+Walltime: 01-00:00:00
+========================================================================
+Thu Jun 20 07:33:20 CEST 2024
+Processing sample: P105
+['P011', 'P017', 'P027', 'P029', 'P033', 'P034', 'P035', 'P036', 'P037', 'P038', 'P041', 'P056', 'P057', 'P058', 'P059', 'P060', 'P061', 'P062', 'P064', 'P065', 'P066', 'P086', 'P103', 'P105']
+Snakemake completed successfully for sample P105 at Thu Jun 20 23:04:15 CEST 2024

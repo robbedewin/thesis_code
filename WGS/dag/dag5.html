@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snakemake Workflow Visualization</title>
+    <style>
+        .node circle {
+            fill: #999;
+            stroke: #555;
+            stroke-width: 1.5px;
+        }
+
+        .node text {
+            font: 12px sans-serif;
+            pointer-events: none;
+            text-anchor: middle;
+        }
+
+        .link {
+            fill: none;
+            stroke: #555;
+            stroke-width: 1.5px;
+        }
+    </style>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+</head>
+<body>
+    <svg width="960" height="600"></svg>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const width = 960, height = 600;
+
+            const svg = d3.select("svg")
+                .attr("width", width)
+                .attr("height", height)
+                .append("g")
+                .attr("transform", "translate(40,0)");
+
+            const tree = d3.tree().size([height, width - 160]);
+
+            const data = {
+                "nodes": [
+                    { "id": "0", "label": "all" },
+                    { "id": "1", "label": "multiqc" },
+                    { "id": "2", "label": "fastqc_raw" },
+                    { "id": "3", "label": "fastqc_trimmed" },
+                    { "id": "4", "label": "trim_reads_for_fastqc" },
+                    { "id": "5", "label": "samtools_idxstats" },
+                    { "id": "6", "label": "apply_bqsr" },
+                    { "id": "7", "label": "mark_duplicates" },
+                    { "id": "8", "label": "samtools_sort" },
+                    { "id": "9", "label": "bwa_map" },
+                    { "id": "10", "label": "trim_reads" },
+                    { "id": "11", "label": "get_reference" },
+                    { "id": "12", "label": "bwa_index" },
+                    { "id": "13", "label": "base_recal_table" },
+                    { "id": "14", "label": "genome_faidx" },
+                    { "id": "15", "label": "genome_dict" },
+                    { "id": "16", "label": "get_common_dbSNP" },
+                    { "id": "17", "label": "samtools_index" },
+                    { "id": "18", "label": "samtools_stats" },
+                    { "id": "19", "label": "ascat" },
+                    { "id": "20", "label": "mutect2" },
+                    { "id": "21", "label": "mutect_pon3" },
+                    { "id": "22", "label": "mutect_pon2" },
+                    { "id": "23", "label": "create_sample_map" },
+                    { "id": "24", "label": "mutect_pon1" },
+                    { "id": "25", "label": "select_pass_variants" },
+                    { "id": "26", "label": "filter_mutect2" },
+                    { "id": "27", "label": "calculate_contamination" },
+                    { "id": "28", "label": "get_pileup_summaries" },
+                    { "id": "29", "label": "germline_resource_chr" },
+                    { "id": "30", "label": "germline_resource" },
+                    { "id": "31", "label": "learn_read_orientation_model" },
+                    { "id": "32", "label": "liftover_chm13_to_grch38_vcf" },
+                    { "id": "33", "label": "funcotate_variants" },
+                    { "id": "34", "label": "call_somatic_structural_variants" },
+                    { "id": "35", "label": "gridss_somatic_filter" },
+                    { "id": "36", "label": "generate_pon" },
+                    { "id": "37", "label": "gridss_normal" },
+                    { "id": "38", "label": "get_exclude_regions" },
+                    { "id": "39", "label": "svaba" }
+                ],
+                "links": [
+                    { "source": "17", "target": "0" },
+                    { "source": "32", "target": "0" },
+                    { "source": "34", "target": "0" },
+                    { "source": "33", "target": "0" },
+                    { "source": "35", "target": "0" },
+                    { "source": "20", "target": "0" },
+                    { "source": "1", "target": "0" },
+                    { "source": "25", "target": "0" },
+                    { "source": "19", "target": "0" },
+                    { "source": "39", "target": "0" },
+                    { "source": "5", "target": "1" },
+                    { "source": "3", "target": "1" },
+                    { "source": "2", "target": "1" },
+                    { "source": "7", "target": "1" },
+                    { "source": "18", "target": "1" },
+                    { "source": "4", "target": "3" },
+                    { "source": "17", "target": "5" },
+                    { "source": "6", "target": "5" },
+                    { "source": "7", "target": "6" },
+                    { "source": "11", "target": "6" },
+                    { "source": "13", "target": "6" },
+                    { "source": "8", "target": "7" },
+                    { "source": "9", "target": "8" },
+                    { "source": "11", "target": "8" },
+                    { "source": "10", "target": "9" },
+                    { "source": "12", "target": "9" },
+                    { "source": "11", "target": "9" },
+                    { "source": "11", "target": "12" },
+                    { "source": "15", "target": "13" },
+                    { "source": "14", "target": "13" },
+                    { "source": "7", "target": "13" },
+                    { "source": "11", "target": "13" },
+                    { "source": "16", "target": "13" },
+                    { "source": "11", "target": "14" },
+                    { "source": "11", "target": "15" },
+                    { "source": "6", "target": "17" },
+                    { "source": "6", "target": "18" },
+                    { "source": "6", "target": "19" },
+                    { "source": "6", "target": "20" },
+                    { "source": "21", "target": "20" },
+                    { "source": "11", "target": "21" },
+                    { "source": "22", "target": "21" },
+                    { "source": "23", "target": "22" },
+                    { "source": "11", "target": "22" },
+                    { "source": "24", "target": "23" },
+                    { "source": "11", "target": "24" },
+                    { "source": "6", "target": "24" },
+                    { "source": "26", "target": "25" },
+                    { "source": "27", "target": "26" },
+                    { "source": "31", "target": "26" },
+                    { "source": "20", "target": "26" },
+                    { "source": "28", "target": "27" },
+                    { "source": "6", "target": "28" },
+                    { "source": "29", "target": "28" },
+                    { "source": "30", "target": "29" },
+                    { "source": "20", "target": "31" },
+                    { "source": "25", "target": "32" },
+                    { "source": "32", "target": "33" },
+                    { "source": "6", "target": "34" },
+                    { "source": "34", "target": "35" },
+                    { "source": "36", "target": "35" },
+                    { "source": "37", "target": "36" },
+                    { "source": "6", "target": "37" },
+                    { "source": "38", "target": "37" },
+                    { "source": "6", "target": "39" }
+                ]
+            };
+
+            const idToNode = {};
+            data.nodes.forEach(node => {
+                idToNode[node.id] = { ...node, children: [] };
+            });
+            data.links.forEach(link => {
+                idToNode[link.source].children.push(idToNode[link.target]);
+            });
+
+            const root = d3.hierarchy(idToNode["0"]);
+
+            tree(root);
+
+            const link = svg.selectAll(".link")
+                .data(root.links())
+                .enter().append("path")
+                .attr("class", "link")
+                .attr("d", d3.linkHorizontal()
+                    .x(d => d.y)
+                    .y(d => d.x));
+
+            const node = svg.selectAll(".node")
+                .data(root.descendants())
+                .enter().append("g")
+                .attr("class", d => "node" + (d.children ? " node--internal" : " node--leaf"))
+                .attr("transform", d => `translate(${d.y},${d.x})`);
+
+            node.append("circle")
+                .attr("r", 5);  // Increase the radius for better visibility
+
+            node.append("text")
+                .attr("dy", 3)
+                .attr("x", d => d.children ? -10 : 10)  // Adjusted spacing for text
+                .style("text-anchor", d => d.children ? "end" : "start")
+                .text(d => d.data.label);
+        });
+    </script>
+</body>
+</html>
+<!-- The visualization is now complete. -->

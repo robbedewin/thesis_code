@@ -1,0 +1,212 @@
+-Reading
+-Validating
+--Non MAF specific values in Variant_Classification column:
+  DE_NOVO_START_OUT_FRAME
+-Silent variants: 3765 
+-Summarizing
+-Processing clinical data
+--Missing clinical data
+-Finished in 0.508s elapsed (0.487s cpu) 
+-Reading
+-Validating
+-Silent variants: 2005 
+-Summarizing
+-Processing clinical data
+--Missing clinical data
+-Finished in 0.121s elapsed (0.115s cpu) 
+-Reading
+-Validating
+--Non MAF specific values in Variant_Classification column:
+  DE_NOVO_START_OUT_FRAME
+-Silent variants: 1971 
+-Summarizing
+-Processing clinical data
+--Missing clinical data
+-Finished in 0.335s elapsed (0.332s cpu) 
+-Reading
+-Validating
+--Non MAF specific values in Variant_Classification column:
+  START_CODON_SNP
+-Silent variants: 3348 
+-Summarizing
+-Processing clinical data
+--Missing clinical data
+-Finished in 0.154s elapsed (0.139s cpu) 
+-Reading
+-Validating
+-Silent variants: 1070 
+-Summarizing
+-Processing clinical data
+--Missing clinical data
+-Finished in 0.330s elapsed (0.326s cpu) 
+-Reading
+-Validating
+--Non MAF specific values in Variant_Classification column:
+  DE_NOVO_START_OUT_FRAME
+-Silent variants: 1826 
+-Summarizing
+-Processing clinical data
+--Missing clinical data
+-Finished in 0.082s elapsed (0.082s cpu) 
+-Reading
+-Validating
+-Silent variants: 1722 
+-Summarizing
+-Processing clinical data
+--Missing clinical data
+-Finished in 0.119s elapsed (0.108s cpu) 
+-Reading
+-Validating
+-Silent variants: 5467 
+-Summarizing
+-Processing clinical data
+--Missing clinical data
+-Finished in 0.255s elapsed (0.244s cpu) 
+-Reading
+-Validating
+-Silent variants: 2643 
+-Summarizing
+--Possible FLAGS among top ten genes:
+  FLG
+-Processing clinical data
+--Missing clinical data
+-Finished in 0.132s elapsed (0.129s cpu) 
+-Reading
+-Validating
+--Non MAF specific values in Variant_Classification column:
+  DE_NOVO_START_OUT_FRAME
+-Silent variants: 3958 
+-Summarizing
+-Processing clinical data
+--Missing clinical data
+-Finished in 0.516s elapsed (0.465s cpu) 
+Merging 10 MAF objects
+-Validating
+--Removed 133 duplicated variants
+--Non MAF specific values in Variant_Classification column:
+  DE_NOVO_START_OUT_FRAME
+  START_CODON_SNP
+-Silent variants: 27642 
+-Summarizing
+-Processing clinical data
+-Finished in 1.493s elapsed (1.431s cpu) 
+-Reading
+-Validating
+--Non MAF specific values in Variant_Classification column:
+  DE_NOVO_START_OUT_FRAME
+-Silent variants: 3765 
+-Summarizing
+-Processing clinical data
+--Missing clinical data
+-Finished in 0.143s elapsed (0.140s cpu) 
+-Reading
+-Validating
+-Silent variants: 2005 
+-Summarizing
+-Processing clinical data
+--Missing clinical data
+-Finished in 0.096s elapsed (0.095s cpu) 
+-Reading
+-Validating
+--Non MAF specific values in Variant_Classification column:
+  DE_NOVO_START_OUT_FRAME
+-Silent variants: 1971 
+-Summarizing
+-Processing clinical data
+--Missing clinical data
+-Finished in 0.085s elapsed (0.082s cpu) 
+-Reading
+-Validating
+--Non MAF specific values in Variant_Classification column:
+  START_CODON_SNP
+-Silent variants: 3348 
+-Summarizing
+-Processing clinical data
+--Missing clinical data
+-Finished in 0.142s elapsed (0.129s cpu) 
+-Reading
+-Validating
+-Silent variants: 1070 
+-Summarizing
+-Processing clinical data
+--Missing clinical data
+-Finished in 0.073s elapsed (0.062s cpu) 
+-Reading
+-Validating
+--Non MAF specific values in Variant_Classification column:
+  DE_NOVO_START_OUT_FRAME
+-Silent variants: 1826 
+-Summarizing
+-Processing clinical data
+--Missing clinical data
+-Finished in 0.091s elapsed (0.080s cpu) 
+-Reading
+-Validating
+-Silent variants: 1722 
+-Summarizing
+-Processing clinical data
+--Missing clinical data
+-Finished in 0.126s elapsed (0.116s cpu) 
+-Reading
+-Validating
+-Silent variants: 5467 
+-Summarizing
+-Processing clinical data
+--Missing clinical data
+-Finished in 0.184s elapsed (0.183s cpu) 
+-Reading
+-Validating
+-Silent variants: 2643 
+-Summarizing
+--Possible FLAGS among top ten genes:
+  FLG
+-Processing clinical data
+--Missing clinical data
+-Finished in 0.115s elapsed (0.114s cpu) 
+-Reading
+-Validating
+--Non MAF specific values in Variant_Classification column:
+  DE_NOVO_START_OUT_FRAME
+-Silent variants: 3958 
+-Summarizing
+-Processing clinical data
+--Missing clinical data
+-Finished in 0.166s elapsed (0.164s cpu) 
+Merging 10 MAF objects
+-Validating
+--Removed 133 duplicated variants
+--Non MAF specific values in Variant_Classification column:
+  DE_NOVO_START_OUT_FRAME
+  START_CODON_SNP
+-Silent variants: 27642 
+-Summarizing
+-Processing clinical data
+--Annotation missing for below samples in MAF:
+  P013_annotated_lifted_variants
+  P016_annotated_lifted_variants
+  P018_annotated_lifted_variants
+  P019_annotated_lifted_variants
+  P020_annotated_lifted_variants
+  P022_annotated_lifted_variants
+  P023_annotated_lifted_variants
+  P024_annotated_lifted_variants
+  P026_annotated_lifted_variants
+  P028_annotated_lifted_variants
+-Finished in 0.726s elapsed (0.694s cpu) 
+                   ID     summary   Mean Median
+               <char>      <char>  <num>  <num>
+ 1:        NCBI_Build        hg38     NA     NA
+ 2:            Center __UNKNOWN__     NA     NA
+ 3:           Samples          11     NA     NA
+ 4:            nGenes         225     NA     NA
+ 5:   Frame_Shift_Ins          27  2.455      2
+ 6:      In_Frame_Del          11  1.000      1
+ 7:      In_Frame_Ins           7  0.636      0
+ 8: Missense_Mutation         189 17.182     14
+ 9: Nonsense_Mutation           4  0.364      0
+10:  Nonstop_Mutation           2  0.182      0
+11:       Splice_Site          12  1.091      1
+12:             total         252 22.909     18
+Error in oncoplot(maf = merged_maf, top = 10, fontSize = 8, showTumorSampleBarcodes = TRUE,  : 
+  unused argument (drawleged = FALSE)
+Execution halted

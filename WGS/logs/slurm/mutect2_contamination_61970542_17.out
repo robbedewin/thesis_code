@@ -1,0 +1,17 @@
+SLURM_JOB_ID: 61970589
+SLURM_JOB_USER: vsc35407
+SLURM_JOB_ACCOUNT: lp_big_wice_cpu
+SLURM_JOB_NAME: mutect2_contamination
+SLURM_CLUSTER_NAME: wice
+SLURM_JOB_PARTITION: dedicated_big_bigmem
+SLURM_ARRAY_JOB_ID: 61970542
+SLURM_ARRAY_TASK_ID: 17
+SLURM_NNODES: 1
+SLURM_NODELIST: g28l12
+SLURM_JOB_CPUS_PER_NODE: 8
+Date: Sun Jul 14 15:22:00 CEST 2024
+Walltime: 00-10:00:00
+========================================================================
+Sun Jul 14 15:22:00 CEST 2024
+Calculating mutect contamination on sample: P036
+Snakemake completed successfully for sample P036 at Sun Jul 14 16:46:30 CEST 2024

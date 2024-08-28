@@ -1,0 +1,1197 @@
+Mon May 13 10:37:43 CEST 2024: Full log file is: ./gridss.full.20240513_103743.i28l10.63769.log
+Mon May 13 10:37:43 CEST 2024: Found /usr/bin/time
+Mon May 13 10:37:43 CEST 2024: Using GRIDSS jar /lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gridss-2.13.2-3/gridss.jar
+Mon May 13 10:37:43 CEST 2024: Using reference genome "resources/genome.fa"
+Mon May 13 10:37:43 CEST 2024: Using output VCF results/gridss/P023/P023_all_calls.vcf
+Mon May 13 10:37:43 CEST 2024: Using assembly bam results/gridss/P023/P023_all_calls.vcf.assembly.bam
+Mon May 13 10:37:43 CEST 2024: Using 8 worker threads.
+Mon May 13 10:37:43 CEST 2024: Using blacklist resources/T2T.excluderanges.bed
+Mon May 13 10:37:43 CEST 2024: Using JVM maximum heap size of 30g for assembly and variant calling.
+Mon May 13 10:37:43 CEST 2024: Using input file results/recal/P023/P023_dna_normal_recal.bam
+Mon May 13 10:37:43 CEST 2024: Using input file results/recal/P023/P023_dna_tumor_recal.bam
+Mon May 13 10:37:43 CEST 2024: Found /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/WGS/bin/Rscript
+Mon May 13 10:37:43 CEST 2024: Found /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/WGS/bin/samtools
+Mon May 13 10:37:43 CEST 2024: Found /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/WGS/bin/java
+Mon May 13 10:37:43 CEST 2024: Found /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/WGS/bin/bwa
+Mon May 13 10:37:43 CEST 2024: samtools version: 1.19+htslib-1.19.1
+Mon May 13 10:37:43 CEST 2024: R version: Rscript (R) version 4.3.3 (2024-02-29)
+Mon May 13 10:37:43 CEST 2024: bwa Version: 0.7.18-r1243-dirty
+Mon May 13 10:37:43 CEST 2024: time version: time (GNU Time) UNKNOWN
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+Written by David Keppel, David MacKenzie, and Assaf Gordon.
+Mon May 13 10:37:43 CEST 2024: bash version: GNU bash, version 4.4.20(1)-release (x86_64-redhat-linux-gnu)
+Mon May 13 10:37:43 CEST 2024: java version: openjdk version "17.0.10-internal" 2024-01-16	OpenJDK Runtime Environment (build 17.0.10-internal+0-adhoc..src)	OpenJDK 64-Bit Server VM (build 17.0.10-internal+0-adhoc..src, mixed mode, sharing)	
+Mon May 13 10:37:43 CEST 2024: Max file handles: 131072
+Mon May 13 10:37:43 CEST 2024: Running GRIDSS steps: setupreference, preprocess, assemble, call,
+Mon May 13 10:37:43 CEST 2024: Start pre-processing	results/recal/P023/P023_dna_normal_recal.bam
+Mon May 13 10:37:43 CEST 2024: Skipping pre-processing as ./P023_dna_normal_recal.bam.gridss.working/P023_dna_normal_recal.bam.sv.bam already exists. results/recal/P023/P023_dna_normal_recal.bam
+Mon May 13 10:37:43 CEST 2024: Start pre-processing	results/recal/P023/P023_dna_tumor_recal.bam
+Mon May 13 10:37:43 CEST 2024: Skipping pre-processing as ./P023_dna_tumor_recal.bam.gridss.working/P023_dna_tumor_recal.bam.sv.bam already exists. results/recal/P023/P023_dna_tumor_recal.bam
+Mon May 13 10:37:43 CEST 2024: Start assembly	results/gridss/P023/P023_all_calls.vcf.assembly.bam
+Mon May 13 10:37:43 CEST 2024: Skipping assembly as results/gridss/P023/P023_all_calls.vcf.assembly.bam already exists.	results/gridss/P023/P023_all_calls.vcf.assembly.bam
+Mon May 13 10:37:43 CEST 2024: Complete assembly	results/gridss/P023/P023_all_calls.vcf.assembly.bam
+Mon May 13 10:37:43 CEST 2024: Start calling	results/gridss/P023/P023_all_calls.vcf
+Mon May 13 10:37:43 CEST 2024: Running	IdentifyVariants	results/gridss/P023/P023_all_calls.vcf
+INFO	2024-05-13 10:37:43	Defaults	Found file for property samjdk.reference_fasta: /lustre1/project/stg_00096/home/rdewin/WGS/resources/genome.fa 
+INFO	2024-05-13 10:37:43	IdentifyVariants	
+
+********** NOTE: Picard's command line syntax is changing.
+**********
+********** For more information, please see:
+********** https://github.com/broadinstitute/picard/wiki/Command-Line-Syntax-Transition-For-Users-(Pre-Transition)
+**********
+********** The command line looks like this in the new syntax:
+**********
+**********    IdentifyVariants -TMP_DIR . -WORKING_DIR . -REFERENCE_SEQUENCE resources/genome.fa -WORKER_THREADS 8 -INPUT results/recal/P023/P023_dna_normal_recal.bam -INPUT results/recal/P023/P023_dna_tumor_recal.bam -BLACKLIST resources/T2T.excluderanges.bed -ASSEMBLY results/gridss/P023/P023_all_calls.vcf.assembly.bam -OUTPUT_VCF ./P023_all_calls.vcf.gridss.working/P023_all_calls.vcf.unallocated.vcf -READ_PAIR_CONCORDANT_PERCENT 0.995
+**********
+
+
+10:37:44.007 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gridss-2.13.2-3/gridss.jar!/com/intel/gkl/native/libgkl_compression.so
+[Mon May 13 10:37:44 CEST 2024] IdentifyVariants OUTPUT_VCF=./P023_all_calls.vcf.gridss.working/P023_all_calls.vcf.unallocated.vcf ASSEMBLY=[results/gridss/P023/P023_all_calls.vcf.assembly.bam] INPUT=[results/recal/P023/P023_dna_normal_recal.bam, results/recal/P023/P023_dna_tumor_recal.bam] READ_PAIR_CONCORDANT_PERCENT=0.995 BLACKLIST=resources/T2T.excluderanges.bed WORKER_THREADS=8 WORKING_DIR=. TMP_DIR=[.] REFERENCE_SEQUENCE=resources/genome.fa    IGNORE_DUPLICATES=true VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 MAX_RECORDS_IN_RAM=500000 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
+[Mon May 13 10:37:44 CEST 2024] Executing as vsc35407@i28l10 on Linux 4.18.0-513.24.1.el8_9.x86_64 amd64; OpenJDK 64-Bit Server VM 17.0.10-internal+0-adhoc..src; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.13.2-gridss
+INFO	2024-05-13 10:37:44	GridssConfiguration	maxCoverage=25000
+INFO	2024-05-13 10:37:44	GridssConfiguration	minMapq=20
+INFO	2024-05-13 10:37:44	GridssConfiguration	fallbackMapq=20
+INFO	2024-05-13 10:37:44	GridssConfiguration	fallbackBaseq=20
+INFO	2024-05-13 10:37:44	GridssConfiguration	minAnchorShannonEntropy=0.5
+INFO	2024-05-13 10:37:44	GridssConfiguration	dovetailMargin=4
+INFO	2024-05-13 10:37:44	GridssConfiguration	softclip.minAverageQual=5.0
+INFO	2024-05-13 10:37:44	GridssConfiguration	softclip.minLength=5
+INFO	2024-05-13 10:37:44	GridssConfiguration	softclip.minAnchorIdentity=0.95
+INFO	2024-05-13 10:37:44	GridssConfiguration	softclip.realignSplitReads=false
+INFO	2024-05-13 10:37:44	GridssConfiguration	useReadGroupSampleNameCategoryLabel=true
+INFO	2024-05-13 10:37:44	GridssConfiguration	chunkSize=10000000
+INFO	2024-05-13 10:37:44	GridssConfiguration	chunkSequenceChangePenalty=250000
+INFO	2024-05-13 10:37:44	GridssConfiguration	hashEvidenceID=true
+INFO	2024-05-13 10:37:44	GridssConfiguration	adapter=AGATCGGAAGAG
+INFO	2024-05-13 10:37:44	GridssConfiguration	adapter=ATGGAATTCTCG
+INFO	2024-05-13 10:37:44	GridssConfiguration	adapter=CTGTCTCTTATA
+INFO	2024-05-13 10:37:44	GridssConfiguration	scoring.readWeightedRegex=^cons_[0-9]+_r_(?<weight>[0-9]+)_$
+INFO	2024-05-13 10:37:44	GridssConfiguration	scoring.model=FastEmpiricalReferenceLikelihood
+INFO	2024-05-13 10:37:44	GridssConfiguration	assembly.k=25
+INFO	2024-05-13 10:37:44	GridssConfiguration	assembly.minReads=3
+INFO	2024-05-13 10:37:44	GridssConfiguration	assembly.includePairAnchors=true
+INFO	2024-05-13 10:37:44	GridssConfiguration	assembly.pairAnchorMismatchIgnoreEndBases=5
+INFO	2024-05-13 10:37:44	GridssConfiguration	assembly.writeFiltered=false
+INFO	2024-05-13 10:37:44	GridssConfiguration	assembly.anchorLength=300
+INFO	2024-05-13 10:37:44	GridssConfiguration	assembly.removeMisassembledPartialContigsDuringAssembly=true
+INFO	2024-05-13 10:37:44	GridssConfiguration	assembly.maxExpectedBreakendLengthMultiple=1.5
+INFO	2024-05-13 10:37:44	GridssConfiguration	assembly.errorCorrection.kmerErrorCorrectionMultiple=10.0
+INFO	2024-05-13 10:37:44	GridssConfiguration	assembly.errorCorrection.k=21
+INFO	2024-05-13 10:37:44	GridssConfiguration	assembly.errorCorrection.maxCorrectionsInKmer=3
+INFO	2024-05-13 10:37:44	GridssConfiguration	assembly.errorCorrection.deduplicateReadKmers=true
+INFO	2024-05-13 10:37:44	GridssConfiguration	assembly.realignContigs=true
+INFO	2024-05-13 10:37:44	GridssConfiguration	assembly.recoverAfterError=true
+INFO	2024-05-13 10:37:44	GridssConfiguration	assembly.downsample.acceptDensityPortion=0.1
+INFO	2024-05-13 10:37:44	GridssConfiguration	assembly.downsample.targetEvidenceDensity=1
+INFO	2024-05-13 10:37:44	GridssConfiguration	assembly.downsample.minimumDensityWindowSize=1000
+INFO	2024-05-13 10:37:44	GridssConfiguration	assembly.downsample.densityDownsampleRateClippedReads=0.9
+INFO	2024-05-13 10:37:44	GridssConfiguration	assembly.downsample.densityDownsampleRateDiscordantReads=0.75
+INFO	2024-05-13 10:37:44	GridssConfiguration	assembly.positional.maxPathLengthMultiple=1.1
+INFO	2024-05-13 10:37:44	GridssConfiguration	assembly.positional.retainWidthMultiple=2.0
+INFO	2024-05-13 10:37:44	GridssConfiguration	assembly.positional.flushWidthMultiple=1.0
+INFO	2024-05-13 10:37:44	GridssConfiguration	assembly.positional.maximumNodeDensity=2.0
+INFO	2024-05-13 10:37:44	GridssConfiguration	assembly.positional.trimSelfIntersectingReads=true
+INFO	2024-05-13 10:37:44	GridssConfiguration	assembly.positional.forceFullMemoizationRecalculationAt=0.8
+INFO	2024-05-13 10:37:44	GridssConfiguration	assembly.positional.safetyModePathCountThreshold=50000
+INFO	2024-05-13 10:37:44	GridssConfiguration	assembly.positional.safetyModeContigsToCall=3
+INFO	2024-05-13 10:37:44	GridssConfiguration	assembly.contigNamePrefix=asm%d-
+INFO	2024-05-13 10:37:44	GridssConfiguration	assembly.longReadReadLengthThreshold=1000
+INFO	2024-05-13 10:37:44	GridssConfiguration	assembly.maximumReproductionExportPackages=5
+INFO	2024-05-13 10:37:44	GridssConfiguration	variantcalling.minReads=2
+INFO	2024-05-13 10:37:44	GridssConfiguration	variantcalling.minScore=50.0
+INFO	2024-05-13 10:37:44	GridssConfiguration	variantcalling.minSize=10
+INFO	2024-05-13 10:37:44	GridssConfiguration	variantcalling.callUnassembledBreakpoints=true
+INFO	2024-05-13 10:37:44	GridssConfiguration	variantcalling.callUnassembledBreakends=false
+INFO	2024-05-13 10:37:44	GridssConfiguration	variantcalling.callFullyAnchoredAssemblyVariants=false
+INFO	2024-05-13 10:37:44	GridssConfiguration	variantcalling.breakendMargin=10
+INFO	2024-05-13 10:37:44	GridssConfiguration	variantcalling.writeFiltered=false
+INFO	2024-05-13 10:37:44	GridssConfiguration	variantcalling.simplecalls=false
+INFO	2024-05-13 10:37:44	GridssConfiguration	variantcalling.maxBreakendHomologyLength=300
+INFO	2024-05-13 10:37:44	GridssConfiguration	variantcalling.breakendHomologyAlignmentMargin=10
+INFO	2024-05-13 10:37:44	GridssConfiguration	variantcalling.requireAssemblyCategorySupport=true
+INFO	2024-05-13 10:37:44	GridssConfiguration	variantcalling.callBreakends=true
+INFO	2024-05-13 10:37:44	GridssConfiguration	variantcalling.includeSupportingReadNames=false
+INFO	2024-05-13 10:37:44	GridssConfiguration	variantcalling.breakpointLowQuality=500.0
+INFO	2024-05-13 10:37:44	GridssConfiguration	variantcalling.breakendLowQuality=1500.0
+INFO	2024-05-13 10:37:44	GridssConfiguration	variantcalling.breakendMaxAssemblySupportBias=0.5
+INFO	2024-05-13 10:37:44	GridssConfiguration	variantcalling.ignoreMissingAssemblyFile=false
+INFO	2024-05-13 10:37:44	GridssConfiguration	variantcalling.minimumImpreciseDeletion=500
+INFO	2024-05-13 10:37:44	GridssConfiguration	terminateOnFirstError=true
+INFO	2024-05-13 10:37:44	GridssConfiguration	visualisation.directory=visualisation
+INFO	2024-05-13 10:37:44	GridssConfiguration	visualisation.buffers=false
+INFO	2024-05-13 10:37:44	GridssConfiguration	visualisation.bufferTrackingItervalInSeconds=60
+INFO	2024-05-13 10:37:44	GridssConfiguration	visualisation.timeouts=false
+INFO	2024-05-13 10:37:44	GridssConfiguration	visualisation.evidenceAllocation=false
+INFO	2024-05-13 10:37:44	GridssConfiguration	visualisation.assemblyProgress=false
+INFO	2024-05-13 10:37:44	GridssConfiguration	visualisation.assemblyTelemetry=false
+INFO	2024-05-13 10:37:44	GridssConfiguration	visualisation.maxCliqueTelemetry=false
+INFO	2024-05-13 10:37:44	GridssConfiguration	visualisation.assemblyGraph=false
+INFO	2024-05-13 10:37:44	GridssConfiguration	visualisation.assemblyGraphFullSize=false
+INFO	2024-05-13 10:37:44	GridssConfiguration	visualisation.assemblyContigMemoization=false
+INFO	2024-05-13 10:37:44	GridssConfiguration	visualisation.evidenceTracker=false
+INFO	2024-05-13 10:37:44	TwoBitBufferedReferenceSequenceFile	Loading reference genome from cache /lustre1/project/stg_00096/home/rdewin/WGS/resources/genome.fa.gridsscache
+INFO	2024-05-13 10:37:44	MultipleSamFileCommandLineProgram	Loading aligner
+INFO	2024-05-13 10:37:44	AlignerFactory	sswjni library loading successful.
+INFO	2024-05-13 10:37:44	MultipleSamFileCommandLineProgram	Using 8 worker threads
+INFO	2024-05-13 10:37:44	MultipleSamFileCommandLineProgram	Using Read Group sample name P023_normal for file results/recal/P023/P023_dna_normal_recal.bam
+INFO	2024-05-13 10:37:44	MultipleSamFileCommandLineProgram	Using Read Group sample name P023_tumor for file results/recal/P023/P023_dna_tumor_recal.bam
+INFO	2024-05-13 10:37:44	VariantCaller	Identifying Breakpoints
+INFO	2024-05-13 10:37:46	TwoBitBufferedReferenceSequenceFile	Loading reference genome complete
+INFO	2024-05-13 10:37:46	VariantCaller	Start calling maximal cliques in chunk 2 (chr1:20000001-chr1:30000000)
+INFO	2024-05-13 10:37:46	VariantCaller	Start calling maximal cliques in chunk 1 (chr1:10000001-chr1:20000000)
+INFO	2024-05-13 10:37:46	VariantCaller	Start calling maximal cliques in chunk 3 (chr1:30000001-chr1:40000000)
+INFO	2024-05-13 10:37:46	VariantCaller	Start calling maximal cliques in chunk 0 (chr1:1-chr1:10000000)
+INFO	2024-05-13 10:37:46	VariantCaller	Start calling maximal cliques in chunk 4 (chr1:40000001-chr1:50000000)
+INFO	2024-05-13 10:37:46	VariantCaller	Start calling maximal cliques in chunk 5 (chr1:50000001-chr1:60000000)
+INFO	2024-05-13 10:37:46	VariantCaller	Start calling maximal cliques in chunk 6 (chr1:60000001-chr1:70000000)
+INFO	2024-05-13 10:37:46	VariantCaller	Start calling maximal cliques in chunk 7 (chr1:70000001-chr1:80000000)
+INFO	2024-05-13 10:37:50	VariantCaller	Complete calling maximal cliques in chunk 5 (chr1:50000001-chr1:60000000)
+INFO	2024-05-13 10:37:51	VariantCaller	Complete calling maximal cliques in chunk 6 (chr1:60000001-chr1:70000000)
+INFO	2024-05-13 10:37:51	VariantCaller	Start calling maximal cliques in chunk 8 (chr1:80000001-chr1:90000000)
+INFO	2024-05-13 10:37:51	VariantCaller	Complete calling maximal cliques in chunk 4 (chr1:40000001-chr1:50000000)
+INFO	2024-05-13 10:37:51	VariantCaller	Complete calling maximal cliques in chunk 7 (chr1:70000001-chr1:80000000)
+INFO	2024-05-13 10:37:51	VariantCaller	Complete calling maximal cliques in chunk 1 (chr1:10000001-chr1:20000000)
+INFO	2024-05-13 10:37:51	VariantCaller	Complete calling maximal cliques in chunk 0 (chr1:1-chr1:10000000)
+INFO	2024-05-13 10:37:51	VariantCaller	Start calling maximal cliques in chunk 9 (chr1:90000001-chr1:100000000)
+INFO	2024-05-13 10:37:51	VariantCaller	Complete calling maximal cliques in chunk 3 (chr1:30000001-chr1:40000000)
+INFO	2024-05-13 10:37:51	VariantCaller	Start calling maximal cliques in chunk 13 (chr1:130000001-chr1:140000000)
+INFO	2024-05-13 10:37:51	VariantCaller	Complete calling maximal cliques in chunk 13 (chr1:130000001-chr1:140000000)
+INFO	2024-05-13 10:37:51	VariantCaller	Start calling maximal cliques in chunk 10 (chr1:100000001-chr1:110000000)
+INFO	2024-05-13 10:37:52	VariantCaller	Start calling maximal cliques in chunk 12 (chr1:120000001-chr1:130000000)
+INFO	2024-05-13 10:37:52	VariantCaller	Start calling maximal cliques in chunk 11 (chr1:110000001-chr1:120000000)
+INFO	2024-05-13 10:37:52	VariantCaller	Complete calling maximal cliques in chunk 2 (chr1:20000001-chr1:30000000)
+INFO	2024-05-13 10:37:52	VariantCaller	Start calling maximal cliques in chunk 14 (chr1:140000001-chr1:150000000)
+INFO	2024-05-13 10:37:52	VariantCaller	Start calling maximal cliques in chunk 15 (chr1:150000001-chr1:160000000)
+INFO	2024-05-13 10:37:52	VariantCaller	Start calling maximal cliques in chunk 16 (chr1:160000001-chr1:170000000)
+WARNING	2024-05-13 10:37:53	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:37:53	VariantCaller	Complete calling maximal cliques in chunk 14 (chr1:140000001-chr1:150000000)
+INFO	2024-05-13 10:37:53	VariantCaller	Complete calling maximal cliques in chunk 12 (chr1:120000001-chr1:130000000)
+INFO	2024-05-13 10:37:53	VariantCaller	Complete calling maximal cliques in chunk 8 (chr1:80000001-chr1:90000000)
+INFO	2024-05-13 10:37:53	VariantCaller	Start calling maximal cliques in chunk 17 (chr1:170000001-chr1:180000000)
+WARNING	2024-05-13 10:37:53	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:37:53	VariantCaller	Complete calling maximal cliques in chunk 9 (chr1:90000001-chr1:100000000)
+INFO	2024-05-13 10:37:54	VariantCaller	Complete calling maximal cliques in chunk 10 (chr1:100000001-chr1:110000000)
+INFO	2024-05-13 10:37:54	VariantCaller	Start calling maximal cliques in chunk 18 (chr1:180000001-chr1:190000000)
+INFO	2024-05-13 10:37:54	VariantCaller	Start calling maximal cliques in chunk 19 (chr1:190000001-chr1:200000000)
+INFO	2024-05-13 10:37:54	VariantCaller	Start calling maximal cliques in chunk 21 (chr1:210000001-chr1:220000000)
+INFO	2024-05-13 10:37:54	VariantCaller	Start calling maximal cliques in chunk 20 (chr1:200000001-chr1:210000000)
+WARNING	2024-05-13 10:37:54	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:37:54	VariantCaller	Complete calling maximal cliques in chunk 11 (chr1:110000001-chr1:120000000)
+INFO	2024-05-13 10:37:54	VariantCaller	Start calling maximal cliques in chunk 22 (chr1:220000001-chr1:230000000)
+INFO	2024-05-13 10:37:55	VariantCaller	Complete calling maximal cliques in chunk 15 (chr1:150000001-chr1:160000000)
+WARNING	2024-05-13 10:37:55	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:37:55	VariantCaller	Complete calling maximal cliques in chunk 16 (chr1:160000001-chr1:170000000)
+INFO	2024-05-13 10:37:55	VariantCaller	Start calling maximal cliques in chunk 23 (chr1:230000001-chr1:240000000)
+INFO	2024-05-13 10:37:55	VariantCaller	Start calling maximal cliques in chunk 24 (chr1:240000001-chr2:1362672)
+INFO	2024-05-13 10:37:56	VariantCaller	Complete calling maximal cliques in chunk 18 (chr1:180000001-chr1:190000000)
+INFO	2024-05-13 10:37:56	VariantCaller	Start calling maximal cliques in chunk 25 (chr2:1362673-chr2:11362672)
+INFO	2024-05-13 10:37:56	VariantCaller	Complete calling maximal cliques in chunk 17 (chr1:170000001-chr1:180000000)
+INFO	2024-05-13 10:37:57	VariantCaller	Complete calling maximal cliques in chunk 21 (chr1:210000001-chr1:220000000)
+INFO	2024-05-13 10:37:57	VariantCaller	Complete calling maximal cliques in chunk 19 (chr1:190000001-chr1:200000000)
+INFO	2024-05-13 10:37:57	VariantCaller	Start calling maximal cliques in chunk 26 (chr2:11362673-chr2:21362672)
+INFO	2024-05-13 10:37:57	VariantCaller	Complete calling maximal cliques in chunk 20 (chr1:200000001-chr1:210000000)
+INFO	2024-05-13 10:37:57	VariantCaller	Complete calling maximal cliques in chunk 22 (chr1:220000001-chr1:230000000)
+INFO	2024-05-13 10:37:57	VariantCaller	Start calling maximal cliques in chunk 28 (chr2:31362673-chr2:41362672)
+INFO	2024-05-13 10:37:57	VariantCaller	Start calling maximal cliques in chunk 27 (chr2:21362673-chr2:31362672)
+INFO	2024-05-13 10:37:57	VariantCaller	Start calling maximal cliques in chunk 29 (chr2:41362673-chr2:51362672)
+INFO	2024-05-13 10:37:58	VariantCaller	Complete calling maximal cliques in chunk 24 (chr1:240000001-chr2:1362672)
+INFO	2024-05-13 10:37:58	VariantCaller	Start calling maximal cliques in chunk 30 (chr2:51362673-chr2:61362672)
+INFO	2024-05-13 10:37:58	VariantCaller	Complete calling maximal cliques in chunk 23 (chr1:230000001-chr1:240000000)
+INFO	2024-05-13 10:37:58	VariantCaller	Start calling maximal cliques in chunk 31 (chr2:61362673-chr2:71362672)
+INFO	2024-05-13 10:37:58	VariantCaller	Start calling maximal cliques in chunk 32 (chr2:71362673-chr2:81362672)
+WARNING	2024-05-13 10:37:58	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:37:58	VariantCaller	Complete calling maximal cliques in chunk 25 (chr2:1362673-chr2:11362672)
+INFO	2024-05-13 10:37:58	VariantCaller	Start calling maximal cliques in chunk 33 (chr2:81362673-chr2:91362672)
+INFO	2024-05-13 10:37:58	VariantCaller	Complete calling maximal cliques in chunk 26 (chr2:11362673-chr2:21362672)
+INFO	2024-05-13 10:37:59	VariantCaller	Start calling maximal cliques in chunk 34 (chr2:91362673-chr2:101362672)
+INFO	2024-05-13 10:37:59	VariantCaller	Complete calling maximal cliques in chunk 28 (chr2:31362673-chr2:41362672)
+INFO	2024-05-13 10:37:59	VariantCaller	Complete calling maximal cliques in chunk 27 (chr2:21362673-chr2:31362672)
+INFO	2024-05-13 10:37:59	VariantCaller	Start calling maximal cliques in chunk 35 (chr2:101362673-chr2:111362672)
+INFO	2024-05-13 10:38:00	VariantCaller	Start calling maximal cliques in chunk 36 (chr2:111362673-chr2:121362672)
+INFO	2024-05-13 10:38:00	VariantCaller	Complete calling maximal cliques in chunk 30 (chr2:51362673-chr2:61362672)
+INFO	2024-05-13 10:38:00	VariantCaller	Complete calling maximal cliques in chunk 29 (chr2:41362673-chr2:51362672)
+INFO	2024-05-13 10:38:00	VariantCaller	Complete calling maximal cliques in chunk 33 (chr2:81362673-chr2:91362672)
+INFO	2024-05-13 10:38:00	VariantCaller	Start calling maximal cliques in chunk 37 (chr2:121362673-chr2:131362672)
+INFO	2024-05-13 10:38:00	VariantCaller	Complete calling maximal cliques in chunk 32 (chr2:71362673-chr2:81362672)
+INFO	2024-05-13 10:38:00	VariantCaller	Start calling maximal cliques in chunk 38 (chr2:131362673-chr2:141362672)
+INFO	2024-05-13 10:38:00	VariantCaller	Complete calling maximal cliques in chunk 31 (chr2:61362673-chr2:71362672)
+INFO	2024-05-13 10:38:00	VariantCaller	Complete calling maximal cliques in chunk 34 (chr2:91362673-chr2:101362672)
+INFO	2024-05-13 10:38:00	VariantCaller	Start calling maximal cliques in chunk 40 (chr2:151362673-chr2:161362672)
+INFO	2024-05-13 10:38:00	VariantCaller	Start calling maximal cliques in chunk 41 (chr2:161362673-chr2:171362672)
+INFO	2024-05-13 10:38:00	VariantCaller	Start calling maximal cliques in chunk 39 (chr2:141362673-chr2:151362672)
+INFO	2024-05-13 10:38:00	VariantCaller	Start calling maximal cliques in chunk 42 (chr2:171362673-chr2:181362672)
+INFO	2024-05-13 10:38:01	VariantCaller	Complete calling maximal cliques in chunk 35 (chr2:101362673-chr2:111362672)
+INFO	2024-05-13 10:38:01	VariantCaller	Start calling maximal cliques in chunk 43 (chr2:181362673-chr2:191362672)
+INFO	2024-05-13 10:38:01	VariantCaller	Complete calling maximal cliques in chunk 36 (chr2:111362673-chr2:121362672)
+INFO	2024-05-13 10:38:01	VariantCaller	Start calling maximal cliques in chunk 44 (chr2:191362673-chr2:201362672)
+INFO	2024-05-13 10:38:02	VariantCaller	Complete calling maximal cliques in chunk 37 (chr2:121362673-chr2:131362672)
+INFO	2024-05-13 10:38:02	VariantCaller	Complete calling maximal cliques in chunk 41 (chr2:161362673-chr2:171362672)
+INFO	2024-05-13 10:38:02	VariantCaller	Start calling maximal cliques in chunk 45 (chr2:201362673-chr2:211362672)
+INFO	2024-05-13 10:38:02	VariantCaller	Complete calling maximal cliques in chunk 38 (chr2:131362673-chr2:141362672)
+WARNING	2024-05-13 10:38:02	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:02	VariantCaller	Complete calling maximal cliques in chunk 39 (chr2:141362673-chr2:151362672)
+INFO	2024-05-13 10:38:02	VariantCaller	Start calling maximal cliques in chunk 46 (chr2:211362673-chr2:221362672)
+INFO	2024-05-13 10:38:02	VariantCaller	Complete calling maximal cliques in chunk 40 (chr2:151362673-chr2:161362672)
+INFO	2024-05-13 10:38:02	VariantCaller	Complete calling maximal cliques in chunk 42 (chr2:171362673-chr2:181362672)
+INFO	2024-05-13 10:38:02	VariantCaller	Start calling maximal cliques in chunk 47 (chr2:221362673-chr2:231362672)
+INFO	2024-05-13 10:38:02	VariantCaller	Start calling maximal cliques in chunk 48 (chr2:231362673-chr2:241362672)
+INFO	2024-05-13 10:38:03	VariantCaller	Start calling maximal cliques in chunk 49 (chr2:241362673-chr3:8415920)
+INFO	2024-05-13 10:38:03	VariantCaller	Start calling maximal cliques in chunk 50 (chr3:8415921-chr3:18415920)
+INFO	2024-05-13 10:38:03	VariantCaller	Complete calling maximal cliques in chunk 43 (chr2:181362673-chr2:191362672)
+INFO	2024-05-13 10:38:03	VariantCaller	Complete calling maximal cliques in chunk 44 (chr2:191362673-chr2:201362672)
+INFO	2024-05-13 10:38:03	VariantCaller	Start calling maximal cliques in chunk 51 (chr3:18415921-chr3:28415920)
+INFO	2024-05-13 10:38:03	VariantCaller	Start calling maximal cliques in chunk 52 (chr3:28415921-chr3:38415920)
+INFO	2024-05-13 10:38:04	VariantCaller	Complete calling maximal cliques in chunk 45 (chr2:201362673-chr2:211362672)
+INFO	2024-05-13 10:38:04	VariantCaller	Complete calling maximal cliques in chunk 46 (chr2:211362673-chr2:221362672)
+INFO	2024-05-13 10:38:04	VariantCaller	Start calling maximal cliques in chunk 53 (chr3:38415921-chr3:48415920)
+WARNING	2024-05-13 10:38:05	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:05	VariantCaller	Complete calling maximal cliques in chunk 48 (chr2:231362673-chr2:241362672)
+WARNING	2024-05-13 10:38:05	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:05	VariantCaller	Complete calling maximal cliques in chunk 49 (chr2:241362673-chr3:8415920)
+WARNING	2024-05-13 10:38:05	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:05	VariantCaller	Complete calling maximal cliques in chunk 50 (chr3:8415921-chr3:18415920)
+INFO	2024-05-13 10:38:05	VariantCaller	Complete calling maximal cliques in chunk 47 (chr2:221362673-chr2:231362672)
+INFO	2024-05-13 10:38:05	VariantCaller	Start calling maximal cliques in chunk 54 (chr3:48415921-chr3:58415920)
+INFO	2024-05-13 10:38:05	VariantCaller	Start calling maximal cliques in chunk 55 (chr3:58415921-chr3:68415920)
+WARNING	2024-05-13 10:38:05	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:05	VariantCaller	Complete calling maximal cliques in chunk 51 (chr3:18415921-chr3:28415920)
+INFO	2024-05-13 10:38:05	VariantCaller	Start calling maximal cliques in chunk 58 (chr3:88415921-chr3:98415920)
+INFO	2024-05-13 10:38:05	VariantCaller	Start calling maximal cliques in chunk 56 (chr3:68415921-chr3:78415920)
+INFO	2024-05-13 10:38:05	VariantCaller	Start calling maximal cliques in chunk 57 (chr3:78415921-chr3:88415920)
+INFO	2024-05-13 10:38:05	VariantCaller	Complete calling maximal cliques in chunk 52 (chr3:28415921-chr3:38415920)
+INFO	2024-05-13 10:38:05	VariantCaller	Start calling maximal cliques in chunk 59 (chr3:98415921-chr3:108415920)
+INFO	2024-05-13 10:38:05	VariantCaller	Start calling maximal cliques in chunk 60 (chr3:108415921-chr3:118415920)
+INFO	2024-05-13 10:38:06	VariantCaller	Complete calling maximal cliques in chunk 58 (chr3:88415921-chr3:98415920)
+INFO	2024-05-13 10:38:06	VariantCaller	Start calling maximal cliques in chunk 61 (chr3:118415921-chr3:128415920)
+WARNING	2024-05-13 10:38:06	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:06	VariantCaller	Complete calling maximal cliques in chunk 53 (chr3:38415921-chr3:48415920)
+INFO	2024-05-13 10:38:06	VariantCaller	Start calling maximal cliques in chunk 62 (chr3:128415921-chr3:138415920)
+INFO	2024-05-13 10:38:07	VariantCaller	Complete calling maximal cliques in chunk 55 (chr3:58415921-chr3:68415920)
+WARNING	2024-05-13 10:38:07	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:07	VariantCaller	Complete calling maximal cliques in chunk 57 (chr3:78415921-chr3:88415920)
+INFO	2024-05-13 10:38:07	VariantCaller	Complete calling maximal cliques in chunk 59 (chr3:98415921-chr3:108415920)
+WARNING	2024-05-13 10:38:07	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:07	VariantCaller	Complete calling maximal cliques in chunk 54 (chr3:48415921-chr3:58415920)
+INFO	2024-05-13 10:38:07	VariantCaller	Start calling maximal cliques in chunk 63 (chr3:138415921-chr3:148415920)
+INFO	2024-05-13 10:38:07	VariantCaller	Complete calling maximal cliques in chunk 56 (chr3:68415921-chr3:78415920)
+INFO	2024-05-13 10:38:07	VariantCaller	Start calling maximal cliques in chunk 64 (chr3:148415921-chr3:158415920)
+INFO	2024-05-13 10:38:07	VariantCaller	Complete calling maximal cliques in chunk 60 (chr3:108415921-chr3:118415920)
+INFO	2024-05-13 10:38:07	VariantCaller	Start calling maximal cliques in chunk 65 (chr3:158415921-chr3:168415920)
+INFO	2024-05-13 10:38:07	VariantCaller	Start calling maximal cliques in chunk 66 (chr3:168415921-chr3:178415920)
+INFO	2024-05-13 10:38:07	VariantCaller	Start calling maximal cliques in chunk 67 (chr3:178415921-chr3:188415920)
+INFO	2024-05-13 10:38:08	VariantCaller	Start calling maximal cliques in chunk 68 (chr3:188415921-chr3:198415920)
+INFO	2024-05-13 10:38:08	VariantCaller	Complete calling maximal cliques in chunk 61 (chr3:118415921-chr3:128415920)
+INFO	2024-05-13 10:38:08	VariantCaller	Complete calling maximal cliques in chunk 62 (chr3:128415921-chr3:138415920)
+INFO	2024-05-13 10:38:08	VariantCaller	Start calling maximal cliques in chunk 69 (chr3:198415921-chr4:7059972)
+INFO	2024-05-13 10:38:09	VariantCaller	Start calling maximal cliques in chunk 70 (chr4:7059973-chr4:17059972)
+WARNING	2024-05-13 10:38:09	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:09	VariantCaller	Complete calling maximal cliques in chunk 64 (chr3:148415921-chr3:158415920)
+INFO	2024-05-13 10:38:09	VariantCaller	Complete calling maximal cliques in chunk 63 (chr3:138415921-chr3:148415920)
+INFO	2024-05-13 10:38:09	VariantCaller	Start calling maximal cliques in chunk 71 (chr4:17059973-chr4:27059972)
+INFO	2024-05-13 10:38:09	VariantCaller	Complete calling maximal cliques in chunk 65 (chr3:158415921-chr3:168415920)
+INFO	2024-05-13 10:38:09	VariantCaller	Start calling maximal cliques in chunk 72 (chr4:27059973-chr4:37059972)
+INFO	2024-05-13 10:38:09	VariantCaller	Complete calling maximal cliques in chunk 67 (chr3:178415921-chr3:188415920)
+INFO	2024-05-13 10:38:09	VariantCaller	Complete calling maximal cliques in chunk 66 (chr3:168415921-chr3:178415920)
+INFO	2024-05-13 10:38:09	VariantCaller	Start calling maximal cliques in chunk 73 (chr4:37059973-chr4:47059972)
+INFO	2024-05-13 10:38:10	VariantCaller	Start calling maximal cliques in chunk 75 (chr4:57059973-chr4:67059972)
+INFO	2024-05-13 10:38:10	VariantCaller	Start calling maximal cliques in chunk 74 (chr4:47059973-chr4:57059972)
+WARNING	2024-05-13 10:38:10	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:10	VariantCaller	Complete calling maximal cliques in chunk 68 (chr3:188415921-chr3:198415920)
+INFO	2024-05-13 10:38:10	VariantCaller	Start calling maximal cliques in chunk 76 (chr4:67059973-chr4:77059972)
+INFO	2024-05-13 10:38:10	VariantCaller	Complete calling maximal cliques in chunk 74 (chr4:47059973-chr4:57059972)
+WARNING	2024-05-13 10:38:11	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:11	VariantCaller	Complete calling maximal cliques in chunk 69 (chr3:198415921-chr4:7059972)
+INFO	2024-05-13 10:38:11	VariantCaller	Start calling maximal cliques in chunk 77 (chr4:77059973-chr4:87059972)
+INFO	2024-05-13 10:38:11	VariantCaller	Start calling maximal cliques in chunk 78 (chr4:87059973-chr4:97059972)
+WARNING	2024-05-13 10:38:11	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:11	VariantCaller	Complete calling maximal cliques in chunk 70 (chr4:7059973-chr4:17059972)
+INFO	2024-05-13 10:38:11	VariantCaller	Complete calling maximal cliques in chunk 72 (chr4:27059973-chr4:37059972)
+INFO	2024-05-13 10:38:11	VariantCaller	Complete calling maximal cliques in chunk 71 (chr4:17059973-chr4:27059972)
+INFO	2024-05-13 10:38:11	VariantCaller	Start calling maximal cliques in chunk 79 (chr4:97059973-chr4:107059972)
+INFO	2024-05-13 10:38:11	VariantCaller	Start calling maximal cliques in chunk 80 (chr4:107059973-chr4:117059972)
+INFO	2024-05-13 10:38:11	VariantCaller	Start calling maximal cliques in chunk 81 (chr4:117059973-chr4:127059972)
+INFO	2024-05-13 10:38:11	VariantCaller	Complete calling maximal cliques in chunk 73 (chr4:37059973-chr4:47059972)
+WARNING	2024-05-13 10:38:12	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:12	VariantCaller	Complete calling maximal cliques in chunk 76 (chr4:67059973-chr4:77059972)
+INFO	2024-05-13 10:38:12	VariantCaller	Start calling maximal cliques in chunk 82 (chr4:127059973-chr4:137059972)
+WARNING	2024-05-13 10:38:12	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:12	VariantCaller	Complete calling maximal cliques in chunk 75 (chr4:57059973-chr4:67059972)
+INFO	2024-05-13 10:38:12	VariantCaller	Start calling maximal cliques in chunk 83 (chr4:137059973-chr4:147059972)
+INFO	2024-05-13 10:38:12	VariantCaller	Start calling maximal cliques in chunk 84 (chr4:147059973-chr4:157059972)
+WARNING	2024-05-13 10:38:12	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:12	VariantCaller	Complete calling maximal cliques in chunk 77 (chr4:77059973-chr4:87059972)
+WARNING	2024-05-13 10:38:13	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:13	VariantCaller	Complete calling maximal cliques in chunk 78 (chr4:87059973-chr4:97059972)
+INFO	2024-05-13 10:38:13	VariantCaller	Start calling maximal cliques in chunk 85 (chr4:157059973-chr4:167059972)
+INFO	2024-05-13 10:38:13	VariantCaller	Start calling maximal cliques in chunk 86 (chr4:167059973-chr4:177059972)
+INFO	2024-05-13 10:38:13	VariantCaller	Complete calling maximal cliques in chunk 79 (chr4:97059973-chr4:107059972)
+WARNING	2024-05-13 10:38:13	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:13	VariantCaller	Complete calling maximal cliques in chunk 82 (chr4:127059973-chr4:137059972)
+INFO	2024-05-13 10:38:13	VariantCaller	Start calling maximal cliques in chunk 87 (chr4:177059973-chr4:187059972)
+WARNING	2024-05-13 10:38:13	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:13	VariantCaller	Complete calling maximal cliques in chunk 80 (chr4:107059973-chr4:117059972)
+WARNING	2024-05-13 10:38:13	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:13	VariantCaller	Complete calling maximal cliques in chunk 81 (chr4:117059973-chr4:127059972)
+INFO	2024-05-13 10:38:14	VariantCaller	Complete calling maximal cliques in chunk 84 (chr4:147059973-chr4:157059972)
+INFO	2024-05-13 10:38:14	VariantCaller	Start calling maximal cliques in chunk 89 (chr5:3235028-chr5:13235027)
+INFO	2024-05-13 10:38:14	VariantCaller	Start calling maximal cliques in chunk 88 (chr4:187059973-chr5:3235027)
+INFO	2024-05-13 10:38:14	VariantCaller	Start calling maximal cliques in chunk 90 (chr5:13235028-chr5:23235027)
+INFO	2024-05-13 10:38:14	VariantCaller	Complete calling maximal cliques in chunk 83 (chr4:137059973-chr4:147059972)
+INFO	2024-05-13 10:38:14	VariantCaller	Start calling maximal cliques in chunk 91 (chr5:23235028-chr5:33235027)
+INFO	2024-05-13 10:38:14	VariantCaller	Start calling maximal cliques in chunk 92 (chr5:33235028-chr5:43235027)
+INFO	2024-05-13 10:38:14	VariantCaller	Complete calling maximal cliques in chunk 85 (chr4:157059973-chr4:167059972)
+INFO	2024-05-13 10:38:15	VariantCaller	Start calling maximal cliques in chunk 93 (chr5:43235028-chr5:53235027)
+INFO	2024-05-13 10:38:15	VariantCaller	Complete calling maximal cliques in chunk 86 (chr4:167059973-chr4:177059972)
+INFO	2024-05-13 10:38:15	VariantCaller	Start calling maximal cliques in chunk 94 (chr5:53235028-chr5:63235027)
+INFO	2024-05-13 10:38:15	VariantCaller	Complete calling maximal cliques in chunk 87 (chr4:177059973-chr4:187059972)
+INFO	2024-05-13 10:38:15	VariantCaller	Complete calling maximal cliques in chunk 89 (chr5:3235028-chr5:13235027)
+INFO	2024-05-13 10:38:16	VariantCaller	Start calling maximal cliques in chunk 95 (chr5:63235028-chr5:73235027)
+INFO	2024-05-13 10:38:16	VariantCaller	Complete calling maximal cliques in chunk 90 (chr5:13235028-chr5:23235027)
+INFO	2024-05-13 10:38:16	VariantCaller	Start calling maximal cliques in chunk 96 (chr5:73235028-chr5:83235027)
+WARNING	2024-05-13 10:38:16	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:16	VariantCaller	Complete calling maximal cliques in chunk 93 (chr5:43235028-chr5:53235027)
+INFO	2024-05-13 10:38:16	VariantCaller	Start calling maximal cliques in chunk 97 (chr5:83235028-chr5:93235027)
+INFO	2024-05-13 10:38:16	VariantCaller	Complete calling maximal cliques in chunk 92 (chr5:33235028-chr5:43235027)
+INFO	2024-05-13 10:38:16	VariantCaller	Start calling maximal cliques in chunk 98 (chr5:93235028-chr5:103235027)
+INFO	2024-05-13 10:38:16	VariantCaller	Start calling maximal cliques in chunk 99 (chr5:103235028-chr5:113235027)
+INFO	2024-05-13 10:38:16	VariantCaller	Complete calling maximal cliques in chunk 91 (chr5:23235028-chr5:33235027)
+INFO	2024-05-13 10:38:16	VariantCaller	Complete calling maximal cliques in chunk 88 (chr4:187059973-chr5:3235027)
+INFO	2024-05-13 10:38:17	VariantCaller	Start calling maximal cliques in chunk 101 (chr5:123235028-chr5:133235027)
+INFO	2024-05-13 10:38:17	VariantCaller	Start calling maximal cliques in chunk 100 (chr5:113235028-chr5:123235027)
+INFO	2024-05-13 10:38:17	VariantCaller	Complete calling maximal cliques in chunk 94 (chr5:53235028-chr5:63235027)
+INFO	2024-05-13 10:38:17	VariantCaller	Start calling maximal cliques in chunk 102 (chr5:133235028-chr5:143235027)
+INFO	2024-05-13 10:38:18	VariantCaller	Complete calling maximal cliques in chunk 96 (chr5:73235028-chr5:83235027)
+INFO	2024-05-13 10:38:18	VariantCaller	Complete calling maximal cliques in chunk 97 (chr5:83235028-chr5:93235027)
+INFO	2024-05-13 10:38:18	VariantCaller	Complete calling maximal cliques in chunk 95 (chr5:63235028-chr5:73235027)
+INFO	2024-05-13 10:38:18	VariantCaller	Complete calling maximal cliques in chunk 99 (chr5:103235028-chr5:113235027)
+INFO	2024-05-13 10:38:18	VariantCaller	Start calling maximal cliques in chunk 103 (chr5:143235028-chr5:153235027)
+INFO	2024-05-13 10:38:18	VariantCaller	Start calling maximal cliques in chunk 105 (chr5:163235028-chr5:173235027)
+INFO	2024-05-13 10:38:18	VariantCaller	Start calling maximal cliques in chunk 104 (chr5:153235028-chr5:163235027)
+INFO	2024-05-13 10:38:18	VariantCaller	Complete calling maximal cliques in chunk 98 (chr5:93235028-chr5:103235027)
+INFO	2024-05-13 10:38:18	VariantCaller	Start calling maximal cliques in chunk 106 (chr5:173235028-chr6:939588)
+INFO	2024-05-13 10:38:18	VariantCaller	Start calling maximal cliques in chunk 107 (chr6:939589-chr6:10939588)
+INFO	2024-05-13 10:38:18	VariantCaller	Complete calling maximal cliques in chunk 101 (chr5:123235028-chr5:133235027)
+WARNING	2024-05-13 10:38:18	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:18	VariantCaller	Complete calling maximal cliques in chunk 100 (chr5:113235028-chr5:123235027)
+INFO	2024-05-13 10:38:19	VariantCaller	Start calling maximal cliques in chunk 108 (chr6:10939589-chr6:20939588)
+INFO	2024-05-13 10:38:19	VariantCaller	Start calling maximal cliques in chunk 109 (chr6:20939589-chr6:30939588)
+WARNING	2024-05-13 10:38:19	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:19	VariantCaller	Complete calling maximal cliques in chunk 102 (chr5:133235028-chr5:143235027)
+INFO	2024-05-13 10:38:19	VariantCaller	Start calling maximal cliques in chunk 110 (chr6:30939589-chr6:40939588)
+INFO	2024-05-13 10:38:20	VariantCaller	Complete calling maximal cliques in chunk 103 (chr5:143235028-chr5:153235027)
+INFO	2024-05-13 10:38:20	VariantCaller	Complete calling maximal cliques in chunk 104 (chr5:153235028-chr5:163235027)
+WARNING	2024-05-13 10:38:20	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:20	VariantCaller	Complete calling maximal cliques in chunk 105 (chr5:163235028-chr5:173235027)
+INFO	2024-05-13 10:38:20	VariantCaller	Start calling maximal cliques in chunk 111 (chr6:40939589-chr6:50939588)
+INFO	2024-05-13 10:38:20	VariantCaller	Start calling maximal cliques in chunk 112 (chr6:50939589-chr6:60939588)
+INFO	2024-05-13 10:38:20	VariantCaller	Start calling maximal cliques in chunk 113 (chr6:60939589-chr6:70939588)
+INFO	2024-05-13 10:38:20	VariantCaller	Complete calling maximal cliques in chunk 108 (chr6:10939589-chr6:20939588)
+WARNING	2024-05-13 10:38:21	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:21	VariantCaller	Start calling maximal cliques in chunk 114 (chr6:70939589-chr6:80939588)
+INFO	2024-05-13 10:38:21	VariantCaller	Complete calling maximal cliques in chunk 107 (chr6:939589-chr6:10939588)
+INFO	2024-05-13 10:38:21	VariantCaller	Complete calling maximal cliques in chunk 106 (chr5:173235028-chr6:939588)
+INFO	2024-05-13 10:38:21	VariantCaller	Start calling maximal cliques in chunk 115 (chr6:80939589-chr6:90939588)
+INFO	2024-05-13 10:38:21	VariantCaller	Start calling maximal cliques in chunk 116 (chr6:90939589-chr6:100939588)
+WARNING	2024-05-13 10:38:21	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:21	VariantCaller	Complete calling maximal cliques in chunk 109 (chr6:20939589-chr6:30939588)
+INFO	2024-05-13 10:38:21	VariantCaller	Start calling maximal cliques in chunk 117 (chr6:100939589-chr6:110939588)
+INFO	2024-05-13 10:38:22	VariantCaller	Complete calling maximal cliques in chunk 112 (chr6:50939589-chr6:60939588)
+WARNING	2024-05-13 10:38:22	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:22	VariantCaller	Complete calling maximal cliques in chunk 111 (chr6:40939589-chr6:50939588)
+INFO	2024-05-13 10:38:22	VariantCaller	Start calling maximal cliques in chunk 118 (chr6:110939589-chr6:120939588)
+INFO	2024-05-13 10:38:22	VariantCaller	Start calling maximal cliques in chunk 119 (chr6:120939589-chr6:130939588)
+INFO	2024-05-13 10:38:22	VariantCaller	Complete calling maximal cliques in chunk 113 (chr6:60939589-chr6:70939588)
+INFO	2024-05-13 10:38:22	VariantCaller	Start calling maximal cliques in chunk 120 (chr6:130939589-chr6:140939588)
+WARNING	2024-05-13 10:38:23	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:23	VariantCaller	Complete calling maximal cliques in chunk 110 (chr6:30939589-chr6:40939588)
+INFO	2024-05-13 10:38:23	VariantCaller	Complete calling maximal cliques in chunk 116 (chr6:90939589-chr6:100939588)
+INFO	2024-05-13 10:38:23	VariantCaller	Complete calling maximal cliques in chunk 114 (chr6:70939589-chr6:80939588)
+WARNING	2024-05-13 10:38:23	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:23	VariantCaller	Complete calling maximal cliques in chunk 115 (chr6:80939589-chr6:90939588)
+INFO	2024-05-13 10:38:23	VariantCaller	Start calling maximal cliques in chunk 121 (chr6:140939589-chr6:150939588)
+INFO	2024-05-13 10:38:23	VariantCaller	Start calling maximal cliques in chunk 122 (chr6:150939589-chr6:160939588)
+INFO	2024-05-13 10:38:23	VariantCaller	Start calling maximal cliques in chunk 123 (chr6:160939589-chr6:170939588)
+INFO	2024-05-13 10:38:23	VariantCaller	Start calling maximal cliques in chunk 124 (chr6:170939589-chr7:8562960)
+WARNING	2024-05-13 10:38:23	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:23	VariantCaller	Complete calling maximal cliques in chunk 117 (chr6:100939589-chr6:110939588)
+INFO	2024-05-13 10:38:23	VariantCaller	Start calling maximal cliques in chunk 125 (chr7:8562961-chr7:18562960)
+WARNING	2024-05-13 10:38:24	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:24	VariantCaller	Complete calling maximal cliques in chunk 118 (chr6:110939589-chr6:120939588)
+INFO	2024-05-13 10:38:24	VariantCaller	Start calling maximal cliques in chunk 126 (chr7:18562961-chr7:28562960)
+INFO	2024-05-13 10:38:24	VariantCaller	Complete calling maximal cliques in chunk 120 (chr6:130939589-chr6:140939588)
+INFO	2024-05-13 10:38:24	VariantCaller	Complete calling maximal cliques in chunk 119 (chr6:120939589-chr6:130939588)
+INFO	2024-05-13 10:38:25	VariantCaller	Start calling maximal cliques in chunk 127 (chr7:28562961-chr7:38562960)
+INFO	2024-05-13 10:38:25	VariantCaller	Start calling maximal cliques in chunk 128 (chr7:38562961-chr7:48562960)
+WARNING	2024-05-13 10:38:25	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:25	VariantCaller	Complete calling maximal cliques in chunk 121 (chr6:140939589-chr6:150939588)
+INFO	2024-05-13 10:38:25	VariantCaller	Complete calling maximal cliques in chunk 123 (chr6:160939589-chr6:170939588)
+INFO	2024-05-13 10:38:25	VariantCaller	Start calling maximal cliques in chunk 129 (chr7:48562961-chr7:58562960)
+INFO	2024-05-13 10:38:25	VariantCaller	Start calling maximal cliques in chunk 130 (chr7:58562961-chr7:68562960)
+INFO	2024-05-13 10:38:25	VariantCaller	Complete calling maximal cliques in chunk 122 (chr6:150939589-chr6:160939588)
+INFO	2024-05-13 10:38:25	VariantCaller	Complete calling maximal cliques in chunk 125 (chr7:8562961-chr7:18562960)
+WARNING	2024-05-13 10:38:26	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:26	VariantCaller	Complete calling maximal cliques in chunk 124 (chr6:170939589-chr7:8562960)
+INFO	2024-05-13 10:38:26	VariantCaller	Start calling maximal cliques in chunk 132 (chr7:78562961-chr7:88562960)
+INFO	2024-05-13 10:38:26	VariantCaller	Start calling maximal cliques in chunk 131 (chr7:68562961-chr7:78562960)
+INFO	2024-05-13 10:38:26	VariantCaller	Start calling maximal cliques in chunk 133 (chr7:88562961-chr7:98562960)
+WARNING	2024-05-13 10:38:26	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:26	VariantCaller	Complete calling maximal cliques in chunk 130 (chr7:58562961-chr7:68562960)
+INFO	2024-05-13 10:38:26	VariantCaller	Complete calling maximal cliques in chunk 126 (chr7:18562961-chr7:28562960)
+INFO	2024-05-13 10:38:26	VariantCaller	Start calling maximal cliques in chunk 134 (chr7:98562961-chr7:108562960)
+INFO	2024-05-13 10:38:26	VariantCaller	Complete calling maximal cliques in chunk 127 (chr7:28562961-chr7:38562960)
+INFO	2024-05-13 10:38:26	VariantCaller	Start calling maximal cliques in chunk 135 (chr7:108562961-chr7:118562960)
+INFO	2024-05-13 10:38:27	VariantCaller	Start calling maximal cliques in chunk 136 (chr7:118562961-chr7:128562960)
+WARNING	2024-05-13 10:38:27	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:27	VariantCaller	Complete calling maximal cliques in chunk 128 (chr7:38562961-chr7:48562960)
+INFO	2024-05-13 10:38:27	VariantCaller	Start calling maximal cliques in chunk 137 (chr7:128562961-chr7:138562960)
+WARNING	2024-05-13 10:38:27	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:27	VariantCaller	Complete calling maximal cliques in chunk 129 (chr7:48562961-chr7:58562960)
+INFO	2024-05-13 10:38:28	VariantCaller	Complete calling maximal cliques in chunk 132 (chr7:78562961-chr7:88562960)
+INFO	2024-05-13 10:38:28	VariantCaller	Start calling maximal cliques in chunk 138 (chr7:138562961-chr7:148562960)
+INFO	2024-05-13 10:38:28	VariantCaller	Complete calling maximal cliques in chunk 131 (chr7:68562961-chr7:78562960)
+INFO	2024-05-13 10:38:28	VariantCaller	Start calling maximal cliques in chunk 139 (chr7:148562961-chr7:158562960)
+INFO	2024-05-13 10:38:28	VariantCaller	Start calling maximal cliques in chunk 140 (chr7:158562961-chr8:7745532)
+INFO	2024-05-13 10:38:28	VariantCaller	Complete calling maximal cliques in chunk 133 (chr7:88562961-chr7:98562960)
+INFO	2024-05-13 10:38:28	VariantCaller	Complete calling maximal cliques in chunk 135 (chr7:108562961-chr7:118562960)
+INFO	2024-05-13 10:38:28	VariantCaller	Start calling maximal cliques in chunk 141 (chr8:7745533-chr8:17745532)
+INFO	2024-05-13 10:38:29	VariantCaller	Start calling maximal cliques in chunk 142 (chr8:17745533-chr8:27745532)
+INFO	2024-05-13 10:38:29	VariantCaller	Complete calling maximal cliques in chunk 136 (chr7:118562961-chr7:128562960)
+INFO	2024-05-13 10:38:29	VariantCaller	Start calling maximal cliques in chunk 143 (chr8:27745533-chr8:37745532)
+WARNING	2024-05-13 10:38:29	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:29	VariantCaller	Complete calling maximal cliques in chunk 134 (chr7:98562961-chr7:108562960)
+INFO	2024-05-13 10:38:29	VariantCaller	Start calling maximal cliques in chunk 144 (chr8:37745533-chr8:47745532)
+INFO	2024-05-13 10:38:30	VariantCaller	Complete calling maximal cliques in chunk 137 (chr7:128562961-chr7:138562960)
+INFO	2024-05-13 10:38:30	VariantCaller	Complete calling maximal cliques in chunk 138 (chr7:138562961-chr7:148562960)
+INFO	2024-05-13 10:38:30	VariantCaller	Start calling maximal cliques in chunk 145 (chr8:47745533-chr8:57745532)
+WARNING	2024-05-13 10:38:30	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:30	VariantCaller	Complete calling maximal cliques in chunk 141 (chr8:7745533-chr8:17745532)
+INFO	2024-05-13 10:38:30	VariantCaller	Complete calling maximal cliques in chunk 139 (chr7:148562961-chr7:158562960)
+INFO	2024-05-13 10:38:30	VariantCaller	Complete calling maximal cliques in chunk 140 (chr7:158562961-chr8:7745532)
+INFO	2024-05-13 10:38:30	VariantCaller	Start calling maximal cliques in chunk 146 (chr8:57745533-chr8:67745532)
+INFO	2024-05-13 10:38:30	VariantCaller	Start calling maximal cliques in chunk 147 (chr8:67745533-chr8:77745532)
+INFO	2024-05-13 10:38:30	VariantCaller	Start calling maximal cliques in chunk 149 (chr8:87745533-chr8:97745532)
+INFO	2024-05-13 10:38:30	VariantCaller	Start calling maximal cliques in chunk 148 (chr8:77745533-chr8:87745532)
+WARNING	2024-05-13 10:38:31	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:31	VariantCaller	Complete calling maximal cliques in chunk 144 (chr8:37745533-chr8:47745532)
+INFO	2024-05-13 10:38:31	VariantCaller	Complete calling maximal cliques in chunk 142 (chr8:17745533-chr8:27745532)
+INFO	2024-05-13 10:38:31	VariantCaller	Start calling maximal cliques in chunk 150 (chr8:97745533-chr8:107745532)
+INFO	2024-05-13 10:38:31	VariantCaller	Start calling maximal cliques in chunk 151 (chr8:107745533-chr8:117745532)
+INFO	2024-05-13 10:38:31	VariantCaller	Complete calling maximal cliques in chunk 143 (chr8:27745533-chr8:37745532)
+INFO	2024-05-13 10:38:31	VariantCaller	Start calling maximal cliques in chunk 152 (chr8:117745533-chr8:127745532)
+INFO	2024-05-13 10:38:32	VariantCaller	Complete calling maximal cliques in chunk 145 (chr8:47745533-chr8:57745532)
+INFO	2024-05-13 10:38:32	VariantCaller	Start calling maximal cliques in chunk 153 (chr8:127745533-chr8:137745532)
+INFO	2024-05-13 10:38:32	VariantCaller	Complete calling maximal cliques in chunk 149 (chr8:87745533-chr8:97745532)
+INFO	2024-05-13 10:38:32	VariantCaller	Complete calling maximal cliques in chunk 146 (chr8:57745533-chr8:67745532)
+INFO	2024-05-13 10:38:32	VariantCaller	Complete calling maximal cliques in chunk 148 (chr8:77745533-chr8:87745532)
+INFO	2024-05-13 10:38:32	VariantCaller	Start calling maximal cliques in chunk 155 (chr9:1236202-chr9:11236201)
+INFO	2024-05-13 10:38:32	VariantCaller	Complete calling maximal cliques in chunk 147 (chr8:67745533-chr8:77745532)
+INFO	2024-05-13 10:38:32	VariantCaller	Start calling maximal cliques in chunk 154 (chr8:137745533-chr9:1236201)
+INFO	2024-05-13 10:38:32	VariantCaller	Start calling maximal cliques in chunk 156 (chr9:11236202-chr9:21236201)
+INFO	2024-05-13 10:38:33	VariantCaller	Complete calling maximal cliques in chunk 151 (chr8:107745533-chr8:117745532)
+INFO	2024-05-13 10:38:33	VariantCaller	Start calling maximal cliques in chunk 157 (chr9:21236202-chr9:31236201)
+INFO	2024-05-13 10:38:33	VariantCaller	Start calling maximal cliques in chunk 158 (chr9:31236202-chr9:41236201)
+INFO	2024-05-13 10:38:33	VariantCaller	Complete calling maximal cliques in chunk 150 (chr8:97745533-chr8:107745532)
+WARNING	2024-05-13 10:38:33	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:33	VariantCaller	Complete calling maximal cliques in chunk 152 (chr8:117745533-chr8:127745532)
+INFO	2024-05-13 10:38:33	VariantCaller	Start calling maximal cliques in chunk 160 (chr9:51236202-chr9:61236201)
+INFO	2024-05-13 10:38:33	VariantCaller	Complete calling maximal cliques in chunk 160 (chr9:51236202-chr9:61236201)
+INFO	2024-05-13 10:38:33	VariantCaller	Start calling maximal cliques in chunk 159 (chr9:41236202-chr9:51236201)
+INFO	2024-05-13 10:38:33	VariantCaller	Start calling maximal cliques in chunk 161 (chr9:61236202-chr9:71236201)
+INFO	2024-05-13 10:38:33	VariantCaller	Complete calling maximal cliques in chunk 153 (chr8:127745533-chr8:137745532)
+INFO	2024-05-13 10:38:33	VariantCaller	Complete calling maximal cliques in chunk 161 (chr9:61236202-chr9:71236201)
+INFO	2024-05-13 10:38:34	VariantCaller	Start calling maximal cliques in chunk 163 (chr9:81236202-chr9:91236201)
+INFO	2024-05-13 10:38:34	VariantCaller	Start calling maximal cliques in chunk 162 (chr9:71236202-chr9:81236201)
+INFO	2024-05-13 10:38:34	VariantCaller	Complete calling maximal cliques in chunk 159 (chr9:41236202-chr9:51236201)
+INFO	2024-05-13 10:38:34	VariantCaller	Start calling maximal cliques in chunk 164 (chr9:91236202-chr9:101236201)
+WARNING	2024-05-13 10:38:34	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:34	VariantCaller	Complete calling maximal cliques in chunk 162 (chr9:71236202-chr9:81236201)
+WARNING	2024-05-13 10:38:34	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:34	VariantCaller	Complete calling maximal cliques in chunk 155 (chr9:1236202-chr9:11236201)
+INFO	2024-05-13 10:38:34	VariantCaller	Complete calling maximal cliques in chunk 156 (chr9:11236202-chr9:21236201)
+INFO	2024-05-13 10:38:35	VariantCaller	Start calling maximal cliques in chunk 165 (chr9:101236202-chr9:111236201)
+WARNING	2024-05-13 10:38:35	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:35	VariantCaller	Complete calling maximal cliques in chunk 158 (chr9:31236202-chr9:41236201)
+INFO	2024-05-13 10:38:35	VariantCaller	Start calling maximal cliques in chunk 166 (chr9:111236202-chr9:121236201)
+INFO	2024-05-13 10:38:35	VariantCaller	Start calling maximal cliques in chunk 167 (chr9:121236202-chr9:131236201)
+INFO	2024-05-13 10:38:35	VariantCaller	Complete calling maximal cliques in chunk 154 (chr8:137745533-chr9:1236201)
+INFO	2024-05-13 10:38:35	VariantCaller	Complete calling maximal cliques in chunk 157 (chr9:21236202-chr9:31236201)
+INFO	2024-05-13 10:38:35	VariantCaller	Start calling maximal cliques in chunk 168 (chr9:131236202-chr9:141236201)
+INFO	2024-05-13 10:38:35	VariantCaller	Start calling maximal cliques in chunk 170 (chr10:368955-chr10:10368954)
+INFO	2024-05-13 10:38:35	VariantCaller	Start calling maximal cliques in chunk 169 (chr9:141236202-chr10:368954)
+INFO	2024-05-13 10:38:36	VariantCaller	Complete calling maximal cliques in chunk 163 (chr9:81236202-chr9:91236201)
+INFO	2024-05-13 10:38:36	VariantCaller	Start calling maximal cliques in chunk 171 (chr10:10368955-chr10:20368954)
+WARNING	2024-05-13 10:38:36	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:36	VariantCaller	Complete calling maximal cliques in chunk 164 (chr9:91236202-chr9:101236201)
+INFO	2024-05-13 10:38:36	VariantCaller	Start calling maximal cliques in chunk 172 (chr10:20368955-chr10:30368954)
+INFO	2024-05-13 10:38:37	VariantCaller	Complete calling maximal cliques in chunk 166 (chr9:111236202-chr9:121236201)
+WARNING	2024-05-13 10:38:37	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:37	VariantCaller	Complete calling maximal cliques in chunk 165 (chr9:101236202-chr9:111236201)
+INFO	2024-05-13 10:38:37	VariantCaller	Start calling maximal cliques in chunk 173 (chr10:30368955-chr10:40368954)
+INFO	2024-05-13 10:38:37	VariantCaller	Start calling maximal cliques in chunk 174 (chr10:40368955-chr10:50368954)
+INFO	2024-05-13 10:38:37	VariantCaller	Complete calling maximal cliques in chunk 167 (chr9:121236202-chr9:131236201)
+WARNING	2024-05-13 10:38:37	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:37	VariantCaller	Complete calling maximal cliques in chunk 168 (chr9:131236202-chr9:141236201)
+INFO	2024-05-13 10:38:37	VariantCaller	Start calling maximal cliques in chunk 175 (chr10:50368955-chr10:60368954)
+INFO	2024-05-13 10:38:37	VariantCaller	Start calling maximal cliques in chunk 176 (chr10:60368955-chr10:70368954)
+WARNING	2024-05-13 10:38:37	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:37	VariantCaller	Complete calling maximal cliques in chunk 169 (chr9:141236202-chr10:368954)
+WARNING	2024-05-13 10:38:38	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:38	VariantCaller	Complete calling maximal cliques in chunk 170 (chr10:368955-chr10:10368954)
+INFO	2024-05-13 10:38:38	VariantCaller	Start calling maximal cliques in chunk 177 (chr10:70368955-chr10:80368954)
+INFO	2024-05-13 10:38:38	VariantCaller	Start calling maximal cliques in chunk 178 (chr10:80368955-chr10:90368954)
+INFO	2024-05-13 10:38:38	VariantCaller	Complete calling maximal cliques in chunk 171 (chr10:10368955-chr10:20368954)
+INFO	2024-05-13 10:38:38	VariantCaller	Complete calling maximal cliques in chunk 172 (chr10:20368955-chr10:30368954)
+INFO	2024-05-13 10:38:38	VariantCaller	Complete calling maximal cliques in chunk 174 (chr10:40368955-chr10:50368954)
+INFO	2024-05-13 10:38:38	VariantCaller	Start calling maximal cliques in chunk 179 (chr10:90368955-chr10:100368954)
+INFO	2024-05-13 10:38:39	VariantCaller	Start calling maximal cliques in chunk 180 (chr10:100368955-chr10:110368954)
+INFO	2024-05-13 10:38:39	VariantCaller	Start calling maximal cliques in chunk 181 (chr10:110368955-chr10:120368954)
+WARNING	2024-05-13 10:38:39	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:39	VariantCaller	Complete calling maximal cliques in chunk 173 (chr10:30368955-chr10:40368954)
+INFO	2024-05-13 10:38:39	VariantCaller	Start calling maximal cliques in chunk 182 (chr10:120368955-chr10:130368954)
+INFO	2024-05-13 10:38:39	VariantCaller	Complete calling maximal cliques in chunk 175 (chr10:50368955-chr10:60368954)
+WARNING	2024-05-13 10:38:39	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:39	VariantCaller	Complete calling maximal cliques in chunk 178 (chr10:80368955-chr10:90368954)
+INFO	2024-05-13 10:38:40	VariantCaller	Start calling maximal cliques in chunk 183 (chr10:130368955-chr11:5360820)
+INFO	2024-05-13 10:38:40	VariantCaller	Start calling maximal cliques in chunk 184 (chr11:5360821-chr11:15360820)
+WARNING	2024-05-13 10:38:40	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:40	VariantCaller	Complete calling maximal cliques in chunk 177 (chr10:70368955-chr10:80368954)
+WARNING	2024-05-13 10:38:40	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:40	VariantCaller	Complete calling maximal cliques in chunk 176 (chr10:60368955-chr10:70368954)
+INFO	2024-05-13 10:38:40	VariantCaller	Start calling maximal cliques in chunk 185 (chr11:15360821-chr11:25360820)
+INFO	2024-05-13 10:38:40	VariantCaller	Start calling maximal cliques in chunk 186 (chr11:25360821-chr11:35360820)
+WARNING	2024-05-13 10:38:40	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:40	VariantCaller	Complete calling maximal cliques in chunk 179 (chr10:90368955-chr10:100368954)
+INFO	2024-05-13 10:38:40	VariantCaller	Start calling maximal cliques in chunk 187 (chr11:35360821-chr11:45360820)
+INFO	2024-05-13 10:38:41	VariantCaller	Complete calling maximal cliques in chunk 181 (chr10:110368955-chr10:120368954)
+INFO	2024-05-13 10:38:41	VariantCaller	Start calling maximal cliques in chunk 188 (chr11:45360821-chr11:55360820)
+INFO	2024-05-13 10:38:41	VariantCaller	Complete calling maximal cliques in chunk 180 (chr10:100368955-chr10:110368954)
+INFO	2024-05-13 10:38:41	VariantCaller	Start calling maximal cliques in chunk 189 (chr11:55360821-chr11:65360820)
+WARNING	2024-05-13 10:38:41	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:41	VariantCaller	Complete calling maximal cliques in chunk 182 (chr10:120368955-chr10:130368954)
+INFO	2024-05-13 10:38:41	VariantCaller	Complete calling maximal cliques in chunk 184 (chr11:5360821-chr11:15360820)
+INFO	2024-05-13 10:38:42	VariantCaller	Start calling maximal cliques in chunk 190 (chr11:65360821-chr11:75360820)
+INFO	2024-05-13 10:38:42	VariantCaller	Start calling maximal cliques in chunk 191 (chr11:75360821-chr11:85360820)
+INFO	2024-05-13 10:38:42	VariantCaller	Complete calling maximal cliques in chunk 183 (chr10:130368955-chr11:5360820)
+INFO	2024-05-13 10:38:42	VariantCaller	Complete calling maximal cliques in chunk 188 (chr11:45360821-chr11:55360820)
+INFO	2024-05-13 10:38:42	VariantCaller	Complete calling maximal cliques in chunk 185 (chr11:15360821-chr11:25360820)
+INFO	2024-05-13 10:38:42	VariantCaller	Start calling maximal cliques in chunk 192 (chr11:85360821-chr11:95360820)
+WARNING	2024-05-13 10:38:42	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:42	VariantCaller	Complete calling maximal cliques in chunk 187 (chr11:35360821-chr11:45360820)
+INFO	2024-05-13 10:38:42	VariantCaller	Complete calling maximal cliques in chunk 186 (chr11:25360821-chr11:35360820)
+INFO	2024-05-13 10:38:42	VariantCaller	Start calling maximal cliques in chunk 193 (chr11:95360821-chr11:105360820)
+INFO	2024-05-13 10:38:42	VariantCaller	Start calling maximal cliques in chunk 194 (chr11:105360821-chr11:115360820)
+INFO	2024-05-13 10:38:42	VariantCaller	Start calling maximal cliques in chunk 195 (chr11:115360821-chr11:125360820)
+INFO	2024-05-13 10:38:42	VariantCaller	Start calling maximal cliques in chunk 196 (chr11:125360821-chr11:135127769)
+INFO	2024-05-13 10:38:43	VariantCaller	Complete calling maximal cliques in chunk 189 (chr11:55360821-chr11:65360820)
+INFO	2024-05-13 10:38:44	VariantCaller	Start calling maximal cliques in chunk 197 (chr12:1-chr12:10000000)
+INFO	2024-05-13 10:38:44	VariantCaller	Complete calling maximal cliques in chunk 192 (chr11:85360821-chr11:95360820)
+INFO	2024-05-13 10:38:44	VariantCaller	Complete calling maximal cliques in chunk 190 (chr11:65360821-chr11:75360820)
+INFO	2024-05-13 10:38:44	VariantCaller	Start calling maximal cliques in chunk 198 (chr12:10000001-chr12:20000000)
+INFO	2024-05-13 10:38:44	VariantCaller	Start calling maximal cliques in chunk 199 (chr12:20000001-chr12:30000000)
+INFO	2024-05-13 10:38:44	VariantCaller	Complete calling maximal cliques in chunk 191 (chr11:75360821-chr11:85360820)
+INFO	2024-05-13 10:38:44	VariantCaller	Complete calling maximal cliques in chunk 194 (chr11:105360821-chr11:115360820)
+INFO	2024-05-13 10:38:44	VariantCaller	Complete calling maximal cliques in chunk 196 (chr11:125360821-chr11:135127769)
+INFO	2024-05-13 10:38:44	VariantCaller	Complete calling maximal cliques in chunk 195 (chr11:115360821-chr11:125360820)
+INFO	2024-05-13 10:38:44	VariantCaller	Start calling maximal cliques in chunk 200 (chr12:30000001-chr12:40000000)
+INFO	2024-05-13 10:38:44	VariantCaller	Start calling maximal cliques in chunk 201 (chr12:40000001-chr12:50000000)
+INFO	2024-05-13 10:38:44	VariantCaller	Start calling maximal cliques in chunk 202 (chr12:50000001-chr12:60000000)
+INFO	2024-05-13 10:38:45	VariantCaller	Start calling maximal cliques in chunk 203 (chr12:60000001-chr12:70000000)
+WARNING	2024-05-13 10:38:45	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:45	VariantCaller	Complete calling maximal cliques in chunk 193 (chr11:95360821-chr11:105360820)
+INFO	2024-05-13 10:38:45	VariantCaller	Start calling maximal cliques in chunk 204 (chr12:70000001-chr12:80000000)
+INFO	2024-05-13 10:38:46	VariantCaller	Complete calling maximal cliques in chunk 197 (chr12:1-chr12:10000000)
+INFO	2024-05-13 10:38:46	VariantCaller	Complete calling maximal cliques in chunk 200 (chr12:30000001-chr12:40000000)
+INFO	2024-05-13 10:38:46	VariantCaller	Complete calling maximal cliques in chunk 198 (chr12:10000001-chr12:20000000)
+INFO	2024-05-13 10:38:46	VariantCaller	Start calling maximal cliques in chunk 205 (chr12:80000001-chr12:90000000)
+WARNING	2024-05-13 10:38:46	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:46	VariantCaller	Complete calling maximal cliques in chunk 201 (chr12:40000001-chr12:50000000)
+INFO	2024-05-13 10:38:46	VariantCaller	Start calling maximal cliques in chunk 207 (chr12:100000001-chr12:110000000)
+INFO	2024-05-13 10:38:46	VariantCaller	Start calling maximal cliques in chunk 206 (chr12:90000001-chr12:100000000)
+INFO	2024-05-13 10:38:46	VariantCaller	Complete calling maximal cliques in chunk 204 (chr12:70000001-chr12:80000000)
+INFO	2024-05-13 10:38:46	VariantCaller	Start calling maximal cliques in chunk 208 (chr12:110000001-chr12:120000000)
+WARNING	2024-05-13 10:38:46	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:46	VariantCaller	Complete calling maximal cliques in chunk 202 (chr12:50000001-chr12:60000000)
+INFO	2024-05-13 10:38:46	VariantCaller	Complete calling maximal cliques in chunk 199 (chr12:20000001-chr12:30000000)
+INFO	2024-05-13 10:38:47	VariantCaller	Start calling maximal cliques in chunk 209 (chr12:120000001-chr12:130000000)
+INFO	2024-05-13 10:38:47	VariantCaller	Start calling maximal cliques in chunk 211 (chr13:6425453-chr13:16425452)
+WARNING	2024-05-13 10:38:47	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:47	VariantCaller	Complete calling maximal cliques in chunk 203 (chr12:60000001-chr12:70000000)
+INFO	2024-05-13 10:38:47	VariantCaller	Start calling maximal cliques in chunk 210 (chr12:130000001-chr13:6425452)
+INFO	2024-05-13 10:38:47	VariantCaller	Complete calling maximal cliques in chunk 211 (chr13:6425453-chr13:16425452)
+INFO	2024-05-13 10:38:47	VariantCaller	Start calling maximal cliques in chunk 212 (chr13:16425453-chr13:26425452)
+INFO	2024-05-13 10:38:47	VariantCaller	Start calling maximal cliques in chunk 213 (chr13:26425453-chr13:36425452)
+INFO	2024-05-13 10:38:48	VariantCaller	Complete calling maximal cliques in chunk 210 (chr12:130000001-chr13:6425452)
+INFO	2024-05-13 10:38:48	VariantCaller	Complete calling maximal cliques in chunk 205 (chr12:80000001-chr12:90000000)
+INFO	2024-05-13 10:38:48	VariantCaller	Start calling maximal cliques in chunk 214 (chr13:36425453-chr13:46425452)
+INFO	2024-05-13 10:38:48	VariantCaller	Complete calling maximal cliques in chunk 207 (chr12:100000001-chr12:110000000)
+INFO	2024-05-13 10:38:48	VariantCaller	Start calling maximal cliques in chunk 215 (chr13:46425453-chr13:56425452)
+INFO	2024-05-13 10:38:48	VariantCaller	Start calling maximal cliques in chunk 216 (chr13:56425453-chr13:66425452)
+INFO	2024-05-13 10:38:48	VariantCaller	Complete calling maximal cliques in chunk 206 (chr12:90000001-chr12:100000000)
+INFO	2024-05-13 10:38:49	VariantCaller	Complete calling maximal cliques in chunk 208 (chr12:110000001-chr12:120000000)
+INFO	2024-05-13 10:38:49	VariantCaller	Start calling maximal cliques in chunk 217 (chr13:66425453-chr13:76425452)
+INFO	2024-05-13 10:38:49	VariantCaller	Complete calling maximal cliques in chunk 212 (chr13:16425453-chr13:26425452)
+INFO	2024-05-13 10:38:49	VariantCaller	Start calling maximal cliques in chunk 218 (chr13:76425453-chr13:86425452)
+INFO	2024-05-13 10:38:49	VariantCaller	Start calling maximal cliques in chunk 219 (chr13:86425453-chr13:96425452)
+INFO	2024-05-13 10:38:49	VariantCaller	Complete calling maximal cliques in chunk 213 (chr13:26425453-chr13:36425452)
+INFO	2024-05-13 10:38:50	VariantCaller	Complete calling maximal cliques in chunk 209 (chr12:120000001-chr12:130000000)
+INFO	2024-05-13 10:38:50	VariantCaller	Start calling maximal cliques in chunk 220 (chr13:96425453-chr13:106425452)
+INFO	2024-05-13 10:38:50	VariantCaller	Complete calling maximal cliques in chunk 215 (chr13:46425453-chr13:56425452)
+INFO	2024-05-13 10:38:50	VariantCaller	Start calling maximal cliques in chunk 221 (chr13:106425453-chr14:2608766)
+INFO	2024-05-13 10:38:50	VariantCaller	Complete calling maximal cliques in chunk 214 (chr13:36425453-chr13:46425452)
+WARNING	2024-05-13 10:38:50	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:50	VariantCaller	Complete calling maximal cliques in chunk 216 (chr13:56425453-chr13:66425452)
+INFO	2024-05-13 10:38:50	VariantCaller	Start calling maximal cliques in chunk 222 (chr14:2608767-chr14:12608766)
+INFO	2024-05-13 10:38:50	VariantCaller	Start calling maximal cliques in chunk 223 (chr14:12608767-chr14:22608766)
+INFO	2024-05-13 10:38:50	VariantCaller	Start calling maximal cliques in chunk 224 (chr14:22608767-chr14:32608766)
+INFO	2024-05-13 10:38:51	VariantCaller	Complete calling maximal cliques in chunk 217 (chr13:66425453-chr13:76425452)
+WARNING	2024-05-13 10:38:51	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:51	VariantCaller	Complete calling maximal cliques in chunk 218 (chr13:76425453-chr13:86425452)
+WARNING	2024-05-13 10:38:51	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:51	VariantCaller	Complete calling maximal cliques in chunk 219 (chr13:86425453-chr13:96425452)
+INFO	2024-05-13 10:38:51	VariantCaller	Start calling maximal cliques in chunk 225 (chr14:32608767-chr14:42608766)
+INFO	2024-05-13 10:38:51	VariantCaller	Start calling maximal cliques in chunk 226 (chr14:42608767-chr14:52608766)
+INFO	2024-05-13 10:38:51	VariantCaller	Start calling maximal cliques in chunk 227 (chr14:52608767-chr14:62608766)
+WARNING	2024-05-13 10:38:51	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:51	VariantCaller	Complete calling maximal cliques in chunk 222 (chr14:2608767-chr14:12608766)
+INFO	2024-05-13 10:38:52	VariantCaller	Complete calling maximal cliques in chunk 221 (chr13:106425453-chr14:2608766)
+INFO	2024-05-13 10:38:52	VariantCaller	Start calling maximal cliques in chunk 229 (chr14:72608767-chr14:82608766)
+INFO	2024-05-13 10:38:52	VariantCaller	Start calling maximal cliques in chunk 228 (chr14:62608767-chr14:72608766)
+INFO	2024-05-13 10:38:52	VariantCaller	Complete calling maximal cliques in chunk 220 (chr13:96425453-chr13:106425452)
+INFO	2024-05-13 10:38:52	VariantCaller	Start calling maximal cliques in chunk 230 (chr14:82608767-chr14:92608766)
+INFO	2024-05-13 10:38:52	VariantCaller	Complete calling maximal cliques in chunk 223 (chr14:12608767-chr14:22608766)
+INFO	2024-05-13 10:38:52	VariantCaller	Start calling maximal cliques in chunk 231 (chr14:92608767-chr15:1197274)
+INFO	2024-05-13 10:38:52	VariantCaller	Complete calling maximal cliques in chunk 224 (chr14:22608767-chr14:32608766)
+INFO	2024-05-13 10:38:53	VariantCaller	Start calling maximal cliques in chunk 232 (chr15:1197275-chr15:11197274)
+WARNING	2024-05-13 10:38:53	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:53	VariantCaller	Complete calling maximal cliques in chunk 232 (chr15:1197275-chr15:11197274)
+INFO	2024-05-13 10:38:53	VariantCaller	Complete calling maximal cliques in chunk 226 (chr14:42608767-chr14:52608766)
+INFO	2024-05-13 10:38:53	VariantCaller	Complete calling maximal cliques in chunk 225 (chr14:32608767-chr14:42608766)
+INFO	2024-05-13 10:38:53	VariantCaller	Start calling maximal cliques in chunk 233 (chr15:11197275-chr15:21197274)
+INFO	2024-05-13 10:38:53	VariantCaller	Complete calling maximal cliques in chunk 227 (chr14:52608767-chr14:62608766)
+INFO	2024-05-13 10:38:53	VariantCaller	Start calling maximal cliques in chunk 235 (chr15:31197275-chr15:41197274)
+INFO	2024-05-13 10:38:53	VariantCaller	Start calling maximal cliques in chunk 234 (chr15:21197275-chr15:31197274)
+INFO	2024-05-13 10:38:53	VariantCaller	Start calling maximal cliques in chunk 236 (chr15:41197275-chr15:51197274)
+INFO	2024-05-13 10:38:53	VariantCaller	Complete calling maximal cliques in chunk 229 (chr14:72608767-chr14:82608766)
+INFO	2024-05-13 10:38:54	VariantCaller	Start calling maximal cliques in chunk 237 (chr15:51197275-chr15:61197274)
+INFO	2024-05-13 10:38:54	VariantCaller	Complete calling maximal cliques in chunk 230 (chr14:82608767-chr14:92608766)
+INFO	2024-05-13 10:38:54	VariantCaller	Start calling maximal cliques in chunk 238 (chr15:61197275-chr15:71197274)
+INFO	2024-05-13 10:38:54	VariantCaller	Complete calling maximal cliques in chunk 231 (chr14:92608767-chr15:1197274)
+INFO	2024-05-13 10:38:54	VariantCaller	Complete calling maximal cliques in chunk 228 (chr14:62608767-chr14:72608766)
+INFO	2024-05-13 10:38:54	VariantCaller	Complete calling maximal cliques in chunk 233 (chr15:11197275-chr15:21197274)
+INFO	2024-05-13 10:38:55	VariantCaller	Start calling maximal cliques in chunk 239 (chr15:71197275-chr15:81197274)
+INFO	2024-05-13 10:38:55	VariantCaller	Start calling maximal cliques in chunk 240 (chr15:81197275-chr15:91197274)
+INFO	2024-05-13 10:38:55	VariantCaller	Start calling maximal cliques in chunk 241 (chr15:91197275-chr16:1194079)
+INFO	2024-05-13 10:38:55	VariantCaller	Complete calling maximal cliques in chunk 234 (chr15:21197275-chr15:31197274)
+INFO	2024-05-13 10:38:55	VariantCaller	Complete calling maximal cliques in chunk 235 (chr15:31197275-chr15:41197274)
+INFO	2024-05-13 10:38:55	VariantCaller	Complete calling maximal cliques in chunk 236 (chr15:41197275-chr15:51197274)
+INFO	2024-05-13 10:38:55	VariantCaller	Start calling maximal cliques in chunk 242 (chr16:1194080-chr16:11194079)
+INFO	2024-05-13 10:38:56	VariantCaller	Start calling maximal cliques in chunk 243 (chr16:11194080-chr16:21194079)
+INFO	2024-05-13 10:38:56	VariantCaller	Start calling maximal cliques in chunk 244 (chr16:21194080-chr16:31194079)
+WARNING	2024-05-13 10:38:56	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:56	VariantCaller	Complete calling maximal cliques in chunk 237 (chr15:51197275-chr15:61197274)
+INFO	2024-05-13 10:38:56	VariantCaller	Complete calling maximal cliques in chunk 238 (chr15:61197275-chr15:71197274)
+INFO	2024-05-13 10:38:56	VariantCaller	Start calling maximal cliques in chunk 245 (chr16:31194080-chr16:41194079)
+INFO	2024-05-13 10:38:56	VariantCaller	Start calling maximal cliques in chunk 246 (chr16:41194080-chr16:51194079)
+INFO	2024-05-13 10:38:56	VariantCaller	Complete calling maximal cliques in chunk 246 (chr16:41194080-chr16:51194079)
+INFO	2024-05-13 10:38:57	VariantCaller	Start calling maximal cliques in chunk 247 (chr16:51194080-chr16:61194079)
+INFO	2024-05-13 10:38:57	VariantCaller	Complete calling maximal cliques in chunk 245 (chr16:31194080-chr16:41194079)
+INFO	2024-05-13 10:38:57	VariantCaller	Complete calling maximal cliques in chunk 240 (chr15:81197275-chr15:91197274)
+INFO	2024-05-13 10:38:57	VariantCaller	Complete calling maximal cliques in chunk 239 (chr15:71197275-chr15:81197274)
+INFO	2024-05-13 10:38:57	VariantCaller	Start calling maximal cliques in chunk 248 (chr16:61194080-chr16:71194079)
+INFO	2024-05-13 10:38:57	VariantCaller	Start calling maximal cliques in chunk 249 (chr16:71194080-chr16:81194079)
+INFO	2024-05-13 10:38:57	VariantCaller	Complete calling maximal cliques in chunk 241 (chr15:91197275-chr16:1194079)
+INFO	2024-05-13 10:38:57	VariantCaller	Start calling maximal cliques in chunk 250 (chr16:81194080-chr16:91194079)
+INFO	2024-05-13 10:38:58	VariantCaller	Start calling maximal cliques in chunk 251 (chr16:91194080-chr17:4613705)
+INFO	2024-05-13 10:38:58	VariantCaller	Complete calling maximal cliques in chunk 244 (chr16:21194080-chr16:31194079)
+INFO	2024-05-13 10:38:58	VariantCaller	Start calling maximal cliques in chunk 252 (chr17:4613706-chr17:14613705)
+INFO	2024-05-13 10:38:58	VariantCaller	Complete calling maximal cliques in chunk 243 (chr16:11194080-chr16:21194079)
+WARNING	2024-05-13 10:38:58	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:58	VariantCaller	Start calling maximal cliques in chunk 253 (chr17:14613706-chr17:24613705)
+INFO	2024-05-13 10:38:58	VariantCaller	Complete calling maximal cliques in chunk 247 (chr16:51194080-chr16:61194079)
+INFO	2024-05-13 10:38:58	VariantCaller	Complete calling maximal cliques in chunk 242 (chr16:1194080-chr16:11194079)
+INFO	2024-05-13 10:38:58	VariantCaller	Start calling maximal cliques in chunk 254 (chr17:24613706-chr17:34613705)
+INFO	2024-05-13 10:38:59	VariantCaller	Start calling maximal cliques in chunk 255 (chr17:34613706-chr17:44613705)
+INFO	2024-05-13 10:38:59	VariantCaller	Complete calling maximal cliques in chunk 248 (chr16:61194080-chr16:71194079)
+WARNING	2024-05-13 10:38:59	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:38:59	VariantCaller	Complete calling maximal cliques in chunk 249 (chr16:71194080-chr16:81194079)
+INFO	2024-05-13 10:38:59	VariantCaller	Start calling maximal cliques in chunk 256 (chr17:44613706-chr17:54613705)
+INFO	2024-05-13 10:39:00	VariantCaller	Complete calling maximal cliques in chunk 250 (chr16:81194080-chr16:91194079)
+INFO	2024-05-13 10:39:00	VariantCaller	Start calling maximal cliques in chunk 257 (chr17:54613706-chr17:64613705)
+INFO	2024-05-13 10:39:00	VariantCaller	Start calling maximal cliques in chunk 258 (chr17:64613706-chr17:74613705)
+INFO	2024-05-13 10:39:00	VariantCaller	Complete calling maximal cliques in chunk 251 (chr16:91194080-chr17:4613705)
+INFO	2024-05-13 10:39:00	VariantCaller	Complete calling maximal cliques in chunk 253 (chr17:14613706-chr17:24613705)
+INFO	2024-05-13 10:39:00	VariantCaller	Start calling maximal cliques in chunk 259 (chr17:74613706-chr18:86808)
+INFO	2024-05-13 10:39:00	VariantCaller	Complete calling maximal cliques in chunk 254 (chr17:24613706-chr17:34613705)
+INFO	2024-05-13 10:39:00	VariantCaller	Start calling maximal cliques in chunk 260 (chr18:86809-chr18:10086808)
+INFO	2024-05-13 10:39:01	VariantCaller	Start calling maximal cliques in chunk 261 (chr18:10086809-chr18:20086808)
+INFO	2024-05-13 10:39:01	VariantCaller	Complete calling maximal cliques in chunk 252 (chr17:4613706-chr17:14613705)
+INFO	2024-05-13 10:39:01	VariantCaller	Start calling maximal cliques in chunk 262 (chr18:20086809-chr18:30086808)
+INFO	2024-05-13 10:39:01	VariantCaller	Complete calling maximal cliques in chunk 255 (chr17:34613706-chr17:44613705)
+INFO	2024-05-13 10:39:01	VariantCaller	Start calling maximal cliques in chunk 263 (chr18:30086809-chr18:40086808)
+INFO	2024-05-13 10:39:02	VariantCaller	Complete calling maximal cliques in chunk 256 (chr17:44613706-chr17:54613705)
+INFO	2024-05-13 10:39:02	VariantCaller	Complete calling maximal cliques in chunk 261 (chr18:10086809-chr18:20086808)
+INFO	2024-05-13 10:39:02	VariantCaller	Complete calling maximal cliques in chunk 257 (chr17:54613706-chr17:64613705)
+INFO	2024-05-13 10:39:02	VariantCaller	Start calling maximal cliques in chunk 265 (chr18:50086809-chr18:60086808)
+INFO	2024-05-13 10:39:02	VariantCaller	Complete calling maximal cliques in chunk 258 (chr17:64613706-chr17:74613705)
+INFO	2024-05-13 10:39:02	VariantCaller	Complete calling maximal cliques in chunk 260 (chr18:86809-chr18:10086808)
+INFO	2024-05-13 10:39:02	VariantCaller	Start calling maximal cliques in chunk 266 (chr18:60086809-chr18:70086808)
+INFO	2024-05-13 10:39:02	VariantCaller	Start calling maximal cliques in chunk 264 (chr18:40086809-chr18:50086808)
+INFO	2024-05-13 10:39:02	VariantCaller	Start calling maximal cliques in chunk 267 (chr18:70086809-chr18:80086808)
+INFO	2024-05-13 10:39:02	VariantCaller	Start calling maximal cliques in chunk 268 (chr18:80086809-chr19:9294270)
+INFO	2024-05-13 10:39:03	VariantCaller	Complete calling maximal cliques in chunk 259 (chr17:74613706-chr18:86808)
+WARNING	2024-05-13 10:39:03	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:39:03	VariantCaller	Complete calling maximal cliques in chunk 262 (chr18:20086809-chr18:30086808)
+INFO	2024-05-13 10:39:03	VariantCaller	Start calling maximal cliques in chunk 269 (chr19:9294271-chr19:19294270)
+INFO	2024-05-13 10:39:03	VariantCaller	Complete calling maximal cliques in chunk 263 (chr18:30086809-chr18:40086808)
+INFO	2024-05-13 10:39:03	VariantCaller	Start calling maximal cliques in chunk 270 (chr19:19294271-chr19:29294270)
+INFO	2024-05-13 10:39:03	VariantCaller	Start calling maximal cliques in chunk 271 (chr19:29294271-chr19:39294270)
+INFO	2024-05-13 10:39:04	VariantCaller	Complete calling maximal cliques in chunk 264 (chr18:40086809-chr18:50086808)
+INFO	2024-05-13 10:39:04	VariantCaller	Complete calling maximal cliques in chunk 265 (chr18:50086809-chr18:60086808)
+INFO	2024-05-13 10:39:04	VariantCaller	Complete calling maximal cliques in chunk 266 (chr18:60086809-chr18:70086808)
+INFO	2024-05-13 10:39:04	VariantCaller	Start calling maximal cliques in chunk 272 (chr19:39294271-chr19:49294270)
+INFO	2024-05-13 10:39:04	VariantCaller	Start calling maximal cliques in chunk 273 (chr19:49294271-chr19:59294270)
+INFO	2024-05-13 10:39:04	VariantCaller	Complete calling maximal cliques in chunk 267 (chr18:70086809-chr18:80086808)
+INFO	2024-05-13 10:39:04	VariantCaller	Complete calling maximal cliques in chunk 270 (chr19:19294271-chr19:29294270)
+INFO	2024-05-13 10:39:04	VariantCaller	Start calling maximal cliques in chunk 274 (chr19:59294271-chr20:7336906)
+INFO	2024-05-13 10:39:05	VariantCaller	Start calling maximal cliques in chunk 275 (chr20:7336907-chr20:17336906)
+INFO	2024-05-13 10:39:05	VariantCaller	Start calling maximal cliques in chunk 276 (chr20:17336907-chr20:27336906)
+WARNING	2024-05-13 10:39:05	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:39:05	VariantCaller	Complete calling maximal cliques in chunk 268 (chr18:80086809-chr19:9294270)
+INFO	2024-05-13 10:39:06	VariantCaller	Start calling maximal cliques in chunk 277 (chr20:27336907-chr20:37336906)
+INFO	2024-05-13 10:39:06	VariantCaller	Complete calling maximal cliques in chunk 271 (chr19:29294271-chr19:39294270)
+INFO	2024-05-13 10:39:06	VariantCaller	Start calling maximal cliques in chunk 278 (chr20:37336907-chr20:47336906)
+INFO	2024-05-13 10:39:06	VariantCaller	Complete calling maximal cliques in chunk 269 (chr19:9294271-chr19:19294270)
+INFO	2024-05-13 10:39:06	VariantCaller	Complete calling maximal cliques in chunk 276 (chr20:17336907-chr20:27336906)
+INFO	2024-05-13 10:39:06	VariantCaller	Start calling maximal cliques in chunk 279 (chr20:47336907-chr20:57336906)
+INFO	2024-05-13 10:39:06	VariantCaller	Start calling maximal cliques in chunk 280 (chr20:57336907-chr21:876651)
+WARNING	2024-05-13 10:39:07	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:39:07	VariantCaller	Complete calling maximal cliques in chunk 275 (chr20:7336907-chr20:17336906)
+INFO	2024-05-13 10:39:07	VariantCaller	Complete calling maximal cliques in chunk 274 (chr19:59294271-chr20:7336906)
+INFO	2024-05-13 10:39:07	VariantCaller	Start calling maximal cliques in chunk 281 (chr21:876652-chr21:10876651)
+INFO	2024-05-13 10:39:07	VariantCaller	Start calling maximal cliques in chunk 282 (chr21:10876652-chr21:20876651)
+INFO	2024-05-13 10:39:07	VariantCaller	Complete calling maximal cliques in chunk 277 (chr20:27336907-chr20:37336906)
+INFO	2024-05-13 10:39:07	VariantCaller	Complete calling maximal cliques in chunk 272 (chr19:39294271-chr19:49294270)
+INFO	2024-05-13 10:39:07	VariantCaller	Complete calling maximal cliques in chunk 273 (chr19:49294271-chr19:59294270)
+INFO	2024-05-13 10:39:07	VariantCaller	Complete calling maximal cliques in chunk 281 (chr21:876652-chr21:10876651)
+INFO	2024-05-13 10:39:08	VariantCaller	Start calling maximal cliques in chunk 283 (chr21:20876652-chr21:30876651)
+INFO	2024-05-13 10:39:08	VariantCaller	Start calling maximal cliques in chunk 285 (chr21:40876652-chr22:5535969)
+INFO	2024-05-13 10:39:08	VariantCaller	Start calling maximal cliques in chunk 284 (chr21:30876652-chr21:40876651)
+INFO	2024-05-13 10:39:08	VariantCaller	Start calling maximal cliques in chunk 286 (chr22:5535970-chr22:15535969)
+INFO	2024-05-13 10:39:08	VariantCaller	Complete calling maximal cliques in chunk 278 (chr20:37336907-chr20:47336906)
+INFO	2024-05-13 10:39:08	VariantCaller	Start calling maximal cliques in chunk 287 (chr22:15535970-chr22:25535969)
+INFO	2024-05-13 10:39:08	VariantCaller	Complete calling maximal cliques in chunk 280 (chr20:57336907-chr21:876651)
+WARNING	2024-05-13 10:39:08	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:39:08	VariantCaller	Complete calling maximal cliques in chunk 279 (chr20:47336907-chr20:57336906)
+INFO	2024-05-13 10:39:09	VariantCaller	Start calling maximal cliques in chunk 288 (chr22:25535970-chr22:35535969)
+INFO	2024-05-13 10:39:09	VariantCaller	Start calling maximal cliques in chunk 289 (chr22:35535970-chr22:45535969)
+INFO	2024-05-13 10:39:09	VariantCaller	Complete calling maximal cliques in chunk 285 (chr21:40876652-chr22:5535969)
+INFO	2024-05-13 10:39:09	VariantCaller	Complete calling maximal cliques in chunk 282 (chr21:10876652-chr21:20876651)
+INFO	2024-05-13 10:39:09	VariantCaller	Start calling maximal cliques in chunk 290 (chr22:45535970-chrX:3961043)
+INFO	2024-05-13 10:39:09	VariantCaller	Start calling maximal cliques in chunk 291 (chrX:3961044-chrX:13961043)
+INFO	2024-05-13 10:39:09	VariantCaller	Complete calling maximal cliques in chunk 286 (chr22:5535970-chr22:15535969)
+WARNING	2024-05-13 10:39:10	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:39:10	VariantCaller	Complete calling maximal cliques in chunk 283 (chr21:20876652-chr21:30876651)
+INFO	2024-05-13 10:39:10	VariantCaller	Start calling maximal cliques in chunk 292 (chrX:13961044-chrX:23961043)
+INFO	2024-05-13 10:39:10	VariantCaller	Complete calling maximal cliques in chunk 284 (chr21:30876652-chr21:40876651)
+INFO	2024-05-13 10:39:10	VariantCaller	Start calling maximal cliques in chunk 293 (chrX:23961044-chrX:33961043)
+INFO	2024-05-13 10:39:10	VariantCaller	Start calling maximal cliques in chunk 294 (chrX:33961044-chrX:43961043)
+INFO	2024-05-13 10:39:10	VariantCaller	Complete calling maximal cliques in chunk 287 (chr22:15535970-chr22:25535969)
+INFO	2024-05-13 10:39:11	VariantCaller	Start calling maximal cliques in chunk 295 (chrX:43961044-chrX:53961043)
+INFO	2024-05-13 10:39:11	VariantCaller	Complete calling maximal cliques in chunk 288 (chr22:25535970-chr22:35535969)
+WARNING	2024-05-13 10:39:11	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:39:11	VariantCaller	Complete calling maximal cliques in chunk 289 (chr22:35535970-chr22:45535969)
+INFO	2024-05-13 10:39:11	VariantCaller	Start calling maximal cliques in chunk 296 (chrX:53961044-chrX:63961043)
+INFO	2024-05-13 10:39:11	VariantCaller	Complete calling maximal cliques in chunk 291 (chrX:3961044-chrX:13961043)
+INFO	2024-05-13 10:39:11	VariantCaller	Start calling maximal cliques in chunk 297 (chrX:63961044-chrX:73961043)
+WARNING	2024-05-13 10:39:11	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:39:11	VariantCaller	Complete calling maximal cliques in chunk 292 (chrX:13961044-chrX:23961043)
+INFO	2024-05-13 10:39:12	VariantCaller	Start calling maximal cliques in chunk 298 (chrX:73961044-chrX:83961043)
+INFO	2024-05-13 10:39:12	VariantCaller	Complete calling maximal cliques in chunk 290 (chr22:45535970-chrX:3961043)
+INFO	2024-05-13 10:39:12	VariantCaller	Start calling maximal cliques in chunk 299 (chrX:83961044-chrX:93961043)
+INFO	2024-05-13 10:39:12	VariantCaller	Complete calling maximal cliques in chunk 296 (chrX:53961044-chrX:63961043)
+INFO	2024-05-13 10:39:12	VariantCaller	Complete calling maximal cliques in chunk 294 (chrX:33961044-chrX:43961043)
+INFO	2024-05-13 10:39:12	VariantCaller	Start calling maximal cliques in chunk 300 (chrX:93961044-chrX:103961043)
+WARNING	2024-05-13 10:39:12	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:39:12	VariantCaller	Complete calling maximal cliques in chunk 293 (chrX:23961044-chrX:33961043)
+WARNING	2024-05-13 10:39:12	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:39:12	VariantCaller	Complete calling maximal cliques in chunk 295 (chrX:43961044-chrX:53961043)
+INFO	2024-05-13 10:39:12	VariantCaller	Start calling maximal cliques in chunk 301 (chrX:103961044-chrX:113961043)
+INFO	2024-05-13 10:39:12	VariantCaller	Start calling maximal cliques in chunk 302 (chrX:113961044-chrX:123961043)
+INFO	2024-05-13 10:39:12	VariantCaller	Start calling maximal cliques in chunk 303 (chrX:123961044-chrX:133961043)
+INFO	2024-05-13 10:39:13	VariantCaller	Start calling maximal cliques in chunk 304 (chrX:133961044-chrX:143961043)
+INFO	2024-05-13 10:39:13	VariantCaller	Complete calling maximal cliques in chunk 297 (chrX:63961044-chrX:73961043)
+WARNING	2024-05-13 10:39:13	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:39:13	VariantCaller	Complete calling maximal cliques in chunk 298 (chrX:73961044-chrX:83961043)
+INFO	2024-05-13 10:39:13	VariantCaller	Complete calling maximal cliques in chunk 300 (chrX:93961044-chrX:103961043)
+INFO	2024-05-13 10:39:13	VariantCaller	Complete calling maximal cliques in chunk 299 (chrX:83961044-chrX:93961043)
+INFO	2024-05-13 10:39:13	VariantCaller	Start calling maximal cliques in chunk 305 (chrX:143961044-chrX:153961043)
+INFO	2024-05-13 10:39:13	VariantCaller	Start calling maximal cliques in chunk 306 (chrX:153961044-chrY:9451477)
+INFO	2024-05-13 10:39:13	VariantCaller	Complete calling maximal cliques in chunk 306 (chrX:153961044-chrY:9451477)
+INFO	2024-05-13 10:39:13	VariantCaller	Start calling maximal cliques in chunk 308 (chrY:19451478-chrY:29451477)
+WARNING	2024-05-13 10:39:13	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+WARNING	2024-05-13 10:39:13	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:39:13	VariantCaller	Complete calling maximal cliques in chunk 301 (chrX:103961044-chrX:113961043)
+INFO	2024-05-13 10:39:13	VariantCaller	Complete calling maximal cliques in chunk 308 (chrY:19451478-chrY:29451477)
+INFO	2024-05-13 10:39:13	VariantCaller	Start calling maximal cliques in chunk 307 (chrY:9451478-chrY:19451477)
+WARNING	2024-05-13 10:39:13	AsyncBufferedIterator	Thread interrupt received whilst closing underlying iterator
+INFO	2024-05-13 10:39:13	VariantCaller	Complete calling maximal cliques in chunk 307 (chrY:9451478-chrY:19451477)
+INFO	2024-05-13 10:39:14	VariantCaller	Start calling maximal cliques in chunk 309 (chrY:29451478-chrY:39451477)
+INFO	2024-05-13 10:39:14	VariantCaller	Start calling maximal cliques in chunk 310 (chrY:39451478-chrY:49451477)
+INFO	2024-05-13 10:39:14	VariantCaller	Complete calling maximal cliques in chunk 310 (chrY:39451478-chrY:49451477)
+INFO	2024-05-13 10:39:14	VariantCaller	Start calling maximal cliques in chunk 311 (chrY:49451478-chrY:59451477)
+INFO	2024-05-13 10:39:14	VariantCaller	Complete calling maximal cliques in chunk 309 (chrY:29451478-chrY:39451477)
+INFO	2024-05-13 10:39:14	VariantCaller	Complete calling maximal cliques in chunk 311 (chrY:49451478-chrY:59451477)
+INFO	2024-05-13 10:39:14	VariantCaller	Start calling maximal cliques in chunk 312 (chrY:59451478-chrM:16569)
+INFO	2024-05-13 10:39:14	VariantCaller	Complete calling maximal cliques in chunk 303 (chrX:123961044-chrX:133961043)
+INFO	2024-05-13 10:39:14	VariantCaller	Complete calling maximal cliques in chunk 302 (chrX:113961044-chrX:123961043)
+INFO	2024-05-13 10:39:14	VariantCaller	Complete calling maximal cliques in chunk 304 (chrX:133961044-chrX:143961043)
+INFO	2024-05-13 10:39:14	VariantCaller	Complete calling maximal cliques in chunk 305 (chrX:143961044-chrX:153961043)
+INFO	2024-05-13 10:39:15	VariantCaller	Complete calling maximal cliques in chunk 312 (chrY:59451478-chrM:16569)
+INFO	2024-05-13 10:39:15	VariantCaller	Merging identified breakpoints
+INFO	2024-05-13 10:39:26	VariantCaller	Sorting identified breakpoints
+INFO	2024-05-13 10:39:26	VcfFileUtil	Sorting to ./P023_all_calls.vcf.gridss.working/P023_all_calls.vcf.unallocated.vcf
+INFO	2024-05-13 10:39:55	IdentifyVariants	Raw variant calls written to ./P023_all_calls.vcf.gridss.working/P023_all_calls.vcf.unallocated.vcf
+[Mon May 13 10:39:55 CEST 2024] gridss.IdentifyVariants done. Elapsed time: 2.20 minutes.
+Runtime.totalMemory()=5536481280
+Mon May 13 10:39:55 CEST 2024: Running	AnnotateVariants	results/gridss/P023/P023_all_calls.vcf
+INFO	2024-05-13 10:39:56	Defaults	Found file for property samjdk.reference_fasta: /lustre1/project/stg_00096/home/rdewin/WGS/resources/genome.fa 
+INFO	2024-05-13 10:39:56	AnnotateVariants	
+
+********** NOTE: Picard's command line syntax is changing.
+**********
+********** For more information, please see:
+********** https://github.com/broadinstitute/picard/wiki/Command-Line-Syntax-Transition-For-Users-(Pre-Transition)
+**********
+********** The command line looks like this in the new syntax:
+**********
+**********    AnnotateVariants -TMP_DIR . -WORKING_DIR . -REFERENCE_SEQUENCE resources/genome.fa -WORKER_THREADS 8 -INPUT results/recal/P023/P023_dna_normal_recal.bam -INPUT results/recal/P023/P023_dna_tumor_recal.bam -BLACKLIST resources/T2T.excluderanges.bed -ASSEMBLY results/gridss/P023/P023_all_calls.vcf.assembly.bam -INPUT_VCF ./P023_all_calls.vcf.gridss.working/P023_all_calls.vcf.unallocated.vcf -OUTPUT_VCF ./P023_all_calls.vcf.gridss.working/P023_all_calls.vcf.allocated.vcf -READ_PAIR_CONCORDANT_PERCENT 0.995
+**********
+
+
+10:39:56.721 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gridss-2.13.2-3/gridss.jar!/com/intel/gkl/native/libgkl_compression.so
+[Mon May 13 10:39:56 CEST 2024] AnnotateVariants INPUT_VCF=./P023_all_calls.vcf.gridss.working/P023_all_calls.vcf.unallocated.vcf OUTPUT_VCF=./P023_all_calls.vcf.gridss.working/P023_all_calls.vcf.allocated.vcf ASSEMBLY=[results/gridss/P023/P023_all_calls.vcf.assembly.bam] INPUT=[results/recal/P023/P023_dna_normal_recal.bam, results/recal/P023/P023_dna_tumor_recal.bam] READ_PAIR_CONCORDANT_PERCENT=0.995 BLACKLIST=resources/T2T.excluderanges.bed WORKER_THREADS=8 WORKING_DIR=. TMP_DIR=[.] REFERENCE_SEQUENCE=resources/genome.fa    IGNORE_DUPLICATES=true VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 MAX_RECORDS_IN_RAM=500000 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
+[Mon May 13 10:39:56 CEST 2024] Executing as vsc35407@i28l10 on Linux 4.18.0-513.24.1.el8_9.x86_64 amd64; OpenJDK 64-Bit Server VM 17.0.10-internal+0-adhoc..src; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.13.2-gridss
+INFO	2024-05-13 10:39:56	GridssConfiguration	maxCoverage=25000
+INFO	2024-05-13 10:39:56	GridssConfiguration	minMapq=20
+INFO	2024-05-13 10:39:56	GridssConfiguration	fallbackMapq=20
+INFO	2024-05-13 10:39:56	GridssConfiguration	fallbackBaseq=20
+INFO	2024-05-13 10:39:56	GridssConfiguration	minAnchorShannonEntropy=0.5
+INFO	2024-05-13 10:39:56	GridssConfiguration	dovetailMargin=4
+INFO	2024-05-13 10:39:56	GridssConfiguration	softclip.minAverageQual=5.0
+INFO	2024-05-13 10:39:56	GridssConfiguration	softclip.minLength=5
+INFO	2024-05-13 10:39:56	GridssConfiguration	softclip.minAnchorIdentity=0.95
+INFO	2024-05-13 10:39:56	GridssConfiguration	softclip.realignSplitReads=false
+INFO	2024-05-13 10:39:56	GridssConfiguration	useReadGroupSampleNameCategoryLabel=true
+INFO	2024-05-13 10:39:56	GridssConfiguration	chunkSize=10000000
+INFO	2024-05-13 10:39:56	GridssConfiguration	chunkSequenceChangePenalty=250000
+INFO	2024-05-13 10:39:56	GridssConfiguration	hashEvidenceID=true
+INFO	2024-05-13 10:39:56	GridssConfiguration	adapter=AGATCGGAAGAG
+INFO	2024-05-13 10:39:56	GridssConfiguration	adapter=ATGGAATTCTCG
+INFO	2024-05-13 10:39:56	GridssConfiguration	adapter=CTGTCTCTTATA
+INFO	2024-05-13 10:39:56	GridssConfiguration	scoring.readWeightedRegex=^cons_[0-9]+_r_(?<weight>[0-9]+)_$
+INFO	2024-05-13 10:39:56	GridssConfiguration	scoring.model=FastEmpiricalReferenceLikelihood
+INFO	2024-05-13 10:39:56	GridssConfiguration	assembly.k=25
+INFO	2024-05-13 10:39:56	GridssConfiguration	assembly.minReads=3
+INFO	2024-05-13 10:39:56	GridssConfiguration	assembly.includePairAnchors=true
+INFO	2024-05-13 10:39:56	GridssConfiguration	assembly.pairAnchorMismatchIgnoreEndBases=5
+INFO	2024-05-13 10:39:56	GridssConfiguration	assembly.writeFiltered=false
+INFO	2024-05-13 10:39:56	GridssConfiguration	assembly.anchorLength=300
+INFO	2024-05-13 10:39:56	GridssConfiguration	assembly.removeMisassembledPartialContigsDuringAssembly=true
+INFO	2024-05-13 10:39:56	GridssConfiguration	assembly.maxExpectedBreakendLengthMultiple=1.5
+INFO	2024-05-13 10:39:56	GridssConfiguration	assembly.errorCorrection.kmerErrorCorrectionMultiple=10.0
+INFO	2024-05-13 10:39:56	GridssConfiguration	assembly.errorCorrection.k=21
+INFO	2024-05-13 10:39:56	GridssConfiguration	assembly.errorCorrection.maxCorrectionsInKmer=3
+INFO	2024-05-13 10:39:56	GridssConfiguration	assembly.errorCorrection.deduplicateReadKmers=true
+INFO	2024-05-13 10:39:56	GridssConfiguration	assembly.realignContigs=true
+INFO	2024-05-13 10:39:56	GridssConfiguration	assembly.recoverAfterError=true
+INFO	2024-05-13 10:39:56	GridssConfiguration	assembly.downsample.acceptDensityPortion=0.1
+INFO	2024-05-13 10:39:56	GridssConfiguration	assembly.downsample.targetEvidenceDensity=1
+INFO	2024-05-13 10:39:56	GridssConfiguration	assembly.downsample.minimumDensityWindowSize=1000
+INFO	2024-05-13 10:39:56	GridssConfiguration	assembly.downsample.densityDownsampleRateClippedReads=0.9
+INFO	2024-05-13 10:39:56	GridssConfiguration	assembly.downsample.densityDownsampleRateDiscordantReads=0.75
+INFO	2024-05-13 10:39:56	GridssConfiguration	assembly.positional.maxPathLengthMultiple=1.1
+INFO	2024-05-13 10:39:56	GridssConfiguration	assembly.positional.retainWidthMultiple=2.0
+INFO	2024-05-13 10:39:56	GridssConfiguration	assembly.positional.flushWidthMultiple=1.0
+INFO	2024-05-13 10:39:56	GridssConfiguration	assembly.positional.maximumNodeDensity=2.0
+INFO	2024-05-13 10:39:56	GridssConfiguration	assembly.positional.trimSelfIntersectingReads=true
+INFO	2024-05-13 10:39:56	GridssConfiguration	assembly.positional.forceFullMemoizationRecalculationAt=0.8
+INFO	2024-05-13 10:39:56	GridssConfiguration	assembly.positional.safetyModePathCountThreshold=50000
+INFO	2024-05-13 10:39:56	GridssConfiguration	assembly.positional.safetyModeContigsToCall=3
+INFO	2024-05-13 10:39:56	GridssConfiguration	assembly.contigNamePrefix=asm%d-
+INFO	2024-05-13 10:39:56	GridssConfiguration	assembly.longReadReadLengthThreshold=1000
+INFO	2024-05-13 10:39:56	GridssConfiguration	assembly.maximumReproductionExportPackages=5
+INFO	2024-05-13 10:39:56	GridssConfiguration	variantcalling.minReads=2
+INFO	2024-05-13 10:39:56	GridssConfiguration	variantcalling.minScore=50.0
+INFO	2024-05-13 10:39:56	GridssConfiguration	variantcalling.minSize=10
+INFO	2024-05-13 10:39:56	GridssConfiguration	variantcalling.callUnassembledBreakpoints=true
+INFO	2024-05-13 10:39:56	GridssConfiguration	variantcalling.callUnassembledBreakends=false
+INFO	2024-05-13 10:39:56	GridssConfiguration	variantcalling.callFullyAnchoredAssemblyVariants=false
+INFO	2024-05-13 10:39:56	GridssConfiguration	variantcalling.breakendMargin=10
+INFO	2024-05-13 10:39:56	GridssConfiguration	variantcalling.writeFiltered=false
+INFO	2024-05-13 10:39:56	GridssConfiguration	variantcalling.simplecalls=false
+INFO	2024-05-13 10:39:56	GridssConfiguration	variantcalling.maxBreakendHomologyLength=300
+INFO	2024-05-13 10:39:56	GridssConfiguration	variantcalling.breakendHomologyAlignmentMargin=10
+INFO	2024-05-13 10:39:56	GridssConfiguration	variantcalling.requireAssemblyCategorySupport=true
+INFO	2024-05-13 10:39:56	GridssConfiguration	variantcalling.callBreakends=true
+INFO	2024-05-13 10:39:56	GridssConfiguration	variantcalling.includeSupportingReadNames=false
+INFO	2024-05-13 10:39:56	GridssConfiguration	variantcalling.breakpointLowQuality=500.0
+INFO	2024-05-13 10:39:56	GridssConfiguration	variantcalling.breakendLowQuality=1500.0
+INFO	2024-05-13 10:39:56	GridssConfiguration	variantcalling.breakendMaxAssemblySupportBias=0.5
+INFO	2024-05-13 10:39:56	GridssConfiguration	variantcalling.ignoreMissingAssemblyFile=false
+INFO	2024-05-13 10:39:56	GridssConfiguration	variantcalling.minimumImpreciseDeletion=500
+INFO	2024-05-13 10:39:56	GridssConfiguration	terminateOnFirstError=true
+INFO	2024-05-13 10:39:56	GridssConfiguration	visualisation.directory=visualisation
+INFO	2024-05-13 10:39:56	GridssConfiguration	visualisation.buffers=false
+INFO	2024-05-13 10:39:56	GridssConfiguration	visualisation.bufferTrackingItervalInSeconds=60
+INFO	2024-05-13 10:39:56	GridssConfiguration	visualisation.timeouts=false
+INFO	2024-05-13 10:39:56	GridssConfiguration	visualisation.evidenceAllocation=false
+INFO	2024-05-13 10:39:56	GridssConfiguration	visualisation.assemblyProgress=false
+INFO	2024-05-13 10:39:56	GridssConfiguration	visualisation.assemblyTelemetry=false
+INFO	2024-05-13 10:39:56	GridssConfiguration	visualisation.maxCliqueTelemetry=false
+INFO	2024-05-13 10:39:56	GridssConfiguration	visualisation.assemblyGraph=false
+INFO	2024-05-13 10:39:56	GridssConfiguration	visualisation.assemblyGraphFullSize=false
+INFO	2024-05-13 10:39:56	GridssConfiguration	visualisation.assemblyContigMemoization=false
+INFO	2024-05-13 10:39:56	GridssConfiguration	visualisation.evidenceTracker=false
+INFO	2024-05-13 10:39:56	TwoBitBufferedReferenceSequenceFile	Loading reference genome from cache /lustre1/project/stg_00096/home/rdewin/WGS/resources/genome.fa.gridsscache
+INFO	2024-05-13 10:39:56	MultipleSamFileCommandLineProgram	Loading aligner
+INFO	2024-05-13 10:39:56	AlignerFactory	sswjni library loading successful.
+INFO	2024-05-13 10:39:56	MultipleSamFileCommandLineProgram	Using 8 worker threads
+INFO	2024-05-13 10:39:56	VcfTransformCommandLineProgram	Annotating variants in ./P023_all_calls.vcf.gridss.working/P023_all_calls.vcf.unallocated.vcf
+INFO	2024-05-13 10:39:57	MultipleSamFileCommandLineProgram	Using Read Group sample name P023_normal for file results/recal/P023/P023_dna_normal_recal.bam
+INFO	2024-05-13 10:39:57	MultipleSamFileCommandLineProgram	Using Read Group sample name P023_tumor for file results/recal/P023/P023_dna_tumor_recal.bam
+INFO	2024-05-13 10:39:57	AllocateEvidence	Allocating evidence
+INFO	2024-05-13 10:39:58	TwoBitBufferedReferenceSequenceFile	Loading reference genome complete
+INFO	2024-05-13 10:39:59	SequentialEvidenceAllocator	Seen many non-increasing record positions. Printing Read-names as well.
+INFO	2024-05-13 10:40:17	SequentialCoverageAnnotator	Processed    10,000,000 records.  Elapsed time: 00:00:18s.  Time for last 10,000,000:   18s.  Last read position: chr1:27,718,575
+INFO	2024-05-13 10:40:25	SequentialCoverageAnnotator	Processed    10,000,000 records.  Elapsed time: 00:00:26s.  Time for last 10,000,000:   26s.  Last read position: chr1:54,288,855
+INFO	2024-05-13 10:40:26	SequentialCoverageAnnotator	Processed    20,000,000 records.  Elapsed time: 00:00:27s.  Time for last 10,000,000:    8s.  Last read position: chr1:55,978,033
+INFO	2024-05-13 10:40:34	SequentialCoverageAnnotator	Processed    30,000,000 records.  Elapsed time: 00:00:35s.  Time for last 10,000,000:    7s.  Last read position: chr1:84,251,851
+INFO	2024-05-13 10:40:40	SequentialCoverageAnnotator	Processed    20,000,000 records.  Elapsed time: 00:00:41s.  Time for last 10,000,000:   15s.  Last read position: chr1:107,878,633
+INFO	2024-05-13 10:40:42	SequentialEvidenceAllocator	Processed     1,000,000 records.  Elapsed time: 00:00:43s.  Time for last 1,000,000:   43s.  Last read position: chr1:114,425,203.  Last read name: A00709:104:HJ5HHDSXY:3:2224:16405:17566
+INFO	2024-05-13 10:40:42	SequentialCoverageAnnotator	Processed    40,000,000 records.  Elapsed time: 00:00:43s.  Time for last 10,000,000:    8s.  Last read position: chr1:112,640,007
+INFO	2024-05-13 10:40:49	SequentialCoverageAnnotator	Processed    50,000,000 records.  Elapsed time: 00:00:50s.  Time for last 10,000,000:    7s.  Last read position: chr1:145,155,449
+INFO	2024-05-13 10:40:55	SequentialCoverageAnnotator	Processed    30,000,000 records.  Elapsed time: 00:00:56s.  Time for last 10,000,000:   14s.  Last read position: chr1:165,922,883
+INFO	2024-05-13 10:40:57	SequentialCoverageAnnotator	Processed    60,000,000 records.  Elapsed time: 00:00:58s.  Time for last 10,000,000:    7s.  Last read position: chr1:173,441,121
+INFO	2024-05-13 10:41:05	SequentialCoverageAnnotator	Processed    70,000,000 records.  Elapsed time: 00:01:06s.  Time for last 10,000,000:    8s.  Last read position: chr1:201,725,260
+INFO	2024-05-13 10:41:10	SequentialCoverageAnnotator	Processed    40,000,000 records.  Elapsed time: 00:01:11s.  Time for last 10,000,000:   15s.  Last read position: chr1:219,137,609
+INFO	2024-05-13 10:41:13	SequentialCoverageAnnotator	Processed    80,000,000 records.  Elapsed time: 00:01:14s.  Time for last 10,000,000:    8s.  Last read position: chr1:229,916,421
+INFO	2024-05-13 10:41:18	SequentialEvidenceAllocator	Processed     2,000,000 records.  Elapsed time: 00:01:19s.  Time for last 1,000,000:   36s.  Last read position: chr2:1,017,847.  Last read name: A00709:104:HJ5HHDSXY:3:1635:3947:1188
+INFO	2024-05-13 10:41:22	SequentialCoverageAnnotator	Processed    90,000,000 records.  Elapsed time: 00:01:22s.  Time for last 10,000,000:    8s.  Last read position: chr2:9,752,066
+INFO	2024-05-13 10:41:26	SequentialCoverageAnnotator	Processed    50,000,000 records.  Elapsed time: 00:01:27s.  Time for last 10,000,000:   15s.  Last read position: chr2:25,185,016
+INFO	2024-05-13 10:41:30	SequentialCoverageAnnotator	Processed   100,000,000 records.  Elapsed time: 00:01:30s.  Time for last 10,000,000:    7s.  Last read position: chr2:37,886,215
+INFO	2024-05-13 10:41:38	SequentialCoverageAnnotator	Processed   110,000,000 records.  Elapsed time: 00:01:39s.  Time for last 10,000,000:    8s.  Last read position: chr2:66,174,484
+INFO	2024-05-13 10:41:41	SequentialCoverageAnnotator	Processed    60,000,000 records.  Elapsed time: 00:01:42s.  Time for last 10,000,000:   15s.  Last read position: chr2:78,509,438
+INFO	2024-05-13 10:41:45	SequentialCoverageAnnotator	Processed   120,000,000 records.  Elapsed time: 00:01:46s.  Time for last 10,000,000:    7s.  Last read position: chr2:94,703,462
+INFO	2024-05-13 10:41:53	SequentialCoverageAnnotator	Processed   130,000,000 records.  Elapsed time: 00:01:54s.  Time for last 10,000,000:    8s.  Last read position: chr2:122,561,323
+INFO	2024-05-13 10:41:55	SequentialEvidenceAllocator	Processed     3,000,000 records.  Elapsed time: 00:01:56s.  Time for last 1,000,000:   36s.  Last read position: chr2:131,183,522.  Last read name: A00627:123:HJHGLDSXY:2:1315:1108:10426
+INFO	2024-05-13 10:41:57	SequentialCoverageAnnotator	Processed    70,000,000 records.  Elapsed time: 00:01:57s.  Time for last 10,000,000:   15s.  Last read position: chr2:132,904,226
+INFO	2024-05-13 10:42:02	SequentialCoverageAnnotator	Processed   140,000,000 records.  Elapsed time: 00:02:03s.  Time for last 10,000,000:    8s.  Last read position: chr2:150,616,444
+INFO	2024-05-13 10:42:10	SequentialCoverageAnnotator	Processed   150,000,000 records.  Elapsed time: 00:02:11s.  Time for last 10,000,000:    8s.  Last read position: chr2:178,894,431
+INFO	2024-05-13 10:42:12	SequentialCoverageAnnotator	Processed    80,000,000 records.  Elapsed time: 00:02:13s.  Time for last 10,000,000:   15s.  Last read position: chr2:185,739,538
+INFO	2024-05-13 10:42:18	SequentialCoverageAnnotator	Processed   160,000,000 records.  Elapsed time: 00:02:19s.  Time for last 10,000,000:    8s.  Last read position: chr2:207,234,398
+INFO	2024-05-13 10:42:27	SequentialCoverageAnnotator	Processed   170,000,000 records.  Elapsed time: 00:02:28s.  Time for last 10,000,000:    8s.  Last read position: chr2:235,444,416
+INFO	2024-05-13 10:42:28	SequentialCoverageAnnotator	Processed    90,000,000 records.  Elapsed time: 00:02:29s.  Time for last 10,000,000:   15s.  Last read position: chr2:239,091,704
+INFO	2024-05-13 10:42:31	SequentialEvidenceAllocator	Processed     4,000,000 records.  Elapsed time: 00:02:32s.  Time for last 1,000,000:   35s.  Last read position: chr3:8,790,674.  Last read name: A00709:104:HJ5HHDSXY:3:1635:19488:14293
+INFO	2024-05-13 10:42:35	SequentialCoverageAnnotator	Processed   180,000,000 records.  Elapsed time: 00:02:36s.  Time for last 10,000,000:    8s.  Last read position: chr3:20,531,047
+INFO	2024-05-13 10:42:43	SequentialCoverageAnnotator	Processed   190,000,000 records.  Elapsed time: 00:02:44s.  Time for last 10,000,000:    7s.  Last read position: chr3:48,671,402
+INFO	2024-05-13 10:42:43	SequentialCoverageAnnotator	Processed   100,000,000 records.  Elapsed time: 00:02:44s.  Time for last 10,000,000:   15s.  Last read position: chr3:50,010,312
+INFO	2024-05-13 10:42:51	SequentialCoverageAnnotator	Processed   200,000,000 records.  Elapsed time: 00:02:52s.  Time for last 10,000,000:    8s.  Last read position: chr3:76,758,459
+INFO	2024-05-13 10:42:58	SequentialCoverageAnnotator	Processed   110,000,000 records.  Elapsed time: 00:02:59s.  Time for last 10,000,000:   14s.  Last read position: chr3:104,254,360
+INFO	2024-05-13 10:42:59	SequentialCoverageAnnotator	Processed   210,000,000 records.  Elapsed time: 00:03:00s.  Time for last 10,000,000:    7s.  Last read position: chr3:105,856,800
+INFO	2024-05-13 10:43:07	SequentialCoverageAnnotator	Processed   220,000,000 records.  Elapsed time: 00:03:08s.  Time for last 10,000,000:    8s.  Last read position: chr3:133,906,857
+INFO	2024-05-13 10:43:07	SequentialEvidenceAllocator	Processed     5,000,000 records.  Elapsed time: 00:03:08s.  Time for last 1,000,000:   36s.  Last read position: chr3:138,055,073.  Last read name: A00709:104:HJ5HHDSXY:3:2531:4553:22968
+INFO	2024-05-13 10:43:14	SequentialCoverageAnnotator	Processed   120,000,000 records.  Elapsed time: 00:03:14s.  Time for last 10,000,000:   15s.  Last read position: chr3:157,430,117
+INFO	2024-05-13 10:43:15	SequentialCoverageAnnotator	Processed   230,000,000 records.  Elapsed time: 00:03:16s.  Time for last 10,000,000:    8s.  Last read position: chr3:162,078,388
+INFO	2024-05-13 10:43:23	SequentialCoverageAnnotator	Processed   240,000,000 records.  Elapsed time: 00:03:24s.  Time for last 10,000,000:    8s.  Last read position: chr3:190,580,777
+INFO	2024-05-13 10:43:29	SequentialCoverageAnnotator	Processed   130,000,000 records.  Elapsed time: 00:03:30s.  Time for last 10,000,000:   15s.  Last read position: chr4:9,886,310
+INFO	2024-05-13 10:43:31	SequentialCoverageAnnotator	Processed   250,000,000 records.  Elapsed time: 00:03:32s.  Time for last 10,000,000:    8s.  Last read position: chr4:17,299,751
+INFO	2024-05-13 10:43:40	SequentialCoverageAnnotator	Processed   260,000,000 records.  Elapsed time: 00:03:40s.  Time for last 10,000,000:    8s.  Last read position: chr4:45,661,254
+INFO	2024-05-13 10:43:43	SequentialEvidenceAllocator	Processed     6,000,000 records.  Elapsed time: 00:03:44s.  Time for last 1,000,000:   35s.  Last read position: chr4:62,938,467.  Last read name: A00709:104:HJ5HHDSXY:3:2459:3360:33332
+INFO	2024-05-13 10:43:44	SequentialCoverageAnnotator	Processed   140,000,000 records.  Elapsed time: 00:03:45s.  Time for last 10,000,000:   14s.  Last read position: chr4:64,393,503
+INFO	2024-05-13 10:43:47	SequentialCoverageAnnotator	Processed   270,000,000 records.  Elapsed time: 00:03:48s.  Time for last 10,000,000:    7s.  Last read position: chr4:74,936,417
+INFO	2024-05-13 10:43:55	SequentialCoverageAnnotator	Processed   280,000,000 records.  Elapsed time: 00:03:56s.  Time for last 10,000,000:    7s.  Last read position: chr4:103,305,250
+INFO	2024-05-13 10:43:59	SequentialCoverageAnnotator	Processed   150,000,000 records.  Elapsed time: 00:04:00s.  Time for last 10,000,000:   14s.  Last read position: chr4:117,117,471
+INFO	2024-05-13 10:44:03	SequentialCoverageAnnotator	Processed   290,000,000 records.  Elapsed time: 00:04:04s.  Time for last 10,000,000:    7s.  Last read position: chr4:131,676,518
+INFO	2024-05-13 10:44:11	SequentialCoverageAnnotator	Processed   300,000,000 records.  Elapsed time: 00:04:12s.  Time for last 10,000,000:    7s.  Last read position: chr4:160,033,440
+INFO	2024-05-13 10:44:14	SequentialCoverageAnnotator	Processed   160,000,000 records.  Elapsed time: 00:04:15s.  Time for last 10,000,000:   15s.  Last read position: chr4:170,193,785
+INFO	2024-05-13 10:44:19	SequentialCoverageAnnotator	Processed   310,000,000 records.  Elapsed time: 00:04:20s.  Time for last 10,000,000:    8s.  Last read position: chr4:188,374,435
+INFO	2024-05-13 10:44:20	SequentialEvidenceAllocator	Processed     7,000,000 records.  Elapsed time: 00:04:20s.  Time for last 1,000,000:   36s.  Last read position: chr4:191,177,955.  Last read name: A00709:104:HJ5HHDSXY:3:1614:25183:30232
+INFO	2024-05-13 10:44:27	SequentialCoverageAnnotator	Processed   320,000,000 records.  Elapsed time: 00:04:28s.  Time for last 10,000,000:    7s.  Last read position: chr5:22,738,895
+INFO	2024-05-13 10:44:29	SequentialCoverageAnnotator	Processed   170,000,000 records.  Elapsed time: 00:04:30s.  Time for last 10,000,000:   15s.  Last read position: chr5:30,462,354
+INFO	2024-05-13 10:44:35	SequentialCoverageAnnotator	Processed   330,000,000 records.  Elapsed time: 00:04:36s.  Time for last 10,000,000:    7s.  Last read position: chr5:50,999,057
+INFO	2024-05-13 10:44:43	SequentialCoverageAnnotator	Processed   340,000,000 records.  Elapsed time: 00:04:44s.  Time for last 10,000,000:    7s.  Last read position: chr5:79,634,455
+INFO	2024-05-13 10:44:44	SequentialCoverageAnnotator	Processed   180,000,000 records.  Elapsed time: 00:04:45s.  Time for last 10,000,000:   14s.  Last read position: chr5:83,856,906
+INFO	2024-05-13 10:44:51	SequentialCoverageAnnotator	Processed   350,000,000 records.  Elapsed time: 00:04:52s.  Time for last 10,000,000:    8s.  Last read position: chr5:107,931,772
+INFO	2024-05-13 10:44:56	SequentialEvidenceAllocator	Processed     8,000,000 records.  Elapsed time: 00:04:57s.  Time for last 1,000,000:   36s.  Last read position: chr5:127,374,652.  Last read name: A00709:104:HJ5HHDSXY:3:2616:17192:20838
+INFO	2024-05-13 10:44:59	SequentialCoverageAnnotator	Processed   360,000,000 records.  Elapsed time: 00:05:00s.  Time for last 10,000,000:    8s.  Last read position: chr5:136,100,727
+INFO	2024-05-13 10:44:59	SequentialCoverageAnnotator	Processed   190,000,000 records.  Elapsed time: 00:05:00s.  Time for last 10,000,000:   14s.  Last read position: chr5:136,704,955
+INFO	2024-05-13 10:45:07	SequentialCoverageAnnotator	Processed   370,000,000 records.  Elapsed time: 00:05:08s.  Time for last 10,000,000:    8s.  Last read position: chr5:164,201,137
+INFO	2024-05-13 10:45:15	SequentialCoverageAnnotator	Processed   200,000,000 records.  Elapsed time: 00:05:16s.  Time for last 10,000,000:   15s.  Last read position: chr6:8,603,225
+INFO	2024-05-13 10:45:15	SequentialCoverageAnnotator	Processed   380,000,000 records.  Elapsed time: 00:05:16s.  Time for last 10,000,000:    8s.  Last read position: chr6:10,113,260
+INFO	2024-05-13 10:45:24	SequentialCoverageAnnotator	Processed   390,000,000 records.  Elapsed time: 00:05:25s.  Time for last 10,000,000:    8s.  Last read position: chr6:38,635,533
+INFO	2024-05-13 10:45:29	SequentialEvidenceAllocator	Processed     9,000,000 records.  Elapsed time: 00:05:29s.  Time for last 1,000,000:   32s.  Last read position: chr6:55,795,083.  Last read name: A00627:123:HJHGLDSXY:2:2446:4508:10332
+INFO	2024-05-13 10:45:31	SequentialCoverageAnnotator	Processed   210,000,000 records.  Elapsed time: 00:05:32s.  Time for last 10,000,000:   16s.  Last read position: chr6:62,842,045
+INFO	2024-05-13 10:45:32	SequentialCoverageAnnotator	Processed   400,000,000 records.  Elapsed time: 00:05:33s.  Time for last 10,000,000:    7s.  Last read position: chr6:67,483,805
+INFO	2024-05-13 10:45:40	SequentialCoverageAnnotator	Processed   410,000,000 records.  Elapsed time: 00:05:41s.  Time for last 10,000,000:    7s.  Last read position: chr6:95,790,024
+INFO	2024-05-13 10:45:46	SequentialCoverageAnnotator	Processed   220,000,000 records.  Elapsed time: 00:05:47s.  Time for last 10,000,000:   14s.  Last read position: chr6:115,976,356
+INFO	2024-05-13 10:45:48	SequentialCoverageAnnotator	Processed   420,000,000 records.  Elapsed time: 00:05:49s.  Time for last 10,000,000:    8s.  Last read position: chr6:124,168,949
+INFO	2024-05-13 10:45:56	SequentialCoverageAnnotator	Processed   430,000,000 records.  Elapsed time: 00:05:57s.  Time for last 10,000,000:    7s.  Last read position: chr6:152,488,972
+INFO	2024-05-13 10:46:01	SequentialCoverageAnnotator	Processed   230,000,000 records.  Elapsed time: 00:06:02s.  Time for last 10,000,000:   15s.  Last read position: chr6:169,162,980
+INFO	2024-05-13 10:46:04	SequentialEvidenceAllocator	Processed    10,000,000 records.  Elapsed time: 00:06:04s.  Time for last 1,000,000:   35s.  Last read position: chr7:5,424,013.  Last read name: A00627:123:HJHGLDSXY:2:2352:31078:4429
+INFO	2024-05-13 10:46:05	SequentialCoverageAnnotator	Processed   440,000,000 records.  Elapsed time: 00:06:06s.  Time for last 10,000,000:    8s.  Last read position: chr7:8,436,123
+INFO	2024-05-13 10:46:13	SequentialCoverageAnnotator	Processed   450,000,000 records.  Elapsed time: 00:06:14s.  Time for last 10,000,000:    8s.  Last read position: chr7:36,646,713
+INFO	2024-05-13 10:46:17	SequentialCoverageAnnotator	Processed   240,000,000 records.  Elapsed time: 00:06:18s.  Time for last 10,000,000:   15s.  Last read position: chr7:50,981,380
+INFO	2024-05-13 10:46:21	SequentialCoverageAnnotator	Processed   460,000,000 records.  Elapsed time: 00:06:22s.  Time for last 10,000,000:    7s.  Last read position: chr7:65,465,036
+INFO	2024-05-13 10:46:29	SequentialCoverageAnnotator	Processed   470,000,000 records.  Elapsed time: 00:06:30s.  Time for last 10,000,000:    8s.  Last read position: chr7:94,135,357
+INFO	2024-05-13 10:46:32	SequentialCoverageAnnotator	Processed   250,000,000 records.  Elapsed time: 00:06:33s.  Time for last 10,000,000:   15s.  Last read position: chr7:105,548,819
+INFO	2024-05-13 10:46:37	SequentialCoverageAnnotator	Processed   480,000,000 records.  Elapsed time: 00:06:38s.  Time for last 10,000,000:    8s.  Last read position: chr7:122,197,034
+INFO	2024-05-13 10:46:38	SequentialEvidenceAllocator	Processed    11,000,000 records.  Elapsed time: 00:06:39s.  Time for last 1,000,000:   34s.  Last read position: chr7:127,177,003.  Last read name: A00627:123:HJHGLDSXY:2:2454:1389:8970
+INFO	2024-05-13 10:46:45	SequentialCoverageAnnotator	Processed   490,000,000 records.  Elapsed time: 00:06:46s.  Time for last 10,000,000:    8s.  Last read position: chr7:150,243,969
+INFO	2024-05-13 10:46:48	SequentialCoverageAnnotator	Processed   260,000,000 records.  Elapsed time: 00:06:49s.  Time for last 10,000,000:   15s.  Last read position: chr7:159,512,495
+INFO	2024-05-13 10:46:53	SequentialCoverageAnnotator	Processed   500,000,000 records.  Elapsed time: 00:06:54s.  Time for last 10,000,000:    8s.  Last read position: chr8:18,035,669
+INFO	2024-05-13 10:47:01	SequentialCoverageAnnotator	Processed   510,000,000 records.  Elapsed time: 00:07:02s.  Time for last 10,000,000:    7s.  Last read position: chr8:46,394,934
+INFO	2024-05-13 10:47:03	SequentialCoverageAnnotator	Processed   270,000,000 records.  Elapsed time: 00:07:04s.  Time for last 10,000,000:   15s.  Last read position: chr8:53,752,382
+INFO	2024-05-13 10:47:09	SequentialCoverageAnnotator	Processed   520,000,000 records.  Elapsed time: 00:07:10s.  Time for last 10,000,000:    7s.  Last read position: chr8:74,543,193
+INFO	2024-05-13 10:47:11	SequentialEvidenceAllocator	Processed    12,000,000 records.  Elapsed time: 00:07:12s.  Time for last 1,000,000:   33s.  Last read position: chr8:87,262,766.  Last read name: A00627:123:HJHGLDSXY:2:1471:24316:6684
+INFO	2024-05-13 10:47:17	SequentialCoverageAnnotator	Processed   530,000,000 records.  Elapsed time: 00:07:18s.  Time for last 10,000,000:    7s.  Last read position: chr8:102,651,094
+INFO	2024-05-13 10:47:18	SequentialCoverageAnnotator	Processed   280,000,000 records.  Elapsed time: 00:07:19s.  Time for last 10,000,000:   14s.  Last read position: chr8:106,975,962
+INFO	2024-05-13 10:47:25	SequentialCoverageAnnotator	Processed   540,000,000 records.  Elapsed time: 00:07:26s.  Time for last 10,000,000:    8s.  Last read position: chr8:130,923,530
+INFO	2024-05-13 10:47:33	SequentialCoverageAnnotator	Processed   550,000,000 records.  Elapsed time: 00:07:34s.  Time for last 10,000,000:    8s.  Last read position: chr9:12,576,396
+INFO	2024-05-13 10:47:34	SequentialCoverageAnnotator	Processed   290,000,000 records.  Elapsed time: 00:07:34s.  Time for last 10,000,000:   15s.  Last read position: chr9:14,781,050
+INFO	2024-05-13 10:47:42	SequentialCoverageAnnotator	Processed   560,000,000 records.  Elapsed time: 00:07:42s.  Time for last 10,000,000:    8s.  Last read position: chr9:41,662,780
+INFO	2024-05-13 10:47:48	SequentialCoverageAnnotator	Processed   570,000,000 records.  Elapsed time: 00:07:49s.  Time for last 10,000,000:    6s.  Last read position: chr9:82,743,086
+INFO	2024-05-13 10:47:49	SequentialCoverageAnnotator	Processed   300,000,000 records.  Elapsed time: 00:07:49s.  Time for last 10,000,000:   14s.  Last read position: chr9:84,737,153
+INFO	2024-05-13 10:47:52	SequentialEvidenceAllocator	Processed    13,000,000 records.  Elapsed time: 00:07:53s.  Time for last 1,000,000:   40s.  Last read position: chr9:98,075,264.  Last read name: A00709:104:HJ5HHDSXY:3:1461:4119:2112
+INFO	2024-05-13 10:47:56	SequentialCoverageAnnotator	Processed   580,000,000 records.  Elapsed time: 00:07:57s.  Time for last 10,000,000:    8s.  Last read position: chr9:111,011,488
+INFO	2024-05-13 10:48:04	SequentialCoverageAnnotator	Processed   590,000,000 records.  Elapsed time: 00:08:05s.  Time for last 10,000,000:    8s.  Last read position: chr9:139,154,815
+INFO	2024-05-13 10:48:04	SequentialCoverageAnnotator	Processed   310,000,000 records.  Elapsed time: 00:08:05s.  Time for last 10,000,000:   15s.  Last read position: chr9:139,198,442
+INFO	2024-05-13 10:48:13	SequentialCoverageAnnotator	Processed   600,000,000 records.  Elapsed time: 00:08:14s.  Time for last 10,000,000:    8s.  Last read position: chr10:16,640,277
+INFO	2024-05-13 10:48:20	SequentialCoverageAnnotator	Processed   320,000,000 records.  Elapsed time: 00:08:21s.  Time for last 10,000,000:   16s.  Last read position: chr10:42,850,846
+INFO	2024-05-13 10:48:21	SequentialCoverageAnnotator	Processed   610,000,000 records.  Elapsed time: 00:08:22s.  Time for last 10,000,000:    8s.  Last read position: chr10:45,033,481
+INFO	2024-05-13 10:48:24	SequentialEvidenceAllocator	Processed    14,000,000 records.  Elapsed time: 00:08:25s.  Time for last 1,000,000:   32s.  Last read position: chr10:56,921,945.  Last read name: A00627:123:HJHGLDSXY:2:1436:23411:22341
+INFO	2024-05-13 10:48:29	SequentialCoverageAnnotator	Processed   620,000,000 records.  Elapsed time: 00:08:30s.  Time for last 10,000,000:    7s.  Last read position: chr10:72,638,712
+INFO	2024-05-13 10:48:35	SequentialCoverageAnnotator	Processed   330,000,000 records.  Elapsed time: 00:08:36s.  Time for last 10,000,000:   15s.  Last read position: chr10:96,176,799
+INFO	2024-05-13 10:48:37	SequentialCoverageAnnotator	Processed   630,000,000 records.  Elapsed time: 00:08:38s.  Time for last 10,000,000:    8s.  Last read position: chr10:100,797,996
+INFO	2024-05-13 10:48:45	SequentialCoverageAnnotator	Processed   640,000,000 records.  Elapsed time: 00:08:46s.  Time for last 10,000,000:    8s.  Last read position: chr10:128,697,458
+INFO	2024-05-13 10:48:52	SequentialCoverageAnnotator	Processed   340,000,000 records.  Elapsed time: 00:08:52s.  Time for last 10,000,000:   16s.  Last read position: chr11:15,945,662
+INFO	2024-05-13 10:48:53	SequentialCoverageAnnotator	Processed   650,000,000 records.  Elapsed time: 00:08:54s.  Time for last 10,000,000:    8s.  Last read position: chr11:21,815,216
+INFO	2024-05-13 10:48:57	SequentialEvidenceAllocator	Processed    15,000,000 records.  Elapsed time: 00:08:58s.  Time for last 1,000,000:   33s.  Last read position: chr11:36,630,170.  Last read name: A00709:104:HJ5HHDSXY:3:2502:11442:12446
+INFO	2024-05-13 10:49:01	SequentialCoverageAnnotator	Processed   660,000,000 records.  Elapsed time: 00:09:02s.  Time for last 10,000,000:    8s.  Last read position: chr11:50,010,876
+INFO	2024-05-13 10:49:07	SequentialCoverageAnnotator	Processed   350,000,000 records.  Elapsed time: 00:09:08s.  Time for last 10,000,000:   15s.  Last read position: chr11:68,280,094
+INFO	2024-05-13 10:49:09	SequentialCoverageAnnotator	Processed   670,000,000 records.  Elapsed time: 00:09:10s.  Time for last 10,000,000:    7s.  Last read position: chr11:76,526,759
+INFO	2024-05-13 10:49:17	SequentialCoverageAnnotator	Processed   680,000,000 records.  Elapsed time: 00:09:18s.  Time for last 10,000,000:    8s.  Last read position: chr11:104,756,409
+INFO	2024-05-13 10:49:22	SequentialCoverageAnnotator	Processed   360,000,000 records.  Elapsed time: 00:09:23s.  Time for last 10,000,000:   15s.  Last read position: chr11:122,349,053
+INFO	2024-05-13 10:49:25	SequentialCoverageAnnotator	Processed   690,000,000 records.  Elapsed time: 00:09:26s.  Time for last 10,000,000:    8s.  Last read position: chr11:132,756,070
+INFO	2024-05-13 10:49:31	SequentialEvidenceAllocator	Processed    16,000,000 records.  Elapsed time: 00:09:32s.  Time for last 1,000,000:   34s.  Last read position: chr12:21,254,545.  Last read name: A00709:104:HJ5HHDSXY:3:1639:28528:34710
+INFO	2024-05-13 10:49:33	SequentialCoverageAnnotator	Processed   700,000,000 records.  Elapsed time: 00:09:34s.  Time for last 10,000,000:    8s.  Last read position: chr12:26,018,811
+INFO	2024-05-13 10:49:38	SequentialCoverageAnnotator	Processed   370,000,000 records.  Elapsed time: 00:09:38s.  Time for last 10,000,000:   15s.  Last read position: chr12:41,309,235
+INFO	2024-05-13 10:49:41	SequentialCoverageAnnotator	Processed   710,000,000 records.  Elapsed time: 00:09:42s.  Time for last 10,000,000:    7s.  Last read position: chr12:54,910,607
+INFO	2024-05-13 10:49:50	SequentialCoverageAnnotator	Processed   720,000,000 records.  Elapsed time: 00:09:50s.  Time for last 10,000,000:    8s.  Last read position: chr12:83,271,201
+INFO	2024-05-13 10:49:53	SequentialCoverageAnnotator	Processed   380,000,000 records.  Elapsed time: 00:09:54s.  Time for last 10,000,000:   15s.  Last read position: chr12:94,322,636
+INFO	2024-05-13 10:49:58	SequentialCoverageAnnotator	Processed   730,000,000 records.  Elapsed time: 00:09:58s.  Time for last 10,000,000:    8s.  Last read position: chr12:111,721,439
+INFO	2024-05-13 10:50:06	SequentialCoverageAnnotator	Processed   740,000,000 records.  Elapsed time: 00:10:07s.  Time for last 10,000,000:    8s.  Last read position: chr13:9,430,104
+INFO	2024-05-13 10:50:08	SequentialEvidenceAllocator	Processed    17,000,000 records.  Elapsed time: 00:10:08s.  Time for last 1,000,000:   36s.  Last read position: chr13:20,250,109.  Last read name: A00709:104:HJ5HHDSXY:3:1677:29631:18677
+INFO	2024-05-13 10:50:08	SequentialCoverageAnnotator	Processed   390,000,000 records.  Elapsed time: 00:10:09s.  Time for last 10,000,000:   15s.  Last read position: chr13:20,532,886
+INFO	2024-05-13 10:50:14	SequentialCoverageAnnotator	Processed   750,000,000 records.  Elapsed time: 00:10:15s.  Time for last 10,000,000:    7s.  Last read position: chr13:39,646,098
+INFO	2024-05-13 10:50:22	SequentialCoverageAnnotator	Processed   760,000,000 records.  Elapsed time: 00:10:23s.  Time for last 10,000,000:    8s.  Last read position: chr13:67,866,924
+INFO	2024-05-13 10:50:23	SequentialCoverageAnnotator	Processed   400,000,000 records.  Elapsed time: 00:10:24s.  Time for last 10,000,000:   15s.  Last read position: chr13:74,027,400
+INFO	2024-05-13 10:50:30	SequentialCoverageAnnotator	Processed   770,000,000 records.  Elapsed time: 00:10:31s.  Time for last 10,000,000:    8s.  Last read position: chr13:96,316,577
+INFO	2024-05-13 10:50:38	SequentialCoverageAnnotator	Processed   780,000,000 records.  Elapsed time: 00:10:39s.  Time for last 10,000,000:    8s.  Last read position: chr14:9,570,948
+INFO	2024-05-13 10:50:39	SequentialCoverageAnnotator	Processed   410,000,000 records.  Elapsed time: 00:10:40s.  Time for last 10,000,000:   15s.  Last read position: chr14:14,453,352
+INFO	2024-05-13 10:50:43	SequentialEvidenceAllocator	Processed    18,000,000 records.  Elapsed time: 00:10:44s.  Time for last 1,000,000:   35s.  Last read position: chr14:28,856,544.  Last read name: A00709:104:HJ5HHDSXY:3:1415:31819:4460
+INFO	2024-05-13 10:50:46	SequentialCoverageAnnotator	Processed   790,000,000 records.  Elapsed time: 00:10:47s.  Time for last 10,000,000:    7s.  Last read position: chr14:38,353,754
+INFO	2024-05-13 10:50:54	SequentialCoverageAnnotator	Processed   800,000,000 records.  Elapsed time: 00:10:55s.  Time for last 10,000,000:    7s.  Last read position: chr14:66,639,859
+INFO	2024-05-13 10:50:54	SequentialCoverageAnnotator	Processed   420,000,000 records.  Elapsed time: 00:10:55s.  Time for last 10,000,000:   15s.  Last read position: chr14:67,987,806
+INFO	2024-05-13 10:51:02	SequentialCoverageAnnotator	Processed   810,000,000 records.  Elapsed time: 00:11:03s.  Time for last 10,000,000:    8s.  Last read position: chr14:94,716,171
+INFO	2024-05-13 10:51:10	SequentialCoverageAnnotator	Processed   820,000,000 records.  Elapsed time: 00:11:11s.  Time for last 10,000,000:    7s.  Last read position: chr15:25,533,462
+INFO	2024-05-13 10:51:10	SequentialCoverageAnnotator	Processed   430,000,000 records.  Elapsed time: 00:11:11s.  Time for last 10,000,000:   15s.  Last read position: chr15:25,732,286
+INFO	2024-05-13 10:51:18	SequentialCoverageAnnotator	Processed   830,000,000 records.  Elapsed time: 00:11:19s.  Time for last 10,000,000:    8s.  Last read position: chr15:53,828,460
+INFO	2024-05-13 10:51:18	SequentialEvidenceAllocator	Processed    19,000,000 records.  Elapsed time: 00:11:19s.  Time for last 1,000,000:   35s.  Last read position: chr15:56,665,199.  Last read name: asm237-12207
+INFO	2024-05-13 10:51:25	SequentialCoverageAnnotator	Processed   440,000,000 records.  Elapsed time: 00:11:26s.  Time for last 10,000,000:   15s.  Last read position: chr15:79,468,334
+INFO	2024-05-13 10:51:26	SequentialCoverageAnnotator	Processed   840,000,000 records.  Elapsed time: 00:11:27s.  Time for last 10,000,000:    8s.  Last read position: chr15:82,042,844
+INFO	2024-05-13 10:51:35	SequentialCoverageAnnotator	Processed   850,000,000 records.  Elapsed time: 00:11:36s.  Time for last 10,000,000:    8s.  Last read position: chr16:10,258,684
+INFO	2024-05-13 10:51:42	SequentialCoverageAnnotator	Processed   450,000,000 records.  Elapsed time: 00:11:43s.  Time for last 10,000,000:   16s.  Last read position: chr16:34,625,187
+INFO	2024-05-13 10:51:43	SequentialCoverageAnnotator	Processed   860,000,000 records.  Elapsed time: 00:11:44s.  Time for last 10,000,000:    8s.  Last read position: chr16:38,686,275
+INFO	2024-05-13 10:51:50	SequentialCoverageAnnotator	Processed   870,000,000 records.  Elapsed time: 00:11:51s.  Time for last 10,000,000:    7s.  Last read position: chr16:71,528,427
+INFO	2024-05-13 10:51:53	SequentialEvidenceAllocator	Processed    20,000,000 records.  Elapsed time: 00:11:54s.  Time for last 1,000,000:   34s.  Last read position: chr16:82,529,953.  Last read name: asm250-25435
+INFO	2024-05-13 10:51:56	SequentialCoverageAnnotator	Processed   460,000,000 records.  Elapsed time: 00:11:57s.  Time for last 10,000,000:   14s.  Last read position: chr16:94,381,463
+INFO	2024-05-13 10:51:59	SequentialCoverageAnnotator	Processed   880,000,000 records.  Elapsed time: 00:12:00s.  Time for last 10,000,000:    8s.  Last read position: chr17:6,588,710
+INFO	2024-05-13 10:52:07	SequentialCoverageAnnotator	Processed   890,000,000 records.  Elapsed time: 00:12:08s.  Time for last 10,000,000:    8s.  Last read position: chr17:35,820,224
+INFO	2024-05-13 10:52:13	SequentialCoverageAnnotator	Processed   470,000,000 records.  Elapsed time: 00:12:13s.  Time for last 10,000,000:   16s.  Last read position: chr17:53,532,128
+INFO	2024-05-13 10:52:16	SequentialCoverageAnnotator	Processed   900,000,000 records.  Elapsed time: 00:12:16s.  Time for last 10,000,000:    8s.  Last read position: chr17:64,429,649
+INFO	2024-05-13 10:52:23	SequentialEvidenceAllocator	Processed    21,000,000 records.  Elapsed time: 00:12:23s.  Time for last 1,000,000:   29s.  Last read position: chr18:5,816,166.  Last read name: A00627:123:HJHGLDSXY:2:1577:28700:21010
+INFO	2024-05-13 10:52:24	SequentialCoverageAnnotator	Processed   910,000,000 records.  Elapsed time: 00:12:25s.  Time for last 10,000,000:    8s.  Last read position: chr18:8,646,508
+INFO	2024-05-13 10:52:28	SequentialCoverageAnnotator	Processed   480,000,000 records.  Elapsed time: 00:12:29s.  Time for last 10,000,000:   15s.  Last read position: chr18:22,726,983
+INFO	2024-05-13 10:52:32	SequentialCoverageAnnotator	Processed   920,000,000 records.  Elapsed time: 00:12:32s.  Time for last 10,000,000:    7s.  Last read position: chr18:36,749,845
+INFO	2024-05-13 10:52:39	SequentialCoverageAnnotator	Processed   930,000,000 records.  Elapsed time: 00:12:40s.  Time for last 10,000,000:    7s.  Last read position: chr18:64,805,056
+INFO	2024-05-13 10:52:43	SequentialCoverageAnnotator	Processed   490,000,000 records.  Elapsed time: 00:12:44s.  Time for last 10,000,000:   15s.  Last read position: chr18:76,627,571
+INFO	2024-05-13 10:52:48	SequentialCoverageAnnotator	Processed   940,000,000 records.  Elapsed time: 00:12:49s.  Time for last 10,000,000:    8s.  Last read position: chr19:12,683,664
+INFO	2024-05-13 10:52:55	SequentialEvidenceAllocator	Processed    22,000,000 records.  Elapsed time: 00:12:56s.  Time for last 1,000,000:   32s.  Last read position: chr19:39,462,713.  Last read name: A00627:123:HJHGLDSXY:2:2276:18159:20760
+INFO	2024-05-13 10:52:56	SequentialCoverageAnnotator	Processed   950,000,000 records.  Elapsed time: 00:12:57s.  Time for last 10,000,000:    8s.  Last read position: chr19:42,217,125
+INFO	2024-05-13 10:52:59	SequentialCoverageAnnotator	Processed   500,000,000 records.  Elapsed time: 00:13:00s.  Time for last 10,000,000:   16s.  Last read position: chr19:52,471,513
+INFO	2024-05-13 10:53:05	SequentialCoverageAnnotator	Processed   960,000,000 records.  Elapsed time: 00:13:06s.  Time for last 10,000,000:    8s.  Last read position: chr20:9,083,679
+INFO	2024-05-13 10:53:13	SequentialCoverageAnnotator	Processed   970,000,000 records.  Elapsed time: 00:13:14s.  Time for last 10,000,000:    7s.  Last read position: chr20:37,255,927
+INFO	2024-05-13 10:53:15	SequentialCoverageAnnotator	Processed   510,000,000 records.  Elapsed time: 00:13:16s.  Time for last 10,000,000:   15s.  Last read position: chr20:45,336,581
+INFO	2024-05-13 10:53:21	SequentialCoverageAnnotator	Processed   980,000,000 records.  Elapsed time: 00:13:22s.  Time for last 10,000,000:    8s.  Last read position: chr20:65,227,418
+INFO	2024-05-13 10:53:27	SequentialEvidenceAllocator	Processed    23,000,000 records.  Elapsed time: 00:13:28s.  Time for last 1,000,000:   32s.  Last read position: chr21:24,988,737.  Last read name: asm283-30453
+INFO	2024-05-13 10:53:29	SequentialCoverageAnnotator	Processed   990,000,000 records.  Elapsed time: 00:13:29s.  Time for last 10,000,000:    7s.  Last read position: chr21:27,216,880
+INFO	2024-05-13 10:53:31	SequentialCoverageAnnotator	Processed   520,000,000 records.  Elapsed time: 00:13:31s.  Time for last 10,000,000:   15s.  Last read position: chr21:34,168,050
+INFO	2024-05-13 10:53:37	SequentialCoverageAnnotator	Processed 1,000,000,000 records.  Elapsed time: 00:13:38s.  Time for last 10,000,000:    8s.  Last read position: chr22:9,911,097
+INFO	2024-05-13 10:53:46	SequentialCoverageAnnotator	Processed 1,010,000,000 records.  Elapsed time: 00:13:47s.  Time for last 10,000,000:    9s.  Last read position: chr22:37,776,527
+INFO	2024-05-13 10:53:48	SequentialCoverageAnnotator	Processed   530,000,000 records.  Elapsed time: 00:13:49s.  Time for last 10,000,000:   17s.  Last read position: chr22:44,185,448
+INFO	2024-05-13 10:53:55	SequentialCoverageAnnotator	Processed 1,020,000,000 records.  Elapsed time: 00:13:55s.  Time for last 10,000,000:    8s.  Last read position: chrX:14,691,597
+INFO	2024-05-13 10:54:00	SequentialEvidenceAllocator	Processed    24,000,000 records.  Elapsed time: 00:14:01s.  Time for last 1,000,000:   32s.  Last read position: chrX:37,553,693.  Last read name: A00709:104:HJ5HHDSXY:3:1103:20699:33458
+INFO	2024-05-13 10:54:02	SequentialCoverageAnnotator	Processed 1,030,000,000 records.  Elapsed time: 00:14:03s.  Time for last 10,000,000:    7s.  Last read position: chrX:42,980,872
+INFO	2024-05-13 10:54:04	SequentialCoverageAnnotator	Processed   540,000,000 records.  Elapsed time: 00:14:05s.  Time for last 10,000,000:   15s.  Last read position: chrX:47,658,471
+INFO	2024-05-13 10:54:10	SequentialCoverageAnnotator	Processed 1,040,000,000 records.  Elapsed time: 00:14:11s.  Time for last 10,000,000:    7s.  Last read position: chrX:71,791,255
+INFO	2024-05-13 10:54:20	SequentialCoverageAnnotator	Processed 1,050,000,000 records.  Elapsed time: 00:14:20s.  Time for last 10,000,000:    9s.  Last read position: chrX:100,483,058
+INFO	2024-05-13 10:54:20	SequentialCoverageAnnotator	Processed   550,000,000 records.  Elapsed time: 00:14:21s.  Time for last 10,000,000:   16s.  Last read position: chrX:102,159,365
+INFO	2024-05-13 10:54:27	SequentialCoverageAnnotator	Processed 1,060,000,000 records.  Elapsed time: 00:14:28s.  Time for last 10,000,000:    7s.  Last read position: chrX:128,931,948
+INFO	2024-05-13 10:54:35	SequentialCoverageAnnotator	Processed   560,000,000 records.  Elapsed time: 00:14:36s.  Time for last 10,000,000:   14s.  Last read position: chrM:1,475
+INFO	2024-05-13 10:54:37	SequentialCoverageAnnotator	Processed 1,070,000,000 records.  Elapsed time: 00:14:38s.  Time for last 10,000,000:    9s.  Last read position: */*
+INFO	2024-05-13 10:54:38	VcfTransformCommandLineProgram	Annotated variants written to ./P023_all_calls.vcf.gridss.working/P023_all_calls.vcf.allocated.vcf
+[Mon May 13 10:54:38 CEST 2024] gridss.AnnotateVariants done. Elapsed time: 14.69 minutes.
+Runtime.totalMemory()=17045651456
+Mon May 13 10:54:38 CEST 2024: Running	AnnotateInsertedSequence	results/gridss/P023/P023_all_calls.vcf
+INFO	2024-05-13 10:54:38	Defaults	Found file for property samjdk.reference_fasta: /lustre1/project/stg_00096/home/rdewin/WGS/resources/genome.fa 
+INFO	2024-05-13 10:54:38	AnnotateInsertedSequence	
+
+********** NOTE: Picard's command line syntax is changing.
+**********
+********** For more information, please see:
+********** https://github.com/broadinstitute/picard/wiki/Command-Line-Syntax-Transition-For-Users-(Pre-Transition)
+**********
+********** The command line looks like this in the new syntax:
+**********
+**********    AnnotateInsertedSequence -TMP_DIR . -WORKING_DIR . -REFERENCE_SEQUENCE resources/genome.fa -WORKER_THREADS 8 -INPUT ./P023_all_calls.vcf.gridss.working/P023_all_calls.vcf.allocated.vcf -OUTPUT results/gridss/P023/P023_all_calls.vcf
+**********
+
+
+10:54:39.015 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gridss-2.13.2-3/gridss.jar!/com/intel/gkl/native/libgkl_compression.so
+[Mon May 13 10:54:39 CEST 2024] AnnotateInsertedSequence WORKER_THREADS=8 INPUT=./P023_all_calls.vcf.gridss.working/P023_all_calls.vcf.allocated.vcf OUTPUT=results/gridss/P023/P023_all_calls.vcf WORKING_DIR=. TMP_DIR=[.] REFERENCE_SEQUENCE=resources/genome.fa    MIN_SEQUENCE_LENGTH=20 ALIGNER_COMMAND_LINE=[bwa, mem, -K, 10000000, -L, 0,0, -t, %3$d, %2$s, %1$s] ALIGNER_BATCH_SIZE=500000 ALIGNMENT=REPLACE IGNORE_DUPLICATES=true VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 MAX_RECORDS_IN_RAM=500000 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
+[Mon May 13 10:54:39 CEST 2024] Executing as vsc35407@i28l10 on Linux 4.18.0-513.24.1.el8_9.x86_64 amd64; OpenJDK 64-Bit Server VM 17.0.10-internal+0-adhoc..src; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.13.2-gridss
+INFO	2024-05-13 10:54:39	AnnotateInsertedSequence	Annotating inserted sequences in ./P023_all_calls.vcf.gridss.working/P023_all_calls.vcf.allocated.vcf
+INFO	2024-05-13 10:54:39	AnnotateInsertedSequence	Using external process alignment
+INFO	2024-05-13 10:54:39	ExternalProcessStreamingAligner	Starting external aligner
+INFO	2024-05-13 10:54:39	ExternalProcessStreamingAligner	bwa mem -K 10000000 -L 0,0 -t 8 resources/genome.fa -
+[M::bwa_idx_load_from_disk] read 0 ALT contigs
+[M::process] read 139382 sequences (10000167 bp)...
+INFO	2024-05-13 10:54:47	ExternalProcessStreamingAligner	Waiting for external aligner to complete all alignments.
+[M::process] read 136097 sequences (9755747 bp)...
+[M::mem_process_seqs] Processed 139382 reads in 61.603 CPU sec, 7.717 real sec
+[M::mem_process_seqs] Processed 136097 reads in 60.751 CPU sec, 7.933 real sec
+[main] Version: 0.7.18-r1243-dirty
+[main] CMD: bwa mem -K 10000000 -L 0,0 -t 8 resources/genome.fa -
+[main] Real time: 25.797 sec; CPU: 124.290 sec
+INFO	2024-05-13 10:55:04	ExternalProcessStreamingAligner	Reader thread complete. 11 reads in output buffer
+INFO	2024-05-13 10:55:04	ExternalProcessStreamingAligner	External alignments complete
+INFO	2024-05-13 10:55:05	AnnotateInsertedSequence	Annotated variants written to results/gridss/P023/P023_all_calls.vcf
+[Mon May 13 10:55:05 CEST 2024] gridss.AnnotateInsertedSequence done. Elapsed time: 0.44 minutes.
+Runtime.totalMemory()=2151677952
+Mon May 13 10:55:05 CEST 2024: Complete calling	results/gridss/P023/P023_all_calls.vcf
+Mon May 13 10:55:05 CEST 2024: Run complete with 84 warnings and 0 errors.

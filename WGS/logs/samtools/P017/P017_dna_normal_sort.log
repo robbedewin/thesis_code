@@ -1,0 +1,71 @@
+[E::hts_open_format] Failed to open file "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0000.bam" : File exists
+samtools sort: failed to create "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0000.bam": File exists
+[E::hts_open_format] Failed to open file "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0000-001.bam" : File exists
+samtools sort: failed to create "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0000-001.bam": File exists
+[E::hts_open_format] Failed to open file "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0000-002.bam" : File exists
+samtools sort: failed to create "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0000-002.bam": File exists
+[E::hts_open_format] Failed to open file "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0000-003.bam" : File exists
+samtools sort: failed to create "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0000-003.bam": File exists
+[E::hts_open_format] Failed to open file "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0000-004.bam" : File exists
+samtools sort: failed to create "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0000-004.bam": File exists
+[E::hts_open_format] Failed to open file "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0000-005.bam" : File exists
+samtools sort: failed to create "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0000-005.bam": File exists
+[E::hts_open_format] Failed to open file "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0000-006.bam" : File exists
+samtools sort: failed to create "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0000-006.bam": File exists
+[E::hts_open_format] Failed to open file "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0000-007.bam" : File exists
+samtools sort: failed to create "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0000-007.bam": File exists
+[E::hts_open_format] Failed to open file "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0001.bam" : File exists
+samtools sort: failed to create "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0001.bam": File exists
+[E::hts_open_format] Failed to open file "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0001-001.bam" : File exists
+samtools sort: failed to create "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0001-001.bam": File exists
+[E::hts_open_format] Failed to open file "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0001-002.bam" : File exists
+samtools sort: failed to create "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0001-002.bam": File exists
+[E::hts_open_format] Failed to open file "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0001-003.bam" : File exists
+samtools sort: failed to create "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0001-003.bam": File exists
+[E::hts_open_format] Failed to open file "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0001-004.bam" : File exists
+samtools sort: failed to create "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0001-004.bam": File exists
+[E::hts_open_format] Failed to open file "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0001-005.bam" : File exists
+samtools sort: failed to create "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0001-005.bam": File exists
+[E::hts_open_format] Failed to open file "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0001-006.bam" : File exists
+samtools sort: failed to create "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0001-006.bam": File exists
+[E::hts_open_format] Failed to open file "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0002.bam" : File exists
+samtools sort: failed to create "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0002.bam": File exists
+[E::hts_open_format] Failed to open file "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0002-001.bam" : File exists
+samtools sort: failed to create "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0002-001.bam": File exists
+[E::hts_open_format] Failed to open file "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0002-002.bam" : File exists
+samtools sort: failed to create "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0002-002.bam": File exists
+[E::hts_open_format] Failed to open file "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0002-003.bam" : File exists
+samtools sort: failed to create "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0002-003.bam": File exists
+[E::hts_open_format] Failed to open file "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0002-004.bam" : File exists
+samtools sort: failed to create "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0002-004.bam": File exists
+[E::hts_open_format] Failed to open file "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0002-005.bam" : File exists
+samtools sort: failed to create "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0002-005.bam": File exists
+[E::hts_open_format] Failed to open file "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0002-006.bam" : File exists
+samtools sort: failed to create "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0002-006.bam": File exists
+[E::hts_open_format] Failed to open file "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0003.bam" : File exists
+samtools sort: failed to create "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0003.bam": File exists
+[E::hts_open_format] Failed to open file "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0004.bam" : File exists
+samtools sort: failed to create "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0004.bam": File exists
+[E::hts_open_format] Failed to open file "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0005.bam" : File exists
+samtools sort: failed to create "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0005.bam": File exists
+[E::hts_open_format] Failed to open file "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0005-001.bam" : File exists
+samtools sort: failed to create "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0005-001.bam": File exists
+[E::hts_open_format] Failed to open file "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0005-002.bam" : File exists
+samtools sort: failed to create "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0005-002.bam": File exists
+[E::hts_open_format] Failed to open file "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0005-003.bam" : File exists
+samtools sort: failed to create "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0005-003.bam": File exists
+[E::hts_open_format] Failed to open file "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0005-004.bam" : File exists
+samtools sort: failed to create "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0005-004.bam": File exists
+[E::hts_open_format] Failed to open file "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0005-005.bam" : File exists
+samtools sort: failed to create "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0005-005.bam": File exists
+[E::hts_open_format] Failed to open file "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0006.bam" : File exists
+samtools sort: failed to create "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0006.bam": File exists
+[E::hts_open_format] Failed to open file "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0006-001.bam" : File exists
+samtools sort: failed to create "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0006-001.bam": File exists
+[E::hts_open_format] Failed to open file "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0006-002.bam" : File exists
+samtools sort: failed to create "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0006-002.bam": File exists
+[E::hts_open_format] Failed to open file "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0006-003.bam" : File exists
+samtools sort: failed to create "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0006-003.bam": File exists
+[E::hts_open_format] Failed to open file "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0006-004.bam" : File exists
+samtools sort: failed to create "sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}.0006-004.bam": File exists
+[bam_sort_core] merging from 7 files and 18 in-memory blocks...

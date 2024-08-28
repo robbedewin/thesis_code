@@ -1,0 +1,32 @@
+Assuming unrestricted shared filesystem usage.
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 40
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job              count
+-------------  -------
+samtools_sort        1
+total                1
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Fri Jun 21 10:43:07 2024]
+localrule samtools_sort:
+    input: results/mapped_reads/P029/P029_dna_tumor.sam, resources/genome.fa
+    output: results/mapped_reads/P029/P029_dna_tumor.sorted.bam
+    log: logs/samtools/P029/P029_dna_tumor_sort.log
+    jobid: 5
+    reason: Missing output files: results/mapped_reads/P029/P029_dna_tumor.sorted.bam
+    wildcards: sample=P029, alias=tumor
+    resources: tmpdir=/tmp
+
+
+        samtools sort -@ 18 --write-index         -m 2G         --reference resources/genome.fa         -T sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}         -o results/mapped_reads/P029/P029_dna_tumor.sorted.bam results/mapped_reads/P029/P029_dna_tumor.sam &> logs/samtools/P029/P029_dna_tumor_sort.log
+        
+[Fri Jun 21 12:36:52 2024]
+Finished job 5.
+1 of 1 steps (100%) done
+Complete log: .snakemake/log/2024-06-21T104306.613625.snakemake.log

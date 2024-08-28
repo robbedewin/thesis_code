@@ -1,0 +1,50 @@
+Assuming unrestricted shared filesystem usage.
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 8
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job      count
+-----  -------
+svaba        1
+total        1
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Wed Jun 26 10:25:48 2024]
+localrule svaba:
+    input: results/recal/P027/P027_dna_tumor_recal.bam, results/recal/P027/P027_dna_normal_recal.bam
+    output: results/svaba/P027/P027_svaba.somatic.sv.vcf, results/svaba/P027/P027_svaba.germline.sv.vcf, results/svaba/P027/P027_svaba.somatic.indel.vcf, results/svaba/P027/P027_svaba.germline.indel.vcf, results/svaba/P027/P027_svaba.unfiltered.somatic.sv.vcf, results/svaba/P027/P027_svaba.unfiltered.germline.sv.vcf, results/svaba/P027/P027_svaba.unfiltered.somatic.indel.vcf, results/svaba/P027/P027_svaba.unfiltered.germline.indel.vcf, results/svaba/P027/P027_alignments.txt.gz, results/svaba/P027/P027_bps.txt.gz, results/svaba/P027/P027_contigs.bam, results/svaba/P027/P027_discordant.txt.gz
+    log: logs/svaba/P027_svaba.log, logs/svaba/P027_svaba_full.log
+    jobid: 0
+    reason: Missing output files: results/svaba/P027/P027_svaba.somatic.sv.vcf
+    wildcards: sample=P027
+    threads: 8
+    resources: tmpdir=/tmp
+
+
+        svaba run             -t results/recal/P027/P027_dna_tumor_recal.bam -n results/recal/P027/P027_dna_normal_recal.bam             -G resources/genome.fa             -D resources/dbSNPv155_common.vcf.gz            -B resources/T2T.excluderanges.bed             -p 8             -a P027_svaba             &> logs/svaba/P027_svaba.log
+        
+        # Move output files to specified locations
+        mv P027_svaba.log logs/svaba/P027_svaba_full.log
+
+        mv P027_svaba.svaba.somatic.sv.vcf results/svaba/P027/P027_svaba.somatic.sv.vcf
+        mv P027_svaba.svaba.germline.sv.vcf results/svaba/P027/P027_svaba.germline.sv.vcf
+        mv P027_svaba.svaba.somatic.indel.vcf results/svaba/P027/P027_svaba.somatic.indel.vcf
+        mv P027_svaba.svaba.germline.indel.vcf results/svaba/P027/P027_svaba.germline.indel.vcf
+        mv P027_svaba.svaba.unfiltered.somatic.sv.vcf results/svaba/P027/P027_svaba.unfiltered.somatic.sv.vcf
+        mv P027_svaba.svaba.unfiltered.germline.sv.vcf results/svaba/P027/P027_svaba.unfiltered.germline.sv.vcf
+        mv P027_svaba.svaba.unfiltered.somatic.indel.vcf results/svaba/P027/P027_svaba.unfiltered.somatic.indel.vcf
+        mv P027_svaba.svaba.unfiltered.germline.indel.vcf results/svaba/P027/P027_svaba.unfiltered.germline.indel.vcf
+
+        mv P027_svaba.alignments.txt.gz results/svaba/P027/P027_alignments.txt.gz
+        mv P027_svaba.bps.txt.gz results/svaba/P027/P027_bps.txt.gz
+        mv P027_svaba.contigs.bam results/svaba/P027/P027_contigs.bam
+        mv P027_svaba.discordant.txt.gz results/svaba/P027/P027_discordant.txt.gz
+        
+[Wed Jun 26 13:21:35 2024]
+Finished job 0.
+1 of 1 steps (100%) done
+Complete log: .snakemake/log/2024-06-26T102547.113249.snakemake.log

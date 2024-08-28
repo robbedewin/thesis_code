@@ -1,0 +1,17 @@
+SLURM_JOB_ID: 61774714
+SLURM_JOB_USER: vsc35407
+SLURM_JOB_ACCOUNT: lp_big_wice_cpu
+SLURM_JOB_NAME: gridss_normal
+SLURM_CLUSTER_NAME: wice
+SLURM_JOB_PARTITION: dedicated_big_bigmem
+SLURM_ARRAY_JOB_ID: 61774701
+SLURM_ARRAY_TASK_ID: 10
+SLURM_NNODES: 1
+SLURM_NODELIST: g28l05
+SLURM_JOB_CPUS_PER_NODE: 8
+Date: Tue Jun 25 11:13:55 CEST 2024
+Walltime: 00-16:00:00
+========================================================================
+Tue Jun 25 11:13:56 CEST 2024
+Processing sample: P029
+Snakemake completed successfully for sample P029 at Tue Jun 25 13:41:08 CEST 2024

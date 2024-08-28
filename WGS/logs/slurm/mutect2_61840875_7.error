@@ -1,0 +1,33 @@
+Assuming unrestricted shared filesystem usage.
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 16
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job        count
+-------  -------
+mutect2        1
+total          1
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Fri Jun 28 13:03:39 2024]
+localrule mutect2:
+    input: results/recal/P022/P022_dna_tumor_recal.bam, results/recal/P022/P022_dna_normal_recal.bam, results/mutect2/pon/mutect2.pon.vcf.gz
+    output: results/mutect2/P022/P022_variants.vcf, results/mutect2/P022/P022_f1r2.tar.gz
+    log: logs/mutect2/P022/P022_variants.log
+    jobid: 0
+    reason: Updated input files: results/recal/P022/P022_dna_tumor_recal.bam, results/recal/P022/P022_dna_normal_recal.bam, results/mutect2/pon/mutect2.pon.vcf.gz
+    wildcards: sample=P022
+    threads: 16
+    resources: tmpdir=/tmp
+
+
+        gatk Mutect2              -R resources/genome.fa              -I results/recal/P022/P022_dna_tumor_recal.bam              -I  results/recal/P022/P022_dna_normal_recal.bam              -normal P022_normal              --germline-resource resources/gnomad_chr.vcf.gz              --panel-of-normals results/mutect2/pon/mutect2.pon.vcf.gz              -O results/mutect2/P022/P022_variants.vcf              --f1r2-tar-gz results/mutect2/P022/P022_f1r2.tar.gz              --native-pair-hmm-threads 16             &> logs/mutect2/P022/P022_variants.log
+        
+[Sat Jun 29 13:10:29 2024]
+Finished job 0.
+1 of 1 steps (100%) done
+Complete log: .snakemake/log/2024-06-28T130332.760385.snakemake.log

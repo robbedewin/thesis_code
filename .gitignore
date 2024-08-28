@@ -9,6 +9,8 @@ ATAC/.snakemake/
 
 # But not these files and directories
 !.gitignore
+
+!WGS/
 !WGS/Snakefile
 !WGS/config/
 !WGS/dag/
@@ -16,6 +18,7 @@ ATAC/.snakemake/
 !WGS/logs/
 !WGS/rules/
 
+!RNA/
 !RNA/Snakefile
 !RNA/config/
 !RNA/dag/
@@ -23,6 +26,7 @@ ATAC/.snakemake/
 !RNA/logs/
 !RNA/rules/
 
+!ATAC/
 !ATAC/Snakefile
 !ATAC/config/
 !ATAC/dag/
@@ -30,6 +34,7 @@ ATAC/.snakemake/
 !ATAC/logs/
 !ATAC/rules/
 
+!ASE/
 !ASE/config/
 !ASE/scripts/
 

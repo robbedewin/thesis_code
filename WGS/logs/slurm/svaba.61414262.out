@@ -1,0 +1,5 @@
+Mon May 13 11:57:17 CEST 2024
+rule all:
+    input:
+        expand(results/svaba/{sample}/{sample}_svaba.somatic.sv.vcf, sample=unique_samples),
+Snakemake completed successfully at Tue May 14 04:43:50 CEST 2024

@@ -1,0 +1,77 @@
+Assuming unrestricted shared filesystem usage.
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 40
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job              count
+-------------  -------
+bwa_map              1
+samtools_sort        2
+total                3
+
+Select jobs to execute...
+Execute 2 jobs...
+
+[Fri Jun 21 10:43:09 2024]
+localrule bwa_map:
+    input: results/fastp/P058/P058_dna_tumor_R1.trimmed.fq, results/fastp/P058/P058_dna_tumor_R2.trimmed.fq, resources/genome.fa, resources/genome.fa.0123, resources/genome.fa.amb, resources/genome.fa.ann, resources/genome.fa.bwt.2bit.64, resources/genome.fa.pac
+    output: results/mapped_reads/P058/P058_dna_tumor.sam
+    log: logs/mapped_reads/P058/P058_dna_tumor.log.bwamem
+    jobid: 6
+    reason: Forced execution
+    wildcards: sample=P058, alias=tumor
+    threads: 18
+    resources: tmpdir=/tmp
+
+
+        read -r first_line < <(cat results/fastp/P058/P058_dna_tumor_R1.trimmed.fq | head -n 1)
+        IFS=':' read -r -a rgdata <<< "$first_line"
+        FLOWCELLID=${rgdata[2]}
+        LANE=${rgdata[3]}
+        BC=${rgdata[-1]}
+        RG="@RG\tID:${FLOWCELLID}.${LANE}\tPL:ILLUMINA\tPU:${FLOWCELLID}.${LANE}.${BC}\tLB:LIB-P058_tumor-1\tSM:P058_tumor"
+
+        bwa-mem2 mem -o results/mapped_reads/P058/P058_dna_tumor.sam -t 18 -R "$RG"         resources/genome.fa results/fastp/P058/P058_dna_tumor_R1.trimmed.fq results/fastp/P058/P058_dna_tumor_R2.trimmed.fq &> logs/mapped_reads/P058/P058_dna_tumor.log.bwamem
+        
+
+[Fri Jun 21 10:43:09 2024]
+localrule samtools_sort:
+    input: results/mapped_reads/P058/P058_dna_normal.sam, resources/genome.fa
+    output: results/mapped_reads/P058/P058_dna_normal.sorted.bam
+    log: logs/samtools/P058/P058_dna_normal_sort.log
+    jobid: 0
+    reason: Forced execution
+    wildcards: sample=P058, alias=normal
+    resources: tmpdir=/tmp
+
+
+        samtools sort -@ 18 --write-index         -m 2G         --reference resources/genome.fa         -T sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}         -o results/mapped_reads/P058/P058_dna_normal.sorted.bam results/mapped_reads/P058/P058_dna_normal.sam &> logs/samtools/P058/P058_dna_normal_sort.log
+        
+[Fri Jun 21 11:39:48 2024]
+Finished job 0.
+1 of 3 steps (33%) done
+[Fri Jun 21 21:05:28 2024]
+Finished job 6.
+2 of 3 steps (67%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Fri Jun 21 21:05:28 2024]
+localrule samtools_sort:
+    input: results/mapped_reads/P058/P058_dna_tumor.sam, resources/genome.fa
+    output: results/mapped_reads/P058/P058_dna_tumor.sorted.bam
+    log: logs/samtools/P058/P058_dna_tumor_sort.log
+    jobid: 5
+    reason: Input files updated by another job: results/mapped_reads/P058/P058_dna_tumor.sam
+    wildcards: sample=P058, alias=tumor
+    resources: tmpdir=/tmp
+
+
+        samtools sort -@ 18 --write-index         -m 2G         --reference resources/genome.fa         -T sorttmp_{wildcards.sample}_{wildcards.datatype}_{wildcards.alias}         -o results/mapped_reads/P058/P058_dna_tumor.sorted.bam results/mapped_reads/P058/P058_dna_tumor.sam &> logs/samtools/P058/P058_dna_tumor_sort.log
+        
+[Fri Jun 21 23:04:08 2024]
+Finished job 5.
+3 of 3 steps (100%) done
+Complete log: .snakemake/log/2024-06-21T104306.613639.snakemake.log

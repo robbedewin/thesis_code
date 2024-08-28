@@ -1,0 +1,41 @@
+Read1 before filtering:
+total reads: 715635613
+total bases: 107345341950
+Q20 bases: 103511541464(96.4285%)
+Q30 bases: 97697324053(91.0122%)
+
+Read2 before filtering:
+total reads: 715635613
+total bases: 107345341950
+Q20 bases: 97744887009(91.0565%)
+Q30 bases: 87500058043(81.5127%)
+
+Read1 after filtering:
+total reads: 672141310
+total bases: 100343943459
+Q20 bases: 97879593465(97.5441%)
+Q30 bases: 93224243236(92.9047%)
+
+Read2 after filtering:
+total reads: 672141310
+total bases: 100343943459
+Q20 bases: 94316747886(93.9935%)
+Q30 bases: 85572372308(85.2791%)
+
+Filtering result:
+reads passed filter: 1344282620
+reads failed due to low quality: 86588954
+reads failed due to too many N: 399652
+reads failed due to too short: 0
+reads with adapter trimmed: 16185342
+bases trimmed due to adapters: 960156052
+
+Duplication rate: 11.6136%
+
+Insert size peak (evaluated by paired-end reads): 269
+
+JSON report: logs/fastp/P059/P059_dna_normal.fastp.json
+HTML report: logs/fastp/P059/P059_dna_normal.fastp.html
+
+fastp -w 12 -i /staging/leuven/stg_00096/home/rdewin/data/TALL_IF/TALL_IF/WGS/GEL/214000436N/214000436N_1.fq.gz -I /staging/leuven/stg_00096/home/rdewin/data/TALL_IF/TALL_IF/WGS/GEL/214000436N/214000436N_2.fq.gz -o results/fastp/P059/P059_dna_normal_R1.trimmed.fq -O results/fastp/P059/P059_dna_normal_R2.trimmed.fq -j logs/fastp/P059/P059_dna_normal.fastp.json -h logs/fastp/P059/P059_dna_normal.fastp.html 
+fastp v0.23.4, time used: 4825 seconds

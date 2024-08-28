@@ -1,0 +1,168 @@
+Assuming unrestricted shared filesystem usage.
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 40
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job                 count
+----------------  -------
+apply_bqsr              2
+base_recal_table        2
+mark_duplicates         2
+samtools_index          2
+total                   8
+
+Select jobs to execute...
+Execute 2 jobs...
+
+[Fri Jun 21 11:10:59 2024]
+localrule mark_duplicates:
+    input: results/mapped_reads/P065/P065_dna_normal.sorted.bam
+    output: results/mapped_reads/P065/P065_dna_normal.marked.bam, results/qc/dedup/P065/P065_dna_normal_duplication_metrics.txt
+    log: logs/picard/P065/P065_dna_normal_markdup.log
+    jobid: 2
+    reason: Missing output files: results/mapped_reads/P065/P065_dna_normal.marked.bam
+    wildcards: sample=P065, alias=normal
+    resources: tmpdir=/tmp
+
+
+        picard MarkDuplicates             I=results/mapped_reads/P065/P065_dna_normal.sorted.bam             O=results/mapped_reads/P065/P065_dna_normal.marked.bam             M=results/qc/dedup/P065/P065_dna_normal_duplication_metrics.txt             &> logs/picard/P065/P065_dna_normal_markdup.log
+        
+
+[Fri Jun 21 11:10:59 2024]
+localrule mark_duplicates:
+    input: results/mapped_reads/P065/P065_dna_tumor.sorted.bam
+    output: results/mapped_reads/P065/P065_dna_tumor.marked.bam, results/qc/dedup/P065/P065_dna_tumor_duplication_metrics.txt
+    log: logs/picard/P065/P065_dna_tumor_markdup.log
+    jobid: 14
+    reason: Missing output files: results/mapped_reads/P065/P065_dna_tumor.marked.bam
+    wildcards: sample=P065, alias=tumor
+    resources: tmpdir=/tmp
+
+
+        picard MarkDuplicates             I=results/mapped_reads/P065/P065_dna_tumor.sorted.bam             O=results/mapped_reads/P065/P065_dna_tumor.marked.bam             M=results/qc/dedup/P065/P065_dna_tumor_duplication_metrics.txt             &> logs/picard/P065/P065_dna_tumor_markdup.log
+        
+[Fri Jun 21 14:05:53 2024]
+Finished job 2.
+1 of 8 steps (12%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Fri Jun 21 14:05:54 2024]
+localrule base_recal_table:
+    input: results/mapped_reads/P065/P065_dna_normal.marked.bam, resources/genome.fa, resources/genome.fa.fai, resources/genome.dict, resources/dbSNPv155_common.vcf.gz, resources/dbSNPv155_common.vcf.gz.tbi
+    output: results/recal/P065/P065_dna_normal_recal_data.table
+    log: logs/recal/P065/P065_dna_normal_recal.log
+    jobid: 8
+    reason: Missing output files: results/recal/P065/P065_dna_normal_recal_data.table; Input files updated by another job: results/mapped_reads/P065/P065_dna_normal.marked.bam
+    wildcards: sample=P065, alias=normal
+    resources: tmpdir=/tmp
+
+
+        gatk BaseRecalibrator             -I results/mapped_reads/P065/P065_dna_normal.marked.bam             -R resources/genome.fa             --known-sites resources/dbSNPv155_common.vcf.gz             -O results/recal/P065/P065_dna_normal_recal_data.table             &> logs/recal/P065/P065_dna_normal_recal.log
+        
+[Fri Jun 21 15:35:01 2024]
+Finished job 14.
+2 of 8 steps (25%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Fri Jun 21 15:35:01 2024]
+localrule base_recal_table:
+    input: results/mapped_reads/P065/P065_dna_tumor.marked.bam, resources/genome.fa, resources/genome.fa.fai, resources/genome.dict, resources/dbSNPv155_common.vcf.gz, resources/dbSNPv155_common.vcf.gz.tbi
+    output: results/recal/P065/P065_dna_tumor_recal_data.table
+    log: logs/recal/P065/P065_dna_tumor_recal.log
+    jobid: 18
+    reason: Missing output files: results/recal/P065/P065_dna_tumor_recal_data.table; Input files updated by another job: results/mapped_reads/P065/P065_dna_tumor.marked.bam
+    wildcards: sample=P065, alias=tumor
+    resources: tmpdir=/tmp
+
+
+        gatk BaseRecalibrator             -I results/mapped_reads/P065/P065_dna_tumor.marked.bam             -R resources/genome.fa             --known-sites resources/dbSNPv155_common.vcf.gz             -O results/recal/P065/P065_dna_tumor_recal_data.table             &> logs/recal/P065/P065_dna_tumor_recal.log
+        
+[Fri Jun 21 17:32:16 2024]
+Finished job 8.
+3 of 8 steps (38%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Fri Jun 21 17:32:16 2024]
+localrule apply_bqsr:
+    input: results/mapped_reads/P065/P065_dna_normal.marked.bam, results/recal/P065/P065_dna_normal_recal_data.table, resources/genome.fa
+    output: results/recal/P065/P065_dna_normal_recal.bam
+    log: logs/recal/P065/P065_dna_normal_apply_recal.log
+    jobid: 1
+    reason: Missing output files: results/recal/P065/P065_dna_normal_recal.bam; Input files updated by another job: results/mapped_reads/P065/P065_dna_normal.marked.bam, results/recal/P065/P065_dna_normal_recal_data.table
+    wildcards: sample=P065, alias=normal
+    resources: tmpdir=/tmp
+
+
+        gatk ApplyBQSR             -R resources/genome.fa             -I results/mapped_reads/P065/P065_dna_normal.marked.bam             --bqsr-recal-file results/recal/P065/P065_dna_normal_recal_data.table             -O results/recal/P065/P065_dna_normal_recal.bam             --create-output-bam-index false             &> logs/recal/P065/P065_dna_normal_apply_recal.log
+        
+Write-protecting output file results/recal/P065/P065_dna_normal_recal.bam.
+[Fri Jun 21 20:36:47 2024]
+Finished job 1.
+4 of 8 steps (50%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Fri Jun 21 20:36:47 2024]
+localrule samtools_index:
+    input: results/recal/P065/P065_dna_normal_recal.bam
+    output: results/recal/P065/P065_dna_normal_recal.bai
+    log: logs/samtools/P065/P065_dna_normal_index.log
+    jobid: 0
+    reason: Missing output files: results/recal/P065/P065_dna_normal_recal.bai; Input files updated by another job: results/recal/P065/P065_dna_normal_recal.bam
+    wildcards: sample=P065, alias=normal
+    resources: tmpdir=/tmp
+
+
+        samtools index -@ 18 results/recal/P065/P065_dna_normal_recal.bam results/recal/P065/P065_dna_normal_recal.bai &> logs/samtools/P065/P065_dna_normal_index.log
+        
+[Fri Jun 21 20:37:59 2024]
+Finished job 0.
+5 of 8 steps (62%) done
+[Fri Jun 21 21:06:21 2024]
+Finished job 18.
+6 of 8 steps (75%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Fri Jun 21 21:06:21 2024]
+localrule apply_bqsr:
+    input: results/mapped_reads/P065/P065_dna_tumor.marked.bam, results/recal/P065/P065_dna_tumor_recal_data.table, resources/genome.fa
+    output: results/recal/P065/P065_dna_tumor_recal.bam
+    log: logs/recal/P065/P065_dna_tumor_apply_recal.log
+    jobid: 13
+    reason: Missing output files: results/recal/P065/P065_dna_tumor_recal.bam; Input files updated by another job: results/mapped_reads/P065/P065_dna_tumor.marked.bam, results/recal/P065/P065_dna_tumor_recal_data.table
+    wildcards: sample=P065, alias=tumor
+    resources: tmpdir=/tmp
+
+
+        gatk ApplyBQSR             -R resources/genome.fa             -I results/mapped_reads/P065/P065_dna_tumor.marked.bam             --bqsr-recal-file results/recal/P065/P065_dna_tumor_recal_data.table             -O results/recal/P065/P065_dna_tumor_recal.bam             --create-output-bam-index false             &> logs/recal/P065/P065_dna_tumor_apply_recal.log
+        
+Write-protecting output file results/recal/P065/P065_dna_tumor_recal.bam.
+[Sat Jun 22 01:59:00 2024]
+Finished job 13.
+7 of 8 steps (88%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Sat Jun 22 01:59:00 2024]
+localrule samtools_index:
+    input: results/recal/P065/P065_dna_tumor_recal.bam
+    output: results/recal/P065/P065_dna_tumor_recal.bai
+    log: logs/samtools/P065/P065_dna_tumor_index.log
+    jobid: 12
+    reason: Missing output files: results/recal/P065/P065_dna_tumor_recal.bai; Input files updated by another job: results/recal/P065/P065_dna_tumor_recal.bam
+    wildcards: sample=P065, alias=tumor
+    resources: tmpdir=/tmp
+
+
+        samtools index -@ 18 results/recal/P065/P065_dna_tumor_recal.bam results/recal/P065/P065_dna_tumor_recal.bai &> logs/samtools/P065/P065_dna_tumor_index.log
+        
+[Sat Jun 22 02:01:04 2024]
+Finished job 12.
+8 of 8 steps (100%) done
+Complete log: .snakemake/log/2024-06-21T111058.470253.snakemake.log

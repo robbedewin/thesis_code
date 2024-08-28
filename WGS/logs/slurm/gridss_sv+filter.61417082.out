@@ -1,0 +1,5 @@
+Tue May 14 13:27:57 CEST 2024
+rule all:
+    input:
+        expand(results/gridss/{sample}/{sample}_high_confidence_somatic.vcf.gz, sample=unique_samples),
+Snakemake encountered an error at Tue May 14 21:03:27 CEST 2024

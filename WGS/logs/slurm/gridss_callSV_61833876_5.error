@@ -1,0 +1,33 @@
+Assuming unrestricted shared filesystem usage.
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 8
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job                       count
+----------------------  -------
+gridss_call_somatic_SV        1
+total                         1
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Wed Jun 26 12:33:17 2024]
+localrule gridss_call_somatic_SV:
+    input: results/recal/P023/P023_dna_normal_recal.bam, results/recal/P023/P023_dna_tumor_recal.bam
+    output: results/gridss/P023/P023_all_calls.vcf
+    log: logs/gridss/P023/P023_somatic_SV.log
+    jobid: 0
+    reason: Missing output files: results/gridss/P023/P023_all_calls.vcf
+    wildcards: sample=P023
+    threads: 8
+    resources: tmpdir=/tmp
+
+     
+        gridss             -r resources/genome.fa             -j  /lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gridss-2.13.2-3/gridss.jar             -o results/gridss/P023/P023_all_calls.vcf             -b resources/T2T.excluderanges.bed             --skipsoftcliprealignment             results/recal/P023/P023_dna_normal_recal.bam             results/recal/P023/P023_dna_tumor_recal.bam             --workingdir results/gridss/wrk/P023/             &> logs/gridss/P023/P023_somatic_SV.log
+        
+[Wed Jun 26 14:08:28 2024]
+Finished job 0.
+1 of 1 steps (100%) done
+Complete log: .snakemake/log/2024-06-26T123313.837380.snakemake.log

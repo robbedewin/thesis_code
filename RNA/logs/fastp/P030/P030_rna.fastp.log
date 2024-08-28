@@ -1,0 +1,41 @@
+Read1 before filtering:
+total reads: 43552340
+total bases: 4398786340
+Q20 bases: 4352256192(98.9422%)
+Q30 bases: 4258862216(96.819%)
+
+Read2 before filtering:
+total reads: 43552340
+total bases: 4398786340
+Q20 bases: 4309217068(97.9638%)
+Q30 bases: 4159866562(94.5685%)
+
+Read1 after filtering:
+total reads: 43087823
+total bases: 4215311806
+Q20 bases: 4175863130(99.0642%)
+Q30 bases: 4088202680(96.9846%)
+
+Read2 after filtering:
+total reads: 43087823
+total bases: 4215218392
+Q20 bases: 4154225798(98.553%)
+Q30 bases: 4019893680(95.3662%)
+
+Filtering result:
+reads passed filter: 86175646
+reads failed due to low quality: 742824
+reads failed due to too many N: 2570
+reads failed due to too short: 183640
+reads with adapter trimmed: 12966992
+bases trimmed due to adapters: 271929335
+
+Duplication rate: 24.7772%
+
+Insert size peak (evaluated by paired-end reads): 124
+
+JSON report: logs/fastp/P030/P030_rna.fastp.json
+HTML report: logs/fastp/P030/P030_rna.fastp.html
+
+fastp -w 12 -i /staging/leuven/stg_00096/home/rdewin/data/TALL_IF/TALL_IF/RNAseq/fastq/batch1/R0050/NM5848_R0050_S25_R1_001.fastq.gz -I /staging/leuven/stg_00096/home/rdewin/data/TALL_IF/TALL_IF/RNAseq/fastq/batch1/R0050/NM5848_R0050_S25_R2_001.fastq.gz -o results/fastp/P030/P030_rna_R1.trimmed.fq -O results/fastp/P030/P030_rna_R2.trimmed.fq -j logs/fastp/P030/P030_rna.fastp.json -h logs/fastp/P030/P030_rna.fastp.html 
+fastp v0.23.4, time used: 654 seconds

@@ -1,0 +1,21 @@
+SLURM_JOB_ID: 61835805
+SLURM_JOB_USER: vsc35407
+SLURM_JOB_ACCOUNT: lp_big_wice_cpu
+SLURM_JOB_NAME: mutect_pon3
+SLURM_CLUSTER_NAME: wice
+SLURM_JOB_PARTITION: dedicated_big_bigmem
+SLURM_NNODES: 1
+SLURM_NODELIST: g28l15
+SLURM_JOB_CPUS_PER_NODE: 4
+Date: Thu Jun 27 00:31:17 CEST 2024
+Walltime: 02-00:00:00
+========================================================================
+Thu Jun 27 00:31:17 CEST 2024
+Running mutect_pon3 and dependencies
+Tool returned:
+SUCCESS
+Tool returned:
+true
+Tool returned:
+SUCCESS
+Snakemake completed successfully at Fri Jun 28 00:32:23 CEST 2024

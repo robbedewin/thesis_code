@@ -1,0 +1,69 @@
+Assuming unrestricted shared filesystem usage.
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 8
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job                        count
+-----------------------  -------
+calculate_contamination        1
+get_pileup_summaries           2
+total                          3
+
+Select jobs to execute...
+Execute 2 jobs...
+
+[Sun Jul 14 14:00:00 2024]
+localrule get_pileup_summaries:
+    input: results/recal/P017/P017_dna_tumor_recal.bam, resources/filtered_gnomad_chr.vcf.gz
+    output: results/mutect2/P017/P017_tumor_pileup_summaries.table
+    log: logs/mutect2/P017/P017_tumor_get_pileup_summaries.log
+    jobid: 13
+    reason: Missing output files: results/mutect2/P017/P017_tumor_pileup_summaries.table; Updated input files: resources/filtered_gnomad_chr.vcf.gz
+    wildcards: sample=P017, alias=tumor
+    resources: tmpdir=/tmp
+
+
+        gatk GetPileupSummaries              -I results/recal/P017/P017_dna_tumor_recal.bam              -L resources/filtered_gnomad_chr.vcf.gz              -V resources/filtered_gnomad_chr.vcf.gz              -O results/mutect2/P017/P017_tumor_pileup_summaries.table              &> logs/mutect2/P017/P017_tumor_get_pileup_summaries.log
+        
+
+[Sun Jul 14 14:00:00 2024]
+localrule get_pileup_summaries:
+    input: results/recal/P017/P017_dna_normal_recal.bam, resources/filtered_gnomad_chr.vcf.gz
+    output: results/mutect2/P017/P017_normal_pileup_summaries.table
+    log: logs/mutect2/P017/P017_normal_get_pileup_summaries.log
+    jobid: 1
+    reason: Missing output files: results/mutect2/P017/P017_normal_pileup_summaries.table; Updated input files: resources/filtered_gnomad_chr.vcf.gz
+    wildcards: sample=P017, alias=normal
+    resources: tmpdir=/tmp
+
+
+        gatk GetPileupSummaries              -I results/recal/P017/P017_dna_normal_recal.bam              -L resources/filtered_gnomad_chr.vcf.gz              -V resources/filtered_gnomad_chr.vcf.gz              -O results/mutect2/P017/P017_normal_pileup_summaries.table              &> logs/mutect2/P017/P017_normal_get_pileup_summaries.log
+        
+[Sun Jul 14 14:57:02 2024]
+Finished job 1.
+1 of 3 steps (33%) done
+[Sun Jul 14 15:18:57 2024]
+Finished job 13.
+2 of 3 steps (67%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Sun Jul 14 15:18:57 2024]
+localrule calculate_contamination:
+    input: results/mutect2/P017/P017_normal_pileup_summaries.table, results/mutect2/P017/P017_tumor_pileup_summaries.table
+    output: results/mutect2/P017/P017_contamination.table
+    log: logs/mutect2/P017/P017_calculate_contamination.log
+    jobid: 0
+    reason: Input files updated by another job: results/mutect2/P017/P017_tumor_pileup_summaries.table, results/mutect2/P017/P017_normal_pileup_summaries.table
+    wildcards: sample=P017
+    resources: tmpdir=/tmp
+
+
+        gatk CalculateContamination              -I results/mutect2/P017/P017_tumor_pileup_summaries.table              -matched results/mutect2/P017/P017_normal_pileup_summaries.table              -O results/mutect2/P017/P017_contamination.table              &> logs/mutect2/P017/P017_calculate_contamination.log
+        
+[Sun Jul 14 15:29:14 2024]
+Finished job 0.
+3 of 3 steps (100%) done
+Complete log: .snakemake/log/2024-07-14T140000.300931.snakemake.log

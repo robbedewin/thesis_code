@@ -1,0 +1,2 @@
+INFO:    Cleanup error: while unmounting /var/apptainer/mnt/session/final directory: no such file or directory, while unmounting /var/apptainer/mnt/session/rootfs directory: no such file or directory
+FATAL:   container creation failed: unable to add /lustre1/project/stg_00096/home/rdewin/RNA/results/star_fusion/P084 to mount list: destination must be an absolute path

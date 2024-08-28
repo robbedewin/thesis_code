@@ -1,0 +1,310 @@
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 97.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 97.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 97.
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[faidx] Failed to fetch sequence in :-
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 97.
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 97.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 98.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 98.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 98.
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[faidx] Failed to fetch sequence in :-
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 98.
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 98.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 99.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 99.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 99.
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[faidx] Failed to fetch sequence in :-
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 99.
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 99.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 100.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 100.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 100.
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[faidx] Failed to fetch sequence in :-
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 100.
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 100.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 101.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 101.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 101.
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[faidx] Failed to fetch sequence in :-
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 101.
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 101.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 102.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 102.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 102.
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[faidx] Failed to fetch sequence in :-
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 102.
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 102.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 103.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 103.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 103.
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[faidx] Failed to fetch sequence in :-
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 103.
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 103.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 104.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 104.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 104.
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[faidx] Failed to fetch sequence in :-
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 104.
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 104.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 105.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 105.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 105.
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[faidx] Failed to fetch sequence in :-
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 105.
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 105.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 106.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 106.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 106.
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[faidx] Failed to fetch sequence in :-
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 106.
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 106.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 107.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 107.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 107.
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[faidx] Failed to fetch sequence in :-
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 107.
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 107.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 108.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 108.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 108.
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[faidx] Failed to fetch sequence in :-
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 108.
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 108.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 109.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 109.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 109.
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[faidx] Failed to fetch sequence in :-
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 109.
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 109.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 110.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 110.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 110.
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[faidx] Failed to fetch sequence in :-
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 110.
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 110.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 111.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 111.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 111.
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[faidx] Failed to fetch sequence in :-
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 111.
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 111.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 112.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 112.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 112.
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[faidx] Failed to fetch sequence in :-
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 112.
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 112.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 113.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 113.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 113.
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[faidx] Failed to fetch sequence in :-
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 113.
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 113.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 114.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 114.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 114.
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[faidx] Failed to fetch sequence in :-
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 114.
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 114.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 115.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 115.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 115.
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[faidx] Failed to fetch sequence in :-
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 115.
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 115.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 116.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 116.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 116.
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[faidx] Failed to fetch sequence in :-
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 116.
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 116.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 117.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 117.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 117.
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[faidx] Failed to fetch sequence in :-
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 117.
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 117.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 118.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 118.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 118.
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[faidx] Failed to fetch sequence in :-
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 118.
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 118.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 119.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 119.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 119.
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[faidx] Failed to fetch sequence in :-
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 119.
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 119.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 120.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 120.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 120.
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[faidx] Failed to fetch sequence in :-
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 120.
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 120.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 121.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 121.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 121.
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[faidx] Failed to fetch sequence in :-
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 121.
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 121.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 122.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 122.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 122.
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[faidx] Failed to fetch sequence in :-
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 122.
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 122.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 123.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 123.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 123.
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[faidx] Failed to fetch sequence in :-
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 123.
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 123.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 124.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 124.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 124.
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[faidx] Failed to fetch sequence in :-
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 124.
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 124.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 125.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 125.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 125.
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[faidx] Failed to fetch sequence in :-
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 125.
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 125.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 126.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 126.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 126.
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[faidx] Failed to fetch sequence in :-
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 126.
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 126.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 127.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 127.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 127.
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[faidx] Failed to fetch sequence in :-
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 127.
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 127.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 128.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 128.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 128.
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[faidx] Failed to fetch sequence in :-
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 128.
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 128.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 129.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 129.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 129.
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[faidx] Failed to fetch sequence in :-
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 129.
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 129.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 130.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 130.
+Use of uninitialized value in concatenation (.) or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 336, <GEN0> line 130.
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[W::fai_get_val] Reference :- not found in FASTA file, returning empty sequence
+[faidx] Failed to fetch sequence in :-
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 130.
+Use of uninitialized value in join or string at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 338, <GEN0> line 130.
+Argument "" isn't numeric in subtraction (-) at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 405, <GEN2> line 97.
+Argument "" isn't numeric in subtraction (-) at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 405, <GEN2> line 99.
+Argument "" isn't numeric in subtraction (-) at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 405, <GEN2> line 101.
+Argument "" isn't numeric in subtraction (-) at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 405, <GEN2> line 103.
+Argument "" isn't numeric in subtraction (-) at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 405, <GEN2> line 105.
+Argument "" isn't numeric in subtraction (-) at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 405, <GEN2> line 107.
+Argument "" isn't numeric in subtraction (-) at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 405, <GEN2> line 109.
+Argument "" isn't numeric in subtraction (-) at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 405, <GEN2> line 111.
+Argument "" isn't numeric in subtraction (-) at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 405, <GEN2> line 113.
+Argument "" isn't numeric in subtraction (-) at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 405, <GEN2> line 115.
+Argument "" isn't numeric in subtraction (-) at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 405, <GEN2> line 117.
+Argument "" isn't numeric in subtraction (-) at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 405, <GEN2> line 119.
+Argument "" isn't numeric in subtraction (-) at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 405, <GEN2> line 121.
+Argument "" isn't numeric in subtraction (-) at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 405, <GEN2> line 123.
+Argument "" isn't numeric in subtraction (-) at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 405, <GEN2> line 125.
+Argument "" isn't numeric in subtraction (-) at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 405, <GEN2> line 127.
+Argument "" isn't numeric in subtraction (-) at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 405, <GEN2> line 129.
+Argument "" isn't numeric in subtraction (-) at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 405, <GEN2> line 131.
+Argument "" isn't numeric in subtraction (-) at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 405, <GEN2> line 133.
+Argument "" isn't numeric in subtraction (-) at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 405, <GEN2> line 135.
+Argument "" isn't numeric in subtraction (-) at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 405, <GEN2> line 137.
+Argument "" isn't numeric in subtraction (-) at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 405, <GEN2> line 139.
+Argument "" isn't numeric in subtraction (-) at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 405, <GEN2> line 141.
+Argument "" isn't numeric in subtraction (-) at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 405, <GEN2> line 143.
+Argument "" isn't numeric in subtraction (-) at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 405, <GEN2> line 145.
+Argument "" isn't numeric in subtraction (-) at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 405, <GEN2> line 147.
+Argument "" isn't numeric in subtraction (-) at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 405, <GEN2> line 149.
+Argument "" isn't numeric in subtraction (-) at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 405, <GEN2> line 151.
+Argument "" isn't numeric in subtraction (-) at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 405, <GEN2> line 153.
+Argument "" isn't numeric in subtraction (-) at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 405, <GEN2> line 155.
+Argument "" isn't numeric in subtraction (-) at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 405, <GEN2> line 157.
+Argument "" isn't numeric in subtraction (-) at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 405, <GEN2> line 159.
+Argument "" isn't numeric in subtraction (-) at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 405, <GEN2> line 161.
+Argument "" isn't numeric in subtraction (-) at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 405, <GEN2> line 163.
+[W::fai_get_val] Reference :-1-1 not found in FASTA file, returning empty sequence
+[W::fai_get_val] Reference :-1-1 not found in FASTA file, returning empty sequence
+[faidx] Failed to fetch sequence in :-1-1
+ERROR: You're either using an outdated samtools, or --ref-fasta is not the same genome build as your --input-vcf. at /staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/VEP/bin/vcf2maf.pl line 433.

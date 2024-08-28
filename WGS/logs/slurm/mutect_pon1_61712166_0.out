@@ -1,0 +1,19 @@
+SLURM_JOB_ID: 61712187
+SLURM_JOB_USER: vsc35407
+SLURM_JOB_ACCOUNT: lp_big_wice_cpu
+SLURM_JOB_NAME: mutect_pon1
+SLURM_CLUSTER_NAME: wice
+SLURM_JOB_PARTITION: dedicated_big_bigmem
+SLURM_ARRAY_JOB_ID: 61712166
+SLURM_ARRAY_TASK_ID: 0
+SLURM_NNODES: 1
+SLURM_NODELIST: g28l15
+SLURM_JOB_CPUS_PER_NODE: 4
+Date: Mon Jun 24 14:49:41 CEST 2024
+Walltime: 00-17:00:00
+========================================================================
+Mon Jun 24 14:49:41 CEST 2024
+Processing sample: P011
+Tool returned:
+SUCCESS
+Snakemake completed successfully for sample P011 at Tue Jun 25 04:43:13 CEST 2024

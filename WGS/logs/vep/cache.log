@@ -1,0 +1,11 @@
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   196  100   196    0     0    502      0 --:--:-- --:--:-- --:--:--   501
+ - getting list of available cache files
+ - copying /tmp/tmpd1v73umr/homo_sapiens_vep_112_T2T-CHM13v2.0.tar.gz
+ - unpacking homo_sapiens_vep_112_T2T-CHM13v2.0.tar.gz
+
+gzip: stdin: not in gzip format
+tar: Child returned status 1
+tar: Error is not recoverable: exiting now
+ERROR: Failed to unpack file resources/vep/cache/tmp/homo_sapiens_vep_112_T2T-CHM13v2.0.tar.gz

@@ -1,0 +1,101 @@
+INFO	2024-06-25 23:24:31	GeneratePonBedpe	
+
+********** NOTE: Picard's command line syntax is changing.
+**********
+********** For more information, please see:
+********** https://github.com/broadinstitute/picard/wiki/Command-Line-Syntax-Transition-For-Users-(Pre-Transition)
+**********
+********** The command line looks like this in the new syntax:
+**********
+**********    GeneratePonBedpe -INPUT results/gridss/normal/P038_normal.vcf -INPUT results/gridss/normal/P017_normal.vcf -INPUT results/gridss/normal/P016_normal.vcf -INPUT results/gridss/normal/P036_normal.vcf -INPUT results/gridss/normal/P033_normal.vcf -INPUT results/gridss/normal/P066_normal.vcf -INPUT results/gridss/normal/P018_normal.vcf -INPUT results/gridss/normal/P062_normal.vcf -INPUT results/gridss/normal/P024_normal.vcf -INPUT results/gridss/normal/P013_normal.vcf -INPUT results/gridss/normal/P103_normal.vcf -INPUT results/gridss/normal/P060_normal.vcf -INPUT results/gridss/normal/P028_normal.vcf -INPUT results/gridss/normal/P020_normal.vcf -INPUT results/gridss/normal/P105_normal.vcf -INPUT results/gridss/normal/P027_normal.vcf -INPUT results/gridss/normal/P019_normal.vcf -INPUT results/gridss/normal/P011_normal.vcf -INPUT results/gridss/normal/P026_normal.vcf -INPUT results/gridss/normal/P059_normal.vcf -INPUT results/gridss/normal/P023_normal.vcf -INPUT results/gridss/normal/P057_normal.vcf -INPUT results/gridss/normal/P061_normal.vcf -INPUT results/gridss/normal/P056_normal.vcf -INPUT results/gridss/normal/P037_normal.vcf -INPUT results/gridss/normal/P058_normal.vcf -INPUT results/gridss/normal/P029_normal.vcf -INPUT results/gridss/normal/P064_normal.vcf -INPUT results/gridss/normal/P086_normal.vcf -INPUT results/gridss/normal/P022_normal.vcf -INPUT results/gridss/normal/P034_normal.vcf -INPUT results/gridss/normal/P041_normal.vcf -INPUT results/gridss/normal/P065_normal.vcf -INPUT results/gridss/normal/P035_normal.vcf -O results/gridss/pondir/gridss_pon_breakpoint.bedpe -SBO results/gridss/pondir/gridss_pon_single_breakend.bed -NORMAL_ORDINAL 0 -REFERENCE_SEQUENCE resources/genome.fa
+**********
+
+
+23:24:31.778 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gridss-2.13.2-3/gridss.jar!/com/intel/gkl/native/libgkl_compression.so
+[Tue Jun 25 23:24:31 CEST 2024] GeneratePonBedpe INPUT=[results/gridss/normal/P038_normal.vcf, results/gridss/normal/P017_normal.vcf, results/gridss/normal/P016_normal.vcf, results/gridss/normal/P036_normal.vcf, results/gridss/normal/P033_normal.vcf, results/gridss/normal/P066_normal.vcf, results/gridss/normal/P018_normal.vcf, results/gridss/normal/P062_normal.vcf, results/gridss/normal/P024_normal.vcf, results/gridss/normal/P013_normal.vcf, results/gridss/normal/P103_normal.vcf, results/gridss/normal/P060_normal.vcf, results/gridss/normal/P028_normal.vcf, results/gridss/normal/P020_normal.vcf, results/gridss/normal/P105_normal.vcf, results/gridss/normal/P027_normal.vcf, results/gridss/normal/P019_normal.vcf, results/gridss/normal/P011_normal.vcf, results/gridss/normal/P026_normal.vcf, results/gridss/normal/P059_normal.vcf, results/gridss/normal/P023_normal.vcf, results/gridss/normal/P057_normal.vcf, results/gridss/normal/P061_normal.vcf, results/gridss/normal/P056_normal.vcf, results/gridss/normal/P037_normal.vcf, results/gridss/normal/P058_normal.vcf, results/gridss/normal/P029_normal.vcf, results/gridss/normal/P064_normal.vcf, results/gridss/normal/P086_normal.vcf, results/gridss/normal/P022_normal.vcf, results/gridss/normal/P034_normal.vcf, results/gridss/normal/P041_normal.vcf, results/gridss/normal/P065_normal.vcf, results/gridss/normal/P035_normal.vcf] OUTPUT_BEDPE=results/gridss/pondir/gridss_pon_breakpoint.bedpe OUTPUT_BED=results/gridss/pondir/gridss_pon_single_breakend.bed NORMAL_ORDINAL=[0] REFERENCE_SEQUENCE=resources/genome.fa    MIN_BREAKPOINT_QUAL=75.0 MIN_BREAKEND_QUAL=428.0 INCLUDE_IMPRECISE_CALLS=false WORKER_THREADS=8 VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 MAX_RECORDS_IN_RAM=500000 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
+[Tue Jun 25 23:24:31 CEST 2024] Executing as vsc35407@l33c30n4 on Linux 4.18.0-513.24.1.el8_9.x86_64 amd64; OpenJDK 64-Bit Server VM 17.0.10-internal+0-adhoc..src; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.13.2-gridss
+INFO	2024-06-25 23:24:31	GridssConfiguration	maxCoverage=25000
+INFO	2024-06-25 23:24:31	GridssConfiguration	minMapq=20
+INFO	2024-06-25 23:24:31	GridssConfiguration	fallbackMapq=20
+INFO	2024-06-25 23:24:31	GridssConfiguration	fallbackBaseq=20
+INFO	2024-06-25 23:24:31	GridssConfiguration	minAnchorShannonEntropy=0.5
+INFO	2024-06-25 23:24:31	GridssConfiguration	dovetailMargin=4
+INFO	2024-06-25 23:24:31	GridssConfiguration	softclip.minAverageQual=5.0
+INFO	2024-06-25 23:24:31	GridssConfiguration	softclip.minLength=5
+INFO	2024-06-25 23:24:31	GridssConfiguration	softclip.minAnchorIdentity=0.95
+INFO	2024-06-25 23:24:31	GridssConfiguration	softclip.realignSplitReads=false
+INFO	2024-06-25 23:24:31	GridssConfiguration	useReadGroupSampleNameCategoryLabel=true
+INFO	2024-06-25 23:24:31	GridssConfiguration	chunkSize=10000000
+INFO	2024-06-25 23:24:31	GridssConfiguration	chunkSequenceChangePenalty=250000
+INFO	2024-06-25 23:24:31	GridssConfiguration	hashEvidenceID=true
+INFO	2024-06-25 23:24:31	GridssConfiguration	adapter=AGATCGGAAGAG
+INFO	2024-06-25 23:24:31	GridssConfiguration	adapter=ATGGAATTCTCG
+INFO	2024-06-25 23:24:31	GridssConfiguration	adapter=CTGTCTCTTATA
+INFO	2024-06-25 23:24:31	GridssConfiguration	scoring.readWeightedRegex=^cons_[0-9]+_r_(?<weight>[0-9]+)_$
+INFO	2024-06-25 23:24:31	GridssConfiguration	scoring.model=FastEmpiricalReferenceLikelihood
+INFO	2024-06-25 23:24:31	GridssConfiguration	assembly.k=25
+INFO	2024-06-25 23:24:31	GridssConfiguration	assembly.minReads=3
+INFO	2024-06-25 23:24:31	GridssConfiguration	assembly.includePairAnchors=true
+INFO	2024-06-25 23:24:31	GridssConfiguration	assembly.pairAnchorMismatchIgnoreEndBases=5
+INFO	2024-06-25 23:24:31	GridssConfiguration	assembly.writeFiltered=false
+INFO	2024-06-25 23:24:31	GridssConfiguration	assembly.anchorLength=300
+INFO	2024-06-25 23:24:31	GridssConfiguration	assembly.removeMisassembledPartialContigsDuringAssembly=true
+INFO	2024-06-25 23:24:31	GridssConfiguration	assembly.maxExpectedBreakendLengthMultiple=1.5
+INFO	2024-06-25 23:24:31	GridssConfiguration	assembly.errorCorrection.kmerErrorCorrectionMultiple=10.0
+INFO	2024-06-25 23:24:31	GridssConfiguration	assembly.errorCorrection.k=21
+INFO	2024-06-25 23:24:31	GridssConfiguration	assembly.errorCorrection.maxCorrectionsInKmer=3
+INFO	2024-06-25 23:24:31	GridssConfiguration	assembly.errorCorrection.deduplicateReadKmers=true
+INFO	2024-06-25 23:24:31	GridssConfiguration	assembly.realignContigs=true
+INFO	2024-06-25 23:24:31	GridssConfiguration	assembly.recoverAfterError=true
+INFO	2024-06-25 23:24:31	GridssConfiguration	assembly.downsample.acceptDensityPortion=0.1
+INFO	2024-06-25 23:24:31	GridssConfiguration	assembly.downsample.targetEvidenceDensity=1
+INFO	2024-06-25 23:24:31	GridssConfiguration	assembly.downsample.minimumDensityWindowSize=1000
+INFO	2024-06-25 23:24:31	GridssConfiguration	assembly.downsample.densityDownsampleRateClippedReads=0.9
+INFO	2024-06-25 23:24:31	GridssConfiguration	assembly.downsample.densityDownsampleRateDiscordantReads=0.75
+INFO	2024-06-25 23:24:31	GridssConfiguration	assembly.positional.maxPathLengthMultiple=1.1
+INFO	2024-06-25 23:24:31	GridssConfiguration	assembly.positional.retainWidthMultiple=2.0
+INFO	2024-06-25 23:24:31	GridssConfiguration	assembly.positional.flushWidthMultiple=1.0
+INFO	2024-06-25 23:24:31	GridssConfiguration	assembly.positional.maximumNodeDensity=2.0
+INFO	2024-06-25 23:24:31	GridssConfiguration	assembly.positional.trimSelfIntersectingReads=true
+INFO	2024-06-25 23:24:31	GridssConfiguration	assembly.positional.forceFullMemoizationRecalculationAt=0.8
+INFO	2024-06-25 23:24:31	GridssConfiguration	assembly.positional.safetyModePathCountThreshold=50000
+INFO	2024-06-25 23:24:31	GridssConfiguration	assembly.positional.safetyModeContigsToCall=3
+INFO	2024-06-25 23:24:31	GridssConfiguration	assembly.contigNamePrefix=asm%d-
+INFO	2024-06-25 23:24:31	GridssConfiguration	assembly.longReadReadLengthThreshold=1000
+INFO	2024-06-25 23:24:31	GridssConfiguration	assembly.maximumReproductionExportPackages=5
+INFO	2024-06-25 23:24:31	GridssConfiguration	variantcalling.minReads=2
+INFO	2024-06-25 23:24:31	GridssConfiguration	variantcalling.minScore=50.0
+INFO	2024-06-25 23:24:31	GridssConfiguration	variantcalling.minSize=10
+INFO	2024-06-25 23:24:31	GridssConfiguration	variantcalling.callUnassembledBreakpoints=true
+INFO	2024-06-25 23:24:31	GridssConfiguration	variantcalling.callUnassembledBreakends=false
+INFO	2024-06-25 23:24:31	GridssConfiguration	variantcalling.callFullyAnchoredAssemblyVariants=false
+INFO	2024-06-25 23:24:31	GridssConfiguration	variantcalling.breakendMargin=10
+INFO	2024-06-25 23:24:31	GridssConfiguration	variantcalling.writeFiltered=false
+INFO	2024-06-25 23:24:31	GridssConfiguration	variantcalling.simplecalls=false
+INFO	2024-06-25 23:24:31	GridssConfiguration	variantcalling.maxBreakendHomologyLength=300
+INFO	2024-06-25 23:24:31	GridssConfiguration	variantcalling.breakendHomologyAlignmentMargin=10
+INFO	2024-06-25 23:24:31	GridssConfiguration	variantcalling.requireAssemblyCategorySupport=true
+INFO	2024-06-25 23:24:31	GridssConfiguration	variantcalling.callBreakends=true
+INFO	2024-06-25 23:24:31	GridssConfiguration	variantcalling.includeSupportingReadNames=false
+INFO	2024-06-25 23:24:31	GridssConfiguration	variantcalling.breakpointLowQuality=500.0
+INFO	2024-06-25 23:24:31	GridssConfiguration	variantcalling.breakendLowQuality=1500.0
+INFO	2024-06-25 23:24:31	GridssConfiguration	variantcalling.breakendMaxAssemblySupportBias=0.5
+INFO	2024-06-25 23:24:31	GridssConfiguration	variantcalling.ignoreMissingAssemblyFile=false
+INFO	2024-06-25 23:24:31	GridssConfiguration	variantcalling.minimumImpreciseDeletion=500
+INFO	2024-06-25 23:24:31	GridssConfiguration	terminateOnFirstError=true
+INFO	2024-06-25 23:24:31	GridssConfiguration	visualisation.directory=visualisation
+INFO	2024-06-25 23:24:31	GridssConfiguration	visualisation.buffers=false
+INFO	2024-06-25 23:24:31	GridssConfiguration	visualisation.bufferTrackingItervalInSeconds=60
+INFO	2024-06-25 23:24:31	GridssConfiguration	visualisation.timeouts=false
+INFO	2024-06-25 23:24:31	GridssConfiguration	visualisation.evidenceAllocation=false
+INFO	2024-06-25 23:24:31	GridssConfiguration	visualisation.assemblyProgress=false
+INFO	2024-06-25 23:24:31	GridssConfiguration	visualisation.assemblyTelemetry=false
+INFO	2024-06-25 23:24:31	GridssConfiguration	visualisation.maxCliqueTelemetry=false
+INFO	2024-06-25 23:24:31	GridssConfiguration	visualisation.assemblyGraph=false
+INFO	2024-06-25 23:24:31	GridssConfiguration	visualisation.assemblyGraphFullSize=false
+INFO	2024-06-25 23:24:31	GridssConfiguration	visualisation.assemblyContigMemoization=false
+INFO	2024-06-25 23:24:31	GridssConfiguration	visualisation.evidenceTracker=false
+INFO	2024-06-25 23:24:31	TwoBitBufferedReferenceSequenceFile	Loading reference genome from cache /lustre1/project/stg_00096/home/rdewin/WGS/resources/genome.fa.gridsscache
+INFO	2024-06-25 23:24:34	TwoBitBufferedReferenceSequenceFile	Loading reference genome complete
+[Tue Jun 25 23:25:03 CEST 2024] gridss.GeneratePonBedpe done. Elapsed time: 0.53 minutes.
+Runtime.totalMemory()=2491416576

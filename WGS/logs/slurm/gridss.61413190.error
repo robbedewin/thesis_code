@@ -1,0 +1,419 @@
+Assuming unrestricted shared filesystem usage.
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 10
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job                                 count
+--------------------------------  -------
+all                                     1
+call_somatic_structural_variants       10
+generate_pon                            1
+gridss_normal                           9
+gridss_somatic_filter                  10
+total                                  31
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Sun May 12 15:56:50 2024]
+localrule call_somatic_structural_variants:
+    input: results/recal/P019/P019_dna_normal_recal.bam, results/recal/P019/P019_dna_tumor_recal.bam
+    output: results/gridss/P019/P019_all_calls.vcf
+    log: logs/gridss/P019/P019_somatic_SV.log, logs/gridss/P019/P019_somatic_SV.full.log
+    jobid: 414
+    reason: Missing output files: results/gridss/P019/P019_all_calls.vcf; Code has changed since last execution
+    wildcards: sample=P019
+    threads: 8
+    resources: tmpdir=/tmp
+
+     
+        gridss             -r resources/genome.fa             -j  /lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gridss-2.13.2-3/gridss.jar             -o results/gridss/P019/P019_all_calls.vcf             -b resources/T2T.excluderanges.bed             --skipsoftcliprealignment             results/recal/P019/P019_dna_normal_recal.bam             results/recal/P019/P019_dna_tumor_recal.bam             &> logs/gridss/P019/P019_somatic_SV.log
+        mv gridss.full.*.log logs/gridss/P019/P019_somatic_SV.full.log
+        
+[Sun May 12 17:35:08 2024]
+Finished job 414.
+1 of 31 steps (3%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Sun May 12 17:35:10 2024]
+localrule call_somatic_structural_variants:
+    input: results/recal/P028/P028_dna_normal_recal.bam, results/recal/P028/P028_dna_tumor_recal.bam
+    output: results/gridss/P028/P028_all_calls.vcf
+    log: logs/gridss/P028/P028_somatic_SV.log, logs/gridss/P028/P028_somatic_SV.full.log
+    jobid: 416
+    reason: Missing output files: results/gridss/P028/P028_all_calls.vcf; Code has changed since last execution
+    wildcards: sample=P028
+    threads: 8
+    resources: tmpdir=/tmp
+
+     
+        gridss             -r resources/genome.fa             -j  /lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gridss-2.13.2-3/gridss.jar             -o results/gridss/P028/P028_all_calls.vcf             -b resources/T2T.excluderanges.bed             --skipsoftcliprealignment             results/recal/P028/P028_dna_normal_recal.bam             results/recal/P028/P028_dna_tumor_recal.bam             &> logs/gridss/P028/P028_somatic_SV.log
+        mv gridss.full.*.log logs/gridss/P028/P028_somatic_SV.full.log
+        
+[Sun May 12 18:18:12 2024]
+Finished job 416.
+2 of 31 steps (6%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Sun May 12 18:18:14 2024]
+localrule gridss_normal:
+    input: results/recal/P028/P028_dna_normal_recal.bam, resources/T2T.excluderanges.bed
+    output: results/gridss/normal/P028_normal.vcf, results/gridss/normal/P028_normal.assembly.bam
+    log: /staging/leuven/stg_00096/home/rdewin/WGS/logs/gridss/normal/P028_normal.log
+    jobid: 402
+    reason: Missing output files: results/gridss/normal/P028_normal.vcf
+    wildcards: sample=P028
+    threads: 8
+    resources: tmpdir=/tmp
+
+
+        gridss             --reference resources/genome.fa             --jar /lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gridss-2.13.2-3/gridss.jar             --output results/gridss/normal/P028_normal.vcf             --assembly results/gridss/normal/P028_normal.assembly.bam             --blacklist resources/T2T.excluderanges.bed             --threads 8             --workingdir results/gridss/temp/P028/             results/recal/P028/P028_dna_normal_recal.bam             &> /staging/leuven/stg_00096/home/rdewin/WGS/logs/gridss/normal/P028_normal.log
+        
+[Sun May 12 19:47:48 2024]
+Finished job 402.
+3 of 31 steps (10%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Sun May 12 19:47:50 2024]
+localrule gridss_normal:
+    input: results/recal/P026/P026_dna_normal_recal.bam, resources/T2T.excluderanges.bed
+    output: results/gridss/normal/P026_normal.vcf, results/gridss/normal/P026_normal.assembly.bam
+    log: /staging/leuven/stg_00096/home/rdewin/WGS/logs/gridss/normal/P026_normal.log
+    jobid: 400
+    reason: Missing output files: results/gridss/normal/P026_normal.vcf
+    wildcards: sample=P026
+    threads: 8
+    resources: tmpdir=/tmp
+
+
+        gridss             --reference resources/genome.fa             --jar /lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gridss-2.13.2-3/gridss.jar             --output results/gridss/normal/P026_normal.vcf             --assembly results/gridss/normal/P026_normal.assembly.bam             --blacklist resources/T2T.excluderanges.bed             --threads 8             --workingdir results/gridss/temp/P026/             results/recal/P026/P026_dna_normal_recal.bam             &> /staging/leuven/stg_00096/home/rdewin/WGS/logs/gridss/normal/P026_normal.log
+        
+[Sun May 12 20:40:38 2024]
+Finished job 400.
+4 of 31 steps (13%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Sun May 12 20:40:38 2024]
+localrule gridss_normal:
+    input: results/recal/P013/P013_dna_normal_recal.bam, resources/T2T.excluderanges.bed
+    output: results/gridss/normal/P013_normal.vcf, results/gridss/normal/P013_normal.assembly.bam
+    log: /staging/leuven/stg_00096/home/rdewin/WGS/logs/gridss/normal/P013_normal.log
+    jobid: 398
+    reason: Missing output files: results/gridss/normal/P013_normal.vcf
+    wildcards: sample=P013
+    threads: 8
+    resources: tmpdir=/tmp
+
+
+        gridss             --reference resources/genome.fa             --jar /lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gridss-2.13.2-3/gridss.jar             --output results/gridss/normal/P013_normal.vcf             --assembly results/gridss/normal/P013_normal.assembly.bam             --blacklist resources/T2T.excluderanges.bed             --threads 8             --workingdir results/gridss/temp/P013/             results/recal/P013/P013_dna_normal_recal.bam             &> /staging/leuven/stg_00096/home/rdewin/WGS/logs/gridss/normal/P013_normal.log
+        
+[Sun May 12 21:17:19 2024]
+Finished job 398.
+5 of 31 steps (16%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Sun May 12 21:17:20 2024]
+localrule call_somatic_structural_variants:
+    input: results/recal/P020/P020_dna_normal_recal.bam, results/recal/P020/P020_dna_tumor_recal.bam
+    output: results/gridss/P020/P020_all_calls.vcf
+    log: logs/gridss/P020/P020_somatic_SV.log, logs/gridss/P020/P020_somatic_SV.full.log
+    jobid: 418
+    reason: Missing output files: results/gridss/P020/P020_all_calls.vcf; Code has changed since last execution
+    wildcards: sample=P020
+    threads: 8
+    resources: tmpdir=/tmp
+
+     
+        gridss             -r resources/genome.fa             -j  /lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gridss-2.13.2-3/gridss.jar             -o results/gridss/P020/P020_all_calls.vcf             -b resources/T2T.excluderanges.bed             --skipsoftcliprealignment             results/recal/P020/P020_dna_normal_recal.bam             results/recal/P020/P020_dna_tumor_recal.bam             &> logs/gridss/P020/P020_somatic_SV.log
+        mv gridss.full.*.log logs/gridss/P020/P020_somatic_SV.full.log
+        
+[Sun May 12 22:44:48 2024]
+Finished job 418.
+6 of 31 steps (19%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Sun May 12 22:44:49 2024]
+localrule gridss_normal:
+    input: results/recal/P022/P022_dna_normal_recal.bam, resources/T2T.excluderanges.bed
+    output: results/gridss/normal/P022_normal.vcf, results/gridss/normal/P022_normal.assembly.bam
+    log: /staging/leuven/stg_00096/home/rdewin/WGS/logs/gridss/normal/P022_normal.log
+    jobid: 405
+    reason: Missing output files: results/gridss/normal/P022_normal.vcf
+    wildcards: sample=P022
+    threads: 8
+    resources: tmpdir=/tmp
+
+
+        gridss             --reference resources/genome.fa             --jar /lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gridss-2.13.2-3/gridss.jar             --output results/gridss/normal/P022_normal.vcf             --assembly results/gridss/normal/P022_normal.assembly.bam             --blacklist resources/T2T.excluderanges.bed             --threads 8             --workingdir results/gridss/temp/P022/             results/recal/P022/P022_dna_normal_recal.bam             &> /staging/leuven/stg_00096/home/rdewin/WGS/logs/gridss/normal/P022_normal.log
+        
+[Sun May 12 23:20:16 2024]
+Finished job 405.
+7 of 31 steps (23%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Sun May 12 23:20:16 2024]
+localrule call_somatic_structural_variants:
+    input: results/recal/P026/P026_dna_normal_recal.bam, results/recal/P026/P026_dna_tumor_recal.bam
+    output: results/gridss/P026/P026_all_calls.vcf
+    log: logs/gridss/P026/P026_somatic_SV.log, logs/gridss/P026/P026_somatic_SV.full.log
+    jobid: 412
+    reason: Missing output files: results/gridss/P026/P026_all_calls.vcf; Code has changed since last execution
+    wildcards: sample=P026
+    threads: 8
+    resources: tmpdir=/tmp
+
+     
+        gridss             -r resources/genome.fa             -j  /lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gridss-2.13.2-3/gridss.jar             -o results/gridss/P026/P026_all_calls.vcf             -b resources/T2T.excluderanges.bed             --skipsoftcliprealignment             results/recal/P026/P026_dna_normal_recal.bam             results/recal/P026/P026_dna_tumor_recal.bam             &> logs/gridss/P026/P026_somatic_SV.log
+        mv gridss.full.*.log logs/gridss/P026/P026_somatic_SV.full.log
+        
+[Mon May 13 01:03:52 2024]
+Finished job 412.
+8 of 31 steps (26%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon May 13 01:03:53 2024]
+localrule call_somatic_structural_variants:
+    input: results/recal/P013/P013_dna_normal_recal.bam, results/recal/P013/P013_dna_tumor_recal.bam
+    output: results/gridss/P013/P013_all_calls.vcf
+    log: logs/gridss/P013/P013_somatic_SV.log, logs/gridss/P013/P013_somatic_SV.full.log
+    jobid: 408
+    reason: Missing output files: results/gridss/P013/P013_all_calls.vcf
+    wildcards: sample=P013
+    threads: 8
+    resources: tmpdir=/tmp
+
+     
+        gridss             -r resources/genome.fa             -j  /lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gridss-2.13.2-3/gridss.jar             -o results/gridss/P013/P013_all_calls.vcf             -b resources/T2T.excluderanges.bed             --skipsoftcliprealignment             results/recal/P013/P013_dna_normal_recal.bam             results/recal/P013/P013_dna_tumor_recal.bam             &> logs/gridss/P013/P013_somatic_SV.log
+        mv gridss.full.*.log logs/gridss/P013/P013_somatic_SV.full.log
+        
+[Mon May 13 01:55:15 2024]
+Finished job 408.
+9 of 31 steps (29%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon May 13 01:55:16 2024]
+localrule gridss_normal:
+    input: results/recal/P019/P019_dna_normal_recal.bam, resources/T2T.excluderanges.bed
+    output: results/gridss/normal/P019_normal.vcf, results/gridss/normal/P019_normal.assembly.bam
+    log: /staging/leuven/stg_00096/home/rdewin/WGS/logs/gridss/normal/P019_normal.log
+    jobid: 401
+    reason: Missing output files: results/gridss/normal/P019_normal.vcf
+    wildcards: sample=P019
+    threads: 8
+    resources: tmpdir=/tmp
+
+
+        gridss             --reference resources/genome.fa             --jar /lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gridss-2.13.2-3/gridss.jar             --output results/gridss/normal/P019_normal.vcf             --assembly results/gridss/normal/P019_normal.assembly.bam             --blacklist resources/T2T.excluderanges.bed             --threads 8             --workingdir results/gridss/temp/P019/             results/recal/P019/P019_dna_normal_recal.bam             &> /staging/leuven/stg_00096/home/rdewin/WGS/logs/gridss/normal/P019_normal.log
+        
+[Mon May 13 02:34:01 2024]
+Finished job 401.
+10 of 31 steps (32%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon May 13 02:34:02 2024]
+localrule gridss_normal:
+    input: results/recal/P018/P018_dna_normal_recal.bam, resources/T2T.excluderanges.bed
+    output: results/gridss/normal/P018_normal.vcf, results/gridss/normal/P018_normal.assembly.bam
+    log: /staging/leuven/stg_00096/home/rdewin/WGS/logs/gridss/normal/P018_normal.log
+    jobid: 404
+    reason: Missing output files: results/gridss/normal/P018_normal.vcf
+    wildcards: sample=P018
+    threads: 8
+    resources: tmpdir=/tmp
+
+
+        gridss             --reference resources/genome.fa             --jar /lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gridss-2.13.2-3/gridss.jar             --output results/gridss/normal/P018_normal.vcf             --assembly results/gridss/normal/P018_normal.assembly.bam             --blacklist resources/T2T.excluderanges.bed             --threads 8             --workingdir results/gridss/temp/P018/             results/recal/P018/P018_dna_normal_recal.bam             &> /staging/leuven/stg_00096/home/rdewin/WGS/logs/gridss/normal/P018_normal.log
+        
+[Mon May 13 03:24:03 2024]
+Finished job 404.
+11 of 31 steps (35%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon May 13 03:24:04 2024]
+localrule gridss_normal:
+    input: results/recal/P016/P016_dna_normal_recal.bam, resources/T2T.excluderanges.bed
+    output: results/gridss/normal/P016_normal.vcf, results/gridss/normal/P016_normal.assembly.bam
+    log: /staging/leuven/stg_00096/home/rdewin/WGS/logs/gridss/normal/P016_normal.log
+    jobid: 396
+    reason: Missing output files: results/gridss/normal/P016_normal.vcf
+    wildcards: sample=P016
+    threads: 8
+    resources: tmpdir=/tmp
+
+
+        gridss             --reference resources/genome.fa             --jar /lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gridss-2.13.2-3/gridss.jar             --output results/gridss/normal/P016_normal.vcf             --assembly results/gridss/normal/P016_normal.assembly.bam             --blacklist resources/T2T.excluderanges.bed             --threads 8             --workingdir results/gridss/temp/P016/             results/recal/P016/P016_dna_normal_recal.bam             &> /staging/leuven/stg_00096/home/rdewin/WGS/logs/gridss/normal/P016_normal.log
+        
+[Mon May 13 04:02:07 2024]
+Finished job 396.
+12 of 31 steps (39%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon May 13 04:02:07 2024]
+localrule call_somatic_structural_variants:
+    input: results/recal/P024/P024_dna_normal_recal.bam, results/recal/P024/P024_dna_tumor_recal.bam
+    output: results/gridss/P024/P024_all_calls.vcf
+    log: logs/gridss/P024/P024_somatic_SV.log, logs/gridss/P024/P024_somatic_SV.full.log
+    jobid: 424
+    reason: Missing output files: results/gridss/P024/P024_all_calls.vcf; Code has changed since last execution
+    wildcards: sample=P024
+    threads: 8
+    resources: tmpdir=/tmp
+
+     
+        gridss             -r resources/genome.fa             -j  /lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gridss-2.13.2-3/gridss.jar             -o results/gridss/P024/P024_all_calls.vcf             -b resources/T2T.excluderanges.bed             --skipsoftcliprealignment             results/recal/P024/P024_dna_normal_recal.bam             results/recal/P024/P024_dna_tumor_recal.bam             &> logs/gridss/P024/P024_somatic_SV.log
+        mv gridss.full.*.log logs/gridss/P024/P024_somatic_SV.full.log
+        
+[Mon May 13 08:12:38 2024]
+Finished job 424.
+13 of 31 steps (42%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon May 13 08:12:41 2024]
+localrule call_somatic_structural_variants:
+    input: results/recal/P018/P018_dna_normal_recal.bam, results/recal/P018/P018_dna_tumor_recal.bam
+    output: results/gridss/P018/P018_all_calls.vcf
+    log: logs/gridss/P018/P018_somatic_SV.log, logs/gridss/P018/P018_somatic_SV.full.log
+    jobid: 420
+    reason: Missing output files: results/gridss/P018/P018_all_calls.vcf; Code has changed since last execution
+    wildcards: sample=P018
+    threads: 8
+    resources: tmpdir=/tmp
+
+     
+        gridss             -r resources/genome.fa             -j  /lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gridss-2.13.2-3/gridss.jar             -o results/gridss/P018/P018_all_calls.vcf             -b resources/T2T.excluderanges.bed             --skipsoftcliprealignment             results/recal/P018/P018_dna_normal_recal.bam             results/recal/P018/P018_dna_tumor_recal.bam             &> logs/gridss/P018/P018_somatic_SV.log
+        mv gridss.full.*.log logs/gridss/P018/P018_somatic_SV.full.log
+        
+[Mon May 13 09:51:20 2024]
+Finished job 420.
+14 of 31 steps (45%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon May 13 09:51:22 2024]
+localrule gridss_normal:
+    input: results/recal/P020/P020_dna_normal_recal.bam, resources/T2T.excluderanges.bed
+    output: results/gridss/normal/P020_normal.vcf, results/gridss/normal/P020_normal.assembly.bam
+    log: /staging/leuven/stg_00096/home/rdewin/WGS/logs/gridss/normal/P020_normal.log
+    jobid: 403
+    reason: Missing output files: results/gridss/normal/P020_normal.vcf
+    wildcards: sample=P020
+    threads: 8
+    resources: tmpdir=/tmp
+
+
+        gridss             --reference resources/genome.fa             --jar /lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gridss-2.13.2-3/gridss.jar             --output results/gridss/normal/P020_normal.vcf             --assembly results/gridss/normal/P020_normal.assembly.bam             --blacklist resources/T2T.excluderanges.bed             --threads 8             --workingdir results/gridss/temp/P020/             results/recal/P020/P020_dna_normal_recal.bam             &> /staging/leuven/stg_00096/home/rdewin/WGS/logs/gridss/normal/P020_normal.log
+        
+[Mon May 13 10:37:43 2024]
+Finished job 403.
+15 of 31 steps (48%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon May 13 10:37:43 2024]
+localrule call_somatic_structural_variants:
+    input: results/recal/P023/P023_dna_normal_recal.bam, results/recal/P023/P023_dna_tumor_recal.bam
+    output: results/gridss/P023/P023_all_calls.vcf
+    log: logs/gridss/P023/P023_somatic_SV.log, logs/gridss/P023/P023_somatic_SV.full.log
+    jobid: 410
+    reason: Missing output files: results/gridss/P023/P023_all_calls.vcf
+    wildcards: sample=P023
+    threads: 8
+    resources: tmpdir=/tmp
+
+     
+        gridss             -r resources/genome.fa             -j  /lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gridss-2.13.2-3/gridss.jar             -o results/gridss/P023/P023_all_calls.vcf             -b resources/T2T.excluderanges.bed             --skipsoftcliprealignment             results/recal/P023/P023_dna_normal_recal.bam             results/recal/P023/P023_dna_tumor_recal.bam             &> logs/gridss/P023/P023_somatic_SV.log
+        mv gridss.full.*.log logs/gridss/P023/P023_somatic_SV.full.log
+        
+[Mon May 13 10:55:06 2024]
+Finished job 410.
+16 of 31 steps (52%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon May 13 10:55:06 2024]
+localrule gridss_normal:
+    input: results/recal/P024/P024_dna_normal_recal.bam, resources/T2T.excluderanges.bed
+    output: results/gridss/normal/P024_normal.vcf, results/gridss/normal/P024_normal.assembly.bam
+    log: /staging/leuven/stg_00096/home/rdewin/WGS/logs/gridss/normal/P024_normal.log
+    jobid: 406
+    reason: Missing output files: results/gridss/normal/P024_normal.vcf
+    wildcards: sample=P024
+    threads: 8
+    resources: tmpdir=/tmp
+
+
+        gridss             --reference resources/genome.fa             --jar /lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gridss-2.13.2-3/gridss.jar             --output results/gridss/normal/P024_normal.vcf             --assembly results/gridss/normal/P024_normal.assembly.bam             --blacklist resources/T2T.excluderanges.bed             --threads 8             --workingdir results/gridss/temp/P024/             results/recal/P024/P024_dna_normal_recal.bam             &> /staging/leuven/stg_00096/home/rdewin/WGS/logs/gridss/normal/P024_normal.log
+        
+[Mon May 13 12:25:03 2024]
+Finished job 406.
+17 of 31 steps (55%) done
+Select jobs to execute...
+Execute 2 jobs...
+
+[Mon May 13 12:25:05 2024]
+localrule call_somatic_structural_variants:
+    input: results/recal/P022/P022_dna_normal_recal.bam, results/recal/P022/P022_dna_tumor_recal.bam
+    output: results/gridss/P022/P022_all_calls.vcf
+    log: logs/gridss/P022/P022_somatic_SV.log, logs/gridss/P022/P022_somatic_SV.full.log
+    jobid: 422
+    reason: Missing output files: results/gridss/P022/P022_all_calls.vcf; Code has changed since last execution
+    wildcards: sample=P022
+    threads: 8
+    resources: tmpdir=/tmp
+
+     
+        gridss             -r resources/genome.fa             -j  /lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gridss-2.13.2-3/gridss.jar             -o results/gridss/P022/P022_all_calls.vcf             -b resources/T2T.excluderanges.bed             --skipsoftcliprealignment             results/recal/P022/P022_dna_normal_recal.bam             results/recal/P022/P022_dna_tumor_recal.bam             &> logs/gridss/P022/P022_somatic_SV.log
+        mv gridss.full.*.log logs/gridss/P022/P022_somatic_SV.full.log
+        
+
+[Mon May 13 12:25:05 2024]
+localrule generate_pon:
+    input: results/gridss/normal/P016_normal.vcf, results/gridss/normal/P013_normal.vcf, results/gridss/normal/P023_normal.vcf, results/gridss/normal/P026_normal.vcf, results/gridss/normal/P019_normal.vcf, results/gridss/normal/P028_normal.vcf, results/gridss/normal/P020_normal.vcf, results/gridss/normal/P018_normal.vcf, results/gridss/normal/P022_normal.vcf, results/gridss/normal/P024_normal.vcf
+    output: results/gridss/pondir/gridss_pon_breakpoint.bedpe, results/gridss/pondir/gridss_pon_single_breakend.bed
+    log: logs/gridss/PON.log
+    jobid: 395
+    reason: Missing output files: results/gridss/pondir/gridss_pon_breakpoint.bedpe; Input files updated by another job: results/gridss/normal/P028_normal.vcf, results/gridss/normal/P016_normal.vcf, results/gridss/normal/P024_normal.vcf, results/gridss/normal/P018_normal.vcf, results/gridss/normal/P019_normal.vcf, results/gridss/normal/P013_normal.vcf, results/gridss/normal/P022_normal.vcf, results/gridss/normal/P020_normal.vcf, results/gridss/normal/P026_normal.vcf
+    resources: tmpdir=/tmp
+
+
+        mkdir -p results/gridss/pondir
+        java -Xmx8g             -cp /lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gridss-2.13.2-3/gridss.jar             gridss.GeneratePonBedpe             $(echo results/gridss/normal/P016_normal.vcf results/gridss/normal/P013_normal.vcf results/gridss/normal/P023_normal.vcf results/gridss/normal/P026_normal.vcf results/gridss/normal/P019_normal.vcf results/gridss/normal/P028_normal.vcf results/gridss/normal/P020_normal.vcf results/gridss/normal/P018_normal.vcf results/gridss/normal/P022_normal.vcf results/gridss/normal/P024_normal.vcf | tr ' ' '
+' | awk '{print "INPUT=" $0}')             O=results/gridss/pondir/gridss_pon_breakpoint.bedpe             SBO=results/gridss/pondir/gridss_pon_single_breakend.bed             REFERENCE_SEQUENCE=resources/genome.fa             &> logs/gridss/PON.log
+        
+[Mon May 13 12:25:06 2024]
+Error in rule generate_pon:
+    jobid: 395
+    input: results/gridss/normal/P016_normal.vcf, results/gridss/normal/P013_normal.vcf, results/gridss/normal/P023_normal.vcf, results/gridss/normal/P026_normal.vcf, results/gridss/normal/P019_normal.vcf, results/gridss/normal/P028_normal.vcf, results/gridss/normal/P020_normal.vcf, results/gridss/normal/P018_normal.vcf, results/gridss/normal/P022_normal.vcf, results/gridss/normal/P024_normal.vcf
+    output: results/gridss/pondir/gridss_pon_breakpoint.bedpe, results/gridss/pondir/gridss_pon_single_breakend.bed
+    log: logs/gridss/PON.log (check log file(s) for error details)
+    shell:
+        
+        mkdir -p results/gridss/pondir
+        java -Xmx8g             -cp /lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gridss-2.13.2-3/gridss.jar             gridss.GeneratePonBedpe             $(echo results/gridss/normal/P016_normal.vcf results/gridss/normal/P013_normal.vcf results/gridss/normal/P023_normal.vcf results/gridss/normal/P026_normal.vcf results/gridss/normal/P019_normal.vcf results/gridss/normal/P028_normal.vcf results/gridss/normal/P020_normal.vcf results/gridss/normal/P018_normal.vcf results/gridss/normal/P022_normal.vcf results/gridss/normal/P024_normal.vcf | tr ' ' '
+' | awk '{print "INPUT=" $0}')             O=results/gridss/pondir/gridss_pon_breakpoint.bedpe             SBO=results/gridss/pondir/gridss_pon_single_breakend.bed             REFERENCE_SEQUENCE=resources/genome.fa             &> logs/gridss/PON.log
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+[Mon May 13 13:45:06 2024]
+Finished job 422.
+18 of 31 steps (58%) done
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2024-05-12T155638.253135.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

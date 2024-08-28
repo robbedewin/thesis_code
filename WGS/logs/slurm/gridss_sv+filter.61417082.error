@@ -1,0 +1,348 @@
+Assuming unrestricted shared filesystem usage.
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 32
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job                                 count
+--------------------------------  -------
+all                                     1
+call_somatic_structural_variants       10
+gridss_somatic_filter                  10
+total                                  21
+
+Select jobs to execute...
+Execute 4 jobs...
+
+[Tue May 14 13:29:01 2024]
+localrule call_somatic_structural_variants:
+    input: results/recal/P019/P019_dna_normal_recal.bam, results/recal/P019/P019_dna_tumor_recal.bam
+    output: results/gridss/P019/P019_all_calls.vcf
+    log: logs/gridss/P019/P019_somatic_SV.log
+    jobid: 84
+    reason: Missing output files: results/gridss/P019/P019_all_calls.vcf; Code has changed since last execution; Params have changed since last execution
+    wildcards: sample=P019
+    threads: 8
+    resources: tmpdir=/tmp
+
+     
+        gridss             -r resources/genome.fa             -j  /lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gridss-2.13.2-3/gridss.jar             -o results/gridss/P019/P019_all_calls.vcf             -b resources/T2T.excluderanges.bed             --skipsoftcliprealignment             results/recal/P019/P019_dna_normal_recal.bam             results/recal/P019/P019_dna_tumor_recal.bam             --workingdir results/gridss/wrk/P019/             &> logs/gridss/P019/P019_somatic_SV.log
+        
+
+[Tue May 14 13:29:01 2024]
+localrule call_somatic_structural_variants:
+    input: results/recal/P022/P022_dna_normal_recal.bam, results/recal/P022/P022_dna_tumor_recal.bam
+    output: results/gridss/P022/P022_all_calls.vcf
+    log: logs/gridss/P022/P022_somatic_SV.log
+    jobid: 97
+    reason: Missing output files: results/gridss/P022/P022_all_calls.vcf
+    wildcards: sample=P022
+    threads: 8
+    resources: tmpdir=/tmp
+
+     
+        gridss             -r resources/genome.fa             -j  /lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gridss-2.13.2-3/gridss.jar             -o results/gridss/P022/P022_all_calls.vcf             -b resources/T2T.excluderanges.bed             --skipsoftcliprealignment             results/recal/P022/P022_dna_normal_recal.bam             results/recal/P022/P022_dna_tumor_recal.bam             --workingdir results/gridss/wrk/P022/             &> logs/gridss/P022/P022_somatic_SV.log
+        
+
+[Tue May 14 13:29:01 2024]
+localrule call_somatic_structural_variants:
+    input: results/recal/P018/P018_dna_normal_recal.bam, results/recal/P018/P018_dna_tumor_recal.bam
+    output: results/gridss/P018/P018_all_calls.vcf
+    log: logs/gridss/P018/P018_somatic_SV.log
+    jobid: 58
+    reason: Missing output files: results/gridss/P018/P018_all_calls.vcf; Code has changed since last execution; Params have changed since last execution
+    wildcards: sample=P018
+    threads: 8
+    resources: tmpdir=/tmp
+
+     
+        gridss             -r resources/genome.fa             -j  /lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gridss-2.13.2-3/gridss.jar             -o results/gridss/P018/P018_all_calls.vcf             -b resources/T2T.excluderanges.bed             --skipsoftcliprealignment             results/recal/P018/P018_dna_normal_recal.bam             results/recal/P018/P018_dna_tumor_recal.bam             --workingdir results/gridss/wrk/P018/             &> logs/gridss/P018/P018_somatic_SV.log
+        
+
+[Tue May 14 13:29:01 2024]
+localrule call_somatic_structural_variants:
+    input: results/recal/P020/P020_dna_normal_recal.bam, results/recal/P020/P020_dna_tumor_recal.bam
+    output: results/gridss/P020/P020_all_calls.vcf
+    log: logs/gridss/P020/P020_somatic_SV.log
+    jobid: 19
+    reason: Missing output files: results/gridss/P020/P020_all_calls.vcf; Code has changed since last execution; Params have changed since last execution
+    wildcards: sample=P020
+    threads: 8
+    resources: tmpdir=/tmp
+
+     
+        gridss             -r resources/genome.fa             -j  /lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gridss-2.13.2-3/gridss.jar             -o results/gridss/P020/P020_all_calls.vcf             -b resources/T2T.excluderanges.bed             --skipsoftcliprealignment             results/recal/P020/P020_dna_normal_recal.bam             results/recal/P020/P020_dna_tumor_recal.bam             --workingdir results/gridss/wrk/P020/             &> logs/gridss/P020/P020_somatic_SV.log
+        
+[Tue May 14 14:56:44 2024]
+Finished job 97.
+1 of 21 steps (5%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue May 14 14:56:45 2024]
+localrule call_somatic_structural_variants:
+    input: results/recal/P028/P028_dna_normal_recal.bam, results/recal/P028/P028_dna_tumor_recal.bam
+    output: results/gridss/P028/P028_all_calls.vcf
+    log: logs/gridss/P028/P028_somatic_SV.log
+    jobid: 123
+    reason: Missing output files: results/gridss/P028/P028_all_calls.vcf; Code has changed since last execution; Params have changed since last execution
+    wildcards: sample=P028
+    threads: 8
+    resources: tmpdir=/tmp
+
+     
+        gridss             -r resources/genome.fa             -j  /lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gridss-2.13.2-3/gridss.jar             -o results/gridss/P028/P028_all_calls.vcf             -b resources/T2T.excluderanges.bed             --skipsoftcliprealignment             results/recal/P028/P028_dna_normal_recal.bam             results/recal/P028/P028_dna_tumor_recal.bam             --workingdir results/gridss/wrk/P028/             &> logs/gridss/P028/P028_somatic_SV.log
+        
+[Tue May 14 15:05:29 2024]
+Finished job 19.
+2 of 21 steps (10%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue May 14 15:05:30 2024]
+localrule call_somatic_structural_variants:
+    input: results/recal/P026/P026_dna_normal_recal.bam, results/recal/P026/P026_dna_tumor_recal.bam
+    output: results/gridss/P026/P026_all_calls.vcf
+    log: logs/gridss/P026/P026_somatic_SV.log
+    jobid: 1
+    reason: Missing output files: results/gridss/P026/P026_all_calls.vcf; Code has changed since last execution; Params have changed since last execution
+    wildcards: sample=P026
+    threads: 8
+    resources: tmpdir=/tmp
+
+     
+        gridss             -r resources/genome.fa             -j  /lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gridss-2.13.2-3/gridss.jar             -o results/gridss/P026/P026_all_calls.vcf             -b resources/T2T.excluderanges.bed             --skipsoftcliprealignment             results/recal/P026/P026_dna_normal_recal.bam             results/recal/P026/P026_dna_tumor_recal.bam             --workingdir results/gridss/wrk/P026/             &> logs/gridss/P026/P026_somatic_SV.log
+        
+[Tue May 14 15:13:51 2024]
+Finished job 84.
+3 of 21 steps (14%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue May 14 15:13:51 2024]
+localrule call_somatic_structural_variants:
+    input: results/recal/P013/P013_dna_normal_recal.bam, results/recal/P013/P013_dna_tumor_recal.bam
+    output: results/gridss/P013/P013_all_calls.vcf
+    log: logs/gridss/P013/P013_somatic_SV.log
+    jobid: 45
+    reason: Missing output files: results/gridss/P013/P013_all_calls.vcf
+    wildcards: sample=P013
+    threads: 8
+    resources: tmpdir=/tmp
+
+     
+        gridss             -r resources/genome.fa             -j  /lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gridss-2.13.2-3/gridss.jar             -o results/gridss/P013/P013_all_calls.vcf             -b resources/T2T.excluderanges.bed             --skipsoftcliprealignment             results/recal/P013/P013_dna_normal_recal.bam             results/recal/P013/P013_dna_tumor_recal.bam             --workingdir results/gridss/wrk/P013/             &> logs/gridss/P013/P013_somatic_SV.log
+        
+[Tue May 14 15:14:59 2024]
+Finished job 58.
+4 of 21 steps (19%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue May 14 15:14:59 2024]
+localrule call_somatic_structural_variants:
+    input: results/recal/P024/P024_dna_normal_recal.bam, results/recal/P024/P024_dna_tumor_recal.bam
+    output: results/gridss/P024/P024_all_calls.vcf
+    log: logs/gridss/P024/P024_somatic_SV.log
+    jobid: 110
+    reason: Missing output files: results/gridss/P024/P024_all_calls.vcf; Code has changed since last execution; Params have changed since last execution
+    wildcards: sample=P024
+    threads: 8
+    resources: tmpdir=/tmp
+
+     
+        gridss             -r resources/genome.fa             -j  /lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gridss-2.13.2-3/gridss.jar             -o results/gridss/P024/P024_all_calls.vcf             -b resources/T2T.excluderanges.bed             --skipsoftcliprealignment             results/recal/P024/P024_dna_normal_recal.bam             results/recal/P024/P024_dna_tumor_recal.bam             --workingdir results/gridss/wrk/P024/             &> logs/gridss/P024/P024_somatic_SV.log
+        
+[Tue May 14 17:08:23 2024]
+Finished job 45.
+5 of 21 steps (24%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue May 14 17:08:26 2024]
+localrule call_somatic_structural_variants:
+    input: results/recal/P023/P023_dna_normal_recal.bam, results/recal/P023/P023_dna_tumor_recal.bam
+    output: results/gridss/P023/P023_all_calls.vcf
+    log: logs/gridss/P023/P023_somatic_SV.log
+    jobid: 71
+    reason: Missing output files: results/gridss/P023/P023_all_calls.vcf; Code has changed since last execution; Params have changed since last execution
+    wildcards: sample=P023
+    threads: 8
+    resources: tmpdir=/tmp
+
+     
+        gridss             -r resources/genome.fa             -j  /lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gridss-2.13.2-3/gridss.jar             -o results/gridss/P023/P023_all_calls.vcf             -b resources/T2T.excluderanges.bed             --skipsoftcliprealignment             results/recal/P023/P023_dna_normal_recal.bam             results/recal/P023/P023_dna_tumor_recal.bam             --workingdir results/gridss/wrk/P023/             &> logs/gridss/P023/P023_somatic_SV.log
+        
+[Tue May 14 17:18:04 2024]
+Finished job 1.
+6 of 21 steps (29%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue May 14 17:18:05 2024]
+localrule call_somatic_structural_variants:
+    input: results/recal/P016/P016_dna_normal_recal.bam, results/recal/P016/P016_dna_tumor_recal.bam
+    output: results/gridss/P016/P016_all_calls.vcf
+    log: logs/gridss/P016/P016_somatic_SV.log
+    jobid: 32
+    reason: Missing output files: results/gridss/P016/P016_all_calls.vcf; Code has changed since last execution; Params have changed since last execution
+    wildcards: sample=P016
+    threads: 8
+    resources: tmpdir=/tmp
+
+     
+        gridss             -r resources/genome.fa             -j  /lustre1/project/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gridss-2.13.2-3/gridss.jar             -o results/gridss/P016/P016_all_calls.vcf             -b resources/T2T.excluderanges.bed             --skipsoftcliprealignment             results/recal/P016/P016_dna_normal_recal.bam             results/recal/P016/P016_dna_tumor_recal.bam             --workingdir results/gridss/wrk/P016/             &> logs/gridss/P016/P016_somatic_SV.log
+        
+[Tue May 14 19:51:52 2024]
+Finished job 71.
+7 of 21 steps (33%) done
+Select jobs to execute...
+Execute 7 jobs...
+
+[Tue May 14 19:51:54 2024]
+localrule gridss_somatic_filter:
+    input: results/gridss/P022/P022_all_calls.vcf, results/gridss/pondir/gridss_pon_breakpoint.bedpe
+    output: results/gridss/P022/P022_high_confidence_somatic.vcf.bgz, results/gridss/P022/P022_high_and_low_confidence_somatic.vcf.bgz
+    log: logs/gridss/P022/P022_somatic_filter.log
+    jobid: 155
+    reason: Missing output files: results/gridss/P022/P022_high_confidence_somatic.vcf.bgz; Input files updated by another job: results/gridss/P022/P022_all_calls.vcf
+    wildcards: sample=P022
+    resources: tmpdir=/tmp
+
+
+        gridss_somatic_filter             --pondir results/gridss/pondir/             --ref BSgenome.Hsapiens.NCBI.T2T.CHM13v2.0             --input results/gridss/P022/P022_all_calls.vcf             --output results/gridss/P022/P022_high_confidence_somatic.vcf.bgz             --fulloutput results/gridss/P022/P022_high_and_low_confidence_somatic.vcf.bgz             --plotdir results/gridss/P022/plots/             -n 1             -t 2             &> logs/gridss/P022/P022_somatic_filter.log
+        
+
+[Tue May 14 19:51:54 2024]
+localrule gridss_somatic_filter:
+    input: results/gridss/P026/P026_all_calls.vcf, results/gridss/pondir/gridss_pon_breakpoint.bedpe
+    output: results/gridss/P026/P026_high_confidence_somatic.vcf.bgz, results/gridss/P026/P026_high_and_low_confidence_somatic.vcf.bgz
+    log: logs/gridss/P026/P026_somatic_filter.log
+    jobid: 136
+    reason: Missing output files: results/gridss/P026/P026_high_confidence_somatic.vcf.bgz; Input files updated by another job: results/gridss/P026/P026_all_calls.vcf
+    wildcards: sample=P026
+    resources: tmpdir=/tmp
+
+
+        gridss_somatic_filter             --pondir results/gridss/pondir/             --ref BSgenome.Hsapiens.NCBI.T2T.CHM13v2.0             --input results/gridss/P026/P026_all_calls.vcf             --output results/gridss/P026/P026_high_confidence_somatic.vcf.bgz             --fulloutput results/gridss/P026/P026_high_and_low_confidence_somatic.vcf.bgz             --plotdir results/gridss/P026/plots/             -n 1             -t 2             &> logs/gridss/P026/P026_somatic_filter.log
+        
+
+[Tue May 14 19:51:54 2024]
+localrule gridss_somatic_filter:
+    input: results/gridss/P018/P018_all_calls.vcf, results/gridss/pondir/gridss_pon_breakpoint.bedpe
+    output: results/gridss/P018/P018_high_confidence_somatic.vcf.bgz, results/gridss/P018/P018_high_and_low_confidence_somatic.vcf.bgz
+    log: logs/gridss/P018/P018_somatic_filter.log
+    jobid: 152
+    reason: Missing output files: results/gridss/P018/P018_high_confidence_somatic.vcf.bgz; Input files updated by another job: results/gridss/P018/P018_all_calls.vcf
+    wildcards: sample=P018
+    resources: tmpdir=/tmp
+
+
+        gridss_somatic_filter             --pondir results/gridss/pondir/             --ref BSgenome.Hsapiens.NCBI.T2T.CHM13v2.0             --input results/gridss/P018/P018_all_calls.vcf             --output results/gridss/P018/P018_high_confidence_somatic.vcf.bgz             --fulloutput results/gridss/P018/P018_high_and_low_confidence_somatic.vcf.bgz             --plotdir results/gridss/P018/plots/             -n 1             -t 2             &> logs/gridss/P018/P018_somatic_filter.log
+        
+
+[Tue May 14 19:51:54 2024]
+localrule gridss_somatic_filter:
+    input: results/gridss/P020/P020_all_calls.vcf, results/gridss/pondir/gridss_pon_breakpoint.bedpe
+    output: results/gridss/P020/P020_high_confidence_somatic.vcf.bgz, results/gridss/P020/P020_high_and_low_confidence_somatic.vcf.bgz
+    log: logs/gridss/P020/P020_somatic_filter.log
+    jobid: 149
+    reason: Missing output files: results/gridss/P020/P020_high_confidence_somatic.vcf.bgz; Input files updated by another job: results/gridss/P020/P020_all_calls.vcf
+    wildcards: sample=P020
+    resources: tmpdir=/tmp
+
+
+        gridss_somatic_filter             --pondir results/gridss/pondir/             --ref BSgenome.Hsapiens.NCBI.T2T.CHM13v2.0             --input results/gridss/P020/P020_all_calls.vcf             --output results/gridss/P020/P020_high_confidence_somatic.vcf.bgz             --fulloutput results/gridss/P020/P020_high_and_low_confidence_somatic.vcf.bgz             --plotdir results/gridss/P020/plots/             -n 1             -t 2             &> logs/gridss/P020/P020_somatic_filter.log
+        
+
+[Tue May 14 19:51:54 2024]
+localrule gridss_somatic_filter:
+    input: results/gridss/P023/P023_all_calls.vcf, results/gridss/pondir/gridss_pon_breakpoint.bedpe
+    output: results/gridss/P023/P023_high_confidence_somatic.vcf.bgz, results/gridss/P023/P023_high_and_low_confidence_somatic.vcf.bgz
+    log: logs/gridss/P023/P023_somatic_filter.log
+    jobid: 153
+    reason: Missing output files: results/gridss/P023/P023_high_confidence_somatic.vcf.bgz; Input files updated by another job: results/gridss/P023/P023_all_calls.vcf
+    wildcards: sample=P023
+    resources: tmpdir=/tmp
+
+
+        gridss_somatic_filter             --pondir results/gridss/pondir/             --ref BSgenome.Hsapiens.NCBI.T2T.CHM13v2.0             --input results/gridss/P023/P023_all_calls.vcf             --output results/gridss/P023/P023_high_confidence_somatic.vcf.bgz             --fulloutput results/gridss/P023/P023_high_and_low_confidence_somatic.vcf.bgz             --plotdir results/gridss/P023/plots/             -n 1             -t 2             &> logs/gridss/P023/P023_somatic_filter.log
+        
+
+[Tue May 14 19:51:54 2024]
+localrule gridss_somatic_filter:
+    input: results/gridss/P019/P019_all_calls.vcf, results/gridss/pondir/gridss_pon_breakpoint.bedpe
+    output: results/gridss/P019/P019_high_confidence_somatic.vcf.bgz, results/gridss/P019/P019_high_and_low_confidence_somatic.vcf.bgz
+    log: logs/gridss/P019/P019_somatic_filter.log
+    jobid: 154
+    reason: Missing output files: results/gridss/P019/P019_high_confidence_somatic.vcf.bgz; Input files updated by another job: results/gridss/P019/P019_all_calls.vcf
+    wildcards: sample=P019
+    resources: tmpdir=/tmp
+
+
+        gridss_somatic_filter             --pondir results/gridss/pondir/             --ref BSgenome.Hsapiens.NCBI.T2T.CHM13v2.0             --input results/gridss/P019/P019_all_calls.vcf             --output results/gridss/P019/P019_high_confidence_somatic.vcf.bgz             --fulloutput results/gridss/P019/P019_high_and_low_confidence_somatic.vcf.bgz             --plotdir results/gridss/P019/plots/             -n 1             -t 2             &> logs/gridss/P019/P019_somatic_filter.log
+        
+
+[Tue May 14 19:51:54 2024]
+localrule gridss_somatic_filter:
+    input: results/gridss/P013/P013_all_calls.vcf, results/gridss/pondir/gridss_pon_breakpoint.bedpe
+    output: results/gridss/P013/P013_high_confidence_somatic.vcf.bgz, results/gridss/P013/P013_high_and_low_confidence_somatic.vcf.bgz
+    log: logs/gridss/P013/P013_somatic_filter.log
+    jobid: 151
+    reason: Missing output files: results/gridss/P013/P013_high_confidence_somatic.vcf.bgz; Input files updated by another job: results/gridss/P013/P013_all_calls.vcf
+    wildcards: sample=P013
+    resources: tmpdir=/tmp
+
+
+        gridss_somatic_filter             --pondir results/gridss/pondir/             --ref BSgenome.Hsapiens.NCBI.T2T.CHM13v2.0             --input results/gridss/P013/P013_all_calls.vcf             --output results/gridss/P013/P013_high_confidence_somatic.vcf.bgz             --fulloutput results/gridss/P013/P013_high_and_low_confidence_somatic.vcf.bgz             --plotdir results/gridss/P013/plots/             -n 1             -t 2             &> logs/gridss/P013/P013_somatic_filter.log
+        
+Waiting at most 5 seconds for missing files.
+MissingOutputException in rule gridss_somatic_filter in file /lustre1/project/stg_00096/home/rdewin/WGS/rules/gridss.smk, line 87:
+Job 149  completed successfully, but some output files are missing. Missing files after 5 seconds. This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait:
+results/gridss/P020/P020_high_confidence_somatic.vcf.bgz (missing locally, parent dir contents: P020_high_and_low_confidence_somatic.vcf.bgz.bgz.tbi, P020_high_confidence_somatic.vcf.bgz.bgz, P020_high_and_low_confidence_somatic.vcf.bgz.bgz, P020_all_calls.vcf.idx, P020_all_calls.vcf, plots, P020_high_confidence_somatic.vcf.bgz.bgz.tbi, P020_all_calls.vcf.assembly.bam)
+results/gridss/P020/P020_high_and_low_confidence_somatic.vcf.bgz (missing locally, parent dir contents: P020_high_and_low_confidence_somatic.vcf.bgz.bgz.tbi, P020_high_confidence_somatic.vcf.bgz.bgz, P020_high_and_low_confidence_somatic.vcf.bgz.bgz, P020_all_calls.vcf.idx, P020_all_calls.vcf, plots, P020_high_confidence_somatic.vcf.bgz.bgz.tbi, P020_all_calls.vcf.assembly.bam)
+Waiting at most 5 seconds for missing files.
+MissingOutputException in rule gridss_somatic_filter in file /lustre1/project/stg_00096/home/rdewin/WGS/rules/gridss.smk, line 87:
+Job 155  completed successfully, but some output files are missing. Missing files after 5 seconds. This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait:
+results/gridss/P022/P022_high_confidence_somatic.vcf.bgz (missing locally, parent dir contents: P022_all_calls.vcf.assembly.bam, P022_all_calls.vcf.idx, plots, P022_high_and_low_confidence_somatic.vcf.bgz.bgz.tbi, P022_high_and_low_confidence_somatic.vcf.bgz.bgz, P022_all_calls.vcf, P022_high_confidence_somatic.vcf.bgz.bgz.tbi, P022_high_confidence_somatic.vcf.bgz.bgz)
+results/gridss/P022/P022_high_and_low_confidence_somatic.vcf.bgz (missing locally, parent dir contents: P022_all_calls.vcf.assembly.bam, P022_all_calls.vcf.idx, plots, P022_high_and_low_confidence_somatic.vcf.bgz.bgz.tbi, P022_high_and_low_confidence_somatic.vcf.bgz.bgz, P022_all_calls.vcf, P022_high_confidence_somatic.vcf.bgz.bgz.tbi, P022_high_confidence_somatic.vcf.bgz.bgz)
+Waiting at most 5 seconds for missing files.
+MissingOutputException in rule gridss_somatic_filter in file /lustre1/project/stg_00096/home/rdewin/WGS/rules/gridss.smk, line 87:
+Job 151  completed successfully, but some output files are missing. Missing files after 5 seconds. This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait:
+results/gridss/P013/P013_high_confidence_somatic.vcf.bgz (missing locally, parent dir contents: P013_high_confidence_somatic.vcf.bgz.bgz, P013_all_calls.vcf.assembly.bam, plots, P013_all_calls.vcf, P013_high_and_low_confidence_somatic.vcf.bgz.bgz.tbi, P013_all_calls.vcf.idx, P013_high_and_low_confidence_somatic.vcf.bgz.bgz, P013_high_confidence_somatic.vcf.bgz.bgz.tbi)
+results/gridss/P013/P013_high_and_low_confidence_somatic.vcf.bgz (missing locally, parent dir contents: P013_high_confidence_somatic.vcf.bgz.bgz, P013_all_calls.vcf.assembly.bam, plots, P013_all_calls.vcf, P013_high_and_low_confidence_somatic.vcf.bgz.bgz.tbi, P013_all_calls.vcf.idx, P013_high_and_low_confidence_somatic.vcf.bgz.bgz, P013_high_confidence_somatic.vcf.bgz.bgz.tbi)
+Waiting at most 5 seconds for missing files.
+MissingOutputException in rule gridss_somatic_filter in file /lustre1/project/stg_00096/home/rdewin/WGS/rules/gridss.smk, line 87:
+Job 153  completed successfully, but some output files are missing. Missing files after 5 seconds. This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait:
+results/gridss/P023/P023_high_confidence_somatic.vcf.bgz (missing locally, parent dir contents: P023_all_calls.vcf.assembly.bam, P023_high_and_low_confidence_somatic.vcf.bgz.bgz, P023_high_confidence_somatic.vcf.bgz.bgz, plots, P023_all_calls.vcf, P023_high_and_low_confidence_somatic.vcf.bgz.bgz.tbi, P023_high_confidence_somatic.vcf.bgz.bgz.tbi, P023_all_calls.vcf.idx)
+results/gridss/P023/P023_high_and_low_confidence_somatic.vcf.bgz (missing locally, parent dir contents: P023_all_calls.vcf.assembly.bam, P023_high_and_low_confidence_somatic.vcf.bgz.bgz, P023_high_confidence_somatic.vcf.bgz.bgz, plots, P023_all_calls.vcf, P023_high_and_low_confidence_somatic.vcf.bgz.bgz.tbi, P023_high_confidence_somatic.vcf.bgz.bgz.tbi, P023_all_calls.vcf.idx)
+Waiting at most 5 seconds for missing files.
+MissingOutputException in rule gridss_somatic_filter in file /lustre1/project/stg_00096/home/rdewin/WGS/rules/gridss.smk, line 87:
+Job 136  completed successfully, but some output files are missing. Missing files after 5 seconds. This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait:
+results/gridss/P026/P026_high_confidence_somatic.vcf.bgz (missing locally, parent dir contents: P026_all_calls.vcf, P026_all_calls.vcf.assembly.bam, P026_all_calls.vcf.idx, plots, P026_high_confidence_somatic.vcf.bgz.bgz.tbi, P026_high_and_low_confidence_somatic.vcf.bgz.bgz.tbi, P026_high_and_low_confidence_somatic.vcf.bgz.bgz, P026_high_confidence_somatic.vcf.bgz.bgz)
+results/gridss/P026/P026_high_and_low_confidence_somatic.vcf.bgz (missing locally, parent dir contents: P026_all_calls.vcf, P026_all_calls.vcf.assembly.bam, P026_all_calls.vcf.idx, plots, P026_high_confidence_somatic.vcf.bgz.bgz.tbi, P026_high_and_low_confidence_somatic.vcf.bgz.bgz.tbi, P026_high_and_low_confidence_somatic.vcf.bgz.bgz, P026_high_confidence_somatic.vcf.bgz.bgz)
+Waiting at most 5 seconds for missing files.
+MissingOutputException in rule gridss_somatic_filter in file /lustre1/project/stg_00096/home/rdewin/WGS/rules/gridss.smk, line 87:
+Job 154  completed successfully, but some output files are missing. Missing files after 5 seconds. This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait:
+results/gridss/P019/P019_high_confidence_somatic.vcf.bgz (missing locally, parent dir contents: P019_all_calls.vcf, P019_high_confidence_somatic.vcf.bgz.bgz.tbi, plots, P019_all_calls.vcf.assembly.bam, P019_all_calls.vcf.idx, P019_high_and_low_confidence_somatic.vcf.bgz.bgz.tbi, P019_high_confidence_somatic.vcf.bgz.bgz, P019_high_and_low_confidence_somatic.vcf.bgz.bgz)
+results/gridss/P019/P019_high_and_low_confidence_somatic.vcf.bgz (missing locally, parent dir contents: P019_all_calls.vcf, P019_high_confidence_somatic.vcf.bgz.bgz.tbi, plots, P019_all_calls.vcf.assembly.bam, P019_all_calls.vcf.idx, P019_high_and_low_confidence_somatic.vcf.bgz.bgz.tbi, P019_high_confidence_somatic.vcf.bgz.bgz, P019_high_and_low_confidence_somatic.vcf.bgz.bgz)
+Waiting at most 5 seconds for missing files.
+MissingOutputException in rule gridss_somatic_filter in file /lustre1/project/stg_00096/home/rdewin/WGS/rules/gridss.smk, line 87:
+Job 152  completed successfully, but some output files are missing. Missing files after 5 seconds. This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait:
+results/gridss/P018/P018_high_confidence_somatic.vcf.bgz (missing locally, parent dir contents: P018_all_calls.vcf.assembly.bam, P018_all_calls.vcf, P018_high_and_low_confidence_somatic.vcf.bgz.bgz, plots, P018_all_calls.vcf.idx, P018_high_confidence_somatic.vcf.bgz.bgz.tbi, P018_high_and_low_confidence_somatic.vcf.bgz.bgz.tbi, P018_high_confidence_somatic.vcf.bgz.bgz)
+results/gridss/P018/P018_high_and_low_confidence_somatic.vcf.bgz (missing locally, parent dir contents: P018_all_calls.vcf.assembly.bam, P018_all_calls.vcf, P018_high_and_low_confidence_somatic.vcf.bgz.bgz, plots, P018_all_calls.vcf.idx, P018_high_confidence_somatic.vcf.bgz.bgz.tbi, P018_high_and_low_confidence_somatic.vcf.bgz.bgz.tbi, P018_high_confidence_somatic.vcf.bgz.bgz)
+[Tue May 14 20:33:50 2024]
+Finished job 32.
+8 of 21 steps (38%) done
+[Tue May 14 20:41:01 2024]
+Finished job 123.
+9 of 21 steps (43%) done
+[Tue May 14 21:03:21 2024]
+Finished job 110.
+10 of 21 steps (48%) done
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2024-05-14T132846.653502.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

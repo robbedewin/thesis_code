@@ -1,0 +1,395 @@
+Assuming unrestricted shared filesystem usage.
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 20
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job      count
+-----  -------
+all          1
+svaba       10
+total       11
+
+Select jobs to execute...
+Execute 2 jobs...
+
+[Mon May 13 11:58:02 2024]
+localrule svaba:
+    input: results/recal/P026/P026_dna_tumor_recal.bam, results/recal/P026/P026_dna_normal_recal.bam
+    output: results/svaba/P026/P026_svaba.somatic.sv.vcf, results/svaba/P026/P026_svaba.germline.sv.vcf, results/svaba/P026/P026_svaba.somatic.indel.vcf, results/svaba/P026/P026_svaba.germline.indel.vcf, results/svaba/P026/P026_svaba.unfiltered.somatic.sv.vcf, results/svaba/P026/P026_svaba.unfiltered.germline.sv.vcf, results/svaba/P026/P026_svaba.unfiltered.somatic.indel.vcf, results/svaba/P026/P026_svaba.unfiltered.germline.indel.vcf, results/svaba/P026/P026_alignments.txt.gz, results/svaba/P026/P026_bps.txt.gz, results/svaba/P026/P026_contigs.bam, results/svaba/P026/P026_discordant.txt.gz
+    log: logs/svaba/P026_svaba.log, logs/svaba/P026_svaba_full.log
+    jobid: 402
+    reason: Missing output files: results/svaba/P026/P026_svaba.somatic.sv.vcf
+    wildcards: sample=P026
+    threads: 8
+    resources: tmpdir=/tmp
+
+
+        svaba run             -t results/recal/P026/P026_dna_tumor_recal.bam -n results/recal/P026/P026_dna_normal_recal.bam             -G resources/genome.fa             -D resources/dbSNPv155_common.vcf.gz            -B resources/T2T.excluderanges.bed             -p 8             -a P026_svaba             &> logs/svaba/P026_svaba.log
+        
+        # Move output files to specified locations
+        mv P026_svaba.log logs/svaba/P026_svaba_full.log
+
+        mv P026_svaba.svaba.somatic.sv.vcf results/svaba/P026/P026_svaba.somatic.sv.vcf
+        mv P026_svaba.svaba.germline.sv.vcf results/svaba/P026/P026_svaba.germline.sv.vcf
+        mv P026_svaba.svaba.somatic.indel.vcf results/svaba/P026/P026_svaba.somatic.indel.vcf
+        mv P026_svaba.svaba.germline.indel.vcf results/svaba/P026/P026_svaba.germline.indel.vcf
+        mv P026_svaba.svaba.unfiltered.somatic.sv.vcf results/svaba/P026/P026_svaba.unfiltered.somatic.sv.vcf
+        mv P026_svaba.svaba.unfiltered.germline.sv.vcf results/svaba/P026/P026_svaba.unfiltered.germline.sv.vcf
+        mv P026_svaba.svaba.unfiltered.somatic.indel.vcf results/svaba/P026/P026_svaba.unfiltered.somatic.indel.vcf
+        mv P026_svaba.svaba.unfiltered.germline.indel.vcf results/svaba/P026/P026_svaba.unfiltered.germline.indel.vcf
+
+        mv P026_svaba.alignments.txt.gz results/svaba/P026/P026_alignments.txt.gz
+        mv P026_svaba.bps.txt.gz results/svaba/P026/P026_bps.txt.gz
+        mv P026_svaba.contigs.bam results/svaba/P026/P026_contigs.bam
+        mv P026_svaba.discordant.txt.gz results/svaba/P026/P026_discordant.txt.gz
+        
+
+[Mon May 13 11:58:03 2024]
+localrule svaba:
+    input: results/recal/P013/P013_dna_tumor_recal.bam, results/recal/P013/P013_dna_normal_recal.bam
+    output: results/svaba/P013/P013_svaba.somatic.sv.vcf, results/svaba/P013/P013_svaba.germline.sv.vcf, results/svaba/P013/P013_svaba.somatic.indel.vcf, results/svaba/P013/P013_svaba.germline.indel.vcf, results/svaba/P013/P013_svaba.unfiltered.somatic.sv.vcf, results/svaba/P013/P013_svaba.unfiltered.germline.sv.vcf, results/svaba/P013/P013_svaba.unfiltered.somatic.indel.vcf, results/svaba/P013/P013_svaba.unfiltered.germline.indel.vcf, results/svaba/P013/P013_alignments.txt.gz, results/svaba/P013/P013_bps.txt.gz, results/svaba/P013/P013_contigs.bam, results/svaba/P013/P013_discordant.txt.gz
+    log: logs/svaba/P013_svaba.log, logs/svaba/P013_svaba_full.log
+    jobid: 396
+    reason: Code has changed since last execution; Params have changed since last execution
+    wildcards: sample=P013
+    threads: 8
+    resources: tmpdir=/tmp
+
+
+        svaba run             -t results/recal/P013/P013_dna_tumor_recal.bam -n results/recal/P013/P013_dna_normal_recal.bam             -G resources/genome.fa             -D resources/dbSNPv155_common.vcf.gz            -B resources/T2T.excluderanges.bed             -p 8             -a P013_svaba             &> logs/svaba/P013_svaba.log
+        
+        # Move output files to specified locations
+        mv P013_svaba.log logs/svaba/P013_svaba_full.log
+
+        mv P013_svaba.svaba.somatic.sv.vcf results/svaba/P013/P013_svaba.somatic.sv.vcf
+        mv P013_svaba.svaba.germline.sv.vcf results/svaba/P013/P013_svaba.germline.sv.vcf
+        mv P013_svaba.svaba.somatic.indel.vcf results/svaba/P013/P013_svaba.somatic.indel.vcf
+        mv P013_svaba.svaba.germline.indel.vcf results/svaba/P013/P013_svaba.germline.indel.vcf
+        mv P013_svaba.svaba.unfiltered.somatic.sv.vcf results/svaba/P013/P013_svaba.unfiltered.somatic.sv.vcf
+        mv P013_svaba.svaba.unfiltered.germline.sv.vcf results/svaba/P013/P013_svaba.unfiltered.germline.sv.vcf
+        mv P013_svaba.svaba.unfiltered.somatic.indel.vcf results/svaba/P013/P013_svaba.unfiltered.somatic.indel.vcf
+        mv P013_svaba.svaba.unfiltered.germline.indel.vcf results/svaba/P013/P013_svaba.unfiltered.germline.indel.vcf
+
+        mv P013_svaba.alignments.txt.gz results/svaba/P013/P013_alignments.txt.gz
+        mv P013_svaba.bps.txt.gz results/svaba/P013/P013_bps.txt.gz
+        mv P013_svaba.contigs.bam results/svaba/P013/P013_contigs.bam
+        mv P013_svaba.discordant.txt.gz results/svaba/P013/P013_discordant.txt.gz
+        
+[Mon May 13 14:15:08 2024]
+Finished job 396.
+1 of 11 steps (9%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon May 13 14:15:12 2024]
+localrule svaba:
+    input: results/recal/P024/P024_dna_tumor_recal.bam, results/recal/P024/P024_dna_normal_recal.bam
+    output: results/svaba/P024/P024_svaba.somatic.sv.vcf, results/svaba/P024/P024_svaba.germline.sv.vcf, results/svaba/P024/P024_svaba.somatic.indel.vcf, results/svaba/P024/P024_svaba.germline.indel.vcf, results/svaba/P024/P024_svaba.unfiltered.somatic.sv.vcf, results/svaba/P024/P024_svaba.unfiltered.germline.sv.vcf, results/svaba/P024/P024_svaba.unfiltered.somatic.indel.vcf, results/svaba/P024/P024_svaba.unfiltered.germline.indel.vcf, results/svaba/P024/P024_alignments.txt.gz, results/svaba/P024/P024_bps.txt.gz, results/svaba/P024/P024_contigs.bam, results/svaba/P024/P024_discordant.txt.gz
+    log: logs/svaba/P024_svaba.log, logs/svaba/P024_svaba_full.log
+    jobid: 400
+    reason: Missing output files: results/svaba/P024/P024_svaba.somatic.sv.vcf
+    wildcards: sample=P024
+    threads: 8
+    resources: tmpdir=/tmp
+
+
+        svaba run             -t results/recal/P024/P024_dna_tumor_recal.bam -n results/recal/P024/P024_dna_normal_recal.bam             -G resources/genome.fa             -D resources/dbSNPv155_common.vcf.gz            -B resources/T2T.excluderanges.bed             -p 8             -a P024_svaba             &> logs/svaba/P024_svaba.log
+        
+        # Move output files to specified locations
+        mv P024_svaba.log logs/svaba/P024_svaba_full.log
+
+        mv P024_svaba.svaba.somatic.sv.vcf results/svaba/P024/P024_svaba.somatic.sv.vcf
+        mv P024_svaba.svaba.germline.sv.vcf results/svaba/P024/P024_svaba.germline.sv.vcf
+        mv P024_svaba.svaba.somatic.indel.vcf results/svaba/P024/P024_svaba.somatic.indel.vcf
+        mv P024_svaba.svaba.germline.indel.vcf results/svaba/P024/P024_svaba.germline.indel.vcf
+        mv P024_svaba.svaba.unfiltered.somatic.sv.vcf results/svaba/P024/P024_svaba.unfiltered.somatic.sv.vcf
+        mv P024_svaba.svaba.unfiltered.germline.sv.vcf results/svaba/P024/P024_svaba.unfiltered.germline.sv.vcf
+        mv P024_svaba.svaba.unfiltered.somatic.indel.vcf results/svaba/P024/P024_svaba.unfiltered.somatic.indel.vcf
+        mv P024_svaba.svaba.unfiltered.germline.indel.vcf results/svaba/P024/P024_svaba.unfiltered.germline.indel.vcf
+
+        mv P024_svaba.alignments.txt.gz results/svaba/P024/P024_alignments.txt.gz
+        mv P024_svaba.bps.txt.gz results/svaba/P024/P024_bps.txt.gz
+        mv P024_svaba.contigs.bam results/svaba/P024/P024_contigs.bam
+        mv P024_svaba.discordant.txt.gz results/svaba/P024/P024_discordant.txt.gz
+        
+[Mon May 13 14:37:47 2024]
+Finished job 402.
+2 of 11 steps (18%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon May 13 14:37:48 2024]
+localrule svaba:
+    input: results/recal/P016/P016_dna_tumor_recal.bam, results/recal/P016/P016_dna_normal_recal.bam
+    output: results/svaba/P016/P016_svaba.somatic.sv.vcf, results/svaba/P016/P016_svaba.germline.sv.vcf, results/svaba/P016/P016_svaba.somatic.indel.vcf, results/svaba/P016/P016_svaba.germline.indel.vcf, results/svaba/P016/P016_svaba.unfiltered.somatic.sv.vcf, results/svaba/P016/P016_svaba.unfiltered.germline.sv.vcf, results/svaba/P016/P016_svaba.unfiltered.somatic.indel.vcf, results/svaba/P016/P016_svaba.unfiltered.germline.indel.vcf, results/svaba/P016/P016_alignments.txt.gz, results/svaba/P016/P016_bps.txt.gz, results/svaba/P016/P016_contigs.bam, results/svaba/P016/P016_discordant.txt.gz
+    log: logs/svaba/P016_svaba.log, logs/svaba/P016_svaba_full.log
+    jobid: 394
+    reason: Missing output files: results/svaba/P016/P016_svaba.somatic.sv.vcf
+    wildcards: sample=P016
+    threads: 8
+    resources: tmpdir=/tmp
+
+
+        svaba run             -t results/recal/P016/P016_dna_tumor_recal.bam -n results/recal/P016/P016_dna_normal_recal.bam             -G resources/genome.fa             -D resources/dbSNPv155_common.vcf.gz            -B resources/T2T.excluderanges.bed             -p 8             -a P016_svaba             &> logs/svaba/P016_svaba.log
+        
+        # Move output files to specified locations
+        mv P016_svaba.log logs/svaba/P016_svaba_full.log
+
+        mv P016_svaba.svaba.somatic.sv.vcf results/svaba/P016/P016_svaba.somatic.sv.vcf
+        mv P016_svaba.svaba.germline.sv.vcf results/svaba/P016/P016_svaba.germline.sv.vcf
+        mv P016_svaba.svaba.somatic.indel.vcf results/svaba/P016/P016_svaba.somatic.indel.vcf
+        mv P016_svaba.svaba.germline.indel.vcf results/svaba/P016/P016_svaba.germline.indel.vcf
+        mv P016_svaba.svaba.unfiltered.somatic.sv.vcf results/svaba/P016/P016_svaba.unfiltered.somatic.sv.vcf
+        mv P016_svaba.svaba.unfiltered.germline.sv.vcf results/svaba/P016/P016_svaba.unfiltered.germline.sv.vcf
+        mv P016_svaba.svaba.unfiltered.somatic.indel.vcf results/svaba/P016/P016_svaba.unfiltered.somatic.indel.vcf
+        mv P016_svaba.svaba.unfiltered.germline.indel.vcf results/svaba/P016/P016_svaba.unfiltered.germline.indel.vcf
+
+        mv P016_svaba.alignments.txt.gz results/svaba/P016/P016_alignments.txt.gz
+        mv P016_svaba.bps.txt.gz results/svaba/P016/P016_bps.txt.gz
+        mv P016_svaba.contigs.bam results/svaba/P016/P016_contigs.bam
+        mv P016_svaba.discordant.txt.gz results/svaba/P016/P016_discordant.txt.gz
+        
+[Mon May 13 17:14:59 2024]
+Finished job 394.
+3 of 11 steps (27%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon May 13 17:15:01 2024]
+localrule svaba:
+    input: results/recal/P020/P020_dna_tumor_recal.bam, results/recal/P020/P020_dna_normal_recal.bam
+    output: results/svaba/P020/P020_svaba.somatic.sv.vcf, results/svaba/P020/P020_svaba.germline.sv.vcf, results/svaba/P020/P020_svaba.somatic.indel.vcf, results/svaba/P020/P020_svaba.germline.indel.vcf, results/svaba/P020/P020_svaba.unfiltered.somatic.sv.vcf, results/svaba/P020/P020_svaba.unfiltered.germline.sv.vcf, results/svaba/P020/P020_svaba.unfiltered.somatic.indel.vcf, results/svaba/P020/P020_svaba.unfiltered.germline.indel.vcf, results/svaba/P020/P020_alignments.txt.gz, results/svaba/P020/P020_bps.txt.gz, results/svaba/P020/P020_contigs.bam, results/svaba/P020/P020_discordant.txt.gz
+    log: logs/svaba/P020_svaba.log, logs/svaba/P020_svaba_full.log
+    jobid: 397
+    reason: Missing output files: results/svaba/P020/P020_svaba.somatic.sv.vcf
+    wildcards: sample=P020
+    threads: 8
+    resources: tmpdir=/tmp
+
+
+        svaba run             -t results/recal/P020/P020_dna_tumor_recal.bam -n results/recal/P020/P020_dna_normal_recal.bam             -G resources/genome.fa             -D resources/dbSNPv155_common.vcf.gz            -B resources/T2T.excluderanges.bed             -p 8             -a P020_svaba             &> logs/svaba/P020_svaba.log
+        
+        # Move output files to specified locations
+        mv P020_svaba.log logs/svaba/P020_svaba_full.log
+
+        mv P020_svaba.svaba.somatic.sv.vcf results/svaba/P020/P020_svaba.somatic.sv.vcf
+        mv P020_svaba.svaba.germline.sv.vcf results/svaba/P020/P020_svaba.germline.sv.vcf
+        mv P020_svaba.svaba.somatic.indel.vcf results/svaba/P020/P020_svaba.somatic.indel.vcf
+        mv P020_svaba.svaba.germline.indel.vcf results/svaba/P020/P020_svaba.germline.indel.vcf
+        mv P020_svaba.svaba.unfiltered.somatic.sv.vcf results/svaba/P020/P020_svaba.unfiltered.somatic.sv.vcf
+        mv P020_svaba.svaba.unfiltered.germline.sv.vcf results/svaba/P020/P020_svaba.unfiltered.germline.sv.vcf
+        mv P020_svaba.svaba.unfiltered.somatic.indel.vcf results/svaba/P020/P020_svaba.unfiltered.somatic.indel.vcf
+        mv P020_svaba.svaba.unfiltered.germline.indel.vcf results/svaba/P020/P020_svaba.unfiltered.germline.indel.vcf
+
+        mv P020_svaba.alignments.txt.gz results/svaba/P020/P020_alignments.txt.gz
+        mv P020_svaba.bps.txt.gz results/svaba/P020/P020_bps.txt.gz
+        mv P020_svaba.contigs.bam results/svaba/P020/P020_contigs.bam
+        mv P020_svaba.discordant.txt.gz results/svaba/P020/P020_discordant.txt.gz
+        
+[Mon May 13 19:12:07 2024]
+Finished job 400.
+4 of 11 steps (36%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon May 13 19:12:08 2024]
+localrule svaba:
+    input: results/recal/P023/P023_dna_tumor_recal.bam, results/recal/P023/P023_dna_normal_recal.bam
+    output: results/svaba/P023/P023_svaba.somatic.sv.vcf, results/svaba/P023/P023_svaba.germline.sv.vcf, results/svaba/P023/P023_svaba.somatic.indel.vcf, results/svaba/P023/P023_svaba.germline.indel.vcf, results/svaba/P023/P023_svaba.unfiltered.somatic.sv.vcf, results/svaba/P023/P023_svaba.unfiltered.germline.sv.vcf, results/svaba/P023/P023_svaba.unfiltered.somatic.indel.vcf, results/svaba/P023/P023_svaba.unfiltered.germline.indel.vcf, results/svaba/P023/P023_alignments.txt.gz, results/svaba/P023/P023_bps.txt.gz, results/svaba/P023/P023_contigs.bam, results/svaba/P023/P023_discordant.txt.gz
+    log: logs/svaba/P023_svaba.log, logs/svaba/P023_svaba_full.log
+    jobid: 393
+    reason: Missing output files: results/svaba/P023/P023_svaba.somatic.sv.vcf
+    wildcards: sample=P023
+    threads: 8
+    resources: tmpdir=/tmp
+
+
+        svaba run             -t results/recal/P023/P023_dna_tumor_recal.bam -n results/recal/P023/P023_dna_normal_recal.bam             -G resources/genome.fa             -D resources/dbSNPv155_common.vcf.gz            -B resources/T2T.excluderanges.bed             -p 8             -a P023_svaba             &> logs/svaba/P023_svaba.log
+        
+        # Move output files to specified locations
+        mv P023_svaba.log logs/svaba/P023_svaba_full.log
+
+        mv P023_svaba.svaba.somatic.sv.vcf results/svaba/P023/P023_svaba.somatic.sv.vcf
+        mv P023_svaba.svaba.germline.sv.vcf results/svaba/P023/P023_svaba.germline.sv.vcf
+        mv P023_svaba.svaba.somatic.indel.vcf results/svaba/P023/P023_svaba.somatic.indel.vcf
+        mv P023_svaba.svaba.germline.indel.vcf results/svaba/P023/P023_svaba.germline.indel.vcf
+        mv P023_svaba.svaba.unfiltered.somatic.sv.vcf results/svaba/P023/P023_svaba.unfiltered.somatic.sv.vcf
+        mv P023_svaba.svaba.unfiltered.germline.sv.vcf results/svaba/P023/P023_svaba.unfiltered.germline.sv.vcf
+        mv P023_svaba.svaba.unfiltered.somatic.indel.vcf results/svaba/P023/P023_svaba.unfiltered.somatic.indel.vcf
+        mv P023_svaba.svaba.unfiltered.germline.indel.vcf results/svaba/P023/P023_svaba.unfiltered.germline.indel.vcf
+
+        mv P023_svaba.alignments.txt.gz results/svaba/P023/P023_alignments.txt.gz
+        mv P023_svaba.bps.txt.gz results/svaba/P023/P023_bps.txt.gz
+        mv P023_svaba.contigs.bam results/svaba/P023/P023_contigs.bam
+        mv P023_svaba.discordant.txt.gz results/svaba/P023/P023_discordant.txt.gz
+        
+[Mon May 13 19:37:35 2024]
+Finished job 397.
+5 of 11 steps (45%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon May 13 19:37:35 2024]
+localrule svaba:
+    input: results/recal/P022/P022_dna_tumor_recal.bam, results/recal/P022/P022_dna_normal_recal.bam
+    output: results/svaba/P022/P022_svaba.somatic.sv.vcf, results/svaba/P022/P022_svaba.germline.sv.vcf, results/svaba/P022/P022_svaba.somatic.indel.vcf, results/svaba/P022/P022_svaba.germline.indel.vcf, results/svaba/P022/P022_svaba.unfiltered.somatic.sv.vcf, results/svaba/P022/P022_svaba.unfiltered.germline.sv.vcf, results/svaba/P022/P022_svaba.unfiltered.somatic.indel.vcf, results/svaba/P022/P022_svaba.unfiltered.germline.indel.vcf, results/svaba/P022/P022_alignments.txt.gz, results/svaba/P022/P022_bps.txt.gz, results/svaba/P022/P022_contigs.bam, results/svaba/P022/P022_discordant.txt.gz
+    log: logs/svaba/P022_svaba.log, logs/svaba/P022_svaba_full.log
+    jobid: 398
+    reason: Missing output files: results/svaba/P022/P022_svaba.somatic.sv.vcf
+    wildcards: sample=P022
+    threads: 8
+    resources: tmpdir=/tmp
+
+
+        svaba run             -t results/recal/P022/P022_dna_tumor_recal.bam -n results/recal/P022/P022_dna_normal_recal.bam             -G resources/genome.fa             -D resources/dbSNPv155_common.vcf.gz            -B resources/T2T.excluderanges.bed             -p 8             -a P022_svaba             &> logs/svaba/P022_svaba.log
+        
+        # Move output files to specified locations
+        mv P022_svaba.log logs/svaba/P022_svaba_full.log
+
+        mv P022_svaba.svaba.somatic.sv.vcf results/svaba/P022/P022_svaba.somatic.sv.vcf
+        mv P022_svaba.svaba.germline.sv.vcf results/svaba/P022/P022_svaba.germline.sv.vcf
+        mv P022_svaba.svaba.somatic.indel.vcf results/svaba/P022/P022_svaba.somatic.indel.vcf
+        mv P022_svaba.svaba.germline.indel.vcf results/svaba/P022/P022_svaba.germline.indel.vcf
+        mv P022_svaba.svaba.unfiltered.somatic.sv.vcf results/svaba/P022/P022_svaba.unfiltered.somatic.sv.vcf
+        mv P022_svaba.svaba.unfiltered.germline.sv.vcf results/svaba/P022/P022_svaba.unfiltered.germline.sv.vcf
+        mv P022_svaba.svaba.unfiltered.somatic.indel.vcf results/svaba/P022/P022_svaba.unfiltered.somatic.indel.vcf
+        mv P022_svaba.svaba.unfiltered.germline.indel.vcf results/svaba/P022/P022_svaba.unfiltered.germline.indel.vcf
+
+        mv P022_svaba.alignments.txt.gz results/svaba/P022/P022_alignments.txt.gz
+        mv P022_svaba.bps.txt.gz results/svaba/P022/P022_bps.txt.gz
+        mv P022_svaba.contigs.bam results/svaba/P022/P022_contigs.bam
+        mv P022_svaba.discordant.txt.gz results/svaba/P022/P022_discordant.txt.gz
+        
+[Mon May 13 21:18:41 2024]
+Finished job 393.
+6 of 11 steps (55%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon May 13 21:18:44 2024]
+localrule svaba:
+    input: results/recal/P018/P018_dna_tumor_recal.bam, results/recal/P018/P018_dna_normal_recal.bam
+    output: results/svaba/P018/P018_svaba.somatic.sv.vcf, results/svaba/P018/P018_svaba.germline.sv.vcf, results/svaba/P018/P018_svaba.somatic.indel.vcf, results/svaba/P018/P018_svaba.germline.indel.vcf, results/svaba/P018/P018_svaba.unfiltered.somatic.sv.vcf, results/svaba/P018/P018_svaba.unfiltered.germline.sv.vcf, results/svaba/P018/P018_svaba.unfiltered.somatic.indel.vcf, results/svaba/P018/P018_svaba.unfiltered.germline.indel.vcf, results/svaba/P018/P018_alignments.txt.gz, results/svaba/P018/P018_bps.txt.gz, results/svaba/P018/P018_contigs.bam, results/svaba/P018/P018_discordant.txt.gz
+    log: logs/svaba/P018_svaba.log, logs/svaba/P018_svaba_full.log
+    jobid: 399
+    reason: Missing output files: results/svaba/P018/P018_svaba.somatic.sv.vcf
+    wildcards: sample=P018
+    threads: 8
+    resources: tmpdir=/tmp
+
+
+        svaba run             -t results/recal/P018/P018_dna_tumor_recal.bam -n results/recal/P018/P018_dna_normal_recal.bam             -G resources/genome.fa             -D resources/dbSNPv155_common.vcf.gz            -B resources/T2T.excluderanges.bed             -p 8             -a P018_svaba             &> logs/svaba/P018_svaba.log
+        
+        # Move output files to specified locations
+        mv P018_svaba.log logs/svaba/P018_svaba_full.log
+
+        mv P018_svaba.svaba.somatic.sv.vcf results/svaba/P018/P018_svaba.somatic.sv.vcf
+        mv P018_svaba.svaba.germline.sv.vcf results/svaba/P018/P018_svaba.germline.sv.vcf
+        mv P018_svaba.svaba.somatic.indel.vcf results/svaba/P018/P018_svaba.somatic.indel.vcf
+        mv P018_svaba.svaba.germline.indel.vcf results/svaba/P018/P018_svaba.germline.indel.vcf
+        mv P018_svaba.svaba.unfiltered.somatic.sv.vcf results/svaba/P018/P018_svaba.unfiltered.somatic.sv.vcf
+        mv P018_svaba.svaba.unfiltered.germline.sv.vcf results/svaba/P018/P018_svaba.unfiltered.germline.sv.vcf
+        mv P018_svaba.svaba.unfiltered.somatic.indel.vcf results/svaba/P018/P018_svaba.unfiltered.somatic.indel.vcf
+        mv P018_svaba.svaba.unfiltered.germline.indel.vcf results/svaba/P018/P018_svaba.unfiltered.germline.indel.vcf
+
+        mv P018_svaba.alignments.txt.gz results/svaba/P018/P018_alignments.txt.gz
+        mv P018_svaba.bps.txt.gz results/svaba/P018/P018_bps.txt.gz
+        mv P018_svaba.contigs.bam results/svaba/P018/P018_contigs.bam
+        mv P018_svaba.discordant.txt.gz results/svaba/P018/P018_discordant.txt.gz
+        
+[Mon May 13 21:48:06 2024]
+Finished job 398.
+7 of 11 steps (64%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon May 13 21:48:06 2024]
+localrule svaba:
+    input: results/recal/P019/P019_dna_tumor_recal.bam, results/recal/P019/P019_dna_normal_recal.bam
+    output: results/svaba/P019/P019_svaba.somatic.sv.vcf, results/svaba/P019/P019_svaba.germline.sv.vcf, results/svaba/P019/P019_svaba.somatic.indel.vcf, results/svaba/P019/P019_svaba.germline.indel.vcf, results/svaba/P019/P019_svaba.unfiltered.somatic.sv.vcf, results/svaba/P019/P019_svaba.unfiltered.germline.sv.vcf, results/svaba/P019/P019_svaba.unfiltered.somatic.indel.vcf, results/svaba/P019/P019_svaba.unfiltered.germline.indel.vcf, results/svaba/P019/P019_alignments.txt.gz, results/svaba/P019/P019_bps.txt.gz, results/svaba/P019/P019_contigs.bam, results/svaba/P019/P019_discordant.txt.gz
+    log: logs/svaba/P019_svaba.log, logs/svaba/P019_svaba_full.log
+    jobid: 395
+    reason: Missing output files: results/svaba/P019/P019_svaba.somatic.sv.vcf
+    wildcards: sample=P019
+    threads: 8
+    resources: tmpdir=/tmp
+
+
+        svaba run             -t results/recal/P019/P019_dna_tumor_recal.bam -n results/recal/P019/P019_dna_normal_recal.bam             -G resources/genome.fa             -D resources/dbSNPv155_common.vcf.gz            -B resources/T2T.excluderanges.bed             -p 8             -a P019_svaba             &> logs/svaba/P019_svaba.log
+        
+        # Move output files to specified locations
+        mv P019_svaba.log logs/svaba/P019_svaba_full.log
+
+        mv P019_svaba.svaba.somatic.sv.vcf results/svaba/P019/P019_svaba.somatic.sv.vcf
+        mv P019_svaba.svaba.germline.sv.vcf results/svaba/P019/P019_svaba.germline.sv.vcf
+        mv P019_svaba.svaba.somatic.indel.vcf results/svaba/P019/P019_svaba.somatic.indel.vcf
+        mv P019_svaba.svaba.germline.indel.vcf results/svaba/P019/P019_svaba.germline.indel.vcf
+        mv P019_svaba.svaba.unfiltered.somatic.sv.vcf results/svaba/P019/P019_svaba.unfiltered.somatic.sv.vcf
+        mv P019_svaba.svaba.unfiltered.germline.sv.vcf results/svaba/P019/P019_svaba.unfiltered.germline.sv.vcf
+        mv P019_svaba.svaba.unfiltered.somatic.indel.vcf results/svaba/P019/P019_svaba.unfiltered.somatic.indel.vcf
+        mv P019_svaba.svaba.unfiltered.germline.indel.vcf results/svaba/P019/P019_svaba.unfiltered.germline.indel.vcf
+
+        mv P019_svaba.alignments.txt.gz results/svaba/P019/P019_alignments.txt.gz
+        mv P019_svaba.bps.txt.gz results/svaba/P019/P019_bps.txt.gz
+        mv P019_svaba.contigs.bam results/svaba/P019/P019_contigs.bam
+        mv P019_svaba.discordant.txt.gz results/svaba/P019/P019_discordant.txt.gz
+        
+[Mon May 13 23:54:40 2024]
+Finished job 399.
+8 of 11 steps (73%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon May 13 23:54:41 2024]
+localrule svaba:
+    input: results/recal/P028/P028_dna_tumor_recal.bam, results/recal/P028/P028_dna_normal_recal.bam
+    output: results/svaba/P028/P028_svaba.somatic.sv.vcf, results/svaba/P028/P028_svaba.germline.sv.vcf, results/svaba/P028/P028_svaba.somatic.indel.vcf, results/svaba/P028/P028_svaba.germline.indel.vcf, results/svaba/P028/P028_svaba.unfiltered.somatic.sv.vcf, results/svaba/P028/P028_svaba.unfiltered.germline.sv.vcf, results/svaba/P028/P028_svaba.unfiltered.somatic.indel.vcf, results/svaba/P028/P028_svaba.unfiltered.germline.indel.vcf, results/svaba/P028/P028_alignments.txt.gz, results/svaba/P028/P028_bps.txt.gz, results/svaba/P028/P028_contigs.bam, results/svaba/P028/P028_discordant.txt.gz
+    log: logs/svaba/P028_svaba.log, logs/svaba/P028_svaba_full.log
+    jobid: 401
+    reason: Missing output files: results/svaba/P028/P028_svaba.somatic.sv.vcf
+    wildcards: sample=P028
+    threads: 8
+    resources: tmpdir=/tmp
+
+
+        svaba run             -t results/recal/P028/P028_dna_tumor_recal.bam -n results/recal/P028/P028_dna_normal_recal.bam             -G resources/genome.fa             -D resources/dbSNPv155_common.vcf.gz            -B resources/T2T.excluderanges.bed             -p 8             -a P028_svaba             &> logs/svaba/P028_svaba.log
+        
+        # Move output files to specified locations
+        mv P028_svaba.log logs/svaba/P028_svaba_full.log
+
+        mv P028_svaba.svaba.somatic.sv.vcf results/svaba/P028/P028_svaba.somatic.sv.vcf
+        mv P028_svaba.svaba.germline.sv.vcf results/svaba/P028/P028_svaba.germline.sv.vcf
+        mv P028_svaba.svaba.somatic.indel.vcf results/svaba/P028/P028_svaba.somatic.indel.vcf
+        mv P028_svaba.svaba.germline.indel.vcf results/svaba/P028/P028_svaba.germline.indel.vcf
+        mv P028_svaba.svaba.unfiltered.somatic.sv.vcf results/svaba/P028/P028_svaba.unfiltered.somatic.sv.vcf
+        mv P028_svaba.svaba.unfiltered.germline.sv.vcf results/svaba/P028/P028_svaba.unfiltered.germline.sv.vcf
+        mv P028_svaba.svaba.unfiltered.somatic.indel.vcf results/svaba/P028/P028_svaba.unfiltered.somatic.indel.vcf
+        mv P028_svaba.svaba.unfiltered.germline.indel.vcf results/svaba/P028/P028_svaba.unfiltered.germline.indel.vcf
+
+        mv P028_svaba.alignments.txt.gz results/svaba/P028/P028_alignments.txt.gz
+        mv P028_svaba.bps.txt.gz results/svaba/P028/P028_bps.txt.gz
+        mv P028_svaba.contigs.bam results/svaba/P028/P028_contigs.bam
+        mv P028_svaba.discordant.txt.gz results/svaba/P028/P028_discordant.txt.gz
+        
+[Tue May 14 00:17:20 2024]
+Finished job 395.
+9 of 11 steps (82%) done
+[Tue May 14 04:43:29 2024]
+Finished job 401.
+10 of 11 steps (91%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue May 14 04:43:30 2024]
+localrule all:
+    input: results/qc/multiqc_test.html, results/ascat/P023, results/ascat/P016, results/ascat/P019, results/ascat/P013, results/ascat/P020, results/ascat/P022, results/ascat/P018, results/ascat/P024, results/ascat/P028, results/ascat/P026, results/mutect2/P023/P023_pass_variants.vcf, results/mutect2/P016/P016_pass_variants.vcf, results/mutect2/P019/P019_pass_variants.vcf, results/mutect2/P013/P013_pass_variants.vcf, results/mutect2/P020/P020_pass_variants.vcf, results/mutect2/P022/P022_pass_variants.vcf, results/mutect2/P018/P018_pass_variants.vcf, results/mutect2/P024/P024_pass_variants.vcf, results/mutect2/P028/P028_pass_variants.vcf, results/mutect2/P026/P026_pass_variants.vcf, results/mutect2/P023/P023_pass_variants_lifted.vcf, results/mutect2/P016/P016_pass_variants_lifted.vcf, results/mutect2/P019/P019_pass_variants_lifted.vcf, results/mutect2/P013/P013_pass_variants_lifted.vcf, results/mutect2/P020/P020_pass_variants_lifted.vcf, results/mutect2/P022/P022_pass_variants_lifted.vcf, results/mutect2/P018/P018_pass_variants_lifted.vcf, results/mutect2/P024/P024_pass_variants_lifted.vcf, results/mutect2/P028/P028_pass_variants_lifted.vcf, results/mutect2/P026/P026_pass_variants_lifted.vcf, results/mutect2/P023/P023_annotated_lifted_variants.maf, results/mutect2/P016/P016_annotated_lifted_variants.maf, results/mutect2/P019/P019_annotated_lifted_variants.maf, results/mutect2/P013/P013_annotated_lifted_variants.maf, results/mutect2/P020/P020_annotated_lifted_variants.maf, results/mutect2/P022/P022_annotated_lifted_variants.maf, results/mutect2/P018/P018_annotated_lifted_variants.maf, results/mutect2/P024/P024_annotated_lifted_variants.maf, results/mutect2/P028/P028_annotated_lifted_variants.maf, results/mutect2/P026/P026_annotated_lifted_variants.maf, results/svaba/P023/P023_svaba.somatic.sv.vcf, results/svaba/P016/P016_svaba.somatic.sv.vcf, results/svaba/P019/P019_svaba.somatic.sv.vcf, results/svaba/P013/P013_svaba.somatic.sv.vcf, results/svaba/P020/P020_svaba.somatic.sv.vcf, results/svaba/P022/P022_svaba.somatic.sv.vcf, results/svaba/P018/P018_svaba.somatic.sv.vcf, results/svaba/P024/P024_svaba.somatic.sv.vcf, results/svaba/P028/P028_svaba.somatic.sv.vcf, results/svaba/P026/P026_svaba.somatic.sv.vcf
+    jobid: 0
+    reason: Input files updated by another job: results/svaba/P013/P013_svaba.somatic.sv.vcf, results/svaba/P019/P019_svaba.somatic.sv.vcf, results/svaba/P020/P020_svaba.somatic.sv.vcf, results/svaba/P018/P018_svaba.somatic.sv.vcf, results/svaba/P016/P016_svaba.somatic.sv.vcf, results/svaba/P022/P022_svaba.somatic.sv.vcf, results/svaba/P028/P028_svaba.somatic.sv.vcf, results/svaba/P024/P024_svaba.somatic.sv.vcf, results/svaba/P023/P023_svaba.somatic.sv.vcf, results/svaba/P026/P026_svaba.somatic.sv.vcf
+    resources: tmpdir=/tmp
+
+[Tue May 14 04:43:30 2024]
+Finished job 0.
+11 of 11 steps (100%) done
+Complete log: .snakemake/log/2024-05-13T115750.157571.snakemake.log

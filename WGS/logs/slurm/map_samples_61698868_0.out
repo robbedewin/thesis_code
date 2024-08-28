@@ -1,0 +1,17 @@
+SLURM_JOB_ID: 61698869
+SLURM_JOB_USER: vsc35407
+SLURM_JOB_ACCOUNT: lp_big_wice_cpu
+SLURM_JOB_NAME: map_samples
+SLURM_CLUSTER_NAME: wice
+SLURM_JOB_PARTITION: dedicated_big_bigmem
+SLURM_ARRAY_JOB_ID: 61698868
+SLURM_ARRAY_TASK_ID: 0
+SLURM_NNODES: 1
+SLURM_NODELIST: i28l10
+SLURM_JOB_CPUS_PER_NODE: 40
+Date: Fri Jun 21 10:42:27 CEST 2024
+Walltime: 02-00:00:00
+========================================================================
+Fri Jun 21 10:42:27 CEST 2024
+Processing sample: P029
+Snakemake completed successfully for sample P029 at Fri Jun 21 12:37:00 CEST 2024

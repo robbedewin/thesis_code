@@ -1,0 +1,33 @@
+Assuming unrestricted shared filesystem usage.
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 4
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job            count
+-----------  -------
+mutect_pon1        1
+total              1
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Jun 24 14:49:52 2024]
+localrule mutect_pon1:
+    input: resources/genome.fa, results/recal/P086/P086_dna_normal_recal.bam
+    output: results/mutect2/pon/P086_normal_for_pon.vcf.gz
+    log: logs/mutect2/pon/P086.log
+    jobid: 0
+    reason: Forced execution
+    wildcards: sample=P086
+    threads: 4
+    resources: tmpdir=/tmp
+
+
+        gatk --java-options "-Xmx200g -XX:+UseParallelGC -XX:ParallelGCThreads=4"         Mutect2             -R resources/genome.fa             -I results/recal/P086/P086_dna_normal_recal.bam             --max-mnp-distance 0             -O results/mutect2/pon/P086_normal_for_pon.vcf.gz             2>logs/mutect2/pon/P086.log
+        
+[Tue Jun 25 04:09:41 2024]
+Finished job 0.
+1 of 1 steps (100%) done
+Complete log: .snakemake/log/2024-06-24T144951.131334.snakemake.log
