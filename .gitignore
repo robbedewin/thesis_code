@@ -1,6 +1,12 @@
 # Ignore everything
 *
 
+# Ignore everything in .snakemake directories
+RNA/.snakemake/
+WGS/.snakemake/
+ATAC/.snakemake/
+
+
 # But not these files and directories
 !.gitignore
 !WGS/Snakefile
