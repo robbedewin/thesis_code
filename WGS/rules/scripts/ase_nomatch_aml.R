@@ -1,9 +1,23 @@
-.libPaths("/staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/R/lib/R/library")
+.libPaths("/staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/ASE/lib/R/library")
 ## analysis pipeline
+#install the packages if necessary
+if (!require("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+BiocManager::install("BSgenome.Hsapiens.NCBI.T2T.CHM13v2.0")
+BiocManager::install("BSgenome.Hsapiens.UCSC.hs1")
+install.packages("VGAM")
+install.packages("rslurm")
+install.packages("readr")
+BiocManager::install("VariantAnnotation")
+BiocManager::install("biomaRt")
+
+
 library(readr)
 library(VariantAnnotation)
 library(BSgenome.Hsapiens.NCBI.T2T.CHM13v2.0)
-# library(BSgenome.Hsapiens.1000genomes.hs37d5)
+bsgenome_T2T <- BSgenome.Hsapiens.NCBI.T2T.CHM13v2.0
+library(BSgenome.Hsapiens.UCSC.hs1)
+bsgenome_hs1 <- BSgenome.Hsapiens.UCSC.hs1
 # bsgenome_hs37d5 <- BSgenome.Hsapiens.1000genomes.hs37d5
 # library(BSgenome.Hsapiens.UCSC.hg19)
 # bsgenome_hg19 <- BSgenome.Hsapiens.UCSC.hg19
@@ -96,62 +110,212 @@ ALLELESDIR <- "/staging/leuven/stg_00096/home/rdewin/projects/ascat/chm13/Refere
 # }
 
 
-## collect allelecounts for ref and alt, keep only those sites exceeding minimal depth requirement for each
-get_alleles_chr_nomatch <- function(chr, allelesdir, countsdir, mindepth = 3, sample_id, alias) {
-  allelesfile <- file.path(allelesdir, paste0("allele_T2T_chr", chr, ".txt"))   #allelesfile <- file.path(allelesdir, paste0("1000genomesAlleles2013v5b_chr", chr, ".txt"))
-  countsfile <- file.path(countsdir, paste0(sample_id, "/alleleFrequencies/", sample_id, "_", alias, "_alleleFrequencies_chr",  chr, ".txt"))
-  outfile_allelecounts <- file.path(countsdir, paste0(sample_id, "_inform_alleles_nomatch_chr", chr, ".txt"))
+# ## collect allelecounts for ref and alt, keep only those sites exceeding minimal depth requirement for each
+# get_alleles_chr_nomatch <- function(chr, allelesdir, countsdir, mindepth = 3, sample_id, alias) {
+#   allelesfile <- file.path(allelesdir, paste0("allele_T2T_chr", chr, ".txt"))   #allelesfile <- file.path(allelesdir, paste0("1000genomesAlleles2013v5b_chr", chr, ".txt"))
+#   countsfile <- file.path(countsdir, paste0(sample_id, "/alleleFrequencies/", sample_id, "_", alias, "_alleleFrequencies_chr",  chr, ".txt"))
+#   outfile_allelecounts <- file.path(countsdir, paste0("ASE_test/", sample_id, "_", alias, "_inform_alleles_nomatch_chr", chr, ".txt"))
   
-  alleles <- read_tsv(file = allelesfile, col_names = c("pos", "ref", "alt"), col_types = "ciii")
+#   # Ensure the output directory exists
+#   outdir <- dirname(outfile_allelecounts)
+#   if (!dir.exists(outdir)) {
+#     dir.create(outdir, recursive = TRUE)
+#   }
+
+#   #alleles <- read_tsv(file = allelesfile, col_names = c("pos", "ref", "alt"), col_types = "iii")
+#   alleles <- read_tsv(file = allelesfile, col_names = TRUE, col_types = "iii")
+#   colnames(alleles) <- c("pos", "ref", "alt")
+#   counts <- read_tsv(file = countsfile, col_names = c("chr", "pos", "count_A", "count_C", "count_G", "count_T", "depth"), col_types = "ciiiiii", comment = "#")
+#   alleles$count_ref <- ifelse(alleles$ref == 1, counts$count_A,
+#                               ifelse(alleles$ref == 2, counts$count_C, 
+#                                      ifelse(alleles$ref == 3, counts$count_G, counts$count_T)))
+#   alleles$count_alt <- ifelse(alleles$alt == 1, counts$count_A,
+#                               ifelse(alleles$alt == 2, counts$count_C, 
+#                                      ifelse(alleles$alt == 3, counts$count_G, counts$count_T)))
+  
+#   output <- alleles[alleles$count_ref >= mindepth & alleles$count_alt >= mindepth, ]
+#   write_tsv(x = output, path = outfile_allelecounts, col_names = T)
+#   return(NULL)
+# }
+
+get_alleles_chr_nomatch <- function(chr, allelesdir, countsdir, mindepth = 3, sample_id, alias = "tumor") {
+  # Define the conversion map
+  conversion <- c("1" = "A", "2" = "C", "3" = "G", "4" = "T")
+  
+  # Construct file paths
+  allelesfile <- file.path(allelesdir, paste0("allele_T2T_chr", chr, ".txt"))
+  countsfile <- file.path(countsdir, paste0(sample_id, "/alleleFrequencies/", sample_id, "_", alias, "_alleleFrequencies_chr", chr, ".txt"))
+  outfile_allelecounts <- file.path(countsdir, paste0(sample_id, "_", alias, "_inform_alleles_nomatch_chr", chr, ".txt"))
+  
+  # Ensure the output directory exists
+  outdir <- dirname(outfile_allelecounts)
+  if (!dir.exists(outdir)) {
+    dir.create(outdir, recursive = TRUE)
+  }
+  
+  # Read the alleles data with original column names
+  alleles <- read_tsv(file = allelesfile, col_names = TRUE, col_types = "iii")
+  
+  # Rename the columns to c("pos", "ref", "alt")
+  colnames(alleles) <- c("pos", "ref", "alt")
+  
+  # Convert numeric alleles to nucleotide bases
+  alleles$ref <- conversion[as.character(alleles$ref)]
+  alleles$alt <- conversion[as.character(alleles$alt)]
+  
+  # Read the counts data with specified column types
   counts <- read_tsv(file = countsfile, col_names = c("chr", "pos", "count_A", "count_C", "count_G", "count_T", "depth"), col_types = "ciiiiii", comment = "#")
-  alleles$count_ref <- ifelse(alleles$ref == 1, counts$count_A,
-                              ifelse(alleles$ref == 2, counts$count_C, 
-                                     ifelse(alleles$ref == 3, counts$count_G, counts$count_T)))
-  alleles$count_alt <- ifelse(alleles$alt == 1, counts$count_A,
-                              ifelse(alleles$alt == 2, counts$count_C, 
-                                     ifelse(alleles$alt == 3, counts$count_G, counts$count_T)))
   
+  # Assign the chromosome name to the alleles data
+  alleles <- cbind(chr = counts$chr, alleles)
+  
+  # Calculate reference and alternate allele counts
+  alleles$count_ref <- ifelse(alleles$ref == "A", counts$count_A,
+                              ifelse(alleles$ref == "C", counts$count_C, 
+                                     ifelse(alleles$ref == "G", counts$count_G, counts$count_T)))
+  alleles$count_alt <- ifelse(alleles$alt == "A", counts$count_A,
+                              ifelse(alleles$alt == "C", counts$count_C, 
+                                     ifelse(alleles$alt == "G", counts$count_G, counts$count_T)))
+  
+  # Filter data based on minimum depth
   output <- alleles[alleles$count_ref >= mindepth & alleles$count_alt >= mindepth, ]
+  
+  # Write the filtered data to output file
   write_tsv(x = output, path = outfile_allelecounts, col_names = F)
+  
   return(NULL)
 }
 
 # Testing fucntion with debug 
 # Define input parameters
-chr <- 1
+chr <- 4
 allelesdir <- "/staging/leuven/stg_00096/home/rdewin/projects/ascat/chm13/ReferenceFiles/"
-countsdir <- "/staging/leuven/stg_00096/home/rdewin/WGS/results/ascat/"
+countsdir <- "/staging/leuven/stg_00096/home/rdewin/ASE/"
 mindepth <- 3
 sample_id <- "P011"
 alias <- "tumor"
 
 # Call the function
+chromosomes <- c(1:22, "X")
+
+for (chr in chromosomes) {
+  # Call the function for each chromosome
+  get_alleles_chr_nomatch(chr, allelesdir, countsdir, mindepth, sample_id, alias)
+}
+
 get_alleles_chr_nomatch(chr, allelesdir, countsdir, mindepth, sample_id, alias)
 
 
-combine_loci_nomatch <- function(countsdir, sample_id) {
-  
+
+combine_loci_nomatch <- function(countsdir, sample_id, alias="tumor") {
+   # List files in the counts directory matching the pattern
   allelecounts_files <- list.files(path = countsdir, pattern = "_inform_alleles_nomatch_chr", full.names = T)
+
+  # Combine the allele counts files
   allelecounts <- do.call(rbind, lapply(X = allelecounts_files, FUN = read_tsv, col_names = c("chr", "pos", "ref", "alt", "count_ref", "count_alt"), col_types = "ciccii"))
   
+  # Write the combined allele counts to a file
   outfile <- file.path(countsdir, paste0(sample_id, "_hetSNPs_nomatch.txt"))
-  write_tsv(x = allelecounts, path = outfile, col_names = T)
+  write_tsv(x = allelecounts, path = outfile, col_names = TRUE)
   
+  # Write the combined allele counts to a VCF file
   locivcf <- file.path(countsdir, paste0(sample_id, "_hetSNPs_nomatch.vcf"))
-  ## annoyingly, transcriptome is mapped to hg19, while exomes are mapped to 1000G_GRCh37d5 (positions of main chroms match, but names differ of course)
-  if (any(grepl(pattern = "^chr", x = allelecounts$chr[sample(x = 1:nrow(allelecounts), size = 100, replace = T)]))) {
-    allelecounts_vr <- VRanges(seqnames = allelecounts$chr, ranges = IRanges(start = allelecounts$pos, end = allelecounts$pos), ref = allelecounts$ref, alt = allelecounts$alt, seqinfo = seqinfo(bsgenome_hs37d5))
+
+  # # Determine if the chromosome names start with "chr" and adjust if necessary
+  # if (any(grepl(pattern = "^chr", x = allelecounts$chr[sample(x = 1:nrow(allelecounts), size = 100, replace = TRUE)]))) {
+  #   allelecounts$chr <- sub(pattern = "^chr", replacement = "", x = allelecounts$chr)
+  # }
+
+  # # Ensure the chromosome names match the seqnames in bsgenome_T2T
+  # valid_seqnames <- seqnames(bsgenome_T2T)
+  # if (!all(allelecounts$chr %in% valid_seqnames)) {
+  #   stop("Some chromosome names in allelecounts do not match the sequence names in bsgenome_T2T")
+  # }
+
+  # # Create the VRanges object with the correct seqinfo
+  # allelecounts_vr <- VRanges(
+  #   seqnames = allelecounts$chr,
+  #   ranges = IRanges(start = allelecounts$pos, end = allelecounts$pos),
+  #   ref = allelecounts$ref,
+  #   alt = allelecounts$alt,
+  #   seqinfo = seqinfo(bsgenome_hs1)
+  # )
+  
+  
+  # Determine if the chromosome names start with "chr" hs1 is 'chr' based and T2T is not
+  if (any(grepl(pattern = "^chr", x = allelecounts$chr[sample(x = 1:nrow(allelecounts), size = 100, replace = TRUE)]))) {
+    allelecounts_vr <- VRanges(seqnames = allelecounts$chr,
+                               ranges = IRanges(start = allelecounts$pos, end = allelecounts$pos),
+                               ref = allelecounts$ref, alt = allelecounts$alt,
+                               seqinfo = seqinfo(bsgenome_hs1))
   } else {
-    allelecounts_vr <- VRanges(seqnames = paste0("chr", allelecounts$chr), ranges = IRanges(start = allelecounts$pos, end = allelecounts$pos), ref = allelecounts$ref, alt = allelecounts$alt, seqinfo = seqinfo(bsgenome_hg19))
+    allelecounts_vr <- VRanges(seqnames = paste0("chr", allelecounts$chr),
+                               ranges = IRanges(start = allelecounts$pos, end = allelecounts$pos),
+                               ref = allelecounts$ref, alt = allelecounts$alt,
+                               seqinfo = seqinfo(bsgenome_T2T))
   }
+
+  # Add genotype fields
+  geno(allelecounts_vr) <- SimpleList(
+    DP = as.integer(allelecounts$count_ref + allelecounts$count_alt),
+    AD = matrix(c(allelecounts$count_ref, allelecounts$count_alt), ncol = 2, byrow = TRUE)
+  )
+  
   allelecounts_vr <- sort(allelecounts_vr)
   sampleNames(allelecounts_vr) <- sample_id
-  writeVcf(obj = allelecounts_vr, filename = locivcf, index = T)
+  
+  # Write the VRanges object to a VCF file
+  writeVcf(obj = allelecounts_vr, filename = locivcf, index = TRUE)
   
   return(NULL)
 }
 
 
+combine_loci_nomatch <- function(countsdir, sample_id, alias="tumor") {
+  # List files in the counts directory matching the pattern
+  allelecounts_files <- list.files(path = countsdir, pattern = "_inform_alleles_nomatch_chr", full.names = TRUE)
+
+  # Combine the allele counts files
+  allelecounts <- do.call(rbind, lapply(X = allelecounts_files, FUN = read_tsv, col_names = c("chr", "pos", "ref", "alt", "count_ref", "count_alt"), col_types = "ciccii"))
+  
+  # Write the combined allele counts to a file
+  outfile <- file.path(countsdir, paste0(sample_id, "_hetSNPs_nomatch.txt"))
+  write_tsv(x = allelecounts, path = outfile, col_names = TRUE)
+  
+  # Write the combined allele counts to a VCF file
+  locivcf <- file.path(countsdir, paste0(sample_id, "_hetSNPs_nomatch.vcf"))
+
+  # Determine if the chromosome names start with "chr"
+  if (any(grepl(pattern = "^chr", x = allelecounts$chr[sample(x = 1:nrow(allelecounts), size = 100, replace = TRUE)]))) {
+    seqinfo <- seqinfo(bsgenome_hs1)
+    allelecounts$chr <- allelecounts$chr
+  } else {
+    seqinfo <- seqinfo(bsgenome_T2T)
+    allelecounts$chr <- paste0("chr", allelecounts$chr)
+  }
+
+
+  # Create GRanges object
+  gr <- GRanges(seqnames = allelecounts$chr,
+                ranges = IRanges(start = allelecounts$pos, end = allelecounts$pos),
+                seqinfo = seqinfo)
+  
+  # Create colData DataFrame
+  col_data <- DataFrame(row.names = sample_id)
+  
+  # Create VCF object
+  vcf <- VCF(rowRanges = gr,
+             colData = col_data,
+             geno = SimpleList(
+               DP = matrix(as.integer(allelecounts$count_ref + allelecounts$count_alt), ncol = 1),
+               AD = matrix(c(allelecounts$count_ref, allelecounts$count_alt), ncol = 2, byrow = FALSE)
+             ))
+
+  # Write VCF to file
+  writeVcf(vcf, locivcf)
+  
+  return(NULL)
+}
 ## Use ASEReadCounter to get allelecounts on the RNA
 
 ASEReadCount <- function(hetSNPvcf, bamfile, refgenome, outfile, minBaseQ = 20, minMapQ = 35) {
@@ -169,6 +333,117 @@ ASEReadCount <- function(hetSNPvcf, bamfile, refgenome, outfile, minBaseQ = 20, 
   system(cmd, wait = T)
   # return(cmd)
 }
+
+ASEReadCount <- function(hetSNPvcf, bamfile, refgenome, outfile, minBaseQ = 20, minMapQ = 35) {
+  # Path to GATK executable
+  GATK_CMD <- "/staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/WGS/bin/gatk"
+
+  cmd <- paste0(
+    GATK_CMD, " ASEReadCounter",
+    " -R ", refgenome,
+    " -I ", bamfile,
+    " -V ", hetSNPvcf,
+    " -O ", outfile,
+    " -U ALLOW_N_CIGAR_READS",
+    " -minDepth 1",
+    " --minMappingQuality ", minMapQ,
+    " --minBaseQuality ", minBaseQ,
+    " --countOverlapReadsType COUNT_FRAGMENTS_REQUIRE_SAME_BASE"
+  )
+
+  # Print the command for debugging
+  cat("Executing command:\n", cmd, "\n")
+
+  # Execute the command
+  system(cmd, wait = TRUE)
+}
+
+ASEReadCount <- function(hetSNPvcf, bamfile, refgenome, outfile, minBaseQ = 20, minMapQ = 35) {
+  # Path to Java executable in Conda environment
+  JAVA_CMD <- "/staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/WGS/bin/java"
+  
+  # Path to GATK jar file
+  GATK_JAR <- "/staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gatk4-4.5.0.0-0/gatk-package-4.5.0.0-local.jar"
+
+  # Construct the command
+  cmd <- paste0(
+    JAVA_CMD, " -jar ", GATK_JAR, " ASEReadCounter",
+    " -R ", refgenome,
+    " -I ", bamfile,
+    " -V ", hetSNPvcf,
+    " -O ", outfile,
+    " -minDepth 1",
+    " --minMappingQuality ", minMapQ,
+    " --minBaseQuality ", minBaseQ,
+    " --countOverlapReadsType COUNT_FRAGMENTS_REQUIRE_SAME_BASE"
+  )
+
+  # Print the command for debugging
+  cat("Executing command:\n", cmd, "\n")
+
+  # Execute the command
+  system(cmd, wait = TRUE)
+}
+
+
+hetSNPvcf <- "/staging/leuven/stg_00096/home/rdewin/ASE/P011_hetSNPs_nomatch.vcf.bgz"
+bamfile <- "/staging/leuven/stg_00096/home/rdewin/RNA/results/star/P011/P011_Aligned.sortedByCoord.withRG.bam"
+refgenome <- "/staging/leuven/stg_00096/home/rdewin/WGS/resources/genome.fa"
+outfile <- "/staging/leuven/stg_00096/home/rdewin/ASE/P011_asereadcounts_nomatch.rtable"
+gatk <- "/staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/WGS/bin/gatk"
+
+ASEReadCount(gatk, hetSNPvcf, bamfile, refgenome, outfile)
+
+ASEReadCount <- function(gatk.exe = "gatk", hetSNPvcf, bamfile, refgenome, outfile, minBaseQ = 20, minMapQ = 35) {
+  cmd <- paste0(gatk.exe, " --java-options '-Xmx12G' ASEReadCounter",
+                " -I ", bamfile,
+                " -V ", hetSNPvcf,
+                " -R ", refgenome,
+                " -O ", outfile,
+                " -min-depth 1",
+                " -mmq ", minMapQ,
+                " -mbq ", minBaseQ,
+                " --lenient")
+  cat("Executing command:\n", cmd, "\n")
+  system(cmd, wait = TRUE)
+}
+
+ASEReadCount <- function(gatk.exe = "/staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/WGS/bin/gatk", 
+                         hetSNPvcf, bamfile, refgenome, outfile, minBaseQ = 20, minMapQ = 35) {
+  # Path to Java executable in Conda environment
+  java_cmd <- "/staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/WGS/bin/java"
+  
+  # Path to GATK jar file
+  gatk_jar <- "/staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gatk4-4.5.0.0-0/gatk-package-4.5.0.0-local.jar"
+  
+  # Set JAVA_HOME to use the correct Java version
+  Sys.setenv(JAVA_HOME = "/staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/WGS")
+  
+  # Construct the command
+  cmd <- paste0(java_cmd, " -Xmx12G -jar ", gatk_jar, " ASEReadCounter",
+                " -I ", bamfile,
+                " -V ", hetSNPvcf,
+                " -R ", refgenome,
+                " -O ", outfile,
+                " --min-depth 1",
+                " --min-mapping-quality ", minMapQ,
+                " --min-base-quality ", minBaseQ,
+                " --lenient")
+  
+  cat("Executing command:\n", cmd, "\n")
+  system(cmd, wait = TRUE)
+}
+
+# Define file paths and GATK executable
+hetSNPvcf <- "/staging/leuven/stg_00096/home/rdewin/ASE/P011_hetSNPs_nomatch.vcf.bgz"
+bamfile <- "/staging/leuven/stg_00096/home/rdewin/RNA/results/star/P011/P011_Aligned.sortedByCoord.out.bam"
+refgenome <- "/staging/leuven/stg_00096/home/rdewin/WGS/resources/genome.fa"
+outfile <- "/staging/leuven/stg_00096/home/rdewin/ASE/P011_asereadcounts_nomatch.rtable"
+gatk <- "/staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/WGS/bin/gatk"
+
+# Execute the function
+ASEReadCount(gatk.exe = gatk, hetSNPvcf = hetSNPvcf, bamfile = bamfile, refgenome = refgenome, outfile = outfile)
+
 
 
 
