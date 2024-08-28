@@ -1,0 +1,28 @@
+name: ASE_R
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - r-base=4.3.3
+  - r-essentials
+  - r-languageserver
+  - r-tidyverse
+  - r-devtools
+  - r-httpgd
+  - libgcc-ng
+  - libstdcxx-ng
+  - libgit2
+  - libxml2
+  - gxx_linux-64
+  - cairo
+  - libtiff
+  - pip
+  - pip:
+    - radian
+  - bioconductor-variantannotation
+  - bioconductor-bsgenome.hsapiens.ncbi.t2t.chm13v2.0
+  - bioconductor-bsgenome.hsapiens.ucsc.hs1
+  - bioconductor-rtracklayer
+  - bioconductor-genomicfeatures
+  - bioconductor-biomaRt

@@ -1,0 +1,15 @@
+name: ASE
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - r-base
+  - r-essentials
+  - r-languageserver
+  - r-tidyverse
+  - r-devtools
+  - libgcc-ng
+  - libstdcxx-ng
+  - pip
+  - pip:
+    - radian
