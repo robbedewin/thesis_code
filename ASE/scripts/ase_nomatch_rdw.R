@@ -133,9 +133,6 @@ for (chr in chromosomes) {
 
 # This function combines allele counts and creates a VCF file using VRanges, handling chromosome name formats.
 combine_loci_nomatch_1 <- function(countsdir, sample_id, alias = "tumor") {
-  # Construct the pattern to match files like "P011_tumor_filtered_allele_counts_chr1.txt"
-  pattern <- paste0(sample_id, "_", alias, "_filtered_allele_counts_chr")
-
   # List all matching files for the given sample_id and alias across all chromosomes
   allele_count_files <- list.files(path = file.path(countsdir, sample_id),
                                    pattern = paste0(sample_id, "_", alias, "_filtered_allele_counts_chr", ".*\\.txt$"),
