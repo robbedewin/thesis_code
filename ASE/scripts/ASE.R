@@ -247,75 +247,105 @@ combine_loci_nomatch_enhanced <- function(countsdir, sample_id, alias = "tumor")
       warning(paste("Error writing combined allele counts to text file:", e$message))
     }
   )
+
+  # Step 3: Use Function 2 Logic to Create the VCF file
+  message("Reading data and creating VCF object...")
   
-  # Step 3: Create VRanges Object
-  message("Creating VRanges object...")
+  # Read data from the txt file
+  data <- read.table(outfile_txt, header = TRUE, stringsAsFactors = FALSE)
   
-  # Determine if chromosome names start with "chr" by sampling up to 100 entries
-  sample_size <- min(100, nrow(allelecounts))
-  chromosome_has_prefix <- any(
-    grepl(
-      pattern = "^chr",
-      x = allelecounts$chr[sample(x = 1:nrow(allelecounts), size = sample_size, replace = TRUE)]
+  # Create GRanges object
+  gr <- GRanges(seqnames = data$chr, ranges = IRanges(start = data$pos, width = 1))
+  
+  # Load the BSgenome
+  bsgenome_selected <- BSgenome.Hsapiens.UCSC.hs1
+  seqlevelsStyle(gr) <- seqlevelsStyle(bsgenome_selected)
+  seqinfo(gr) <- seqinfo(bsgenome_selected)[seqlevels(gr)]
+  
+  # Create REF and ALT
+  ref <- DNAStringSet(data$ref)
+  alt <- CharacterList(as.list(data$alt))
+  
+  # Create QUAL and FILTER
+  qual <- rep(NA_real_, nrow(data))
+  filter <- rep("PASS", nrow(data))
+  
+  # Create fixed DataFrame
+  fixed <- DataFrame(REF = ref, ALT = alt, QUAL = qual, FILTER = filter)
+  
+  # Create genotype matrices
+  gt <- matrix("0/1", nrow = nrow(data), ncol = 1)
+  colnames(gt) <- sample_id
+  
+  ad_array <- array(dim = c(nrow(data), 1, 2))
+  ad_array[,,1] <- as.integer(data$count_ref)
+  ad_array[,,2] <- as.integer(data$count_alt)
+  dimnames(ad_array) <- list(NULL, sample_id, c("Ref", "Alt"))
+  
+  dp <- matrix(as.integer(data$count_ref + data$count_alt), nrow = nrow(data), ncol = 1)
+  colnames(dp) <- sample_id
+  
+  # Create geno SimpleList
+  geno_list <- SimpleList(GT = gt, AD = ad_array, DP = dp)
+  
+  # Create colData
+  col_data <- DataFrame(row.names = sample_id)
+  
+  # Create VCF object
+  vcf_obj <- VCF(
+    rowRanges = gr,
+    colData = col_data,
+    fixed = fixed,
+    geno = geno_list
+  )
+  
+  # Create meta-information lines without 'fileDate' and 'fileformat'
+  meta_info <- DataFrame(
+    row.names = c("phasing", "source"),
+    Value = c(
+      "unphased",
+      paste("VariantAnnotation", packageVersion("VariantAnnotation"))
     )
   )
   
-  # Select appropriate BSgenome based on chromosome naming
-  if (chromosome_has_prefix) {
-    bsgenome_selected <- BSgenome.Hsapiens.UCSC.hs1
-    message("Chromosome names detected with 'chr' prefix. Using BSgenome.Hsapiens.UCSC.hs1.")
-  } else {
-    bsgenome_selected <- BSgenome.Hsapiens.NCBI.T2T.CHM13v2.0
-    message("Chromosome names detected without 'chr' prefix. Using BSgenome.Hsapiens.NCBI.T2T.CHM13v2.0.")
-    # Add "chr" prefix to chromosome names for consistency
-    allelecounts$chr <- paste0("chr", allelecounts$chr)
-  }
-  
-  # Create VRanges object
-  allelecounts_vr <- tryCatch(
-    {
-      VRanges(
-        seqnames = allelecounts$chr,
-        ranges = IRanges(start = allelecounts$pos, end = allelecounts$pos),
-        ref = allelecounts$ref,
-        alt = allelecounts$alt,
-        seqinfo = seqinfo(bsgenome_selected)
-      )
-    },
-    error = function(e) {
-      stop(paste("Error creating VRanges object:", e$message))
-    }
+  # Create FORMAT header
+  format_df <- DataFrame(
+    Number = c("1", "2", "1"),
+    Type = c("String", "Integer", "Integer"),
+    Description = c(
+      "Genotype",
+      "Allelic depths (number of reads in each observed allele)",
+      "Total read depth"
+    ),
+    row.names = c("GT", "AD", "DP")
   )
   
-  # Sort VRanges
-  allelecounts_vr <- sort(allelecounts_vr)
+  # Create VCFHeader
+  vcf_header <- VCFHeader(
+    samples = sample_id,
+    header = DataFrameList(
+      META = meta_info,
+      FORMAT = format_df
+    )
+  )
   
-  # Step 4: Assign Sample Name and Genotype Fields
-  message("Assigning sample name and genotype fields...")
-
-    # Assign sample name
-  sampleNames(allelecounts_vr) <- sample_id
+  # Set header in VCF object
+  header(vcf_obj) <- vcf_header
   
-  # Create genotype data based on counts
-  altDepth(allelecounts_vr) <- allelecounts$count_alt
-  refDepth(allelecounts_vr) <- allelecounts$count_ref
-  totalDepth(allelecounts_vr) <- allelecounts$count_ref + allelecounts$count_alt
-  
-  # Step 6: Write VCF to File
+  # Write VCF file
   message(paste("Writing VCF object to", outfile_vcf, "..."))
-  tryCatch(
-    {
-      writeVcf(obj = allelecounts_vr, filename = outfile_vcf, index = TRUE)
-      message("VCF file successfully written.")
-    },
-    error = function(e) {
-      warning(paste("Error writing VCF file:", e$message))
-    }
-  )
+  writeVcf(vcf_obj, outfile_vcf, index = FALSE)
+  
+  # Apply sed transformation: delete existing ##fileformat and add new line at the top
+  message("Applying sed transformation to update '##fileformat'...")
+  system(paste("sed '/^##fileformat/ d' ", outfile_vcf, " | sed '1i ##fileformat=VCFv4.3' > tmp_vcf && mv tmp_vcf ", outfile_vcf))
   
   message("Function execution completed.")
-  return(NULL)
 }
+
+
+
+  
 
 
 #define parameters
@@ -434,8 +464,8 @@ compute_pvals_nomatch <- function(resultsdir = "/staging/leuven/stg_00096/home/r
   library(BiocGenerics)
   
   # Define file paths
-  asecountsfile <- file.path(resultsdir, paste0(sample_id, "_asereadcounts_nomatch.rtable"))
-  genomecountsfile <- file.path(resultsdir, paste0(sample_id, "_hetSNPs_nomatch.txt"))
+  asecountsfile <- file.path(resultsdir, sample_id, paste0(sample_id, "_asereadcounts_nomatch.tsv"))
+  genomecountsfile <- file.path(resultsdir, sample_id, paste0(sample_id, "_hetSNPs_nomatch.txt"))
   
   # Read ASE counts
   asecounts <- tryCatch(
@@ -453,7 +483,7 @@ compute_pvals_nomatch <- function(resultsdir = "/staging/leuven/stg_00096/home/r
   # Read genome counts
   genomecounts <- tryCatch(
     {
-      read_tsv(file = genomecountsfile, col_names = c("chr", "pos", "ref", "alt", "refCountGenome", "altCountGenome"), col_types = "ciccii")
+      read_tsv(file = genomecountsfile, col_names = c("chr", "pos", "ref", "alt", "count_ref", "count_alt"), col_types = "ciccii")
     },
     error = function(e) {
       warning(paste("Error reading genome counts file:", genomecountsfile))

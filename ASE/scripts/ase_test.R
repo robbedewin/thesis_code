@@ -280,6 +280,76 @@ combine_loci_nomatch_improved(
 )
 
 
+# Part of combining loci enhanced function 
+# Step 3: Create VRanges Object
+  message("Creating VRanges object...")
+  
+  # Determine if chromosome names start with "chr" by sampling up to 100 entries
+  sample_size <- min(100, nrow(allelecounts))
+  chromosome_has_prefix <- any(
+    grepl(
+      pattern = "^chr",
+      x = allelecounts$chr[sample(x = 1:nrow(allelecounts), size = sample_size, replace = TRUE)]
+    )
+  )
+  
+  # Select appropriate BSgenome based on chromosome naming
+  if (chromosome_has_prefix) {
+    bsgenome_selected <- BSgenome.Hsapiens.UCSC.hs1
+    message("Chromosome names detected with 'chr' prefix. Using BSgenome.Hsapiens.UCSC.hs1.")
+  } else {
+    bsgenome_selected <- BSgenome.Hsapiens.NCBI.T2T.CHM13v2.0
+    message("Chromosome names detected without 'chr' prefix. Using BSgenome.Hsapiens.NCBI.T2T.CHM13v2.0.")
+    # Add "chr" prefix to chromosome names for consistency
+    allelecounts$chr <- paste0("chr", allelecounts$chr)
+  }
+  
+  # Create VRanges object
+  allelecounts_vr <- tryCatch(
+    {
+      VRanges(
+        seqnames = allelecounts$chr,
+        ranges = IRanges(start = allelecounts$pos, end = allelecounts$pos),
+        ref = allelecounts$ref,
+        alt = allelecounts$alt,
+        seqinfo = seqinfo(bsgenome_selected)
+      )
+    },
+    error = function(e) {
+      stop(paste("Error creating VRanges object:", e$message))
+    }
+  )
+  
+  # Sort VRanges
+  allelecounts_vr <- sort(allelecounts_vr)
+  
+  # Step 4: Assign Sample Name and Genotype Fields
+  message("Assigning sample name and genotype fields...")
+
+    # Assign sample name
+  sampleNames(allelecounts_vr) <- sample_id
+  
+  # Create genotype data based on counts
+  altDepth(allelecounts_vr) <- allelecounts$count_alt
+  refDepth(allelecounts_vr) <- allelecounts$count_ref
+  totalDepth(allelecounts_vr) <- allelecounts$count_ref + allelecounts$count_alt
+  
+  # Step 6: Write VCF to File
+  message(paste("Writing VCF object to", outfile_vcf, "..."))
+  tryCatch(
+    {
+      writeVcf(obj = allelecounts_vr, filename = outfile_vcf, index = TRUE)
+      message("VCF file successfully written.")
+    },
+    error = function(e) {
+      warning(paste("Error writing VCF file:", e$message))
+    }
+  )
+  
+  message("Function execution completed.")
+  return(NULL)
+}
+
 ASEReadCount <- function(hetSNPvcf, bamfile, refgenome, outfile, minBaseQ = 20, minMapQ = 35, gatk_path = "/staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/WGS/bin/gatk") {
   
   # Check if GATK executable exists
@@ -524,7 +594,7 @@ ASEReadCount_improved <- function(sample_id,
   Sys.setenv(JAVA_HOME = java_home)
   
   # Construct file paths based on sample_id and countsdir
-  hetSNPvcf <- "/staging/leuven/stg_00096/home/rdewin/ASE/results/P011_test.vcf.gz"
+  hetSNPvcf <- "/staging/leuven/stg_00096/home/rdewin/fixed_output.vcf.gz"
   #hetSNPvcf <- file.path(countsdir, sample_id, paste0(sample_id, "_hetSNPs_nomatch.vcf.bgz"))
   bamfile <- file.path(RNA_dir, sample_id, paste0(sample_id, "_Aligned.sortedByCoord.withRG.bam"))
   refgenome <- file.path(WGS_dir, "genome.fa")

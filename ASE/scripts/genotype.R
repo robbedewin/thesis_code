@@ -2,19 +2,32 @@
 
 library(VariantAnnotation)
 library(GenomicRanges)
+library(BSgenome.Hsapiens.UCSC.hs1)
+
+# Load the BSgenome
+bsgenome_selected <- BSgenome.Hsapiens.UCSC.hs1
+message("Chromosome names detected with 'chr' prefix. Using BSgenome.Hsapiens.UCSC.hs1.")
 
 
+sample_id <- "P011"
 # Read data
 data <- read.table("/staging/leuven/stg_00096/home/rdewin/ASE/results/P011/P011_hetSNPs_nomatch.txt", header = TRUE, stringsAsFactors = FALSE)
+
 
 # Create GRanges object
 gr <- GRanges(seqnames = data$chr, ranges = IRanges(start = data$pos, width = 1))
 
+# Set seqinfo of GRanges to match the genome
+seqlevelsStyle(gr) <- seqlevelsStyle(bsgenome_selected)
+seqinfo(gr) <- seqinfo(bsgenome_selected)[seqlevels(gr)]
+# Create GRanges object
+
+
 # Create REF and ALT
 ref <- DNAStringSet(data$ref)
-alt <- CharacterList(data$alt)
+alt <- CharacterList(as.list(data$alt))
 
-
+#alt <- as(alt, "SimpleList")
 
 # Create QUAL and FILTER
 qual <- rep(NA_real_, nrow(data))
@@ -25,15 +38,15 @@ fixed <- DataFrame(REF = ref, ALT = alt, QUAL = qual, FILTER = filter)
 
 # Create genotype matrices
 gt <- matrix("0/1", nrow = nrow(data), ncol = 1)
-colnames(gt) <- "Sample1"
+colnames(gt) <- sample_id
 
 ad_array <- array(dim = c(nrow(data), 1, 2))
 ad_array[,,1] <- as.integer(data$count_ref)
 ad_array[,,2] <- as.integer(data$count_alt)
-dimnames(ad_array) <- list(NULL, "Sample1", c("Ref", "Alt"))
+dimnames(ad_array) <- list(NULL, sample_id, c("Ref", "Alt"))
 
 dp <- matrix(as.integer(data$count_ref + data$count_alt), nrow = nrow(data), ncol = 1)
-colnames(dp) <- "Sample1"
+colnames(dp) <- sample_id
 
 # Create geno SimpleList
 geno_list <- SimpleList(
@@ -43,7 +56,7 @@ geno_list <- SimpleList(
 )
 
 # Create colData
-col_data <- DataFrame(row.names = "Sample1")
+col_data <- DataFrame(row.names = sample_id)
 
 # Create VCF object
 vcf_obj <- VCF(
@@ -52,6 +65,26 @@ vcf_obj <- VCF(
   fixed = fixed,
   geno = geno_list
 )
+
+# Create meta-information lines
+# meta_info <- DataFrame(
+#   row.names = c("fileformat", "phasing", "source"),
+#   Value = c(
+#     "VCFv4.1",
+#     "unphased",
+#     paste("VarkakaiantAnnotation", packageVersion("VariantAnnotation"))
+#   )
+# )
+
+Create meta-information lines without 'fileDate' and 'fileformat'
+meta_info <- DataFrame(
+  row.names = c("phasing", "source"),
+  Value = c(
+    "unphased",
+    paste("VariantAnnotation", packageVersion("VariantAnnotation"))
+  )
+)
+
 
 # Create FORMAT header
 format_df <- DataFrame(
@@ -65,14 +98,61 @@ format_df <- DataFrame(
   row.names = c("GT", "AD", "DP")
 )
 
+
+
+
 # Create VCFHeader
-vcf_header <- VCFHeader(samples = "Sample1", header = DataFrameList(FORMAT = format_df))
+vcf_header <- VCFHeader(
+  samples = sample_id,
+  header = DataFrameList(
+    META = meta_info,
+    FORMAT = format_df
+  )
+)
+
 
 # Set header in VCF object
 header(vcf_obj) <- vcf_header
 
 # Write VCF file
-writeVcf(vcf_obj, "output.vcf")
+writeVcf(vcf_obj, "output.vcf", index = FALSE)
+
+
+
+meta_info <- DataFrame(
+  row.names = c("fileformat", "phasing", "source", "fileDate"),
+  Value = c(
+    "VCFv4.3", 
+    "unphased", 
+    paste("VariantAnnotation", packageVersion("VariantAnnotation")),
+    format(Sys.Date(), "%Y%m%d")  # fileDate comes last
+  )
+)
+
+# Create FORMAT header (this part stays the same)
+format_df <- DataFrame(
+  Number = c("1", "G", "1"),
+  Type = c("String", "Integer", "Integer"),
+  Description = c(
+    "Genotype",
+    "Allelic depths (number of reads in each observed allele)",
+    "Total read depth"
+  ),
+  row.names = c("GT", "AD", "DP")
+)
+
+# Create VCFHeader
+vcf_header <- VCFHeader(
+  samples = sample_id,
+  header = DataFrameList(
+    META = meta_info,
+    FORMAT = format_df
+  )
+)
+
+temp_vcf <- tempfile(fileext = ".vcf")
+writeVcf(vcf_obj, temp_vcf, index = FALSE)
+new_vcf <- readVcf(temp_vcf)
 
 allelecounts_500 <- allelecounts[1:500,]
   # Step 3: Create VRanges Object
@@ -155,3 +235,131 @@ output_dir <- "/staging/leuven/stg_00096/home/rdewin/ASE/results"
 outfile_vcf <- file.path(output_dir, sample_id, paste0(sample_id, "test.vcf"))
 writeVcf(vcf, outfile_vcf, index = TRUE)
 
+
+
+
+.libPaths("/staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/ASE_R/lib/R/library")
+
+library(VariantAnnotation)
+library(GenomicRanges)
+library(BSgenome.Hsapiens.UCSC.hs1)
+
+sample_id <- "P011"
+
+# Read data
+data <- read.table("/staging/leuven/stg_00096/home/rdewin/ASE/results/P011/P011_hetSNPs_nomatch.txt", header = TRUE, stringsAsFactors = FALSE)
+
+# Load the BSgenome
+bsgenome_selected <- BSgenome.Hsapiens.UCSC.hs1
+message("Chromosome names detected with 'chr' prefix. Using BSgenome.Hsapiens.UCSC.hs1.")
+
+# Create GRanges object
+gr <- GRanges(seqnames = data$chr, ranges = IRanges(start = data$pos, width = 1))
+
+# Set seqinfo of GRanges to match the genome
+seqlevelsStyle(gr) <- seqlevelsStyle(bsgenome_selected)
+seqinfo(gr) <- seqinfo(bsgenome_selected)[seqlevels(gr)]
+
+# Create REF and ALT
+ref <- DNAStringSet(data$ref)
+alt <- CharacterList(as.list(data$alt))
+
+# Create QUAL and FILTER
+qual <- rep(NA_real_, nrow(data))
+filter <- rep("PASS", nrow(data))
+
+# Create fixed DataFrame
+fixed <- DataFrame(REF = ref, ALT = alt, QUAL = qual, FILTER = filter)
+
+# Create genotype matrices
+gt <- matrix("0/1", nrow = nrow(data), ncol = 1)
+colnames(gt) <- sample_id
+
+ad_array <- array(dim = c(nrow(data), 1, 2))
+ad_array[,,1] <- as.integer(data$count_ref)
+ad_array[,,2] <- as.integer(data$count_alt)
+dimnames(ad_array) <- list(NULL, sample_id, c("Ref", "Alt"))
+
+dp <- matrix(as.integer(data$count_ref + data$count_alt), nrow = nrow(data), ncol = 1)
+colnames(dp) <- sample_id
+
+# Create geno SimpleList
+geno_list <- SimpleList(
+  GT = gt,
+  AD = ad_array,
+  DP = dp
+)
+
+# Create colData
+col_data <- DataFrame(row.names = sample_id)
+
+# Create meta-information lines without 'fileDate' and 'fileformat'
+meta_info <- DataFrame(
+  row.names = c("phasing", "source"),
+  Value = c(
+    "unphased",
+    paste("VariantAnnotation", packageVersion("VariantAnnotation"))
+  )
+)
+
+# Create FORMAT header
+format_df <- DataFrame(
+  Number = c("1", "R", "1"),
+  Type = c("String", "Integer", "Integer"),
+  Description = c(
+    "Genotype",
+    "Allelic depths (number of reads in each observed allele)",
+    "Total read depth"
+  ),
+  row.names = c("GT", "AD", "DP")
+)
+
+# Create VCFHeader
+vcf_header <- VCFHeader(
+  samples = sample_id,
+  header = DataFrameList(
+    META = meta_info,
+    FORMAT = format_df
+  )
+)
+
+# Assign the header to the VCF object
+header(vcf_obj) <- vcf_header
+
+# Create VCF object
+vcf_obj <- VCF(
+  rowRanges = gr,
+  colData = col_data,
+  fixed = fixed,
+  geno = geno_list
+)
+
+# Write VCF to a temporary file
+temp_vcf <- tempfile()
+writeVcf(vcf_obj, temp_vcf)
+
+# Read the VCF file into R as lines
+vcf_lines <- readLines(temp_vcf)
+
+# Identify header lines and the rest of the content
+header_indices <- grep("^##", vcf_lines)
+column_header_index <- grep("^#CHROM", vcf_lines)
+
+# Extract header lines
+header_lines <- vcf_lines[header_indices]
+
+# Remove duplicate 'fileDate' lines
+header_lines <- header_lines[!grepl("^##fileDate=", header_lines)]
+
+# Remove any existing 'fileformat' lines
+header_lines <- header_lines[!grepl("^##fileformat=", header_lines)]
+
+# Create the 'fileformat' line and place it at the beginning
+fileformat_line <- "##fileformat=VCFv4.1"
+header_lines <- c(fileformat_line, header_lines)
+
+# Extract the rest of the VCF content (column header and data lines)
+vcf_content <- c(header_lines, vcf_lines[column_header_index:length(vcf_lines)])
+
+# Write the corrected VCF content to the final output file
+writeLines(vcf_content, "output.vcf")
