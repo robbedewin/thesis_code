@@ -38,6 +38,8 @@ ATAC/.snakemake/
 !ASE/config/
 !ASE/scripts/
 
+!visualisation/
+
 # Ensure all files within those directories are included
 !WGS/config/**
 !WGS/dag/**
@@ -59,3 +61,4 @@ ATAC/.snakemake/
 
 !ASE/config/**
 !ASE/scripts/**
+!visualisation/**
