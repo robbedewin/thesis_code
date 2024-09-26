@@ -456,7 +456,8 @@ ASEReadCount_improved(sample_id = "P011", minBaseQ = 10, minMapQ = 15)
 
 
 
-
+sample_id <- "P011"  # Unique identifier for the sample being analyzed
+resultsdir <- "/staging/leuven/stg_00096/home/rdewin/ASE/results"  # Directory where the results are stored
 
 compute_pvals_nomatch <- function(resultsdir = "/staging/leuven/stg_00096/home/rdewin/ASE/results", sample_id, filtercutoff = 0.01, exclude_bad_snps = FALSE) {
   library(readr)
@@ -483,7 +484,9 @@ compute_pvals_nomatch <- function(resultsdir = "/staging/leuven/stg_00096/home/r
   # Read genome counts
   genomecounts <- tryCatch(
     {
-      read_tsv(file = genomecountsfile, col_names = c("chr", "pos", "ref", "alt", "count_ref", "count_alt"), col_types = "ciccii")
+      data <- read_tsv(file = genomecountsfile, col_names = TRUE, col_types = "ciccii")
+      colnames(data) <- c("chr", "pos", "ref", "alt", "refCountGenome", "altCountGenome")
+      data
     },
     error = function(e) {
       warning(paste("Error reading genome counts file:", genomecountsfile))
@@ -494,8 +497,8 @@ compute_pvals_nomatch <- function(resultsdir = "/staging/leuven/stg_00096/home/r
   if (is.null(genomecounts)) return(NULL)
   
   # Merge ASE counts with genome counts
-  asecounts$contig <- sub(pattern = "^chr", replacement = "", x = asecounts$contig)
-  asedf <- merge(x = asecounts, y = genomecounts, by.x = c("contig", "position"), by.y = c("chr", "pos"))
+  #asecounts$contig <- sub(pattern = "^chr", replacement = "", x = asecounts$contig)
+  asedf <- merge(x = asecounts, y = genomecounts, by.x = c("contig", "position"), by.y = c("chr", "pos"), sort = FALSE)
   
   # Select relevant columns
   asedf <- asedf[, c("contig", "position", "refAllele", "altAllele", "refCountGenome", "altCountGenome", "refCount", "altCount")]
@@ -549,6 +552,8 @@ compute_pvals_nomatch <- function(resultsdir = "/staging/leuven/stg_00096/home/r
   
   return(asedf)
 }
+
+
 process_sample_ase <- function(sample_id, alias = "tumor", chromosomes = c(1:22, "X"),
                                reference_alleles_dir, sample_allele_counts_dir, countsdir) {
   # Step 1: Filter Allele Counts per Chromosome
@@ -581,6 +586,7 @@ process_sample_ase <- function(sample_id, alias = "tumor", chromosomes = c(1:22,
   
   message(paste("Completed ASE processing for sample:", sample_id))
 }
+
 
 
 ase_annotate <- function(asedf) {
@@ -643,7 +649,57 @@ ase_annotate <- function(asedf) {
 }
 
 
+ase_annotate_alternative <- function(asedf) {
+  library(rtracklayer)
+  library(GenomicRanges)
+  library
+  library(dplyr)
 
+  bsgenome_hs1 <- BSgenome.Hsapiens.UCSC.hs1
+
+  # Read the gene annotation GTF file
+  gtf_file <- "/staging/leuven/stg_00096/home/rdewin/WGS/resources/annotation.gtf"
+  gtf <- rtracklayer::import(gtf_file)
+
+  # Filter for 'transcript' entries (or 'gene' if you prefer)
+  transcripts_gtf <- gtf[gtf$type == "transcript"]
+
+  # Create a data frame from the GRanges object
+  transcripts_df <- as.data.frame(transcripts_gtf)
+
+  # Create GRanges object for ASE loci
+  ase_gr <- GRanges(
+    seqnames = asedf$contig,
+    ranges = IRanges(start = asedf$position, end = asedf$position), 
+    mcols = asedf[, -c(1,2)],
+    seqinfo = seqinfo(bsgenome_hs1)
+    )
+  
+  annotations_gr <- GRanges(
+    seqnames = transcripts_df$seqnames,
+    ranges = IRanges(start = transcripts_df$start, end = transcripts_df$end),
+    strand = transcripts_df$strand,
+    gene_id = transcripts_df$gene_id,
+    gene_name = transcripts_df$gene_name,
+    transcript_id = transcripts_df$transcript_id
+  )
+  # Harmonize chromosome names
+  seqlevelsStyle(asegr) <- seqlevelsStyle(annotations_gr)
+
+  # Find overlaps between ASE loci and gene annotations
+  overlaps <- findOverlaps(query = ase_gr, subject = annotations_gr)
+
+  # Initialize gene column
+  asedf$gene <- NA
+
+  # Assign gene names to overlapping ASE loci
+  overlap_hits <- unique(queryHits(overlaps))
+
+  for (hit in overlap_hits) {
+    genes <- unique(annotations_gr$gene_name[subjectHits(overlaps)[queryHits(overlaps) == hit]])
+    asedf$gene[hit] <- paste(genes, collapse = ",")
+  }
+}
 
 
 plot_ase_manhattan <- function(asedf) {
@@ -686,8 +742,11 @@ plot_ase_manhattan <- function(asedf) {
     labels = chr_means$contig
   )
   
+  
   return(p)
 }
+
+ggsave("manhattan_plot.png", plot = p, width = 12, height = 6, dpi = 300)
 
 
 get_ase_aml_cell <- function(SAMPLEID) {

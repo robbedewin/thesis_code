@@ -6,19 +6,7 @@ import datetime
 sys.stderr = open(snakemake.log[0], "w")
 print(datetime.datetime.now(), file=sys.stderr)
 
-# Read the configuration files
-#config = {"samples": snakemake.config["samples"], "units": snakemake.config["units"]}
-
-#units = pd.read_csv(config["units"], sep="\t", comment="#")
-#unique_samples = sorted(units["sample_name"].unique())
-
 sample_info = snakemake.params["sample_info"]
-
-# Function to get strandedness of a sample from the units file
-#def get_strandedness(sample_name):
-#    subset = units.loc[(units["sample_name"] == sample_name) & (units["datatype"] == "rna"), "stranded"]
-#    return subset.values[0] if not subset.empty else "unknown"
-    
 
 # List of strandedness for each sample
 strandedness_list = sample_info['stranded'].tolist()
