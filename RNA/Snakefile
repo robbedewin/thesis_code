@@ -14,5 +14,5 @@ rule all:
         expand("results/star/{sample}/{sample}_Aligned.sortedByCoord.out.bam", sample=unique_samples),
         expand("results/star/{sample}/{sample}_Aligned.sortedByCoord.withRG.bam", sample=unique_samples),
         #expand("results/star_fusion/{sample}/star-fusion.fusion_predictions.abridged.tsv", sample=unique_samples),
-        #"results/counts/combined_counts.tsv",
+        "results/counts/combined_counts.tsv",
         #"results/deseq2/deseq2_results.tsv",
