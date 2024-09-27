@@ -1,0 +1,122 @@
+
+asedf <- compute_pvals_nomatch(resultsdir = resultsdir, sample_id = sample_id, filtercutoff = 0.01, exclude_bad_snps = FALSE)
+r$> head(asedf)
+  contig position refAllele altAllele refCountGenome altCountGenome refCount altCount    filter      pval padj
+1   chr1   287019         T         C             11             33        0        1 0.1182166 1.0000000    1
+2   chr1   451871         G         C             28             39        2        0 0.2746037 0.1801242    1
+3   chr1   453505         A         G             17             28        0        1 0.2148980 1.0000000    1
+4   chr1   457787         T         C             24             27        1        0 0.3016796 0.4716981    1
+5   chr1   458023         T         C             24             20        0        2 0.3565324 0.2136910    1
+6   chr1   462414         T         C             20             27        0        2 0.2570078 0.5200000    1
+
+asedf_annotated <- ase_annotate_alternative(asedf)
+r$> head(asedf_annotated)
+  contig position refAllele altAllele refCountGenome altCountGenome refCount altCount    filter      pval padj      gene
+1   chr1   287019         T         C             11             33        0        1 0.1182166 1.0000000    1 LINC01128
+2   chr1   451871         G         C             28             39        2        0 0.2746037 0.1801242    1      AGRN
+3   chr1   453505         A         G             17             28        0        1 0.2148980 1.0000000    1      AGRN
+4   chr1   457787         T         C             24             27        1        0 0.3016796 0.4716981    1      AGRN
+5   chr1   458023         T         C             24             20        0        2 0.3565324 0.2136910    1      AGRN
+6   chr1   462414         T         C             20             27        0        2 0.2570078 0.5200000    1      AGRN
+
+
+r$> # Remove 'chr' prefix
+      asedf$contig <- gsub("^chr", "", asedf$contig)
+
+r$> # Ensure contig is a factor with ordered levels
+      chroms <- c(as.character(1:22), "X")
+
+r$> asedf$contig <- factor(asedf$contig, levels = chroms)
+
+r$> head(asedf)
+  contig position refAllele altAllele refCountGenome altCountGenome refCount altCount    filter      pval padj      gene
+1      1   287019         T         C             11             33        0        1 0.1182166 1.0000000    1 LINC01128
+2      1   451871         G         C             28             39        2        0 0.2746037 0.1801242    1      AGRN
+3      1   453505         A         G             17             28        0        1 0.2148980 1.0000000    1      AGRN
+4      1   457787         T         C             24             27        1        0 0.3016796 0.4716981    1      AGRN
+5      1   458023         T         C             24             20        0        2 0.3565324 0.2136910    1      AGRN
+6      1   462414         T         C             20             27        0        2 0.2570078 0.5200000    1      AGRN
+
+
+r$> head(asedf)
+  contig position refAllele altAllele refCountGenome altCountGenome refCount altCount    filter      pval padj      gene chrom_index
+1      1   287019         T         C             11             33        0        1 0.1182166 1.0000000    1 LINC01128           1
+2      1   451871         G         C             28             39        2        0 0.2746037 0.1801242    1      AGRN           1
+3      1   453505         A         G             17             28        0        1 0.2148980 1.0000000    1      AGRN           1
+4      1   457787         T         C             24             27        1        0 0.3016796 0.4716981    1      AGRN           1
+5      1   458023         T         C             24             20        0        2 0.3565324 0.2136910    1      AGRN           1
+6      1   462414         T         C             20             27        0        2 0.2570078 0.5200000    1      AGRN           1
+
+
+r$> chrom_lengths <- asedf %>%
+        group_by(contig, chrom_index) %>%
+        summarize(chr_len = max(position), .groups = "drop") %>%
+        arrange(chrom_index) %>%
+        mutate(chr_offset = cumsum(as.numeric(lag(chr_len, default = 0))))
+
+r$> chrom_lengths
+# A tibble: 23 × 4
+   contig chrom_index   chr_len chr_offset
+   <chr>        <int>     <int>      <dbl>
+ 1 1                1 248271109          0
+ 2 2                2 242617194  248271109
+ 3 3                3 200791666  490888303
+ 4 4                4 193356485  691679969
+ 5 5                5 181498730  885036454
+ 6 6                6 171984151 1066535184
+ 7 7                7 160544624 1238519335
+ 8 8                8 146248445 1399063959
+ 9 9                9 150256681 1545312404
+10 10              10 134408217 1695569085
+
+
+r$> # Merge chromosome offsets into asedf
+      asedf <- left_join(asedf, chrom_lengths[, c("contig", "chr_offset")], by = "contig")
+
+r$> head(asedf)
+  contig position refAllele altAllele refCountGenome altCountGenome refCount altCount    filter      pval padj      gene chrom_index chr_offset
+1      1   287019         T         C             11             33        0        1 0.1182166 1.0000000    1 LINC01128           1          0
+2      1   451871         G         C             28             39        2        0 0.2746037 0.1801242    1      AGRN           1          0
+3      1   453505         A         G             17             28        0        1 0.2148980 1.0000000    1      AGRN           1          0
+4      1   457787         T         C             24             27        1        0 0.3016796 0.4716981    1      AGRN           1          0
+5      1   458023         T         C             24             20        0        2 0.3565324 0.2136910    1      AGRN           1          0
+6      1   462414         T         C             20             27        0        2 0.2570078 0.5200000    1      AGRN           1          0
+
+r$> # Compute cumulative position
+      asedf <- asedf %>%
+        mutate(cumulative_pos = position + chr_offset)
+
+r$> head(asedf)
+  contig position refAllele altAllele refCountGenome altCountGenome refCount altCount    filter      pval padj      gene chrom_index chr_offset cumulative_pos
+1      1   287019         T         C             11             33        0        1 0.1182166 1.0000000    1 LINC01128           1          0         287019
+2      1   451871         G         C             28             39        2        0 0.2746037 0.1801242    1      AGRN           1          0         451871
+3      1   453505         A         G             17             28        0        1 0.2148980 1.0000000    1      AGRN           1          0         453505
+4      1   457787         T         C             24             27        1        0 0.3016796 0.4716981    1      AGRN           1          0         457787
+5      1   458023         T         C             24             20        0        2 0.3565324 0.2136910    1      AGRN           1          0         458023
+6      1   462414         T         C             20             27        0        2 0.2570078 0.5200000    1      AGRN           1          0         462414
+
+
+
+filter and p values
+New function
+r$> head(asedf)
+# A tibble: 6 × 11
+# Rowwise: 
+  contig position refAllele altAllele refCountGenome altCountGenome refCount altCount filter  pval  padj
+  <chr>     <int> <chr>     <chr>              <int>          <int>    <int>    <int>  <dbl> <dbl> <dbl>
+1 chr1     287019 T         C                     11             33        0        1  0.118 1     1    
+2 chr1     451871 G         C                     28             39        2        0  0.275 0.180 0.180
+3 chr1     453505 A         G                     17             28        0        1  0.215 1     1    
+4 chr1     457787 T         C                     24             27        1        0  0.302 0.472 0.472
+5 chr1     458023 T         C                     24             20        0        2  0.357 0.214 0.214
+6 chr1     462414 T         C                     20             27        0        2  0.257 0.520 0.520
+
+old function
+r$> head(asedf)
+  contig position refAllele altAllele refCountGenome altCountGenome refCount altCount    filter      pval padj
+1   chr1   287019         T         C             11             33        0        1 0.1182166 1.0000000    1
+2   chr1   451871         G         C             28             39        2        0 0.2746037 0.1801242    1
+3   chr1   453505         A         G             17             28        0        1 0.2148980 1.0000000    1
+4   chr1   457787         T         C             24             27        1        0 0.3016796 0.4716981    1
+5   chr1   458023         T         C             24             20        0        2 0.3565324 0.2136910    1
+6   chr1   462414         T         C             20             27        0        2 0.2570078 0.5200000    1

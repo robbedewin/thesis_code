@@ -459,10 +459,13 @@ ASEReadCount_improved(sample_id = "P011", minBaseQ = 10, minMapQ = 15)
 sample_id <- "P011"  # Unique identifier for the sample being analyzed
 resultsdir <- "/staging/leuven/stg_00096/home/rdewin/ASE/results"  # Directory where the results are stored
 
+source(file = "/staging/leuven/stg_00096/home/rdewin/WGS/rules/scripts/utils.R") 
+
 compute_pvals_nomatch <- function(resultsdir = "/staging/leuven/stg_00096/home/rdewin/ASE/results", sample_id, filtercutoff = 0.01, exclude_bad_snps = FALSE) {
   library(readr)
   library(VariantAnnotation)
   library(BiocGenerics)
+  library(VGAM)
   
   # Define file paths
   asecountsfile <- file.path(resultsdir, sample_id, paste0(sample_id, "_asereadcounts_nomatch.tsv"))
@@ -529,23 +532,23 @@ compute_pvals_nomatch <- function(resultsdir = "/staging/leuven/stg_00096/home/r
   # Identify test-worthy SNPs
   is_testworthy <- asedf$filter <= filtercutoff
   
-  if (exclude_bad_snps) {
-    # Read problematic loci
-    probloci <- tryCatch(
-      {
-        read_tsv(file = "/staging/leuven/stg_00096/home/rdewin/ASE/ReferenceFiles/battenberg_problem_loci/probloci_270415.txt.gz", col_types = "ci")
-      },
-      error = function(e) {
-        warning("Error reading problematic loci file. Proceeding without excluding bad SNPs.")
-        return(NULL)
-      }
-    )
+  # if (exclude_bad_snps) {
+  #   # Read problematic loci
+  #   probloci <- tryCatch(
+  #     {
+  #       read_tsv(file = "/staging/leuven/stg_00096/home/rdewin/ASE/ReferenceFiles/battenberg_problem_loci/probloci_270415.txt.gz", col_types = "ci")
+  #     },
+  #     error = function(e) {
+  #       warning("Error reading problematic loci file. Proceeding without excluding bad SNPs.")
+  #       return(NULL)
+  #     }
+  #   )
     
-    if (!is.null(probloci)) {
-      isbadsnp <- paste0(asedf$contig, "_", asedf$position) %in% paste0(probloci$Chr, "_", probloci$Pos)
-      is_testworthy <- is_testworthy & !isbadsnp
-    }
-  }
+  #   if (!is.null(probloci)) {
+  #     isbadsnp <- paste0(asedf$contig, "_", asedf$position) %in% paste0(probloci$Chr, "_", probloci$Pos)
+  #     is_testworthy <- is_testworthy & !isbadsnp
+  #   }
+  # }
   
   # Adjust p-values for test-worthy SNPs
   asedf$padj[is_testworthy] <- p.adjust(asedf$pval[is_testworthy], method = "fdr")
@@ -553,6 +556,8 @@ compute_pvals_nomatch <- function(resultsdir = "/staging/leuven/stg_00096/home/r
   return(asedf)
 }
 
+# Run the function
+asedf <- compute_pvals_nomatch(resultsdir = resultsdir, sample_id = sample_id, filtercutoff = 0.01, exclude_bad_snps = FALSE)
 
 process_sample_ase <- function(sample_id, alias = "tumor", chromosomes = c(1:22, "X"),
                                reference_alleles_dir, sample_allele_counts_dir, countsdir) {
@@ -649,42 +654,50 @@ ase_annotate <- function(asedf) {
 }
 
 
-ase_annotate_alternative <- function(asedf) {
+ase_annotate_alternative <- function(asedf, gtf_file = "/staging/leuven/stg_00096/home/rdewin/WGS/resources/annotation.gtf") {
   library(rtracklayer)
   library(GenomicRanges)
-  library
+  library(data.table)
   library(dplyr)
 
   bsgenome_hs1 <- BSgenome.Hsapiens.UCSC.hs1
 
   # Read the gene annotation GTF file
-  gtf_file <- "/staging/leuven/stg_00096/home/rdewin/WGS/resources/annotation.gtf"
+  #gtf_file <- "/staging/leuven/stg_00096/home/rdewin/WGS/resources/annotation.gtf"
   gtf <- rtracklayer::import(gtf_file)
 
   # Filter for 'transcript' entries (or 'gene' if you prefer)
   transcripts_gtf <- gtf[gtf$type == "transcript"]
 
   # Create a data frame from the GRanges object
-  transcripts_df <- as.data.frame(transcripts_gtf)
+  #transcripts_df <- as.data.frame(transcripts_gtf)
 
   # Create GRanges object for ASE loci
+  # ase_gr <- GRanges(
+  #   seqnames = asedf$contig,
+  #   ranges = IRanges(start = asedf$position, end = asedf$position), 
+  #   mcols = asedf[, -c(1,2)],
+  #   seqinfo = seqinfo(bsgenome_hs1)
+  #   )
+
   ase_gr <- GRanges(
     seqnames = asedf$contig,
-    ranges = IRanges(start = asedf$position, end = asedf$position), 
-    mcols = asedf[, -c(1,2)],
-    seqinfo = seqinfo(bsgenome_hs1)
-    )
-  
-  annotations_gr <- GRanges(
-    seqnames = transcripts_df$seqnames,
-    ranges = IRanges(start = transcripts_df$start, end = transcripts_df$end),
-    strand = transcripts_df$strand,
-    gene_id = transcripts_df$gene_id,
-    gene_name = transcripts_df$gene_name,
-    transcript_id = transcripts_df$transcript_id
+    ranges = IRanges(start = asedf$position, end = asedf$position)
   )
+  
+  # annotations_gr <- GRanges(
+  #   seqnames = transcripts_df$seqnames,
+  #   ranges = IRanges(start = transcripts_df$start, end = transcripts_df$end),
+  #   strand = transcripts_df$strand,
+  #   gene_id = transcripts_df$gene_id,
+  #   gene_name = transcripts_df$gene_name,
+  #   transcript_id = transcripts_df$transcript_id
+  # )
+
+  annotations_gr <- transcripts_gtf
+
   # Harmonize chromosome names
-  seqlevelsStyle(asegr) <- seqlevelsStyle(annotations_gr)
+  seqlevelsStyle(ase_gr) <- seqlevelsStyle(annotations_gr)
 
   # Find overlaps between ASE loci and gene annotations
   overlaps <- findOverlaps(query = ase_gr, subject = annotations_gr)
@@ -692,36 +705,81 @@ ase_annotate_alternative <- function(asedf) {
   # Initialize gene column
   asedf$gene <- NA
 
-  # Assign gene names to overlapping ASE loci
-  overlap_hits <- unique(queryHits(overlaps))
+  # Convert overlaps to data.table
+  overlap_dt <- data.table(
+    query = queryHits(overlaps),
+    subject = subjectHits(overlaps)
+  )
 
-  for (hit in overlap_hits) {
-    genes <- unique(annotations_gr$gene_name[subjectHits(overlaps)[queryHits(overlaps) == hit]])
-    asedf$gene[hit] <- paste(genes, collapse = ",")
-  }
+  # Add gene names to overlap_dt
+  overlap_dt[, gene := mcols(annotations_gr)$gene_name[subject]]
+
+  # Collapse gene names per query
+  gene_list <- overlap_dt[, .(gene = paste(unique(gene), collapse = ",")), by = query]
+  
+  # Assign gene names to asedf
+  asedf$gene[gene_list$query] <- gene_list$gene
+
+  # # Assign gene names to overlapping ASE loci
+  # overlap_hits <- unique(queryHits(overlaps))
+
+  # for (hit in overlap_hits) {
+  #   genes <- unique(annotations_gr$gene_name[subjectHits(overlaps)[queryHits(overlaps) == hit]])
+  #   asedf$gene[hit] <- paste(genes, collapse = ",")
+  #}
+
+  return(asedf)
 }
 
+# Run the function
+asedf_annotated <- ase_annotate_alternative(asedf)
+asedf <- ase_annotate_alternative(asedf)
 
 plot_ase_manhattan <- function(asedf) {
   library(ggplot2)
   library(dplyr)
   
+  # Remove 'chr' prefix
+  asedf$contig <- gsub("^chr", "", asedf$contig)
+
   # Ensure contig is a factor with ordered levels
-  asedf$contig <- factor(asedf$contig, levels = c(1:22, "X"))
+  chroms <- c(as.character(1:22), "X")
+  asedf$contig <- factor(asedf$contig, levels = chroms)
+
+  # Create a mapping of chromosomes to numeric indices
+  chrom_map <- data.frame(contig = chroms, chrom_index = 1:length(chroms))
+
+  # Merge chrom_index into asedf
+  asedf <- left_join(asedf, chrom_map, by = "contig")
   
-  # Compute cumulative position for Manhattan plot
+  chrom_lengths <- asedf %>%
+    group_by(contig, chrom_index) %>%
+    summarize(chr_len = max(position), .groups = "drop") %>%
+    arrange(chrom_index) %>%
+    mutate(chr_offset = cumsum(as.numeric(lag(chr_len, default = 0))))
+
+  
+  # Merge chromosome offsets into asedf
+  asedf <- left_join(asedf, chrom_lengths[, c("contig", "chr_offset")], by = "contig")
+  
+  # Compute cumulative position
   asedf <- asedf %>%
-    arrange(contig, position) %>%
-    group_by(contig) %>%
-    mutate(cumulative_pos = position + max(position) * (as.numeric(contig) - 1)) %>%
-    ungroup()
+    mutate(cumulative_pos = position + chr_offset)
   
   # Define significance threshold
   sig_threshold <- -log10(0.05)
+
+  # Compute cumulative position for Manhattan plot
+  # asedf <- asedf %>%
+  #   arrange(contig, position) %>%
+  #   group_by(contig) %>%
+  #   mutate(cumulative_pos = position + max(position) * (as.numeric(contig) - 1)) %>%
+  #   ungroup()
   
+    
   # Create the Manhattan plot
   p <- ggplot(data = asedf, aes(x = cumulative_pos, y = -log10(pval))) +
-    geom_point(aes(color = contig %% 2 == 0), alpha = 0.6, size = 0.5) +
+    geom_point(aes(color = chrom_index %% 2 == 0), alpha = 0.6, size = 0.5) +
     scale_color_manual(values = c("skyblue", "navy")) +
     geom_hline(yintercept = sig_threshold, color = "red", linetype = "dashed") +
     labs(x = "Chromosome", y = "-log10(p-value)", title = "ASE Manhattan Plot") +
@@ -733,18 +791,20 @@ plot_ase_manhattan <- function(asedf) {
     )
   
   # Add chromosome labels
-  chr_means <- asedf %>%
-    group_by(contig) %>%
-    summarize(mean_pos = mean(cumulative_pos))
+  axis_set <- chrom_lengths %>%
+    mutate(center = chr_offset + chr_len / 2)
   
   p <- p + scale_x_continuous(
-    breaks = chr_means$mean_pos,
-    labels = chr_means$contig
+    breaks = axis_set$center,
+    labels = axis_set$contig
   )
   
   
   return(p)
 }
+
+# Run the function
+p <- plot_ase_manhattan(asedf_annotated)
 
 ggsave("manhattan_plot.png", plot = p, width = 12, height = 6, dpi = 300)
 
