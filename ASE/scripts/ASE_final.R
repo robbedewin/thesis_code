@@ -49,15 +49,15 @@ library(BiocGenerics)
 library(parallel)
 library(S4Vectors)
 
-# Load BSgenome data
-bsgenome_T2T <- BSgenome.Hsapiens.NCBI.T2T.CHM13v2.0
-bsgenome_hs1 <- BSgenome.Hsapiens.UCSC.hs1
+
+# Source the utility functions
+source(file = "/staging/leuven/stg_00096/home/rdewin/WGS/rules/scripts/utils.R") 
+
+
 
 # Set variables
-sample_id <- "P011"
-
 reference_alleles_dir <- "/staging/leuven/stg_00096/home/rdewin/ASE/ASCAT/ReferenceFiles"
-ascat_counts_dir <- "/staging/leuven/stg_00096/home/rdewin/ASE/ASCAT"
+ascat_counts_dir <- "/staging/leuven/stg_00096/home/rdewin/WGS/results/ascat"
 alias <- "tumor"
 min_depth <- 5
 results_dir <- "/staging/leuven/stg_00096/home/rdewin/ASE/results"
@@ -68,7 +68,19 @@ java_cmd <- "/staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/WGS/bin
 gatk_jar <- "/staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gatk4-4.5.0.0-0/gatk-package-4.5.0.0-local.jar"
 java_home <- "/staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/WGS"
 gtf_file <- "/staging/leuven/stg_00096/home/rdewin/WGS/resources/annotation.gtf"
+filter_cutoff <- 0.01
 label_threshold <- -log10(0.05)
+
+#Get list of samples
+rna_files <- list.files(RNA_dir, pattern = "_Aligned.sortedByCoord.out.bam$", full.names = TRUE, recursive = TRUE)
+rna_samples <- basename(dirname(rna_files))
+
+dna_files <- list.dirs(ascat_counts_dir, full.names = TRUE, recursive = FALSE)
+dna_samples <- basename(dna_files)
+
+common_samples <- intersect(rna_samples, dna_samples)
+
+sample_id <- common_samples[1]
 
 # Ensure output directories exist
 if (!dir.exists(results_dir)) {
@@ -99,7 +111,7 @@ get_allele_counts_filtered <- function(chr, reference_alleles_dir, ascat_counts_
   }
   
   # Output file path
-  output_file <- file.path(output_dir, sample_id, paste0(sample_id, "_", alias, "_filtered_allele_counts_chr", chr, ".txt"))
+  output_file <- file.path(output_dir, paste0(sample_id, "_", alias, "_filtered_allele_counts_chr", chr, ".txt"))
   
   # Read reference alleles
   reference_alleles <- read_tsv(
@@ -189,7 +201,7 @@ combine_loci_nomatch <- function(sample_id, results_dir) {
       combined_data <- do.call(
         rbind,
         lapply(
-          X = allelecounts_files,
+          X = allele_counts_files,
           FUN = function(file) {
             read_tsv(
               file,
@@ -223,25 +235,25 @@ combine_loci_nomatch <- function(sample_id, results_dir) {
 
   # Create REF and ALT columns
   ref <- DNAStringSet(combined_counts$ref)
-  alt <- DNAStringSetList(as.list(combined_counts$alt))
+  alt <- CharacterList(as.list(combined_counts$alt)) 
 
   # Create QUAL and FILTER
-  qual <- rep(NA_real_, nrow(data))
-  filter <- rep("PASS", nrow(data))
+  qual <- rep(NA_real_, nrow(combined_counts))
+  filter <- rep("PASS", nrow(combined_counts))
   
   # Create fixed DataFrame
   fixed <- DataFrame(REF = ref, ALT = alt, QUAL = qual, FILTER = filter)
   
   # Create genotype matrices
-  gt <- matrix("0/1", nrow = nrow(data), ncol = 1)
+  gt <- matrix("0/1", nrow = nrow(combined_counts), ncol = 1)
   colnames(gt) <- sample_id
   
-  ad_array <- array(dim = c(nrow(data), 1, 2))
-  ad_array[,,1] <- as.integer(data$count_ref)
-  ad_array[,,2] <- as.integer(data$count_alt)
+  ad_array <- array(dim = c(nrow(combined_counts), 1, 2))
+  ad_array[,,1] <- as.integer(combined_counts$count_ref)
+  ad_array[,,2] <- as.integer(combined_counts$count_alt)
   dimnames(ad_array) <- list(NULL, sample_id, c("Ref", "Alt"))
   
-  dp <- matrix(as.integer(data$count_ref + data$count_alt), nrow = nrow(data), ncol = 1)
+  dp <- matrix(as.integer(combined_counts$count_ref + combined_counts$count_alt), nrow = nrow(combined_counts), ncol = 1)
   colnames(dp) <- sample_id
   
   # Create geno SimpleList
@@ -295,9 +307,13 @@ combine_loci_nomatch <- function(sample_id, results_dir) {
   writeVcf(vcf_obj, combined_vcf_file , index = FALSE)
   
   # Apply sed transformation: delete existing ##fileformat and add new line at the top
-  system(paste("sed '/^##fileformat/ d' ", outfile_vcf, " | sed '1i ##fileformat=VCFv4.3' > tmp_vcf && mv tmp_vcf ", outfile_vcf))
+  system(paste("sed '/^##fileformat/ d' ", combined_vcf_file, " | sed '1i ##fileformat=VCFv4.3' > tmp_vcf && mv tmp_vcf ", combined_vcf_file))
+
+  # zip and index the VCF file
+  system(paste("bgzip -f ", combined_vcf_file))
+  system(paste("tabix -p vcf ", paste0(combined_vcf_file, ".gz")))
   
-  message(paste("Combined VCF written to:", combined_vcf_file))
+  message(paste("Combined VCF written to:", paste0(combined_vcf_file, ".gz")))
 }
 
 
@@ -306,7 +322,7 @@ run_ASEReadCounter <- function(sample_id, results_dir, RNA_dir, WGS_dir, gatk_ja
   Sys.setenv(JAVA_HOME = java_home)
   
   # Define file paths
-  het_snp_vcf <- file.path(results_dir, sample_id, paste0(sample_id, "_hetSNPs_nomatch.vcf"))
+  het_snp_vcf <- file.path(results_dir, sample_id, paste0(sample_id, "_hetSNPs_nomatch.vcf.gz"))
   bam_file <- file.path(RNA_dir, sample_id, paste0(sample_id, "_Aligned.sortedByCoord.withRG.bam"))
   ref_genome <- file.path(WGS_dir, "genome.fa")
   
@@ -360,7 +376,7 @@ compute_pvals <- function(sample_id, results_dir, filter_cutoff = 0.01) {
   genome_counts_file <- file.path(results_dir, sample_id, paste0(sample_id, "_hetSNPs_nomatch.txt"))
   
   # Read counts data
-  ase_counts <- read_tsv(file = asecountsfile, col_names = TRUE, col_types = "ciccciiiiiiii")
+  ase_counts <- read_tsv(file = ase_counts_file, col_names = TRUE, col_types = "ciccciiiiiiii")
   
   genome_counts <- read_tsv(file = genome_counts_file, col_names = TRUE, col_types = "ciccii")
 
@@ -539,7 +555,7 @@ run_ase_pipeline <- function(sample_id, reference_alleles_dir, ascat_counts_dir,
   
   # Step 2: Combine Loci Information
   message("Combining loci information...")
-  combine_loci_nomatch(sample_id = sample_id, counts_dir = results_dir)
+  combine_loci_nomatch(sample_id = sample_id, results_dir = results_dir)
   
   # Step 3: Run ASEReadCounter
   message("Running ASEReadCounter...")
@@ -582,7 +598,7 @@ run_ase_pipeline <- function(sample_id, reference_alleles_dir, ascat_counts_dir,
 asedf_final <- run_ase_pipeline(
   sample_id = sample_id,
   reference_alleles_dir = reference_alleles_dir,
-  sample_allele_counts_dir = sample_allele_counts_dir,
+  ascat_counts_dir = ascat_counts_dir,
   results_dir = results_dir,
   RNA_dir = RNA_dir,
   WGS_dir = WGS_dir,
@@ -595,27 +611,14 @@ asedf_final <- run_ase_pipeline(
   label_threshold = -log10(0.05)
 )
 
-# Function to run ASE pipeline for all samples in the BAM files directory
-run_ase_pipeline_for_all_samples <- function(bam_files_dir, reference_alleles_dir, sample_allele_counts_dir, results_dir, RNA_dir, WGS_dir, gatk_jar, java_cmd, java_home, gtf_file, min_depth = 3, filter_cutoff = 0.01, label_threshold = -log10(0.05)) {
-  # List all BAM files in the directory
-  bam_files <- list.files(bam_files_dir, pattern = "\\.bam$", full.names = TRUE)
-  
-  # Extract sample IDs from BAM file names (assuming sample ID is the base name of the file without extension)
-  sample_ids <- basename(bam_files)
-  sample_ids <- sub("\\.bam$", "", sample_ids)
-  
-  # Initialize a list to store results
-  results_list <- list()
-  
-  # Loop through each sample ID and run the ASE pipeline
-  for (sample_id in sample_ids) {
-    message(paste("Processing sample:", sample_id))
-    
-    # Run the ASE pipeline
-    result <- run_ase_pipeline(
+# Function to run ASE pipeline for all samples with DNA and RNA data
+run_ase_pipeline_all_samples <- function(common_samples, reference_alleles_dir, ascat_counts_dir, results_dir, RNA_dir, WGS_dir, gatk_jar, java_cmd, java_home, gtf_file, min_depth = 3, filter_cutoff = 0.01, label_threshold = -log10(0.05)) {
+  for (sample_id in common_samples) {
+    message(paste("Running ASE pipeline for sample:", sample_id))
+    asedf <- run_ase_pipeline(
       sample_id = sample_id,
       reference_alleles_dir = reference_alleles_dir,
-      sample_allele_counts_dir = sample_allele_counts_dir,
+      ascat_counts_dir = ascat_counts_dir,
       results_dir = results_dir,
       RNA_dir = RNA_dir,
       WGS_dir = WGS_dir,
@@ -627,25 +630,22 @@ run_ase_pipeline_for_all_samples <- function(bam_files_dir, reference_alleles_di
       filter_cutoff = filter_cutoff,
       label_threshold = label_threshold
     )
-    
-    # Store the result in the list
-    results_list[[sample_id]] <- result
   }
-  
-  return(results_list)
 }
 
-# Example usage
-bam_files_dir <- "path/to/bam/files"
-results <- run_ase_pipeline_for_all_samples(
-  bam_files_dir = bam_files_dir,
+# Run the ASE pipeline for all samples
+run_ase_pipeline_all_samples(
+  common_samples = common_samples,
   reference_alleles_dir = reference_alleles_dir,
-  sample_allele_counts_dir = sample_allele_counts_dir,
+  ascat_counts_dir = ascat_counts_dir,
   results_dir = results_dir,
   RNA_dir = RNA_dir,
   WGS_dir = WGS_dir,
   gatk_jar = gatk_jar,
   java_cmd = java_cmd,
   java_home = java_home,
-  gtf_file = gtf_file
+  gtf_file = gtf_file,
+  min_depth = 3,
+  filter_cutoff = 0.01,
+  label_threshold = -log10(0.05)
 )
