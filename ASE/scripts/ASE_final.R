@@ -69,7 +69,7 @@ gatk_jar <- "/staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/WGS/sha
 java_home <- "/staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/WGS"
 gtf_file <- "/staging/leuven/stg_00096/home/rdewin/WGS/resources/annotation.gtf"
 filter_cutoff <- 0.01
-label_threshold <- -log10(0.05)
+sig_threshold <- -log10(0.05)
 
 #Get list of samples
 rna_files <- list.files(RNA_dir, pattern = "_Aligned.sortedByCoord.out.bam$", full.names = TRUE, recursive = TRUE)
@@ -111,7 +111,7 @@ get_allele_counts_filtered <- function(chr, reference_alleles_dir, ascat_counts_
   }
   
   # Output file path
-  output_file <- file.path(output_dir, paste0(sample_id, "_", alias, "_filtered_allele_counts_chr", chr, ".txt"))
+  output_file <- file.path(output_dir, "allele_counts", paste0(sample_id, "_", alias, "_filtered_allele_counts_chr", chr, ".txt"))
   
   # Read reference alleles
   reference_alleles <- read_tsv(
@@ -187,7 +187,7 @@ combine_loci_nomatch <- function(sample_id, results_dir) {
   
   # Define input and output file paths
   allele_counts_files <- list.files(
-    path = file.path(results_dir, sample_id),
+    path = file.path(results_dir, sample_id, "allele_counts"),
     pattern = paste0(alias, "_filtered_allele_counts_chr.*\\.txt$"),
     full.names = TRUE
   )
@@ -309,7 +309,7 @@ combine_loci_nomatch <- function(sample_id, results_dir) {
   # Apply sed transformation: delete existing ##fileformat and add new line at the top
   system(paste("sed '/^##fileformat/ d' ", combined_vcf_file, " | sed '1i ##fileformat=VCFv4.3' > tmp_vcf && mv tmp_vcf ", combined_vcf_file))
 
-  # zip and index the VCF file
+  # zip and index the VCF file using bgzip and tabix (need to install these tools in conda)
   system(paste("bgzip -f ", combined_vcf_file))
   system(paste("tabix -p vcf ", paste0(combined_vcf_file, ".gz")))
   
@@ -343,26 +343,17 @@ run_ASEReadCounter <- function(sample_id, results_dir, RNA_dir, WGS_dir, gatk_ja
     " 2> ", shQuote(file.path(output_dir, "ASEReadCounter.stderr"))
   )
   
-  # Record the start time
+  # Record and display the start time
   start_time <- Sys.time()
-  
+  message("Starting ASEReadCounter execution.", start_time)
+
   # Execute the command
   system(cmd)
 
   # Record the end time
   end_time <- Sys.time()
-  
-  # Calculate the duration
-  duration <- end_time - start_time
-  message(paste("ASEReadCounter execution time:", duration))
-
-  # Check if the command was successful
-  if (exit_status == 0) {
-    message(paste("ASEReadCounter successfully executed. Output written to:", outfile))
-  } else {
-    warning("ASEReadCounter command failed. Please check the error messages above.")
-  }
-  
+  message("ASEReadCounter execution completed.", end_time)
+     
   message(paste("ASEReadCounter output written to:", output_file))
 }
 
@@ -401,6 +392,10 @@ compute_pvals <- function(sample_id, results_dir, filter_cutoff = 0.01) {
       padj = p.adjust(pval, method = "fdr")
     )
   
+  # Write results to file
+  output_file <- file.path(results_dir, sample_id, paste0(sample_id, "_asereadcounts_nomatch_pvals.tsv"))
+  write_tsv(asedf, output_file, col_names = TRUE)
+
   return(asedf)
 }
 
@@ -440,11 +435,15 @@ annotate_ase_results <- function(asedf, gtf_file) {
   # Assign gene names to asedf
   asedf$gene <- NA
   asedf$gene[gene_list$query] <- gene_list$gene
+
+  # Write annotated results to file
+  output_file <- file.path(results_dir, sample_id, paste0(sample_id, "_asereadcounts_nomatch_pvals_annotated.tsv"))
+  write_tsv(asedf, output_file, col_names = TRUE)
   
   return(asedf)
 }
 
-plot_ase_manhattan <- function(asedf, label_threshold = -log10(0.05)) {
+plot_ase_manhattan <- function(asedf, sig_threshold = -log10(0.05)) {
   library(ggplot2)
   library(dplyr)
   library(BSgenome.Hsapiens.UCSC.hs1)
@@ -522,7 +521,7 @@ plot_ase_manhattan <- function(asedf, label_threshold = -log10(0.05)) {
   
   # Annotate points above threshold with gene names
   asedf_joined_to_label <- asedf_joined %>%
-    filter(-log10(pval) >= label_threshold)
+    filter(-log10(pval) >= sig_threshold)
   
   p <- p + geom_text(
     data = asedf_joined_to_label,
@@ -533,7 +532,7 @@ plot_ase_manhattan <- function(asedf, label_threshold = -log10(0.05)) {
   return(p)
 }
 
-run_ase_pipeline <- function(sample_id, reference_alleles_dir, ascat_counts_dir, results_dir, RNA_dir, WGS_dir, gatk_jar, java_cmd, java_home, gtf_file, min_depth = 3, filter_cutoff = 0.01, label_threshold = -log10(0.05)) {
+run_ase_pipeline <- function(sample_id, reference_alleles_dir, ascat_counts_dir, results_dir, RNA_dir, WGS_dir, gatk_jar, java_cmd, java_home, gtf_file, min_depth = 3, filter_cutoff = 0.01, sig_threshold = -log10(0.05)) {
   
   # Step 1: Filter Allele Counts
   message("Filtering allele counts...")
@@ -541,6 +540,11 @@ run_ase_pipeline <- function(sample_id, reference_alleles_dir, ascat_counts_dir,
   if (!dir.exists(output_dir)) {
     dir.create(output_dir, recursive = TRUE)
   }
+  if(!dir.exists(file.path(output_dir, "allele_counts"))) {
+    dir.create(file.path(output_dir, "allele_counts"), recursive = TRUE)
+  }
+
+
   chromosomes <- c(1:22, "X")
   for (chr in chromosomes) {
     get_allele_counts_filtered(
@@ -583,7 +587,7 @@ run_ase_pipeline <- function(sample_id, reference_alleles_dir, ascat_counts_dir,
   
   # Step 6: Plot Manhattan Plot
   message("Plotting Manhattan plot...")
-  p <- plot_ase_manhattan(asedf_annotated, label_threshold = label_threshold)
+  p <- plot_ase_manhattan(asedf_annotated, sig_threshold = sig_threshold)
   
   # Save plot
   plot_file <- file.path(results_dir, sample_id, paste0(sample_id, "_manhattan_plot.png"))
@@ -595,24 +599,24 @@ run_ase_pipeline <- function(sample_id, reference_alleles_dir, ascat_counts_dir,
 }
 
 # Run the ASE analysis pipeline
-asedf_final <- run_ase_pipeline(
-  sample_id = sample_id,
-  reference_alleles_dir = reference_alleles_dir,
-  ascat_counts_dir = ascat_counts_dir,
-  results_dir = results_dir,
-  RNA_dir = RNA_dir,
-  WGS_dir = WGS_dir,
-  gatk_jar = gatk_jar,
-  java_cmd = java_cmd,
-  java_home = java_home,
-  gtf_file = gtf_file,
-  min_depth = 3,
-  filter_cutoff = 0.01,
-  label_threshold = -log10(0.05)
-)
+# asedf_final <- run_ase_pipeline(
+#   sample_id = sample_id,
+#   reference_alleles_dir = reference_alleles_dir,
+#   ascat_counts_dir = ascat_counts_dir,
+#   results_dir = results_dir,
+#   RNA_dir = RNA_dir,
+#   WGS_dir = WGS_dir,
+#   gatk_jar = gatk_jar,
+#   java_cmd = java_cmd,
+#   java_home = java_home,
+#   gtf_file = gtf_file,
+#   min_depth = 3,
+#   filter_cutoff = 0.01,
+#   sig_threshold = -log10(0.05)
+# )
 
 # Function to run ASE pipeline for all samples with DNA and RNA data
-run_ase_pipeline_all_samples <- function(common_samples, reference_alleles_dir, ascat_counts_dir, results_dir, RNA_dir, WGS_dir, gatk_jar, java_cmd, java_home, gtf_file, min_depth = 3, filter_cutoff = 0.01, label_threshold = -log10(0.05)) {
+run_ase_pipeline_all_samples <- function(common_samples, reference_alleles_dir, ascat_counts_dir, results_dir, RNA_dir, WGS_dir, gatk_jar, java_cmd, java_home, gtf_file, min_depth = 3, filter_cutoff = 0.01, sig_threshold = -log10(0.05)) {
   for (sample_id in common_samples) {
     message(paste("Running ASE pipeline for sample:", sample_id))
     asedf <- run_ase_pipeline(
@@ -628,14 +632,22 @@ run_ase_pipeline_all_samples <- function(common_samples, reference_alleles_dir, 
       gtf_file = gtf_file,
       min_depth = min_depth,
       filter_cutoff = filter_cutoff,
-      label_threshold = label_threshold
+      sig_threshold = sig_threshold
     )
   }
 }
 
+# Checks for which manhattan plots are generated
+finished_plots <- list.files(results_dir, full.names = TRUE, recursive = TRUE, pattern = "_manhattan_plot.png$")
+finished_samples <- basename(dirname(finished_plots))
+
+# Get list of samples that have not been processed
+unfinished_samples <- common_samples[!common_samples %in% finished_samples]
+
+
 # Run the ASE pipeline for all samples
 run_ase_pipeline_all_samples(
-  common_samples = common_samples,
+  common_samples = unfinished_samples,
   reference_alleles_dir = reference_alleles_dir,
   ascat_counts_dir = ascat_counts_dir,
   results_dir = results_dir,
@@ -647,5 +659,5 @@ run_ase_pipeline_all_samples(
   gtf_file = gtf_file,
   min_depth = 3,
   filter_cutoff = 0.01,
-  label_threshold = -log10(0.05)
+  sig_threshold = -log10(0.05)
 )
