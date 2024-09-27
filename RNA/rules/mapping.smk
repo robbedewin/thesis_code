@@ -42,6 +42,30 @@ rule STAR_align:
         > {log} 2>&1
         """
 
+rule add_read_groups:
+    input:
+        bam="results/star/{sample}/{sample}_Aligned.sortedByCoord.out.bam"
+    output:
+        bam_with_rg="results/star/{sample}/{sample}_Aligned.sortedByCoord.withRG.bam"
+    log:
+        "logs/star/{sample}/add_read_groups.log"
+    params:
+        library="lib1",  
+        platform="illumina",
+        platform_unit="unit1"  
+    shell:
+        """
+        picard AddOrReplaceReadGroups \
+            -I {input.bam} \
+            -O {output.bam_with_rg} \
+            -RGID {wildcards.sample} \
+            -RGLB {params.library} \
+            -RGPL {params.platform} \
+            -RGPU {params.platform_unit} \
+            -RGSM {wildcards.sample} \
+            2> {log}
+        """
+
 rule STAR_Fusion:
     input:
         r1="results/fastp/{sample}/{sample}_rna_R1.trimmed.fq",
