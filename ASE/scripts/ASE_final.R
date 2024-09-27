@@ -331,7 +331,7 @@ run_ASEReadCounter <- function(sample_id, results_dir, RNA_dir, WGS_dir, gatk_ja
   
   # Construct the command
   cmd <- paste(
-    shQuote(java_cmd), "-Xmx12G -jar", shQuote(gatk_jar), "ASEReadCounter",
+    shQuote(java_cmd), "-Xmx32G -jar", shQuote(gatk_jar), "ASEReadCounter",
     "-I", shQuote(bam_file),
     "-V", shQuote(het_snp_vcf),
     "-R", shQuote(ref_genome),
