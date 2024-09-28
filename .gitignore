@@ -63,6 +63,4 @@ ATAC/.snakemake/
 !ASE/scripts/**
 
 !ANALYSIS/**
-!ANALYSIS/data/**
-ANALYSIS/data/TALL_X01_counts_unfiltered.tsv
-ANALYSIS/data/TALL_X01_counts.tsv
+ANALYSIS/data/
