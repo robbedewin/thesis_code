@@ -508,7 +508,8 @@ plot_ase_manhattan <- function(asedf, sig_threshold = -log10(0.05)) {
       legend.position = "none",
       panel.grid.major.x = element_blank(),
       panel.grid.minor.x = element_blank()
-    )
+    ) +
+    ylim(0, 10)  # Set the y-axis limit to a maximum of 10
   
   # Add chromosome labels
   axis_set <- chrom_lengths_df %>%
