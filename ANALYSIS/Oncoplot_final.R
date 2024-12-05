@@ -200,13 +200,15 @@ genes_not_found <- curated_genes[!curated_genes %in% genes_gr$gene_name]
 
 # Check find_similar_genes function and genes_not_found.csv for conversions
 
+
+
 # ----------------------------- Step 6: Subset and Process Mutation Data -----------------------------
 
 # Subset MAF data to genes of interest
-maf_subset <- subsetMaf(maf = maf_combined, genes = genes_of_interest, includeSyn = FALSE)
+# maf_subset <- subsetMaf(maf = maf_combined, genes = genes_of_interest, includeSyn = FALSE)
 
 # Extract mutation data as a data frame
-mutations_df <- maf_subset@data[, c(
+mutations_df <- maf_combined@data[, c(
   "Hugo_Symbol",
   "Chromosome",
   "Start_Position",
@@ -232,7 +234,7 @@ mutations_df <- mutations_df %>%
   )) %>%
   dplyr::select(Hugo_Symbol, Tumor_Sample_Barcode, Mutation)
 
-# ----------------------------- Step 7: Subset and Process CNV Data -----------------------------
+# ----------------------------- Step 7: Convert and Annotate CNV Data -----------------------------
 
 # Convert ASCAT data to GRanges
 cnv_gr <- GRanges(
@@ -254,9 +256,7 @@ if (length(cnv_overlaps) > 0) {
   # Annotate CNVs with gene names
   cnv_annotated <- cnv_gr[queryHits(cnv_overlaps)]
   mcols(cnv_annotated)$gene_name <- mcols(genes_gr)$gene_name[subjectHits(cnv_overlaps)]
-  
-  # Keep only CNVs in genes of interest
-  cnv_annotated <- cnv_annotated[mcols(cnv_annotated)$gene_name %in% curated_genes]
+    
 } else {
   warning("No overlaps found between CNVs and genes.")
 }
@@ -286,7 +286,7 @@ sv_annotated <- sv_combined[queryHits(sv_overlaps)]
 mcols(sv_annotated)$gene_name <- genes_gr$gene_name[subjectHits(sv_overlaps)]
 
 # Keep only SVs in genes of interest
-sv_annotated <- sv_annotated[mcols(sv_annotated)$gene_name %in% genes_of_interest]
+# sv_annotated <- sv_annotated[mcols(sv_annotated)$gene_name %in% genes_of_interest]
 
 # Prepare SV data frame
 sv_status <- as.data.frame(mcols(sv_annotated))
@@ -296,29 +296,78 @@ sv_status <- sv_status %>%
 
 # ----------------------------- Step 9: Create List of Genes with most Alterations -----------------------------
 
-# Get the number of alterations per gene of the MAF data
-mutation_counts <- maf_combined@gene.summary
+# Get the number of altered samples per gene of the MAF data
+mutation_counts <- maf_combined@gene.summary[, c("Hugo_Symbol", "AlteredSamples")]
 
 
+# Get the number of altered samples per gene of the CNV data (sorted by most altered samples)
+cnv_counts <- cnv_status %>%
+  group_by(gene_name) %>%
+  summarise(AlteredSamples = n_distinct(Sample)) %>%
+  arrange(desc(AlteredSamples))
+
+# Get the number of altered samples per gene of the SV data (sorted by most altered samples)
+sv_counts <- sv_status %>%
+  group_by(gene_name) %>%
+  summarise(AlteredSamples = n_distinct(Sample)) %>%
+  arrange(desc(AlteredSamples))
+
+# Ensure consistent column names for combining mutation, CNV, and SV counts
+colnames(mutation_counts) <- c("gene_name", "MutationCounts")
+colnames(sv_counts) <- c("gene_name", "SVCounts")
+colnames(cnv_counts) <- c("gene_name", "CNVCounts")
+
+# Merge the counts into a single dataframe
+combined_counts <- full_join(mutation_counts, cnv_counts, by = "gene_name") %>%
+  full_join(sv_counts, by = "gene_name") %>%
+  replace(is.na(.), 0)  # Replace NA with 0
+
+# Order the dataframe by MutationCounts,  then SVCounts, then CNVCounts
+ordered_counts <- combined_counts %>%
+  arrange(desc(MutationCounts), desc(SVCounts), desc(CNVCounts))
+
+# Create a curated_genes dataframe with respective counts
+curated_genes_data <- data.frame(gene_name = curated_genes)
+curated_genes_data <- left_join(curated_genes_data, ordered_counts, by = "gene_name")
+
+# Get the top 20 genes with the most alterations
+top_genes_list <- head(ordered_counts$gene_name, 20)
+top_genes_data <- data.frame(gene_name = top_genes_list)
+top_genes_data <- left_join(top_genes_data, ordered_counts, by = "gene_name")
+
+# Combine curated_genes_data with top_genes_data
+combined_genes_data <- bind_rows(curated_genes_data, top_genes_data) %>%
+  distinct(gene_name, .keep_all = TRUE)
+
+# Filter for genes with at least 3 combined alterations
+filtered_genes_data <- combined_genes_data %>%
+  filter((MutationCounts + CNVCounts + SVCounts) >= 3)
+
+# Sort filtered_genes_data by total alterations
+filtered_genes_data <- filtered_genes_data %>%
+  arrange(desc(MutationCounts + CNVCounts + SVCounts))
+
+# Update genes_of_interest with filtered genes
+genes_of_interest <- filtered_genes_data$gene_name
 
 
-# Get the genes that are altered in at least three samples
+# ----------------------------- Step 9: Subset Data for Curated Genes and Genes with Most Alterations -----------------------------
+# Subset mutation data for curated genes and genes with most alterations
+mutations_selected <- mutations_df[mutations_df$Hugo_Symbol %in% genes_of_interest, ]
+
+# Subset CNV data for curated genes and genes with most alterations
+cnv_annotated_selected <- cnv_status[cnv_status$gene_name %in% genes_of_interest, ]
+
+# Subset SV data for curated genes and genes with most alterations
+sv_annotated_selected <- sv_status[sv_status$gene_name %in% genes_of_interest, ]
 
 
-
-frequent_genes <- mutation_counts$Hugo_Symbol[mutation_counts$AlteredSamples >= 3]
-
-
-
-top_genes <- getGeneSummary(maf_combined)
-top_genes <- top_genes[order(-top_genes$MutatedSamples), ]
-top_genes_list <- head(top_genes$Hugo_Symbol, n = 40)  # Adjust n as needed
 
 
 # ----------------------------- Step 9: Create Matrices for Mutations, CNVs, and SVs -----------------------------
 
 # Create mutation matrix
-mutation_matrix <- mutations_df %>%
+mutation_matrix <- mutations_selected %>%
   pivot_wider(
     names_from = Tumor_Sample_Barcode,
     values_from = Mutation,
@@ -328,7 +377,7 @@ mutation_matrix <- mutations_df %>%
   column_to_rownames("Hugo_Symbol")
 
 # Create CNV matrix
-cnv_matrix <- cnv_status %>%
+cnv_matrix <- cnv_annotated_selected %>%
   pivot_wider(
     names_from = Sample,
     values_from = CNV,
@@ -338,7 +387,7 @@ cnv_matrix <- cnv_status %>%
   column_to_rownames("gene_name")
 
 # Create SV matrix
-sv_matrix <- sv_status %>%
+sv_matrix <- sv_annotated_selected %>%
   pivot_wider(
     names_from = Sample,
     values_from = SV,
@@ -360,6 +409,9 @@ all_samples <- unique(c(
   colnames(cnv_matrix),
   colnames(sv_matrix)
 ))
+
+# Order samples from smallest to highest
+all_samples <- sort(all_samples, method = "radix")
 
 # Initialize an empty alterations matrix
 alterations_matrix <- matrix(
@@ -413,40 +465,43 @@ alterations_matrix[is.na(alterations_matrix)] <- ""
 
 # ----------------------------- Step 11: Generate the Oncoplot -----------------------------
 
-# Define alteration functions for oncoPrint
+# Adjusted alter_fun with smaller rect sizes and positions
 alter_fun <- list(
   background = function(x, y, w, h) {
-    grid.rect(x, y, w, h, gp = gpar(fill = "#FFFFFF", col = NA))
+    grid.rect(x, y, w - unit(1, "pt"), h - unit(1, "pt"), 
+              gp = gpar(fill = "#FFFFFF", col = "grey"))  # Add a border for clarity
   },
-  # Define functions for each mutation type
+  # Mutation types
   Missense = function(x, y, w, h) {
-    grid.rect(x, y, w * 0.9, h * 0.9, gp = gpar(fill = "#377EB8", col = NA))
+    grid.rect(x, y, w * 0.75, h * 0.75, gp = gpar(fill = "#377EB8", col = NA))  # Reduce size slightly
   },
   Nonsense = function(x, y, w, h) {
-    grid.rect(x, y, w * 0.9, h * 0.9, gp = gpar(fill = "#E41A1C", col = NA))
+    grid.rect(x, y, w * 0.75, h * 0.75, gp = gpar(fill = "#E41A1C", col = NA))
   },
   Frameshift = function(x, y, w, h) {
-    grid.rect(x, y, w * 0.9, h * 0.9, gp = gpar(fill = "#4DAF4A", col = NA))
+    grid.rect(x, y, w * 0.75, h * 0.75, gp = gpar(fill = "#4DAF4A", col = NA))
   },
   Splice_Site = function(x, y, w, h) {
-    grid.rect(x, y, w * 0.9, h * 0.9, gp = gpar(fill = "#984EA3", col = NA))
+    grid.rect(x, y, w * 0.75, h * 0.75, gp = gpar(fill = "#984EA3", col = NA))
   },
   Other = function(x, y, w, h) {
-    grid.rect(x, y, w * 0.9, h * 0.9, gp = gpar(fill = "#FF7F00", col = NA))
+    grid.rect(x, y, w * 0.75, h * 0.75, gp = gpar(fill = "#FF7F00", col = NA))
   },
-  # CNV types
+  
+  # CNV types with adjusted vertical positioning and reduced height
   Amplification = function(x, y, w, h) {
-    grid.rect(x, y, w, h * 0.33, y = y + h * 0.33, gp = gpar(fill = "#FFD700", col = NA))
+    grid.rect(x, y + h * 0.2, w, h * 0.2, gp = gpar(fill = "#FFD700", col = NA))  # Reduced height, adjusted y position
   },
   Hemizygous_Deletion = function(x, y, w, h) {
-    grid.rect(x, y, w, h * 0.33, y = y - h * 0.33, gp = gpar(fill = "#1E90FF", col = NA))
+    grid.rect(x, y - h * 0.2, w, h * 0.2, gp = gpar(fill = "#1E90FF", col = NA))  # Reduced height, adjusted y position
   },
   Homozygous_Deletion = function(x, y, w, h) {
-    grid.rect(x, y, w, h * 0.33, y = y - h * 0.33, gp = gpar(fill = "#00008B", col = NA))
+    grid.rect(x, y - h * 0.2, w, h * 0.2, gp = gpar(fill = "#00008B", col = NA))  # Reduced height, adjusted y position
   },
-  # Structural Variants
+  
+  # Structural Variants with circle shape to avoid overflow
   Structural_Variant = function(x, y, w, h) {
-    grid.circle(x, y, r = min(unit(w, "npc"), unit(h, "npc")) * 0.5, gp = gpar(fill = "#A65628", col = NA))
+    grid.circle(x, y, r = min(unit(w, "npc"), unit(h, "npc")) * 0.35, gp = gpar(fill = "#A65628", col = NA))  # Circle with reduced radius
   }
 )
 
@@ -464,8 +519,8 @@ col <- c(
 )
 
 # Save the plot to a PDF file
-outputFilePath <- "/staging/leuven/stg_00096/home/rdewin/visualisation/oncoplot_TALL_samples_test2.pdf"
-pdf(outputFilePath, width = 14, height = 14)
+outputFilePath <- "/staging/leuven/stg_00096/home/rdewin/PLOTS/oncoplot/oncoplot_new_gene_selection_5.pdf"
+pdf(outputFilePath, width = 8.27, height = 11.69)  # A4 size in landscape orientation
 
 # Create the oncoprint
 oncoPrint(
@@ -476,6 +531,13 @@ oncoPrint(
   remove_empty_columns = TRUE,
   remove_empty_rows = TRUE,
   column_title = "Mutational Landscape of T-ALL Samples",
+  show_column_names = TRUE,
+  column_labels = colnames(alterations_matrix),
+  #top_annotation = HeatmapAnnotation(column_labels = anno_text(colnames(alterations_matrix), rot = 90, just = "right")),
+  show_pct = TRUE,
+  pct_side = "right",
+  row_names_side = "left",
+  column_order = all_samples,  # Ensure columns are ordered as specified
   heatmap_legend_param = list(
     title = "Alterations",
     at = names(col),
@@ -486,43 +548,3 @@ oncoPrint(
 # Close the PDF device
 dev.off()
 
-
-# Adjusted alter_fun with improved rect sizes and positions
-alter_fun <- list(
-  background = function(x, y, w, h) {
-    grid.rect(x, y, w - unit(0.5, "pt"), h - unit(0.5, "pt"), 
-              gp = gpar(fill = "#FFFFFF", col = "grey"))  # Add a border for clarity
-  },
-  # Mutation types
-  Missense = function(x, y, w, h) {
-    grid.rect(x, y, w * 0.85, h * 0.85, gp = gpar(fill = "#377EB8", col = NA))  # Reduce size slightly
-  },
-  Nonsense = function(x, y, w, h) {
-    grid.rect(x, y, w * 0.85, h * 0.85, gp = gpar(fill = "#E41A1C", col = NA))
-  },
-  Frameshift = function(x, y, w, h) {
-    grid.rect(x, y, w * 0.85, h * 0.85, gp = gpar(fill = "#4DAF4A", col = NA))
-  },
-  Splice_Site = function(x, y, w, h) {
-    grid.rect(x, y, w * 0.85, h * 0.85, gp = gpar(fill = "#984EA3", col = NA))
-  },
-  Other = function(x, y, w, h) {
-    grid.rect(x, y, w * 0.85, h * 0.85, gp = gpar(fill = "#FF7F00", col = NA))
-  },
-  
-  # CNV types with adjusted vertical positioning and reduced height
-  Amplification = function(x, y, w, h) {
-    grid.rect(x, y + h * 0.2, w, h * 0.2, gp = gpar(fill = "#FFD700", col = NA))  # Reduced height, adjusted y position
-  },
-  Hemizygous_Deletion = function(x, y, w, h) {
-    grid.rect(x, y - h * 0.2, w, h * 0.2, gp = gpar(fill = "#1E90FF", col = NA))  # Reduced height, adjusted y position
-  },
-  Homozygous_Deletion = function(x, y, w, h) {
-    grid.rect(x, y - h * 0.2, w, h * 0.2, gp = gpar(fill = "#00008B", col = NA))  # Reduced height, adjusted y position
-  },
-  
-  # Structural Variants with circle shape to avoid overflow
-  Structural_Variant = function(x, y, w, h) {
-    grid.circle(x, y, r = min(unit(w, "npc"), unit(h, "npc")) * 0.4, gp = gpar(fill = "#A65628", col = NA))  # Circle with reduced radius
-  }
-)
