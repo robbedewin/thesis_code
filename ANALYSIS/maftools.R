@@ -83,6 +83,34 @@ maf_list <- lapply(maf_files, read.maf)
 # Merge all MAF objects into one
 maf_combined <- merge_mafs(maf_list)
 
+# Plot the mutation allele frequency (MAF) summary
+plotmafSummary(maf = maf_combined, rmOutlier = TRUE, addStat = 'median', dashboard = TRUE, titvRaw = FALSE)
+
+#Save the plot to a PDF file
+outputFilePath <- "/staging/leuven/stg_00096/home/rdewin/PLOTS/maf_summary_plot2.pdf"
+pdf(outputFilePath, width = 14, height = 14)
+plotmafSummary(maf = maf_combined, rmOutlier = TRUE, addStat = 'median', dashboard = TRUE, titvRaw = FALSE)
+dev.off()
+
+# Save individual plots
+output_dir <- "/staging/leuven/stg_00096/home/rdewin/PLOTS"
+
+# Generate a simplified lollipop plot for the NOTCH1 gene
+    pdf(file = paste0(output_dir, "/NOTCH1_simplified_lollipop.pdf"), width = 10, height = 6)
+    lollipopPlot(
+      maf = maf_combined,          # MAF object
+      gene = "NOTCH1",             # Specify the gene of interest
+      AACol = "Protein_position",  # Use Protein_position as amino acid position
+      showMutationRate = FALSE,    # Simplify by not displaying mutation rates
+      showDomainLabel = FALSE,     # Do not show domain labels for simplicity
+      repel = TRUE,                # Avoid label overlap
+      labelPos = NULL,             # Let it automatically label available positions
+      collapsePosLabel = TRUE,     # Collapse overlapping labels
+      axisTextSize = c(1, 1),      # Text size for axis labels
+      pointSize = 2,               # Adjust point size for better visibility
+      legendTxtSize = 0.8          # Adjust legend text size
+    )
+    dev.off()
 # ----------------------------- Step 2: Read CNV Data -----------------------------
 
 # Define the directory containing ASCAT segmentation files
@@ -172,16 +200,8 @@ top_genes <- getGeneSummary(maf_combined)
 top_genes <- top_genes[order(-top_genes$MutatedSamples), ]
 top_genes_list <- head(top_genes$Hugo_Symbol, n = 20)  # Adjust n as needed
 
-# List of known T-ALL genes 
+# List of known T-ALL genes (you can replace or extend this list)
 tall_genes_list <- c("NOTCH1", "FBXW7", "PTEN", "CDKN2A", "CDKN2B", "TAL1", "LMO2", "TLX1", "TLX3")
-
-# List of known T-ALL genes from literature (Zhang et al., 2012: https://www.ncbi.nlm.nih.gov/pubmed/22237106)
-tall_genes_list <- c(
-  "NOTCH1", "FBXW7", "PHF6", "PTEN", "DNM2", "BCL11B", "WT1", "JAK3", NRAS
-  
-  "CDKN2A", "CDKN2B", "TAL1", "LMO2", "TLX1", "TLX3",
-  "IL7R", "LEF1", "BCL11B", "HOXA", "HOXB", "MYB", "MYC", "RUNX1", "WT1", "PHF6", "EZH2"
-)
 
 # Combine top genes and known T-ALL genes
 genes_of_interest <- unique(c(top_genes_list, tall_genes_list))
