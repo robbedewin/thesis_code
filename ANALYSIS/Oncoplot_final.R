@@ -167,24 +167,47 @@ genes_gr <- GRanges(
 
 # ----------------------------- Step 5: Identify Genes of Interest -----------------------------
 
-# Get the top mutated genes from the MAF data
+# Get the genes that are altered in at least three samples
+mutation_counts <- maf_combined@gene.summary
+frequent_genes <- mutation_counts$Hugo_Symbol[mutation_counts$AlteredSamples >= 3]
+
+
+
 top_genes <- getGeneSummary(maf_combined)
 top_genes <- top_genes[order(-top_genes$MutatedSamples), ]
-top_genes_list <- head(top_genes$Hugo_Symbol, n = 20)  # Adjust n as needed
+top_genes_list <- head(top_genes$Hugo_Symbol, n = 40)  # Adjust n as needed
 
-# List of known T-ALL genes 
-tall_genes_list <- c("NOTCH1", "FBXW7", "PTEN", "CDKN2A", "CDKN2B", "TAL1", "LMO2", "TLX1", "TLX3")
+
+# List of known T-ALL genes from literature (Girardi et al., 2017: https://pubmed.ncbi.nlm.nih.gov/28115373/)
+girardi_genes_data <- read.delim("/staging/leuven/stg_00096/home/rdewin/ANALYSIS/genes_frequency_list_girardi.tsv", header = TRUE, sep = "\t")
+
+    # Extract unique gene names
+    girardi_genes <- unique(girardi_genes_data$Gene)
+
 
 # List of known T-ALL genes from literature (Zhang et al., 2012: https://www.ncbi.nlm.nih.gov/pubmed/22237106)
-tall_genes_list <- c(
-  "NOTCH1", "FBXW7", "PHF6", "PTEN", "DNM2", "BCL11B", "WT1", "JAK3", NRAS
-  
-  "CDKN2A", "CDKN2B", "TAL1", "LMO2", "TLX1", "TLX3",
-  "IL7R", "LEF1", "BCL11B", "HOXA", "HOXB", "MYB", "MYC", "RUNX1", "WT1", "PHF6", "EZH2"
-)
+zhang_genes <- c(
+  "NRAS", "FLT3", "JAK3", "IL7R", "JAK1", "KRAS", "BRAF", "NF1", 
+  "SH2B3", "PTPN11", "RUNX1", "ETV6", "GATA3", "IKZF1", "EP300", 
+  "SUZ12", "EED", "EZH2", "SETD2", "NOTCH1", "PHF6", "WT1", 
+  "DNMT3A", "PTEN", "FBXW7", "RELN", "BCL11B", "CTCF", "DCLRE1C", 
+  "HIST1H1B", "HNRNPA1", "HNRNPR", "CDKN2A", "CDKN2B", "TAL1", "LEF1", 
+  "RB1", "LMO2", "MYB", "NUP214-ABL1", "SET-NUP214")
 
-# Combine top genes and known T-ALL genes
-genes_of_interest <- unique(c(top_genes_list, tall_genes_list))
+# List f known T-ALL genes from literature (Liu et al., 2017: https://pubmed.ncbi.nlm.nih.gov/28671688/)
+liu_genes_data <- read.delim("/staging/leuven/stg_00096/home/rdewin/ANALYSIS/genes_known_TALL_Liu.tsv", header = TRUE, sep = "\t")
+
+# Filter out rows where the Paper column is not null
+liu_genes <- liu_genes_data$Gene[liu_genes_data$Paper != ""]
+
+# Combine, sort and deduplicate genes
+curated_genes <- sort(unique(c(girardi_genes, zhang_genes, liu_genes)))
+
+# Subset genes that are in the MAF data
+filtered_genes <- intersect(curated_genes, maf_combined@gene.summary$Hugo_Symbol)
+
+# Combine curated and frequent genes
+oncoplot_genes <- unique(c(filtered_genes, frequent_genes))
 
 # ----------------------------- Step 6: Subset and Process Mutation Data -----------------------------
 
@@ -242,7 +265,7 @@ if (length(cnv_overlaps) > 0) {
   mcols(cnv_annotated)$gene_name <- mcols(genes_gr)$gene_name[subjectHits(cnv_overlaps)]
   
   # Keep only CNVs in genes of interest
-  cnv_annotated <- cnv_annotated[mcols(cnv_annotated)$gene_name %in% genes_of_interest]
+  cnv_annotated <- cnv_annotated[mcols(cnv_annotated)$gene_name %in% curated_genes]
 } else {
   warning("No overlaps found between CNVs and genes.")
 }

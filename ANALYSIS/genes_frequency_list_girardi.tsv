@@ -1,0 +1,44 @@
+Category	Gene	Type_of_genetic_aberration	Frequency_Pediatric
+NOTCH1 signaling pathway	FBXW7	Inactivating mutations	14
+NOTCH1 signaling pathway	NOTCH1	Chromosomal rearrangements/activating mutations	50
+Cell cycle	CDKN2A	9p21 deletion	61
+Cell cycle	CDKN2B	9p21 deletion	58
+Cell cycle	RB1	Deletions	12
+Transcription factors	BCL11B	Inactivating mutations/deletions	10
+Transcription factors	ETV6	Inactivating mutations/deletions	8
+Transcription factors	GATA3	Inactivating mutations/deletions	5
+Transcription factors	HOXA (CALM-AF10, MLL-ENL and SET-NUP214)	Chromosomal rearrangements/inversions/expression	5
+Transcription factors	LEF1	Inactivating mutations/deletions	10
+Transcription factors	LMO2	Chromosomal rearrangements/deletions/expression	13
+Transcription factors	MYB	Chromosomal rearrangements/duplications	7
+Transcription factors	NKX2.1/NKX2.2	Chromosomal rearrangements/expression	8
+Transcription factors	RUNX1	Inactivating mutations/deletions	8
+Transcription factors	TAL1	Chromosomal rearrangements/5′ super-enhancer mutations/deletions/expression	30
+Transcription factors	TLX1	Chromosomal rearrangements/deletions/expression	8
+Transcription factors	TLX3	Chromosomal rearrangements/expression	19
+Transcription factors	WT1	Inactivating mutation/deletion	19
+Transcription factors	AKT	Activating mutations	2
+Signaling	DNM2	Inactivating mutations	13
+Signaling	FLT3	Activating mutations	6
+Signaling	JAK1	Activating mutations	5
+Signaling	JAK3	Activating mutations	8
+Signaling	IL7R	Activating mutations	10
+Signaling	NF1	Deletions	4
+Signaling	KRAS	Activating mutations	6
+Signaling	NRAS	Activating mutations	14
+Signaling	NUP214-ABL1/ABL1 gain	Chromosomal rearrangement/duplication	8
+Signaling	PI3KCA	Activating mutations	1
+Signaling	PTEN	Inactivating mutations/deletion	19
+Signaling	PTPN2	Inactivating mutations/deletion	3
+Signaling	STAT5B	Activating mutations	6
+Epigenetic factors	DNMT3A	Inactivating mutations	1
+Epigenetic factors	EED	Inactivating mutations/deletions	5
+Epigenetic factors	EZH2	Inactivating mutations/deletions	12
+Epigenetic factors	KDM6A/UTX	Inactivating mutations/deletions	6
+Epigenetic factors	PHF6	Inactivating mutations/deletions	19
+Epigenetic factors	SUZ12	Inactivating mutations/deletions	11
+Translation and RNA stability	CNOT3	Missense mutations	3
+Translation and RNA stability	mTOR	Activating mutations	5
+Translation and RNA stability	RPL5	Inactivating mutations	3
+Translation and RNA stability	RPL10	Missense mutations	8
+Translation and RNA stability	RPL22	Inactivating mutations/deletion	4
