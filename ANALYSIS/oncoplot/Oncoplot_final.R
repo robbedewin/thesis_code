@@ -168,7 +168,7 @@ genes_gr <- GRanges(
 # ----------------------------- Step 5: Make Curated Genes of Interest List -----------------------------
 
 # List of known T-ALL genes from literature (Girardi et al., 2017: https://pubmed.ncbi.nlm.nih.gov/28115373/)
-girardi_genes_data <- read.delim("/staging/leuven/stg_00096/home/rdewin/ANALYSIS/genes_frequency_list_girardi.tsv", header = TRUE, sep = "\t")
+girardi_genes_data <- read.delim("/staging/leuven/stg_00096/home/rdewin/ANALYSIS/oncoplot/genes_frequency_list_girardi.tsv", header = TRUE, sep = "\t")
 
     # Extract unique gene names
     girardi_genes <- unique(girardi_genes_data$Gene)
@@ -184,7 +184,7 @@ zhang_genes <- c(
   "RB1", "LMO2", "MYB", "NUP214-ABL1", "SET-NUP214")
 
 # List f known T-ALL genes from literature (Liu et al., 2017: https://pubmed.ncbi.nlm.nih.gov/28671688/)
-liu_genes_data <- read.delim("/staging/leuven/stg_00096/home/rdewin/ANALYSIS/genes_known_TALL_Liu.tsv", header = TRUE, sep = "\t")
+liu_genes_data <- read.delim("/staging/leuven/stg_00096/home/rdewin/ANALYSIS/oncoplot/genes_known_TALL_Liu.tsv", header = TRUE, sep = "\t")
 
     # Filter out rows where the Paper column is not null
     liu_genes <- liu_genes_data$Gene[liu_genes_data$Paper != ""]
