@@ -465,6 +465,9 @@ alterations_matrix[is.na(alterations_matrix)] <- ""
 
 # ----------------------------- Step 11: Generate the Oncoplot -----------------------------
 
+# Add an asterisk to genes that are exclusive to the top genes list (if in both curated and top genes add nothing)
+rownames(alterations_matrix) <- ifelse(rownames(alterations_matrix) %in% top_genes_list & !rownames(alterations_matrix) %in% curated_genes, paste0(rownames(alterations_matrix), "*"), rownames(alterations_matrix))
+
 # Adjusted alter_fun with smaller rect sizes and positions
 alter_fun <- list(
   background = function(x, y, w, h) {
@@ -519,7 +522,7 @@ col <- c(
 )
 
 # Save the plot to a PDF file
-outputFilePath <- "/staging/leuven/stg_00096/home/rdewin/PLOTS/oncoplot/oncoplot_new_gene_selection_5.pdf"
+outputFilePath <- "/staging/leuven/stg_00096/home/rdewin/PLOTS/oncoplot/oncoplot_with_added_asterisk.pdf"
 pdf(outputFilePath, width = 8.27, height = 11.69)  # A4 size in landscape orientation
 
 # Create the oncoprint
