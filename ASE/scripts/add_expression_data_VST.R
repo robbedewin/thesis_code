@@ -12,42 +12,51 @@ if (!requireNamespace("DESeq2", quietly = TRUE)) {
 library(DESeq2)
 
 
-
+countsdir <- "/staging/leuven/stg_00096/home/rdewin/RNA/results/star"
 
 #setwd(countsdir)
 
-countsdir <- "/staging/leuven/stg_00096/home/rdewin/RNA/results/star"
 
-setwd(countsdir)
+# # List all segmentation files
+# sampleFiles <- list.files(
+#   path = countsdir,
+#   pattern = "ReadsPerGene.out.tab$",
+#   recursive = TRUE,
+#   full.names = TRUE
+# )
 
-
-# List all segmentation files
-sampleFiles <- list.files(
-  path = countsdir,
-  pattern = "ReadsPerGene.out.tab$",
-  recursive = TRUE,
-  full.names = TRUE
-)
-
-sampleName <- sub(".*/([^/]+)/[^/]+$", "\\1", sampleFiles)
+# sampleName <- sub(".*/([^/]+)/[^/]+$", "\\1", sampleFiles)
 
 # List of matched samples
 matchedSamples <- c("P011", "P013", "P016", "P017", "P018", "P019", "P020", "P022", "P023", "P024", "P026", "P028", "P029", "P033", "P037", "P041", "P057", "P058", "P059", "P060", "P061", "P064", "P065", "P066", "P086", "P103", "P105")
 
-filteredSampleFiles <- sampleFiles[sampleName %in% matchedSamples]
-filteredSampleName <- sampleName[sampleName %in% matchedSamples]
+# filteredSampleFiles <- sampleFiles[sampleName %in% matchedSamples]
+# filteredSampleName <- sampleName[sampleName %in% matchedSamples]
 
-sampleTable <- data.frame(sampleName = filteredSampleName,
-                          fileName = filteredSampleFiles,
+# Path to your combined counts matrix
+counts_file <- "/staging/leuven/stg_00096/home/rdewin/RNA/results/counts/combined_counts.tsv"
+
+# Load counts matrix
+counts_data <- read.delim(counts_file, header = TRUE, row.names = 1, as.is = TRUE)
+
+
+# Filter counts dataframe
+filtered_counts_data <- counts_data[, colnames(counts_data) %in% matchedSamples]
+
+sampleTable <- data.frame(sample = colnames(filtered_counts_data),
                           condition = "T-ALL")
 
-ddsHTSeq <- DESeqDataSetFromHTSeqCount(sampleTable = sampleTable,
-                                       directory = countsdir,
-                                       design= ~ 1)
+
+# Create DESeq2 object from counts matrix
+dds <- DESeqDataSetFromMatrix(countData = filtered_counts_data, 
+                              colData = sampleTable, 
+                              design = ~1)
 # ddsHTSeq <- ddsHTSeq[ rowSums(counts(ddsHTSeq)) >= 100, ]
 
-dds <- estimateSizeFactors(ddsHTSeq)
-dds_vst <- vst(dds, blind = T)
+# Normalize and perform variance-stabilizing transformation (VST)
+dds <- estimateSizeFactors(dds)
+dds_vst <- vst(dds, blind = TRUE)
+
 # head(assay(dds_vst), 3)
 # library(vsn)
 # meanSdPlot(assay(dds_vst))
@@ -56,10 +65,25 @@ dds_vst <- vst(dds, blind = T)
 
 # hist(assay(dds_vst)[3,])
 
-dds_vstmeans <- rowMeans(x = assay(dds_vst))
+# Compute mean expression and log2 fold-change relative to "virtual mean sample"
+dds_vstmeans <- rowMeans(assay(dds_vst))
 vst_fc <- assay(dds_vst) - dds_vstmeans
-plot(dds_vstmeans, vst_fc[,1])
+
+# Plot mean expression vs log2 fold-change
+plot(dds_vstmeans, vst_fc[, 1], main = "Log2 Fold Change vs Mean Expression")
 plot(log10(rowMeans(counts(dds, normalized=TRUE))+1), vst_fc[,1])
+
+# Save normalized and VST-transformed data
+write.table(assay(dds_vst), 
+            file = "/staging/leuven/stg_00096/home/rdewin/ASE/expression_data/RNAcounts_vst.txt", 
+            quote = FALSE, sep = "\t", row.names = TRUE, col.names = TRUE)
+
+# Save log2 fold-change data
+l2fcdf <- as.data.frame(vst_fc)
+l2fcdf$gene_name <- rownames(l2fcdf)
+write.table(l2fcdf, 
+            file = "/staging/leuven/stg_00096/home/rdewin/ASE/expression_data/RNAlog2fc_vst.txt", 
+            quote = FALSE, sep = "\t", row.names = TRUE, col.names = TRUE)
 
 resdf <- as.data.frame(counts(dds, normalized=TRUE))
 
