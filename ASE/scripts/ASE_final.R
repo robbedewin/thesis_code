@@ -51,9 +51,7 @@ library(S4Vectors)
 
 
 # Source the utility functions
-source(file = "/staging/leuven/stg_00096/home/rdewin/WGS/rules/scripts/utils.R") 
-
-
+source(file = "//staging/leuven/stg_00096/home/rdewin/ASE/scripts/utils.R") 
 
 # Set variables
 reference_alleles_dir <- "/staging/leuven/stg_00096/home/rdewin/ASE/ASCAT/ReferenceFiles"

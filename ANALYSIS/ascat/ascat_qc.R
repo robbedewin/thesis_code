@@ -10,8 +10,12 @@ library(grid)
 library(ggrepel)
 library(stringr)
 library(tidyverse)
+library(ggbeeswarm)
 
-# Define ASCAT directory 
+# Define working directory for ASCAT analysis
+ascat_analysis_dir <- "/staging/leuven/stg_00096/home/rdewin/ANALYSIS/ascat"
+
+# Define ASCAT directory were the segment files are stored
 ascat_dir <- "/staging/leuven/stg_00096/home/rdewin/WGS/results/ascat"
 
 # List all segments files
@@ -62,15 +66,18 @@ qc_files <- list.files(
 )
 print(qc_files)
 
-
+# Load the QC data from the ASCAT objects and store it in a data frame
 qc_data <- lapply(qc_files, function(x) {
   load(x)
   data.frame(Sample = sub(".*/(P\\d+)_ASCAT_objects\\.Rdata$", "\\1", x), QC = QC)
 }) %>% bind_rows()
 qc_data
 
+
 # Write the qc_data data frame to a tab-separated .csv file
-write.table(qc_data, qc_output_file, sep = "\t", row.names = FALSE, quote = FALSE)
+write.table(qc_data, file.path(ascat_analysis_dir, "qc_output_file.tsv"), sep = "\t", row.names = FALSE, quote = FALSE)
+
+qc_output_file <- file.path(ascat_analysis_dir, "qc_output_file.tsv")
 
 # Creating a Seqinfo object for CHM13-T2T from genome.dict
 genome_dict <- readLines("/staging/leuven/stg_00096/home/rdewin/WGS/resources/genome.dict")
@@ -120,9 +127,88 @@ segdata <- setNames(  # Set names for each GRanges object in the list
   })
 )
 
-
 # Load the QC data for plotting
 qcdata <- read.delim(qc_output_file, as.is = TRUE)
+qc_data <- read.delim(qc_output_file, as.is = TRUE)
+
+# Plotting tumor ploidy and purity
+
+
+# Create the violin plot for purity distribution
+p_purity <- ggplot(qcdata, aes(x = "", y = QC.purity)) +
+  geom_violin(trim = FALSE, fill = "orange", color = "black", alpha = 0.3) +  # No fill color, black outline with opacity 0.3
+  geom_jitter(position = position_jitter(width = 0.1, seed = 12), size = 3, color = "blue") +  
+  labs(title = "Tumor Purity Distribution", x = "", y = "Purity (%)") +
+  theme_minimal() +
+  theme(axis.text.x = element_blank(),  # Remove x-axis text
+        axis.ticks.x = element_blank(), # Remove x-axis ticks
+        axis.title.x = element_blank(), # Remove x-axis label
+        panel.grid.major.x = element_blank()) +  # Remove gridlines for x-axis
+  scale_y_continuous(limits = c(0, 1))  # Set y-axis range between 0 and 1
+
+# Save the plot to a file
+ggsave(filename = paste0(outdir, "/purity_violin_plot.png"), plot = p_purity, width = 10, height = 7)
+
+# Create the violin plot for purity distribution with density-based jitter
+p_purity_dist <- ggplot(qcdata, aes(x = "", y = QC.purity)) +
+  geom_violin(trim = FALSE, fill = "orange", color = "black", alpha = 0.3) +  # No fill color, black outline with opacity 0.3
+  geom_quasirandom(size = 3, color = "blue", alpha = 0.7) +  # Density-based jitter points from package ggbeeswarm
+  labs(title = "Tumor Purity Distribution", x = "", y = "Purity (%)") +
+  theme_minimal() +
+  theme(axis.text.x = element_blank(),  # Remove x-axis text
+        axis.ticks.x = element_blank(), # Remove x-axis ticks
+        axis.title.x = element_blank(), # Remove x-axis label
+        panel.grid.major.x = element_blank()) +  # Remove gridlines for x-axis
+  scale_y_continuous(limits = c(0, 1))  # Set y-axis range between 0 and 1
+
+# Save the plot to a file
+ggsave(filename = paste0(outdir, "/purity_violin_plot_dist.png"), plot = p_purity_dist, width = 10, height = 7)
+
+
+# Create the violin plot for ploidy distribution
+p_ploidy <- ggplot(qcdata, aes(x = "", y = QC.ploidy)) +
+  geom_violin(trim = FALSE, fill = "orange", color = "black", alpha = 0.3) +  # No fill color, black outline with opacity 0.3
+  geom_jitter(position = position_jitter(width = 0.1, seed = 123), size = 3, color = "blue") +
+  labs(title = "Tumor Ploidy Distribution", x = "", y = "Ploidy") +
+  theme_minimal() +
+  theme(axis.text.x = element_blank(),  # Remove x-axis text
+        axis.ticks.x = element_blank(), # Remove x-axis ticks
+        axis.title.x = element_blank(), # Remove x-axis label
+        panel.grid.major.x = element_blank()) +  # Remove gridlines for x-axis
+  scale_y_continuous(limits = c(0, 6))  # Set y-axis range between 0 and 6
+
+# Save the plot to a file
+ggsave(filename = paste0(outdir, "/ploidy_violin_plot.png"), plot = p_ploidy, width = 10, height = 7)
+
+# Create the violin plot for ploidy distribution with density-based jitter
+p_ploidy_dist <- ggplot(qcdata, aes(x = "", y = QC.ploidy)) +
+  geom_violin(trim = FALSE, fill = "orange", color = "black", alpha = 0.3) +  # No fill color, black outline with opacity 0.3
+  geom_quasirandom(size = 3, color = "blue", alpha = 0.7) +  # Density-based jitter points from package ggbeeswarm
+  labs(title = "Tumor Ploidy Distribution", x = "", y = "Ploidy") +
+  theme_minimal() +
+  theme(axis.text.x = element_blank(),  # Remove x-axis text
+        axis.ticks.x = element_blank(), # Remove x-axis ticks
+        axis.title.x = element_blank(), # Remove x-axis label
+        panel.grid.major.x = element_blank()) +  # Remove gridlines for x-axis
+  scale_y_continuous(limits = c(0, 6))  # Set y-axis range between 0 and 6
+
+# Save the plot to a file
+ggsave(filename = paste0(outdir, "/ploidy_violin_plot_dist.png"), plot = p_ploidy_dist, width = 10, height = 7)
+
+# Create the violin plot for purity distribution with density-based jitter colored by ploidy status
+p_purity_ploidy_dist <- ggplot(qcdata, aes(x = "", y = QC.purity)) +
+  geom_violin(trim = FALSE, fill = "orange", color = "black", alpha = 0.3) +  # No fill color, black outline with opacity 0.3
+  geom_quasirandom(aes(color = QC.ploidy), size = 3, alpha = 0.7) +  # Density-based jitter points colored by QC.ploidy
+  labs(title = "Tumor Purity Distribution", x = "", y = "Purity (%)") +
+  theme_minimal() +
+  theme(axis.text.x = element_blank(),  # Remove x-axis text
+        axis.ticks.x = element_blank(), # Remove x-axis ticks
+        axis.title.x = element_blank(), # Remove x-axis label
+        panel.grid.major.x = element_blank()) +  # Remove gridlines for x-axis
+  scale_y_continuous(limits = c(0, 1))  # Set y-axis range between 0 and 1
+
+# Save the plot to a file
+ggsave(filename = paste0(outdir, "/purity_violin_plot_dist_ploidy.png"), plot = p_purity_ploidy_dist, width = 10, height = 7)
 
 #Plotting loh and ploidy
 m <- (2.9 - 1)/(0-0.93) #??
