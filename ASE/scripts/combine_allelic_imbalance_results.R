@@ -5,9 +5,10 @@
 
 ## Check recurrence of allelically imbalanced + up/downregulated genes
 
+# List the results files from the ASE analysis with added expression data (VST)
 resultfiles <- list.files(
   path = "/staging/leuven/stg_00096/home/rdewin/ASE/results/",
-  pattern = "*imbalance_expression_vst.txt",
+  pattern = "_imbalance_expression_vst.txt$",
   recursive = TRUE,
   full.names = TRUE
 )
@@ -41,6 +42,8 @@ aidf <- aidf[
     !grepl(aidf$gene_name, pattern = "^IG[HLK].*", perl = TRUE) &
     !grepl(aidf$gene_name, pattern = "^TR[ABDG][VCDJ].*", perl = TRUE),
 ]
+
+imbalanced_gene_sample_combinations <- paste0(aidf$gene_name, "_", aidf$sample)
 
 # Count the recurrence of genes
 recurrent_genes <- sort(table(aidf$gene_name), decreasing = TRUE)

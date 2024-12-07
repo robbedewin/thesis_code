@@ -130,7 +130,7 @@ l2fcdf <- read.delim(file = l2fcfile, as.is = T)
 
 # For loop to loop over the sampleIDs
 for (SAMPLEID in matchedSamples) {
-  SAMPLEID <- "P011"
+  #SAMPLEID <- "P013"
   print(paste("Processing sample:", SAMPLEID))
   
   # Read the ASE results file for each sample
