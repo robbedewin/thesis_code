@@ -14,70 +14,27 @@ counts_file <- "/staging/leuven/stg_00096/home/rdewin/RNA/results/counts/combine
 matchedSamples <- c("P011", "P013", "P016", "P017", "P018", "P019", "P020", "P022", "P023", "P024", "P026", "P028", "P029", "P033", "P037", "P041", "P057", "P058", "P059", "P060", "P061", "P064", "P065", "P066", "P086", "P103", "P105")
 output_dir <- "/staging/leuven/stg_00096/home/rdewin/ASE/expression_data"
 
-process_expression_data(counts_file, matchedSamples, output_dir)
+l2fcfile <- process_expression_data(counts_file, matchedSamples, output_dir)
+l2fcdf <- read.delim(file = l2fcfile, as.is = T)
 
 ## Combine p-values (of powered SNP loci) per gene and adjust for multiple testing
 
 # Load gene annotation and log2-fold change data
-gtffile <- "/staging/leuven/stg_00096/home/rdewin/WGS/resources/annotation.gtf"
-l2fcfile <- "/staging/leuven/stg_00096/home/rdewin/ASE/expression_data/RNAlog2fc_vst.txt"
+hsexondb <- load_gene_annotations(gtffile = "/staging/leuven/stg_00096/home/rdewin/WGS/resources/annotation.gtf")
 
 
-
-
-
-
-
-
-# Load gene annotations
-gtffile <- "/staging/leuven/stg_00096/home/rdewin/WGS/resources/annotation.gtf"
-hstxdb <- makeTxDbFromGFF(file = gtffile, organism = "Homo sapiens")
-seqlevels(hstxdb) <- sub(pattern = "chr", replacement = "", x = seqlevels(seqinfo(hstxdb))) # converts chr1 to 1
-hsexondb <- exons(x = hstxdb, columns = c("gene_id"))
-
-# Add in the log2-fold change data and actual gene names
-l2fcfile <- "/staging/leuven/stg_00096/home/rdewin/ASE/expression_data/RNAlog2fc_vst.txt"
-l2fcdf <- read.delim(file = l2fcfile, as.is = T)
-
-# For loop to loop over the sampleIDs
 for (SAMPLEID in matchedSamples) {
-  #SAMPLEID <- "P011"
   print(paste("Processing sample:", SAMPLEID))
   
-  # Read the ASE results file for each sample
-  ase_resultsfile <- paste0("/staging/leuven/stg_00096/home/rdewin/ASE/results/", SAMPLEID, "/", SAMPLEID, "_asereadcounts_pvals_annotated.tsv")
-  ase_results <- read.delim(ase_resultsfile, header = TRUE, as.is = TRUE)
-  if (any(grepl(pattern = "chr", x = ase_results$contig))) {
-    ase_results$contig <- sub(pattern = "chr", replacement = "", x = ase_results$contig)
-  }
-  
-  # make results into GRanges object, identify all exonic SNPs and create new df with all of these (contains duplicate SNPs)
-  asegr <- GRanges(seqnames = ase_results$contig, ranges = IRanges(start = ase_results$position, end = ase_results$position))
-  annothits <- findOverlaps(query = asegr, subject = hsexondb)
-  # converts SNP data into a genomic ranges object, identifies which of these SNPs are located within exonic regions, and stores the overlap information for further analysis. 
-  
-  # in one case, there were two genes using the same exon ... this just takes the first
-  hitgenes <- sapply(mcols(hsexondb[subjectHits(annothits)])$gene_id, FUN = function(x) x[[1]])
-  ase_results_annot <- data.frame(ase_results[queryHits(annothits), colnames(ase_results) != "gene"], gene = hitgenes, stringsAsFactors = F)
-  
-  # create output dataframe with combined p-value per gene + adjust for multiple testing
-  outdf <- do.call(rbind, by(data = ase_results_annot, INDICES = ase_results_annot$gene, FUN = combine_pvals))
-  outdf$padj <- 1
-  outdf[outdf$power, "padj"] <- p.adjust(p = outdf[outdf$power, "pcombined"], method = "fdr")
-  
-  # add in the log2-fold change data and actual gene names
-  outdf[, c("log2fc", "mean_expression", "gene_name")] <- l2fcdf[outdf$gene, c(SAMPLEID, "mean_expression", "gene_name")]
-
-  # format
-  outdf$contig <- factor(outdf$contig, levels = c(1:22, "X"))
-  outdf <- outdf[order(outdf$contig, as.integer(unlist(lapply(strsplit(outdf$positions, split = ","), FUN = function(x) x[1])))), ]
-  outfile <- paste0("/staging/leuven/stg_00096/home/rdewin/ASE/results/", SAMPLEID, "/", SAMPLEID, "_imbalance_expression_vst_new.txt")
-  write.table(x = outdf, file = outfile, quote = F, sep = "\t", row.names = F, col.names = T)
-
-  # plot
-  p1 <- plot_imbalance_expression(imbalancedf = outdf)
-  plotfile <- paste0("/staging/leuven/stg_00096/home/rdewin/ASE/results/", SAMPLEID, "/", SAMPLEID, "_imbalance_expression_vst.png")
-  ggsave(plotfile, p1)
-    
+  # Overlap ASE results with gene annotations (exons) 
+  ase_results_annot <- process_ase_results(SAMPLEID, l2fcdf, hsexondb) 
+  # Combine p-values for same gene and adjust for multiple testing
+  outdf <- combine_pvals_and_adjust(ase_results_annot)
+  # Add log2 fold-change and gene names
+  outdf <- add_log2fc_and_gene_names(outdf, l2fcdf, SAMPLEID)
+  outdf <- format_output_data(outdf)
+  save_output_data(outdf, output_dir, SAMPLEID)
+  save_plot_imbalance(outdf, output_dir, SAMPLEID)
 }
+
 

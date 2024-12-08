@@ -188,7 +188,7 @@ ase_annotate <- function(asedf, bsgnom, annot) {
 
 ## Plotting
 
-plot_ase_manhattan <- function(asedf) {
+plot_ase_manhattan_JD <- function(asedf) {
   labeldf <- data.frame(chr = c(1:22,"X"), pos = as.vector(by(data = 1:nrow(asedf), INDICES = asedf$contig, FUN = mean)), brks = as.vector(by(data = 1:nrow(asedf), INDICES = asedf$contig, FUN = max)))
   
   p1 <- ggplot(data = asedf, mapping = aes(x = 1:nrow(asedf), y = -log10(pval))) + geom_point(mapping = aes(colour = contig %in% as.character(seq(2,22,2))), show.legend = F, alpha = .3, size = .5) +

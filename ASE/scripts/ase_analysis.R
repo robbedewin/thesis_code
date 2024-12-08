@@ -125,10 +125,11 @@ for (sample_id in common_samples) {
 
 # Function to plot Manhattan plot
 for (sample_id in common_samples) {
-  p <- plot_ase_manhattan(asedf_annotated, sig_threshold = -log10(0.05))
+  message(paste("Plotting Manhattan plot for sample:", sample_id))
+  p <- plot_ase_manhattan(sample_id, results_dir, sig_threshold = -log10(0.05))
   
   # Save plot
-  plot_file <- file.path(results_dir, sample_id, paste0(sample_id, "_manhattan_plot.png"))
+  plot_file <- file.path(results_dir, sample_id, paste0(sample_id, "_manhattan_plot_new.png"))
   ggsave(plot_file, plot = p, width = 12, height = 6, dpi = 300)
   
   message(paste("Manhattan plot saved to:", plot_file))

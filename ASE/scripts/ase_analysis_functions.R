@@ -622,10 +622,6 @@ plot_ase_manhattan <- function(sample_id, results_dir, sig_threshold = -log10(0.
     aes(x = cumulative_pos, y = -log10(pval), label = gene),
     size = 2, angle = 45, hjust = 0, nudge_x = 0, nudge_y = 0.1, check_overlap = TRUE
   )
-
-  # Save plot
-  plot_file <- file.path(results_dir, sample_id, paste0(sample_id, "_manhattan_plot.png"))
-  ggsave(plot_file, plot = p, width = 12, height = 6, dpi = 300)
   
   return(p)
 }

@@ -51,84 +51,6 @@ plot_imbalance_expression <- function(imbalancedf) {
 }
 
 
-
-load_data <- function(gtffile, l2fcfile) {
-  # Load gene annotations
-  hstxdb <- makeTxDbFromGFF(file = gtffile, organism = "Homo sapiens")
-  seqlevels(hstxdb) <- sub(pattern = "chr", replacement = "", x = seqlevels(seqinfo(hstxdb))) # converts chr1 to 1
-  hsexondb <- exons(x = hstxdb, columns = c("gene_id"))
-  
-  # Load log2-fold change data
-  l2fcdf <- read.delim(file = l2fcfile, as.is = TRUE)
-  
-  return()
-}
-
-load_gene_annotations <- function(gtffile) {
-  hstxdb <- makeTxDbFromGFF(file = gtffile, organism = "Homo sapiens")
-  seqlevels(hstxdb) <- sub(pattern = "chr", replacement = "", x = seqlevels(seqinfo(hstxdb))) # converts chr1 to 1
-  hsexondb <- exons(x = hstxdb, columns = c("gene_id"))
-  return(hsexondb)
-}
-
-load_log2fc_data <- function(l2fcfile) {
-  l2fcdf <- read.delim(file = l2fcfile, as.is = TRUE)
-  return(l2fcdf)
-}
-
-process_ase_results <- function(SAMPLEID, results_dir, hsexondb, l2fcdf) {
-  print(paste("Processing sample:", SAMPLEID))
-  
-  # Read the ASE results file for each sample
-  ase_resultsfile <- file.path(results_dir, SAMPLEID, paste0(SAMPLEID, "_asereadcounts_pvals_annotated.tsv"))
-  ase_results <- read.delim(ase_resultsfile, header = TRUE, as.is = TRUE)
-  if (any(grepl(pattern = "chr", x = ase_results$contig))) {
-    ase_results$contig <- sub(pattern = "chr", replacement = "", x = ase_results$contig)
-  }
-  
-  # Make results into GRanges object, identify all exonic SNPs and create new df with all of these (contains duplicate SNPs)
-  asegr <- GRanges(seqnames = ase_results$contig, ranges = IRanges(start = ase_results$position, end = ase_results$position))
-  annothits <- findOverlaps(query = asegr, subject = hsexondb)
-  
-  # In one case, there were two genes using the same exon ... this just takes the first
-  hitgenes <- sapply(mcols(hsexondb[subjectHits(annothits)])$gene_id, FUN = function(x) x[[1]])
-  ase_results_annot <- data.frame(ase_results[queryHits(annothits), colnames(ase_results) != "gene"], gene = hitgenes, stringsAsFactors = FALSE)
-  
-  return(ase_results_annot)
-}
-
-combine_pvals_and_adjust <- function(ase_results_annot) {
-  outdf <- do.call(rbind, by(data = ase_results_annot, INDICES = ase_results_annot$gene, FUN = combine_pvals))
-  outdf$padj <- 1
-  outdf[outdf$power, "padj"] <- p.adjust(p = outdf[outdf$power, "pcombined"], method = "fdr")
-  return(outdf)
-}
-
-add_log2fc_and_gene_names <- function(outdf, l2fcdf, SAMPLEID) {
-  outdf[, c("log2fc", "mean_expression", "gene_name")] <- l2fcdf[outdf$gene, c(SAMPLEID, "mean_expression", "gene_name")]
-  return(outdf)
-}
-
-format_output_data <- function(outdf) {
-  outdf$contig <- factor(outdf$contig, levels = c(1:22, "X"))
-  outdf <- outdf[order(outdf$contig, as.integer(unlist(lapply(strsplit(outdf$positions, split = ","), FUN = function(x) x[1])))), ]
-  return(outdf)
-}
-
-save_output_data <- function(outdf, results_dir, SAMPLEID) {
-  outfile <- file.path(results_dir, SAMPLEID, paste0(SAMPLEID, "_imbalance_expression_vst_new.txt"))
-  write.table(x = outdf, file = outfile, quote = FALSE, sep = "\t", row.names = FALSE, col.names = TRUE)
-}
-
-save_plot_imbalance <- function(outdf, results_dir, SAMPLEID) {
-  p1 <- plot_imbalance_expression(imbalancedf = outdf)
-  plotfile <- file.path(results_dir, SAMPLEID, paste0(SAMPLEID, "_imbalance_expression_vst.png"))
-  ggsave(plotfile, p1)
-}
-
-
-
-
 process_expression_data <- function(counts_file, matchedSamples, output_dir) {
   # Load counts matrix
   counts_data <- read.delim(counts_file, header = TRUE, row.names = 1, as.is = TRUE)
@@ -184,9 +106,84 @@ process_expression_data <- function(counts_file, matchedSamples, output_dir) {
   l2fcdf$mean_expression <- 2^rowMeans(log2(resdf + 1))
   
   # Save log2 fold-change data
-  write.table(l2fcdf, file.path(output_dir, "RNAlog2fc_vst.txt"), quote = FALSE, sep = "\t", row.names = TRUE, col.names = TRUE)
+  l2fcfile <- file.path(output_dir, "RNAlog2fc_vst.txt")
+  write.table(l2fcdf, file = l2fcfile, quote = FALSE, sep = "\t", row.names = TRUE, col.names = TRUE)
   
   # Save normalized counts
   write.table(resdf, file.path(output_dir, "RNAcounts_normalised_T-ALL.txt"), quote = FALSE, sep = "\t", row.names = TRUE, col.names = TRUE)
+
+  return(l2fcfile)
 }
+
+
+load_gene_annotations <- function(gtffile) {
+  hstxdb <- makeTxDbFromGFF(file = gtffile, organism = "Homo sapiens")
+  seqlevels(hstxdb) <- sub(pattern = "chr", replacement = "", x = seqlevels(seqinfo(hstxdb))) # converts chr1 to 1
+  hsexondb <- exons(x = hstxdb, columns = c("gene_id"))
+  return(hsexondb)
+}
+
+process_ase_results <- function(SAMPLEID,
+                                l2fcdf,
+                                hsexondb,
+                                ase_results_dir = "/staging/leuven/stg_00096/home/rdewin/ASE/results/") {
+  
+
+  # Read the ASE results file for each sample
+  ase_resultsfile <- file.path(ase_results_dir, SAMPLEID, paste0(SAMPLEID, "_asereadcounts_pvals_annotated.tsv"))
+  ase_results <- read.delim(ase_resultsfile, header = TRUE, as.is = TRUE)
+  if (any(grepl(pattern = "chr", x = ase_results$contig))) {
+    ase_results$contig <- sub(pattern = "chr", replacement = "", x = ase_results$contig)
+  }
+  
+  # Make results into GRanges object, identify all exonic SNPs and create new df with all of these (contains duplicate SNPs)
+  asegr <- GRanges(seqnames = ase_results$contig, ranges = IRanges(start = ase_results$position, end = ase_results$position))
+  annothits <- findOverlaps(query = asegr, subject = hsexondb)
+  
+  # In one case, there were two genes using the same exon ... this just takes the first
+  hitgenes <- sapply(mcols(hsexondb[subjectHits(annothits)])$gene_id, FUN = function(x) x[[1]])
+  ase_results_annot <- data.frame(ase_results[queryHits(annothits), colnames(ase_results) != "gene"], gene = hitgenes, stringsAsFactors = FALSE)
+  
+  return(ase_results_annot)
+}
+
+combine_pvals_and_adjust <- function(ase_results_annot) {
+  outdf <- do.call(rbind, by(data = ase_results_annot, INDICES = ase_results_annot$gene, FUN = combine_pvals))
+  outdf$padj <- 1
+  outdf[outdf$power, "padj"] <- p.adjust(p = outdf[outdf$power, "pcombined"], method = "fdr")
+  return(outdf)
+}
+
+add_log2fc_and_gene_names <- function(outdf, l2fcdf, SAMPLEID) {
+  outdf[, c("log2fc", "mean_expression", "gene_name")] <- l2fcdf[outdf$gene, c(SAMPLEID, "mean_expression", "gene_name")]
+  return(outdf)
+}
+
+format_output_data <- function(outdf) {
+  outdf$contig <- factor(outdf$contig, levels = c(1:22, "X"))
+  outdf <- outdf[order(outdf$contig, as.integer(unlist(lapply(strsplit(outdf$positions, split = ","), FUN = function(x) x[1])))), ]
+  return(outdf)
+}
+
+save_output_data <- function(outdf, results_dir, SAMPLEID) {
+  # Create the directory if it doesn't exist
+  sample_dir <- file.path(results_dir, SAMPLEID)
+  if (!dir.exists(sample_dir)) {
+    dir.create(sample_dir, recursive = TRUE)
+  }
+  
+  outfile <- file.path(sample_dir, paste0(SAMPLEID, "_imbalance_expression_vst.txt"))
+  write.table(x = outdf, file = outfile, quote = FALSE, sep = "\t", row.names = FALSE, col.names = TRUE)
+}
+
+save_plot_imbalance <- function(outdf, results_dir, SAMPLEID) {
+  p1 <- plot_imbalance_expression(imbalancedf = outdf)
+  plotfile <- file.path(results_dir, SAMPLEID, paste0(SAMPLEID, "_imbalance_expression_vst.png"))
+  ggsave(plotfile, p1)
+}
+
+
+
+
+
 

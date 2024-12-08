@@ -7,7 +7,7 @@
 
 # List the results files from the ASE analysis with added expression data (VST)
 resultfiles <- list.files(
-  path = "/staging/leuven/stg_00096/home/rdewin/ASE/results/",
+  path = "/staging/leuven/stg_00096/home/rdewin/ASE/expression_data",
   pattern = "_imbalance_expression_vst.txt$",
   recursive = TRUE,
   full.names = TRUE
