@@ -5,27 +5,77 @@ library(DESeq2)
 library(GenomicFeatures)
 library(ggplot2)
 
-# Load the functions
-source(file = "/staging/leuven/stg_00096/home/rdewin/ASE/scripts/add_expression_data_functions.R")
-
-
+#############################################
 # Make counts matrix for DESeq2, normalize and perform variance-stabilizing transformation
+# Save normalized counts and log2 fold-change data 
+#############################################
+
+# combined counts file from STAR output
 counts_file <- "/staging/leuven/stg_00096/home/rdewin/RNA/results/counts/combined_counts.tsv"
+
+# Load counts matrix
+counts_data <- read.delim(counts_file, header = TRUE, row.names = 1, as.is = TRUE)
+
+# List of matched samples
 matchedSamples <- c("P011", "P013", "P016", "P017", "P018", "P019", "P020", "P022", "P023", "P024", "P026", "P028", "P029", "P033", "P037", "P041", "P057", "P058", "P059", "P060", "P061", "P064", "P065", "P066", "P086", "P103", "P105")
-output_dir <- "/staging/leuven/stg_00096/home/rdewin/ASE/expression_data"
 
-process_expression_data(counts_file, matchedSamples, output_dir)
+# Filter counts dataframe
+filtered_counts_data <- counts_data[, colnames(counts_data) %in% matchedSamples]
 
-## Combine p-values (of powered SNP loci) per gene and adjust for multiple testing
+sampleTable <- data.frame(sample = colnames(filtered_counts_data),
+                          condition = "T-ALL")
 
-# Load gene annotation and log2-fold change data
-gtffile <- "/staging/leuven/stg_00096/home/rdewin/WGS/resources/annotation.gtf"
-l2fcfile <- "/staging/leuven/stg_00096/home/rdewin/ASE/expression_data/RNAlog2fc_vst.txt"
+# Create DESeq2 object from counts matrix
+dds <- DESeqDataSetFromMatrix(countData = filtered_counts_data, 
+                              colData = sampleTable, 
+                              design = ~1)
+
+# Normalize and perform variance-stabilizing transformation (VST)
+dds <- estimateSizeFactors(dds)
+dds_vst <- vst(dds, blind = TRUE)
+
+# Compute mean expression and log2 fold-change relative to "virtual mean sample"
+dds_vstmeans <- rowMeans(assay(dds_vst))
+vst_fc <- assay(dds_vst) - dds_vstmeans
+
+# Plot mean expression vs log2 fold-change (to start httpgd server, run `hgd()`)
+plot(dds_vstmeans, vst_fc[, 1], main = "Log2 Fold Change vs Mean Expression")
+plot(log10(rowMeans(counts(dds, normalized=TRUE))+1), vst_fc[,1])
+
+# Save normalized and VST-transformed data
+write.table(assay(dds_vst), 
+            file = "/staging/leuven/stg_00096/home/rdewin/ASE/expression_data/RNAcounts_vst.txt", 
+            quote = FALSE, sep = "\t", row.names = TRUE, col.names = TRUE)
 
 
+# Save log2 fold-change data
+l2fcdf <- as.data.frame(vst_fc)
+
+# Create normalized counts dataframe
+resdf <- as.data.frame(counts(dds, normalized=TRUE))
+
+# Add gene names (genes were already annotated in the counts file) and mean expression
+l2fcdf$gene_name <- rownames(l2fcdf)
+l2fcdf$mean_expression <- 2^rowMeans(log2(resdf+1))
+
+# Save log2 fold-change data
+write.table(l2fcdf, 
+            file = "/staging/leuven/stg_00096/home/rdewin/ASE/expression_data/RNAlog2fc_vst.txt", 
+            quote = FALSE, sep = "\t", row.names = TRUE, col.names = TRUE)
+
+# Save normalized counts
+write.table(resdf, 
+            file = "/staging/leuven/stg_00096/home/rdewin/ASE/expression_data/RNAcounts_normalised_T-ALL.txt", 
+            quote = FALSE, sep = "\t", row.names = TRUE, col.names = TRUE)
 
 
+#############################################
+# Combine p-values (of powered SNP loci) per gene
+# 
+#############################################
+## Combine p-values (of powered SNP loci) per gene
 
+source(file = "/staging/leuven/stg_00096/home/rdewin/ASE/scripts/add_expression_data_functions.R")
 
 
 
@@ -80,4 +130,3 @@ for (SAMPLEID in matchedSamples) {
   ggsave(plotfile, p1)
     
 }
-

@@ -96,6 +96,7 @@ for (sample_id in samples_not_ASEReadCounter) {
 
 # Function to compute p-values
 for (sample_id in common_samples) {
+  message(paste("Computing p-values for sample:", sample_id))
   asedf <- compute_pvals(
     sample_id = sample_id,
     results_dir = results_dir,
@@ -112,9 +113,14 @@ for (sample_id in common_samples) {
   )
 }
 
+# Function to plot QC metrics
+for (sample_id in common_samples) {
+  plot_qc_plots(results_dir, sample_id)
+}     
+
 # Function to annotate ASE results
 for (sample_id in common_samples) {
-  asedf_annotated <- annotate_ase_results(asedf, gtf_file = gtf_file)
+  annotate_ase_results(sample_id, results_dir, gtf_file)
 }
 
 # Function to plot Manhattan plot

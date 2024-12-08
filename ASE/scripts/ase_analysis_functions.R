@@ -390,7 +390,7 @@ compute_pvals <- function(sample_id, results_dir, filter_cutoff = 0.01) {
   
   # Select relevant columns
   asedf <- asedf %>%
-    select(contig, position, refAllele, altAllele, refCountGenome, altCountGenome, refCount, altCount)
+    dplyr::select(contig, position, refAllele, altAllele, refCountGenome, altCountGenome, refCount, altCount)
 
 
   # Compute filter and p-values using the approach from compute_pvals_nomatch
@@ -462,11 +462,11 @@ compute_pvals_alternative <- function(sample_id, results_dir, filtercutoff = 0.0
   write_tsv(asedf, output_file, col_names = TRUE)
 }
 
-plot_qc_plots <- function(asedf, results_dir, sample_id) {
+plot_qc_plots <- function(results_dir, sample_id) {
   library(ggplot2)
   
-  #ase_file <- file.path(results_dir, sample_id, paste0(sample_id, "_asereadcounts_pvals.tsv"))
-  #asedf <- read_tsv(ase_file, col_types = "ciccciiiiiiii")
+  ase_file <- file.path(results_dir, sample_id, paste0(sample_id, "_asereadcounts_pvals.tsv"))
+  asedf <- read_tsv(ase_file, col_types = "cicciiiiddd")
 
   # Plot 1: Assess filtering
   p_filter <- ggplot(data = asedf, mapping = aes(x = pval, fill = filter <= 0.01)) + 
@@ -477,14 +477,14 @@ plot_qc_plots <- function(asedf, results_dir, sample_id) {
   ggsave(filename = file.path(results_dir, sample_id, paste0(sample_id, "_filter.png")), plot = p_filter, dpi = 300, width = 10, height = 7)
   
   # Plot 2: QQ plot
-  p_QQ <- ggqq(asedf[asedf$pval > 0, "pval"]) +
+  p_QQ <- ggqq(asedf$pval[asedf$pval > 0]) +
     labs(title = "QQ Plot of P-values")
   
   ggsave(filename = file.path(results_dir, sample_id, paste0(sample_id, "_QQ.png")), plot = p_QQ, dpi = 300, width = 10, height = 7)
 }
 
 
-annotate_ase_results <- function(asedf, gtf_file) {
+annotate_ase_results <- function(sample_id, results_dir, gtf_file) {
   library(rtracklayer)
   library(GenomicRanges)
   library(data.table)
@@ -492,6 +492,10 @@ annotate_ase_results <- function(asedf, gtf_file) {
   # Read gene annotations
   gtf <- rtracklayer::import(gtf_file)
   transcripts_gtf <- gtf[gtf$type == "transcript"]
+
+  # Read ASE results
+  ase_file <- file.path(results_dir, sample_id, paste0(sample_id, "_asereadcounts_pvals.tsv"))
+  asedf <- read_tsv(ase_file, col_types = "cicciiiiddd")
   
   # Create GRanges for ASE loci
   ase_gr <- GRanges(
@@ -528,11 +532,15 @@ annotate_ase_results <- function(asedf, gtf_file) {
   return(asedf)
 }
 
-plot_ase_manhattan <- function(asedf, sig_threshold = -log10(0.05)) {
+plot_ase_manhattan <- function(sample_id, results_dir, sig_threshold = -log10(0.05)) {
   library(ggplot2)
   library(dplyr)
   library(BSgenome.Hsapiens.UCSC.hs1)
   
+  # Read annotated ASE results
+  ase_file <- file.path(results_dir, sample_id, paste0(sample_id, "_asereadcounts_pvals_annotated.tsv"))
+  asedf <- read_tsv(ase_file, col_types = "cicciiiidddc")
+
   # Remove 'chr' prefix
   asedf$contig <- gsub("^chr", "", asedf$contig)
 
