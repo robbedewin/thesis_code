@@ -426,7 +426,7 @@ compute_pvals <- function(sample_id, results_dir, filter_cutoff = 0.01) {
 }
 
 
-compute_pvals_alternative <- function(toutdir, tsample, filtercutoff = 0.01) {
+compute_pvals_alternative <- function(sample_id, results_dir, filtercutoff = 0.01) {
   # Define file paths
   ase_counts_file <- file.path(results_dir, sample_id, paste0(sample_id, "_asereadcounts.tsv"))
   genome_counts_file <- file.path(results_dir, sample_id, paste0(sample_id, "_hetSNPs.txt"))
@@ -461,6 +461,28 @@ compute_pvals_alternative <- function(toutdir, tsample, filtercutoff = 0.01) {
   output_file <- file.path(results_dir, sample_id, paste0(sample_id, "_asereadcounts_alternative_pvals.tsv"))
   write_tsv(asedf, output_file, col_names = TRUE)
 }
+
+plot_qc_plots <- function(asedf, results_dir, sample_id) {
+  library(ggplot2)
+  
+  #ase_file <- file.path(results_dir, sample_id, paste0(sample_id, "_asereadcounts_pvals.tsv"))
+  #asedf <- read_tsv(ase_file, col_types = "ciccciiiiiiii")
+
+  # Plot 1: Assess filtering
+  p_filter <- ggplot(data = asedf, mapping = aes(x = pval, fill = filter <= 0.01)) + 
+    geom_histogram(binwidth = 0.01) + 
+    scale_y_log10() +
+    labs(title = "P-value Distribution with Filtering", x = "P-value", y = "Count")
+  
+  ggsave(filename = file.path(results_dir, sample_id, paste0(sample_id, "_filter.png")), plot = p_filter, dpi = 300, width = 10, height = 7)
+  
+  # Plot 2: QQ plot
+  p_QQ <- ggqq(asedf[asedf$pval > 0, "pval"]) +
+    labs(title = "QQ Plot of P-values")
+  
+  ggsave(filename = file.path(results_dir, sample_id, paste0(sample_id, "_QQ.png")), plot = p_QQ, dpi = 300, width = 10, height = 7)
+}
+
 
 annotate_ase_results <- function(asedf, gtf_file) {
   library(rtracklayer)
