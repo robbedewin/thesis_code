@@ -130,11 +130,11 @@ l2fcdf <- read.delim(file = l2fcfile, as.is = T)
 
 # For loop to loop over the sampleIDs
 for (SAMPLEID in matchedSamples) {
-  #SAMPLEID <- "P013"
+  #SAMPLEID <- "P011"
   print(paste("Processing sample:", SAMPLEID))
   
   # Read the ASE results file for each sample
-  ase_resultsfile <- paste0("/staging/leuven/stg_00096/home/rdewin/ASE/results/", SAMPLEID, "/", SAMPLEID, "_asereadcounts_nomatch_pvals_annotated.tsv")
+  ase_resultsfile <- paste0("/staging/leuven/stg_00096/home/rdewin/ASE/results/", SAMPLEID, "/", SAMPLEID, "_asereadcounts_pvals_annotated.tsv")
   ase_results <- read.delim(ase_resultsfile, header = TRUE, as.is = TRUE)
   if (any(grepl(pattern = "chr", x = ase_results$contig))) {
     ase_results$contig <- sub(pattern = "chr", replacement = "", x = ase_results$contig)
@@ -160,7 +160,7 @@ for (SAMPLEID in matchedSamples) {
   # format
   outdf$contig <- factor(outdf$contig, levels = c(1:22, "X"))
   outdf <- outdf[order(outdf$contig, as.integer(unlist(lapply(strsplit(outdf$positions, split = ","), FUN = function(x) x[1])))), ]
-  outfile <- paste0("/staging/leuven/stg_00096/home/rdewin/ASE/results/", SAMPLEID, "/", SAMPLEID, "_imbalance_expression_vst.txt")
+  outfile <- paste0("/staging/leuven/stg_00096/home/rdewin/ASE/results/", SAMPLEID, "/", SAMPLEID, "_imbalance_expression_vst_new.txt")
   write.table(x = outdf, file = outfile, quote = F, sep = "\t", row.names = F, col.names = T)
 
   # plot

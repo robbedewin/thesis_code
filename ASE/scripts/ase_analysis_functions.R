@@ -206,8 +206,8 @@ combine_loci_nomatch <- function(sample_id, results_dir) {
     full.names = TRUE
   )
   
-  combined_counts_file <- file.path(results_dir, sample_id, paste0(sample_id, "_hetSNPs_nomatch.txt"))
-  combined_vcf_file <- file.path(results_dir, sample_id, paste0(sample_id, "_hetSNPs_nomatch.vcf"))
+  combined_counts_file <- file.path(results_dir, sample_id, paste0(sample_id, "_hetSNPs.txt"))
+  combined_vcf_file <- file.path(results_dir, sample_id, paste0(sample_id, "_hetSNPs.vcf"))
   
   # Read and combine allele count files
   combined_counts <- tryCatch(
@@ -335,12 +335,12 @@ run_ASEReadCounter <- function(sample_id, results_dir, RNA_dir, ref_genome, gatk
   Sys.setenv(JAVA_HOME = java_home)
   
   # Define file paths
-  het_snp_vcf <- file.path(results_dir, sample_id, paste0(sample_id, "_hetSNPs_nomatch.vcf.gz"))
+  het_snp_vcf <- file.path(results_dir, sample_id, paste0(sample_id, "_hetSNPs.vcf.gz"))
   bam_file <- file.path(RNA_dir, sample_id, paste0(sample_id, "_Aligned.sortedByCoord.withRG.bam"))
   #ref_genome <- "/staging/leuven/stg_00096/home/rdewin/WGS/resources/genome.fa"
   
   output_dir <- file.path(results_dir, sample_id)
-  output_file <- file.path(output_dir, paste0(sample_id, "_asereadcounts_nomatch.tsv"))
+  output_file <- file.path(output_dir, paste0(sample_id, "_asereadcounts.tsv"))
   
   # Construct the command
   cmd <- paste(
@@ -375,8 +375,8 @@ compute_pvals <- function(sample_id, results_dir, filter_cutoff = 0.01) {
   library(VGAM)
   
   # Define file paths
-  ase_counts_file <- file.path(results_dir, sample_id, paste0(sample_id, "_asereadcounts_nomatch.tsv"))
-  genome_counts_file <- file.path(results_dir, sample_id, paste0(sample_id, "_hetSNPs_nomatch.txt"))
+  ase_counts_file <- file.path(results_dir, sample_id, paste0(sample_id, "_asereadcounts.tsv"))
+  genome_counts_file <- file.path(results_dir, sample_id, paste0(sample_id, "_hetSNPs.txt"))
   
   # Read counts data
   ase_counts <- read_tsv(file = ase_counts_file, col_names = TRUE, col_types = "ciccciiiiiiii")
@@ -392,23 +392,74 @@ compute_pvals <- function(sample_id, results_dir, filter_cutoff = 0.01) {
   asedf <- asedf %>%
     select(contig, position, refAllele, altAllele, refCountGenome, altCountGenome, refCount, altCount)
 
-  # Compute filter and p-values
+
+  # Compute filter and p-values using the approach from compute_pvals_nomatch
   asedf <- asedf %>%
     rowwise() %>%
     mutate(
-      filter = qbeta(c(filter_cutoff / 2, 1 - filter_cutoff / 2), shape1 = refCountGenome + 1, shape2 = altCountGenome + 1)[1],
+      # Filter is the minimum p-value from testing q=0 and q=size
+      filter = min(
+        betabinom.test.ab(q = 0, size = refCount + altCount, 
+                          shape1 = refCountGenome + 1, shape2 = altCountGenome + 1, 
+                          alternative = "two.sided"),
+        betabinom.test.ab(q = refCount + altCount, size = refCount + altCount, 
+                          shape1 = refCountGenome + 1, shape2 = altCountGenome + 1, 
+                          alternative = "two.sided")
+      ),
+      # p-value for the observed counts
       pval = betabinom.test.ab(
         q = refCount, size = refCount + altCount,
         shape1 = refCountGenome + 1, shape2 = altCountGenome + 1, alternative = "two.sided"
-      ),
-      padj = p.adjust(pval, method = "fdr")
-    )
-  
+      )
+    ) %>%
+    ungroup()
+
+  # Adjust p-values
+  asedf <- asedf %>%
+    mutate(padj = p.adjust(pval, method = "fdr"))
+
   # Write results to file
-  output_file <- file.path(results_dir, sample_id, paste0(sample_id, "_asereadcounts_nomatch_pvals.tsv"))
+  output_file <- file.path(results_dir, sample_id, paste0(sample_id, "_asereadcounts_pvals.tsv"))
   write_tsv(asedf, output_file, col_names = TRUE)
 
   return(asedf)
+}
+
+
+compute_pvals_alternative <- function(toutdir, tsample, filtercutoff = 0.01) {
+  # Define file paths
+  ase_counts_file <- file.path(results_dir, sample_id, paste0(sample_id, "_asereadcounts.tsv"))
+  genome_counts_file <- file.path(results_dir, sample_id, paste0(sample_id, "_hetSNPs.txt"))
+  
+  # Read counts data
+  asecounts <- read_tsv(file = ase_counts_file, col_names = T, col_types = "ciccciiiiiiii")
+  genomecounts <- read_tsv(file = genome_counts_file, col_types = "ciccii")
+  colnames(genomecounts) <- c("chr", "pos", "ref", "alt", "refCountGenome", "altCountGenome")
+  
+  #asecounts$contig <- sub(pattern = "chr", replacement = "", x = asecounts$contig)
+  asedf <- merge(x = asecounts, y = genomecounts, by.x = c("contig", "position"), by.y = c("chr", "pos"))
+  
+  asedf <- asedf[ , c("contig", "position", "refAllele", "altAllele", "refCountGenome", "altCountGenome",
+                      "refCount", "altCount")]
+  
+  asedf$filter <- apply(X = asedf[, c("refCountGenome", "altCountGenome", "refCount", "altCount")], MARGIN = 1,
+                        FUN = function(x) min(betabinom.test.ab(q = 0, size = x["refCount"] + x["altCount"], shape1 = x["refCountGenome"] + 1, shape2 = x["altCountGenome"] + 1, alternative = "two.sided"),
+                                              betabinom.test.ab(q = x["refCount"] + x["altCount"], size = x["refCount"] + x["altCount"], shape1 = x["refCountGenome"] + 1, shape2 = x["altCountGenome"] + 1, alternative = "two.sided")))
+  
+  asedf$pval <- apply(X = asedf[, c("refCountGenome", "altCountGenome", "refCount", "altCount")], MARGIN = 1,
+                      FUN = function(x) betabinom.test.ab(q = x["refCount"], size = x["refCount"] + x["altCount"], shape1 = x["refCountGenome"] + 1, shape2 = x["altCountGenome"] + 1, alternative = "two.sided"))
+  
+  asedf$padj <- 1
+  is_testworthy <- asedf$filter <= filtercutoff
+  
+  # asedf$is_testworthy <- asedf$filter <= filtercutoff
+  asedf[is_testworthy, "padj"] <- p.adjust(asedf[is_testworthy, "pval"], method = "fdr")
+  
+  return(asedf)
+
+  # Write results to file
+  output_file <- file.path(results_dir, sample_id, paste0(sample_id, "_asereadcounts_alternative_pvals.tsv"))
+  write_tsv(asedf, output_file, col_names = TRUE)
 }
 
 annotate_ase_results <- function(asedf, gtf_file) {
@@ -449,7 +500,7 @@ annotate_ase_results <- function(asedf, gtf_file) {
   asedf$gene[gene_list$query] <- gene_list$gene
 
   # Write annotated results to file
-  output_file <- file.path(results_dir, sample_id, paste0(sample_id, "_asereadcounts_nomatch_pvals_annotated.tsv"))
+  output_file <- file.path(results_dir, sample_id, paste0(sample_id, "_asereadcounts_pvals_annotated.tsv"))
   write_tsv(asedf, output_file, col_names = TRUE)
   
   return(asedf)
@@ -541,6 +592,10 @@ plot_ase_manhattan <- function(asedf, sig_threshold = -log10(0.05)) {
     aes(x = cumulative_pos, y = -log10(pval), label = gene),
     size = 2, angle = 45, hjust = 0, nudge_x = 0, nudge_y = 0.1, check_overlap = TRUE
   )
+
+  # Save plot
+  plot_file <- file.path(results_dir, sample_id, paste0(sample_id, "_manhattan_plot.png"))
+  ggsave(plot_file, plot = p, width = 12, height = 6, dpi = 300)
   
   return(p)
 }

@@ -103,6 +103,15 @@ for (sample_id in common_samples) {
   )
 }
 
+# Alternative function to compute p-values
+for (sample_id in common_samples) {
+  asedf <- compute_pvals_alternative(
+    sample_id = sample_id,
+    results_dir = results_dir,
+    filter_cutoff = 0.01
+  )
+}
+
 # Function to annotate ASE results
 for (sample_id in common_samples) {
   asedf_annotated <- annotate_ase_results(asedf, gtf_file = gtf_file)
