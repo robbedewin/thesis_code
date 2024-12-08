@@ -30,6 +30,75 @@
 # Annotated ASE Results: Data frame with computed p-values and gene annotations.
 # Manhattan Plot: Visualization of significant loci across the genome.
 
+#Function to load libraries 
+load_libraries <- function() {
+  .libPaths("/staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/ASE_R/lib/R/library")
+  library(readr)
+  library(VariantAnnotation)
+  library(BSgenome.Hsapiens.NCBI.T2T.CHM13v2.0)
+  library(BSgenome.Hsapiens.UCSC.hs1)
+  library(ggplot2)
+  library(dplyr)
+  library(GenomicRanges)
+  library(rtracklayer)
+  library(data.table)
+  library(VGAM)
+  library(BiocGenerics)
+  library(parallel)
+  library(S4Vectors)
+}
+
+
+# Function to set ASE analysis variables
+set_ase_variables <- function() {
+  list(
+    reference_alleles_dir = "/staging/leuven/stg_00096/home/rdewin/ASE/ASCAT/ReferenceFiles",
+    ascat_counts_dir = "/staging/leuven/stg_00096/home/rdewin/WGS/results/ascat",
+    alias = "tumor",
+    min_depth = 5,
+    results_dir = "/staging/leuven/stg_00096/home/rdewin/ASE/results",
+    RNA_dir = "/staging/leuven/stg_00096/home/rdewin/RNA/results/star",
+    ref_genome = "/staging/leuven/stg_00096/home/rdewin/WGS/resources/genome.fa",
+    gatk_exe = "/staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/WGS/bin/gatk",
+    java_cmd = "/staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/WGS/bin/java",
+    gatk_jar = "/staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/WGS/share/gatk4-4.5.0.0-0/gatk-package-4.5.0.0-local.jar",
+    java_home = "/staging/leuven/stg_00096/home/rdewin/system/miniconda/envs/WGS",
+    gtf_file = "/staging/leuven/stg_00096/home/rdewin/WGS/resources/annotation.gtf",
+    filter_cutoff = 0.01,
+    sig_threshold = -log10(0.05),
+    chromosomes = c(1:22, "X")
+  )
+}
+
+# Function to get common samples between RNA and DNA files
+get_common_samples <- function(RNA_dir, ascat_counts_dir) {
+  # Get list of RNA samples
+  rna_files <- list.files(RNA_dir, pattern = "_Aligned.sortedByCoord.out.bam$", full.names = TRUE, recursive = TRUE)
+  rna_samples <- basename(dirname(rna_files))
+  
+  # Get list of DNA samples
+  dna_files <- list.dirs(ascat_counts_dir, full.names = TRUE, recursive = FALSE)
+  dna_samples <- basename(dna_files)
+  
+  # Find common samples
+  common_samples <- intersect(rna_samples, dna_samples)
+  
+  return(common_samples)
+}
+
+# Function to create output directories
+create_output_dirs <- function(results_dir, sample_id) {
+  if (!dir.exists(results_dir)) {
+    dir.create(results_dir, recursive = TRUE)
+  }
+  output_dir <- file.path(results_dir, sample_id)
+  if (!dir.exists(output_dir)) {
+    dir.create(output_dir, recursive = TRUE)
+  }
+  if (!dir.exists(file.path(output_dir, "allele_counts"))) {
+    dir.create(file.path(output_dir, "allele_counts"), recursive = TRUE)
+  }
+}
 
 
 # This function reads the reference allele file and the sample allele counts file for a given chromosome,
@@ -261,14 +330,14 @@ combine_loci_nomatch <- function(sample_id, results_dir) {
   message(paste("Combined VCF written to:", paste0(combined_vcf_file, ".gz")))
 }
 
-run_ASEReadCounter <- function(sample_id, results_dir, RNA_dir, WGS_dir, gatk_jar, java_cmd, java_home, min_base_quality = 20, min_mapping_quality = 35) {
+run_ASEReadCounter <- function(sample_id, results_dir, RNA_dir, ref_genome, gatk_jar, java_cmd, java_home, min_base_quality = 20, min_mapping_quality = 35) {
   # Set JAVA_HOME environment variable
   Sys.setenv(JAVA_HOME = java_home)
   
   # Define file paths
   het_snp_vcf <- file.path(results_dir, sample_id, paste0(sample_id, "_hetSNPs_nomatch.vcf.gz"))
   bam_file <- file.path(RNA_dir, sample_id, paste0(sample_id, "_Aligned.sortedByCoord.withRG.bam"))
-  ref_genome <- file.path(WGS_dir, "genome.fa")
+  #ref_genome <- "/staging/leuven/stg_00096/home/rdewin/WGS/resources/genome.fa"
   
   output_dir <- file.path(results_dir, sample_id)
   output_file <- file.path(output_dir, paste0(sample_id, "_asereadcounts_nomatch.tsv"))
@@ -476,7 +545,7 @@ plot_ase_manhattan <- function(asedf, sig_threshold = -log10(0.05)) {
   return(p)
 }
 
-run_ase_pipeline <- function(sample_id, reference_alleles_dir, ascat_counts_dir, results_dir, RNA_dir, WGS_dir, gatk_jar, java_cmd, java_home, gtf_file, min_depth = 3, filter_cutoff = 0.01, sig_threshold = -log10(0.05)) {
+run_ase_pipeline <- function(sample_id, reference_alleles_dir, ascat_counts_dir, results_dir, RNA_dir, ref_genome, gatk_jar, java_cmd, java_home, gtf_file, min_depth = 3, filter_cutoff = 0.01, sig_threshold = -log10(0.05)) {
   
   # Step 1: Filter Allele Counts
   message("Filtering allele counts...")
@@ -511,7 +580,7 @@ run_ase_pipeline <- function(sample_id, reference_alleles_dir, ascat_counts_dir,
     sample_id = sample_id,
     results_dir = results_dir,
     RNA_dir = RNA_dir,
-    WGS_dir = WGS_dir,
+    ref_genome = ref_genome,
     gatk_jar = gatk_jar,
     java_cmd = java_cmd,
     java_home = java_home
