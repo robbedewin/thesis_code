@@ -39,6 +39,7 @@ aidf <- aidf[
 aidf <- aidf[
   aidf$contig != "X" &
     !grepl(aidf$gene_name, pattern = "HLA-*") &
+    !grepl(aidf$gene_name, pattern = "^LOC", perl = TRUE) &
     !grepl(aidf$gene_name, pattern = "^IG[HLK].*", perl = TRUE) &
     !grepl(aidf$gene_name, pattern = "^TR[ABDG][VCDJ].*", perl = TRUE),
 ]
