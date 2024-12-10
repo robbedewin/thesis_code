@@ -87,7 +87,7 @@ maf_combined <- merge_mafs(maf_list)
 plotmafSummary(maf = maf_combined, rmOutlier = TRUE, addStat = 'median', dashboard = TRUE, titvRaw = FALSE)
 
 #Save the plot to a PDF file
-outputFilePath <- "/staging/leuven/stg_00096/home/rdewin/PLOTS/maf_summary_plot2.pdf"
+outputFilePath <- "/staging/leuven/stg_00096/home/rdewin/PLOTS/maf_summary_plot3.pdf"
 pdf(outputFilePath, width = 14, height = 14)
 plotmafSummary(maf = maf_combined, rmOutlier = TRUE, addStat = 'median', dashboard = TRUE, titvRaw = FALSE)
 dev.off()
