@@ -23,7 +23,6 @@ ATAC/.snakemake/
 !RNA/config/
 !RNA/dag/
 !RNA/envs/
-!RNA/logs/
 !RNA/rules/
 
 !ATAC/

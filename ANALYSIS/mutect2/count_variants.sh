@@ -6,6 +6,11 @@ total_files_type1=0
 total_variants_type2=0
 total_files_type2=0
 
+# Output file
+output_file="ANALYSIS/mutect2/variant_counts.txt"
+echo "Variant Counts Mutect" > "$output_file"
+
+
 # Function to count variants in a VCF file
 count_variants() {
     file=$1
