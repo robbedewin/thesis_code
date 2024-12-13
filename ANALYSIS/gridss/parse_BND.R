@@ -6,12 +6,22 @@ library(ggplot2)
 
 
 # Define the function to classify SVs
+# This functions classifies SVs into five types: Deletion, Duplication, Insertion, Inversion, and Inter-chromosomal 
+# based on the SV length and orientation of the breakpoints. 
+# The classification is based on the following criteria:
+# - Deletion: SV length is greater than 0.7 times the absolute value of the insertion length, and breakpoints are in the same orientation.
+# - Duplication: SV length is greater than 0.7 times the absolute value of the insertion length, and breakpoints are in opposite orientations.
+# - Insertion: Insertion length is greater than 0.7 times the absolute value of the SV length.
+# - Inversion: Breakpoints are in the same orientation, and the start position of the first breakpoint is less than the start position of the second breakpoint.
+# - Inter-chromosomal: Breakpoints are on different chromosomes.
 simpleEventType <- function(gr) {
   return(ifelse(seqnames(gr) != seqnames(partner(gr)), "Inter-chromosomal", # inter-chromosomal
          ifelse(gr$insLen >= abs(gr$svLen) * 0.7, "Insertion",
          ifelse(strand(gr) == strand(partner(gr)), "Inversion",
          ifelse(xor(start(gr) < start(partner(gr)), strand(gr) == "-"), "Deletion", "Duplication")))))
 }
+
+
 
 # Define the list of sample IDs
 sample_ids <- c("P011", "P013", "P016", "P017", "P018", "P019", "P020", "P022", "P023", "P024", "P026", "P027", "P028", "P029", "P033", "P034", "P035", "P036", "P037", "P038", "P041", "P056", "P057", "P058", "P059", "P060", "P061", "P062", "P064", "P065", "P066", "P086", "P103", "P105")
@@ -41,8 +51,19 @@ for (sample_id in sample_ids) {
 # Save the SV counts to a TSV file
 write.table(sv_counts, "/staging/leuven/stg_00096/home/rdewin/ANALYSIS/gridss/sv_counts.tsv", sep = "\t", quote = FALSE, row.names = FALSE)
 
+
 # Summarize counts by SV type
 sv_summary <- aggregate(Count ~ SVType, data = sv_counts, sum)
+
+# Put extra column with average per sample 
+sv_summary$Average <- sv_summary$Count / length(sample_ids)
+
+# Add a row with the total number of SVs
+total_sv <- sum(sv_summary$Count)
+
+
+#Save summary to a TSV file
+write.table(sv_summary, "/staging/leuven/stg_00096/home/rdewin/ANALYSIS/gridss/sv_summary.tsv", sep = "\t", quote = FALSE, row.names = FALSE)
 
 # Plot the distribution of SV types
 ggplot(sv_summary, aes(x = SVType, y = Count, fill = SVType)) +
@@ -58,7 +79,11 @@ ggsave("/staging/leuven/stg_00096/home/rdewin/ANALYSIS/gridss/sv_type_distributi
 # Calculate averages and standard deviations per sample
 sv_stats <- aggregate(Count ~ SVType, data = sv_counts, FUN = function(x) c(mean = mean(x), sd = sd(x)))
 sv_stats <- do.call(data.frame, sv_stats)
-colnames(sv_stats) <- c("SVType", "Mean", "SD")
+sv_stats <- sv_stats[complete.cases(sv_stats), ]  # Remove rows with NA values
+sv_stats$Mean <- sv_stats$Count.mean
+sv_stats$SD <- sv_stats$Count.sd
+sv_stats$Count <- NULL
+
 
 # Plot the averages and standard deviations
 ggplot(sv_stats, aes(x = SVType, y = Mean, fill = SVType)) +

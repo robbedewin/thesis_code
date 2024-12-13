@@ -126,10 +126,10 @@ for (sample_id in common_samples) {
 # Function to plot Manhattan plot
 for (sample_id in common_samples) {
   message(paste("Plotting Manhattan plot for sample:", sample_id))
-  p <- plot_ase_manhattan(sample_id, results_dir, sig_threshold = -log10(0.05))
+  p <- plot_ase_manhattan_2(sample_id, results_dir, sig_threshold = -log10(0.01))
   
   # Save plot
-  plot_file <- file.path(results_dir, sample_id, paste0(sample_id, "_manhattan_plot_new.png"))
+  plot_file <- file.path(results_dir, sample_id, paste0(sample_id, "_manhattan_plot_new_threshold_unique_gene.png"))
   ggsave(plot_file, plot = p, width = 12, height = 6, dpi = 300)
   
   message(paste("Manhattan plot saved to:", plot_file))

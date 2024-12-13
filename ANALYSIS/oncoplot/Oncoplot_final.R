@@ -463,6 +463,14 @@ alterations_matrix <- apply(alterations_matrix, c(1, 2), as.character)
 # Replace NA values with empty strings to avoid warnings in oncoPrint
 alterations_matrix[is.na(alterations_matrix)] <- ""
 
+# Write the alterations matrix to a tsv file
+write.table(
+  alterations_matrix,
+  file = "/staging/leuven/stg_00096/home/rdewin/ANALYSIS/oncoplot/alterations_matrix.tsv",
+  sep = "\t",
+  quote = FALSE
+)
+
 # ----------------------------- Step 11: Generate the Oncoplot -----------------------------
 
 # Add an asterisk to genes that are exclusive to the top genes list (if in both curated and top genes add nothing)

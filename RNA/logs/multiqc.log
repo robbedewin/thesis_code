@@ -1,19 +1,47 @@
 
   /// MultiQC 🔍 | v1.21
 
+|           multiqc | MultiQC Version v1.25.2 now available!
 |           multiqc | Using log filenames for sample names
-|           multiqc | Search path : /lustre1/project/stg_00096/home/rdewin/RNA/results/qc/fastqc/P023
-|           multiqc | Search path : /lustre1/project/stg_00096/home/rdewin/RNA/results/qc/fastqc/P013
-|           multiqc | Search path : /lustre1/project/stg_00096/home/rdewin/RNA/results/qc/fastqc/P019
-|           multiqc | Search path : /lustre1/project/stg_00096/home/rdewin/RNA/results/qc/fastqc/P026
-|           multiqc | Search path : /lustre1/project/stg_00096/home/rdewin/RNA/results/qc/fastqc/P020
-|           multiqc | Search path : /lustre1/project/stg_00096/home/rdewin/RNA/results/qc/fastqc/P018
-|           multiqc | Search path : /lustre1/project/stg_00096/home/rdewin/RNA/results/qc/fastqc/P028
-|           multiqc | Search path : /lustre1/project/stg_00096/home/rdewin/RNA/results/qc/fastqc/P022
+|           multiqc | Search path : /lustre1/project/stg_00096/home/rdewin/RNA/results/qc/fastqc/P103
+|           multiqc | Search path : /lustre1/project/stg_00096/home/rdewin/RNA/results/qc/fastqc/P083
+|           multiqc | Search path : /lustre1/project/stg_00096/home/rdewin/RNA/results/qc/fastqc/P085
+|           multiqc | Search path : /lustre1/project/stg_00096/home/rdewin/RNA/results/qc/fastqc/P011
+|           multiqc | Search path : /lustre1/project/stg_00096/home/rdewin/RNA/results/qc/fastqc/P021
+|           multiqc | Search path : /lustre1/project/stg_00096/home/rdewin/RNA/results/qc/fastqc/P057
+|           multiqc | Search path : /lustre1/project/stg_00096/home/rdewin/RNA/results/qc/fastqc/P082
+|           multiqc | Search path : /lustre1/project/stg_00096/home/rdewin/RNA/results/qc/fastqc/P081
+|           multiqc | Search path : /lustre1/project/stg_00096/home/rdewin/RNA/results/qc/fastqc/P061
+|           multiqc | Search path : /lustre1/project/stg_00096/home/rdewin/RNA/results/qc/fastqc/P033
+|           multiqc | Search path : /lustre1/project/stg_00096/home/rdewin/RNA/results/qc/fastqc/P059
+|           multiqc | Search path : /lustre1/project/stg_00096/home/rdewin/RNA/results/qc/fastqc/P025
+|           multiqc | Search path : /lustre1/project/stg_00096/home/rdewin/RNA/results/qc/fastqc/P058
+|           multiqc | Search path : /lustre1/project/stg_00096/home/rdewin/RNA/results/qc/fastqc/P084
+|           multiqc | Search path : /lustre1/project/stg_00096/home/rdewin/RNA/results/qc/fastqc/P037
 |           multiqc | Search path : /lustre1/project/stg_00096/home/rdewin/RNA/results/qc/fastqc/P024
+|           multiqc | Search path : /lustre1/project/stg_00096/home/rdewin/RNA/results/qc/fastqc/P080
+|           multiqc | Search path : /lustre1/project/stg_00096/home/rdewin/RNA/results/qc/fastqc/P029
+|           multiqc | Search path : /lustre1/project/stg_00096/home/rdewin/RNA/results/qc/fastqc/P022
+|           multiqc | Search path : /lustre1/project/stg_00096/home/rdewin/RNA/results/qc/fastqc/P023
+|           multiqc | Search path : /lustre1/project/stg_00096/home/rdewin/RNA/results/qc/fastqc/P064
+|           multiqc | Search path : /lustre1/project/stg_00096/home/rdewin/RNA/results/qc/fastqc/P060
+|           multiqc | Search path : /lustre1/project/stg_00096/home/rdewin/RNA/results/qc/fastqc/P041
+|           multiqc | Search path : /lustre1/project/stg_00096/home/rdewin/RNA/results/qc/fastqc/P018
+|           multiqc | Search path : /lustre1/project/stg_00096/home/rdewin/RNA/results/qc/fastqc/P065
+|           multiqc | Search path : /lustre1/project/stg_00096/home/rdewin/RNA/results/qc/fastqc/P030
 |           multiqc | Search path : /lustre1/project/stg_00096/home/rdewin/RNA/results/qc/fastqc/P016
-|         searching | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 80/80  
-|            fastqc | Found 40 reports
+|           multiqc | Search path : /lustre1/project/stg_00096/home/rdewin/RNA/results/qc/fastqc/P063
+|           multiqc | Search path : /lustre1/project/stg_00096/home/rdewin/RNA/results/qc/fastqc/P020
+|           multiqc | Search path : /lustre1/project/stg_00096/home/rdewin/RNA/results/qc/fastqc/P026
+|           multiqc | Search path : /lustre1/project/stg_00096/home/rdewin/RNA/results/qc/fastqc/P028
+|           multiqc | Search path : /lustre1/project/stg_00096/home/rdewin/RNA/results/qc/fastqc/P105
+|           multiqc | Search path : /lustre1/project/stg_00096/home/rdewin/RNA/results/qc/fastqc/P017
+|           multiqc | Search path : /lustre1/project/stg_00096/home/rdewin/RNA/results/qc/fastqc/P066
+|           multiqc | Search path : /lustre1/project/stg_00096/home/rdewin/RNA/results/qc/fastqc/P019
+|           multiqc | Search path : /lustre1/project/stg_00096/home/rdewin/RNA/results/qc/fastqc/P086
+|           multiqc | Search path : /lustre1/project/stg_00096/home/rdewin/RNA/results/qc/fastqc/P013
+|         searching | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 296/296  
+|            fastqc | Found 148 reports
 |           multiqc | Report      : results/qc/multiqc_RNA.html
 |           multiqc | Data        : None
 |           multiqc | MultiQC complete

@@ -324,19 +324,39 @@ joints$cumend <- end(joints) + cumdist[as.character(seqnames(joints))]
 
 # Use names of cumdist as breaks for the plot
 breaks_positions <- cumdist[names(cumdist) %in% paste0("chr", 1:22)]
-labels_chr <- 1:22
+
+
+# Create positions for labels on the x-axis in middle of chromosomes
+label_position <- breaks_positions[-length(breaks_positions)] + diff(breaks_positions)/2
+
+
+
+# Ensure labels_chr has the same length as breaks_positions
+labels_chr <- c(1:22)
+
+
+# Create positions for labels on the x-axis in middle of chromosomes
+label_position <- breaks_positions[-length(breaks_positions)] + diff(breaks_positions)/2
+
+# Ensure labels_chr has the same length as label_position
+labels_chr <- c(1:(length(label_position)))
+
+# Add the last chromosome position manually
+label_position <- c(label_position, cumdist[length(cumdist)-1] + (as.numeric(seqlengths(seqinfoCHM13)[22]))/2)
+labels_chr <- c(labels_chr, 22)
+
 
 # Generate ASCAT overview plot
 # Generate the ASCAT overview plot
 p3 <- ggplot(as.data.frame(joints)) + 
-  geom_rect(aes(xmin = cumstart, xmax = cumend, ymin = 0, ymax = gains), fill = "#fc8d59", alpha = .6) +
-  geom_rect(aes(xmin = cumstart, xmax = cumend, ymin = 0, ymax = -losses), fill = "#91bfdb", alpha = .6) +
+  geom_rect(aes(xmin = cumstart, xmax = cumend, ymin = 0, ymax = gains), fill = "red", alpha = .8) +
+  geom_rect(aes(xmin = cumstart, xmax = cumend, ymin = 0, ymax = -losses), fill = "green", alpha = .8) +
   geom_vline(xintercept = cumdist) + ylim(c(-1, 1)) +
   theme_minimal() + theme(panel.grid.major.x = element_blank(), panel.grid.minor.x = element_blank()) +
-  scale_x_continuous(breaks = breaks_positions, labels = labels_chr) +
+  scale_x_continuous(breaks = label_position, labels = labels_chr) +
   theme(plot.background = element_rect(fill = "white")) +
   labs(x = "", y = "Frequency")
-ggsave(filename = paste0(outdir, "/ascat_overview.png"), plot = p3, width = 10, height = 5)
+ggsave(filename = paste0(outdir, "/ascat_overview_new.png"), plot = p3, width = 10, height = 5)
 
 
 #Additional QC from the ASCAT plots

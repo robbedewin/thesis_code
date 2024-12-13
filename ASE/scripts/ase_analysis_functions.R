@@ -626,6 +626,119 @@ plot_ase_manhattan <- function(sample_id, results_dir, sig_threshold = -log10(0.
   return(p)
 }
 
+plot_ase_manhattan_2 <- function(sample_id, results_dir, sig_threshold = -log10(0.05)) {
+  library(ggplot2)
+  library(dplyr)
+  library(BSgenome.Hsapiens.UCSC.hs1)
+  
+  # Read annotated ASE results
+  ase_file <- file.path(results_dir, sample_id, paste0(sample_id, "_asereadcounts_pvals_annotated.tsv"))
+  asedf <- read_tsv(ase_file, col_types = "cicciiiidddc")
+
+  # Remove 'chr' prefix
+  asedf$contig <- gsub("^chr", "", asedf$contig)
+
+  # Ensure contig is a factor with ordered levels
+  chroms <- c(as.character(1:22), "X")
+  asedf$contig <- factor(asedf$contig, levels = chroms)
+
+  # Create a mapping of chromosomes to numeric indices
+  chrom_map <- data.frame(contig = chroms, chrom_index = 1:length(chroms), stringsAsFactors = FALSE)
+
+  # Merge chrom_index into asedf
+  asedf <- left_join(asedf, chrom_map, by = "contig")
+  
+  # Get chromosome lengths from BSgenome
+  bsgenome_hs1 <- BSgenome.Hsapiens.UCSC.hs1
+  chrom_lengths <- seqlengths(bsgenome_hs1)
+  
+  # Keep only chromosomes of interest
+  chroms_full <- paste0("chr", chroms)
+  chrom_lengths <- chrom_lengths[names(chrom_lengths) %in% chroms_full]
+  
+  # Remove 'chr' prefix from names
+  names(chrom_lengths) <- gsub("^chr", "", names(chrom_lengths))
+  
+  # Create data frame
+  chrom_lengths_df <- data.frame(
+    contig = names(chrom_lengths),
+    chr_len = as.numeric(chrom_lengths),
+    stringsAsFactors = FALSE
+  )
+  
+  # Add chrom_index
+  chrom_lengths_df <- left_join(chrom_lengths_df, chrom_map, by = "contig")
+  
+  # Arrange and compute chromosome offsets
+  chrom_lengths_df <- chrom_lengths_df %>%
+    arrange(chrom_index) %>%
+    mutate(chr_offset = cumsum(as.numeric(lag(chr_len, default = 0))))
+  
+  # Merge chromosome lengths and offsets into asedf
+  asedf_joined <- left_join(asedf, chrom_lengths_df[, c("contig", "chr_len", "chr_offset")], by = "contig")
+  
+  # Compute cumulative position
+  asedf_joined <- asedf_joined %>%
+    mutate(cumulative_pos = position + chr_offset)
+  
+  # Calculate dynamic significance threshold
+  sig_pval_cutoff <- max(asedf_joined$pval[asedf_joined$padj < 0.01], na.rm = TRUE)
+  sig_threshold_dynamic <- -log10(sig_pval_cutoff)
+
+  # Create the Manhattan plot
+  p <- ggplot(data = asedf_joined, aes(x = cumulative_pos, y = -log10(pval))) +
+    geom_point(aes(color = chrom_index %% 2 == 0), alpha = 0.6, size = 0.5) +
+    scale_color_manual(values = c("skyblue", "navy")) +
+    geom_hline(yintercept = sig_threshold_dynamic, color = "grey", linetype = "dashed") +
+    labs(x = "Chromosome", y = "-log10(p-value)", title = "ASE Manhattan Plot") +
+    theme_bw() +
+    theme(
+      legend.position = "none",
+      panel.grid.major.x = element_blank(),
+      panel.grid.minor.x = element_blank()
+    ) +
+    ylim(0, 10)  # Set the y-axis limit to a maximum of 10
+
+  
+  # Add chromosome labels
+  axis_set <- chrom_lengths_df %>%
+    mutate(center = chr_offset + chr_len / 2)
+  
+  p <- p + scale_x_continuous(
+    breaks = axis_set$center,
+    labels = axis_set$contig
+  )
+  
+  # Filter rows for significant points, ensure one annotation per gene, limit y < 10, and exclude "LOC"
+  asedf_joined_to_label <- asedf_joined %>%
+    filter(-log10(pval) >= sig_threshold_dynamic & -log10(pval) <= 10) %>%  # Limit annotations to y <= 10
+    filter(!grepl("^LOC", gene)) %>%                                        # Exclude gene names starting with "LOC"
+    group_by(gene) %>%                                                      # Group by gene
+    slice_min(order_by = pval, n = 1) %>%                                   # Select the row with the smallest p-value
+    ungroup()                                                               # Ungroup the data
+  
+  # Annotate the plot with one label per gene
+  p <- p + geom_text(
+    data = asedf_joined_to_label,
+    aes(x = cumulative_pos, y = -log10(pval), label = gene),
+    size = 2, angle = 45, hjust = 0, nudge_x = 0, nudge_y = 0.1, check_overlap = TRUE
+  )
+
+  # Save annotated gene names with their respective sample_id to a file
+  output_file <- file.path(results_dir, "manhattan_genes", paste0(sample_id, "_manhattan_annotated_genes.tsv"))
+
+  # Create a dataframe with annotated genes and sample_id
+  annotated_genes <- asedf_joined_to_label %>%
+    dplyr::select(gene, contig, position, pval, padj) %>%  # Select relevant columns
+    mutate(sample_id = sample_id)                # Add the sample_id column
+
+  # Write to a TSV file
+  write_tsv(annotated_genes, output_file)
+
+  
+  return(p)
+}
+
 run_ase_pipeline <- function(sample_id, reference_alleles_dir, ascat_counts_dir, results_dir, RNA_dir, ref_genome, gatk_jar, java_cmd, java_home, gtf_file, min_depth = 3, filter_cutoff = 0.01, sig_threshold = -log10(0.05)) {
   
   # Step 1: Filter Allele Counts
@@ -691,3 +804,186 @@ run_ase_pipeline <- function(sample_id, reference_alleles_dir, ascat_counts_dir,
   
   return(asedf_annotated)
 }
+
+# Function to count the number of loci in the filtered allele counts files for a given sample
+count_loci <- function(results_dir, sample_id) {
+  library(readr)
+  
+  # Define file paths
+  allele_counts_files <- list.files(
+    path = file.path(results_dir, sample_id, "allele_counts"),
+    pattern = paste0("_filtered_allele_counts_chr.*\\.txt$"),
+    full.names = TRUE
+  )
+  
+  # Read and combine allele count files
+  combined_counts <- do.call(
+    rbind,
+    lapply(
+      X = allele_counts_files,
+      FUN = function(file) {
+        read_tsv(
+          file,
+          col_names = FALSE,
+          col_types = "cicci",
+          progress = FALSE
+        )
+      }
+    )
+  )
+  
+  # Count the number of loci
+  num_loci <- nrow(combined_counts)
+  
+  message(paste("Number of loci for sample", sample_id, ":", num_loci))
+  
+  return(num_loci)
+}
+
+# Function to count the number of loci for each sample in a list of samples
+count_loci_per_sample <- function(common_samples, results_dir) {
+  loci_counts <- data.frame(sample_id = character(), amount_of_loci = numeric(), stringsAsFactors = FALSE)
+  
+  for (sample_id in common_samples) {
+    num_loci <- count_loci(results_dir, sample_id)
+    loci_counts <- rbind(loci_counts, data.frame(sample_id = sample_id, amount_of_loci = num_loci))
+  }
+  
+  return(loci_counts)
+}
+
+# Function to calculate statistics on the loci counts
+calculate_loci_statistics <- function(loci_counts) {
+  library(dplyr)
+  
+  stats <- loci_counts %>%
+    summarise(
+      total_samples = n(),
+      total_loci = sum(amount_of_loci),
+      average_loci = mean(amount_of_loci),
+      median_loci = median(amount_of_loci),
+      sd_loci = sd(amount_of_loci),
+      range_loci = range(amount_of_loci)
+    )
+  
+  return(stats)
+}
+
+count_loci_reference <- function(results_dir) {
+  library(readr)
+  
+  # Define file paths
+  allele_counts_files <- list.files(
+    path = file.path(results_dir),
+    pattern = paste0("allele_T2T_chr.*\\.txt$"),
+    full.names = TRUE
+  )
+  
+  # Read and combine allele count files
+  combined_counts <- do.call(
+    rbind,
+    lapply(
+      X = allele_counts_files,
+      FUN = function(file) {
+        read_tsv(
+          file,
+          col_names = TRUE,
+          col_types = "iii",
+          progress = FALSE
+        )
+      }
+    )
+  )
+  
+  # Count the number of loci
+  num_loci <- nrow(combined_counts)
+  
+  message(paste("Number of loci for reference:", num_loci))
+  
+  return(num_loci)
+}
+
+# # Example usage:
+#  common_samples <- get_common_samples(RNA_dir, ascat_counts_dir)
+#  loci_counts <- count_loci_per_sample(common_samples, results_dir)
+#  loci_stats <- calculate_loci_statistics(loci_counts)
+#  print(loci_stats)
+
+
+# # Function to count the number of loci in output ASE files "/staging/leuven/stg_00096/home/rdewin/ASE/results/P011/P011_asereadcounts.tsv"
+# count_loci_output <- function(results_dir, sample_id) {
+#   library(readr)
+  
+#   # Define file paths
+#   allele_counts_files <- list.files(
+#     path = file.path(results_dir, sample_id),
+#     pattern = paste0("_asereadcounts.tsv$"),
+#     full.names = TRUE
+#   )
+  
+#   # Read and combine allele count files
+#   combined_counts <- do.call(
+#     rbind,
+#     lapply(
+#       X = allele_counts_files,
+#       FUN = function(file) {
+#         read_tsv(
+#           file,
+#           col_names = TRUE,
+#           col_types = "ciccciiiiiiii",
+#           progress = FALSE
+#         )
+#       }
+#     )
+#   )
+  
+#   # Count the number of loci
+#   num_loci <- nrow(combined_counts)
+  
+#   message(paste("Number of loci for sample", sample_id, ":", num_loci))
+  
+#   return(num_loci)
+# }
+
+# # Function to count the number of loci for each sample in a list of samples
+# count_loci_per_sample_output <- function(common_samples, results_dir) {
+#   loci_counts <- data.frame(sample_id = character(), amount_of_loci = numeric(), stringsAsFactors = FALSE)
+  
+#   for (sample_id in common_samples) {
+#     num_loci <- count_loci_output(results_dir, sample_id)
+#     loci_counts <- rbind(loci_counts, data.frame(sample_id = sample_id, amount_of_loci = num_loci))
+#   }
+  
+#   return(loci_counts)
+# }
+
+# # Function to calculate statistics on the loci counts
+# calculate_loci_statistics_output <- function(loci_counts) {
+#   library(dplyr)
+  
+#   stats <- loci_counts %>%
+#     summarise(
+#       total_samples = n(),
+#       total_loci = sum(amount_of_loci),
+#       average_loci = mean(amount_of_loci),
+#       median_loci = median(amount_of_loci),
+#       sd_loci = sd(amount_of_loci),
+#       range_loci = range(amount_of_loci)
+#     )
+  
+#   return(stats)
+# }
+
+# # Example usage:
+#   common_samples <- get_common_samples(RNA_dir, ascat_counts_dir)
+#   loci_counts <- count_loci_per_sample_output(common_samples, results_dir)
+#   loci_stats <- calculate_loci_statistics_output(loci_counts)
+#   print(loci_stats)
+
+# write_loci_stats <- function(loci_stats, output_file) {
+#   write_tsv(loci_stats, output_file, col_names = TRUE)
+# }
+
+# # Example usage:
+# output_file <- file.path(results_dir, "loci_stats_after_ASEREADCOUNTER.tsv")
+# write_loci_stats(loci_stats, output_file)

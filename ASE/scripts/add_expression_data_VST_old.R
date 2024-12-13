@@ -89,6 +89,9 @@ hsexondb <- exons(x = hstxdb, columns = c("gene_id"))
 l2fcfile <- "/staging/leuven/stg_00096/home/rdewin/ASE/expression_data/RNAlog2fc_vst.txt"
 l2fcdf <- read.delim(file = l2fcfile, as.is = T)
 
+# Initialize a data frame to store the counts
+counts_summary <- data.frame(sample_id = character(), initial_count = integer(), exonic_count = integer(), filtered_count = integer(), stringsAsFactors = FALSE)
+
 # For loop to loop over the sampleIDs
 for (SAMPLEID in matchedSamples) {
   #SAMPLEID <- "P011"
@@ -100,11 +103,17 @@ for (SAMPLEID in matchedSamples) {
   if (any(grepl(pattern = "chr", x = ase_results$contig))) {
     ase_results$contig <- sub(pattern = "chr", replacement = "", x = ase_results$contig)
   }
-  
+
+  # Initial count of loci
+  initial_count <- nrow(ase_results)
+
   # make results into GRanges object, identify all exonic SNPs and create new df with all of these (contains duplicate SNPs)
   asegr <- GRanges(seqnames = ase_results$contig, ranges = IRanges(start = ase_results$position, end = ase_results$position))
   annothits <- findOverlaps(query = asegr, subject = hsexondb)
   # converts SNP data into a genomic ranges object, identifies which of these SNPs are located within exonic regions, and stores the overlap information for further analysis. 
+  
+  # Count after exonic region filtering
+  exonic_count <- length(unique(queryHits(annothits)))
   
   # in one case, there were two genes using the same exon ... this just takes the first
   hitgenes <- sapply(mcols(hsexondb[subjectHits(annothits)])$gene_id, FUN = function(x) x[[1]])
@@ -112,6 +121,13 @@ for (SAMPLEID in matchedSamples) {
   
   # create output dataframe with combined p-value per gene + adjust for multiple testing
   outdf <- do.call(rbind, by(data = ase_results_annot, INDICES = ase_results_annot$gene, FUN = combine_pvals))
+  
+  # Count after filtering for duplicates and power
+  filtered_count <- nrow(outdf)
+  
+  # Add counts to the summary data frame
+  counts_summary <- rbind(counts_summary, data.frame(sample_id = SAMPLEID, initial_count = initial_count, exonic_count = exonic_count, filtered_count = filtered_count, stringsAsFactors = FALSE))
+  
   outdf$padj <- 1
   outdf[outdf$power, "padj"] <- p.adjust(p = outdf[outdf$power, "pcombined"], method = "fdr")
   
@@ -128,5 +144,8 @@ for (SAMPLEID in matchedSamples) {
   p1 <- plot_imbalance_expression(imbalancedf = outdf)
   plotfile <- paste0("/staging/leuven/stg_00096/home/rdewin/ASE/results/", SAMPLEID, "/", SAMPLEID, "_imbalance_expression_vst.png")
   ggsave(plotfile, p1)
-    
 }
+
+# Write the counts summary to a TSV file
+summary_file <- "/staging/leuven/stg_00096/home/rdewin/ASE/results/counts_summary_expression_data.tsv"
+write.table(counts_summary, file = summary_file, quote = FALSE, sep = "\t", row.names = FALSE, col.names = TRUE)
