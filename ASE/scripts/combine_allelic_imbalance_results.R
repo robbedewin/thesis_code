@@ -2,6 +2,7 @@
 
 # Load the required libraries
 library(dplyr)
+library(stringr)
 
 ## Check recurrence of allelically imbalanced + up/downregulated genes
 

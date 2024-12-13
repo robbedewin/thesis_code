@@ -24,13 +24,14 @@ generate_plot <- function(airesultsfile, l2fcdf, filter_condition, output_dir) {
   p1 <- ggplot(data = l2fcdf_melt, mapping = aes(x = gene_name, y = l2fc))
   p1 <- p1 + geom_point(alpha = .5, shape = 16, size = 1.5, stroke = 0)
   p1 <- p1 + geom_violin(scale = "width", fill = "grey", alpha = .5)
-  p1 <- p1 + geom_point(data = l2fcdf_melt[l2fcdf_melt$is_ai, ], aes(x = gene_name, y = l2fc, fill = is_ai), shape = 21, size = 2, stroke = 0)
+  #p1 <- p1 + geom_point(data = l2fcdf_melt[l2fcdf_melt$is_ai, ], aes(x = gene_name, y = l2fc, fill = is_ai), shape = 21, size = 2, stroke = 0)
+  p1 <- p1 + geom_point(data = l2fcdf_melt[l2fcdf_melt$is_ai, ], aes(x = gene_name, y = l2fc, fill = is_ai, colour = is_ai), shape = 21, size = 2, stroke = 0) + scale_colour_manual(values = c("TRUE" = "red", "FALSE" = "black"))
   p1 <- p1 + theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5))
   
   # Generate consistent file names based on the filter condition
   filter_name <- gsub(" ", "_", gsub(">", "GreaterThan", gsub("<", "SmallerThan", gsub("=", "EqualTo", filter_condition))))
-  output_plot <- file.path(output_dir, paste0("l2fc_vst_", filter_name, ".png"))
-  output_data <- file.path(output_dir, paste0("l2fc_vst_", filter_name, ".txt"))
+  output_plot <- file.path(output_dir, paste0("l2fc_vst_red_", filter_name, ".png"))
+  output_data <- file.path(output_dir, paste0("l2fc_vst_red_", filter_name, ".txt"))
   
   # Save the plot
   ggsave(filename = output_plot, plot = p1, width = 10, height = 5, dpi = 300)

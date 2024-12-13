@@ -112,13 +112,15 @@ for (SAMPLEID in matchedSamples) {
   annothits <- findOverlaps(query = asegr, subject = hsexondb)
   # converts SNP data into a genomic ranges object, identifies which of these SNPs are located within exonic regions, and stores the overlap information for further analysis. 
   
-  # Count after exonic region filtering
-  exonic_count <- length(unique(queryHits(annothits)))
+  
   
   # in one case, there were two genes using the same exon ... this just takes the first
   hitgenes <- sapply(mcols(hsexondb[subjectHits(annothits)])$gene_id, FUN = function(x) x[[1]])
   ase_results_annot <- data.frame(ase_results[queryHits(annothits), colnames(ase_results) != "gene"], gene = hitgenes, stringsAsFactors = F)
   
+  # Count after exonic region filtering
+  exonic_count <- nrow(ase_results_annot)
+
   # create output dataframe with combined p-value per gene + adjust for multiple testing
   outdf <- do.call(rbind, by(data = ase_results_annot, INDICES = ase_results_annot$gene, FUN = combine_pvals))
   
