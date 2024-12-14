@@ -15,6 +15,7 @@ matchedSamples <- c("P011", "P013", "P016", "P017", "P018", "P019", "P020", "P02
 output_dir <- "/staging/leuven/stg_00096/home/rdewin/ASE/expression_data"
 
 l2fcfile <- process_expression_data(counts_file, matchedSamples, output_dir)
+l2fcfile <- "/staging/leuven/stg_00096/home/rdewin/ASE/expression_data/RNAlog2fc_vst.txt"
 l2fcdf <- read.delim(file = l2fcfile, as.is = T)
 
 ## Combine p-values (of powered SNP loci) per gene and adjust for multiple testing
@@ -34,7 +35,7 @@ for (SAMPLEID in matchedSamples) {
   outdf <- add_log2fc_and_gene_names(outdf, l2fcdf, SAMPLEID)
   outdf <- format_output_data(outdf)
   save_output_data(outdf, output_dir, SAMPLEID)
-  save_plot_imbalance(outdf, output_dir, SAMPLEID)
+  save_plot_imbalance(outdf, output_dir, SAMPLEID, significance = 0.01)
 }
 
 

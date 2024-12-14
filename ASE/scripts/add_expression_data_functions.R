@@ -1,4 +1,3 @@
-
 ## Functions
 combine_pvals <- function(ase_pergene) {
   # ase_pergene <- ase_results_annot[4:14, ]
@@ -23,23 +22,24 @@ fishersMethod <- function(x) {
 }
 
 # Plot imbalance expression, with colouring for upregulated and downregulated genes
-plot_imbalance_expression <- function(imbalancedf) {
+plot_imbalance_expression <- function(imbalancedf, significance = 0.01) {
   imbalancedf <-  imbalancedf[order(imbalancedf$mean_expression, decreasing = F), ]
   labeldf <- data.frame(pos = unlist(lapply(X = 10^(0:4), FUN = function(x) sum(imbalancedf$mean_expression < x))), expr = 10^(0:4), stringsAsFactors = F)
   
   outdf_bak <- imbalancedf
   imbalancedf <- imbalancedf[!grepl(pattern = "^HLA.*", x = imbalancedf$gene_name, perl = T) &
                                !grepl(pattern = "^IG[HLK].*", x = imbalancedf$gene_name, perl = T) &
+                               !grepl(pattern = "^LOC", x = imbalancedf$gene_name, perl = T) &
                                !grepl(pattern = "^TR[ABDG][VCDJ].*", x = imbalancedf$gene_name, perl = T), ]
 
-  imbalancedf$notes <- ifelse(imbalancedf$padj > 0.05, "nonsig", 
+  imbalancedf$notes <- ifelse(imbalancedf$padj > significance, "nonsig", 
                               ifelse(imbalancedf$log2fc >= 1, "up",
                                      ifelse(imbalancedf$log2fc <= -.73, "down", "nonsig")))
   
   p1 <- ggplot(data = imbalancedf, mapping = aes(x = 1:nrow(imbalancedf), y = -sign(log2fc)*log10(pcombined)))
   p1 <- p1 + geom_point(mapping = aes(colour = notes, size = abs(log2fc)), 
                         show.legend = F, alpha = .4)
-  p1 <- p1 + geom_hline(yintercept = c(-1,1)*-log10(max(imbalancedf[imbalancedf$padj < .05, "pcombined"])), linetype = "dashed", colour = "grey") +
+  p1 <- p1 + geom_hline(yintercept = c(-1,1)*-log10(max(imbalancedf[imbalancedf$padj < significance, "pcombined"])), linetype = "dashed", colour = "grey") +
     geom_text(data = imbalancedf[imbalancedf$notes != "nonsig", ], mapping = aes(x = which(imbalancedf$notes != "nonsig"), y = -sign(log2fc)*log10(pcombined), label = gene_name), size = 1.5, angle = 45, hjust = 0, nudge_x = nrow(imbalancedf)/250, nudge_y = 0.1, alpha = .5, show.legend = F)
   p1 <- p1 + scale_y_continuous(breaks = seq(-10,10,2), oob = scales::squish, limits = c(-10,10))
   p1 <- p1 + scale_x_continuous(breaks = labeldf$pos, labels = labeldf$expr, name = "mean expression (normalised)")
@@ -47,6 +47,8 @@ plot_imbalance_expression <- function(imbalancedf) {
   p1 <- p1 + scale_color_manual(values = c(nonsig = "#e0e0e0", up = "#ef8a62", down = "#67a9cf"))
   p1 <- p1 + scale_size_continuous(range = c(1,7.5))
   p1 <- p1 + theme_minimal() + theme(panel.grid.minor.x = element_blank(), axis.text.x = element_text(angle = -90)) + labs(x = NULL)
+  p1 <- p1 + annotate("text", x = -Inf, y = -Inf, label = paste("p-value =", significance), hjust = -0.1, vjust = -1.5, size = 3, color = "black", alpha = 0.5)
+  
   return(p1)  
 }
 
@@ -64,6 +66,7 @@ process_expression_data <- function(counts_file, matchedSamples, output_dir) {
   dds <- DESeqDataSetFromMatrix(countData = filtered_counts_data, 
                                 colData = sampleTable, 
                                 design = ~1)
+  
   
   # Normalize and perform variance-stabilizing transformation (VST)
   dds <- estimateSizeFactors(dds)
@@ -104,7 +107,7 @@ process_expression_data <- function(counts_file, matchedSamples, output_dir) {
   # Add gene names (genes were already annotated in the counts file) and mean expression
   l2fcdf$gene_name <- rownames(l2fcdf)
   l2fcdf$mean_expression <- 2^rowMeans(log2(resdf + 1))
-  
+
   # Save log2 fold-change data
   l2fcfile <- file.path(output_dir, "RNAlog2fc_vst.txt")
   write.table(l2fcdf, file = l2fcfile, quote = FALSE, sep = "\t", row.names = TRUE, col.names = TRUE)
@@ -117,6 +120,7 @@ process_expression_data <- function(counts_file, matchedSamples, output_dir) {
 
 
 load_gene_annotations <- function(gtffile) {
+  library(GenomicFeatures)
   hstxdb <- makeTxDbFromGFF(file = gtffile, organism = "Homo sapiens")
   seqlevels(hstxdb) <- sub(pattern = "chr", replacement = "", x = seqlevels(seqinfo(hstxdb))) # converts chr1 to 1
   hsexondb <- exons(x = hstxdb, columns = c("gene_id"))
@@ -176,9 +180,9 @@ save_output_data <- function(outdf, results_dir, SAMPLEID) {
   write.table(x = outdf, file = outfile, quote = FALSE, sep = "\t", row.names = FALSE, col.names = TRUE)
 }
 
-save_plot_imbalance <- function(outdf, results_dir, SAMPLEID) {
-  p1 <- plot_imbalance_expression(imbalancedf = outdf)
-  plotfile <- file.path(results_dir, SAMPLEID, paste0(SAMPLEID, "_imbalance_expression_vst.png"))
+save_plot_imbalance <- function(outdf, results_dir, SAMPLEID, significance = 0.01) {
+  p1 <- plot_imbalance_expression(imbalancedf = outdf, significance = significance)
+  plotfile <- file.path(results_dir, SAMPLEID, paste0(SAMPLEID, "_imbalance_expression_vst_p0.01.png"))
   ggsave(plotfile, p1)
 }
 
